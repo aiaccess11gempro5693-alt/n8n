@@ -1,47 +1,48 @@
 {
-  "name": "MVP: Сценарий (Claude Code) → Озвучка → Промпты+Картинки+QA (Gemini)",
+  "name": "Воркеры для Claude Code: Озвучка, Картинка, Аватар",
   "nodes": [
     {
       "parameters": {
-        "content": "## Кто за что отвечает\n- **Claude Code (я, в чате)** — пишет сценарий (текст озвучки) и черновые описания сцен. Сложная творческая часть — на мне.\n- **Gemini** — дёшево берёт на себя всё остальное: дорабатывает черновые описания в детальные промпты для рендера картинок, а затем проверяет качество готовой картинки (соответствует ли промпту).\n- **Nano Banana** (модель генерации изображений Gemini) — просто рендерит пиксели по готовому промпту. Это отдельный шаг от \"Gemini-оркестрации\" выше, хоть технически и тот же провайдер (Google).\n\nЧтобы это заработало:\n- Активируй воркфлоу (переключатель Active вверху справа).\n- Открой ноду Webhook → скопируй Production URL → пришли его Claude Code в чат.",
-        "height": 360,
-        "width": 360
+        "content": "## Архитектура\nЭто не один линейный пайплайн, а **4 независимых \"воркера\"** (каждый — свой Webhook). Оркестрация (диалог с человеком, ok/не-ok, монтаж видео) происходит СНАРУЖИ — в чате с Claude Code — который дёргает эти воркеры по отдельности и решает, что делать дальше.\n\n1. `/tts` — озвучка (ElevenLabs)\n2. `/image` — промпт (Gemini) → картинка (Nano Banana) → проверка качества (Gemini)\n3. `/avatar-start` — запустить генерацию аватара (Heygen), не ждёт готовности\n4. `/avatar-status` — проверить, готово ли видео с аватаром (Heygen)\n\nАватар генерируется не мгновенно (может занять пару минут), поэтому это 2 отдельных запроса вместо одного: запустить и потом периодически спрашивать \"готово?\".\n\nАктивируй воркфлоу (переключатель Active вверху справа), затем открой каждую из 4 Webhook-нод по очереди и скопируй её Production URL — пришли все 4 адреса Claude Code в чат.",
+        "height": 420,
+        "width": 420
       },
-      "id": "a1000000-0000-0000-0000-000000000099",
-      "name": "Sticky Note: кто за что отвечает",
+      "id": "c0000000-0000-0000-0000-000000000001",
+      "name": "Sticky Note: архитектура",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [0, -100]
+      "position": [0, -140]
+    },
+
+    {
+      "parameters": {
+        "content": "**POST /tts**\n```json\n{ \"text\": \"текст для озвучки\", \"voice_id\": \"необязательно, свой voice id\" }\n```\nОтвет: аудиофайл (mp3) напрямую в теле ответа.",
+        "height": 160,
+        "width": 280
+      },
+      "id": "c1000000-0000-0000-0000-000000000001",
+      "name": "Sticky Note: /tts",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, 340]
     },
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "generate-video",
-        "responseMode": "lastNode",
+        "path": "tts",
+        "responseMode": "responseNode",
         "options": {}
       },
-      "id": "a1000000-0000-0000-0000-000000000001",
-      "name": "0. Webhook: получить сценарий",
+      "id": "c1000000-0000-0000-0000-000000000002",
+      "name": "Webhook: /tts",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [220, 300]
-    },
-    {
-      "parameters": {
-        "content": "**Ожидаемое тело запроса (JSON), которое присылает Claude Code:**\n```json\n{\n  \"topic\": \"тема (для логов)\",\n  \"voiceover_text\": \"полный текст озвучки\",\n  \"scene_descriptions\": [\n    \"краткое описание сцены 1\",\n    \"краткое описание сцены 2\"\n  ]\n}\n```\nОписания сцен — черновые, короткие. Их доработку в детальные промпты для рендера берёт на себя Gemini (следующие ноды).",
-        "height": 260,
-        "width": 340
-      },
-      "id": "a1000000-0000-0000-0000-000000000097",
-      "name": "Sticky Note: формат запроса",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [220, -100]
+      "position": [300, 400]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM",
+        "url": "={{ 'https://api.elevenlabs.io/v1/text-to-speech/' + ($json.body.voice_id || '21m00Tcm4TlvDq8ikWAM') }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -52,7 +53,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ text: $json.body.voiceover_text, model_id: \"eleven_multilingual_v2\" }) }}",
+        "jsonBody": "={{ JSON.stringify({ text: $json.body.text, model_id: \"eleven_multilingual_v2\" }) }}",
         "options": {
           "response": {
             "response": {
@@ -62,11 +63,11 @@
           }
         }
       },
-      "id": "a1000000-0000-0000-0000-000000000005",
-      "name": "1. Озвучка (ElevenLabs)",
+      "id": "c1000000-0000-0000-0000-000000000003",
+      "name": "Озвучка (ElevenLabs)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [500, 120],
+      "position": [560, 400],
       "credentials": {
         "httpHeaderAuth": {
           "id": "",
@@ -76,27 +77,41 @@
     },
     {
       "parameters": {
-        "content": "**Voice ID по умолчанию:** 21m00Tcm4TlvDq8ikWAM (готовый голос \"Rachel\"). Поменять — в ElevenLabs → Voice Library → Copy Voice ID → вставить в URL этой ноды.",
-        "height": 140,
-        "width": 260
+        "respondWith": "binary",
+        "inputFieldName": "audio",
+        "options": {}
       },
-      "id": "a1000000-0000-0000-0000-000000000098",
-      "name": "Sticky Note: Voice ID",
+      "id": "c1000000-0000-0000-0000-000000000004",
+      "name": "Ответ: аудио",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [820, 400]
+    },
+
+    {
+      "parameters": {
+        "content": "**POST /image**\n```json\n{\n  \"scene_description\": \"краткое описание сцены\"\n}\n```\nОтвет (JSON):\n```json\n{\n  \"prompt\": \"детальный промпт, который использовался\",\n  \"image_base64\": \"...\",\n  \"mime_type\": \"image/png\",\n  \"verdict\": \"OK или описание проблемы\"\n}\n```",
+        "height": 260,
+        "width": 300
+      },
+      "id": "c2000000-0000-0000-0000-000000000001",
+      "name": "Sticky Note: /image",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [500, -20]
+      "position": [0, 620]
     },
     {
       "parameters": {
-        "fieldToSplitOut": "body.scene_descriptions",
-        "destinationFieldName": "scene_description",
+        "httpMethod": "POST",
+        "path": "image",
+        "responseMode": "responseNode",
         "options": {}
       },
-      "id": "a1000000-0000-0000-0000-000000000006",
-      "name": "2. Разбить сцены",
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [500, 440]
+      "id": "c2000000-0000-0000-0000-000000000002",
+      "name": "Webhook: /image",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [300, 680]
     },
     {
       "parameters": {
@@ -112,14 +127,14 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Ты помощник по написанию промптов для генерации изображений. Разверни краткое описание сцены в детальный, конкретный промпт НА АНГЛИЙСКОМ языке для модели генерации изображений (стиль, освещение, композиция, ракурс). Ответь ТОЛЬКО самим промптом, без пояснений и кавычек.\\n\\nОписание сцены: ${$json.scene_description}` } ] } ] }) }}",
+        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Ты помощник по написанию промптов для генерации изображений. Разверни краткое описание сцены в детальный, конкретный промпт НА АНГЛИЙСКОМ языке для модели генерации изображений (стиль, освещение, композиция, ракурс). Ответь ТОЛЬКО самим промптом, без пояснений и кавычек.\\n\\nОписание сцены: ${$json.body.scene_description}` } ] } ] }) }}",
         "options": {}
       },
-      "id": "a1000000-0000-0000-0000-000000000009",
-      "name": "3. Уточнить промпт (Gemini)",
+      "id": "c2000000-0000-0000-0000-000000000003",
+      "name": "Уточнить промпт (Gemini)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [720, 440],
+      "position": [560, 680],
       "credentials": {
         "httpHeaderAuth": {
           "id": "",
@@ -129,13 +144,13 @@
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json;\nconst parts = raw.candidates?.[0]?.content?.parts || [];\nconst text = parts.map(p => p.text).filter(Boolean).join('').trim();\nif (!text) {\n  throw new Error('Gemini не вернул текст промпта. Ответ: ' + JSON.stringify(raw));\n}\nreturn [{\n  json: {\n    scene_description: $('2. Разбить сцены').item.json.scene_description,\n    prompt: text\n  }\n}];"
+        "jsCode": "const raw = $input.first().json;\nconst parts = raw.candidates?.[0]?.content?.parts || [];\nconst text = parts.map(p => p.text).filter(Boolean).join('').trim();\nif (!text) {\n  throw new Error('Gemini не вернул текст промпта. Ответ: ' + JSON.stringify(raw));\n}\nreturn [{ json: { prompt: text } }];"
       },
-      "id": "a1000000-0000-0000-0000-000000000010",
-      "name": "4. Извлечь текст промпта",
+      "id": "c2000000-0000-0000-0000-000000000004",
+      "name": "Извлечь текст промпта",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [940, 440]
+      "position": [780, 680]
     },
     {
       "parameters": {
@@ -154,11 +169,11 @@
         "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: $json.prompt } ] } ] }) }}",
         "options": {}
       },
-      "id": "a1000000-0000-0000-0000-000000000007",
-      "name": "5. Картинка (Nano Banana)",
+      "id": "c2000000-0000-0000-0000-000000000005",
+      "name": "Картинка (Nano Banana)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1160, 440],
+      "position": [1000, 680],
       "credentials": {
         "httpHeaderAuth": {
           "id": "",
@@ -168,13 +183,13 @@
     },
     {
       "parameters": {
-        "jsCode": "const item = $input.first().json;\nconst parts = item.candidates?.[0]?.content?.parts || [];\nconst imgPart = parts.find(p => p.inlineData && p.inlineData.data);\nif (!imgPart) {\n  throw new Error('Nano Banana не вернул изображение. Ответ: ' + JSON.stringify(item));\n}\nconst buffer = Buffer.from(imgPart.inlineData.data, 'base64');\nconst mimeType = imgPart.inlineData.mimeType || 'image/png';\nconst prompt = $('4. Извлечь текст промпта').item.json.prompt;\nreturn [{\n  json: { prompt },\n  binary: {\n    image: await this.helpers.prepareBinaryData(buffer, 'image.png', mimeType)\n  }\n}];"
+        "jsCode": "const item = $input.first().json;\nconst parts = item.candidates?.[0]?.content?.parts || [];\nconst imgPart = parts.find(p => p.inlineData && p.inlineData.data);\nif (!imgPart) {\n  throw new Error('Nano Banana не вернул изображение. Ответ: ' + JSON.stringify(item));\n}\nconst prompt = $('Извлечь текст промпта').item.json.prompt;\nreturn [{\n  json: {\n    prompt,\n    image_base64: imgPart.inlineData.data,\n    mime_type: imgPart.inlineData.mimeType || 'image/png'\n  }\n}];"
       },
-      "id": "a1000000-0000-0000-0000-000000000008",
-      "name": "6. Base64 → файл изображения",
+      "id": "c2000000-0000-0000-0000-000000000006",
+      "name": "Подготовить данные картинки",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1380, 440]
+      "position": [1220, 680]
     },
     {
       "parameters": {
@@ -190,14 +205,14 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Оцени, насколько сгенерированное изображение соответствует промпту. Промпт: \"${$json.prompt}\". Ответь коротко: \"OK\" если всё хорошо соответствует, или одним предложением опиши проблему.` }, { inline_data: { mime_type: $binary.image.mimeType, data: $binary.image.data } } ] } ] }) }}",
+        "jsonBody": "={{ JSON.stringify({ contents: [ { parts: [ { text: `Оцени, насколько сгенерированное изображение соответствует промпту. Промпт: \"${$json.prompt}\". Ответь коротко: \"OK\" если всё хорошо соответствует, или одним предложением опиши проблему.` }, { inline_data: { mime_type: $json.mime_type, data: $json.image_base64 } } ] } ] }) }}",
         "options": {}
       },
-      "id": "a1000000-0000-0000-0000-000000000011",
-      "name": "7. Проверка качества (Gemini)",
+      "id": "c2000000-0000-0000-0000-000000000007",
+      "name": "Проверка качества (Gemini)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 440],
+      "position": [1440, 680],
       "credentials": {
         "httpHeaderAuth": {
           "id": "",
@@ -207,44 +222,225 @@
     },
     {
       "parameters": {
-        "content": "**Результат этой ноды** — текстовый вердикт Gemini (\"OK\" или описание проблемы). Само изображение (файл) видно на выходе предыдущей ноды \"6. Base64 → файл изображения\" — просто открой её во вкладке выполнения (execution), чтобы скачать картинку.",
-        "height": 160,
-        "width": 300
+        "jsCode": "const raw = $input.first().json;\nconst parts = raw.candidates?.[0]?.content?.parts || [];\nconst verdict = parts.map(p => p.text).filter(Boolean).join('').trim() || 'нет ответа от Gemini';\nconst data = $('Подготовить данные картинки').item.json;\nreturn [{\n  json: {\n    prompt: data.prompt,\n    image_base64: data.image_base64,\n    mime_type: data.mime_type,\n    verdict\n  }\n}];"
       },
-      "id": "a1000000-0000-0000-0000-000000000096",
-      "name": "Sticky Note: где искать картинку",
+      "id": "c2000000-0000-0000-0000-000000000008",
+      "name": "Собрать ответ",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1660, 680]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "c2000000-0000-0000-0000-000000000009",
+      "name": "Ответ: картинка+вердикт",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1880, 680]
+    },
+
+    {
+      "parameters": {
+        "content": "**POST /avatar-start**\n```json\n{\n  \"script\": \"текст, который скажет аватар\",\n  \"avatar_id\": \"id из HeyGen\",\n  \"voice_id\": \"id голоса из HeyGen\"\n}\n```\nОтвет: `{ \"video_id\": \"...\" }` — сразу, генерация ещё идёт.\n\nКак узнать avatar_id / voice_id: в HeyGen пока нет — используй `GET https://api.heygen.com/v2/avatars` и `GET https://api.heygen.com/v2/voices` со своим ключом (см. docs/SETUP.md).",
+        "height": 260,
+        "width": 320
+      },
+      "id": "c3000000-0000-0000-0000-000000000001",
+      "name": "Sticky Note: /avatar-start",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
-      "position": [1600, 640]
+      "position": [0, 960]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "avatar-start",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "c3000000-0000-0000-0000-000000000002",
+      "name": "Webhook: /avatar-start",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [300, 1020]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.heygen.com/v2/video/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ video_inputs: [ { character: { type: \"avatar\", avatar_id: $json.body.avatar_id, avatar_style: \"normal\" }, voice: { type: \"text\", input_text: $json.body.script, voice_id: $json.body.voice_id } } ], dimension: { width: 1280, height: 720 } }) }}",
+        "options": {}
+      },
+      "id": "c3000000-0000-0000-0000-000000000003",
+      "name": "Создать видео (Heygen)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [560, 1020],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "HeyGen API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json;\nconst videoId = raw.data?.video_id;\nif (!videoId) {\n  throw new Error('Heygen не вернул video_id. Ответ: ' + JSON.stringify(raw));\n}\nreturn [{ json: { video_id: videoId } }];"
+      },
+      "id": "c3000000-0000-0000-0000-000000000004",
+      "name": "Извлечь video_id",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [780, 1020]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "c3000000-0000-0000-0000-000000000005",
+      "name": "Ответ: video_id",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1000, 1020]
+    },
+
+    {
+      "parameters": {
+        "content": "**GET /avatar-status?video_id=...**\n\nОтвет:\n```json\n{ \"status\": \"processing|completed|failed\", \"video_url\": \"...\", \"error\": null }\n```\nЗвать этот адрес повторно раз в 10-15 секунд, пока status не станет completed (или failed).",
+        "height": 200,
+        "width": 300
+      },
+      "id": "c4000000-0000-0000-0000-000000000001",
+      "name": "Sticky Note: /avatar-status",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, 1260]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "avatar-status",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "c4000000-0000-0000-0000-000000000002",
+      "name": "Webhook: /avatar-status",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [300, 1320]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ 'https://api.heygen.com/v1/video_status.get?video_id=' + $json.query.video_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "options": {}
+      },
+      "id": "c4000000-0000-0000-0000-000000000003",
+      "name": "Проверить статус (Heygen)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [560, 1320],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "HeyGen API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json;\nconst d = raw.data || {};\nreturn [{\n  json: {\n    status: d.status || 'unknown',\n    video_url: d.video_url || null,\n    error: d.error || null\n  }\n}];"
+      },
+      "id": "c4000000-0000-0000-0000-000000000004",
+      "name": "Разобрать статус",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [780, 1320]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "c4000000-0000-0000-0000-000000000005",
+      "name": "Ответ: статус",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1000, 1320]
     }
   ],
   "connections": {
-    "0. Webhook: получить сценарий": {
-      "main": [
-        [
-          { "node": "1. Озвучка (ElevenLabs)", "type": "main", "index": 0 },
-          { "node": "2. Разбить сцены", "type": "main", "index": 0 }
-        ]
-      ]
+    "Webhook: /tts": {
+      "main": [[{ "node": "Озвучка (ElevenLabs)", "type": "main", "index": 0 }]]
     },
-    "2. Разбить сцены": {
-      "main": [[{ "node": "3. Уточнить промпт (Gemini)", "type": "main", "index": 0 }]]
+    "Озвучка (ElevenLabs)": {
+      "main": [[{ "node": "Ответ: аудио", "type": "main", "index": 0 }]]
     },
-    "3. Уточнить промпт (Gemini)": {
-      "main": [[{ "node": "4. Извлечь текст промпта", "type": "main", "index": 0 }]]
+
+    "Webhook: /image": {
+      "main": [[{ "node": "Уточнить промпт (Gemini)", "type": "main", "index": 0 }]]
     },
-    "4. Извлечь текст промпта": {
-      "main": [[{ "node": "5. Картинка (Nano Banana)", "type": "main", "index": 0 }]]
+    "Уточнить промпт (Gemini)": {
+      "main": [[{ "node": "Извлечь текст промпта", "type": "main", "index": 0 }]]
     },
-    "5. Картинка (Nano Banana)": {
-      "main": [[{ "node": "6. Base64 → файл изображения", "type": "main", "index": 0 }]]
+    "Извлечь текст промпта": {
+      "main": [[{ "node": "Картинка (Nano Banana)", "type": "main", "index": 0 }]]
     },
-    "6. Base64 → файл изображения": {
-      "main": [[{ "node": "7. Проверка качества (Gemini)", "type": "main", "index": 0 }]]
+    "Картинка (Nano Banana)": {
+      "main": [[{ "node": "Подготовить данные картинки", "type": "main", "index": 0 }]]
+    },
+    "Подготовить данные картинки": {
+      "main": [[{ "node": "Проверка качества (Gemini)", "type": "main", "index": 0 }]]
+    },
+    "Проверка качества (Gemini)": {
+      "main": [[{ "node": "Собрать ответ", "type": "main", "index": 0 }]]
+    },
+    "Собрать ответ": {
+      "main": [[{ "node": "Ответ: картинка+вердикт", "type": "main", "index": 0 }]]
+    },
+
+    "Webhook: /avatar-start": {
+      "main": [[{ "node": "Создать видео (Heygen)", "type": "main", "index": 0 }]]
+    },
+    "Создать видео (Heygen)": {
+      "main": [[{ "node": "Извлечь video_id", "type": "main", "index": 0 }]]
+    },
+    "Извлечь video_id": {
+      "main": [[{ "node": "Ответ: video_id", "type": "main", "index": 0 }]]
+    },
+
+    "Webhook: /avatar-status": {
+      "main": [[{ "node": "Проверить статус (Heygen)", "type": "main", "index": 0 }]]
+    },
+    "Проверить статус (Heygen)": {
+      "main": [[{ "node": "Разобрать статус", "type": "main", "index": 0 }]]
+    },
+    "Разобрать статус": {
+      "main": [[{ "node": "Ответ: статус", "type": "main", "index": 0 }]]
     }
   },
   "pinData": {},
   "meta": {
-    "instructions": "Импортировать в n8n: Workflows -> Import from File. После импорта: 1) открыть HTTP Request ноды (1, 3, 5, 7) и выбрать свои credentials — ElevenLabs API для ноды 1, Google AI Studio для нод 3/5/7 (см. docs/SETUP.md), 2) активировать воркфлоу, 3) скопировать Production URL из ноды Webhook и прислать его Claude Code в чат."
+    "instructions": "Импортировать в n8n: Workflows -> Import from File. После импорта: 1) открыть все HTTP Request ноды и выбрать свои credentials (ElevenLabs API / Google AI Studio / HeyGen API — см. docs/SETUP.md), 2) активировать воркфлоу, 3) скопировать Production URL из каждой из 4 Webhook-нод (/tts, /image, /avatar-start, /avatar-status) и прислать все Claude Code в чат."
   }
 }
