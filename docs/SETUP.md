@@ -40,11 +40,14 @@ n8n здесь — **не один автоматический пайплайн
 2. Профиль (иконка справа вверху) → **API Keys** → скопируй ключ.
 3. (Опционально) **Voice Library** → выбери голос → **Copy Voice ID**. По умолчанию в воркфлоу стоит готовый голос "Rachel" (`21m00Tcm4TlvDq8ikWAM`).
 
-## Шаг 3. Google AI Studio — Gemini (промпты + проверка качества) и Nano Banana (картинки)
+## Шаг 3. CometAPI — Gemini (промпты + проверка качества) и Nano Banana (картинки)
 
-1. Открой https://aistudio.google.com, войди через Google-аккаунт.
-2. **Get API key** → **Create API key** → скопируй ключ.
+Используем не напрямую Google AI Studio, а прокси-сервис **CometAPI** (`api.cometapi.com`) — он даёт доступ к тем же моделям Gemini/Nano Banana дешевле и без требования включённого биллинга на Google-аккаунте (у Google на бесплатном тарифе нет квоты на генерацию картинок вообще, `limit: 0` — проверено на практике 04.08.2026).
+
+1. Открой https://www.cometapi.com и зарегистрируйся.
+2. В личном кабинете найди раздел API-ключей и создай ключ.
 3. Один ключ используется для трёх вещей: доработка промптов, генерация картинок (Nano Banana), проверка качества — регистрировать отдельно ничего не нужно.
+4. CometAPI повторяет формат самого Gemini API один в один — меняется только базовый адрес (`generativelanguage.googleapis.com` → `api.cometapi.com`) и заголовок аутентификации `x-goog-api-key` (значение — ключ CometAPI, а не Google). В `workflows/mvp-content-pipeline.json` это уже учтено.
 
 ## Шаг 4. HeyGen — аватар
 
@@ -62,7 +65,7 @@ n8n здесь — **не один автоматический пайплайн
 | Название credential (важно называть именно так) | Header Name | Header Value |
 |---|---|---|
 | `ElevenLabs API` | `xi-api-key` | твой ключ из ElevenLabs |
-| `Google AI Studio` | `x-goog-api-key` | твой ключ из Google AI Studio |
+| `CometAPI (Gemini)` | `x-goog-api-key` | твой ключ из CometAPI |
 | `HeyGen API` | `X-Api-Key` | твой ключ из HeyGen |
 
 Для каждой: **Add Credential** → в поиске выбери **Header Auth** → впиши имя → впиши Header Name и Header Value → **Save**.
@@ -78,7 +81,7 @@ n8n здесь — **не один автоматический пайплайн
 После импорта credentials нужно перевыбрать вручную (их ID не совпадают между аккаунтами):
 
 - **"Озвучка (ElevenLabs)"** → `ElevenLabs API`
-- **"Уточнить промпт (Gemini)"**, **"Картинка (Nano Banana)"**, **"Проверка качества (Gemini)"** → `Google AI Studio`
+- **"Уточнить промпт (Gemini)"**, **"Картинка (Nano Banana)"**, **"Проверка качества (Gemini)"** → `CometAPI (Gemini)`
 - **"Создать видео (Heygen)"**, **"Проверить статус (Heygen)"** → `HeyGen API`
 
 ## Шаг 8. Активировать воркфлоу и собрать адреса
