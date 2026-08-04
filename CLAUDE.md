@@ -56,6 +56,13 @@ n8n (готово, уровень MVP) — это 4 независимых во�
 
 Ещё не найден: `avatar_id` для конкретного аватара "Avatar 3" в HeyGen (пользователь сообщит отдельно, когда найдёт).
 
+**Мост "GitHub Actions" — как Claude Code реально дёргает n8n/сервисы из этого чата (04.08.2026, проверено, работает).** Эта чат-песочница не имеет прямого сетевого доступа к сторонним хостам (n8n.cloud, api.heygen.com и т.п. — прокси отдаёт 403). Решение: `.github/workflows/call-n8n-worker.yml` — ручной (`workflow_dispatch`) воркфлоу в GitHub Actions, у раннера которого есть настоящий доступ в интернет. Он принимает на вход `worker_path` (например `tts`, `image`, `avatar-start`, `avatar-status?video_id=...`), `method` (POST/GET) и `payload` (JSON), делает `curl` на `${N8N_BASE_URL}/webhook/<worker_path>` и кладёт ответ (тело, заголовки, статус) как артефакт запуска.
+
+- Требует repository secret `N8N_BASE_URL` (базовый адрес n8n-инстанса, без `/webhook/...`) — уже добавлен пользователем вручную через GitHub UI.
+- **Воркфлоу должен существовать в ветке `main`**, иначе GitHub не регистрирует его для запуска через API (даже если файл есть в feature-ветке) — это выяснено на практике: первый запуск с `ref: claude/hello-hlr2ev` дал `404`, `list_workflows` показывал `0` воркфлоу, пока файл не попал в `main`. Ветка `claude/hello-hlr2ev` была слита в `main` фаст-форвардом с явного разрешения пользователя.
+- Как вызывать: `mcp__github__actions_run_trigger` (workflow_dispatch, ref: `main`, inputs) → затем `mcp__github__actions_list` (list_workflow_runs) или `mcp__github__actions_get` (get_workflow_run) по `run_id`, чтобы дождаться `status: completed` → затем `mcp__github__get_job_logs` (по `job_id` из `list_workflow_jobs`) для просмотра вывода curl прямо в логах (там же виден `HTTP_STATUS` и заголовки ответа), либо скачать сам артефакт `n8n-worker-result` при необходимости бинарного содержимого (аудио/картинка).
+- **Проверено end-to-end:** тестовый вызов `/tts` через этот механизм вернул реальный ответ ElevenLabs — `HTTP_STATUS:200`, `content-type: audio/mpeg`, ~47 КБ аудио (run id `30917328831`). Значит связка "Claude Code → GitHub Actions → n8n → внешний API" рабочая, и теперь можно дёргать любой из 4 воркеров прямо из этого чата, не прося пользователя делать это руками в интерфейсе n8n.
+
 ---
 
 ## Техническое задание от руководителя (Олег, 31.07.2026)
