@@ -1,0 +1,66 @@
+name: Call n8n worker
+
+# Ручной запуск (workflow_dispatch) — вызывает один из наших n8n-воркеров
+# (/tts, /image, /avatar-start, /avatar-status) с реальным доступом в интернет
+# (в отличие от песочницы, где работает Claude Code) и сохраняет ответ
+# как артефакт запуска, который потом можно скачать/прочитать.
+#
+# Требуется repository secret N8N_BASE_URL — базовый адрес n8n
+# (например https://your-instance.app.n8n.cloud, БЕЗ конечного /), без
+# путей вида /webhook/tts. Сам секрет добавляется вручную в
+# Settings -> Secrets and variables -> Actions -> New repository secret.
+
+on:
+  workflow_dispatch:
+    inputs:
+      worker_path:
+        description: 'Путь после /webhook/, например: tts, image, avatar-start, avatar-status?video_id=XXX'
+        required: true
+      method:
+        description: 'HTTP метод'
+        required: true
+        default: 'POST'
+        type: choice
+        options:
+          - POST
+          - GET
+      payload:
+        description: 'JSON тело запроса (для GET можно оставить {})'
+        required: false
+        default: '{}'
+
+jobs:
+  call-worker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call n8n webhook
+        env:
+          N8N_BASE_URL: ${{ secrets.N8N_BASE_URL }}
+          WORKER_PATH: ${{ github.event.inputs.worker_path }}
+          METHOD: ${{ github.event.inputs.method }}
+          PAYLOAD: ${{ github.event.inputs.payload }}
+        run: |
+          if [ -z "$N8N_BASE_URL" ]; then
+            echo "::error::Секрет N8N_BASE_URL не задан в настройках репозитория"
+            exit 1
+          fi
+          URL="${N8N_BASE_URL%/}/webhook/${WORKER_PATH}"
+          echo "Вызываю: $METHOD $URL"
+          if [ "$METHOD" = "GET" ]; then
+            curl -sS "$URL" -D response-headers.txt -o response-body.out -w "\nHTTP_STATUS:%{http_code}\n" | tee response-status.txt
+          else
+            curl -sS -X POST "$URL" -H "Content-Type: application/json" -d "$PAYLOAD" -D response-headers.txt -o response-body.out -w "\nHTTP_STATUS:%{http_code}\n" | tee response-status.txt
+          fi
+          echo "--- Response headers ---"
+          cat response-headers.txt
+
+      - name: Upload result as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: n8n-worker-result
+          path: |
+            response-body.out
+            response-headers.txt
+            response-status.txt
+          retention-days: 7
