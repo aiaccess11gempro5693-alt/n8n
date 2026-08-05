@@ -245,7 +245,7 @@
 
     {
       "parameters": {
-        "content": "**POST /avatar-start**\n```json\n{\n  \"script\": \"текст, который скажет аватар\",\n  \"avatar_id\": \"id из HeyGen\",\n  \"voice_id\": \"id голоса из HeyGen\"\n}\n```\nОтвет: `{ \"video_id\": \"...\" }` — сразу, генерация ещё идёт.\n\nКак узнать avatar_id / voice_id: в HeyGen пока нет — используй `GET https://api.heygen.com/v2/avatars` и `GET https://api.heygen.com/v2/voices` со своим ключом (см. docs/SETUP.md).",
+        "content": "**POST /avatar-start**\n```json\n{\n  \"script\": \"текст, который скажет аватар\",\n  \"avatar_id\": \"id своего Photo Avatar из HeyGen (не из общей библиотеки)\",\n  \"voice_id\": \"id голоса из HeyGen\"\n}\n```\nОтвет: `{ \"video_id\": \"...\" }` — сразу, генерация ещё идёт.\n\nПо решению Олега рендерится движком **Avatar III** (жёстко зашито в узле, не параметр запроса) — используется для собственных Photo Avatar, отправляется как `character.type: \"talking_photo\"`.\n\nКак узнать avatar_id / voice_id: `GET https://api.heygen.com/v3/avatars` (свои Photo Avatar) и `GET https://api.heygen.com/v2/voices` со своим ключом (см. docs/SETUP.md).",
         "height": 260,
         "width": 320
       },
@@ -282,7 +282,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ video_inputs: [ { character: { type: \"avatar\", avatar_id: $json.body.avatar_id, avatar_style: \"normal\" }, voice: { type: \"text\", input_text: $json.body.script, voice_id: $json.body.voice_id } } ], dimension: { width: 1280, height: 720 } }) }}",
+        "jsonBody": "={{ JSON.stringify({ video_inputs: [ { character: { type: \"talking_photo\", talking_photo_id: $json.body.avatar_id }, voice: { type: \"text\", input_text: $json.body.script, voice_id: $json.body.voice_id } } ], dimension: { width: 1280, height: 720 }, engine: \"avatar III\" }) }}",
         "options": {}
       },
       "id": "c3000000-0000-0000-0000-000000000003",
