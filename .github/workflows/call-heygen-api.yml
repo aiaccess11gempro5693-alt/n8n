@@ -14,9 +14,21 @@ on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'Путь после https://api.heygen.com, например: /v2/avatars или /v2/voices'
+        description: 'Путь после https://api.heygen.com, например: /v2/avatars или /v2/video/generate'
         required: true
         default: '/v2/avatars'
+      method:
+        description: 'HTTP метод'
+        required: true
+        default: 'GET'
+        type: choice
+        options:
+          - GET
+          - POST
+      body:
+        description: 'JSON тело запроса (только для POST, можно оставить {})'
+        required: false
+        default: '{}'
 
 permissions:
   contents: write
@@ -31,14 +43,20 @@ jobs:
         env:
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
           PATH_INPUT: ${{ github.event.inputs.path }}
+          METHOD: ${{ github.event.inputs.method }}
+          BODY: ${{ github.event.inputs.body }}
         run: |
           if [ -z "$HEYGEN_API_KEY" ]; then
             echo "::error::Секрет HEYGEN_API_KEY не задан в настройках репозитория"
             exit 1
           fi
           URL="https://api.heygen.com${PATH_INPUT}"
-          echo "Вызываю: GET $URL"
-          curl -sS "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -o scratch/heygen-response.json -w "\nHTTP_STATUS:%{http_code}\n"
+          echo "Вызываю: $METHOD $URL"
+          if [ "$METHOD" = "POST" ]; then
+            curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: application/json" -d "$BODY" -o scratch/heygen-response.json -w "\nHTTP_STATUS:%{http_code}\n"
+          else
+            curl -sS "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -o scratch/heygen-response.json -w "\nHTTP_STATUS:%{http_code}\n"
+          fi
 
       - name: Preview response
         if: always()
