@@ -54,6 +54,27 @@ jobs:
           echo "--- Response headers ---"
           cat response-headers.txt
 
+      - name: Preview JSON response (no huge base64 dumps)
+        if: always()
+        run: |
+          python3 -c "
+          import json
+          try:
+              with open('response-body.out') as f:
+                  data = json.load(f)
+          except Exception as e:
+              print('Тело ответа — не JSON или пустое:', e)
+          else:
+              def preview(v):
+                  if isinstance(v, str) and len(v) > 200:
+                      return v[:200] + f'... [{len(v)} chars total]'
+                  return v
+              if isinstance(data, dict):
+                  print(json.dumps({k: preview(v) for k, v in data.items()}, ensure_ascii=False, indent=2))
+              else:
+                  print(json.dumps(data, ensure_ascii=False, indent=2)[:2000])
+          "
+
       - name: Upload result as artifact
         if: always()
         uses: actions/upload-artifact@v4
