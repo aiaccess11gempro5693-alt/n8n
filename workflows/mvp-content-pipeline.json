@@ -116,7 +116,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.cometapi.com/v1beta/models/gemini-flash-latest:generateContent",
+        "url": "https://api.cometapi.com/v1beta/models/gemini-3.5-flash:generateContent",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -194,7 +194,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.cometapi.com/v1beta/models/gemini-flash-latest:generateContent",
+        "url": "https://api.cometapi.com/v1beta/models/gemini-3.5-flash:generateContent",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
