@@ -282,7 +282,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ video_inputs: [ { character: { type: \"talking_photo\", talking_photo_id: $json.body.avatar_id }, voice: { type: \"text\", input_text: $json.body.script, voice_id: $json.body.voice_id } } ], dimension: { width: 1280, height: 720 }, engine: \"avatar III\" }) }}",
+        "jsonBody": "{\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"talking_photo\",\n        \"talking_photo_id\": \"{{ $json.body.avatar_id }}\"\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"{{ $json.body.script }}\",\n        \"voice_id\": \"{{ $json.body.voice_id }}\"\n      }\n    }\n  ],\n  \"dimension\": { \"width\": 1280, \"height\": 720 },\n  \"engine\": \"avatar III\"\n}",
         "options": {}
       },
       "id": "c3000000-0000-0000-0000-000000000003",
