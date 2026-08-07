@@ -72,12 +72,31 @@ jobs:
               print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
           "
 
+      - name: Download video if response has a video_url
+        if: always()
+        run: |
+          VIDEO_URL=$(python3 -c "
+          import json
+          try:
+              with open('scratch/heygen-response.json') as f:
+                  data = json.load(f)
+              print(data.get('data', {}).get('video_url', '') or '')
+          except Exception:
+              print('')
+          ")
+          if [ -n "$VIDEO_URL" ]; then
+            echo "Скачиваю видео: $VIDEO_URL"
+            curl -sS "$VIDEO_URL" -o scratch/latest-heygen-video.mp4
+          else
+            echo "В ответе нет video_url — нечего скачивать"
+          fi
+
       - name: Commit response for inspection
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scratch/heygen-response.json 2>/dev/null || true
+          git add scratch/heygen-response.json scratch/latest-heygen-video.mp4 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "scratch: latest HeyGen API response for inspection [skip ci]"
             git push
