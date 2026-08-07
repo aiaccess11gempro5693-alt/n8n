@@ -299,7 +299,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json;\nconst videoId = raw.data?.id;\nif (!videoId) {\n  throw new Error('Heygen не вернул id видео. Ответ: ' + JSON.stringify(raw));\n}\nreturn [{ json: { video_id: videoId } }];"
+        "jsCode": "const raw = $input.first().json;\nconst videoId = raw.data?.video_id;\nif (!videoId) {\n  throw new Error('Heygen не вернул video_id. Ответ: ' + JSON.stringify(raw));\n}\nreturn [{ json: { video_id: videoId } }];"
       },
       "id": "c3000000-0000-0000-0000-000000000004",
       "name": "Извлечь video_id",
