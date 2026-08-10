@@ -92,14 +92,32 @@ jobs:
           python3 -c "
           import json, base64, os
           name = os.environ.get('OUTPUT_NAME') or 'latest-worker-output'
+          os.makedirs('scratch', exist_ok=True)
           try:
               with open('response-body.out') as f:
                   data = json.load(f)
           except Exception:
+              # Не JSON — возможно, сырой бинарный ответ (например /tts отдаёт mp3 прямо в теле)
+              ctype = ''
+              try:
+                  with open('response-headers.txt') as f:
+                      for line in f:
+                          if line.lower().startswith('content-type:'):
+                              ctype = line.split(':', 1)[1].strip().lower()
+                              break
+              except Exception:
+                  pass
+              ext_by_ctype = {'audio/mpeg': 'mp3', 'audio/mp3': 'mp3', 'image/png': 'png', 'image/jpeg': 'jpg', 'video/mp4': 'mp4'}
+              ext = next((v for k, v in ext_by_ctype.items() if k in ctype), None)
+              if ext:
+                  with open('response-body.out', 'rb') as src, open(f'scratch/{name}.{ext}', 'wb') as dst:
+                      dst.write(src.read())
+                  print(f'Сохранён сырой бинарный ответ (content-type: {ctype}) в scratch/{name}.{ext}')
+              else:
+                  print(f'Тело не JSON и content-type ({ctype!r}) не распознан — нечего сохранять')
               raise SystemExit(0)
           if not isinstance(data, dict):
               raise SystemExit(0)
-          os.makedirs('scratch', exist_ok=True)
           saved = False
           for key, ext in [('image_base64', 'png'), ('audio_base64', 'mp3')]:
               b64 = data.get(key)
