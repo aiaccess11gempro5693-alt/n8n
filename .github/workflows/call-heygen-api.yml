@@ -29,6 +29,10 @@ on:
         description: 'JSON тело запроса (только для POST, можно оставить {})'
         required: false
         default: '{}'
+      output_name:
+        description: 'Имя файла в scratch/ (без расширения) — задавай уникальное при параллельных запросах по разным video_id'
+        required: false
+        default: 'heygen-response'
 
 permissions:
   contents: write
@@ -45,26 +49,32 @@ jobs:
           PATH_INPUT: ${{ github.event.inputs.path }}
           METHOD: ${{ github.event.inputs.method }}
           BODY: ${{ github.event.inputs.body }}
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
           if [ -z "$HEYGEN_API_KEY" ]; then
             echo "::error::Секрет HEYGEN_API_KEY не задан в настройках репозитория"
             exit 1
           fi
+          mkdir -p scratch
           URL="https://api.heygen.com${PATH_INPUT}"
           echo "Вызываю: $METHOD $URL"
+          NAME="${OUTPUT_NAME:-heygen-response}"
           if [ "$METHOD" = "POST" ]; then
-            curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: application/json" -d "$BODY" -o scratch/heygen-response.json -w "\nHTTP_STATUS:%{http_code}\n"
+            curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: application/json" -d "$BODY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
           else
-            curl -sS "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -o scratch/heygen-response.json -w "\nHTTP_STATUS:%{http_code}\n"
+            curl -sS "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
           fi
 
       - name: Preview response
         if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
           python3 -c "
-          import json
+          import json, os
+          name = os.environ.get('OUTPUT_NAME') or 'heygen-response'
           try:
-              with open('scratch/heygen-response.json') as f:
+              with open(f'scratch/{name}.json') as f:
                   data = json.load(f)
           except Exception as e:
               print('Не JSON или пусто:', e)
@@ -74,11 +84,15 @@ jobs:
 
       - name: Download video if response has a video_url
         if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
+          NAME="${OUTPUT_NAME:-heygen-response}"
           VIDEO_URL=$(python3 -c "
-          import json
+          import json, os
+          name = os.environ.get('OUTPUT_NAME') or 'heygen-response'
           try:
-              with open('scratch/heygen-response.json') as f:
+              with open(f'scratch/{name}.json') as f:
                   data = json.load(f)
               print(data.get('data', {}).get('video_url', '') or '')
           except Exception:
@@ -86,20 +100,30 @@ jobs:
           ")
           if [ -n "$VIDEO_URL" ]; then
             echo "Скачиваю видео: $VIDEO_URL"
-            curl -sS "$VIDEO_URL" -o scratch/latest-heygen-video.mp4
+            curl -sS "$VIDEO_URL" -o "scratch/${NAME}.mp4"
           else
             echo "В ответе нет video_url — нечего скачивать"
           fi
 
       - name: Commit response for inspection
         if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
+          NAME="${OUTPUT_NAME:-heygen-response}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scratch/heygen-response.json scratch/latest-heygen-video.mp4 2>/dev/null || true
+          git add "scratch/${NAME}.json" "scratch/${NAME}.mp4" 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m "scratch: latest HeyGen API response for inspection [skip ci]"
-            git push
+            git commit -m "scratch: HeyGen API response ${NAME} for inspection [skip ci]"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push не удался (параллельный запуск?), пробую перебазироваться и повторить..."
+              git pull --rebase
+              sleep $((RANDOM % 5 + 1))
+            done
           else
             echo "Нечего коммитить"
           fi
