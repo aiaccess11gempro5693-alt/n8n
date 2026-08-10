@@ -1,0 +1,151 @@
+name: Call n8n management API
+
+# Ручной запуск (workflow_dispatch) — вызывает n8n Public REST API
+# (НЕ webhook-воркеры, а API управления самими воркфлоу: получить/
+# перезаписать ноды, посмотреть список credentials по имени/id,
+# активировать воркфлоу) напрямую с реального интернет-доступа раннера.
+#
+# Зачем это нужно: ручное редактирование workflow через canvas в
+# редакторе n8n (copy/paste ноды, выбор credential из выпадающего
+# списка, Save/Publish) несколько раз подряд ломалось непредсказуемо —
+# credential после вставки резолвился не в тот, JSON вставлялся в
+# неправильном формате, правки не сохранялись. Через API это -
+# один детерминированный PUT с полным телом воркфлоу, без ручных
+# кликов и без риска UI-багов.
+#
+# Требуется repository secret N8N_API_KEY — API-ключ n8n
+# (Settings -> n8n API -> Create an API key в самом n8n). Доступно
+# начиная с платного тарифа Starter (на free trial API отключён).
+# Секрет добавляется вручную в Settings -> Secrets and variables ->
+# Actions -> New repository secret. Использует уже существующий
+# secret N8N_BASE_URL (тот же базовый адрес, что и для воркеров).
+
+on:
+  workflow_dispatch:
+    inputs:
+      method:
+        description: 'Что сделать'
+        required: true
+        type: choice
+        options:
+          - list_workflows
+          - get_workflow
+          - update_workflow
+          - activate_workflow
+          - list_credentials
+      workflow_id:
+        description: 'ID воркфлоу (для get_workflow/update_workflow/activate_workflow) — узнать через list_workflows'
+        required: false
+        default: ''
+      body_file:
+        description: 'Путь к файлу в репозитории с телом PUT-запроса (для update_workflow), например workflows/mvp-content-pipeline.json'
+        required: false
+        default: ''
+      output_name:
+        description: 'Имя файла в scratch/ для сохранения ответа (без расширения)'
+        required: false
+        default: 'n8n-api-response'
+
+permissions:
+  contents: write
+
+jobs:
+  call-n8n-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Call n8n API
+        env:
+          N8N_BASE_URL: ${{ secrets.N8N_BASE_URL }}
+          N8N_API_KEY: ${{ secrets.N8N_API_KEY }}
+          METHOD: ${{ github.event.inputs.method }}
+          WORKFLOW_ID: ${{ github.event.inputs.workflow_id }}
+          BODY_FILE: ${{ github.event.inputs.body_file }}
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          if [ -z "$N8N_BASE_URL" ]; then
+            echo "::error::Секрет N8N_BASE_URL не задан"
+            exit 1
+          fi
+          if [ -z "$N8N_API_KEY" ]; then
+            echo "::error::Секрет N8N_API_KEY не задан. Создай ключ в n8n: Settings -> n8n API -> Create an API key, и добавь его как repository secret N8N_API_KEY."
+            exit 1
+          fi
+          mkdir -p scratch
+          BASE="${N8N_BASE_URL%/}/api/v1"
+          NAME="${OUTPUT_NAME:-n8n-api-response}"
+
+          case "$METHOD" in
+            list_workflows)
+              curl -sS "$BASE/workflows" -H "X-N8N-API-KEY: $N8N_API_KEY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+              ;;
+            list_credentials)
+              curl -sS "$BASE/credentials" -H "X-N8N-API-KEY: $N8N_API_KEY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+              ;;
+            get_workflow)
+              if [ -z "$WORKFLOW_ID" ]; then echo "::error::workflow_id обязателен для get_workflow"; exit 1; fi
+              curl -sS "$BASE/workflows/$WORKFLOW_ID" -H "X-N8N-API-KEY: $N8N_API_KEY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+              ;;
+            update_workflow)
+              if [ -z "$WORKFLOW_ID" ]; then echo "::error::workflow_id обязателен для update_workflow"; exit 1; fi
+              if [ -z "$BODY_FILE" ] || [ ! -f "$BODY_FILE" ]; then echo "::error::body_file не найден: $BODY_FILE"; exit 1; fi
+              curl -sS -X PUT "$BASE/workflows/$WORKFLOW_ID" \
+                -H "X-N8N-API-KEY: $N8N_API_KEY" -H "Content-Type: application/json" \
+                --data @"$BODY_FILE" \
+                -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+              ;;
+            activate_workflow)
+              if [ -z "$WORKFLOW_ID" ]; then echo "::error::workflow_id обязателен для activate_workflow"; exit 1; fi
+              curl -sS -X POST "$BASE/workflows/$WORKFLOW_ID/activate" \
+                -H "X-N8N-API-KEY: $N8N_API_KEY" \
+                -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+              ;;
+            *)
+              echo "::error::Неизвестный method: $METHOD"
+              exit 1
+              ;;
+          esac
+
+      - name: Preview response (truncate huge fields)
+        if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          python3 -c "
+          import json, os
+          name = os.environ.get('OUTPUT_NAME') or 'n8n-api-response'
+          try:
+              with open(f'scratch/{name}.json') as f:
+                  data = json.load(f)
+          except Exception as e:
+              print('Не JSON или пусто:', e)
+              raise SystemExit(0)
+          s = json.dumps(data, ensure_ascii=False, indent=2)
+          print(s[:6000])
+          if len(s) > 6000:
+              print(f'... [{len(s)} chars total, обрезано]')
+          "
+
+      - name: Commit response for inspection
+        if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          NAME="${OUTPUT_NAME:-n8n-api-response}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "scratch/${NAME}.json" 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "scratch: n8n API response ${NAME} for inspection [skip ci]"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push не удался, пробую перебазироваться и повторить..."
+              git pull --rebase
+              sleep $((RANDOM % 5 + 1))
+            done
+          else
+            echo "Нечего коммитить"
+          fi

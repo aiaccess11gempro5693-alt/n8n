@@ -245,7 +245,7 @@
 
     {
       "parameters": {
-        "content": "**POST /avatar-start**\n```json\n{\n  \"script\": \"текст, который скажет аватар\",\n  \"avatar_id\": \"id своего Photo Avatar из HeyGen (не из общей библиотеки)\",\n  \"voice_id\": \"id голоса из HeyGen\"\n}\n```\nОтвет: `{ \"video_id\": \"...\" }` — сразу, генерация ещё идёт.\n\nИспользует актуальный **HeyGen API v3** (`POST /v3/videos`, v2 — legacy, отключат 31.10.2026). По решению Олега рендерится движком **Avatar III** (жёстко зашито в узле как `engine.type: \"avatar_iii\"`) — используется для собственных Photo Avatar.\n\n**Нужны кредиты на аккаунте HeyGen** — с февраля 2026 бесплатных API-кредитов нет (pay-as-you-go, ~$1/мин видео на Avatar III в 1080p).\n\nКак узнать avatar_id / voice_id: `GET https://api.heygen.com/v3/avatars` (свои Photo Avatar) и `GET https://api.heygen.com/v2/voices` со своим ключом (см. docs/SETUP.md).",
+        "content": "**POST /avatar-start**\n```json\n{\n  \"script\": \"текст, который скажет аватар\",\n  \"avatar_id\": \"id своего Photo Avatar из HeyGen (не из общей библиотеки)\",\n  \"voice_id\": \"id голоса из HeyGen\"\n}\n```\nОтвет: `{ \"video_id\": \"...\" }` — сразу, генерация ещё идёт.\n\nИспользует актуальный **HeyGen API v3** (`POST /v3/videos`, v2 — legacy, отключат 31.10.2026). По решению Олега рендерится движком **Avatar III** (жёстко зашито в узле как `engine.type: \"avatar_iii\"`) — используется для собственных Photo Avatar.\n\n**Нужны кредиты на аккаунте HeyGen** — с февраля 2026 бесплатных API-кредитов нет (pay-as-you-go, ~$1/мин видео на Avatar III в 1080p).\n\nКак узнать avatar_id / voice_id: `GET https://api.heygen.com/v3/avatars` (свои Photo Avatar) и `GET https://api.heygen.com/v2/voices` со своим ключом (см. docs/SETUP.md).\n\n**ВАЖНО (10.08.2026): тело запроса — режим \"Using Fields Below\" (specifyBody: keypair), НЕ \"Using JSON\" (raw text).** Это осознанный выбор, не трогать назад. Причина: у HTTP Request-ноды n8n есть несколько давних неисправленных багов именно в режиме \"raw JSON текст + {{ }} выражения\" — n8n валидирует/сериализует сырой текст ДО вычисления выражений, из-за чего запрос либо падает с ложной \"invalid JSON\", либо реально уходит с телом-строкой вместо объекта (см. github.com/n8n-io/n8n issues #15996, #19442, community-темы #78269/#131964/#201091/#43776/#101973 — все закрыты как \"not planned\", это не пофиксят). Режим \"Using Fields Below\" с каждым полем в expression-режиме этого не имеет — каждое значение вычисляется отдельно, n8n сам собирает и сериализует итоговый объект.",
         "height": 260,
         "width": 320
       },
@@ -281,8 +281,17 @@
           ]
         },
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "{\n  \"type\": \"avatar\",\n  \"avatar_id\": \"{{ $json.body.avatar_id }}\",\n  \"script\": \"{{ $json.body.script }}\",\n  \"voice_id\": \"{{ $json.body.voice_id }}\",\n  \"resolution\": \"1080p\",\n  \"engine\": { \"type\": \"avatar_iii\" }\n}",
+        "specifyBody": "keypair",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "type", "value": "avatar" },
+            { "name": "avatar_id", "value": "={{ $json.body.avatar_id }}" },
+            { "name": "script", "value": "={{ $json.body.script }}" },
+            { "name": "voice_id", "value": "={{ $json.body.voice_id }}" },
+            { "name": "resolution", "value": "1080p" },
+            { "name": "engine", "value": "={{ { type: \"avatar_iii\" } }}" }
+          ]
+        },
         "options": {}
       },
       "id": "c3000000-0000-0000-0000-000000000003",
