@@ -28,6 +28,10 @@ on:
         description: 'JSON тело запроса (для GET можно оставить {})'
         required: false
         default: '{}'
+      output_name:
+        description: 'Имя файла в scratch/ для сохранения результата (без расширения) — задавай уникальное, если запускаешь несколько сцен параллельно'
+        required: false
+        default: 'latest-worker-output'
 
 permissions:
   contents: write
@@ -80,11 +84,14 @@ jobs:
                   print(json.dumps(data, ensure_ascii=False, indent=2)[:2000])
           "
 
-      - name: Save any binary field (image_base64/audio_base64) into scratch/ and commit
+      - name: Save any binary field (image_base64/audio_base64/video_url) into scratch/ and commit
         if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
           python3 -c "
           import json, base64, os
+          name = os.environ.get('OUTPUT_NAME') or 'latest-worker-output'
           try:
               with open('response-body.out') as f:
                   data = json.load(f)
@@ -97,17 +104,35 @@ jobs:
           for key, ext in [('image_base64', 'png'), ('audio_base64', 'mp3')]:
               b64 = data.get(key)
               if isinstance(b64, str) and len(b64) > 100:
-                  with open(f'scratch/latest-worker-output.{ext}', 'wb') as f:
+                  with open(f'scratch/{name}.{ext}', 'wb') as f:
                       f.write(base64.b64decode(b64))
                   saved = True
-          print('Сохранено в scratch/' if saved else 'В ответе нет image_base64/audio_base64 — нечего сохранять')
+          video_url = data.get('video_url')
+          if isinstance(video_url, str) and video_url.startswith('http'):
+              with open('scratch/.video_url_to_fetch', 'w') as f:
+                  f.write(video_url)
+              saved = True
+          print('Сохранено в scratch/' if saved else 'В ответе нет image_base64/audio_base64/video_url — нечего сохранять')
           "
+          if [ -f scratch/.video_url_to_fetch ]; then
+            VIDEO_URL=$(cat scratch/.video_url_to_fetch)
+            echo "Скачиваю видео: $VIDEO_URL"
+            curl -sS "$VIDEO_URL" -o "scratch/${OUTPUT_NAME:-latest-worker-output}.mp4"
+            rm scratch/.video_url_to_fetch
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add scratch/ 2>/dev/null || true
           if ! git diff --cached --quiet; then
-            git commit -m "scratch: latest worker output for inspection [skip ci]"
-            git push
+            git commit -m "scratch: latest worker output (${OUTPUT_NAME:-latest-worker-output}) for inspection [skip ci]"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push не удался (параллельный запуск?), пробую перебазироваться и повторить..."
+              git pull --rebase
+              sleep $((RANDOM % 5 + 1))
+            done
           else
             echo "Нечего коммитить"
           fi
