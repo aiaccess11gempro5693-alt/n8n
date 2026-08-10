@@ -331,7 +331,7 @@
 
     {
       "parameters": {
-        "content": "**GET /avatar-status?video_id=...**\n\nОтвет:\n```json\n{ \"status\": \"pending|completed|failed\", \"video_url\": \"...\", \"error\": null }\n```\nИспользует `GET https://api.heygen.com/v3/videos/{video_id}`. Звать этот адрес повторно раз в 10-15 секунд, пока status не станет completed (или failed).",
+        "content": "**GET /avatar-status?video_id=...**\n\nОтвет:\n```json\n{ \"status\": \"pending|completed|failed\", \"video_url\": \"...\", \"error\": null }\n```\nИспользует `GET https://api.heygen.com/v3/videos/{video_id}`. Звать этот адрес повторно раз в 10-15 секунд, пока status не станет completed (или failed).\n\n**ВАЖНО (10.08.2026): URL собирается ЗАРАНЕЕ в отдельном узле Code (\"Собрать URL статуса\"), а в самой HTTP-ноде — только простая ссылка `{{ $json.videoStatusUrl }}`, без конкатенации строк внутри поля URL.** Это осознанный выбор, не упрощать обратно. Причина: поле URL у этой HTTP Request-ноды на практике не вычисляло `{{ }}` корректно ни в одном из двух стандартных режимов — в режиме \"Expression\" со сложением строк (`'...' + $json.query.video_id`) в реальный запрос утекал служебный символ `=` перед адресом (n8n отправлял `=https://...`, HeyGen отвечал \"URL must start with http/https\"); в режиме \"Fixed\" с `{{ }}` внутри обычного текста шаблон вообще не вычислялся (уходил к HeyGen буквально как текст `{{ $json.query.video_id }}`, HeyGen отвечал \"Video {{ $json.query.video_id }} not found\"). Обход: посчитать итоговую строку в Code-ноде заранее и потом просто ПРОЦИТИРОВАТЬ готовое поле одним простым выражением — этот паттерн (без операторов внутри `{{ }}`) отработал надёжно везде, где применялся.",
         "height": 200,
         "width": 300
       },
@@ -356,8 +356,18 @@
     },
     {
       "parameters": {
+        "jsCode": "return [{ json: { ...$json, videoStatusUrl: 'https://api.heygen.com/v3/videos/' + $json.query.video_id } }];"
+      },
+      "id": "c4000000-0000-0000-0000-000000000006",
+      "name": "Собрать URL статуса",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [430, 1320]
+    },
+    {
+      "parameters": {
         "method": "GET",
-        "url": "={{ 'https://api.heygen.com/v3/videos/' + $json.query.video_id }}",
+        "url": "={{ $json.videoStatusUrl }}",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendHeaders": true,
@@ -439,6 +449,9 @@
     },
 
     "Webhook: /avatar-status": {
+      "main": [[{ "node": "Собрать URL статуса", "type": "main", "index": 0 }]]
+    },
+    "Собрать URL статуса": {
       "main": [[{ "node": "Проверить статус (Heygen)", "type": "main", "index": 0 }]]
     },
     "Проверить статус (Heygen)": {
