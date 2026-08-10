@@ -14,9 +14,13 @@ on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'Путь после https://api.heygen.com, например: /v2/avatars или /v2/video/generate'
+        description: 'Путь после base_url, например: /v2/avatars или /v2/video/generate'
         required: true
         default: '/v2/avatars'
+      base_url:
+        description: 'Базовый адрес (обычно api.heygen.com; для загрузки asset — upload.heygen.com)'
+        required: false
+        default: 'https://api.heygen.com'
       method:
         description: 'HTTP метод'
         required: true
@@ -29,6 +33,14 @@ on:
         description: 'JSON тело запроса (только для POST, можно оставить {})'
         required: false
         default: '{}'
+      body_file:
+        description: 'Путь к файлу в репозитории (например scratch/foo.mp3) — если задан, отправляется его сырое бинарное содержимое вместо body (для загрузки asset в HeyGen)'
+        required: false
+        default: ''
+      content_type:
+        description: 'Content-Type для body_file (например audio/mpeg) — обязателен, если задан body_file'
+        required: false
+        default: ''
       output_name:
         description: 'Имя файла в scratch/ (без расширения) — задавай уникальное при параллельных запросах по разным video_id'
         required: false
@@ -47,8 +59,11 @@ jobs:
         env:
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
           PATH_INPUT: ${{ github.event.inputs.path }}
+          BASE_URL: ${{ github.event.inputs.base_url }}
           METHOD: ${{ github.event.inputs.method }}
           BODY: ${{ github.event.inputs.body }}
+          BODY_FILE: ${{ github.event.inputs.body_file }}
+          CONTENT_TYPE: ${{ github.event.inputs.content_type }}
           OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
           if [ -z "$HEYGEN_API_KEY" ]; then
@@ -56,10 +71,16 @@ jobs:
             exit 1
           fi
           mkdir -p scratch
-          URL="https://api.heygen.com${PATH_INPUT}"
+          URL="${BASE_URL:-https://api.heygen.com}${PATH_INPUT}"
           echo "Вызываю: $METHOD $URL"
           NAME="${OUTPUT_NAME:-heygen-response}"
-          if [ "$METHOD" = "POST" ]; then
+          if [ "$METHOD" = "POST" ] && [ -n "$BODY_FILE" ]; then
+            if [ ! -f "$BODY_FILE" ]; then
+              echo "::error::body_file не найден: $BODY_FILE"
+              exit 1
+            fi
+            curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: ${CONTENT_TYPE:-application/octet-stream}" --data-binary "@${BODY_FILE}" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+          elif [ "$METHOD" = "POST" ]; then
             curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: application/json" -d "$BODY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
           else
             curl -sS "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
