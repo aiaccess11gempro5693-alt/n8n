@@ -100,7 +100,7 @@ jobs:
           except Exception as e:
               print('Не JSON или пусто:', e)
           else:
-              print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
+              print(json.dumps(data, ensure_ascii=False, indent=2)[:12000])
           "
 
       - name: Download video if response has a video_url
@@ -134,7 +134,8 @@ jobs:
           NAME="${OUTPUT_NAME:-heygen-response}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "scratch/${NAME}.json" "scratch/${NAME}.mp4" 2>/dev/null || true
+          [ -f "scratch/${NAME}.json" ] && git add "scratch/${NAME}.json"
+          [ -f "scratch/${NAME}.mp4" ] && git add "scratch/${NAME}.mp4"
           if ! git diff --cached --quiet; then
             git commit -m "scratch: HeyGen API response ${NAME} for inspection [skip ci]"
             for i in 1 2 3 4 5; do
