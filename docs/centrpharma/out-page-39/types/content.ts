@@ -66,13 +66,22 @@ export interface SiteContent {
   amplify: {
     title: string;
     figures: Figure[];
-    flow: { title: string; steps: string[]; hub: string; result: string };
+    flow: {
+      title: string;
+      /** Источник цепочки — стоит до каналов, а не в одном ряду с ними */
+      source: string;
+      steps: string[];
+      hub: string;
+      result: string;
+    };
     comparison: { leftTitle: string; rightTitle: string; rows: string[][] };
     conclusion: string;
   };
   solution: {
     title: string;
     steps: string[];
+    /** С какого шага начинается замкнутый цикл (по ТЗ — «Измерение лояльности») */
+    loopStartIndex: number;
     loopNote: string;
     description: string;
   };
