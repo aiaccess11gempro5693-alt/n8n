@@ -16,15 +16,15 @@ const Chip = ({ step, index, delay }: { step: string; index: number; delay: numb
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-    className="rounded-full bg-background px-4 py-2 text-sm text-foreground ring-1 ring-border"
+    className="rounded-full bg-card px-5 py-2.5 text-sm font-semibold text-foreground shadow-card"
   >
-    <span className="mr-2 text-xs text-primary">{String(index + 1).padStart(2, "0")}</span>
+    <span className="mr-2 text-xs font-bold text-primary">{String(index + 1).padStart(2, "0")}</span>
     {step}
   </motion.span>
 );
 
 const Solution = () => (
-  <Section id="solution" className="border-t border-border bg-muted/40">
+  <Section id="solution">
     <SectionTitle>{solution.title}</SectionTitle>
 
     {/* Вход в процесс */}
@@ -38,7 +38,7 @@ const Solution = () => (
     </div>
 
     {/* Замкнутый цикл: по ТЗ возврат идёт к «Измерению лояльности» */}
-    <div className="mt-4 rounded-2xl border border-dashed border-primary/40 bg-background/50 p-5 md:p-6">
+    <div className="mt-5 rounded-2xl border-2 border-dashed border-primary/30 bg-muted/50 p-5 md:p-7">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-4">
         {loopSteps.map((step, i) => (
           <div key={step} className="flex items-center gap-3">
@@ -54,8 +54,8 @@ const Solution = () => (
         ))}
       </div>
 
-      <div className="mt-5 flex items-start gap-2.5 border-t border-dashed border-primary/30 pt-4 text-xs text-muted-foreground">
-        <RotateCw className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+      <div className="mt-6 flex items-start gap-2.5 border-t-2 border-dashed border-primary/20 pt-5 text-sm font-semibold text-foreground/80">
+        <RotateCw className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={2.5} />
         <span>{solution.loopNote}</span>
       </div>
     </div>

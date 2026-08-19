@@ -11,24 +11,25 @@ const Faq = () => {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <Section id="faq" className="border-t border-border">
+    <Section id="faq" className="bg-muted/50">
       <SectionTitle>{data.faq.title}</SectionTitle>
 
-      <div className="mt-12 max-w-3xl">
+      <div className="mt-12 flex max-w-3xl flex-col gap-3">
         {data.faq.items.map((item, i) => (
           <Reveal key={item.q} delay={i * 0.08}>
-            <div className="border-t border-border last:border-b">
+            <div className="overflow-hidden rounded-2xl bg-card shadow-card">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
                 aria-controls={`faq-answer-${i}`}
-                className="flex w-full items-start justify-between gap-6 py-5 text-left"
+                className="flex w-full items-start justify-between gap-6 p-6 text-left md:p-7"
               >
-                <span className="text-base font-medium leading-snug text-foreground">{item.q}</span>
+                <span className="text-lg font-bold leading-snug text-foreground">{item.q}</span>
                 <Plus
-                  className={`mt-1 h-4 w-4 shrink-0 text-primary transition-transform duration-300 ${
+                  className={`mt-0.5 h-5 w-5 shrink-0 text-primary transition-transform duration-300 ${
                     open === i ? "rotate-45" : ""
                   }`}
+                  strokeWidth={2.5}
                 />
               </button>
               <AnimatePresence initial={false}>
@@ -41,7 +42,7 @@ const Faq = () => {
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-6 pr-10 text-sm leading-relaxed text-muted-foreground">
+                    <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted-foreground md:px-7 md:pb-7">
                       {item.a}
                     </p>
                   </motion.div>
