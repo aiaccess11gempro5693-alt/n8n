@@ -81,32 +81,32 @@ const Amplify = () => (
       </div>
     </Reveal>
 
-    {/* Контраст: цена ошибки против системной работы */}
-    <div className="mt-20 max-w-4xl">
-      <Reveal>
-        <div className="grid gap-2 md:grid-cols-2 md:gap-x-14">
-          <p className="text-sm font-medium text-muted-foreground">{amplify.comparison.leftTitle}</p>
-          <p className="text-sm font-medium text-primary">{amplify.comparison.rightTitle}</p>
-        </div>
-      </Reveal>
+    {/* Контраст: цена ошибки против системной работы.
+        Одна сетка на заголовки и строки — колонки совпадают по вертикали.
+        На мобильном каждая строка остаётся парой «минус / плюс». */}
+    <Reveal className="mt-20 max-w-4xl md:grid md:grid-cols-2 md:gap-x-14">
+      <div className="flex flex-col gap-1 md:contents">
+        <p className="text-sm font-medium text-muted-foreground md:pb-4">
+          {amplify.comparison.leftTitle}
+        </p>
+        <p className="text-sm font-medium text-primary md:pb-4">
+          {amplify.comparison.rightTitle}
+        </p>
+      </div>
 
-      <Reveal delay={0.1}>
-        <div className="mt-4 md:grid md:grid-cols-2 md:gap-x-14">
-          {amplify.comparison.rows.map((row, i) => (
-            <div key={i} className="border-t border-border py-4 md:contents">
-              <div className="flex items-start gap-3 md:border-t md:border-border md:py-4">
-                <Minus className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
-                <p className="text-sm leading-relaxed text-muted-foreground">{row[0]}</p>
-              </div>
-              <div className="mt-3 flex items-start gap-3 md:mt-0 md:border-t md:border-border md:py-4">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <p className="text-sm leading-relaxed text-foreground">{row[1]}</p>
-              </div>
-            </div>
-          ))}
+      {amplify.comparison.rows.map((row, i) => (
+        <div key={i} className="mt-4 border-t border-border pt-4 md:mt-0 md:contents">
+          <div className="flex items-start gap-3 md:border-t md:border-border md:py-4">
+            <Minus className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
+            <p className="text-sm leading-relaxed text-muted-foreground">{row[0]}</p>
+          </div>
+          <div className="mt-3 flex items-start gap-3 md:mt-0 md:border-t md:border-border md:py-4">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+            <p className="text-sm leading-relaxed text-foreground">{row[1]}</p>
+          </div>
         </div>
-      </Reveal>
-    </div>
+      ))}
+    </Reveal>
 
     <Reveal delay={0.1}>
       <p className="mt-14 max-w-3xl border-l-2 border-secondary pl-5 text-base md:text-lg font-medium leading-relaxed text-foreground">
