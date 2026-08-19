@@ -1,0 +1,451 @@
+<title>Ревизия лендингов ЦентрФармы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F1F3EE; --surface:#FBFBF7; --surface-2:#E9ECE5;
+  --ink:#181D19; --ink-2:#3E4741; --muted:#69726B;
+  --line:#D6DBD2; --line-strong:#BCC3B7;
+  --accent:#1B6A55; --accent-soft:#DDEAE3;
+  --alert:#96322B; --alert-soft:#F2DEDA;
+  --signal:#8B5710; --signal-soft:#F1E5D2;
+  --ok:#3D6B2E; --ok-soft:#E2EBDA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1310; --surface:#161B17; --surface-2:#1E241F;
+    --ink:#E8EBE4; --ink-2:#C3CABF; --muted:#8D9789;
+    --line:#2A312B; --line-strong:#3B443C;
+    --accent:#5FC3A2; --accent-soft:#17302A;
+    --alert:#E28379; --alert-soft:#33201E;
+    --signal:#D5A15C; --signal-soft:#302518;
+    --ok:#8FC078; --ok-soft:#1E2A19;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1310; --surface:#161B17; --surface-2:#1E241F;
+  --ink:#E8EBE4; --ink-2:#C3CABF; --muted:#8D9789;
+  --line:#2A312B; --line-strong:#3B443C;
+  --accent:#5FC3A2; --accent-soft:#17302A;
+  --alert:#E28379; --alert-soft:#33201E;
+  --signal:#D5A15C; --signal-soft:#302518;
+  --ok:#8FC078; --ok-soft:#1E2A19;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Golos Text","Helvetica Neue",Arial,sans-serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px; margin:0 auto; padding:56px 24px 96px}
+h1,h2,h3{font-family:Bitter,Georgia,serif; text-wrap:balance; margin:0}
+h1{font-size:clamp(30px,5vw,44px); line-height:1.12; font-weight:700; letter-spacing:-.01em}
+h2{font-size:clamp(22px,3.2vw,28px); font-weight:600; line-height:1.2}
+h3{font-size:19px; font-weight:600; line-height:1.3}
+p{margin:0}
+a{color:var(--accent)}
+.lede{font-size:19px; color:var(--ink-2); max-width:62ch}
+.kicker{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+}
+header.top{display:flex; flex-direction:column; gap:14px; padding-bottom:28px; border-bottom:2px solid var(--line-strong)}
+.meta{display:flex; flex-wrap:wrap; gap:8px 20px; font-size:14px; color:var(--muted)}
+section{margin-top:56px; display:flex; flex-direction:column; gap:20px}
+.sec-head{display:flex; flex-direction:column; gap:8px; padding-bottom:10px; border-bottom:1px solid var(--line)}
+.stack{display:flex; flex-direction:column; gap:14px}
+
+/* finding rows */
+.find{
+  display:grid; grid-template-columns:112px 1fr; gap:0 20px;
+  background:var(--surface); border:1px solid var(--line);
+  border-left:3px solid var(--line-strong);
+  border-radius:2px; padding:16px 18px;
+}
+.find.block{border-left-color:var(--alert)}
+.find.data{border-left-color:var(--signal)}
+.find.read{border-left-color:var(--accent)}
+.anchor{
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+  color:var(--muted); padding-top:3px; letter-spacing:.02em;
+}
+.find-body{display:flex; flex-direction:column; gap:7px; min-width:0}
+.find-body p{color:var(--ink-2)}
+.find-body strong{color:var(--ink); font-weight:600}
+.chip{
+  display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  padding:3px 7px; border-radius:2px; white-space:nowrap;
+}
+.chip.block{background:var(--alert-soft); color:var(--alert)}
+.chip.data{background:var(--signal-soft); color:var(--signal)}
+.chip.read{background:var(--accent-soft); color:var(--accent)}
+.chip.ok{background:var(--ok-soft); color:var(--ok)}
+@media (max-width:620px){
+  .find{grid-template-columns:1fr; gap:10px}
+  .anchor{padding-top:0}
+}
+
+/* Anna comment blocks */
+.cmt{background:var(--surface); border:1px solid var(--line); border-radius:2px; overflow:hidden}
+.cmt-q{
+  padding:16px 18px; background:var(--surface-2);
+  display:flex; flex-direction:column; gap:6px; border-bottom:1px solid var(--line);
+}
+.cmt-q .who{font-size:13px; color:var(--muted)}
+.cmt-q blockquote{
+  margin:0; font-family:Bitter,Georgia,serif; font-size:18px; font-style:italic; color:var(--ink);
+}
+.cmt-a{padding:16px 18px; display:flex; flex-direction:column; gap:10px; color:var(--ink-2)}
+.cmt-a ul{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:7px}
+
+.proposal{
+  border:1px dashed var(--line-strong); border-radius:2px;
+  background:var(--paper); padding:18px 20px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.proposal .kicker{color:var(--accent)}
+.proposal h4{margin:0; font-family:Bitter,Georgia,serif; font-size:20px; font-weight:600}
+.seg{display:flex; flex-direction:column; gap:4px; padding-left:14px; border-left:2px solid var(--accent)}
+.seg b{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px; letter-spacing:.08em}
+
+ol.ask{margin:0; padding-left:22px; display:flex; flex-direction:column; gap:9px; color:var(--ink-2)}
+ol.ask li::marker{font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--muted)}
+ol.steps{margin:0; padding-left:22px; display:flex; flex-direction:column; gap:12px; color:var(--ink-2)}
+
+.note{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); padding:16px 18px; border-radius:2px; display:flex; flex-direction:column; gap:10px}
+.note p{color:var(--ink-2)}
+code{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:2px}
+footer{margin-top:72px; padding-top:20px; border-top:1px solid var(--line); font-size:14px; color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <span class="kicker">Разбор ТЗ и черновиков · 19.08.2026</span>
+  <h1>Ревизия лендингов ЦентрФармы</h1>
+  <p class="lede">Что не хватает в page_39 и page_40, что делать с комментариями Анны и что нужно получить от клиента, чтобы страницы можно было закрыть к пятнице.</p>
+  <div class="meta">
+    <span>Источники: page_39.docx (12 экранов), page_40.docx (22 слайда, 6 комментариев)</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="kicker">Сначала одно решение</span>
+    <h2>39 и 40 пересекаются примерно на 70%</h2>
+  </div>
+  <p>Совпадают: тезис «побеждает не тот, кто чаще приходит», боль «измеряем контакты, а не результат», цикл «контакт → обучение → проверка знаний → лояльность → сегментация → действие», три сегмента RX / OTC / медизделия с дословно теми же офферами, сравнение «медпред VS проект ЦентрФармы», масштаб 350 000 / 145 000 / 9 лет, пилот от 30 дней.</p>
+  <p>Различаются двумя вещами: в 39 есть независимые данные Ipsos и вся аргументация вокруг провизора; в 40 есть сегментация High / Medium / Low и кейс с реальными цифрами (до 40% экономии бюджета, рост эффективности до 2,5 раза).</p>
+  <div class="note">
+    <p><strong>39 выглядит как более поздняя и более сильная версия того же материала</strong> — в самом файле она названа «финальной раскадровкой». Если обе страницы уйдут в прод как есть, они будут конкурировать между собой.</p>
+    <p>Нужен ответ: это две версии одного лендинга, из которых выберут одну; лендинг плюс веб-версия презентации для рассылки; или две страницы под разные аудитории. От ответа зависит, вычищать повторы между страницами или наоборот выравнивать их до единого текста.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="kicker">page_39 · финальная раскадровка лендинга</span>
+    <h2>Чего не хватает</h2>
+  </div>
+
+  <div class="stack">
+    <div class="find block">
+      <div class="anchor">Экран 8</div>
+      <div class="find-body">
+        <span class="chip block">блокер · нужны данные</span>
+        <p><strong>Все три кейса — «рост на Х%».</strong> Плейсхолдеры стоят прямо в ТЗ. Экран существует ради цифр, без них он не работает. Как временное решение можно взять цифры из кейса №2 в ТЗ 40 — «до 40% экономии бюджета» и «рост эффективности до 2,5 раза»: они конкретные и уже согласованы в другом документе.</p>
+      </div>
+    </div>
+    <div class="find block">
+      <div class="anchor">Экран 11, 12</div>
+      <div class="find-body">
+        <span class="chip block">блокер · юридическое</span>
+        <p><strong>У формы нет согласия на обработку персональных данных, в футере нет политики конфиденциальности.</strong> Для формы на российском лендинге это 152-ФЗ, а не пожелание дизайнера.</p>
+      </div>
+    </div>
+    <div class="find block">
+      <div class="anchor">Экраны 2, 4, 7</div>
+      <div class="find-body">
+        <span class="chip block">блокер · доверие</span>
+        <p><strong>Шесть чисел от Ipsos без единой сноски</strong> — 63,4%, 58%, 29,6%, 58,3%, 59,3%, 47,2%. Нужны название исследования, год и выборка. В фарме к таким цифрам придираются первым делом; сноска их усиливает, а не ослабляет.</p>
+      </div>
+    </div>
+
+    <div class="find data">
+      <div class="anchor">Экраны 1 и 7</div>
+      <div class="find-body">
+        <span class="chip data">несогласованность</span>
+        <p><strong>Набор цифр не совпадает сам с собой.</strong> На первом экране: 9 лет, 350 000 врачей, 145 000 фармацевтов, «ИТ-компания», Сколково. На седьмом — те же плюс «8 000+ проектов», но без «ИТ-компании». Нужен один канонический набор, одинаковый везде, включая page_40.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Экран 1</div>
+      <div class="find-body">
+        <span class="chip data">нужна формулировка</span>
+        <p><strong>Бейдж «ИТ-компания» нигде не раскрыт.</strong> Если речь про аккредитацию Минцифры — так и написать, иначе бейдж читается как шум рядом с четырьмя осмысленными.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Экраны 10, 11</div>
+      <div class="find-body">
+        <span class="chip data">противоречие</span>
+        <p><strong>Два таймлайна без связки:</strong> «пилотный проект от 30 дней» и «что можно сделать за 90 дней». Читателю непонятно, 30 или 90 и что во что вложено.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">нет блока</div>
+      <div class="find-body">
+        <span class="chip data">пропущено</span>
+        <p><strong>Нет блока «как проходит работа»</strong> — этапы, сроки, что требуется от клиента. Для B2B-услуги это обычно решающий экран: человек должен понимать, во что ввязывается.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Экран 11</div>
+      <div class="find-body">
+        <span class="chip data">пропущено</span>
+        <p><strong>CTA «Заказать бесплатную стратегию» не расшифрован.</strong> Что приходит, в каком виде, за сколько дней, к чему обязывает. Одна строка под кнопкой снимает половину сомнений.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Экран 10</div>
+      <div class="find-body">
+        <span class="chip data">пропущено</span>
+        <p><strong>В FAQ нет ответа на комплаенс-возражение.</strong> Работа с врачами и провизорами — первая зона, где у фармкомпании возникает вопрос про легальность и этику. Нужен пятый вопрос.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Экран 4</div>
+      <div class="find-body">
+        <span class="chip data">слабое место</span>
+        <p><strong>Таблица обещает то, что нечем подтвердить</strong> — «рост капитализации бренда», «более высокая цена продукта». Самое уязвимое место страницы по доверию: либо смягчить («создаёт предпосылки для…»), либо подпереть цифрой.</p>
+      </div>
+    </div>
+
+    <div class="find read">
+      <div class="anchor">Экраны 2–4</div>
+      <div class="find-body">
+        <span class="chip read">читаемость</span>
+        <p><strong>Три «болевых» экрана подряд до первого упоминания решения.</strong> Экран 3 (четыре карточки боли) и экран 4 (цена бездействия) частично об одном. Свести их в один блок «проблема → цена бездействия», решение поднять выше.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Экраны 2, 4, 7</div>
+      <div class="find-body">
+        <span class="chip read">читаемость</span>
+        <p><strong>Цифры Ipsos рассыпаны по трём экранам</strong> — читатель тонет. Лучше собрать один экран-доказательство со всеми числами, а в остальных местах ссылаться на него.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Экраны 3 и 9</div>
+      <div class="find-body">
+        <span class="chip read">повтор</span>
+        <p><strong>Карточка «Ресурсы уходят в песок» и таблица «медпред VS ЦентрФарма» — один и тот же аргумент</strong> в двух местах. Оставить в одном.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Экран 1</div>
+      <div class="find-body">
+        <span class="chip read">читаемость</span>
+        <p><strong>H1 не говорит, чем компания занимается.</strong> «Фармацевтическое продвижение меняется» — это тезис, а не позиционирование: человек из поиска за первые три секунды не понимает, что ему предлагают. Вариант — оставить фразу надзаголовком, а H1 сделать предметным: «Профессиональные коммуникации с врачами и первостольниками — с измеримым результатом».</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Экран 2</div>
+      <div class="find-body">
+        <span class="chip read">читаемость</span>
+        <p><strong>Описания тезисов по четыре-пять строк.</strong> На лендинге предел — две. И «джойспэн» в третьем тезисе: жаргон без расшифровки, выбивается из тона страницы.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Экраны 4, 5, 9</div>
+      <div class="find-body">
+        <span class="chip read">мобильная версия</span>
+        <p><strong>Мобильная логика нигде не описана, а ломкие места очевидны:</strong> две таблицы и циклическая схема. Таблицу «медпред VS ЦентрФарма» на узком экране нужно разворачивать в две карточки, а не ужимать в три колонки.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">вся страница</div>
+      <div class="find-body">
+        <span class="chip read">навигация</span>
+        <p><strong>12 экранов подряд без навигации и с единственным CTA внизу.</strong> Нужны якоря или липкое меню и повторный призыв в середине — после экрана 6 или 7.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="kicker">page_40 · 22 слайда</span>
+    <h2>Чего не хватает</h2>
+  </div>
+
+  <div class="stack">
+    <div class="find block">
+      <div class="anchor">Слайд 7</div>
+      <div class="find-body">
+        <span class="chip block">блокер · нужны данные</span>
+        <p><strong>«ДОПОЛНИТЬ: количество клиентов / проектов / коммуникаций»</strong> — написано прямо в ТЗ и не заполнено. Количество проектов есть в ТЗ 39 («8 000+»), две другие цифры нужно взять у Анны.</p>
+      </div>
+    </div>
+    <div class="find block">
+      <div class="anchor">Слайд 17</div>
+      <div class="find-body">
+        <span class="chip block">блокер · нужны файлы</span>
+        <p><strong>Блок «Нам доверяют» есть, логотипов нет.</strong> Нужен набор файлов и подтверждение, кого можно показывать публично — в фарме это отдельное согласование.</p>
+      </div>
+    </div>
+    <div class="find block">
+      <div class="anchor">вся страница</div>
+      <div class="find-body">
+        <span class="chip block">блокер · конверсия</span>
+        <p><strong>На странице нет формы</strong> — только контакты и QR на последнем слайде. Двадцать два экрана убеждения, а оставить заявку негде. Нужна форма, как на экране 11 в page_39, плюс согласие на обработку данных и политика в футере.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Слайд 18</div>
+      <div class="find-body">
+        <span class="chip data">нужны данные</span>
+        <p><strong>Кейс №1 без единой цифры</strong> — «рост вовлечённости», «выявление барьеров». Рядом с кейсом №2, где цифры есть, он выглядит слабее, чем, вероятно, есть на самом деле.</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Слайд 12</div>
+      <div class="find-body">
+        <span class="chip data">асимметрия</span>
+        <p><strong>У медизделий нет блока «Оффер»</strong>, хотя у RX и OTC он есть — три карточки перестают быть сравнимыми. Оффер уже написан в ТЗ 39: «Помогаем быстрее внедрять ваши решения в практику».</p>
+      </div>
+    </div>
+    <div class="find data">
+      <div class="anchor">Слайд 16</div>
+      <div class="find-body">
+        <span class="chip data">не заполнено</span>
+        <p><strong>Заданы только оси сравнения</strong> — скорость запуска, стоимость масштабирования, охват, аналитика, гибкость — без значений. Заполненная версия этой же таблицы есть в ТЗ 39, экран 9.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Слайды 6 и 8</div>
+      <div class="find-body">
+        <span class="chip read">повтор</span>
+        <p><strong>«Что получает производитель» дублирует «После каждого проекта клиент получает»</strong> — один список другими словами. Объединить.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">вся страница</div>
+      <div class="find-body">
+        <span class="chip read">структура</span>
+        <p><strong>22 слайда — это презентация, а не лендинг.</strong> Прямой перенос даёт бесконечную страницу с повторами. Предлагаю сжать до 11–12 блоков: 3 + 4 в «проблема и как решаем»; 5 + 7 + 20 в «о компании и масштаб»; 6 + 8 в «что получает клиент»; 10 + 11 + 12 в один блок с тремя карточками; 13 + 14 в две колонки «что перестало работать / что работает»; 18 + 19 в «Кейсы».</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">проверить первым</div>
+      <div class="find-body">
+        <span class="chip read">риск в черновике</span>
+        <p><strong>Служебная разметка ТЗ могла уехать на страницу.</strong> Слова «ЗАГОЛОВОК», «ОСНОВНОЙ ТЕКСТ», «ВЫВОД», «ОФФЕР», «МОДЕЛЬ», «ПАРАМЕТРЫ», «СХЕМА», «КАРТОЧКА 1» — это пометки для верстальщика, а не текст сайта. Первое, что смотрим в черновике.</p>
+      </div>
+    </div>
+    <div class="find read">
+      <div class="anchor">Слайды 14, 20</div>
+      <div class="find-body">
+        <span class="chip read">тон</span>
+        <p><strong>Текст написан тезисами без точек и связок</strong> («микрообучение», «регулярный контакт») — для презентации нормально, для веба нужно дописать до фраз. И единственный на всю страницу восклицательный знак в «Мы делаем его управляемым!» выбивается из тона.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="kicker">page_40 · 6 комментариев Анны Танич, 04.06.2026</span>
+    <h2>Что с ними делать</h2>
+  </div>
+
+  <div class="cmt">
+    <div class="cmt-q">
+      <span class="who">Анна · слайды 5 и 7, к «145 000+ фармацевтов» — дважды</span>
+      <blockquote>«первостольников»</blockquote>
+    </div>
+    <div class="cmt-a">
+      <span class="chip data">нужно подтверждение</span>
+      <p>Похоже на уточнение факта: база — это именно сотрудники первого стола, а не фармацевты вообще. Это меняет данные, а не формулировку, поэтому стоит переспросить Анну прямо.</p>
+      <p>Предлагаю на первом упоминании писать полно — «145 000+ первостольников (фармацевтов и провизоров)», дальше по тексту коротко. И синхронно поправить в page_39, экраны 1 и 7, иначе на двух страницах будут разные данные об одной базе.</p>
+    </div>
+  </div>
+
+  <div class="cmt">
+    <div class="cmt-q">
+      <span class="who">Анна · слайд 5, блок «Преимущества» и слайд 7, «Масштаб» — три комментария</span>
+      <blockquote>«Здесь про наши цифры» · «Ещё можно добавить про Сколково» · «А здесь повтор получается по цифрам»</blockquote>
+    </div>
+    <div class="cmt-a">
+      <span class="chip ok">решается одним ходом</span>
+      <p>Разбирать их по отдельности бессмысленно: Анна одновременно говорит «цифры должны быть здесь, на пятом» и «на седьмом получается повтор». Значит, распределяем так:</p>
+      <ul>
+        <li><strong>Слайд 5 «Что такое ЦентрФарма»</strong> — единственное место с цифрами компании: 350 000+ врачей, 145 000+ первостольников, 9 лет в фарме, резидент Сколково, аккредитованная ИТ-компания.</li>
+        <li><strong>Слайд 7 «Масштаб»</strong> — перестаёт повторять то же самое и даёт другой срез: количество клиентов, 8 000+ проектов, количество коммуникаций, федеральный охват. Ровно те цифры, что помечены в ТЗ как «ДОПОЛНИТЬ».</li>
+        <li>Если новых цифр не будет — <strong>слайд 7 убираем целиком</strong>, а не оставляем с повтором.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cmt">
+    <div class="cmt-q">
+      <span class="who">Анна · слайд 15, «Сегментация вместо догадок»</span>
+      <blockquote>«Честно говоря, я не поняла про эту сегментацию»</blockquote>
+    </div>
+    <div class="cmt-a">
+      <span class="chip read">переписать слайд</span>
+      <p>Самый содержательный комментарий. Слайд говорит, <em>что</em> мы делим аудиторию, но не говорит, по каким данным делим, что делаем с каждой группой и зачем это клиенту. Три ярлыка без этого читаются как абстракция. Предлагаемый текст:</p>
+      <div class="proposal">
+        <span class="kicker">Предложение для слайда 15</span>
+        <h4>Сегментация вместо догадок</h4>
+        <p><em>Кому из специалистов имеет смысл говорить дальше — и что именно говорить.</em></p>
+        <p>После обучения и теста мы видим по каждому участнику три вещи: дошёл ли он до конца материала, что усвоил и как относится к бренду. По этим данным аудитория делится на три группы, и каждая дальше получает свой сценарий, а не общую рассылку.</p>
+        <div class="seg"><b>HIGH</b><p>Прошёл обучение, знает продукт, лоялен. → Углублённые форматы, ранний доступ к новинкам, работа как с амбассадором.</p></div>
+        <div class="seg"><b>MEDIUM</b><p>Контакт состоялся, но знание неполное или отношение нейтральное. → Догоняющий модуль по конкретному пробелу, снятие выявленного барьера, повторное измерение.</p></div>
+        <div class="seg"><b>LOW</b><p>Низкая вовлечённость, продукт вне фокуса практики. → Не тратим бюджет на повторные касания: меняем канал или выводим из кампании.</p></div>
+        <p><strong>Ресурсы работают там, где вероятность результата выше.</strong> На проекте это дало до 40% экономии бюджета и рост эффективности коммуникаций до 2,5 раза.</p>
+      </div>
+      <p>Последняя строка связывает слайд 15 с кейсом №2 на слайде 19, где эти цифры уже есть. Сейчас они стоят порознь, и оба блока от этого слабее.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="kicker">Одним письмом</span>
+    <h2>Что нужно от коллеги и Анны</h2>
+  </div>
+  <ol class="ask">
+    <li>39 и 40 — две версии одного лендинга или две разные страницы?</li>
+    <li>Цифры в кейсы page_39, экран 8 — три значения вместо «Х%».</li>
+    <li>Слайд 7 page_40: количество клиентов, проектов, коммуникаций.</li>
+    <li>«145 000+» — это первостольники или фармацевты в целом?</li>
+    <li>Логотипы клиентов: файлы и разрешение показывать публично.</li>
+    <li>«ИТ-компания» — это аккредитация Минцифры? Как формулировать.</li>
+    <li>Ссылка на политику конфиденциальности и текст согласия на обработку данных.</li>
+    <li>Ipsos: точное название исследования и год для сноски.</li>
+    <li>Куда отправлять заявки с формы — почта, Telegram или CRM.</li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="kicker">Техника</span>
+    <h2>Нужен ли GitHub-репозиторий</h2>
+  </div>
+  <p>Да, если правки в самих страницах должен вносить я. Из этой среды <code>lovable.dev</code> и <code>*.lovable.app</code> недоступны — сетевая политика отдаёт 403, проверено. Значит, единственный путь к коду черновиков — синхронизация Lovable-проекта с GitHub, ровно так же, как это уже сделано в проекте <code>wildberries-boost</code>.</p>
+  <ol class="steps">
+    <li>В Lovable-проекте с page_39 и page_40: GitHub → Connect, создать репозиторий.</li>
+    <li>Прислать мне имя репозитория в виде <code>владелец/имя</code> — я подключаю его к сессии.</li>
+    <li>Дальше правки идут коммитами, Lovable подтягивает их автоматически в обе стороны.</li>
+  </ol>
+  <div class="note">
+    <p><strong>Без репозитория тоже есть что делать.</strong> Весь текстовый слой выше, разбор комментариев Анны и список вопросов клиенту от доступа к коду не зависят — это можно отправлять уже сейчас, пока идёт подключение.</p>
+    <p>После подключения: сверяю черновики построчно с обоими ТЗ (они перенесены в рабочий вид) и правлю вёрстку.</p>
+  </div>
+</section>
+
+<footer>Разбор подготовлен по файлам page_39.docx и page_40.docx. Рабочие копии ТЗ и полная версия этого разбора — в репозитории, папка <code>docs/centrpharma/</code>.</footer>
+</div>
