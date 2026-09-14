@@ -1,0 +1,11 @@
+{
+  "narration_line": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
+  "prompt": "Minimalist flat 2D vector icon illustration of a magnifying glass with a subtle question mark symbol centered inside the lens, symbolizing uncovering the core reason. Clean bold outline style, sleek line art with flat turquoise and coral color fills, perfectly centered composition. Completely solid flat warm white background without gradients, no drop shadows, no 3D effects, no glossy reflections, no text, no typography.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "Добраться до сути запроса"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK**",
+  "aspect_ratio": "16:9"
+}
