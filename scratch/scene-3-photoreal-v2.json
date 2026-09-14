@@ -1,0 +1,6 @@
+{
+  "prompt": "A high-end editorial commercial photograph of a clean, minimalist pharmacy interior, 16:9 landscape orientation. The camera is positioned at eye level, focusing on a pristine, softly illuminated wooden and matte white counter surface in the lower foreground. The left and right thirds of the frame are uncluttered, featuring smooth, creamy bokeh and generous negative space designed for copy placement. In the deep, heavily blurred background, the subtle silhouettes of a professional pharmacist in a white coat and a customer are softly visible in gentle interaction. Shot on a full-frame DSLR with an 85mm f/1.4 lens, ultra-shallow depth of field, warm diffuse ambient lighting blended with soft natural daylight, creating a calm, trustworthy, and welcoming atmosphere. Natural pastel color palette, soft cream, sage green accents, and warm wood tones. Completely blank, generic, unbranded apothecary glass jars and minimalist props with absolutely no text, no letters, no numbers, no signage, photorealistic, ultra-detailed 8k resolution.",
+  "mime_type": "image/png",
+  "verdict": "На аптекарских банках присутствуют этикетки с имитацией текста вопреки требованию промпта об их полном отсутствии.",
+  "aspect_ratio": "16:9"
+}
