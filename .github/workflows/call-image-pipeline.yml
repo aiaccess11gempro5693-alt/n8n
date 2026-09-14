@@ -1,20 +1,34 @@
 name: Call Image Pipeline (Gemini + Nano Banana)
 
 # Прямой мост к CometAPI — замена воркера /image в n8n (n8n убран из
-# архитектуры, см. CLAUDE.md, 14.09.2026). Повторяет один в один ту же
-# цепочку, что раньше делал n8n: Gemini дорабатывает промпт -> Nano
-# Banana рисует картинку -> Gemini проверяет качество. Три
-# последовательных вызова одного и того же API в одном job'е.
+# архитектуры, см. CLAUDE.md, 14.09.2026).
+#
+# 14.09.2026 — переделано под ТЗ п.1/п.7: раньше промпт картинки и
+# подпись на экране были двумя независимыми ручными решениями, никак
+# не связанными друг с другом или с текстом диктора — отсюда жалоба
+# "картинки не сочетаются со словами". Теперь единственный источник
+# истины — narration_line (реплика диктора для этой сцены). Gemini
+# ОДНИМ вызовом выводит из неё И промпт картинки, И подписи на экран
+# (image_prompt + captions[]) — так что картинка и текст на экране
+# гарантированно про одно и то же. QA-шаг в конце проверяет не
+# "картинка соответствует своему же промпту" (это тавтология), а
+# реальную согласованность: картинка + подписи + сама реплика диктора.
 #
 # Требуется repository secret COMETAPI_KEY (заголовок x-goog-api-key).
-# Добавляется вручную в Settings -> Secrets and variables -> Actions.
 
 on:
   workflow_dispatch:
     inputs:
-      scene_description:
-        description: 'Краткое описание сцены (на русском, Gemini сам развернёт в детальный промпт)'
+      narration_line:
+        description: 'Точный текст реплики диктора для этой сцены (источник истины для картинки И подписей)'
         required: true
+      scene_description:
+        description: 'Краткий визуальный бриф сцены (тип сцены, что должно быть в кадре, стиль)'
+        required: true
+      caption_count:
+        description: 'Сколько отдельных подписей на экране для этой сцены (1 — обычная сцена, 4 — сцена-список/карточки)'
+        required: false
+        default: '1'
       aspect_ratio:
         description: 'Соотношение сторон картинки'
         required: false
@@ -40,10 +54,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run 3-step pipeline (refine prompt -> generate image -> QA)
+      - name: Run pipeline (derive prompt+captions from narration -> generate image -> coherence QA)
         env:
           COMETAPI_KEY: ${{ secrets.COMETAPI_KEY }}
+          NARRATION_LINE: ${{ github.event.inputs.narration_line }}
           SCENE_DESCRIPTION: ${{ github.event.inputs.scene_description }}
+          CAPTION_COUNT: ${{ github.event.inputs.caption_count }}
           ASPECT_RATIO: ${{ github.event.inputs.aspect_ratio }}
           OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
@@ -53,10 +69,12 @@ jobs:
           fi
           mkdir -p scratch
           python3 -c "
-          import json, os, urllib.request, urllib.error, base64, sys
+          import json, os, re, urllib.request, urllib.error, base64, sys
 
           API_KEY = os.environ['COMETAPI_KEY']
+          NARRATION = os.environ['NARRATION_LINE']
           SCENE = os.environ['SCENE_DESCRIPTION']
+          CAPTION_COUNT = int(os.environ.get('CAPTION_COUNT') or '1')
           ASPECT_RATIO = os.environ.get('ASPECT_RATIO') or '16:9'
           NAME = os.environ.get('OUTPUT_NAME') or 'image-output'
           BASE = 'https://api.cometapi.com/v1beta/models'
@@ -76,22 +94,53 @@ jobs:
                   print(f'::error::HTTP {e.code} from {model}: {body_text[:1000]}')
                   sys.exit(1)
 
-          # Шаг 1: доработка промпта
-          refine_prompt = (
-              'Ты помощник по написанию промптов для генерации изображений. '
-              'Разверни краткое описание сцены в детальный, конкретный промпт '
-              'НА АНГЛИЙСКОМ языке для модели генерации изображений (стиль, '
-              'освещение, композиция, ракурс). Ответь ТОЛЬКО самим промптом, '
-              'без пояснений и кавычек.\n\nОписание сцены: ' + SCENE
+          def extract_text(resp):
+              parts = (resp.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
+              return ''.join(p.get('text', '') for p in parts).strip()
+
+          def extract_json(text):
+              # Модель иногда оборачивает JSON в \`\`\`json ... \`\`\` — снимаем обёртку
+              cleaned = re.sub(r'^\`\`\`(json)?|\`\`\`\$', '', text.strip(), flags=re.MULTILINE).strip()
+              return json.loads(cleaned)
+
+          # Шаг 1: ОДИН источник истины (реплика диктора) -> промпт картинки + подписи на экран
+          plan_prompt = (
+              'Ты арт-директор обучающих видео для фармацевтов. Тебе даётся РЕПЛИКА ДИКТОРА '
+              'для одной сцены и краткий визуальный бриф. Твоя задача — вывести из этой '
+              'реплики (а не придумывать отдельно) и промпт для генерации картинки, и текст, '
+              'который появится на экране поверх видео. Картинка и подписи должны быть про '
+              'ОДНО И ТО ЖЕ, что говорится в реплике — не про сценарий в целом, а именно про '
+              'эту конкретную фразу.\n\n'
+              f'Реплика диктора: \"{NARRATION}\"\n'
+              f'Визуальный бриф сцены: {SCENE}\n'
+              f'Нужно ровно {CAPTION_COUNT} подпис(ь/и/ей) на экран.\n\n'
+              'Ответь СТРОГО в формате JSON без пояснений, без markdown-обёртки:\n'
+              '{\n'
+              '  \"image_prompt\": \"детальный промпт НА АНГЛИЙСКОМ для модели генерации изображений '
+              '(стиль, освещение, композиция, ракурс) — картинка должна визуально иллюстрировать именно '
+              'содержание реплики диктора, без текста и надписей на самой картинке\",\n'
+              f'  \"captions\": [{CAPTION_COUNT} строк(и) на русском, короткие (2-5 слов каждая), '
+              'взятые по смыслу прямо из реплики диктора, не выдуманные отдельно от неё]\n'
+              '}'
           )
-          status1, resp1 = call('gemini-3.5-flash', {'contents': [{'parts': [{'text': refine_prompt}]}]})
-          parts1 = (resp1.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
-          prompt = ''.join(p.get('text', '') for p in parts1).strip()
-          if not prompt:
-              print('::error::Gemini не вернул текст промпта. Ответ: ' + json.dumps(resp1)[:1000])
+          status1, resp1 = call('gemini-3.5-flash', {'contents': [{'parts': [{'text': plan_prompt}]}]})
+          plan_text = extract_text(resp1)
+          if not plan_text:
+              print('::error::Gemini не вернул план сцены. Ответ: ' + json.dumps(resp1)[:1000])
               sys.exit(1)
-          print('--- Шаг 1: доработанный промпт ---')
+          try:
+              plan = extract_json(plan_text)
+              prompt = plan['image_prompt'].strip()
+              captions = [str(c).strip() for c in plan['captions']]
+          except Exception as e:
+              print(f'::error::Не удалось разобрать JSON-план сцены ({e}). Сырой ответ: {plan_text[:1000]}')
+              sys.exit(1)
+          if len(captions) != CAPTION_COUNT:
+              print(f'::warning::Ожидалось {CAPTION_COUNT} подписей, получено {len(captions)}: {captions}')
+          print('--- Шаг 1: промпт картинки ---')
           print(prompt)
+          print('--- Шаг 1: подписи на экран (из той же реплики) ---')
+          print(captions)
 
           # Шаг 2: генерация картинки (Nano Banana)
           status2, resp2 = call('gemini-2.5-flash-image', {
@@ -110,11 +159,18 @@ jobs:
               f.write(base64.b64decode(image_base64))
           print(f'--- Шаг 2: картинка сохранена в scratch/{NAME}.{ext} ---')
 
-          # Шаг 3: проверка качества
+          # Шаг 3: проверка СОГЛАСОВАННОСТИ (не просто картинка<->свой промпт,
+          # а картинка+подписи<->реплика диктора)
+          captions_str = '; '.join(captions)
           qa_prompt = (
-              f'Оцени, насколько сгенерированное изображение соответствует промпту. '
-              f'Промпт: \"{prompt}\". Ответь коротко: \"OK\" если всё хорошо '
-              f'соответствует, или одним предложением опиши проблему.'
+              f'Реплика диктора для этой сцены: \"{NARRATION}\".\n'
+              f'Подписи, которые появятся на экране поверх этой картинки: {captions_str}.\n\n'
+              'Оцени ДВЕ вещи и ответь коротко:\n'
+              '1) Действительно ли изображение визуально иллюстрирует именно то, о чём говорит диктор '
+              '(а не просто общую тему), нет ли артефактов.\n'
+              '2) Логично ли смотрятся подписи вместе с этим изображением и репликой — не противоречат ли '
+              'они друг другу.\n'
+              'Ответь \"OK\" если всё согласовано, или одним-двумя предложениями опиши конкретную проблему.'
           )
           status3, resp3 = call('gemini-3.5-flash', {
               'contents': [{'parts': [
@@ -122,15 +178,21 @@ jobs:
                   {'inline_data': {'mime_type': mime_type, 'data': image_base64}},
               ]}]
           })
-          parts3 = (resp3.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
-          verdict = ''.join(p.get('text', '') for p in parts3).strip() or 'нет ответа от Gemini'
-          print('--- Шаг 3: вердикт ---')
+          verdict = extract_text(resp3) or 'нет ответа от Gemini'
+          print('--- Шаг 3: вердикт согласованности речь+картинка+подписи ---')
           print(verdict)
 
           with open(f'scratch/{NAME}.json', 'w') as f:
-              json.dump({'prompt': prompt, 'mime_type': mime_type, 'verdict': verdict, 'aspect_ratio': ASPECT_RATIO}, f, ensure_ascii=False, indent=2)
+              json.dump({
+                  'narration_line': NARRATION,
+                  'prompt': prompt,
+                  'captions': captions,
+                  'mime_type': mime_type,
+                  'verdict': verdict,
+                  'aspect_ratio': ASPECT_RATIO,
+              }, f, ensure_ascii=False, indent=2)
           print('--- Готово ---')
-          print(json.dumps({'prompt': prompt, 'mime_type': mime_type, 'verdict': verdict}, ensure_ascii=False, indent=2))
+          print(json.dumps({'prompt': prompt, 'captions': captions, 'mime_type': mime_type, 'verdict': verdict}, ensure_ascii=False, indent=2))
           "
 
       - name: Commit response for inspection
