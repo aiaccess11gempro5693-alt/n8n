@@ -1,0 +1,159 @@
+name: Call Image Pipeline (Gemini + Nano Banana)
+
+# Прямой мост к CometAPI — замена воркера /image в n8n (n8n убран из
+# архитектуры, см. CLAUDE.md, 14.09.2026). Повторяет один в один ту же
+# цепочку, что раньше делал n8n: Gemini дорабатывает промпт -> Nano
+# Banana рисует картинку -> Gemini проверяет качество. Три
+# последовательных вызова одного и того же API в одном job'е.
+#
+# Требуется repository secret COMETAPI_KEY (заголовок x-goog-api-key).
+# Добавляется вручную в Settings -> Secrets and variables -> Actions.
+
+on:
+  workflow_dispatch:
+    inputs:
+      scene_description:
+        description: 'Краткое описание сцены (на русском, Gemini сам развернёт в детальный промпт)'
+        required: true
+      aspect_ratio:
+        description: 'Соотношение сторон картинки'
+        required: false
+        default: '16:9'
+        type: choice
+        options:
+          - '16:9'
+          - '1:1'
+          - '9:16'
+          - '4:3'
+          - '3:2'
+      output_name:
+        description: 'Имя файла в scratch/ (без расширения) — задавай уникальное при параллельных запросах'
+        required: false
+        default: 'image-output'
+
+permissions:
+  contents: write
+
+jobs:
+  call-image-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run 3-step pipeline (refine prompt -> generate image -> QA)
+        env:
+          COMETAPI_KEY: ${{ secrets.COMETAPI_KEY }}
+          SCENE_DESCRIPTION: ${{ github.event.inputs.scene_description }}
+          ASPECT_RATIO: ${{ github.event.inputs.aspect_ratio }}
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          if [ -z "$COMETAPI_KEY" ]; then
+            echo "::error::Секрет COMETAPI_KEY не задан в настройках репозитория"
+            exit 1
+          fi
+          mkdir -p scratch
+          python3 -c "
+          import json, os, urllib.request, urllib.error, base64, sys
+
+          API_KEY = os.environ['COMETAPI_KEY']
+          SCENE = os.environ['SCENE_DESCRIPTION']
+          ASPECT_RATIO = os.environ.get('ASPECT_RATIO') or '16:9'
+          NAME = os.environ.get('OUTPUT_NAME') or 'image-output'
+          BASE = 'https://api.cometapi.com/v1beta/models'
+
+          def call(model, body):
+              url = f'{BASE}/{model}:generateContent'
+              data = json.dumps(body).encode('utf-8')
+              req = urllib.request.Request(url, data=data, method='POST', headers={
+                  'x-goog-api-key': API_KEY,
+                  'content-type': 'application/json',
+              })
+              try:
+                  with urllib.request.urlopen(req, timeout=120) as resp:
+                      return resp.status, json.loads(resp.read().decode('utf-8'))
+              except urllib.error.HTTPError as e:
+                  body_text = e.read().decode('utf-8', errors='replace')
+                  print(f'::error::HTTP {e.code} from {model}: {body_text[:1000]}')
+                  sys.exit(1)
+
+          # Шаг 1: доработка промпта
+          refine_prompt = (
+              'Ты помощник по написанию промптов для генерации изображений. '
+              'Разверни краткое описание сцены в детальный, конкретный промпт '
+              'НА АНГЛИЙСКОМ языке для модели генерации изображений (стиль, '
+              'освещение, композиция, ракурс). Ответь ТОЛЬКО самим промптом, '
+              'без пояснений и кавычек.\n\nОписание сцены: ' + SCENE
+          )
+          status1, resp1 = call('gemini-3.5-flash', {'contents': [{'parts': [{'text': refine_prompt}]}]})
+          parts1 = (resp1.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
+          prompt = ''.join(p.get('text', '') for p in parts1).strip()
+          if not prompt:
+              print('::error::Gemini не вернул текст промпта. Ответ: ' + json.dumps(resp1)[:1000])
+              sys.exit(1)
+          print('--- Шаг 1: доработанный промпт ---')
+          print(prompt)
+
+          # Шаг 2: генерация картинки (Nano Banana)
+          status2, resp2 = call('gemini-2.5-flash-image', {
+              'contents': [{'parts': [{'text': prompt}]}],
+              'generationConfig': {'responseModalities': ['IMAGE'], 'imageConfig': {'aspectRatio': ASPECT_RATIO}},
+          })
+          parts2 = (resp2.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
+          img_part = next((p for p in parts2 if p.get('inlineData', {}).get('data')), None)
+          if not img_part:
+              print('::error::Nano Banana не вернул изображение. Ответ: ' + json.dumps(resp2)[:1000])
+              sys.exit(1)
+          image_base64 = img_part['inlineData']['data']
+          mime_type = img_part['inlineData'].get('mimeType', 'image/png')
+          ext = 'png' if 'png' in mime_type else 'jpg'
+          with open(f'scratch/{NAME}.{ext}', 'wb') as f:
+              f.write(base64.b64decode(image_base64))
+          print(f'--- Шаг 2: картинка сохранена в scratch/{NAME}.{ext} ---')
+
+          # Шаг 3: проверка качества
+          qa_prompt = (
+              f'Оцени, насколько сгенерированное изображение соответствует промпту. '
+              f'Промпт: \"{prompt}\". Ответь коротко: \"OK\" если всё хорошо '
+              f'соответствует, или одним предложением опиши проблему.'
+          )
+          status3, resp3 = call('gemini-3.5-flash', {
+              'contents': [{'parts': [
+                  {'text': qa_prompt},
+                  {'inline_data': {'mime_type': mime_type, 'data': image_base64}},
+              ]}]
+          })
+          parts3 = (resp3.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
+          verdict = ''.join(p.get('text', '') for p in parts3).strip() or 'нет ответа от Gemini'
+          print('--- Шаг 3: вердикт ---')
+          print(verdict)
+
+          with open(f'scratch/{NAME}.json', 'w') as f:
+              json.dump({'prompt': prompt, 'mime_type': mime_type, 'verdict': verdict, 'aspect_ratio': ASPECT_RATIO}, f, ensure_ascii=False, indent=2)
+          print('--- Готово ---')
+          print(json.dumps({'prompt': prompt, 'mime_type': mime_type, 'verdict': verdict}, ensure_ascii=False, indent=2))
+          "
+
+      - name: Commit response for inspection
+        if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          NAME="${OUTPUT_NAME:-image-output}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          [ -f "scratch/${NAME}.png" ] && git add "scratch/${NAME}.png"
+          [ -f "scratch/${NAME}.jpg" ] && git add "scratch/${NAME}.jpg"
+          [ -f "scratch/${NAME}.json" ] && git add "scratch/${NAME}.json"
+          if ! git diff --cached --quiet; then
+            git commit -m "scratch: image pipeline output ${NAME} for inspection [skip ci]"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push не удался, пробую перебазироваться и повторить..."
+              git pull --rebase
+              sleep $((RANDOM % 5 + 1))
+            done
+          else
+            echo "Нечего коммитить"
+          fi
