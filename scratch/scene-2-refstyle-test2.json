@@ -1,0 +1,11 @@
+{
+  "narration_line": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
+  "prompt": "A minimalist 3D render of a single clean rectangular card with rounded corners, floating against a solid soft gray background. On the card, there is a single simple 3D icon: a magnifying glass with a round white handle and a glossy transparent glass lens. Inside the lens of the magnifying glass, there is a simple 3D question mark. Soft professional studio lighting, pastel blue and clean white color palette, matte plastic and smooth glass materials, high-quality digital art, no text, no labels.",
+  "reference_image_path": "scratch/scene-6-v4-test.png",
+  "captions": [
+    "Добраться до сути"
+  ],
+  "mime_type": "image/png",
+  "verdict": "OK",
+  "aspect_ratio": "16:9"
+}
