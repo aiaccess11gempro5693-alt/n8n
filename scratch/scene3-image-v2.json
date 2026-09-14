@@ -1,0 +1,14 @@
+{
+  "narration_line": "Итак, покупатель говорит: \"Дайте что-нибудь для иммунитета\". Что он имеет в виду? Возможно, он болеет каждую осень и хочет это изменить. Возможно, только недавно перенёс ОРВИ и чувствует слабость. Возможно, просто устал и решил, что виноват \"плохой иммунитет\". А возможно, он уже принимает три разных БАДа и хочет добавить четвёртый.",
+  "prompt": "Clean infographic composition with a 2x2 grid of four rounded floating rectangular cards, soft 3D clay-render style, premium minimalist aesthetic. Warm light pastel gradient background with soft studio lighting and delicate ambient shadows. Each card features a smooth matte 3D icon with rounded edges: 1) top-left card with a warm orange 3D autumn leaf and minimalist calendar page, 2) top-right card with a soft 3D clinical thermometer with coral accent, 3) bottom-left card with a stylized minimal tired sleepy face icon, 4) bottom-right card with a matte pastel supplement bottle and floating 3D vitamin capsules. Soft coral and mint turquoise accent tones, front isometric view, completely clean surfaces, no text, no letters, no words, ultra-high detail 3D render.",
+  "reference_image_path": null,
+  "captions": [
+    "Болеет каждую осень",
+    "Слабость после ОРВИ",
+    "Усталость и упадок сил",
+    "Уже принимает несколько БАДов"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK** — изображение идеально и последовательно иллюстрирует все 4 тезиса диктора (осень/календарь, термометр/ОРВИ, уставший эмодзи, баночка с капсулами), артефактов нет, подписи полностью согласованы с визуальным рядом.",
+  "aspect_ratio": "16:9"
+}
