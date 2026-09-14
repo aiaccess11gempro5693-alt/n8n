@@ -1,0 +1,11 @@
+{
+  "narration_line": "Эти вопросы не просто помогают подобрать препарат — они защищают покупателя. Например, если человек уже пьёт поливитаминный комплекс с высокой дозой витамина С, добавлять ещё один иммуномодулятор может быть излишним. А тому, кто только вышел из болезни, нужна восстановительная поддержка, а не стимуляция.",
+  "prompt": "Clean minimalist medical infographic on a warm light background, studio lighting, front view. Two rounded comparison cards side by side. The left card has a soft coral accent color and a simple outline icon of a crossed-out medicine bottle, representing redundancy. The right card has a soft turquoise accent color and a simple outline icon of a gentle leaf or shield, representing recovery. Smooth 3D render style, clean vector feel, soft shadows, professional pharmaceutical aesthetic, no text or labels.",
+  "captions": [
+    "Излишняя стимуляция",
+    "Восстановительная поддержка"
+  ],
+  "mime_type": "image/png",
+  "verdict": "OK",
+  "aspect_ratio": "16:9"
+}
