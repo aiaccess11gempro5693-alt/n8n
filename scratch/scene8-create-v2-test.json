@@ -1,0 +1,1 @@
+{"error":{"code":"invalid_parameter","doc_url":"https://developers.heygen.com/docs/error-codes#invalid-parameter","message":"Input tag 'CreateVideoFromAvatar' found using 'type' does not match any of the expected tags: 'avatar', 'image', 'cinematic_avatar', 'studio'"}}
