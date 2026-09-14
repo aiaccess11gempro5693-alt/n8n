@@ -1,0 +1,6 @@
+{
+  "prompt": "An ultra-realistic, highly detailed editorial 16:9 landscape photograph, shot on a professional DSLR with a 50mm f/1.4 lens, shallow depth of field. A seamless split-narrative composition on a clean pharmacy counter, transitioning smoothly from left to right without a hard dividing line. The left side is bathed in warm, golden-amber tones, showing a cluttered, chaotic, and slightly overwhelming cluster of various blank supplement bottles, implying excess. The right side transitions into cool, calm slate-blue tones, featuring a single, neatly placed blank amber glass bottle standing beside a small, vibrant green potted succulent, evoking minimalism and order. In the soft-focus, creamy bokeh background, the shelves of a modern pharmacy are softly blurred. Professional editorial lighting with a natural gradient from warm to cool, highlighting the realistic textures of the glass and plant leaves. Absolutely no text, no letters, no numbers, no logos, and no signage on any object or in the background.",
+  "mime_type": "image/png",
+  "verdict": "На изображении присутствует довольно четкая вертикальная граница разделения цветов посередине, вместо плавного и бесшовного перехода, как требовалось в промпте.",
+  "aspect_ratio": "16:9"
+}
