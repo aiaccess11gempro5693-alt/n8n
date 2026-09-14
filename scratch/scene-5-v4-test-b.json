@@ -1,0 +1,13 @@
+{
+  "narration_line": "Помогут несколько простых вопросов: что именно вас беспокоит — частые простуды, постоянная усталость, долгое восстановление после болезни? Как давно вы замечаете это состояние? Принимаете ли сейчас какие-то витамины, добавки или препараты? Есть ли хронические заболевания?",
+  "prompt": "A clean minimalist medical infographic checklist card, 3D vector style. The card is divided into exactly four equal horizontal rows of the same height with thin, clean dividing lines between them. Each row contains only one elegant outline icon on the left side: the first row has a notepad checklist icon, the second row has a clock icon, the third row has a single medicine capsule icon, and the fourth row has a medical cross icon. Color palette of soft turquoise and coral accents against a warm, light cream-colored background. Bright, soft studio lighting, clean shadows, modern and professional pharmaceutical design. No text, no letters, no words on the card, front view, isolated.",
+  "captions": [
+    "Что именно беспокоит?",
+    "Длительность симптомов",
+    "Приём других препаратов",
+    "Хронические заболевания"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK** — изображение идеально структурировано под 4 пункта: иконки точно соответствуют вопросам диктора (анкета/симптомы, часы/длительность, таблетка/препараты, медицинский крест/заболевания), а справа оставлено место под указанные подписи. Артефактов нет.",
+  "aspect_ratio": "16:9"
+}
