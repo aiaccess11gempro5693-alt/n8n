@@ -14,6 +14,14 @@ name: Call Image Pipeline (Gemini + Nano Banana)
 # "картинка соответствует своему же промпту" (это тавтология), а
 # реальную согласованность: картинка + подписи + сама реплика диктора.
 #
+# 14.09.2026 (2) — добавлен опциональный reference_image_path: раньше
+# консистентность стиля между картинками держалась только на повторении
+# прилагательных в тексте промпта ("в том же стиле, что остальные
+# карточки") — из-за этого первая попытка сцены 2 уехала в другой стиль
+# (плоский клипарт вместо soft-3D). Теперь можно передать реальное
+# эталонное изображение как image-референс в сам вызов Nano Banana —
+# это устойчивее, чем текстовое описание "будь похож на X".
+#
 # Требуется repository secret COMETAPI_KEY (заголовок x-goog-api-key).
 
 on:
@@ -44,6 +52,10 @@ on:
         description: 'Имя файла в scratch/ (без расширения) — задавай уникальное при параллельных запросах'
         required: false
         default: 'image-output'
+      reference_image_path:
+        description: 'Путь к эталонному изображению стиля в репозитории (опционально) — передаётся в Nano Banana как image-референс вместо того, чтобы держаться только на словах в промпте'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -62,6 +74,7 @@ jobs:
           CAPTION_COUNT: ${{ github.event.inputs.caption_count }}
           ASPECT_RATIO: ${{ github.event.inputs.aspect_ratio }}
           OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+          REFERENCE_IMAGE_PATH: ${{ github.event.inputs.reference_image_path }}
         run: |
           if [ -z "$COMETAPI_KEY" ]; then
             echo "::error::Секрет COMETAPI_KEY не задан в настройках репозитория"
@@ -77,7 +90,19 @@ jobs:
           CAPTION_COUNT = int(os.environ.get('CAPTION_COUNT') or '1')
           ASPECT_RATIO = os.environ.get('ASPECT_RATIO') or '16:9'
           NAME = os.environ.get('OUTPUT_NAME') or 'image-output'
+          REF_PATH = os.environ.get('REFERENCE_IMAGE_PATH') or ''
           BASE = 'https://api.cometapi.com/v1beta/models'
+
+          ref_b64 = None
+          ref_mime = 'image/png'
+          if REF_PATH:
+              if not os.path.exists(REF_PATH):
+                  print(f'::error::Референс-изображение не найдено: {REF_PATH}')
+                  sys.exit(1)
+              with open(REF_PATH, 'rb') as f:
+                  ref_b64 = base64.b64encode(f.read()).decode('ascii')
+              ref_mime = 'image/jpeg' if REF_PATH.lower().endswith(('.jpg', '.jpeg')) else 'image/png'
+              print(f'--- Референс стиля подключён: {REF_PATH} ---')
 
           def call(model, body):
               url = f'{BASE}/{model}:generateContent'
@@ -142,9 +167,24 @@ jobs:
           print('--- Шаг 1: подписи на экран (из той же реплики) ---')
           print(captions)
 
-          # Шаг 2: генерация картинки (Nano Banana)
+          # Шаг 2: генерация картинки (Nano Banana). Если подключён референс
+          # стиля — он идёт ПЕРВОЙ частью (image), затем текстовый промпт с
+          # явной инструкцией повторить именно этот визуальный стиль.
+          image_prompt_text = prompt
+          parts_for_image = []
+          if ref_b64:
+              parts_for_image.append({'inline_data': {'mime_type': ref_mime, 'data': ref_b64}})
+              image_prompt_text = (
+                  'Match the exact visual style of the attached reference image — same '
+                  'soft 3D clay-style rendering, same matte pastel material treatment, '
+                  'same studio lighting and shadow softness, same warm background '
+                  'gradient, same turquoise/coral accent palette. Do not copy the '
+                  'reference\'s subject matter, only its visual style. New composition: '
+                  + prompt
+              )
+          parts_for_image.append({'text': image_prompt_text})
           status2, resp2 = call('gemini-2.5-flash-image', {
-              'contents': [{'parts': [{'text': prompt}]}],
+              'contents': [{'parts': parts_for_image}],
               'generationConfig': {'responseModalities': ['IMAGE'], 'imageConfig': {'aspectRatio': ASPECT_RATIO}},
           })
           parts2 = (resp2.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
@@ -186,6 +226,7 @@ jobs:
               json.dump({
                   'narration_line': NARRATION,
                   'prompt': prompt,
+                  'reference_image_path': REF_PATH or None,
                   'captions': captions,
                   'mime_type': mime_type,
                   'verdict': verdict,
