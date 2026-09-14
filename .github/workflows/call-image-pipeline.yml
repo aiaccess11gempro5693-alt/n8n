@@ -22,6 +22,13 @@ name: Call Image Pipeline (Gemini + Nano Banana)
 # эталонное изображение как image-референс в сам вызов Nano Banana —
 # это устойчивее, чем текстовое описание "будь похож на X".
 #
+# 14.09.2026 (3) — утверждена дизайн-система (docs/design-system.md):
+# целевой стиль иконок/инфографики — ПЛОСКИЙ outline, БЕЗ теней, флэт
+# фон, а не soft-3D из примечания выше. Формулировка style-match ниже
+# обновлена на противоположную; как референс стиля теперь стоит
+# передавать flat-стиль картинку (например scratch/scene-6-image-v3.png),
+# а не более раннюю soft-3D генерацию.
+#
 # Требуется repository secret COMETAPI_KEY (заголовок x-goog-api-key).
 
 on:
@@ -175,10 +182,11 @@ jobs:
           if ref_b64:
               parts_for_image.append({'inline_data': {'mime_type': ref_mime, 'data': ref_b64}})
               image_prompt_text = (
-                  'Match the exact visual style of the attached reference image — same '
-                  'soft 3D clay-style rendering, same matte pastel material treatment, '
-                  'same studio lighting and shadow softness, same warm background '
-                  'gradient, same turquoise/coral accent palette. Do not copy the '
+                  'Match the exact visual style of the attached reference image — flat '
+                  'outline icon illustration, thin uniform stroke weight, NO 3D/glossy '
+                  'rendering, NO drop shadows anywhere, flat solid warm off-white '
+                  'background (no gradient, no studio lighting), same turquoise/coral '
+                  'accent palette used only as flat fill or stroke color. Do not copy the '
                   'reference\'s subject matter, only its visual style. New composition: '
                   + prompt
               )
