@@ -1,0 +1,13 @@
+{
+  "narration_line": "Итак, покупатель говорит: \"Дайте что-нибудь для иммунитета\". Что он имеет в виду? Возможно, он болеет каждую осень и хочет это изменить. Возможно, только недавно перенёс ОРВИ и чувствует слабость. Возможно, просто устал и решил, что виноват \"плохой иммунитет\". А возможно, он уже принимает три разных БАДа и хочет добавить четвёртый.",
+  "prompt": "A clean minimalist medical infographic illustration on a warm light beige background, featuring a 2x2 grid of four soft-shadowed white cards. Each card contains a single, elegant outline icon with soft teal and coral accents: the first card has an autumn leaf icon, the second has a digital thermometer icon, the third has a simplified tired face icon, and the fourth has a small pill bottle icon. No text, words, or numbers on the image. Modern corporate design, vector style, soft studio lighting, flat lay composition, professional and aesthetic.",
+  "captions": [
+    "Болеет каждую осень",
+    "Слабость после ОРВИ",
+    "Просто устал",
+    "Уже принимает БАДы"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK** (все 4 иконки точно в порядке озвучки иллюстрируют каждый из пунктов, подписи логичны, артефактов нет).",
+  "aspect_ratio": "16:9"
+}
