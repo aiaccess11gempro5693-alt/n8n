@@ -1,0 +1,117 @@
+name: Call ElevenLabs API
+
+# Прямой мост к ElevenLabs TTS — замена воркера /tts в n8n (n8n убран из
+# архитектуры, см. CLAUDE.md, 14.09.2026). Тот же принцип, что и
+# call-heygen-api.yml: у песочницы нет прямого доступа в интернет,
+# у раннера GitHub Actions — есть.
+#
+# Требуется repository secret ELEVENLABS_API_KEY (заголовок xi-api-key).
+# Добавляется вручную в Settings -> Secrets and variables -> Actions.
+
+on:
+  workflow_dispatch:
+    inputs:
+      text:
+        description: 'Текст для озвучки'
+        required: true
+      voice_id:
+        description: 'ElevenLabs voice_id (по умолчанию Rachel)'
+        required: false
+        default: '21m00Tcm4TlvDq8ikWAM'
+      model_id:
+        description: 'Модель ElevenLabs'
+        required: false
+        default: 'eleven_multilingual_v2'
+      output_name:
+        description: 'Имя файла в scratch/ (без расширения) — задавай уникальное при параллельных запросах'
+        required: false
+        default: 'tts-output'
+
+permissions:
+  contents: write
+
+jobs:
+  call-elevenlabs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Call ElevenLabs TTS
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          TEXT: ${{ github.event.inputs.text }}
+          VOICE_ID: ${{ github.event.inputs.voice_id }}
+          MODEL_ID: ${{ github.event.inputs.model_id }}
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          if [ -z "$ELEVENLABS_API_KEY" ]; then
+            echo "::error::Секрет ELEVENLABS_API_KEY не задан в настройках репозитория"
+            exit 1
+          fi
+          mkdir -p scratch
+          NAME="${OUTPUT_NAME:-tts-output}"
+          URL="https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID:-21m00Tcm4TlvDq8ikWAM}"
+          python3 -c "
+          import json, os
+          body = {'text': os.environ['TEXT'], 'model_id': os.environ.get('MODEL_ID') or 'eleven_multilingual_v2'}
+          with open('/tmp/tts-body.json', 'w') as f:
+              json.dump(body, f, ensure_ascii=False)
+          "
+          echo "Вызываю: POST $URL"
+          curl -sS -X POST "$URL" \
+            -H "xi-api-key: $ELEVENLABS_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d @/tmp/tts-body.json \
+            -D response-headers.txt \
+            -o "scratch/${NAME}.mp3" \
+            -w "\nHTTP_STATUS:%{http_code}\n"
+          echo "--- Response headers ---"
+          cat response-headers.txt
+
+      - name: Verify output is real audio (not an error JSON saved as .mp3)
+        if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          NAME="${OUTPUT_NAME:-tts-output}"
+          python3 -c "
+          import json, os
+          name = os.environ.get('OUTPUT_NAME') or 'tts-output'
+          path = f'scratch/{name}.mp3'
+          try:
+              with open(path, 'rb') as f:
+                  head = f.read(64)
+              # ElevenLabs error responses are JSON starting with '{'
+              if head.lstrip()[:1] == b'{':
+                  with open(path) as f2:
+                      print('ОШИБКА от ElevenLabs (не аудио):')
+                      print(f2.read()[:2000])
+              else:
+                  size = os.path.getsize(path)
+                  print(f'Похоже на реальный mp3, размер {size} байт')
+          except Exception as e:
+              print('Не удалось проверить файл:', e)
+          "
+
+      - name: Commit response for inspection
+        if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          NAME="${OUTPUT_NAME:-tts-output}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          [ -f "scratch/${NAME}.mp3" ] && git add "scratch/${NAME}.mp3"
+          if ! git diff --cached --quiet; then
+            git commit -m "scratch: ElevenLabs TTS output ${NAME} for inspection [skip ci]"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push не удался, пробую перебазироваться и повторить..."
+              git pull --rebase
+              sleep $((RANDOM % 5 + 1))
+            done
+          else
+            echo "Нечего коммитить"
+          fi
