@@ -1,0 +1,11 @@
+{
+  "narration_line": "Но за этим уверенным запросом почти всегда стоит что-то конкретное.",
+  "prompt": "An isolated minimalist flat vector outline icon of a magnifying glass with a question mark inside the lens, symbolizing search and inquiry. The icon features thin turquoise and coral lines as color accents. Centered composition occupying 60% of the frame. Set against a solid, completely uniform flat magenta background, hex #FF00FF, with no gradients, shadows, or text.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Что-то конкретное"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение со знаком вопроса символизирует поиск или неизвестность, что противоречит смыслу фразы о «чём-то конкретном», а в верхней части фона виден лёгкий артефакт в виде прямоугольной тени.",
+  "aspect_ratio": "1:1"
+}
