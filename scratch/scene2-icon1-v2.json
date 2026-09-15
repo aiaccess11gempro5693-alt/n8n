@@ -1,0 +1,11 @@
+{
+  "narration_line": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал.",
+  "prompt": "A minimalist flat outline vector icon centered in the frame, symbolizing identifying a single specific concrete point. A sleek magnifying glass focused precisely on a single highlighted target bullseye dot with a checkmark in the center, representing pinpointing one exact hidden detail. Clean crisp lines, modern turquoise and warm coral accent highlights, completely flat design with no gradients, no 3D shading, no shadows, perfectly isolated on a solid uniform bright magenta background #FF00FF, no text, no typography.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "За запросом — конкретная потребность"
+  ],
+  "mime_type": "image/png",
+  "verdict": "OK",
+  "aspect_ratio": "1:1"
+}

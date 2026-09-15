@@ -1,0 +1,11 @@
+{
+  "narration_line": "Что именно вас беспокоит — частые простуды, постоянная усталость, долгое восстановление после болезни?",
+  "prompt": "A single isolated flat outline icon of a medical clipboard with a questionnaire checklist, symbolizing health complaints and symptoms. Flat vector graphic style, clean centered composition. Turquoise and coral accent colors. Sharp clean edges, 2D minimalist design, no shadows, no gradients. Completely isolated on a solid uniform bright magenta background, color code #FF00FF. No text, no numbers, no words, zero background artifacts, perfect flat color.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "Что вас беспокоит?"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK** — планшет с опросником/чек-листом логично передает выбор симптомов из списка, подпись точно совпадает с вопросом диктора, артефактов нет.",
+  "aspect_ratio": "1:1"
+}
