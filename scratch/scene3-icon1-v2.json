@@ -1,0 +1,11 @@
+{
+  "narration_line": "Возможно, он болеет каждую осень и хочет это изменить.",
+  "prompt": "A single isolated minimalist flat outline vector icon combining two distinct elements: an autumn maple leaf placed together with a medical thermometer and subtle sneeze droplets, clearly conveying seasonal autumn sickness. Clean sharp outline art style with vibrant turquoise and coral accents, centered 2D composition, no shadows, no 3D effects, isolated on a solid uniform bright magenta background #FF00FF, perfectly crisp vector lines, no text, no numbers.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "Болеет каждую осень"
+  ],
+  "mime_type": "image/png",
+  "verdict": "OK",
+  "aspect_ratio": "1:1"
+}
