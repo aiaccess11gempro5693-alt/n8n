@@ -1,0 +1,11 @@
+{
+  "narration_line": "Возможно, только недавно перенёс ОРВИ и чувствует слабость.",
+  "prompt": "A single isolated flat vector icon of a medical clinical thermometer, centered, occupying 60% of the frame. Modern clean 2D outline icon style with bold smooth outlines, turquoise teal body elements and warm coral red indicator marks showing elevated temperature. Minimalist medical graphic illustration, crisp geometry. Set against a solid flat pure uniform bright magenta background hex #FF00FF with no gradients, no textures, no drop shadows, no cards, no borders, ready for chromakey knockout. High quality graphic design, completely no text, no numbers, no typography.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Недавно перенёс ОРВИ"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение иллюстрирует лишь общую тему болезни (повышенную температуру), а не недавнее выздоровление и слабость. Кроме того, сам градусник нарисован некорректно: шкала не имеет цифр, а столбик цветной жидкости оторван от нижнего резервуара (наконечника).",
+  "aspect_ratio": "1:1"
+}
