@@ -1,0 +1,11 @@
+{
+  "narration_line": "Принимаете ли сейчас какие-то витамины, добавки или препараты",
+  "prompt": "A single isolated medical capsule pill icon centered on a solid flat uniform magenta background hex #FF00FF for chromakey cutout. Minimalist flat 2D vector outline style, clean thick dark contours, smooth shapes. One half of the capsule is soft turquoise teal, the other half is vibrant coral. The icon fills about 60% of the frame with no cards, no borders, no boxes, no frames, no drop shadows, no gradients, no glow, no letters, no words, no text.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Витамины, добавки или препараты"
+  ],
+  "mime_type": "image/png",
+  "verdict": "OK",
+  "aspect_ratio": "1:1"
+}
