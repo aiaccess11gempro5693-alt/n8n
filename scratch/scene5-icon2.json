@@ -1,0 +1,11 @@
+{
+  "narration_line": "частые простуды, постоянная усталость, долгое восстановление после болезни",
+  "prompt": "Flat minimalist vector outline icon of a classic stopwatch timer. Isolated on a solid bright magenta #FF00FF background. The icon features clean turquoise and coral color accents, representing time and slow recovery. No gradients, no shadows, no frame, no text. Centered composition, occupying 60% of the frame, perfect for chromakey.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Долгое восстановление"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение секундомера ассоциируется со скоростью, спортом или быстрыми интервалами времени, что противоречит понятию долгого, затяжного восстановления. Для иллюстрации «долгого восстановления после болезни» лучше использовать образы, напрямую связанные со временем и здоровьем (например, календарь, песочные часы или увядающий/распускающийся цветок).",
+  "aspect_ratio": "1:1"
+}
