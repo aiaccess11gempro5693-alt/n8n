@@ -1,0 +1,11 @@
+{
+  "narration_line": "Есть ли хронические заболевания?",
+  "prompt": "A clean minimalist flat outline vector icon symbolizing a chronic recurring medical condition, centered composition. The design features a crisp contour of a heart with an integrated EKG pulse line, encircled by a smooth continuous circular arrow indicating long-term cycle and recurrence. Modern line art with vibrant turquoise and warm coral accents, razor-sharp edges, 2D graphic design style. Completely isolated on a solid uniform bright magenta background #FF00FF with no gradients, no shadows, no blur, no text, no words.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "Наличие хронических заболеваний"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK**",
+  "aspect_ratio": "1:1"
+}
