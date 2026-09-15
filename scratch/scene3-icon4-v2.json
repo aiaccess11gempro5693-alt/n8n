@@ -1,0 +1,11 @@
+{
+  "narration_line": "А возможно, он уже принимает три разных БАДа и хочет добавить четвёртый.",
+  "prompt": "A single isolated flat outline icon of a plain, neutral dietary supplement or vitamin bottle with visible capsules inside, representing a person already taking supplements. Flat outline vector style, minimalist design, turquoise and coral accents, no shadows, isolated on a solid uniform bright magenta background #FF00FF, no text, no numbers, clean sharp edges, positive and neutral mood, no warning or prohibition signs.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "Уже принимает несколько БАДов"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение отражает лишь общую тему: нарисована всего **одна баночка**, тогда как реплика и подпись говорят о нескольких **разных** добавках (логичнее было бы показать 3–4 разные упаковки). Сама подпись не противоречит реплике, критических артефактов в графике нет.",
+  "aspect_ratio": "1:1"
+}
