@@ -1,0 +1,11 @@
+{
+  "narration_line": "что именно вас беспокоит",
+  "prompt": "An isolated single minimalist vector icon of a medical clipboard with a checklist and a prominent checkmark, representing a symptom inquiry. Flat outline style with clean lines, featuring turquoise and coral accent colors. The icon is centered and occupies 60% of the frame, with no boxes, cards, or borders around it. Set against a solid, uniform, flat monochrome bright purple background of color #FF00FF magenta with no gradients, shadows, or textures, ideal for chromakey. High-quality 2D graphic design, no text, no words.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Что вас беспокоит?"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**Не OK.**\n\n1. Смысловая связь есть (планшет с анкетой подходит под сбор жалоб/симптомов), но в верхней части изображения на розовом фоне присутствует явный визуальный дефект (вертикальный смаз/артефакт). \n2. Текст, озвучка и смысл изображения не противоречат друг другу.",
+  "aspect_ratio": "1:1"
+}
