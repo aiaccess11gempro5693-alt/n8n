@@ -1,0 +1,11 @@
+{
+  "narration_line": "А возможно, он уже принимает три разных БАДа и хочет добавить четвёртый.",
+  "prompt": "An isolated flat vector outline icon of a dietary supplement bottle with capsules. Minimalist graphic design, clean lines, no shadows, no 3D effects. The icon features turquoise and coral color accents. Perfectly centered, occupying 60% of the frame. The background is a completely solid, uniform, flat monochrome bright magenta color #FF00FF, with no gradient, no texture, and no shading.",
+  "reference_image_path": "scratch/scene-6-image-v3.png",
+  "captions": [
+    "Прием нескольких БАДов"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение показывает лишь одну баночку с одинаковыми капсулами, что слабо иллюстрирует прием трех-четырех разных БАДов из реплики диктора. Логичнее было бы показать несколько разных упаковок или разнотипных таблеток.",
+  "aspect_ratio": "1:1"
+}
