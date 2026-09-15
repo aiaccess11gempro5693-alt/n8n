@@ -1,0 +1,11 @@
+{
+  "narration_line": "Есть ли хронические заболевания",
+  "prompt": "A flat minimalist outline vector icon of a medical cross representing health status, centered, occupying 60% of the frame. The icon features thin clean lines with turquoise and coral accent colors. Set against a solid, completely uniform flat magenta background of color #FF00FF, with no gradients, no shadows, and no textures. Clean design, suitable for chromakey, high resolution, absolutely no text.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Хронические заболевания"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение иллюстрирует лишь общую медицинскую тематику (простой крест), а не конкретно хронические заболевания, к тому же на фоне сверху над крестом виден явный визуальный артефакт в виде размытого прямоугольного пятна. Подписи и реплика диктора между собой согласованы хорошо.",
+  "aspect_ratio": "1:1"
+}
