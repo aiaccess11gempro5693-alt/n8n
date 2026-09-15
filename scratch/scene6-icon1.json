@@ -1,0 +1,11 @@
+{
+  "narration_line": "если человек уже пьёт поливитаминный комплекс, добавлять ещё один иммуномодулятор может быть излишним",
+  "prompt": "A minimalist flat outline vector icon of a pharmacy pill bottle with a cross-out 'X' inside a circle symbol over it, indicating redundant medication. Modern clean line art style with turquoise and coral color accents, centered composition occupying 60% of the frame. Strictly isolated on a flat solid uniform magenta background (#FF00FF) for chroma key, no gradients, no drop shadows, no cards, no borders, no text, high-contrast crisp 2D graphic design.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Дополнительный иммуномодулятор может быть излишним"
+  ],
+  "mime_type": "image/png",
+  "verdict": "По смыслу и тексту всё **согласовано**: перечёркнутая баночка лекарств отлично иллюстрирует отказ от избыточного препарата, а подпись точно передаёт суть реплики. \n\nОднако на изображении есть **артефакт генерации**: прямо над крышкой флакона по центру тянется вертикальная полоса размытия/светлого шлейфа.",
+  "aspect_ratio": "1:1"
+}
