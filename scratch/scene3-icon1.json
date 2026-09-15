@@ -1,0 +1,11 @@
+{
+  "narration_line": "Возможно, он болеет каждую осень и хочет это изменить.",
+  "prompt": "A single isolated graphic icon of a stylized autumn maple leaf next to a tear-off calendar sheet, flat outline vector style with clean dark contours, vibrant turquoise and soft coral accent colors, minimalistic modern infographic illustration style, centered composition filling approximately 60 percent of the frame, completely isolated on a solid uniform bright magenta chromakey background #FF00FF with no gradients, no drop shadows, no cards, no borders, no text, no numbers, clean sharp edges.",
+  "reference_image_path": "scratch/icon-test-pillbottle.png",
+  "captions": [
+    "Болеет каждую осень"
+  ],
+  "mime_type": "image/png",
+  "verdict": "Изображение иллюстрирует только «каждую осень» (календарь и кленовый лист), но на нём полностью отсутствует символ болезни (например, градусник или пластырь), к тому же над кольцами календаря видны вертикальные размытые артефакты. Подписи логичны и не противоречат контексту, но сам визуал не передаёт тему заболевания.",
+  "aspect_ratio": "1:1"
+}
