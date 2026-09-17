@@ -116,17 +116,17 @@ def beside_pos(icon_x, icon_y, icon_sz, pill_h, gap=30):
 m = pinfo["scene2-pill1"]
 X, Y, SZ = 1350, 180, 520
 bx = below_pos(X, SZ, m["pill_w"]); by = Y + SZ + 30
-scene2_icons = [dict(png=f"{ICONS}/scene2-icon1.png", x=X, y=Y, sz=SZ, start=8.3,
+scene2_icons = [dict(png=f"{ICONS}/scene2-icon1-norm.png", x=X, y=Y, sz=SZ, start=8.3,
                       label="Добраться до сути", pill_png=f"{WL}/pills/scene2-pill1.png",
                       pill_w=m["pill_w"], pill_h=m["pill_h"], pill_margin=m["margin"],
                       pill_bx=bx, pill_by=by, fs=34)]
 
 SZ3 = 330; XL, XR, Y0, Y1 = 60, 1540, 60, 460
 defs3 = [
-    ("scene3-icon1.png", XL, Y0, 7.15, "Болеет каждую осень", "scene3-pill1"),
-    ("scene3-icon2.png", XR, Y0, 12.13, "Слабость после ОРВИ", "scene3-pill2"),
-    ("scene3-icon3.png", XL, Y1, 15.56, "Просто устал", "scene3-pill3"),
-    ("scene3-icon4.png", XR, Y1, 20.81, "Уже принимает БАДы", "scene3-pill4"),
+    ("scene3-icon1-norm.png", XL, Y0, 7.15, "Болеет каждую осень", "scene3-pill1"),
+    ("scene3-icon2-norm.png", XR, Y0, 12.13, "Слабость после ОРВИ", "scene3-pill2"),
+    ("scene3-icon3-norm.png", XL, Y1, 15.56, "Просто устал", "scene3-pill3"),
+    ("scene3-icon4-norm.png", XR, Y1, 20.81, "Уже принимает БАДы", "scene3-pill4"),
 ]
 scene3_icons = []
 for png, x, y, st, label, pillname in defs3:
@@ -139,10 +139,10 @@ for png, x, y, st, label, pillname in defs3:
 SZ5 = 110; ICX = 1300
 rows5 = [50, 220, 390, 560]
 defs5 = [
-    (rows5[0], 2.92, "Что именно беспокоит?", "scene5-pill1", "scene5-icon1.png"),
-    (rows5[1], 11.28, "Длительность симптомов", "scene5-pill2", "scene5-icon2.png"),
-    (rows5[2], 14.26, "Приём других препаратов", "scene5-pill3", "scene5-icon3.png"),
-    (rows5[3], 19.86, "Хронические заболевания", "scene5-pill4", "scene5-icon4.png"),
+    (rows5[0], 2.92, "Что именно беспокоит?", "scene5-pill1", "scene5-icon1-norm.png"),
+    (rows5[1], 11.28, "Длительность симптомов", "scene5-pill2", "scene5-icon2-norm.png"),
+    (rows5[2], 14.26, "Приём других препаратов", "scene5-pill3", "scene5-icon3-norm.png"),
+    (rows5[3], 19.86, "Хронические заболевания", "scene5-pill4", "scene5-icon4-norm.png"),
 ]
 scene5_icons = []
 for y, st, label, pillname, png in defs5:
@@ -154,8 +154,8 @@ for y, st, label, pillname, png in defs5:
 
 SZ6 = 470
 defs6 = [
-    ("scene6-icon1.png", 80, 120, 13.79, "Излишняя стимуляция", "scene6-pill1", 472, 89),
-    ("scene6-icon2.png", 1400, 120, 17.2, "Восстановительная поддержка", "scene6-pill2", 627, 89),
+    ("scene6-icon1-norm.png", 80, 120, 13.79, "Излишняя стимуляция", "scene6-pill1", 472, 89),
+    ("scene6-icon2-norm.png", 1400, 120, 17.2, "Восстановительная поддержка", "scene6-pill2", 627, 89),
 ]
 scene6_icons = []
 for png, x, y, st, label, pillname, pw, ph in defs6:
