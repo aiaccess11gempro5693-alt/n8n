@@ -1,34 +1,27 @@
 """
-Финальная сборка — единый presentation-слой (design-system.md, "9.
-Композиционный движок" + переработка 17.09.2026 (5): editorial-стиль вместо
-"иконка+тёмная карточка"). Всё, что раньше было отдельно "иконки-стикеры на
-data-сценах" (шаг 2, ffmpeg dilation-фильтры) и "заголовки" (шаг 6, pill-бейдж
-в (60,60) из render_headlines.py) — теперь ОДИН проход: presentation/compose_scene.py
-собирает для КАЖДОЙ из 8 сцен готовый набор PNG-слоёв (statement/annotated
-grid/checklist/comparison — что уместно по смыслу сцены), этот скрипт только
-накладывает их на общий таймлайн с той же "тихой зоной" вокруг переходов, что
-и субтитры.
+Финальная сборка — ЧИСТЫЙ RESET (17.09.2026, по прямому запросу пользователя:
+"полностью удалить из рабочего pipeline все ранее заложенные design/layout
+rules"). Здесь НЕТ визуального design-слоя: ни иконок, ни заголовков, ни
+карточек, ни чек-листов, ни какого-либо layout engine. Только то, что явно
+названо каноном и не подлежит удалению:
 
-Сохранено без изменений: Ken Burns/punch-in на аватаре, переходы между
-сценами, субтитры (crop-маска караоке).
+  1. Ken Burns (+punch-in) на аватаре.
+  2. Переходы между сценами (crossfade).
+  3. Субтитры (crop-маска караоке, синхронизация по словам).
 
-Legacy (не используется в этом пути, оставлено в render/legacy/ для
-истории): layout_engine.py (вчерашний движок координат), render_headlines.py
-(PLAN — заменён content_model.py), render_icon_scenes.py, render_scenes.sh.
+Новая визуальная система будет спроектирована отдельным этапом — см.
+чат/CLAUDE.md, запись 17.09.2026 "RESET COMPLETE". До этого момента в этом
+файле сознательно НЕТ presentation-слоя.
 """
 import json
 import os
 import subprocess
-import sys
 
 RENDER = os.path.dirname(os.path.abspath(__file__))
 WL = RENDER
 OUT_DIR = RENDER
 FONT = f"{RENDER}/fonts/Inter-Bold.otf"
 FINAL_SCENES = "/tmp/final-scenes"
-
-sys.path.insert(0, RENDER)
-from presentation.compose_scene import compose_scene  # noqa: E402
 
 with open(f"{WL}/word_layout.json", encoding="utf-8") as f:
     manifest = json.load(f)
@@ -72,7 +65,7 @@ print("durations:", durs)
 
 PUNCH = {1: 1.122, 8: 2.614}  # секунда триггерного слова для punch-in
 
-# ---------- шаг 1: Ken Burns (+punch) на каждый сырой клип аватара (канон, не менялся) ----------
+# ---------- шаг 1: Ken Burns (+punch) на каждый сырой клип аватара (канон) ----------
 kb_paths = {}
 for n in scenes:
     D = durs[n]
@@ -93,13 +86,9 @@ for n in scenes:
     ], f"scene{n} ken burns" + (" + punch" if n in PUNCH else ""))
     kb_paths[n] = out_path
 
-# presentation-слой (иконки/statement/checklist/comparison) больше НЕ
-# запекается в клип каждой сцены по отдельности — он идёт единым проходом
-# ПОСЛЕ crossfade (шаг 6 ниже), на общем таймлайне, с той же "тихой зоной"
-# вокруг переходов, что и субтитры. video_paths = kb_paths напрямую.
 video_paths = kb_paths
 
-# ---------- шаг 2: crossfade всех 8 видео-слоёв (БЕЗ текста) ----------
+# ---------- шаг 2: crossfade всех 8 видео-слоёв (БЕЗ текста, канон) ----------
 inputs = []
 for n in scenes:
     inputs += ["-i", video_paths[n]]
@@ -140,7 +129,8 @@ run([
     combined_video,
 ], "crossfade combine (8 scenes)")
 
-# ---------- шаг 3: границы "текст должен молчать" вокруг каждого перехода (канон) ----------
+# ---------- шаг 3: границы "текст должен молчать" вокруг каждого перехода
+# (канон — нужно субтитрам, не является design/layout правилом самим по себе) ----------
 TEXT_OUT_BEFORE = 0.35
 TEXT_IN_AFTER = 0.10
 
@@ -162,7 +152,8 @@ cap_end_global = {n: g0[n] + local_end_cut[n] for n in scenes}
 for n in scenes:
     print(f"scene {n}: g0={g0[n]:.3f} quiet_zone=[{cap_start_global[n]:.3f}, {cap_end_global[n]:.3f}]")
 
-# ---------- шаг 4: субтитры (crop-маска) по всем 8 сценам на общем таймлайне (канон) ----------
+# ---------- шаг 4: субтитры (crop-маска) по всем 8 сценам на общем таймлайне
+# (канон — система синхронизации речи, не трогать) ----------
 cap_chunks = []
 for n in scenes:
     chunks = SCENES_WL[str(n)]["chunks"]
@@ -251,49 +242,8 @@ for idx, (ci, w) in enumerate(all_words):
     fc2.append(f"[{prev}][{crop_label}]overlay={crop_x}:{crop_y}:enable='{wcond}'[{nxt}]")
     prev = nxt
 
-# ---------- шаг 5: presentation-слой (headline/statement/annotated grid/
-# checklist/comparison — что уместно по смыслу каждой сцены), на глобальном
-# таймлайне, обрезано под ту же "тихую" зону, что и субтитры/раньше заголовки.
-# Каждый layer — уже полностью отрисованный PIL PNG (текст+иконка+scrim
-# запечены внутри), ffmpeg только накладывает его с плавным fade+лёгким
-# подъездом снизу (design-system.md, '13. Timing' — спокойный motion, не
-# "стикер поп-ин") ----------
-PRES_DIR = f"{RENDER}/presentation_out"
-os.makedirs(PRES_DIR, exist_ok=True)
-
-pres_layers = []  # (path, x, y, global_start, global_end)
-for n in scenes:
-    layout, layers = compose_scene(n)
-    print(f"scene {n}: presentation layout={layout}, {len(layers)} layer(s)")
-    for i, l in enumerate(layers):
-        path = f"{PRES_DIR}/p{n}-{i}.png"
-        l.image.save(path)
-        gs = max(g0[n] + l.start, cap_start_global[n])
-        ge = (g0[n] + l.end) if l.end is not None else cap_end_global[n]
-        ge = min(ge, cap_end_global[n])
-        if ge <= gs:
-            print(f"  !! слой {i} сцены {n} вне тихой зоны, пропущен (gs={gs:.3f} ge={ge:.3f})")
-            continue
-        pres_layers.append((path, l.x, l.y, gs, ge))
-
-for p, *_ in pres_layers:
-    inputs += ["-i", p]
-
-FADE = 0.3
-RISE = 18
-for idx, (p, X, Y, GS, GE) in enumerate(pres_layers):
-    pin_idx = idx + 2  # 0 = combined_video, 1 = прозрачный холст
-    ease_in = f"max(0,1-(t-{GS})/{FADE})"
-    faded = f"pf{idx}"
-    fc2.append(
-        f"[{pin_idx}:v]format=rgba,"
-        f"fade=t=in:st={GS}:d={FADE}:alpha=1,"
-        f"fade=t=out:st={GE - FADE}:d={FADE}:alpha=1[{faded}]"
-    )
-    nxt = f"pv{idx}"
-    fc2.append(f"[{prev}][{faded}]overlay=x={X}:y='{Y}+{RISE}*{ease_in}':enable='between(t,{GS},{GE})'[{nxt}]")
-    prev = nxt
-
+# ---------- КОНЕЦ. Presentation-слоя (заголовки/иконки/карточки/чек-листы/
+# сравнения/layout engine) здесь сознательно НЕТ — см. докстринг файла. ----------
 filter_complex = ";\n".join(fc2)
 final_out = f"{OUT_DIR}/full-trend-video.mp4"
 cmd = ["ffmpeg", "-y"] + inputs + [
@@ -303,5 +253,5 @@ cmd = ["ffmpeg", "-y"] + inputs + [
     "-c:a", "aac", "-b:a", "192k",
     final_out,
 ]
-run(cmd, "final presentation-layer pass (8 scenes)")
+run(cmd, "final pass: Ken Burns + переходы + субтитры, без presentation-слоя")
 print("DONE ->", final_out)
