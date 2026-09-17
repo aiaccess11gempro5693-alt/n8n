@@ -1,3 +1,11 @@
 __pycache__/
 *.pyc
 render/pills/
+render/text/
+render/word_layout.json
+render/scene-*.mp4
+render/kb-scene-*.mp4
+render/video-scene-*.mp4
+render/combined-*.mp4
+render/full-trend-video.mp4
+render/h*-*.png
