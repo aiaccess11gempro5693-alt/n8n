@@ -29,6 +29,7 @@ ICONS = "/home/user/n8n/scratch"
 sys.path.insert(0, RENDER)
 from pill_gen_all import rounded_pill, TEAL, CORAL  # noqa: E402
 from render_headlines import PLAN as HEADLINE_PLAN  # noqa: E402
+from layout_engine import single_accent, grid_2x2, vertical_list, comparison_pair, below_pos, beside_pos  # noqa: E402
 
 with open(f"{WL}/word_layout.json", encoding="utf-8") as f:
     manifest = json.load(f)
@@ -66,10 +67,6 @@ def run(cmd, label):
     print(f"{label} OK", flush=True)
 
 
-def clamp(x, lo, hi):
-    return max(lo, min(x, hi))
-
-
 scenes = [1, 2, 3, 4, 5, 6, 7, 8]
 durs = {n: dur(f"{FINAL_SCENES}/scene-{n}.mp4") for n in scenes}
 print("durations:", durs)
@@ -104,65 +101,75 @@ with open(f"{WL}/pills/pill_info5.json") as f:
     pinfo5 = json.load(f)
 
 
-def below_pos(icon_x, icon_sz, pill_w, gap=30):
-    center = icon_x + icon_sz / 2
-    return round(clamp(center - pill_w / 2, 20, 1920 - 20 - pill_w))
+# ---------- раскладка через композиционный движок (design-system.md, 4.1) ----------
+# Паттерн выбирается по СМЫСЛУ содержимого сцены (правило v16, теперь общий
+# принцип), геометрия внутри паттерна считается формулой layout_engine, а не
+# подбирается на глаз по каждой иконке отдельно. Ниже — только CONTENT (что
+# показать, на каком слове, какой текст подписи), LAYOUT/COMPONENTS дальше.
 
-
-def beside_pos(icon_x, icon_y, icon_sz, pill_h, gap=30):
-    return icon_x + icon_sz + gap, round(icon_y + (icon_sz - pill_h) / 2)
-
-
-m = pinfo["scene2-pill1"]
-X, Y, SZ = 1350, 180, 520
-bx = below_pos(X, SZ, m["pill_w"]); by = Y + SZ + 30
-scene2_icons = [dict(png=f"{ICONS}/scene2-icon1-norm.png", x=X, y=Y, sz=SZ, start=8.3,
-                      label="Добраться до сути", pill_png=f"{WL}/pills/scene2-pill1.png",
-                      pill_w=m["pill_w"], pill_h=m["pill_h"], pill_margin=m["margin"],
-                      pill_bx=bx, pill_by=by, fs=34)]
-
-SZ3 = 330; XL, XR, Y0, Y1 = 60, 1540, 60, 460
-defs3 = [
-    ("scene3-icon1-norm.png", XL, Y0, 7.15, "Болеет каждую осень", "scene3-pill1"),
-    ("scene3-icon2-norm.png", XR, Y0, 12.13, "Слабость после ОРВИ", "scene3-pill2"),
-    ("scene3-icon3-norm.png", XL, Y1, 15.56, "Просто устал", "scene3-pill3"),
-    ("scene3-icon4-norm.png", XR, Y1, 20.81, "Уже принимает БАДы", "scene3-pill4"),
+# Сцена 2 — одна главная мысль сцены → паттерн "единственный акцент",
+# крупный объект у безопасного правого края (аватар слева/по центру кадра).
+SZ2 = 520
+geo2 = single_accent(size=SZ2, top=180, margin=60, side="right")
+content2 = [
+    dict(png="scene2-icon1-norm.png", start=8.3, label="Добраться до сути", pillname="scene2-pill1"),
 ]
-scene3_icons = []
-for png, x, y, st, label, pillname in defs3:
-    mm = pinfo[pillname]
-    bx = below_pos(x, SZ3, mm["pill_w"]); by = y + SZ3 + 30
-    scene3_icons.append(dict(png=f"{ICONS}/{png}", x=x, y=y, sz=SZ3, start=st, label=label,
-                              pill_png=f"{WL}/pills/{pillname}.png", pill_w=mm["pill_w"], pill_h=mm["pill_h"],
-                              pill_margin=mm["margin"], pill_bx=bx, pill_by=by, fs=34))
 
-SZ5 = 110; ICX = 1300
-rows5 = [50, 220, 390, 560]
-defs5 = [
-    (rows5[0], 2.92, "Что именно беспокоит?", "scene5-pill1", "scene5-icon1-norm.png"),
-    (rows5[1], 11.28, "Длительность симптомов", "scene5-pill2", "scene5-icon2-norm.png"),
-    (rows5[2], 14.26, "Приём других препаратов", "scene5-pill3", "scene5-icon3-norm.png"),
-    (rows5[3], 19.86, "Хронические заболевания", "scene5-pill4", "scene5-icon4-norm.png"),
+# Сцена 3 — 4 НЕЗАВИСИМЫХ альтернативных причины (v16: независимые варианты
+# → сетка) → паттерн "сетка 2x2", симметричная по обеим осям.
+SZ3 = 330
+geo3 = grid_2x2(size=SZ3, top=60, margin=60, row_gap=70)
+content3 = [
+    dict(png="scene3-icon1-norm.png", start=7.15, label="Болеет каждую осень", pillname="scene3-pill1"),
+    dict(png="scene3-icon2-norm.png", start=12.13, label="Слабость после ОРВИ", pillname="scene3-pill2"),
+    dict(png="scene3-icon3-norm.png", start=15.56, label="Просто устал", pillname="scene3-pill3"),
+    dict(png="scene3-icon4-norm.png", start=20.81, label="Уже принимает БАДы", pillname="scene3-pill4"),
 ]
-scene5_icons = []
-for y, st, label, pillname, png in defs5:
-    mm = pinfo5[pillname]
-    bx, by = beside_pos(ICX, y, SZ5, mm["pill_h"])
-    scene5_icons.append(dict(png=f"{ICONS}/{png}", x=ICX, y=y, sz=SZ5, start=st, label=label,
-                              pill_png=f"{WL}/pills/{pillname}.png", pill_w=mm["pill_w"], pill_h=mm["pill_h"],
-                              pill_margin=mm["margin"], pill_bx=bx, pill_by=by, fs=28))
 
+# Сцена 5 — чек-лист из 4 ПОСЛЕДОВАТЕЛЬНЫХ вопросов (v16: последовательность
+# → вертикальная колонка) → паттерн "вертикальный список", один x, один шаг.
+SZ5 = 110
+geo5 = vertical_list(n=4, size=SZ5, x=1300, top=50, row_gap=60)
+content5 = [
+    dict(png="scene5-icon1-norm.png", start=2.92, label="Что именно беспокоит?", pillname="scene5-pill1"),
+    dict(png="scene5-icon2-norm.png", start=11.28, label="Длительность симптомов", pillname="scene5-pill2"),
+    dict(png="scene5-icon3-norm.png", start=14.26, label="Приём других препаратов", pillname="scene5-pill3"),
+    dict(png="scene5-icon4-norm.png", start=19.86, label="Хронические заболевания", pillname="scene5-pill4"),
+]
+
+# Сцена 6 — сравнение двух ПРОТИВОПОЛОЖНОСТЕЙ (v16: сравнение → пара
+# слева/справа) → паттерн "симметричная пара", одинаковый отступ от каждого края.
 SZ6 = 470
-defs6 = [
-    ("scene6-icon1-norm.png", 80, 120, 13.79, "Излишняя стимуляция", "scene6-pill1", 472, 89),
-    ("scene6-icon2-norm.png", 1400, 120, 17.2, "Восстановительная поддержка", "scene6-pill2", 627, 89),
+geo6 = comparison_pair(size=SZ6, top=120, margin=80)
+content6 = [
+    dict(png="scene6-icon1-norm.png", start=13.79, label="Излишняя стимуляция", pillname="scene6-pill1"),
+    dict(png="scene6-icon2-norm.png", start=17.2, label="Восстановительная поддержка", pillname="scene6-pill2"),
 ]
-scene6_icons = []
-for png, x, y, st, label, pillname, pw, ph in defs6:
-    bx = below_pos(x, SZ6, pw); by = 620
-    scene6_icons.append(dict(png=f"{ICONS}/{png}", x=x, y=y, sz=SZ6, start=st, label=label,
-                              pill_png=f"{WL}/pills/{pillname}.png", pill_w=pw, pill_h=ph,
-                              pill_margin=40, pill_bx=bx, pill_by=by, fs=34))
+
+
+def assemble(geo, size, content, pinfo_map, fs, label_mode):
+    """LAYOUT (geo, формула) + CONTENT (content, из сценария) -> COMPONENTS
+    (иконка+подпись как единый компонент, п.4: одинаковый размер, одинаковое
+    выравнивание подписи внутри всей группы)."""
+    icons = []
+    for geo_item, c in zip(geo, content):
+        x, y = geo_item["x"], geo_item["y"]
+        mm = pinfo_map[c["pillname"]]
+        if label_mode == "below":
+            bx = below_pos(x, size, mm["pill_w"]); by = y + size + 30
+        else:
+            bx, by = beside_pos(x, y, size, mm["pill_h"])
+        icons.append(dict(png=f"{ICONS}/{c['png']}",
+                           x=x, y=y, sz=size, start=c["start"], label=c["label"],
+                           pill_png=f"{WL}/pills/{c['pillname']}.png", pill_w=mm["pill_w"], pill_h=mm["pill_h"],
+                           pill_margin=mm["margin"], pill_bx=bx, pill_by=by, fs=fs))
+    return icons
+
+
+scene2_icons = assemble(geo2, SZ2, content2, pinfo, fs=34, label_mode="below")
+scene3_icons = assemble(geo3, SZ3, content3, pinfo, fs=34, label_mode="below")
+scene5_icons = assemble(geo5, SZ5, content5, pinfo5, fs=28, label_mode="beside")
+scene6_icons = assemble(geo6, SZ6, content6, pinfo, fs=34, label_mode="below")
 
 ICON_SCENES = {2: scene2_icons, 3: scene3_icons, 5: scene5_icons, 6: scene6_icons}
 CKEY = "colorkey=0xE91E8F:0.35:0.12"
