@@ -1,21 +1,23 @@
 """
-Финальная сборка — ЧИСТЫЙ RESET (17.09.2026, по прямому запросу пользователя:
-"полностью удалить из рабочего pipeline все ранее заложенные design/layout
-rules"). Здесь НЕТ визуального design-слоя: ни иконок, ни заголовков, ни
-карточек, ни чек-листов, ни какого-либо layout engine. Только то, что явно
-названо каноном и не подлежит удалению:
+Финальная сборка — новая визуальная система (17.09.2026 (7), спроектирована
+с нуля после RESET по мастер-промпту "новая visual system с нуля"). Канон
+(не тронут этим этапом):
 
   1. Ken Burns (+punch-in) на аватаре.
   2. Переходы между сценами (crossfade).
   3. Субтитры (crop-маска караоке, синхронизация по словам).
 
-Новая визуальная система будет спроектирована отдельным этапом — см.
-чат/CLAUDE.md, запись 17.09.2026 "RESET COMPLETE". До этого момента в этом
-файле сознательно НЕТ presentation-слоя.
+Плюс новый presentation-слой — `render/visual/` (CONTENT -> SEMANTIC ->
+VISUAL_CONCEPT -> COMPOSITION -> LAYOUT -> VALIDATION -> RENDER, см.
+`render/visual/README.md`). Это typography-driven editorial-графика
+(заголовки/списки/чек-листы/сравнения), а НЕ возврат старых icon+pill/card
+решений — они удалены из истории 17.09.2026 и не переиспользуются.
 """
 import json
 import os
 import subprocess
+
+from visual.render_visual_layer import build_all as build_visual_layer
 
 RENDER = os.path.dirname(os.path.abspath(__file__))
 WL = RENDER
@@ -25,6 +27,9 @@ FINAL_SCENES = "/tmp/final-scenes"
 
 with open(f"{WL}/word_layout.json", encoding="utf-8") as f:
     manifest = json.load(f)
+
+VIS_DIR = f"{RENDER}/visual_assets"
+visual_manifest = build_visual_layer(VIS_DIR)
 PANEL = manifest["panel"]
 SCENES_WL = manifest["scenes"]
 FONTSIZE = 40
@@ -242,8 +247,39 @@ for idx, (ci, w) in enumerate(all_words):
     fc2.append(f"[{prev}][{crop_label}]overlay={crop_x}:{crop_y}:enable='{wcond}'[{nxt}]")
     prev = nxt
 
-# ---------- КОНЕЦ. Presentation-слоя (заголовки/иконки/карточки/чек-листы/
-# сравнения/layout engine) здесь сознательно НЕТ — см. докстринг файла. ----------
+# ---------- шаг 5: visual layer (render/visual/ — CONTENT -> SEMANTIC ->
+# VISUAL_CONCEPT -> COMPOSITION -> LAYOUT -> VALIDATION -> RENDER). Каждый
+# элемент — заранее провалидированный PNG (safe zones уже гарантированы
+# validate.py), появляется fade-in в свой триггер (реальный тайминг слова
+# диктора) и гаснет fade-out либо когда его сменяет вторая стадия
+# (keyword_emphasis), либо на границе "тихой зоны" перехода (тот же принцип,
+# что уже применяется к субтитрам выше — никогда не режется жёстко на
+# кроссфейде). ----------
+next_input_idx = 2  # 0=combined_video, 1=lavfi canvas
+vis_k = 0
+for n in scenes:
+    for el in visual_manifest["scenes"][n]["elements"]:
+        inputs += ["-loop", "1", "-i", f"{VIS_DIR}/{el['file']}"]
+        img_idx = next_input_idx
+        next_input_idx += 1
+
+        start = max(g0[n] + el["trigger"], cap_start_global[n])
+        end = (g0[n] + el["fade_out"]) if el["fade_out"] is not None else cap_end_global[n]
+        end = max(end, start + 0.5)
+        fade_out_st = max(start + 0.1, end - 0.3)
+
+        raw = f"visraw{vis_k}"
+        fc2.append(f"[{img_idx}:v]format=rgba[{raw}]")
+        faded = f"visfade{vis_k}"
+        fc2.append(
+            f"[{raw}]fade=t=in:st={start:.3f}:d=0.3:alpha=1,"
+            f"fade=t=out:st={fade_out_st:.3f}:d=0.3:alpha=1[{faded}]"
+        )
+        nxt = f"visov{vis_k}"
+        fc2.append(f"[{prev}][{faded}]overlay={el['x']}:{el['y']}:enable='between(t,{start:.3f},{end:.3f})'[{nxt}]")
+        prev = nxt
+        vis_k += 1
+
 filter_complex = ";\n".join(fc2)
 final_out = f"{OUT_DIR}/full-trend-video.mp4"
 cmd = ["ffmpeg", "-y"] + inputs + [

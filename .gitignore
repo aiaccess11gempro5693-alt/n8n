@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 render/pills/
+render/visual_assets/
 render/text/
 render/word_layout.json
 render/scene-*.mp4
