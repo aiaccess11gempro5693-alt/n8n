@@ -1,37 +1,19 @@
 """
-CONTENT ANALYSIS -> LAYOUT SELECTION (design-system.md, "2. Адаптивный выбор
-layout"). Правила по типу+количеству пунктов, без ML — ровно то, что просили:
-"понятная система правил", не имитация понимания текста.
-
-select_layout() возвращает ИМЯ паттерна, а не координаты — geometry считает
-compose_scene.py по этому имени. Если сцена сменит тип содержания в будущем
-сценарии, этот код сам подберёт другой layout — не нужно вручную прописывать
-geo<N> под номер сцены, как было в render/legacy/layout_engine.py.
+CONTENT ANALYSIS -> LAYOUT SELECTION по `information_structure` (design-
+system.md, "2. Адаптивный выбор layout") — не по номеру сцены. Каждый
+паттерн ниже реализован в compose_scene.py как отдельная функция.
 """
 
 
 def select_layout(structure):
-    t = structure["type"]
-    items = structure.get("items")
-    n = len(items) if items else 0
-
-    if t == "highlight":
-        return "highlight_center"
-    if t == "key_point":
-        return "key_point_accent"
-    if t == "comparison":
-        return "comparison_pair"
-    if t == "process":
-        return "process_row"
-    if t == "checklist":
-        return "checklist_block"
-    if t == "cards":
-        # 1-2 пункта -> компактный акцент, не сетка ради сетки;
-        # 3-4 -> сетка 2x2 (независимые варианты, порядок не важен);
-        # 5+ -> перечень плотнее читается как структурированный список.
-        if n <= 2:
-            return "key_point_accent"
-        if n <= 4:
-            return "cards_grid"
-        return "checklist_block"
-    raise ValueError(f"unknown content type: {t}")
+    s = structure["information_structure"]
+    mapping = {
+        "sequence_statement": "full_bleed_statement",
+        "single_thesis": "single_statement",
+        "independent_causes": "annotated_grid",
+        "sequential_checklist": "slim_checklist_block",
+        "comparison": "split_comparison_layout",
+    }
+    if s not in mapping:
+        raise ValueError(f"unknown information_structure: {s}")
+    return mapping[s]

@@ -29,6 +29,11 @@ ICON_SIZE = {"sm": 64, "md": 120, "lg": 170}
 # на фигуру, а не чтобы обходить свободные углы по одному и тому же шаблону.
 AVATAR_SAFE_ZONE = {"x0": 640, "x1": 1290, "y0": 0, "y1": 1080}
 
+# Геометрия плашки субтитров (compute_word_layout.py: PANEL_X/Y/W/H) —
+# presentation-слой обязан НЕ залезать в эту зону (design-system.md, "12.
+# Subtitle panel"), а не просто полагаться на то, что раньше не пересекались.
+SUBTITLE_SAFE_ZONE = {"x0": 310, "x1": 1610, "y0": 900, "y1": 1050}
+
 LEFT_ZONE_X0, LEFT_ZONE_X1 = SAFE_MARGIN, AVATAR_SAFE_ZONE["x0"] - COLUMN_GAP // 2
 RIGHT_ZONE_X0, RIGHT_ZONE_X1 = AVATAR_SAFE_ZONE["x1"] + COLUMN_GAP // 2, FRAME_W - SAFE_MARGIN
 
@@ -37,16 +42,20 @@ KEY_COLOR = (233, 30, 143)
 KEY_SIMILARITY = 0.35
 KEY_BLEND = 0.12
 
-# Палитра — design-system.md, раздел 1 ("на живом видео — тёмная/насыщенная пара")
+# Палитра — design-system.md, раздел 1. Editorial-стиль (17.09.2026, редизайн
+# по прямой жалобе "выглядит как UI dashboard") — текст ложится прямо на
+# видео (мягкий scrim-градиент для читаемости), не в закрашенную рамку.
 TEAL = (33, 110, 113, 255)
 CORAL = (224, 93, 66, 255)
 INK = (43, 47, 51, 255)
 PAPER = (247, 249, 251, 255)
 WHITE = (255, 255, 255, 255)
+SCRIM = (10, 12, 14)
 
-TITLE_FS = 40
+TITLE_FS = 44
 EYEBROW_FS = 24
-CARD_LABEL_FS = 30
+BULLET_FS = 32
+ANNOTATION_FS = 28
 CHECKLIST_FS = 30
-COMPARISON_LABEL_FS = 32
-HIGHLIGHT_FS = 52
+COMPARISON_LABEL_FS = 36
+HIGHLIGHT_FS = 56

@@ -1,18 +1,20 @@
 """
-Финальная сборка (шаг 5, заменяет build_concat_cmd.py) — 17.09.2026,
-"современный монтаж" вместо голых наложений (см. design-system.md, раздел
-"Динамика кадра и переходы (17.09.2026)"):
-  A. Ken Burns (медленный зум на аватаре весь ролик).
-  B. punch-in на 1-2 ключевых репликах за ролик (не на каждой сцене).
-  C. заголовок — overshoot-scale вместо слайда (иконки/подписи — слайд, как раньше).
-  D. переход между сценами не показывает тексты двух сцен одновременно —
-     текст гаснет ДО перехода, кроссфейдится только видео, текст следующей
-     сцены появляется ПОСЛЕ перехода.
-Субтитры — через ту же crop-маску, что и раньше (без "двоения" слов).
+Финальная сборка — единый presentation-слой (design-system.md, "9.
+Композиционный движок" + переработка 17.09.2026 (5): editorial-стиль вместо
+"иконка+тёмная карточка"). Всё, что раньше было отдельно "иконки-стикеры на
+data-сценах" (шаг 2, ffmpeg dilation-фильтры) и "заголовки" (шаг 6, pill-бейдж
+в (60,60) из render_headlines.py) — теперь ОДИН проход: presentation/compose_scene.py
+собирает для КАЖДОЙ из 8 сцен готовый набор PNG-слоёв (statement/annotated
+grid/checklist/comparison — что уместно по смыслу сцены), этот скрипт только
+накладывает их на общий таймлайн с той же "тихой зоной" вокруг переходов, что
+и субтитры.
 
-Под новый сценарий правь: PUNCH{}, ICON_SCENES (иконки те же, что раньше
-задавались в render_icon_scenes.py), HEADLINE_PLAN берётся из
-render_headlines.py как раньше.
+Сохранено без изменений: Ken Burns/punch-in на аватаре, переходы между
+сценами, субтитры (crop-маска караоке).
+
+Legacy (не используется в этом пути, оставлено в render/legacy/ для
+истории): layout_engine.py (вчерашний движок координат), render_headlines.py
+(PLAN — заменён content_model.py), render_icon_scenes.py, render_scenes.sh.
 """
 import json
 import os
@@ -24,12 +26,9 @@ WL = RENDER
 OUT_DIR = RENDER
 FONT = f"{RENDER}/fonts/Inter-Bold.otf"
 FINAL_SCENES = "/tmp/final-scenes"
-ICONS = "/home/user/n8n/scratch"
 
 sys.path.insert(0, RENDER)
-from pill_gen_all import rounded_pill, TEAL, CORAL  # noqa: E402
-from render_headlines import PLAN as HEADLINE_PLAN  # noqa: E402
-from layout_engine import single_accent, grid_2x2, vertical_list, comparison_pair, below_pos, beside_pos  # noqa: E402
+from presentation.compose_scene import compose_scene  # noqa: E402
 
 with open(f"{WL}/word_layout.json", encoding="utf-8") as f:
     manifest = json.load(f)
@@ -73,7 +72,7 @@ print("durations:", durs)
 
 PUNCH = {1: 1.122, 8: 2.614}  # секунда триггерного слова для punch-in
 
-# ---------- шаг 1: Ken Burns (+punch) на каждый сырой клип аватара ----------
+# ---------- шаг 1: Ken Burns (+punch) на каждый сырой клип аватара (канон, не менялся) ----------
 kb_paths = {}
 for n in scenes:
     D = durs[n]
@@ -94,161 +93,13 @@ for n in scenes:
     ], f"scene{n} ken burns" + (" + punch" if n in PUNCH else ""))
     kb_paths[n] = out_path
 
-# ---------- шаг 2: иконки-стикеры на data-сценах (2,3,5,6) ----------
-with open(f"{WL}/pills/pill_info.json") as f:
-    pinfo = json.load(f)
-with open(f"{WL}/pills/pill_info5.json") as f:
-    pinfo5 = json.load(f)
+# presentation-слой (иконки/statement/checklist/comparison) больше НЕ
+# запекается в клип каждой сцены по отдельности — он идёт единым проходом
+# ПОСЛЕ crossfade (шаг 6 ниже), на общем таймлайне, с той же "тихой зоной"
+# вокруг переходов, что и субтитры. video_paths = kb_paths напрямую.
+video_paths = kb_paths
 
-
-# ---------- раскладка через композиционный движок (design-system.md, 4.1) ----------
-# Паттерн выбирается по СМЫСЛУ содержимого сцены (правило v16, теперь общий
-# принцип), геометрия внутри паттерна считается формулой layout_engine, а не
-# подбирается на глаз по каждой иконке отдельно. Ниже — только CONTENT (что
-# показать, на каком слове, какой текст подписи), LAYOUT/COMPONENTS дальше.
-
-# Сцена 2 — одна главная мысль сцены → паттерн "единственный акцент",
-# крупный объект у безопасного правого края (аватар слева/по центру кадра).
-SZ2 = 520
-geo2 = single_accent(size=SZ2, top=180, margin=60, side="right")
-content2 = [
-    dict(png="scene2-icon1-norm.png", start=8.3, label="Добраться до сути", pillname="scene2-pill1"),
-]
-
-# Сцена 3 — 4 НЕЗАВИСИМЫХ альтернативных причины (v16: независимые варианты
-# → сетка) → паттерн "сетка 2x2", симметричная по обеим осям.
-SZ3 = 330
-geo3 = grid_2x2(size=SZ3, top=60, margin=60, row_gap=70)
-content3 = [
-    dict(png="scene3-icon1-norm.png", start=7.15, label="Болеет каждую осень", pillname="scene3-pill1"),
-    dict(png="scene3-icon2-norm.png", start=12.13, label="Слабость после ОРВИ", pillname="scene3-pill2"),
-    dict(png="scene3-icon3-norm.png", start=15.56, label="Просто устал", pillname="scene3-pill3"),
-    dict(png="scene3-icon4-norm.png", start=20.81, label="Уже принимает БАДы", pillname="scene3-pill4"),
-]
-
-# Сцена 5 — чек-лист из 4 ПОСЛЕДОВАТЕЛЬНЫХ вопросов (v16: последовательность
-# → вертикальная колонка) → паттерн "вертикальный список", один x, один шаг.
-SZ5 = 110
-geo5 = vertical_list(n=4, size=SZ5, x=1300, top=50, row_gap=60)
-content5 = [
-    dict(png="scene5-icon1-norm.png", start=2.92, label="Что именно беспокоит?", pillname="scene5-pill1"),
-    dict(png="scene5-icon2-norm.png", start=11.28, label="Длительность симптомов", pillname="scene5-pill2"),
-    dict(png="scene5-icon3-norm.png", start=14.26, label="Приём других препаратов", pillname="scene5-pill3"),
-    dict(png="scene5-icon4-norm.png", start=19.86, label="Хронические заболевания", pillname="scene5-pill4"),
-]
-
-# Сцена 6 — сравнение двух ПРОТИВОПОЛОЖНОСТЕЙ (v16: сравнение → пара
-# слева/справа) → паттерн "симметричная пара", одинаковый отступ от каждого края.
-SZ6 = 470
-geo6 = comparison_pair(size=SZ6, top=120, margin=80)
-content6 = [
-    dict(png="scene6-icon1-norm.png", start=13.79, label="Излишняя стимуляция", pillname="scene6-pill1"),
-    dict(png="scene6-icon2-norm.png", start=17.2, label="Восстановительная поддержка", pillname="scene6-pill2"),
-]
-
-
-def assemble(geo, size, content, pinfo_map, fs, label_mode):
-    """LAYOUT (geo, формула) + CONTENT (content, из сценария) -> COMPONENTS
-    (иконка+подпись как единый компонент, п.4: одинаковый размер, одинаковое
-    выравнивание подписи внутри всей группы)."""
-    icons = []
-    for geo_item, c in zip(geo, content):
-        x, y = geo_item["x"], geo_item["y"]
-        mm = pinfo_map[c["pillname"]]
-        if label_mode == "below":
-            bx = below_pos(x, size, mm["pill_w"]); by = y + size + 30
-        else:
-            bx, by = beside_pos(x, y, size, mm["pill_h"])
-        icons.append(dict(png=f"{ICONS}/{c['png']}",
-                           x=x, y=y, sz=size, start=c["start"], label=c["label"],
-                           pill_png=f"{WL}/pills/{c['pillname']}.png", pill_w=mm["pill_w"], pill_h=mm["pill_h"],
-                           pill_margin=mm["margin"], pill_bx=bx, pill_by=by, fs=fs))
-    return icons
-
-
-scene2_icons = assemble(geo2, SZ2, content2, pinfo, fs=34, label_mode="below")
-scene3_icons = assemble(geo3, SZ3, content3, pinfo, fs=34, label_mode="below")
-scene5_icons = assemble(geo5, SZ5, content5, pinfo5, fs=28, label_mode="beside")
-scene6_icons = assemble(geo6, SZ6, content6, pinfo, fs=34, label_mode="below")
-
-ICON_SCENES = {2: scene2_icons, 3: scene3_icons, 5: scene5_icons, 6: scene6_icons}
-CKEY = "colorkey=0xE91E8F:0.35:0.12"
-
-
-def render_icons(scene_n, icons, base_path, out_path, D):
-    inputs = ["-i", base_path]
-    for ic in icons:
-        inputs += ["-i", ic["png"]]
-    for ic in icons:
-        inputs += ["-i", ic["pill_png"]]
-    n = len(icons)
-    fc = []
-    for i, ic in enumerate(icons):
-        idx = i + 1
-        fc.append(f"[{idx}:v]scale={ic['sz']}:{ic['sz']},{CKEY},eq=saturation=1.4:contrast=1.1:brightness=0.03,format=rgba,split=2[icon{idx}clean_a][icon{idx}clean_b]")
-        fc.append(f"[icon{idx}clean_a]alphaextract,split=2[mask{idx}_a][mask{idx}_b]")
-        fc.append(f"[mask{idx}_a]" + ",".join(["dilation"] * 7) + f"[mask{idx}_outline]")
-        fc.append(f"[mask{idx}_b]" + ",".join(["dilation"] * 10) + f",gblur=sigma=6[mask{idx}_shadow]")
-        fc.append(f"color=0xFFFFFF:s={ic['sz']}x{ic['sz']}[white{idx}]")
-        fc.append(f"[white{idx}][mask{idx}_outline]alphamerge[outline{idx}]")
-        fc.append(f"color=0x000000:s={ic['sz']}x{ic['sz']}[black{idx}]")
-        fc.append(f"[black{idx}][mask{idx}_shadow]alphamerge,colorchannelmixer=aa=0.45[shadow{idx}]")
-    fc.append("[0:v]scale=1920:1080[base]")
-    prev = "base"
-    for i, ic in enumerate(icons):
-        idx = i + 1
-        Xc, Yc, ST = ic["x"], ic["y"], ic["start"]
-        ease = f"max(0,1-(t-{ST})/0.35)"
-        nxt = f"s{idx}a"
-        fc.append(f"[{prev}][shadow{idx}]overlay=x={Xc}+10:y='{Yc}+14-40*{ease}':enable='gte(t,{ST})'[{nxt}]")
-        prev = nxt
-        nxt = f"s{idx}b"
-        fc.append(f"[{prev}][outline{idx}]overlay=x={Xc}:y='{Yc}-40*{ease}':enable='gte(t,{ST})'[{nxt}]")
-        prev = nxt
-        nxt = f"s{idx}c"
-        fc.append(f"[{prev}][icon{idx}clean_b]overlay=x={Xc}:y='{Yc}-40*{ease}':enable='gte(t,{ST})'[{nxt}]")
-        prev = nxt
-    for i, ic in enumerate(icons):
-        idx = i + 1
-        pin = f"{n + idx}:v"
-        PST = round(ic["start"] + 0.15, 3)
-        pease = f"max(0,1-(t-{PST})/0.3)"
-        BX, BY, PW, PH = ic["pill_bx"], ic["pill_by"], ic["pill_w"], ic["pill_h"]
-        MARGIN = ic["pill_margin"]
-        OX, OY = BX - MARGIN, BY - MARGIN
-        nxt = f"p{idx}a"
-        fc.append(f"[{prev}][{pin}]overlay=x={OX}:y='{OY}-30*{pease}':enable='gte(t,{PST})'[{nxt}]")
-        prev = nxt
-        nxt = f"p{idx}b"
-        label_esc = ic["label"].replace("'", r"\'").replace(":", r"\:")
-        fc.append(
-            f"[{prev}]drawtext=fontfile={FONT}:fontcolor=white:fontsize={ic['fs']}:text='{label_esc}':"
-            f"shadowcolor=black@0.35:shadowx=1:shadowy=1:"
-            f"x={BX}+({PW}-text_w)/2:y='{BY}+({PH}-text_h)/2-30*{pease}':"
-            f"enable='gte(t,{PST})':alpha='min((t-{PST})/0.25\\,1)'[{nxt}]"
-        )
-        prev = nxt
-    filter_complex = ";\n".join(fc)
-    cmd = ["ffmpeg", "-y"] + inputs + [
-        "-filter_complex", filter_complex,
-        "-map", f"[{prev}]", "-map", "0:a", "-t", str(D),
-        "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-r", "25",
-        "-c:a", "copy",
-        out_path,
-    ]
-    run(cmd, f"scene{scene_n} icon overlay")
-
-
-video_paths = {}
-for n in scenes:
-    if n in ICON_SCENES:
-        out_path = f"{OUT_DIR}/video-scene-{n}.mp4"
-        render_icons(n, ICON_SCENES[n], kb_paths[n], out_path, durs[n])
-        video_paths[n] = out_path
-    else:
-        video_paths[n] = kb_paths[n]
-
-# ---------- шаг 3: crossfade всех 8 видео-слоёв (БЕЗ текста) ----------
+# ---------- шаг 2: crossfade всех 8 видео-слоёв (БЕЗ текста) ----------
 inputs = []
 for n in scenes:
     inputs += ["-i", video_paths[n]]
@@ -289,7 +140,7 @@ run([
     combined_video,
 ], "crossfade combine (8 scenes)")
 
-# ---------- шаг 4: границы "текст должен молчать" вокруг каждого перехода ----------
+# ---------- шаг 3: границы "текст должен молчать" вокруг каждого перехода (канон) ----------
 TEXT_OUT_BEFORE = 0.35
 TEXT_IN_AFTER = 0.10
 
@@ -309,9 +160,9 @@ for idx, n in enumerate(scenes):
 cap_start_global = {n: g0[n] + local_start_delay[n] for n in scenes}
 cap_end_global = {n: g0[n] + local_end_cut[n] for n in scenes}
 for n in scenes:
-    print(f"scene {n}: g0={g0[n]:.3f} text_window=[{cap_start_global[n]:.3f}, {cap_end_global[n]:.3f}]")
+    print(f"scene {n}: g0={g0[n]:.3f} quiet_zone=[{cap_start_global[n]:.3f}, {cap_end_global[n]:.3f}]")
 
-# ---------- шаг 5: субтитры (crop-маска) по всем 8 сценам на общем таймлайне ----------
+# ---------- шаг 4: субтитры (crop-маска) по всем 8 сценам на общем таймлайне (канон) ----------
 cap_chunks = []
 for n in scenes:
     chunks = SCENES_WL[str(n)]["chunks"]
@@ -400,61 +251,48 @@ for idx, (ci, w) in enumerate(all_words):
     fc2.append(f"[{prev}][{crop_label}]overlay={crop_x}:{crop_y}:enable='{wcond}'[{nxt}]")
     prev = nxt
 
-# ---------- шаг 6: заголовки (overshoot-scale), по PLAN из render_headlines.py,
-# переведённые на глобальное время и обрезанные под "тихую" зону перехода ----------
-pill_inputs = []
-for n in scenes:
-    for i, seg in enumerate(HEADLINE_PLAN[n]):
-        start = seg["start"] + g0[n]
-        start = max(start, cap_start_global[n])
-        end = seg.get("end")
-        if end is None:
-            end = cap_end_global[n]
-        else:
-            end = min(end + g0[n], cap_end_global[n])
-        if end <= start:
-            continue
-        name = f"h{n}-{i}"
-        meta = rounded_pill(f"{OUT_DIR}/{name}.png", seg["text"], seg["fs"], seg["color"], pad_x=40, pad_y=22)
-        pill_inputs.append((f"{OUT_DIR}/{name}.png", meta, seg["text"], seg["fs"], start, end))
+# ---------- шаг 5: presentation-слой (headline/statement/annotated grid/
+# checklist/comparison — что уместно по смыслу каждой сцены), на глобальном
+# таймлайне, обрезано под ту же "тихую" зону, что и субтитры/раньше заголовки.
+# Каждый layer — уже полностью отрисованный PIL PNG (текст+иконка+scrim
+# запечены внутри), ffmpeg только накладывает его с плавным fade+лёгким
+# подъездом снизу (design-system.md, '13. Timing' — спокойный motion, не
+# "стикер поп-ин") ----------
+PRES_DIR = f"{RENDER}/presentation_out"
+os.makedirs(PRES_DIR, exist_ok=True)
 
-for p, *_ in pill_inputs:
+pres_layers = []  # (path, x, y, global_start, global_end)
+for n in scenes:
+    layout, layers = compose_scene(n)
+    print(f"scene {n}: presentation layout={layout}, {len(layers)} layer(s)")
+    for i, l in enumerate(layers):
+        path = f"{PRES_DIR}/p{n}-{i}.png"
+        l.image.save(path)
+        gs = max(g0[n] + l.start, cap_start_global[n])
+        ge = (g0[n] + l.end) if l.end is not None else cap_end_global[n]
+        ge = min(ge, cap_end_global[n])
+        if ge <= gs:
+            print(f"  !! слой {i} сцены {n} вне тихой зоны, пропущен (gs={gs:.3f} ge={ge:.3f})")
+            continue
+        pres_layers.append((path, l.x, l.y, gs, ge))
+
+for p, *_ in pres_layers:
     inputs += ["-i", p]
 
-SLIDE_OVERSHOOT = 1.14
-POP1 = 0.16
-POP2 = 0.30
-
-for idx, (p, meta, text, fs, start, end) in enumerate(pill_inputs):
+FADE = 0.3
+RISE = 18
+for idx, (p, X, Y, GS, GE) in enumerate(pres_layers):
     pin_idx = idx + 2  # 0 = combined_video, 1 = прозрачный холст
-    OW, OH = meta["outer_w"], meta["outer_h"]
-    bx, by = 60, 60
-    margin = meta["margin"]
-    ox, oy = bx - margin, by - margin
-    cond = f"between(t,{start},{end})"
-    s_expr = (
-        f"if(lt(t,{start}),0,"
-        f"if(lt(t,{start}+{POP1}),(t-{start})/{POP1}*{SLIDE_OVERSHOOT},"
-        f"if(lt(t,{start}+{POP2}),{SLIDE_OVERSHOOT}-(t-{start}-{POP1})/({POP2}-{POP1})*({SLIDE_OVERSHOOT}-1.0),1.0)))"
-    )
-    scaled = f"pillscaled{idx}"
-    fc2.append(f"[{pin_idx}:v]scale=w='trunc({OW}*({s_expr}))':h='trunc({OH}*({s_expr}))':eval=frame[{scaled}]")
-    nxt = f"hd{idx}"
+    ease_in = f"max(0,1-(t-{GS})/{FADE})"
+    faded = f"pf{idx}"
     fc2.append(
-        f"[{prev}][{scaled}]overlay="
-        f"x='{ox}+({OW}-{OW}*({s_expr}))/2':y='{oy}+({OH}-{OH}*({s_expr}))/2':"
-        f"enable='{cond}'[{nxt}]"
+        f"[{pin_idx}:v]format=rgba,"
+        f"fade=t=in:st={GS}:d={FADE}:alpha=1,"
+        f"fade=t=out:st={GE - FADE}:d={FADE}:alpha=1[{faded}]"
     )
+    nxt = f"pv{idx}"
+    fc2.append(f"[{prev}][{faded}]overlay=x={X}:y='{Y}+{RISE}*{ease_in}':enable='between(t,{GS},{GE})'[{nxt}]")
     prev = nxt
-    text_esc = text.replace("'", r"\'").replace(":", r"\:")
-    nxt2 = f"hdt{idx}"
-    fc2.append(
-        f"[{prev}]drawtext=fontfile={FONT}:fontcolor=white:fontsize={fs}:text='{text_esc}':"
-        f"shadowcolor=black@0.35:shadowx=1:shadowy=1:"
-        f"x={bx}+({meta['pill_w']}-text_w)/2:y={by}+({meta['pill_h']}-text_h)/2:"
-        f"enable='{cond}':alpha='min((t-{start})/0.2\\,1)'[{nxt2}]"
-    )
-    prev = nxt2
 
 filter_complex = ";\n".join(fc2)
 final_out = f"{OUT_DIR}/full-trend-video.mp4"
@@ -465,5 +303,5 @@ cmd = ["ffmpeg", "-y"] + inputs + [
     "-c:a", "aac", "-b:a", "192k",
     final_out,
 ]
-run(cmd, "final text pass (8 scenes)")
+run(cmd, "final presentation-layer pass (8 scenes)")
 print("DONE ->", final_out)

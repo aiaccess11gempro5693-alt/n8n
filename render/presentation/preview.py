@@ -16,7 +16,7 @@ from presentation.compose_scene import compose_scene  # noqa: E402
 
 OUT_DIR = "/tmp/presentation-preview"
 FINAL_SCENES = "/tmp/final-scenes"
-FRAME_AT = {2: 8.8, 3: 21.5, 5: 20.5, 6: 18.0}  # момент, когда видно максимум слоёв сцены
+FRAME_AT = {1: 3.0, 2: 5.0, 3: 21.5, 5: 20.5, 6: 18.0}  # момент, когда видно максимум слоёв сцены
 
 
 def grab_frame(scene_n, t, out_path):
