@@ -259,7 +259,7 @@ next_input_idx = 2  # 0=combined_video, 1=lavfi canvas
 vis_k = 0
 for n in scenes:
     for el in visual_manifest["scenes"][n]["elements"]:
-        inputs += ["-loop", "1", "-i", f"{VIS_DIR}/{el['file']}"]
+        inputs += ["-loop", "1", "-t", f"{combined_dur:.3f}", "-i", f"{VIS_DIR}/{el['file']}"]
         img_idx = next_input_idx
         next_input_idx += 1
 
@@ -285,9 +285,10 @@ final_out = f"{OUT_DIR}/full-trend-video.mp4"
 cmd = ["ffmpeg", "-y"] + inputs + [
     "-filter_complex", filter_complex,
     "-map", f"[{prev}]", "-map", "0:a",
+    "-t", f"{combined_dur:.3f}",  # safety cap: выход не может быть длиннее канона, что бы ни было в графе
     "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p", "-r", "25",
     "-c:a", "aac", "-b:a", "192k",
     final_out,
 ]
-run(cmd, "final pass: Ken Burns + переходы + субтитры, без presentation-слоя")
+run(cmd, "final pass: Ken Burns + переходы + субтитры + visual layer")
 print("DONE ->", final_out)
