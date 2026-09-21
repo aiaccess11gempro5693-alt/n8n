@@ -53,7 +53,23 @@ growing the canvas, so no caller/layout math changes. `_draw_text_shadow`
 still runs first (harmless now that it lands on an opaque fill, kept so
 components don't need a separate code path) but is no longer what makes
 text legible — the card is.
+
+21.09.2026 (7) — the flat CARD_TEXT_FILL colour (tried near-black, warm
+brown, teal, solid accent-coral — each rejected in turn) is replaced by a
+GENERATED texture (`assets/card_texture.png`, produced once via the real
+Nano Banana pipeline with a proper design brief — see git log — not
+regenerated per scene/per render, a one-time approved "design system"
+asset like the project's original Step 0). Direct user instruction: card
+plates should themselves be generated, matching the same "kit" as the
+photorealistic illustrations, not a flat programmatic colour. The border
+is now semi-transparent per the same instruction ("полупрозрачная
+окантовка"). Text itself (the words) is still drawn by code, not baked
+into the generated image — the project's own ТЗ п.4 rule ("текст не
+рисуется заранее на изображениях") and avoids generative text-garbling
+risk; only the card's BACKGROUND texture is generated.
 """
+import os
+
 from PIL import Image, ImageDraw, ImageFilter
 from . import style as S
 
@@ -64,12 +80,34 @@ CARD_SHADOW_BLUR = 22
 CARD_SHADOW_OFFSET = 12
 CARD_SHADOW_COLOR = (5, 6, 8, 150)
 
-CARD_TEXT_FILL = (18, 52, 55, 255)      # deep teal, fully opaque — a genuine, recognizable COLOR (not a near-black neutral, which read as "still basically black" even after the first attempt to warm it up). Complementary-contrast pairing with the coral #FF6B4A accent/border (classic coral+teal combination) and echoes the teal accent bar already used on the subtitle panel elsewhere in this same video (build_trend_video.py ACCENT=0x2A7F82) — ties the whole video's palette together instead of introducing a third, unrelated hue.
+_ASSETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+_CARD_TEXTURE = Image.open(os.path.join(_ASSETS_DIR, "card_texture.png")).convert("RGBA")
+
 CARD_TEXT_INSET = 10                     # gap from the PAD-bounded canvas edge to the card's own edge — stays inside the existing PAD reserve, canvas size unchanged
 CARD_TEXT_BORDER = 3
+CARD_TEXT_BORDER_COLOR = (255, 255, 255, 130)   # semi-transparent white ring, per direct instruction
 CARD_TEXT_SHADOW_BLUR = 10
 CARD_TEXT_SHADOW_OFFSET = 5
 CARD_TEXT_SHADOW_COLOR = (5, 6, 8, 130)
+
+
+def _texture_fill(w, h):
+    """Crops/resizes the generated card texture to exactly (w, h). The
+    source is a smooth low-frequency gradient (no sharp detail), so a
+    plain resize holds up at any target aspect ratio without visible
+    stretch artifacts — unlike a sharp-edged design, which would need
+    9-slice scaling."""
+    tw, th = _CARD_TEXTURE.size
+    src_ratio, dst_ratio = tw / th, w / h
+    if src_ratio > dst_ratio:
+        new_w = int(th * dst_ratio)
+        x0 = (tw - new_w) // 2
+        crop = _CARD_TEXTURE.crop((x0, 0, x0 + new_w, th))
+    else:
+        new_h = int(tw / dst_ratio)
+        y0 = (th - new_h) // 2
+        crop = _CARD_TEXTURE.crop((0, y0, tw, y0 + new_h))
+    return crop.resize((int(w), int(h)))
 
 
 def _sz(v, scale):
@@ -143,10 +181,13 @@ def _wrap_in_card(canvas, scale=1.0):
     )
     base.alpha_composite(shadow_layer.filter(ImageFilter.GaussianBlur(blur / 2)))
 
-    ImageDraw.Draw(base).rounded_rectangle([inset, inset, w - inset, h - inset], radius=radius, fill=CARD_TEXT_FILL)
+    card_w, card_h = w - 2 * inset, h - 2 * inset
+    tex = _texture_fill(card_w, card_h)
+    mask = _rounded_mask((int(card_w), int(card_h)), radius)
+    base.paste(tex, (int(inset), int(inset)), mask)
     ImageDraw.Draw(base).rounded_rectangle(
         [inset + border / 2, inset + border / 2, w - inset - border / 2, h - inset - border / 2],
-        radius=radius, outline=S.ACCENT, width=border,
+        radius=radius, outline=CARD_TEXT_BORDER_COLOR, width=border,
     )
     base.alpha_composite(canvas)
     return base
