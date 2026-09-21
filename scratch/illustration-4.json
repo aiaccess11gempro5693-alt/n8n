@@ -1,0 +1,11 @@
+{
+  "narration_line": "Каждая из этих ситуаций требует разного ответа. И только уточнив запрос, вы сможете дать рекомендацию, которая реально поможет, а не просто \"что-то от иммунитета\".",
+  "prompt": "Editorial 3D style illustration of a professional female pharmacist in a modern, pristine pharmacy attentively consulting a customer across the clean wooden counter. The pharmacist is actively engaged in dialogue, listening carefully to clarify the customer's specific needs, with subtle floating minimalist graphic elements symbolizing targeted personalized advice rather than a generic solution. Soft-focus background showing neat pharmacy shelves with generic minimalist mock-up packages. Warm cinematic lighting, smooth clay and tactile editorial 3D textures, clean minimalist aesthetic, elegant coral-orange accent highlights, premium commercial composition, no distorted text.",
+  "reference_image_path": null,
+  "captions": [
+    "Уточняйте запрос для точной рекомендации"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK**",
+  "aspect_ratio": "1:1"
+}
