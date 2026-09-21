@@ -1,0 +1,11 @@
+{
+  "narration_line": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
+  "prompt": "Premium modern editorial style illustration depicting a thoughtful, attentive pharmacist in a crisp white coat leaning slightly forward across a sleek minimalist pharmacy counter to listen deeply to a customer. The customer is making an expressive, tentative hand gesture as if trying to explain an unformulated concern. Warm contemporary pharmacy interior with soft-focus background shelves, subtle ambient lighting with elegant coral orange (#FF6B4A) accents and gentle warm tones. Medium shot, empathetic and consultative atmosphere, clean composition, high-end professional healthcare aesthetic, no text, no cliché magnifying glass or puzzle icons.",
+  "reference_image_path": null,
+  "captions": [
+    "Помочь добраться до сути"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**Пункт 1:** Девушка (клиент) одета в белый медицинский халат, из-за чего сцена выглядит как общение двух коллег-фармацевтов/врачей, а не диалог фармацевта с обычным посетителем аптеки, не умеющим сформулировать запрос. По пунктам 2 и 3 замечаний нет (текст абстрактный, надпись логична).",
+  "aspect_ratio": "1:1"
+}
