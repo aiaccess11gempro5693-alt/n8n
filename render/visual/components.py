@@ -64,7 +64,7 @@ CARD_SHADOW_BLUR = 22
 CARD_SHADOW_OFFSET = 12
 CARD_SHADOW_COLOR = (5, 6, 8, 150)
 
-CARD_TEXT_FILL = (42, 27, 22, 248)      # warm dark espresso-brown — coordinates with the coral #FF6B4A accent (analogous warm hue) and the warm wood/skin tones of photorealistic pharmacy photos; replaces an earlier cool near-black slate flagged as clashing
+CARD_TEXT_FILL = (18, 52, 55, 255)      # deep teal, fully opaque — a genuine, recognizable COLOR (not a near-black neutral, which read as "still basically black" even after the first attempt to warm it up). Complementary-contrast pairing with the coral #FF6B4A accent/border (classic coral+teal combination) and echoes the teal accent bar already used on the subtitle panel elsewhere in this same video (build_trend_video.py ACCENT=0x2A7F82) — ties the whole video's palette together instead of introducing a third, unrelated hue.
 CARD_TEXT_INSET = 10                     # gap from the PAD-bounded canvas edge to the card's own edge — stays inside the existing PAD reserve, canvas size unchanged
 CARD_TEXT_BORDER = 3
 CARD_TEXT_SHADOW_BLUR = 10
