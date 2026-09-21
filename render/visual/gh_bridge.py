@@ -14,6 +14,7 @@ from this sandbox.
 """
 import json
 import os
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -21,6 +22,18 @@ import urllib.request
 REPO = "aiaccess11gempro5693-alt/n8n"
 API = "https://api.github.com"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# 21.09.2026 (9): illustration.py now dispatches several scenes'
+# generations CONCURRENTLY (direct user instruction — sequential
+# generation made a full render take ~50 minutes). dispatch_and_wait's
+# "find my run_id" step identifies the just-created run by diffing
+# against "the most recent run before I dispatched" — that trick breaks
+# under concurrency (two threads dispatching close together can each pick
+# up the OTHER thread's run). This lock serializes only that brief
+# dispatch+discover handshake (usually one poll, ~poll_s seconds); the
+# actual multi-minute wait for the run to finish happens OUTSIDE the
+# lock, so the slow part still overlaps across threads.
+_dispatch_lock = threading.Lock()
 
 
 def _token():
@@ -53,23 +66,26 @@ def dispatch_and_wait(workflow_file, inputs, ref="main", timeout_s=300, poll_s=6
     run to complete, and returns nothing itself — caller reads whatever
     file(s) that workflow committed to scratch/ after this returns (via
     `git pull`). Raises on timeout or non-success conclusion."""
-    _, before = _gh_request("GET", f"/repos/{REPO}/actions/workflows/{workflow_file}/runs?per_page=1")
-    before_id = (before.get("workflow_runs") or [{}])[0].get("id")
-
-    _gh_request("POST", f"/repos/{REPO}/actions/workflows/{workflow_file}/dispatches", {"ref": ref, "inputs": inputs})
-    print(f"[gh_bridge] dispatched {workflow_file}{' — ' + label if label else ''}")
-
-    run_id = None
     deadline = time.time() + timeout_s
-    while time.time() < deadline and run_id is None:
-        time.sleep(poll_s)
-        _, runs = _gh_request("GET", f"/repos/{REPO}/actions/workflows/{workflow_file}/runs?per_page=5")
-        for r in runs.get("workflow_runs", []):
-            if r["id"] != before_id:
-                run_id = r["id"]
-                break
-    if run_id is None:
-        raise RuntimeError(f"Timed out waiting for a new run of {workflow_file} to appear")
+
+    with _dispatch_lock:
+        _, before = _gh_request("GET", f"/repos/{REPO}/actions/workflows/{workflow_file}/runs?per_page=1")
+        before_id = (before.get("workflow_runs") or [{}])[0].get("id")
+
+        _gh_request("POST", f"/repos/{REPO}/actions/workflows/{workflow_file}/dispatches", {"ref": ref, "inputs": inputs})
+        print(f"[gh_bridge] dispatched {workflow_file}{' — ' + label if label else ''}")
+
+        run_id = None
+        id_deadline = time.time() + 60
+        while time.time() < id_deadline and run_id is None:
+            time.sleep(poll_s)
+            _, runs = _gh_request("GET", f"/repos/{REPO}/actions/workflows/{workflow_file}/runs?per_page=5")
+            for r in runs.get("workflow_runs", []):
+                if r["id"] != before_id:
+                    run_id = r["id"]
+                    break
+        if run_id is None:
+            raise RuntimeError(f"Timed out waiting for a new run of {workflow_file} to appear")
 
     while time.time() < deadline:
         _, run = _gh_request("GET", f"/repos/{REPO}/actions/runs/{run_id}")
@@ -83,12 +99,24 @@ def dispatch_and_wait(workflow_file, inputs, ref="main", timeout_s=300, poll_s=6
     raise RuntimeError(f"Timed out waiting for {workflow_file} run {run_id} to complete")
 
 
+_pull_lock = threading.Lock()
+
+
+def git_pull():
+    """`git pull origin main`, serialized — concurrent illustration
+    fetches (see `_dispatch_lock` above) would otherwise run `git pull`
+    on the same working tree from multiple threads at once, which can
+    race on `.git/index`. Returns the process exit code."""
+    with _pull_lock:
+        return os.system(f"cd {REPO_ROOT} && git pull --quiet origin main") >> 8
+
+
 def pull_and_read(relpath, as_json=True):
     """git pull main, then read a file the just-completed run committed
     (the project's established way to get results out of GitHub Actions —
     the alternative, actions artifacts, sit on Azure Blob, which this
     sandbox's proxy also blocks)."""
-    exit_code = os.system(f"cd {REPO_ROOT} && git pull --quiet origin main") >> 8
+    exit_code = git_pull()
     full = f"{REPO_ROOT}/{relpath}"
     if not os.path.exists(full):
         raise RuntimeError(f"Expected file not found after run: {relpath} (git pull exit={exit_code})")

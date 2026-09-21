@@ -11,6 +11,7 @@ import json
 import os
 
 from . import components as C
+from . import illustration as ILL
 from .composition import compose
 from .layout import place_group, PlacedItem
 from .safe_zones import TOP_TITLE_ZONE, column_width, column_height
@@ -43,6 +44,19 @@ def build_all(scene_semantics, asset_dir=ASSET_DIR):
     for f in os.listdir(asset_dir):
         if f.endswith(".png"):
             os.remove(os.path.join(asset_dir, f))
+
+    # dispatch every scene's illustration generation concurrently instead
+    # of the default one-at-a-time-inside-compose() path — cuts a
+    # multi-scene production render's wall-clock time roughly to the
+    # slowest single generation instead of their sum (direct user
+    # instruction; see illustration.prefetch_all's docstring).
+    prefetch_reqs = [
+        (sem.scene_id, sem.asset_brief, sem.text, "1:1")
+        for sem in scene_semantics if sem.asset_required and sem.asset_brief
+    ]
+    if prefetch_reqs:
+        print(f"prefetching {len(prefetch_reqs)} illustration(s) concurrently...")
+        ILL.prefetch_all(prefetch_reqs)
 
     manifest = {"scenes": {}}
     for sem in scene_semantics:
