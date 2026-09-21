@@ -10,12 +10,28 @@ VISUAL_CONCEPT -> COMPOSITION -> LAYOUT -> VALIDATION -> набор PNG-ассе
 import json
 import os
 
+from . import components as C
 from .composition import compose
-from .layout import place_group
+from .layout import place_group, PlacedItem
+from .safe_zones import TOP_TITLE_ZONE, column_width, column_height
 from .validate import validate_scene
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSET_DIR = f"{R}/visual_assets"
+
+
+def _place_top_title(sem):
+    """Short scene-topic banner, centered in TOP_TITLE_ZONE above the
+    avatar's head — present in EVERY scene alongside the existing
+    side-column content (21.09.2026 (4), direct user instruction: a new
+    element, not a replacement). Trigger is fixed-early (0.3s) and it
+    stays for the whole scene (fade_out=None), same convention as the
+    existing side-column headline components."""
+    zw, zh = column_width(TOP_TITLE_ZONE), column_height(TOP_TITLE_ZONE)
+    img = C.render_top_title(sem.scene_title, zw)
+    x = TOP_TITLE_ZONE["x0"] + max(0, (zw - img.width) // 2)
+    y = TOP_TITLE_ZONE["y0"] + max(0, (zh - img.height) // 2)
+    return PlacedItem(image=img, x=x, y=y, trigger=0.3)
 
 
 def build_all(scene_semantics, asset_dir=ASSET_DIR):
@@ -36,6 +52,7 @@ def build_all(scene_semantics, asset_dir=ASSET_DIR):
         for gi, group in enumerate(groups):
             placed = place_group(group)
             all_placed.extend(placed)
+        all_placed.append(_place_top_title(sem))
         validate_scene(scene, all_placed, sem.duration)
 
         scene_entries = []

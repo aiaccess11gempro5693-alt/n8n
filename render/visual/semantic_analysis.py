@@ -72,6 +72,7 @@ class SceneSemantics:
     text: str
     duration: float
     main_message: str
+    scene_title: str                  # short (2-4 word) Russian banner label for the top-of-frame title, above the avatar's head — always required, independent of asset_required
     information_structure: str      # Gemini's OWN WORDS, free text — not constrained to an enum
     visual_goal: str                 # what the viewer should come away understanding
     asset_required: bool
@@ -161,6 +162,7 @@ visual_goal, composition_intent, motion_intent) — твоими словами,
 Ответь СТРОГО в формате JSON без пояснений, без markdown-обёртки:
 {{
   "main_message": "одна фраза — о чём этот текст",
+  "scene_title": "короткий заголовок сцены на русском, 2-4 слова, для баннера над головой аватара — называет ТЕМУ сцены (не дублирует дословно main_message), нужен ВСЕГДА независимо от asset_required",
   "information_structure": "free text — своими словами, что это за тип информации",
   "visual_goal": "free text — что именно зритель должен понять из визуала",
   "asset_required": true/false,
@@ -258,6 +260,8 @@ def _parse_one(raw, scene_id, text, duration):
         raise ValueError(f"scene {scene_id}: asset_required=true but no asset_caption was provided")
     if not asset_required and not raw.get("no_asset_reason"):
         raise ValueError(f"scene {scene_id}: asset_required=false but no no_asset_reason was provided")
+    if not raw.get("scene_title"):
+        raise ValueError(f"scene {scene_id}: no scene_title was provided")
     elements = [
         VisualElement(role=e["role"], label=e["label"], sublabel=e.get("sublabel") or "", order=e.get("order") or 0)
         for e in raw.get("elements", [])
@@ -267,6 +271,7 @@ def _parse_one(raw, scene_id, text, duration):
         text=text,
         duration=duration,
         main_message=raw.get("main_message", ""),
+        scene_title=raw.get("scene_title", ""),
         information_structure=raw.get("information_structure", ""),
         visual_goal=raw.get("visual_goal", ""),
         asset_required=asset_required,

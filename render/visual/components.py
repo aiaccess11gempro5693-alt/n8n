@@ -64,7 +64,7 @@ CARD_SHADOW_BLUR = 22
 CARD_SHADOW_OFFSET = 12
 CARD_SHADOW_COLOR = (5, 6, 8, 150)
 
-CARD_TEXT_FILL = (17, 19, 23, 255)      # opaque slate panel behind every text component
+CARD_TEXT_FILL = (42, 27, 22, 248)      # warm dark espresso-brown — coordinates with the coral #FF6B4A accent (analogous warm hue) and the warm wood/skin tones of photorealistic pharmacy photos; replaces an earlier cool near-black slate flagged as clashing
 CARD_TEXT_INSET = 10                     # gap from the PAD-bounded canvas edge to the card's own edge — stays inside the existing PAD reserve, canvas size unchanged
 CARD_TEXT_BORDER = 3
 CARD_TEXT_SHADOW_BLUR = 10
@@ -213,7 +213,10 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
     sub_w, sub_h = _measure_block(sub_lines, f_sub, int(_fs(S.SIZE_SUBLABEL, scale) * 1.35))
 
     kick_h = (_fs(S.SIZE_KICKER, scale) + _sz(14, scale)) if kicker else 0
-    content_w = max(head_w, sub_w) + bar_w
+    # stretch to the full column width (not just the wrapped text's natural
+    # width) so the card fills the side column instead of leaving a bare
+    # gap beside a narrow card — direct user instruction, see CLAUDE.md.
+    content_w = max(max(head_w, sub_w) + bar_w, max_width)
     content_h = kick_h + head_h + (_sz(14, scale) + sub_h if sublabel else 0)
     canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
@@ -414,7 +417,7 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
     sub_lines = _wrap(d, sublabel, f_sub, text_max_w) if sublabel else []
     sub_w, sub_h = _measure_block(sub_lines, f_sub, int(_fs(S.SIZE_SUBLABEL, scale) * 1.35))
 
-    content_w = max(head_w, sub_w) + chevron_w
+    content_w = max(max(head_w, sub_w) + chevron_w, max_width)
     content_h = head_h + (_sz(14, scale) + sub_h if sublabel else 0)
     canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
@@ -540,7 +543,7 @@ def render_qa(question, answer, max_width, align="left", scale=1.0):
     a_lines = _wrap(d, answer, f_a, max_width)
     q_w, q_h = _measure_block(q_lines, f_q, int(_fs(S.SIZE_SUBLABEL + 2, scale) * 1.3))
     a_w, a_h = _measure_block(a_lines, f_a, int(_fs(S.SIZE_HEADLINE, scale) * 1.12))
-    content_w = max(q_w, a_w) + _sz(20, scale)
+    content_w = max(max(q_w, a_w) + _sz(20, scale), max_width)
     content_h = q_h + _sz(12, scale) + a_h
     canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
@@ -566,4 +569,32 @@ def render_qa(question, answer, max_width, align="left", scale=1.0):
     bar_x = (x0 - _sz(14, scale)) if not right else (content_w - _sz(6, scale))
     draw.rectangle([bar_x, ay0 + _sz(4, scale), bar_x + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
 
+    return _finish(_wrap_in_card(canvas, scale))
+
+
+def render_top_title(text, max_width, scale=1.0):
+    """Short scene-topic banner across the very top of frame, centered
+    above the avatar's head — a new persistent element (21.09.2026 (4),
+    direct user instruction), present in EVERY scene in addition to the
+    existing side-column content, not a replacement for it. Sized for
+    safe_zones.TOP_TITLE_ZONE (measured real headroom above the avatar's
+    hair, see that module's docstring) — a single short line, small pad
+    (not the full PAD used by side-column components, which would be
+    taller than the zone allows)."""
+    pad = _sz(14, scale)
+    size = _fs(30, scale, floor=16)
+    upper = text.upper()
+    tmp = Image.new("RGBA", (10, 10))
+    d = ImageDraw.Draw(tmp)
+    while True:
+        f = S.font(S.F_BLACK, size)
+        w = d.textlength(upper, font=f)
+        if w <= max_width - pad * 2 or size <= 16:
+            break
+        size -= 2
+    f = S.font(S.F_BLACK, size)
+    text_w = d.textlength(upper, font=f)
+    canvas = Image.new("RGBA", (int(text_w) + pad * 2, size + pad * 2), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(canvas)
+    draw.text((pad, pad), upper, font=f, fill=S.WHITE)
     return _finish(_wrap_in_card(canvas, scale))
