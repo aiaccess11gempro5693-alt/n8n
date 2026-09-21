@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "id": "testG",
+      "text": "Обратите внимание на упаковку: у подделки шрифт названия смазанный и нечёткий, а зелёный цвет коробки блёклый и голубоватый вместо насыщенного тёмно-зелёного, как у оригинала.",
+      "analysis": {
+        "main_message": "Визуальные отличия оригинальной упаковки от фальсификата по чёткости шрифта и оттенку зелёного цвета",
+        "information_structure": "Сравнительный анализ двух физических объектов по конкретным визуальным критериям (типографика и колористика)",
+        "visual_goal": "Дать фармацевту чёткий визуальный ориентир для мгновенной идентификации подделки: размытый шрифт и блёклый голубоватый тон против чёткой печати и глубокого тёмно-зелёного цвета оригинала",
+        "asset_required": true,
+        "asset_type": "annotated comparison illustration",
+        "asset_brief": "Editorial 3D illustration showing a side-by-side comparison of two minimalist generic medicine boxes on a clean dark background. Left box represents the authentic product: razor-sharp crisp white typography on a rich deep emerald green surface. Right box represents the counterfeit: smudged blurry faded white typography on a washed-out pale bluish-green surface. Subtle callout lines or highlights in accent color #FF6B4A pointing out the flaws on the fake box. Clean premium lighting, photorealistic textures, no real brand names or logos, no messy artifacts.",
+        "no_asset_reason": null,
+        "composition_intent": "Размещение в правой свободной колонке (ширина ~480px) на среднем уровне высоты, вне зоны аватара (x≈600-1340) и над субтитрами",
+        "motion_intent": "Синхронное появление плашки сравнения с последовательным мягким акцентированием дефектов подделки цветом #FF6B4A",
+        "visual_concept": "comparison",
+        "asset_strategy": "illustration",
+        "elements": [
+          {
+            "role": "left",
+            "label": "Оригинал: чёткий шрифт",
+            "sublabel": "Глубокий тёмно-зелёный цвет",
+            "order": 1
+          },
+          {
+            "role": "right",
+            "label": "Подделка: смазанный текст",
+            "sublabel": "Блёклый голубоватый оттенок",
+            "order": 2
+          }
+        ],
+        "avoid": [
+          "Использование реальных торговых марок или логотипов конкретных лекарств во избежание юридических рисков",
+          "Клишированные абстрактные иконки вроде лупы или щита, которые не демонстрируют реальную разницу в полиграфии"
+        ]
+      }
+    }
+  ]
+}
