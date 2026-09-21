@@ -46,8 +46,8 @@ VISUAL_CONCEPTS = [
     "process_flow",          # ordered steps that lead somewhere (arrows/chain)
     "structured_alternatives",  # independent, non-sequential options
     "checklist",              # a set of items to go through/verify
-    "comparison",              # two contrasting cases
-    "cause_effect",            # cause -> mechanism -> effect chain
+    "comparison",              # two cases that are BOTH true/possible AT ONCE — real opposition (see note below)
+    "cause_effect",            # cause -> mechanism -> effect chain, incl. "surface X reveals/leads to real Y"
     "qa_structure",            # an implicit or explicit question -> answer
     "strong_typography",       # one core message, nothing else adds value
     "none",                    # no visual would help this text
@@ -187,6 +187,22 @@ visual_goal, composition_intent, motion_intent) — твоими словами,
   strong_typography -> ровно 1 элемент, role "headline", можно "sublabel".
   none -> elements: [] (это нормально, если asset_required=true и весь
     смысл несёт картинка, а не текстовые подписи).
+
+ВАЖНО: comparison vs cause_effect — не путать "сравнение" с "раскрытием".
+comparison подходит ТОЛЬКО когда два случая РЕАЛЬНО РАВНОЗНАЧНЫ и
+существуют ОДНОВРЕМЕННО/параллельно — например, два разных возможных
+исхода в зависимости от ситуации покупателя (как "избыточная стимуляция"
+вместо "восстановительной поддержки" — оба исхода реальны, ни один не
+"скрыт" за другим). Рендер comparison — это ДВЕ ЗЕРКАЛЬНЫЕ половины со
+стрелками, указывающими друг на друга через центр кадра, и это визуально
+означает "выбор между двумя противостоящими вариантами".
+Если же в тексте одно ПОРОЖДАЕТ, СКРЫВАЕТ или ПЕРЕХОДИТ в другое —
+"на поверхности одно, а на самом деле другое", "сначала кажется X, но
+по сути Y", "спросили одно — выяснили другое" — это НЕ comparison, а
+cause_effect (или process_flow, если шагов больше двух и цепочка не про
+причину/следствие). Такой текст рендерится ОДНОЙ связной цепочкой со
+стрелкой в одну сторону, а не двумя зеркальными половинами — это и есть
+разница между "два факта сравниваются" и "первое раскрывает второе".
 """
 
 
