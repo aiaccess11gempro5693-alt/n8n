@@ -64,10 +64,9 @@ CARD_SHADOW_BLUR = 22
 CARD_SHADOW_OFFSET = 12
 CARD_SHADOW_COLOR = (5, 6, 8, 150)
 
-CARD_TEXT_FILL = S.ACCENT                # 21.09.2026 (6): "в стиле картинок" — reuse the SAME solid coral the image caption chip already uses (render_image_card's chip: ACCENT fill + white text), instead of inventing a separate card color. One accent color for the whole system, not two.
+CARD_TEXT_FILL = (18, 52, 55, 255)      # deep teal, fully opaque — a genuine, recognizable COLOR (not a near-black neutral, which read as "still basically black" even after the first attempt to warm it up). Complementary-contrast pairing with the coral #FF6B4A accent/border (classic coral+teal combination) and echoes the teal accent bar already used on the subtitle panel elsewhere in this same video (build_trend_video.py ACCENT=0x2A7F82) — ties the whole video's palette together instead of introducing a third, unrelated hue.
 CARD_TEXT_INSET = 10                     # gap from the PAD-bounded canvas edge to the card's own edge — stays inside the existing PAD reserve, canvas size unchanged
 CARD_TEXT_BORDER = 3
-CARD_TEXT_BORDER_COLOR = (255, 255, 255, 220)  # white ring — an accent-colored border would vanish against the now-accent-colored fill
 CARD_TEXT_SHADOW_BLUR = 10
 CARD_TEXT_SHADOW_OFFSET = 5
 CARD_TEXT_SHADOW_COLOR = (5, 6, 8, 130)
@@ -147,7 +146,7 @@ def _wrap_in_card(canvas, scale=1.0):
     ImageDraw.Draw(base).rounded_rectangle([inset, inset, w - inset, h - inset], radius=radius, fill=CARD_TEXT_FILL)
     ImageDraw.Draw(base).rounded_rectangle(
         [inset + border / 2, inset + border / 2, w - inset - border / 2, h - inset - border / 2],
-        radius=radius, outline=CARD_TEXT_BORDER_COLOR, width=border,
+        radius=radius, outline=S.ACCENT, width=border,
     )
     base.alpha_composite(canvas)
     return base
@@ -182,8 +181,8 @@ def render_kicker_word(kicker, word, max_width, align="left", scale=1.0):
     y = pad
     if kicker:
         kx = pad if align == "left" else pad + content_w - kick_w
-        draw.rectangle([kx - _sz(18, scale), y + _sz(6, scale), kx - _sz(12, scale), y + _fs(S.SIZE_KICKER, scale) + _sz(2, scale)], fill=S.ON_ACCENT)
-        _draw_text_shadow(draw, (kx, y), kick_spaced, f_kick, S.ON_ACCENT, shadow=False)
+        draw.rectangle([kx - _sz(18, scale), y + _sz(6, scale), kx - _sz(12, scale), y + _fs(S.SIZE_KICKER, scale) + _sz(2, scale)], fill=S.ACCENT)
+        _draw_text_shadow(draw, (kx, y), kick_spaced, f_kick, S.ACCENT, shadow=False)
         y += _fs(S.SIZE_KICKER, scale) + _sz(16, scale)
 
     for line in lines:
@@ -235,7 +234,7 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
     y = pad
     if kicker:
         kw = d.textlength(kicker.upper(), font=f_kick)
-        _draw_text_shadow(draw, (line_x(kw), y), kicker.upper(), f_kick, S.ON_ACCENT, shadow=False)
+        _draw_text_shadow(draw, (line_x(kw), y), kicker.upper(), f_kick, S.ACCENT, shadow=False)
         y += kick_h
     head_top = y
     for line in head_lines:
@@ -250,7 +249,7 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
             y += int(_fs(S.SIZE_SUBLABEL, scale) * 1.35)
 
     if accent_bar:
-        draw.rectangle([bar_x0, head_top + _sz(4, scale), bar_x0 + _sz(5, scale), y - _sz(6, scale)], fill=S.ON_ACCENT)
+        draw.rectangle([bar_x0, head_top + _sz(4, scale), bar_x0 + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
 
     return _finish(_wrap_in_card(canvas, scale))
 
@@ -299,11 +298,11 @@ def render_flow_chain(steps, max_width, align="left", scale=1.0):
         cy = centers[i]
         is_last = i == len(rows) - 1
         if is_last:
-            draw.ellipse([node_cx - node_r, cy - node_r, node_cx + node_r, cy + node_r], fill=S.ON_ACCENT)
+            draw.ellipse([node_cx - node_r, cy - node_r, node_cx + node_r, cy + node_r], fill=S.ACCENT)
             num_col = S.WHITE
         else:
-            draw.ellipse([node_cx - node_r, cy - node_r, node_cx + node_r, cy + node_r], outline=S.ON_ACCENT, width=max(1, _sz(3, scale)))
-            num_col = S.ON_ACCENT
+            draw.ellipse([node_cx - node_r, cy - node_r, node_cx + node_r, cy + node_r], outline=S.ACCENT, width=max(1, _sz(3, scale)))
+            num_col = S.ACCENT
         num_text = str(i + 1)
         bbox = d.textbbox((0, 0), num_text, font=f_num)
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -311,7 +310,7 @@ def render_flow_chain(steps, max_width, align="left", scale=1.0):
 
         tx, ty = pad + node_col_w, y
         for line in r["kick"]:
-            _draw_text_shadow(draw, (tx, ty), line, f_kick, S.ON_ACCENT, shadow=False)
+            _draw_text_shadow(draw, (tx, ty), line, f_kick, S.ACCENT, shadow=False)
             ty += int(_fs(S.SIZE_KICKER - 2, scale) * 1.3)
         for line in r["label"]:
             _draw_text_shadow(draw, (tx, ty), line, f_label, S.WHITE)
@@ -321,9 +320,9 @@ def render_flow_chain(steps, max_width, align="left", scale=1.0):
             next_cy = centers[i + 1]
             top, bottom = cy + node_r + _sz(4, scale), next_cy - node_r - _sz(4, scale)
             if bottom > top:
-                draw.line([node_cx, top, node_cx, bottom], fill=S.ON_ACCENT, width=max(1, _sz(3, scale)))
+                draw.line([node_cx, top, node_cx, bottom], fill=S.ACCENT, width=max(1, _sz(3, scale)))
                 aw = _sz(6, scale)
-                draw.polygon([(node_cx - aw, bottom - _sz(8, scale)), (node_cx + aw, bottom - _sz(8, scale)), (node_cx, bottom + _sz(2, scale))], fill=S.ON_ACCENT)
+                draw.polygon([(node_cx - aw, bottom - _sz(8, scale)), (node_cx + aw, bottom - _sz(8, scale)), (node_cx, bottom + _sz(2, scale))], fill=S.ACCENT)
 
         y += r["h"] + arrow_gap
 
@@ -351,7 +350,7 @@ def render_item_list(items, max_width, align="left", scale=1.0):
 
     y = pad
     for i, lines in enumerate(rows):
-        _draw_text_shadow(draw, (pad, y), f"{i + 1:02d}", f_marker, S.ON_ACCENT, shadow=False)
+        _draw_text_shadow(draw, (pad, y), f"{i + 1:02d}", f_marker, S.ACCENT, shadow=False)
         ty = y
         for line in lines:
             _draw_text_shadow(draw, (pad + marker_col_w, ty), line, f_label, S.WHITE)
@@ -388,7 +387,7 @@ def render_checklist(items, max_width, align="left", scale=1.0):
     y = pad
     for lines, row_h in zip(rows, row_heights):
         by = y + (row_h - box) / 2
-        draw.rectangle([pad, by, pad + box, by + box], outline=S.ON_ACCENT, width=max(1, _sz(3, scale)))
+        draw.rectangle([pad, by, pad + box, by + box], outline=S.ACCENT, width=max(1, _sz(3, scale)))
         ty = y
         for line in lines:
             _draw_text_shadow(draw, (pad + box_col_w, ty), line, f_label, S.WHITE)
@@ -450,7 +449,7 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
     cw2 = _sz(10, scale)
     draw.polygon([
         (chevron_x, cy - _sz(14, scale)), (chevron_x + cw2 * direction, cy), (chevron_x, cy + _sz(14, scale)),
-    ], fill=S.ON_ACCENT)
+    ], fill=S.ACCENT)
 
     return _finish(_wrap_in_card(canvas, scale))
 
@@ -568,7 +567,7 @@ def render_qa(question, answer, max_width, align="left", scale=1.0):
         y += int(_fs(S.SIZE_HEADLINE, scale) * 1.12)
 
     bar_x = (x0 - _sz(14, scale)) if not right else (content_w - _sz(6, scale))
-    draw.rectangle([bar_x, ay0 + _sz(4, scale), bar_x + _sz(5, scale), y - _sz(6, scale)], fill=S.ON_ACCENT)
+    draw.rectangle([bar_x, ay0 + _sz(4, scale), bar_x + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
 
     return _finish(_wrap_in_card(canvas, scale))
 
