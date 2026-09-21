@@ -139,6 +139,15 @@ def build_checklist(sem):
 
 
 def build_comparison(sem):
+    """NOTE on illustration placement: when asset_required, Gemini's brief
+    typically describes ONE combined side-by-side image (both cases in one
+    frame) — but there is no safe region wide enough to place a single
+    image spanning both columns (AVATAR_ZONE sits between them, full
+    frame height). The generated illustration is placed in the LEFT
+    column (paired with the left-hand case) as the best available
+    compromise, not a perfect rendering of "side by side"; this is a real
+    geometric constraint, not an oversight — same reasoning as the
+    chevron-instead-of-center-divider decision in render_comparison_side."""
     left_els = _by_role(sem, "left")
     right_els = _by_role(sem, "right")
     if not left_els or not right_els:
@@ -148,8 +157,12 @@ def build_comparison(sem):
     img_l = C.render_comparison_side(left_el.label, left_el.sublabel, "left", cw_l)
     img_r = C.render_comparison_side(right_el.label, right_el.sublabel, "right", cw_r)
     t = _first_trigger(sem)
+    left_items = [Item(img_l, t)]
+    extra = _maybe_illustration_item(sem, "left")
+    if extra:
+        left_items.insert(0, extra)
     return [
-        ColumnGroup(column="left", mode="accumulate", align="right", items=[Item(img_l, t)]),
+        ColumnGroup(column="left", mode="accumulate", align="right", items=left_items),
         ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t)]),
     ]
 
