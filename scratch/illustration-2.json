@@ -1,11 +1,11 @@
 {
   "narration_line": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
-  "prompt": "Editorial documentary photography of a thoughtful female pharmacist in a pristine white lab coat leaning slightly forward across a modern wooden pharmacy counter, actively and empathetically listening to a customer. Authentic, engaged facial expression showing deep attention and active dialogue to uncover the customer's true health need. Medium close-up shot, 50mm lens, natural soft indoor lighting, shallow depth of field with softly blurred generic pharmacy shelves in the background. Realistic skin texture, professional and warm atmosphere, photorealistic, no text overlays, no illustrations.",
+  "prompt": "Editorial documentary photograph, medium shot. A professional female pharmacist in a crisp white coat leans slightly forward over a clean pharmacy counter, listening attentively with genuine empathy and focused eye contact to an adult customer. The customer is gesturing slightly, explaining their condition, while the pharmacist thoughtfully analyzes the unspoken need. Warm, soft natural ambient lighting, shallow depth of field with neatly arranged blurred pharmacy shelves in the background. Authentic candid documentary style, real human expressions, photorealistic 35mm photography, subtle natural colors, sharp focus on the engaging interaction.",
   "reference_image_path": null,
   "captions": [
     "Помочь добраться до сути"
   ],
   "mime_type": "image/png",
-  "verdict": "**OK**",
+  "verdict": "OK",
   "aspect_ratio": "1:1"
 }
