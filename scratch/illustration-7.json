@@ -1,11 +1,11 @@
 {
   "narration_line": "Когда покупатель слышит такие вопросы, он понимает: здесь не просто продают — здесь думают о его здоровье. Это ощущение бесценно.",
-  "prompt": "Warm modern editorial illustration capturing a moment of genuine care and empathy in a pharmacy. A friendly pharmacist in a neat white coat leans slightly forward across a sleek minimalist counter, listening attentively with a warm, supportive smile. The customer looks visibly reassured, smiling with deep trust and appreciation. Premium bright pharmacy interior with soft natural lighting, elegant coral accent elements, and tidy out-of-focus background shelves. Calm, positive, and trustworthy healthcare atmosphere, medium shot, no floating icons, no speech bubbles, no text.",
+  "prompt": "An authentic documentary photograph of a caring female pharmacist in a clean white coat leaning slightly forward across the pharmacy counter, speaking with genuine warmth and empathy to an attentive, appreciative customer. The customer shows a look of trust, relief, and gratitude, conveying a deep sense of care and reassurance. Modern warmly lit pharmacy interior, shallow depth of field with softly blurred medicine shelves in the background. Shot on 35mm lens, photorealistic editorial style, natural candid lighting, genuine human connection and sincere expressions, no exaggerated stock smiles.",
   "reference_image_path": null,
   "captions": [
     "Здесь думают о здоровье"
   ],
   "mime_type": "image/png",
-  "verdict": "OK",
+  "verdict": "**OK**",
   "aspect_ratio": "1:1"
 }
