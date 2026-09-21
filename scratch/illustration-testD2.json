@@ -1,0 +1,11 @@
+{
+  "narration_line": "Один и тот же симптом может иметь разные причины, поэтому нельзя выбирать препарат только по одному признаку.",
+  "prompt": "Minimalist editorial vector infographic illustrating diagnostic divergence in a pharmaceutical analytical context. A single central origin node on the left branches and splits into three distinct diverging structural pathways extending outward, representing multiple different underlying causes stemming from one symptom. Clean precision geometric lines, subtle data nodes, highly refined premium medical UI style. Deep transparent dark background with faint grid matrix, illuminated by a primary glowing accent color #FF6B4A highlighting the branching divergent paths. Sharp contrast, sleek vector aesthetic, centered composition, absolutely no text, no typography, no human figures, no generic pill icons.",
+  "reference_image_path": null,
+  "captions": [
+    "Один симптом — разные причины"
+  ],
+  "mime_type": "image/png",
+  "verdict": "**OK**",
+  "aspect_ratio": "1:1"
+}
