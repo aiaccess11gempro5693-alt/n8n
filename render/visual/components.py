@@ -469,20 +469,21 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
     d = ImageDraw.Draw(tmp)
 
     chevron_w = _sz(24, scale)
-    text_max_w = max_width - chevron_w
+    gap = _sz(18, scale)  # breathing room between the chevron and the text — without this the text (right-aligned in the "else" branch) sat flush against the chevron's own edge regardless of chevron_w, reading as "stuck together"
+    text_max_w = max_width - chevron_w - gap
     head_lines, f_head, head_size = _wrap_fit(d, label, S.F_BLACK, _fs(S.SIZE_HEADLINE, scale), text_max_w, min_size=_fs(28, scale, floor=18))
     head_w, head_h = _measure_block(head_lines, f_head, int(head_size * 1.12))
     sub_lines = _wrap(d, sublabel, f_sub, text_max_w) if sublabel else []
     sub_w, sub_h = _measure_block(sub_lines, f_sub, int(_fs(S.SIZE_SUBLABEL, scale) * 1.35))
 
-    content_w = max(max(head_w, sub_w) + chevron_w, max_width)
+    content_w = max(max(head_w, sub_w) + chevron_w + gap, max_width)
     content_h = head_h + (_sz(14, scale) + sub_h if sublabel else 0)
     canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
 
     inner_right = side == "right"  # right-side block's inner (avatar-facing) edge is its LEFT
-    text_x = pad + chevron_w if inner_right else pad
-    text_span = content_w - chevron_w
+    text_x = pad + chevron_w + gap if inner_right else pad
+    text_span = content_w - chevron_w - gap
 
     def line_x(lw):
         return text_x if inner_right else text_x + text_span - lw

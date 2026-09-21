@@ -60,7 +60,7 @@ VIS_DIR = f"{RENDER}/visual_assets"
 visual_manifest = build_visual_layer(scene_semantics, VIS_DIR)
 FONTSIZE = 40
 BASE_COLOR = "0x2B2F33"
-HL_COLOR = "0xF2836B"
+HL_COLOR = "0x2A7F82"  # тот же тил, что и акцент visual-слоя (render/visual/style.py ACCENT) — был коралловым, по запросу приведён к одному цвету на всё видео
 PANEL_COLOR = "0xF7F9FB"
 ACCENT = "0x2A7F82"
 
