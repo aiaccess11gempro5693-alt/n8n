@@ -1,13 +1,15 @@
 """
-Оркестратор: CONTENT -> SEMANTIC -> VISUAL_CONCEPT -> COMPOSITION ->
-LAYOUT -> VALIDATION -> набор PNG-ассетов + манифест для монтажного кода
-(`build_trend_video.py`). Ничего в этом файле не завязано на номер сцены
-напрямую — весь диспетчинг идёт через `sem.visual_concept` в composition.py.
+Оркестратор: SEMANTIC (computed, `semantic_analysis.analyze_scenes`) ->
+VISUAL_CONCEPT -> COMPOSITION -> LAYOUT -> VALIDATION -> набор PNG-ассетов +
+манифест для монтажного кода (`build_trend_video.py`). Ничего в этом файле
+не завязано на номер сцены напрямую — весь диспетчинг идёт через
+`sem.visual_concept` в composition.py, и сам список сцен передаётся
+вызывающим кодом (никакого `SCENES: dict[int, ...]` здесь больше нет —
+см. CLAUDE.md, 21.09.2026, forensic audit + переработка).
 """
 import json
 import os
 
-from .semantic import SCENES
 from .composition import compose
 from .layout import place_group
 from .validate import validate_scene
@@ -16,20 +18,25 @@ R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSET_DIR = f"{R}/visual_assets"
 
 
-def build_all(asset_dir=ASSET_DIR):
+def build_all(scene_semantics, asset_dir=ASSET_DIR):
+    """scene_semantics: list[SceneSemantics] — computed by
+    `semantic_analysis.analyze_scenes()`, not authored by hand. `.scene_id`
+    may be any string/int (a real production scene number, a test id,
+    whatever the caller used when it built the input to analyze_scenes)."""
     os.makedirs(asset_dir, exist_ok=True)
     for f in os.listdir(asset_dir):
         if f.endswith(".png"):
             os.remove(os.path.join(asset_dir, f))
 
     manifest = {"scenes": {}}
-    for scene, sem in sorted(SCENES.items()):
+    for sem in scene_semantics:
+        scene = sem.scene_id
         groups = compose(sem)
         all_placed = []
         for gi, group in enumerate(groups):
             placed = place_group(group)
             all_placed.extend(placed)
-        validate_scene(scene, all_placed)
+        validate_scene(scene, all_placed, sem.duration)
 
         scene_entries = []
         for ei, pi in enumerate(all_placed):
@@ -58,4 +65,8 @@ def build_all(asset_dir=ASSET_DIR):
 
 
 if __name__ == "__main__":
-    build_all()
+    raise SystemExit(
+        "build_all() now takes computed scene_semantics (see semantic_analysis.analyze_scenes) "
+        "— there is nothing to run standalone here. Use render/visual/test_pipeline.py for a "
+        "synthetic test run, or the production entry point once one is wired up."
+    )

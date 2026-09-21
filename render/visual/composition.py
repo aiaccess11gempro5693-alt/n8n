@@ -1,26 +1,28 @@
 """
-CONTENT + VISUAL_CONCEPT -> COMPOSITION.
+SEMANTIC RESULT (computed) -> COMPOSITION.
 
-Каждый builder получает SceneSemantics и возвращает список ColumnGroup —
-это ещё НЕ пиксели (тем занимается layout.py), а решение о том:
-- в какую колонку идёт группа (left/right/both — avatar их естественно
-  разделяет, ни одна группа никогда не претендует на обе одновременно,
-  кроме comparison_pair, где это две независимые группы по одной в
-  каждой колонке);
-- как элементы группы появляются относительно друг друга —
-  "accumulate" (список копится, ничего не пропадает) или "replace"
-  (следующий сменяет предыдущий — только для двухфазных keyword/headline);
-- когда (локальный триггер сцены, уже прошедший через enforce_min_gap).
+Each builder takes a `SceneSemantics` (from `semantic_analysis.py` — a
+runtime LLM analysis of arbitrary scene text, not a hand-authored record)
+and returns a list of `ColumnGroup`. Dispatch is by `sem.visual_concept`,
+a value the LLM chose from `semantic_analysis.VISUAL_CONCEPTS` based on
+THIS scene's actual text — there is no `sem.scene_id` branch anywhere in
+this file, and no per-scene-id lookup table. A 9th scene, or a synthetic
+test sentence that has never been seen before, dispatches through the same
+`BUILDERS` dict as scene 1-8 always did.
 
-Диспетчеризация — по `sem.visual_concept` (строка = классификация
-информационной структуры контента), НЕ по `sem.scene`. Один и тот же
-concept на двух разных сценах проходит через один и тот же builder.
+If `sem.asset_strategy` calls for something beyond typography
+(illustration/diagram/icon/image/data_visualization/combination) and the
+LLM supplied an `asset_brief`, the builder asks `illustration.py` to
+generate/fetch that asset (through the project's existing image pipeline)
+and includes it as an additional item — typography is never assumed to be
+the only possible output.
 """
 from dataclasses import dataclass, field
 
 from . import components as C
 from .safe_zones import column_width, LEFT_COLUMN, RIGHT_COLUMN
 from .timing import trigger_time, enforce_min_gap
+from . import illustration as ILL
 
 
 @dataclass
@@ -33,99 +35,176 @@ class Item:
 class ColumnGroup:
     column: str          # "left" | "right"
     mode: str             # "accumulate" | "replace"
-    align: str = "left"   # "left" -> content hugs column's outer edge; "right" -> hugs the avatar-facing edge
-    items: list = field(default_factory=list)   # list[Item]
+    align: str = "left"
+    items: list = field(default_factory=list)
 
 
 def _col_geom(column):
     return LEFT_COLUMN if column == "left" else RIGHT_COLUMN
 
 
-def _align_for(column):
-    # список/заголовок читается от аватара наружу, кроме comparison (см. build_comparison_pair)
-    return "left" if column == "right" else "right"
+def _by_role(sem, role):
+    return [e for e in sem.elements if e.role == role]
 
 
-def build_keyword_emphasis(sem):
-    column = "left"
+def _ordered(elements):
+    return sorted(elements, key=lambda e: e.order or 0)
+
+
+def _first_trigger(sem, default=0.3):
+    """Best-effort trigger time for the whole composite asset: anchor to
+    the first content word of the scene if real word timing exists for
+    this scene_id (production scenes), otherwise fall back to a fixed
+    early offset (used by the synthetic test harness, which has no
+    word_layout.json for made-up sentences)."""
+    try:
+        return trigger_time(sem.scene_id, sem.text.split(" ")[0])
+    except Exception:
+        return default
+
+
+def _maybe_illustration_item(sem, column):
+    """If semantic analysis decided this scene needs more than typography,
+    fetch/generate that asset and return it as an extra Item to prepend —
+    real call, not a placeholder; returns None if asset_strategy is
+    typography/none or generation isn't available."""
+    if sem.asset_strategy in ("typography", "none") or not sem.asset_brief:
+        return None
     cw = column_width(_col_geom(column))
-    align = "left"
-    stage1, stage2 = sem.elements[0], sem.elements[1]
-    t1 = trigger_time(sem.scene, stage1.trigger_phrase)
-    t2 = trigger_time(sem.scene, stage2.trigger_phrase)
-    t1, t2 = enforce_min_gap([t1, t2], min_gap=1.6)
-    img1 = C.render_kicker_word(stage1.kicker, stage1.label, cw, align=align)
-    img2 = C.render_headline(stage2.label, cw, sublabel=stage2.sublabel, align=align)
-    return [ColumnGroup(column=column, mode="replace", items=[Item(img1, t1), Item(img2, t2)])]
+    img = ILL.get_or_generate(sem.scene_id, sem.asset_brief, narration_text=sem.text, max_width=cw)
+    if img is None:
+        return None
+    return Item(img, _first_trigger(sem))
 
 
-def build_typography_only(sem):
-    column = "left"
-    cw = column_width(_col_geom(column))
-    el = sem.elements[0]
-    t = trigger_time(sem.scene, el.trigger_phrase)
-    img = C.render_headline(el.label, cw, kicker=el.kicker, sublabel=el.sublabel, align="left")
-    return [ColumnGroup(column=column, mode="accumulate", items=[Item(img, t)])]
-
-
-def build_process_sequence(sem):
+def build_process_flow(sem):
     column = "right"
     cw = column_width(_col_geom(column))
-    times = enforce_min_gap([trigger_time(sem.scene, e.trigger_phrase) for e in sem.elements], min_gap=1.4)
-    items = []
-    for i, (el, t) in enumerate(zip(sem.elements, times), start=1):
-        img = C.render_list_item(f"{i:02d}", el.label, cw, marker_style="node", align="left")
-        items.append(Item(img, t))
+    steps = _ordered(_by_role(sem, "step"))
+    if not steps:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=process_flow but no 'step' elements")
+    times = enforce_min_gap([trigger_time_or_default(sem, i) for i in range(len(steps))], min_gap=1.4)
+    img = C.render_flow_chain([("", e.label) for e in steps], cw, align="left")
+    items = [Item(img, times[0])]
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        items.insert(0, extra)
     return [ColumnGroup(column=column, mode="accumulate", items=items)]
 
 
-def build_options_grid(sem):
+def build_cause_effect(sem):
     column = "right"
     cw = column_width(_col_geom(column))
-    times = enforce_min_gap([trigger_time(sem.scene, e.trigger_phrase) for e in sem.elements], min_gap=1.0)
-    items = []
-    for i, (el, t) in enumerate(zip(sem.elements, times), start=1):
-        img = C.render_list_item(f"{i:02d}", el.label, cw, marker_style="number", align="left")
-        items.append(Item(img, t))
+    role_kicker = {"cause": "Причина", "mechanism": "Механизм", "effect": "Следствие"}
+    parts = [e for e in sem.elements if e.role in role_kicker]
+    parts = _ordered(parts) if any(e.order for e in parts) else sorted(parts, key=lambda e: list(role_kicker).index(e.role))
+    if len(parts) < 2:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=cause_effect needs >=2 of cause/mechanism/effect")
+    img = C.render_flow_chain([(role_kicker[e.role], e.label) for e in parts], cw, align="left")
+    items = [Item(img, _first_trigger(sem))]
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        items.insert(0, extra)
     return [ColumnGroup(column=column, mode="accumulate", items=items)]
 
 
-def build_checklist_vertical(sem):
+def build_structured_alternatives(sem):
     column = "right"
     cw = column_width(_col_geom(column))
-    times = enforce_min_gap([trigger_time(sem.scene, e.trigger_phrase) for e in sem.elements], min_gap=1.0)
-    items = []
-    for el, t in zip(sem.elements, times):
-        img = C.render_list_item("", el.label, cw, marker_style="check", align="left")
-        items.append(Item(img, t))
+    items_sem = _ordered(_by_role(sem, "item"))
+    if not items_sem:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=structured_alternatives but no 'item' elements")
+    img = C.render_item_list([e.label for e in items_sem], cw, align="left")
+    items = [Item(img, _first_trigger(sem))]
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        items.insert(0, extra)
     return [ColumnGroup(column=column, mode="accumulate", items=items)]
 
 
-def build_comparison_pair(sem):
-    left_el, right_el = sem.elements[0], sem.elements[1]
-    t_left = trigger_time(sem.scene, left_el.trigger_phrase)
-    t_right = trigger_time(sem.scene, right_el.trigger_phrase)
-    t_left, t_right = enforce_min_gap([t_left, t_right], min_gap=1.6)
+def build_checklist(sem):
+    column = "right"
+    cw = column_width(_col_geom(column))
+    items_sem = _ordered(_by_role(sem, "item"))
+    if not items_sem:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=checklist but no 'item' elements")
+    img = C.render_checklist([e.label for e in items_sem], cw, align="left")
+    items = [Item(img, _first_trigger(sem))]
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        items.insert(0, extra)
+    return [ColumnGroup(column=column, mode="accumulate", items=items)]
 
-    cw_l = column_width(LEFT_COLUMN)
-    cw_r = column_width(RIGHT_COLUMN)
-    # мирроринг: обе половины "смотрят" друг на друга через аватар —
-    # левая прижата к правому краю своей колонки, правая к левому краю своей.
-    img_l = C.render_headline(left_el.label, cw_l, sublabel=left_el.sublabel, align="right", accent_bar=True)
-    img_r = C.render_headline(right_el.label, cw_r, sublabel=right_el.sublabel, align="left", accent_bar=True)
+
+def build_comparison(sem):
+    left_els = _by_role(sem, "left")
+    right_els = _by_role(sem, "right")
+    if not left_els or not right_els:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=comparison needs both 'left' and 'right' elements")
+    left_el, right_el = left_els[0], right_els[0]
+    cw_l, cw_r = column_width(LEFT_COLUMN), column_width(RIGHT_COLUMN)
+    img_l = C.render_comparison_side(left_el.label, left_el.sublabel, "left", cw_l)
+    img_r = C.render_comparison_side(right_el.label, right_el.sublabel, "right", cw_r)
+    t = _first_trigger(sem)
     return [
-        ColumnGroup(column="left", mode="accumulate", align="right", items=[Item(img_l, t_left)]),
-        ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t_right)]),
+        ColumnGroup(column="left", mode="accumulate", align="right", items=[Item(img_l, t)]),
+        ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t)]),
     ]
 
 
+def build_qa_structure(sem):
+    column = "right"
+    cw = column_width(_col_geom(column))
+    q = _by_role(sem, "question")
+    a = _by_role(sem, "answer")
+    if not q or not a:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=qa_structure needs both 'question' and 'answer'")
+    img = C.render_qa(q[0].label, a[0].label, cw, align="left")
+    items = [Item(img, _first_trigger(sem))]
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        items.insert(0, extra)
+    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+
+
+def build_strong_typography(sem):
+    column = "left"
+    cw = column_width(_col_geom(column))
+    heads = _by_role(sem, "headline")
+    if not heads:
+        raise ValueError(f"scene {sem.scene_id}: visual_concept=strong_typography but no 'headline' element")
+    el = heads[0]
+    img = C.render_headline(el.label, cw, sublabel=el.sublabel, align="left")
+    items = [Item(img, _first_trigger(sem))]
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        items.insert(0, extra)
+    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+
+
+def build_none(sem):
+    """The system's answer for text where no graphic adds anything — a
+    real, exercised path (not a fallback): semantic analysis decided this,
+    not a missing case."""
+    return []
+
+
+def trigger_time_or_default(sem, index, default_step=1.5):
+    try:
+        return trigger_time(sem.scene_id, sem.elements[index].label.split(" ")[0])
+    except Exception:
+        return 0.3 + index * default_step
+
+
 BUILDERS = {
-    "keyword_emphasis": build_keyword_emphasis,
-    "typography_only": build_typography_only,
-    "process_sequence": build_process_sequence,
-    "options_grid": build_options_grid,
-    "checklist_vertical": build_checklist_vertical,
-    "comparison_pair": build_comparison_pair,
+    "process_flow": build_process_flow,
+    "cause_effect": build_cause_effect,
+    "structured_alternatives": build_structured_alternatives,
+    "checklist": build_checklist,
+    "comparison": build_comparison,
+    "qa_structure": build_qa_structure,
+    "strong_typography": build_strong_typography,
+    "none": build_none,
 }
 
 
@@ -133,7 +212,7 @@ def compose(sem):
     builder = BUILDERS.get(sem.visual_concept)
     if builder is None:
         raise SystemExit(
-            f"NO VISUAL CONCEPT GENERATED FOR SCENE {sem.scene}: unknown concept "
+            f"NO VISUAL CONCEPT GENERATED FOR SCENE {sem.scene_id}: unknown concept "
             f"{sem.visual_concept!r} (no legacy fallback allowed)"
         )
     return builder(sem)

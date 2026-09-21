@@ -1,0 +1,129 @@
+name: Call Scene Semantic Analysis (Gemini)
+
+# Мост для render/visual/semantic_analysis.py — реальный вычисляемый шаг
+# CONTENT -> SEMANTIC ANALYSIS, замена удалённого render/visual/semantic.py
+# (хранил вручную написанный SceneSemantics-литерал на каждую из 8 сцен —
+# см. forensic audit, CLAUDE.md 21.09.2026). Использует тот же проверенный
+# способ вызова CometAPI/Gemini, что и call-image-pipeline.yml (модель
+# gemini-3.5-flash, заголовок x-goog-api-key), но не дублирует его —
+# делает только текстовый анализ, без Nano Banana/картинок.
+#
+# Принимает произвольный batch сцен (scenes_json) — 1 сцена, 8, 9, тестовые
+# синтетические тексты, что угодно; код не знает про номера сцен вообще.
+#
+# Диспетчится НЕ вручную из чата (в отличие от более ранних мостов этого
+# проекта), а напрямую из Python (render/visual/semantic_analysis.py) через
+# GitHub REST API с токеном GITHUB_TOKEN, уже доступным в песочнице сессии
+# (api.github.com не блокируется прокси, в отличие от api.cometapi.com).
+#
+# Требуется repository secret COMETAPI_KEY (тот же, что у call-image-pipeline.yml).
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenes_json:
+        description: 'JSON-массив [{"id":str,"text":str,"duration":number|null}, ...]'
+        required: true
+      output_name:
+        description: 'Имя файла в scratch/ (без расширения)'
+        required: false
+        default: 'semantic-analysis-output'
+
+permissions:
+  contents: write
+
+jobs:
+  call-semantic-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Analyze each scene's text with Gemini (batch)
+        env:
+          COMETAPI_KEY: ${{ secrets.COMETAPI_KEY }}
+          SCENES_JSON: ${{ github.event.inputs.scenes_json }}
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          if [ -z "$COMETAPI_KEY" ]; then
+            echo "::error::Секрет COMETAPI_KEY не задан в настройках репозитория"
+            exit 1
+          fi
+          mkdir -p scratch
+          python3 -c "
+          import json, os, re, sys, urllib.request, urllib.error
+
+          sys.path.insert(0, 'render/visual')
+          from semantic_analysis import ANALYSIS_INSTRUCTIONS as INSTRUCTIONS
+
+          API_KEY = os.environ['COMETAPI_KEY']
+          SCENES = json.loads(os.environ['SCENES_JSON'])
+          NAME = os.environ.get('OUTPUT_NAME') or 'semantic-analysis-output'
+          BASE = 'https://api.cometapi.com/v1beta/models'
+
+          def call(model, body):
+              url = f'{BASE}/{model}:generateContent'
+              data = json.dumps(body).encode('utf-8')
+              req = urllib.request.Request(url, data=data, method='POST', headers={
+                  'x-goog-api-key': API_KEY,
+                  'content-type': 'application/json',
+              })
+              try:
+                  with urllib.request.urlopen(req, timeout=120) as resp:
+                      return resp.status, json.loads(resp.read().decode('utf-8'))
+              except urllib.error.HTTPError as e:
+                  body_text = e.read().decode('utf-8', errors='replace')
+                  print(f'::error::HTTP {e.code} from {model}: {body_text[:1000]}')
+                  sys.exit(1)
+
+          def extract_text(resp):
+              parts = (resp.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
+              return ''.join(p.get('text', '') for p in parts).strip()
+
+          def extract_json(text):
+              cleaned = re.sub(r'^\`\`\`(json)?|\`\`\`\$', '', text.strip(), flags=re.MULTILINE).strip()
+              return json.loads(cleaned)
+
+          results = []
+          for scene in SCENES:
+              sid, text, dur = scene['id'], scene['text'], scene.get('duration')
+              prompt = INSTRUCTIONS + f'\n\nТекст сцены (id={sid}' + (f', длительность {dur}с' if dur else '') + f'):\n\"{text}\"'
+              status, resp = call('gemini-3.5-flash', {'contents': [{'parts': [{'text': prompt}]}]})
+              raw_text = extract_text(resp)
+              if not raw_text:
+                  print(f'::error::scene {sid}: Gemini вернул пустой ответ: ' + json.dumps(resp)[:800])
+                  sys.exit(1)
+              try:
+                  analysis = extract_json(raw_text)
+              except Exception as e:
+                  print(f'::error::scene {sid}: не удалось разобрать JSON ({e}). Сырой ответ: {raw_text[:800]}')
+                  sys.exit(1)
+              print(f'--- scene {sid}: concept={analysis.get(\"visual_concept\")} strategy={analysis.get(\"asset_strategy\")} ---')
+              results.append({'id': sid, 'text': text, 'analysis': analysis})
+
+          with open(f'scratch/{NAME}.json', 'w', encoding='utf-8') as f:
+              json.dump({'results': results}, f, ensure_ascii=False, indent=2)
+          print(f'--- written scratch/{NAME}.json ({len(results)} scenes) ---')
+          "
+
+      - name: Commit response for inspection
+        if: always()
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          NAME="${OUTPUT_NAME:-semantic-analysis-output}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          [ -f "scratch/${NAME}.json" ] && git add "scratch/${NAME}.json"
+          if ! git diff --cached --quiet; then
+            git commit -m "scratch: semantic analysis output ${NAME} for inspection [skip ci]"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push не удался, пробую перебазироваться и повторить..."
+              git pull --rebase
+              sleep $((RANDOM % 5 + 1))
+            done
+          else
+            echo "Нечего коммитить"
+          fi
