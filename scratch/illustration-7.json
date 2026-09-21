@@ -1,11 +1,11 @@
 {
   "narration_line": "Когда покупатель слышит такие вопросы, он понимает: здесь не просто продают — здесь думают о его здоровье. Это ощущение бесценно.",
-  "prompt": "Documentary editorial photograph of a sincere, heartfelt moment between a middle-aged customer and a friendly professional pharmacist at the counter of a modern, well-lit pharmacy. Medium close-up showing genuine mutual trust and warmth, with the customer displaying a relieved, grateful expression and the pharmacist listening attentively with empathy. Soft natural ambient lighting, subtle depth of field with gently blurred clean pharmacy shelves in the background, authentic candid emotion, photorealistic texture, crisp professional camera capture, cinematic realism.",
+  "prompt": "Documentary editorial photograph of genuine human connection and trust at a modern pharmacy counter. A compassionate pharmacist in a neat white coat leans slightly forward, speaking warmly and listening with deep empathy. An adult customer looks relieved and appreciative, holding eye contact with a subtle, trusting smile, feeling truly cared for rather than just being sold to. Natural soft lighting, realistic skin textures, authentic pharmacy interior with blurred shelves in the background. Candid documentary style, 35mm photography, shallow depth of field, warm and reassuring atmosphere.",
   "reference_image_path": null,
   "captions": [
-    "Здесь думают о вашем здоровье"
+    "Здесь думают о здоровье"
   ],
   "mime_type": "image/png",
-  "verdict": "OK",
+  "verdict": "**OK**",
   "aspect_ratio": "1:1"
 }
