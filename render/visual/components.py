@@ -580,16 +580,19 @@ def render_top_title(text, max_width, scale=1.0):
     safe_zones.TOP_TITLE_ZONE (measured real headroom above the avatar's
     hair, see that module's docstring) — a single short line, small pad
     (not the full PAD used by side-column components, which would be
-    taller than the zone allows)."""
+    taller than the zone allows). 21.09.2026 (5): enlarged per direct
+    request ("крупно жирно") — TOP_TITLE_ZONE grew to match (see
+    safe_zones.py), font weight was already F_BLACK (the boldest weight
+    in this project's type system), so "жирно" only needed the size bump."""
     pad = _sz(14, scale)
-    size = _fs(30, scale, floor=16)
+    size = _fs(44, scale, floor=22)
     upper = text.upper()
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
     while True:
         f = S.font(S.F_BLACK, size)
         w = d.textlength(upper, font=f)
-        if w <= max_width - pad * 2 or size <= 16:
+        if w <= max_width - pad * 2 or size <= 22:
             break
         size -= 2
     f = S.font(S.F_BLACK, size)
