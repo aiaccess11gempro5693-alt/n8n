@@ -24,11 +24,17 @@ from .safe_zones import column_width, LEFT_COLUMN, RIGHT_COLUMN
 from .timing import trigger_time, enforce_min_gap
 from . import illustration as ILL
 
+MIN_ASSET_PX = 260  # floor on an illustration's smaller dimension — below this it stops being "a diagram you can read", per layout.py's solver
+
 
 @dataclass
 class Item:
-    image: object
+    image: object            # the default (scale=1.0) render
     trigger: float
+    kind: str = "text"        # "text" (a components.py render, resizable via render_fn) | "asset" (a generated illustration, resizable via plain resize)
+    render_fn: object = None  # for kind="text": Callable[[float scale], Image] — lets layout.py ask for a crisp re-render at a smaller font size, not a blurry raster downscale
+    min_scale: float = 0.82   # for kind="text": floor scale layout.py won't go below
+    min_px: int = MIN_ASSET_PX  # for kind="asset": floor on the smaller dimension
 
 
 @dataclass
@@ -76,7 +82,7 @@ def _maybe_illustration_item(sem, column):
     img = ILL.get_or_generate(sem.scene_id, sem.asset_brief, narration_text=sem.text, max_width=cw)
     if img is None:
         return None
-    return Item(img, _first_trigger(sem))
+    return Item(img, _first_trigger(sem), kind="asset", min_px=MIN_ASSET_PX)
 
 
 def build_process_flow(sem):
@@ -86,8 +92,10 @@ def build_process_flow(sem):
     if not steps:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=process_flow but no 'step' elements")
     times = enforce_min_gap([trigger_time_or_default(sem, i) for i in range(len(steps))], min_gap=1.4)
-    img = C.render_flow_chain([("", e.label) for e in steps], cw, align="left")
-    items = [Item(img, times[0])]
+    chain = [("", e.label) for e in steps]
+    img = C.render_flow_chain(chain, cw, align="left")
+    render_fn = lambda s, _chain=chain, _cw=cw: C.render_flow_chain(_chain, _cw, align="left", scale=s)
+    items = [Item(img, times[0], kind="text", render_fn=render_fn)]
     extra = _maybe_illustration_item(sem, column)
     if extra:
         items.insert(0, extra)
@@ -102,8 +110,10 @@ def build_cause_effect(sem):
     parts = _ordered(parts) if any(e.order for e in parts) else sorted(parts, key=lambda e: list(role_kicker).index(e.role))
     if len(parts) < 2:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=cause_effect needs >=2 of cause/mechanism/effect")
-    img = C.render_flow_chain([(role_kicker[e.role], e.label) for e in parts], cw, align="left")
-    items = [Item(img, _first_trigger(sem))]
+    chain = [(role_kicker[e.role], e.label) for e in parts]
+    img = C.render_flow_chain(chain, cw, align="left")
+    render_fn = lambda s, _chain=chain, _cw=cw: C.render_flow_chain(_chain, _cw, align="left", scale=s)
+    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
     extra = _maybe_illustration_item(sem, column)
     if extra:
         items.insert(0, extra)
@@ -116,8 +126,10 @@ def build_structured_alternatives(sem):
     items_sem = _ordered(_by_role(sem, "item"))
     if not items_sem:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=structured_alternatives but no 'item' elements")
-    img = C.render_item_list([e.label for e in items_sem], cw, align="left")
-    items = [Item(img, _first_trigger(sem))]
+    labels = [e.label for e in items_sem]
+    img = C.render_item_list(labels, cw, align="left")
+    render_fn = lambda s, _labels=labels, _cw=cw: C.render_item_list(_labels, _cw, align="left", scale=s)
+    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
     extra = _maybe_illustration_item(sem, column)
     if extra:
         items.insert(0, extra)
@@ -130,8 +142,10 @@ def build_checklist(sem):
     items_sem = _ordered(_by_role(sem, "item"))
     if not items_sem:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=checklist but no 'item' elements")
-    img = C.render_checklist([e.label for e in items_sem], cw, align="left")
-    items = [Item(img, _first_trigger(sem))]
+    labels = [e.label for e in items_sem]
+    img = C.render_checklist(labels, cw, align="left")
+    render_fn = lambda s, _labels=labels, _cw=cw: C.render_checklist(_labels, _cw, align="left", scale=s)
+    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
     extra = _maybe_illustration_item(sem, column)
     if extra:
         items.insert(0, extra)
@@ -156,14 +170,16 @@ def build_comparison(sem):
     cw_l, cw_r = column_width(LEFT_COLUMN), column_width(RIGHT_COLUMN)
     img_l = C.render_comparison_side(left_el.label, left_el.sublabel, "left", cw_l)
     img_r = C.render_comparison_side(right_el.label, right_el.sublabel, "right", cw_r)
+    render_fn_l = lambda s, _e=left_el, _cw=cw_l: C.render_comparison_side(_e.label, _e.sublabel, "left", _cw, scale=s)
+    render_fn_r = lambda s, _e=right_el, _cw=cw_r: C.render_comparison_side(_e.label, _e.sublabel, "right", _cw, scale=s)
     t = _first_trigger(sem)
-    left_items = [Item(img_l, t)]
+    left_items = [Item(img_l, t, kind="text", render_fn=render_fn_l)]
     extra = _maybe_illustration_item(sem, "left")
     if extra:
         left_items.insert(0, extra)
     return [
         ColumnGroup(column="left", mode="accumulate", align="right", items=left_items),
-        ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t)]),
+        ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t, kind="text", render_fn=render_fn_r)]),
     ]
 
 
@@ -175,7 +191,8 @@ def build_qa_structure(sem):
     if not q or not a:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=qa_structure needs both 'question' and 'answer'")
     img = C.render_qa(q[0].label, a[0].label, cw, align="left")
-    items = [Item(img, _first_trigger(sem))]
+    render_fn = lambda s, _q=q[0].label, _a=a[0].label, _cw=cw: C.render_qa(_q, _a, _cw, align="left", scale=s)
+    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
     extra = _maybe_illustration_item(sem, column)
     if extra:
         items.insert(0, extra)
@@ -190,7 +207,8 @@ def build_strong_typography(sem):
         raise ValueError(f"scene {sem.scene_id}: visual_concept=strong_typography but no 'headline' element")
     el = heads[0]
     img = C.render_headline(el.label, cw, sublabel=el.sublabel, align="left")
-    items = [Item(img, _first_trigger(sem))]
+    render_fn = lambda s, _el=el, _cw=cw: C.render_headline(_el.label, _cw, sublabel=_el.sublabel, align="left", scale=s)
+    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
     extra = _maybe_illustration_item(sem, column)
     if extra:
         items.insert(0, extra)
