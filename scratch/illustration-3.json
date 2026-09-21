@@ -1,9 +1,9 @@
 {
   "narration_line": "Итак, покупатель говорит: \"Дайте что-нибудь для иммунитета\". Что он имеет в виду? Возможно, он болеет каждую осень и хочет это изменить. Возможно, только недавно перенёс ОРВИ и чувствует слабость. Возможно, просто устал и решил, что виноват \"плохой иммунитет\". А возможно, он уже принимает три разных БАДа и хочет добавить четвёртый.",
-  "prompt": "Photorealistic documentary style photography, eye-level medium close-up shot. An authentic customer in casual autumn jacket and scarf standing at a modern pharmacy counter, speaking attentively with an expressive, questioning and slightly tired look while asking for health advice. Pharmacy counter setting, softly blurred modern pharmacy shelves in the background with generic unbranded medicine boxes, soft natural ambient pharmacy lighting, realistic skin textures, high editorial quality, 35mm photography, shallow depth of field.",
+  "prompt": "Editorial documentary photograph of a thoughtful adult customer at a modern pharmacy counter, engaged in a conversation with a professional pharmacist in a clean white coat. The customer has a slightly fatigued, hesitant expression, subtly gesturing with hands as if trying to describe a vague symptom or asking for general immunity support. Realistic pharmacy interior background with softly blurred shelves of generic, unbranded healthcare packages, shallow depth of field, natural soft ambient daylight, realistic skin textures, 35mm cinematic editorial realism, authentic candid atmosphere.",
   "reference_image_path": null,
   "captions": [
-    "Что имеет в виду покупатель?"
+    "«Дайте что-нибудь для иммунитета»"
   ],
   "mime_type": "image/png",
   "verdict": "OK",
