@@ -1,0 +1,48 @@
+{
+  "results": [
+    {
+      "id": 2,
+      "text": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
+      "analysis": {
+        "main_message": "За внешне уверенным запросом покупателя скрывается скрытая потребность, которую фармацевт помогает прояснить через диалог",
+        "scene_title": "Суть запроса покупателя",
+        "information_structure": "Переход от внешнего симптома/запроса к скрытой реальной проблеме через экспертную консультацию",
+        "visual_goal": "Показать связь между тем, что озвучивает покупатель на словах, и глубинной причиной, до которой докапывается фармацевт",
+        "asset_required": true,
+        "asset_type": "pharmacy-counter scene",
+        "asset_brief": "Photorealistic documentary editorial photography of an attentive pharmacist in a modern well-lit pharmacy leaning slightly forward over the counter, listening with genuine empathy and professional focus to an adult customer explaining their symptoms. Natural warm lighting, authentic facial expressions, realistic pharmacy background with soft bokeh. Real people, authentic documentary feel. NOT illustration, NOT 3D render, NOT cartoon, NOT stock-photo fake smile, no text or icons on image.",
+        "asset_caption": "Диалог у первого стола",
+        "no_asset_reason": null,
+        "composition_intent": "Карточка с фото диалога размещается в левой колонке, а в правой — структурированная цепочка перехода от поверхностного запроса к скрытой сути",
+        "motion_intent": "Плавное появление фотографии слева, затем последовательное раскрытие цепочки от причины к скрытой сути справа с акцентной подсветкой финального шага",
+        "visual_concept": "cause_effect",
+        "asset_strategy": "image",
+        "elements": [
+          {
+            "role": "cause",
+            "label": "Поверхностный запрос",
+            "sublabel": "Уверенно названный препарат",
+            "order": 1
+          },
+          {
+            "role": "mechanism",
+            "label": "Уточняющий диалог",
+            "sublabel": "Вопросы фармацевта",
+            "order": 2
+          },
+          {
+            "role": "effect",
+            "label": "Истинная потребность",
+            "sublabel": "Реальная причина обращения",
+            "order": 3
+          }
+        ],
+        "avoid": [
+          "Буквальная метафора айсберга или лупы (клише)",
+          "Сравнение comparison (это не два независимых выбора, а процесс раскрытия скрытой сути)",
+          "Иллюстративная графика или мультяшные значки"
+        ]
+      }
+    }
+  ]
+}
