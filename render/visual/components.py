@@ -42,23 +42,34 @@ original. `scale` has a floor enforced by the CALLER (layout.py), not
 here; this module will happily render at scale=0.1 if asked; it is not
 the readability gate.
 
-No cards/pills/background fills for TEXT — legibility on live video comes
-from a text shadow (`_draw_text_shadow`), not a backing plate. This does
-NOT apply to `render_image_card` (added 21.09.2026 (2)): a generated
-illustration is a photographic object, not typography, and gets its own
-new treatment (rounded card, accent border ring, soft shadow, caption
-chip) — see that function's docstring for why it's a deliberately
-different rule from the text components above it.
+21.09.2026 (3) — REVERSED: text no longer relies on shadow-only
+legibility. Direct user instruction: no half/empty text floating on raw
+video — every text component gets a filled, symmetric card background,
+the same visual language as `render_image_card`. `_wrap_in_card()` draws
+that card (opaque fill + accent border ring + soft shadow, equal inset on
+all 4 sides) behind whatever a render_* function already drew on its
+PAD-bounded transparent canvas — reusing that existing PAD reserve, not
+growing the canvas, so no caller/layout math changes. `_draw_text_shadow`
+still runs first (harmless now that it lands on an opaque fill, kept so
+components don't need a separate code path) but is no longer what makes
+text legible — the card is.
 """
 from PIL import Image, ImageDraw, ImageFilter
 from . import style as S
 
-PAD = 28  # padding around content inside each PNG (room for shadow blur), at scale=1.0
+PAD = 28  # padding around content inside each PNG (room for card border/shadow), at scale=1.0
 CARD_RADIUS = 26
 CARD_BORDER = 4
 CARD_SHADOW_BLUR = 22
 CARD_SHADOW_OFFSET = 12
 CARD_SHADOW_COLOR = (5, 6, 8, 150)
+
+CARD_TEXT_FILL = (17, 19, 23, 255)      # opaque slate panel behind every text component
+CARD_TEXT_INSET = 10                     # gap from the PAD-bounded canvas edge to the card's own edge — stays inside the existing PAD reserve, canvas size unchanged
+CARD_TEXT_BORDER = 3
+CARD_TEXT_SHADOW_BLUR = 10
+CARD_TEXT_SHADOW_OFFSET = 5
+CARD_TEXT_SHADOW_COLOR = (5, 6, 8, 130)
 
 
 def _sz(v, scale):
@@ -110,6 +121,37 @@ def _finish(img):
     return img
 
 
+def _wrap_in_card(canvas, scale=1.0):
+    """Draws a filled rounded card (opaque fill + accent border ring +
+    soft blurred shadow, equal inset on all 4 sides — symmetric by
+    construction) BEHIND whatever a render_* function already drew on
+    `canvas`, and returns the composited result. `canvas` is always sized
+    content+2*PAD (see `_new_canvas`), so the card fits inside that
+    existing margin with no change to the returned image's dimensions —
+    callers (layout.py, composition.py) need no width-budget changes."""
+    inset = _sz(CARD_TEXT_INSET, scale)
+    radius = _sz(CARD_RADIUS, scale)
+    border = max(1, _sz(CARD_TEXT_BORDER, scale))
+    blur = max(1, _sz(CARD_TEXT_SHADOW_BLUR, scale))
+    dy = _sz(CARD_TEXT_SHADOW_OFFSET, scale)
+    w, h = canvas.size
+
+    base = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    shadow_layer = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    ImageDraw.Draw(shadow_layer).rounded_rectangle(
+        [inset, inset + dy, w - inset, h - inset + dy], radius=radius, fill=CARD_TEXT_SHADOW_COLOR,
+    )
+    base.alpha_composite(shadow_layer.filter(ImageFilter.GaussianBlur(blur / 2)))
+
+    ImageDraw.Draw(base).rounded_rectangle([inset, inset, w - inset, h - inset], radius=radius, fill=CARD_TEXT_FILL)
+    ImageDraw.Draw(base).rounded_rectangle(
+        [inset + border / 2, inset + border / 2, w - inset - border / 2, h - inset - border / 2],
+        radius=radius, outline=S.ACCENT, width=border,
+    )
+    base.alpha_composite(canvas)
+    return base
+
+
 def render_kicker_word(kicker, word, max_width, align="left", scale=1.0):
     """One oversized word + optional small kicker label above it. Used by
     strong_typography when the scene is literally about one word/theme."""
@@ -149,7 +191,7 @@ def render_kicker_word(kicker, word, max_width, align="left", scale=1.0):
         _draw_text_shadow(draw, (lx, y), line, f_word, S.WHITE)
         y += int(size * 1.05)
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
 
 
 def render_headline(label, max_width, kicker="", sublabel="", align="left", accent_bar=True, scale=1.0):
@@ -206,7 +248,7 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
     if accent_bar:
         draw.rectangle([bar_x0, head_top + _sz(4, scale), bar_x0 + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
 
 
 def render_flow_chain(steps, max_width, align="left", scale=1.0):
@@ -281,7 +323,7 @@ def render_flow_chain(steps, max_width, align="left", scale=1.0):
 
         y += r["h"] + arrow_gap
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
 
 
 def render_item_list(items, max_width, align="left", scale=1.0):
@@ -312,7 +354,7 @@ def render_item_list(items, max_width, align="left", scale=1.0):
             ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
         y = ty + gap
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
 
 
 def render_checklist(items, max_width, align="left", scale=1.0):
@@ -349,7 +391,7 @@ def render_checklist(items, max_width, align="left", scale=1.0):
             ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
         y += row_h + gap
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
 
 
 def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
@@ -406,7 +448,7 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
         (chevron_x, cy - _sz(14, scale)), (chevron_x + cw2 * direction, cy), (chevron_x, cy + _sz(14, scale)),
     ], fill=S.ACCENT)
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
 
 
 def _rounded_mask(size, radius):
@@ -524,4 +566,4 @@ def render_qa(question, answer, max_width, align="left", scale=1.0):
     bar_x = (x0 - _sz(14, scale)) if not right else (content_w - _sz(6, scale))
     draw.rectangle([bar_x, ay0 + _sz(4, scale), bar_x + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
 
-    return _finish(canvas)
+    return _finish(_wrap_in_card(canvas, scale))
