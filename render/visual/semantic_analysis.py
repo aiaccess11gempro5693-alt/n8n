@@ -77,6 +77,7 @@ class SceneSemantics:
     asset_required: bool
     asset_type_raw: str              # Gemini's OWN WORD for the asset type, unnormalized
     asset_brief: str
+    asset_caption: str                # short (2-4 word) Russian on-screen label for the image card, "" if no asset
     composition_intent: str          # free text: how it should sit relative to avatar/subtitles
     motion_intent: str               # free text: how it should reveal/animate
     avoid: list                      # things deliberately not shown, and why
@@ -94,9 +95,13 @@ AVATAR ZONE, в неё нельзя помещать никакую график
 субтитровая плашка (SUBTITLE ZONE), тоже запрещена для графики. Всё, что
 можно разместить, идёт в одну из двух боковых колонок слева/справа от
 аватара, каждая примерно 470-490px шириной и ~765px высотой. Стиль —
-premium editorial: typography-driven, единственный акцентный цвет
-#FF6B4A, светлые/белые надписи с тенью для читаемости на живом видео фона
-аптеки, никаких декоративных карточек/pill-плашек."""
+premium editorial: единственный акцентный цвет #FF6B4A. Текст (заголовки,
+списки, чек-листы) — typography-driven, светлые/белые надписи с тенью,
+без карточек/подложек. Сгенерированная картинка/иллюстрация (если
+asset_required=true) — это другое: она получает собственное оформление
+(скруглённая карточка, акцентная обводка, мягкая тень, короткая цветная
+подпись-чип под картинкой) и рассчитана выглядеть как настоящий, яркий,
+законченный визуальный элемент, а не служебная миниатюра."""
 
 ANALYSIS_INSTRUCTIONS = f"""\
 Ты семантический аналитик для монтажного pipeline обучающих видео.
@@ -116,15 +121,22 @@ pharmacy-counter scene; layered diagram; annotated object; sequence;
 visual metaphor; typography-only; combination of diagram and text. Если
 ни один пример не подходит — опиши своё решение как есть.
 
-ВАЖНОЕ ПРАВИЛО про asset_required: не выбирай true просто потому что
-можешь — визуал должен реально помогать понять мысль, а не иллюстрировать
-каждое слово. Не выбирай false просто "на всякий случай" — если понимание
-текста реально выигрывает от конкретного визуального образа (не просто
-крупного шрифта), это должно быть true. Если asset_required=false,
+ВАЖНОЕ ПРАВИЛО про asset_required: новый творческий курс проекта — видео
+должно выглядеть ярче, живее и понятнее за счёт настоящих картинок, не
+только текста. Если в тексте сцены есть что-то конкретное и предметное —
+физический объект (упаковка, баночка, термометр...), конкретная сцена
+(разговор на кассе, полка в аптеке), человек/персонаж, процесс с видимыми
+шагами — это почти всегда стоит показать картинкой, а не только словами:
+в таких случаях смело выбирай asset_required=true. Оставляй
+asset_required=false только для текста, где мысль ДЕЙСТВИТЕЛЬНО абстрактна
+и её нечем изобразить конкретно (например, чистое рассуждение или
+эмоциональная оценка без предметного образа) — в этом случае
 no_asset_reason ОБЯЗАТЕЛЕН и должен быть содержательным (не "не нужно").
+Это по-прежнему решение для КАЖДОЙ сцены по её реальному содержанию, не
+галочка "true всегда" — но при сомнении сейчас предпочитай true.
 Никогда не выбирай буквальную/клишированную иконку одного слова из текста
-(например «лупа» для идеи «разобраться в сути») — если нужна иконка/
-иллюстрация, она должна визуально объяснять МЕХАНИЗМ или РЕЗУЛЬТАТ мысли.
+(например «лупа» для идеи «разобраться в сути») — картинка должна
+визуально объяснять МЕХАНИЗМ или РЕЗУЛЬТАТ мысли, а не быть значком-ребусом.
 
 Технические поля (visual_concept, asset_strategy) — контролируемый
 словарь, потому что рендер-код сейчас умеет строить только конечный набор
@@ -147,6 +159,7 @@ visual_goal, composition_intent, motion_intent) — твоими словами,
   "asset_required": true/false,
   "asset_type": "free text — твоё слово для типа ассета (illustration/diagram/pharmacy-counter scene/annotated object/...), или 'typography' или 'none'",
   "asset_brief": "если asset_required=true: детальный промпт НА АНГЛИЙСКОМ для модели генерации изображений (что нарисовать, стиль, композиция, что НЕ включать); иначе null",
+  "asset_caption": "если asset_required=true: короткая подпись на русском, 2-4 слова, под картинку (не дублирует дословно label из elements, а называет ЧТО на картинке); иначе null",
   "no_asset_reason": "если asset_required=false: почему графика не добавляет пользы; иначе null",
   "composition_intent": "free text — как это должно располагаться относительно аватара/субтитров",
   "motion_intent": "free text — как это должно появляться/анимироваться, или 'static' если не важно",
@@ -234,6 +247,8 @@ def _parse_one(raw, scene_id, text, duration):
     strategy = _normalize_asset_strategy(asset_required, asset_type_raw)
     if asset_required and not raw.get("asset_brief"):
         raise ValueError(f"scene {scene_id}: asset_required=true but no asset_brief was provided")
+    if asset_required and not raw.get("asset_caption"):
+        raise ValueError(f"scene {scene_id}: asset_required=true but no asset_caption was provided")
     if not asset_required and not raw.get("no_asset_reason"):
         raise ValueError(f"scene {scene_id}: asset_required=false but no no_asset_reason was provided")
     elements = [
@@ -250,6 +265,7 @@ def _parse_one(raw, scene_id, text, duration):
         asset_required=asset_required,
         asset_type_raw=asset_type_raw,
         asset_brief=raw.get("asset_brief") or "",
+        asset_caption=raw.get("asset_caption") or "",
         composition_intent=raw.get("composition_intent", ""),
         motion_intent=raw.get("motion_intent", ""),
         avoid=raw.get("avoid", []),

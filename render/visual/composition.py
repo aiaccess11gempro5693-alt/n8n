@@ -79,10 +79,18 @@ def _maybe_illustration_item(sem, column):
     if not sem.asset_required or not sem.asset_brief:
         return None
     cw = column_width(_col_geom(column))
-    img = ILL.get_or_generate(sem.scene_id, sem.asset_brief, narration_text=sem.text, max_width=cw)
+    # render_image_card wraps the raw photo in its own border+shadow
+    # margin (components.PAD + CARD_SHADOW_BLUR on each side) — request
+    # the photo narrower by exactly that much so the FINISHED card (not
+    # just the raw photo) ends up card.width == cw, matching how the text
+    # components already size themselves to the column.
+    card_margin = 2 * (C.CARD_SHADOW_BLUR + C.PAD)
+    photo_w = max(220, cw - card_margin)
+    img = ILL.get_or_generate(sem.scene_id, sem.asset_brief, narration_text=sem.text, max_width=photo_w)
     if img is None:
         return None
-    return Item(img, _first_trigger(sem), kind="asset", min_px=MIN_ASSET_PX)
+    card = C.render_image_card(img, caption=sem.asset_caption)
+    return Item(card, _first_trigger(sem), kind="asset", min_px=MIN_ASSET_PX)
 
 
 def build_process_flow(sem):

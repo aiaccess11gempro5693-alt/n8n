@@ -42,13 +42,23 @@ original. `scale` has a floor enforced by the CALLER (layout.py), not
 here; this module will happily render at scale=0.1 if asked; it is not
 the readability gate.
 
-No cards/pills/background fills — legibility on live video comes from a
-text shadow (`_draw_text_shadow`), not a backing plate.
+No cards/pills/background fills for TEXT — legibility on live video comes
+from a text shadow (`_draw_text_shadow`), not a backing plate. This does
+NOT apply to `render_image_card` (added 21.09.2026 (2)): a generated
+illustration is a photographic object, not typography, and gets its own
+new treatment (rounded card, accent border ring, soft shadow, caption
+chip) — see that function's docstring for why it's a deliberately
+different rule from the text components above it.
 """
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 from . import style as S
 
 PAD = 28  # padding around content inside each PNG (room for shadow blur), at scale=1.0
+CARD_RADIUS = 26
+CARD_BORDER = 4
+CARD_SHADOW_BLUR = 22
+CARD_SHADOW_OFFSET = 12
+CARD_SHADOW_COLOR = (5, 6, 8, 150)
 
 
 def _sz(v, scale):
@@ -395,6 +405,81 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
     draw.polygon([
         (chevron_x, cy - _sz(14, scale)), (chevron_x + cw2 * direction, cy), (chevron_x, cy + _sz(14, scale)),
     ], fill=S.ACCENT)
+
+    return _finish(canvas)
+
+
+def _rounded_mask(size, radius):
+    mask = Image.new("L", size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, size[0] - 1, size[1] - 1], radius=radius, fill=255)
+    return mask
+
+
+def render_image_card(image, caption="", scale=1.0):
+    """Frames a generated Nano Banana illustration (`image`, already sized
+    to the target column width by illustration.py) as a deliberate design
+    object, not a bare rectangle floating on the video: rounded corners,
+    a thin accent border ring, a soft blurred drop shadow, and an optional
+    short caption chip underneath (an opaque accent pill — unlike the
+    typography components in this file, a photo needs no shadow-only
+    legibility trick, and neither does a caption sitting on its own
+    opaque background). One shared treatment reused for every asset, not
+    a per-scene design."""
+    radius = _sz(CARD_RADIUS, scale)
+    border = max(1, _sz(CARD_BORDER, scale))
+    blur = max(1, _sz(CARD_SHADOW_BLUR, scale))
+    shadow_dy = _sz(CARD_SHADOW_OFFSET, scale)
+
+    img = image.convert("RGBA")
+    mask = _rounded_mask(img.size, radius)
+    framed = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    framed.paste(img, (0, 0), mask)
+    border_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(border_layer).rounded_rectangle(
+        [border / 2, border / 2, img.width - 1 - border / 2, img.height - 1 - border / 2],
+        radius=radius, outline=S.ACCENT, width=border,
+    )
+
+    f_cap = S.font(S.F_SEMIBOLD, _fs(22, scale))
+    tmp = Image.new("RGBA", (10, 10))
+    d = ImageDraw.Draw(tmp)
+    chip_pad_x, chip_pad_y = _sz(22, scale), _sz(11, scale)
+    cap_lines = _wrap(d, caption.upper(), f_cap, img.width - chip_pad_x * 2) if caption else []
+    line_h = int(_fs(22, scale) * 1.25)
+    chip_w = (max((d.textlength(l, font=f_cap) for l in cap_lines), default=0) + chip_pad_x * 2) if cap_lines else 0
+    chip_h = (line_h * len(cap_lines) + chip_pad_y * 2) if cap_lines else 0
+    chip_gap = _sz(16, scale) if cap_lines else 0
+
+    pad = _sz(PAD, scale) + blur
+    content_w = max(img.width, chip_w)
+    content_h = img.height + chip_gap + chip_h
+    canvas = Image.new("RGBA", (int(content_w) + pad * 2, int(content_h) + pad * 2), (0, 0, 0, 0))
+
+    img_x = pad + (content_w - img.width) / 2
+    img_y = pad
+
+    shadow_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    ImageDraw.Draw(shadow_layer).rounded_rectangle(
+        [int(img_x), int(img_y + shadow_dy), int(img_x + img.width), int(img_y + shadow_dy + img.height)],
+        radius=radius, fill=CARD_SHADOW_COLOR,
+    )
+    shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(blur / 2))
+    canvas.alpha_composite(shadow_layer)
+    canvas.alpha_composite(framed, (int(img_x), int(img_y)))
+    canvas.alpha_composite(border_layer, (int(img_x), int(img_y)))
+
+    if cap_lines:
+        chip_x = pad + (content_w - chip_w) / 2
+        chip_y = img_y + img.height + chip_gap
+        draw = ImageDraw.Draw(canvas)
+        draw.rounded_rectangle([int(chip_x), int(chip_y), int(chip_x + chip_w), int(chip_y + chip_h)],
+                                radius=chip_h / 2, fill=S.ACCENT)
+        ty = chip_y + chip_pad_y
+        for line in cap_lines:
+            lw = d.textlength(line, font=f_cap)
+            lx = chip_x + (chip_w - lw) / 2
+            draw.text((lx, ty), line, font=f_cap, fill=S.WHITE)
+            ty += line_h
 
     return _finish(canvas)
 
