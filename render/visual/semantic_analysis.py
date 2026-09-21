@@ -72,68 +72,99 @@ class SceneSemantics:
     text: str
     duration: float
     main_message: str
-    information_structure: str
-    visual_priority: str
-    visual_concept: str
-    asset_strategy: str
-    asset_brief: str = ""
+    information_structure: str      # Gemini's OWN WORDS, free text — not constrained to an enum
+    visual_goal: str                 # what the viewer should come away understanding
+    asset_required: bool
+    asset_type_raw: str              # Gemini's OWN WORD for the asset type, unnormalized
+    asset_brief: str
+    composition_intent: str          # free text: how it should sit relative to avatar/subtitles
+    motion_intent: str               # free text: how it should reveal/animate
+    avoid: list                      # things deliberately not shown, and why
+    no_asset_reason: str             # required reasoning when asset_required is False
+    visual_concept: str              # TECHNICAL dispatch key (controlled vocabulary, see below)
+    asset_strategy: str              # TECHNICAL dispatch key (controlled vocabulary, see below)
     elements: list = field(default_factory=list)          # list[VisualElement]
-    elements_to_omit: list = field(default_factory=list)
 
+
+PROJECT_VISUAL_CONTEXT = """\
+Проект: обучающие видео для сотрудников аптеки, фармацевт-аватар говорит
+на камеру, статичный поясной план по центру кадра (1920x1080), лицо и
+плечи занимают центральную полосу x≈600-1340 на всю высоту кадра — это
+AVATAR ZONE, в неё нельзя помещать никакую графику. Внизу кадра —
+субтитровая плашка (SUBTITLE ZONE), тоже запрещена для графики. Всё, что
+можно разместить, идёт в одну из двух боковых колонок слева/справа от
+аватара, каждая примерно 470-490px шириной и ~765px высотой. Стиль —
+premium editorial: typography-driven, единственный акцентный цвет
+#FF6B4A, светлые/белые надписи с тенью для читаемости на живом видео фона
+аптеки, никаких декоративных карточек/pill-плашек."""
 
 ANALYSIS_INSTRUCTIONS = f"""\
-Ты семантический анализатор для монтажного pipeline обучающих видео
-(фармацевт объясняет материал сотрудникам аптеки). Тебе даётся текст одной
-сцены (реплика диктора). Проанализируй СОДЕРЖАНИЕ этого конкретного текста
-(не тему ролика в целом) и верни структуру для того, что должно появиться
-на экране поверх видео с говорящим человеком.
+Ты семантический аналитик для монтажного pipeline обучающих видео.
+{PROJECT_VISUAL_CONTEXT}
 
-Правила:
-- Визуал должен помогать понять мысль, а не иллюстрировать каждое слово.
-  Если текст — это одна простая мысль без внутренней структуры, используй
-  visual_concept="strong_typography" или даже "none", если графика не
-  добавляет пользы.
-- visual_concept ОБЯЗАН быть одним из: {", ".join(VISUAL_CONCEPTS)}.
-  process_flow — только если шаги реально ведут один к другому по порядку
-  (не просто перечисление). structured_alternatives — независимые варианты
-  без порядка и без причинной связи. checklist — пункты, которые нужно
-  пройти/проверить (обычно вопросы). comparison — ровно два
-  противопоставленных случая. cause_effect — цепочка причина->механизм->
-  следствие (может быть 2 или 3 звена). qa_structure — в тексте есть
-  вопрос (явный или подразумеваемый) и ответ на него.
-- asset_strategy ОБЯЗАН быть одним из: {", ".join(ASSET_STRATEGIES)}.
-  "typography" — достаточно текста/структуры без изображения.
-  "illustration"/"diagram"/"icon"/"image"/"data_visualization"/"combination"
-  — если конкретный визуальный образ (не текст) реально прояснит мысль
-  лучше, чем текст. Если предлагаешь что-то кроме typography/none —
-  обязательно заполни asset_brief (детальный промпт НА АНГЛИЙСКОМ для
-  модели генерации изображений: что нарисовать, стиль, композиция).
-- elements — краткие подписи НА ЭКРАН (русский, 2-6 слов каждая), не
-  дословная цитата реплики. Поле "role" зависит от visual_concept:
-    process_flow / cause_effect -> role: "step" (process) или
-      "cause"/"mechanism"/"effect" (cause_effect), с "order" по порядку.
-    structured_alternatives / checklist -> role: "item", "order" по порядку.
-    comparison -> ровно 2 элемента, role: "left" и "right".
-    qa_structure -> ровно 2 элемента, role: "question" и "answer".
-    strong_typography -> ровно 1 элемент, role: "headline", можно
-      "sublabel" для уточнения.
-    none -> elements: [].
-- Не придумывай информацию, которой нет в тексте. Если структуры
-  недостаточно для выбранного concept (например "comparison" без двух
-  явных случаев) — выбери другой concept, который честно соответствует
-  тексту.
+Тебе даётся текст одной сцены (реплика диктора), её длительность. Твоя
+задача — понять СОДЕРЖАНИЕ именно этого текста (не тему ролика в целом) и
+решить, как это должно быть представлено на экране поверх видео с
+говорящим человеком: главная мысль, второстепенные элементы, нужен ли
+вообще дополнительный визуал, и если да — какой именно.
+
+Думай и объясняй СВОИМИ СЛОВАМИ там, где это указано как "free text" —
+не подгоняй описание под заранее придуманный список. Примеры того, каким
+может быть решение (это ПРИМЕРЫ, не исчерпывающий список): process flow;
+comparison; cause/effect; checklist; explanatory illustration;
+pharmacy-counter scene; layered diagram; annotated object; sequence;
+visual metaphor; typography-only; combination of diagram and text. Если
+ни один пример не подходит — опиши своё решение как есть.
+
+ВАЖНОЕ ПРАВИЛО про asset_required: не выбирай true просто потому что
+можешь — визуал должен реально помогать понять мысль, а не иллюстрировать
+каждое слово. Не выбирай false просто "на всякий случай" — если понимание
+текста реально выигрывает от конкретного визуального образа (не просто
+крупного шрифта), это должно быть true. Если asset_required=false,
+no_asset_reason ОБЯЗАТЕЛЕН и должен быть содержательным (не "не нужно").
+Никогда не выбирай буквальную/клишированную иконку одного слова из текста
+(например «лупа» для идеи «разобраться в сути») — если нужна иконка/
+иллюстрация, она должна визуально объяснять МЕХАНИЗМ или РЕЗУЛЬТАТ мысли.
+
+Технические поля (visual_concept, asset_strategy) — контролируемый
+словарь, потому что рендер-код сейчас умеет строить только конечный набор
+компонентов. Заполняй их как ближайшее технически возможное исполнение
+твоего решения; сама смысловая интерпретация (information_structure,
+visual_goal, composition_intent, motion_intent) — твоими словами, без
+ограничений.
+  visual_concept (для форматирования типографики/структуры) — один из:
+    {", ".join(VISUAL_CONCEPTS)}.
+  asset_strategy (техническая категория итогового изображения, если
+    asset_required=true) — ближе всего к одному из:
+    {", ".join(v for v in ASSET_STRATEGIES if v not in ("typography", "none"))}.
+    Если asset_required=false, поставь "none".
 
 Ответь СТРОГО в формате JSON без пояснений, без markdown-обёртки:
 {{
   "main_message": "одна фраза — о чём этот текст",
-  "information_structure": "process|alternatives|checklist|comparison|cause_effect|qa|single_message",
-  "visual_priority": "что именно должен передать визуал, одна фраза",
-  "visual_concept": "...",
-  "asset_strategy": "...",
-  "asset_brief": "английский промпт для генератора изображений или null",
-  "elements": [{{"role": "...", "label": "...", "sublabel": "... или null", "order": 1}}],
-  "elements_to_omit": ["что сознательно не визуализируем и почему, коротко"]
+  "information_structure": "free text — своими словами, что это за тип информации",
+  "visual_goal": "free text — что именно зритель должен понять из визуала",
+  "asset_required": true/false,
+  "asset_type": "free text — твоё слово для типа ассета (illustration/diagram/pharmacy-counter scene/annotated object/...), или 'typography' или 'none'",
+  "asset_brief": "если asset_required=true: детальный промпт НА АНГЛИЙСКОМ для модели генерации изображений (что нарисовать, стиль, композиция, что НЕ включать); иначе null",
+  "no_asset_reason": "если asset_required=false: почему графика не добавляет пользы; иначе null",
+  "composition_intent": "free text — как это должно располагаться относительно аватара/субтитров",
+  "motion_intent": "free text — как это должно появляться/анимироваться, или 'static' если не важно",
+  "visual_concept": "один из технического списка выше",
+  "asset_strategy": "один из технического списка выше, или 'none'",
+  "elements": [{{"role": "...", "label": "краткая подпись на экран, 2-6 слов, русский", "sublabel": "... или null", "order": 1}}],
+  "avoid": ["что сознательно НЕ визуализируем и почему, коротко"]
 }}
+
+Поле "role" в elements зависит от visual_concept:
+  process_flow / cause_effect -> "step" (process) или "cause"/"mechanism"/
+    "effect" (cause_effect), с "order" по порядку.
+  structured_alternatives / checklist -> "item", "order" по порядку.
+  comparison -> ровно 2 элемента, role "left" и "right".
+  qa_structure -> ровно 2 элемента, role "question" и "answer".
+  strong_typography -> ровно 1 элемент, role "headline", можно "sublabel".
+  none -> elements: [] (это нормально, если asset_required=true и весь
+    смысл несёт картинка, а не текстовые подписи).
 """
 
 
@@ -162,13 +193,49 @@ def dispatch_and_wait(scenes, output_name, ref="main"):
     return gh_bridge.pull_and_read(f"scratch/{output_name}.json")
 
 
+_ASSET_TYPE_KEYWORDS = {
+    "illustration": "illustration", "иллюстрац": "illustration", "scene": "illustration",
+    "сцен": "illustration", "metaphor": "illustration", "метафор": "illustration",
+    "object": "illustration", "annotated": "illustration",
+    "diagram": "diagram", "схем": "diagram", "scheme": "diagram", "layered": "diagram",
+    "icon": "icon", "иконк": "icon",
+    "image": "image", "photo": "image", "фото": "image", "изображен": "image",
+    "infograph": "illustration", "инфограф": "illustration",
+    "data": "data_visualization", "chart": "data_visualization", "график": "data_visualization",
+    "combin": "combination", "комбинац": "combination",
+}
+
+
+def _normalize_asset_strategy(asset_required, asset_type_raw):
+    """`asset_strategy` (technical dispatch key) is DERIVED from Gemini's
+    own free-text `asset_type`, not required to equal it exactly — the
+    controlled vocabulary is scoped to what the renderer can build, the
+    free text is Gemini's real, unconstrained answer (kept verbatim in
+    `asset_type_raw` and shown in reports/logs)."""
+    if not asset_required:
+        return "none"
+    low = (asset_type_raw or "").lower()
+    for kw, mapped in _ASSET_TYPE_KEYWORDS.items():
+        if kw in low:
+            return mapped
+    # asset_required=true but the free-text word didn't match any known
+    # technical bucket — asset_required is the authoritative signal, so
+    # fall back to the most general "something needs generating" bucket
+    # rather than silently downgrading to typography.
+    return "illustration"
+
+
 def _parse_one(raw, scene_id, text, duration):
     concept = raw.get("visual_concept")
-    strategy = raw.get("asset_strategy")
     if concept not in VISUAL_CONCEPTS:
         raise ValueError(f"scene {scene_id}: LLM returned unknown visual_concept {concept!r} (not in {VISUAL_CONCEPTS})")
-    if strategy not in ASSET_STRATEGIES:
-        raise ValueError(f"scene {scene_id}: LLM returned unknown asset_strategy {strategy!r} (not in {ASSET_STRATEGIES})")
+    asset_required = bool(raw.get("asset_required"))
+    asset_type_raw = raw.get("asset_type") or ""
+    strategy = _normalize_asset_strategy(asset_required, asset_type_raw)
+    if asset_required and not raw.get("asset_brief"):
+        raise ValueError(f"scene {scene_id}: asset_required=true but no asset_brief was provided")
+    if not asset_required and not raw.get("no_asset_reason"):
+        raise ValueError(f"scene {scene_id}: asset_required=false but no no_asset_reason was provided")
     elements = [
         VisualElement(role=e["role"], label=e["label"], sublabel=e.get("sublabel") or "", order=e.get("order") or 0)
         for e in raw.get("elements", [])
@@ -179,12 +246,17 @@ def _parse_one(raw, scene_id, text, duration):
         duration=duration,
         main_message=raw.get("main_message", ""),
         information_structure=raw.get("information_structure", ""),
-        visual_priority=raw.get("visual_priority", ""),
+        visual_goal=raw.get("visual_goal", ""),
+        asset_required=asset_required,
+        asset_type_raw=asset_type_raw,
+        asset_brief=raw.get("asset_brief") or "",
+        composition_intent=raw.get("composition_intent", ""),
+        motion_intent=raw.get("motion_intent", ""),
+        avoid=raw.get("avoid", []),
+        no_asset_reason=raw.get("no_asset_reason") or "",
         visual_concept=concept,
         asset_strategy=strategy,
-        asset_brief=raw.get("asset_brief") or "",
         elements=elements,
-        elements_to_omit=raw.get("elements_to_omit", []),
     )
 
 

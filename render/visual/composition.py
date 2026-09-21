@@ -64,11 +64,13 @@ def _first_trigger(sem, default=0.3):
 
 
 def _maybe_illustration_item(sem, column):
-    """If semantic analysis decided this scene needs more than typography,
-    fetch/generate that asset and return it as an extra Item to prepend —
-    real call, not a placeholder; returns None if asset_strategy is
-    typography/none or generation isn't available."""
-    if sem.asset_strategy in ("typography", "none") or not sem.asset_brief:
+    """If Gemini's semantic analysis set asset_required=true, fetch/
+    generate that asset and return it as an extra Item to prepend — a
+    real call (through illustration.py -> the existing image pipeline),
+    not a placeholder. Returns None if no asset was required, or if
+    generation wasn't available (never falls back to inventing one some
+    other way)."""
+    if not sem.asset_required or not sem.asset_brief:
         return None
     cw = column_width(_col_geom(column))
     img = ILL.get_or_generate(sem.scene_id, sem.asset_brief, narration_text=sem.text, max_width=cw)
@@ -183,9 +185,16 @@ def build_strong_typography(sem):
 
 
 def build_none(sem):
-    """The system's answer for text where no graphic adds anything — a
-    real, exercised path (not a fallback): semantic analysis decided this,
-    not a missing case."""
+    """The system's answer for text where no STRUCTURAL text layout adds
+    anything — a real, exercised path (not a fallback): semantic analysis
+    decided this, not a missing case. Still checks for a required
+    illustration: visual_concept="none" only means "no headline/list/etc
+    needed", it does NOT mean asset_required is false — an image can
+    carry the whole scene by itself with no text overlay at all."""
+    column = "right"
+    extra = _maybe_illustration_item(sem, column)
+    if extra:
+        return [ColumnGroup(column=column, mode="accumulate", items=[extra])]
     return []
 
 
