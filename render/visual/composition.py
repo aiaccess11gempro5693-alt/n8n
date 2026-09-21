@@ -69,6 +69,23 @@ def _first_trigger(sem, default=0.3):
         return default
 
 
+def _split_with_asset(column, items, asset_column, extra):
+    """If `extra` (a generated illustration Item) exists, place it ALONE
+    in `asset_column` (the side opposite `column`) so the scene's image
+    and its text spread across BOTH sides of the avatar instead of
+    stacking together on one side — direct user instruction: a
+    single-column stack reads as "скомкано" (crammed) with the other
+    half of the frame left empty. Falls back to the single column when
+    there's no asset (nothing to balance against)."""
+    if not extra:
+        return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    align = "right" if asset_column == "left" else "left"
+    return [
+        ColumnGroup(column=asset_column, mode="accumulate", align=align, items=[extra]),
+        ColumnGroup(column=column, mode="accumulate", items=items),
+    ]
+
+
 def _maybe_illustration_item(sem, column):
     """If Gemini's semantic analysis set asset_required=true, fetch/
     generate that asset and return it as an extra Item to prepend — a
@@ -104,10 +121,8 @@ def build_process_flow(sem):
     img = C.render_flow_chain(chain, cw, align="left")
     render_fn = lambda s, _chain=chain, _cw=cw: C.render_flow_chain(_chain, _cw, align="left", scale=s)
     items = [Item(img, times[0], kind="text", render_fn=render_fn)]
-    extra = _maybe_illustration_item(sem, column)
-    if extra:
-        items.insert(0, extra)
-    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    extra = _maybe_illustration_item(sem, "left")
+    return _split_with_asset(column, items, "left", extra)
 
 
 def build_cause_effect(sem):
@@ -122,10 +137,8 @@ def build_cause_effect(sem):
     img = C.render_flow_chain(chain, cw, align="left")
     render_fn = lambda s, _chain=chain, _cw=cw: C.render_flow_chain(_chain, _cw, align="left", scale=s)
     items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
-    extra = _maybe_illustration_item(sem, column)
-    if extra:
-        items.insert(0, extra)
-    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    extra = _maybe_illustration_item(sem, "left")
+    return _split_with_asset(column, items, "left", extra)
 
 
 def build_structured_alternatives(sem):
@@ -138,10 +151,8 @@ def build_structured_alternatives(sem):
     img = C.render_item_list(labels, cw, align="left")
     render_fn = lambda s, _labels=labels, _cw=cw: C.render_item_list(_labels, _cw, align="left", scale=s)
     items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
-    extra = _maybe_illustration_item(sem, column)
-    if extra:
-        items.insert(0, extra)
-    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    extra = _maybe_illustration_item(sem, "left")
+    return _split_with_asset(column, items, "left", extra)
 
 
 def build_checklist(sem):
@@ -154,10 +165,8 @@ def build_checklist(sem):
     img = C.render_checklist(labels, cw, align="left")
     render_fn = lambda s, _labels=labels, _cw=cw: C.render_checklist(_labels, _cw, align="left", scale=s)
     items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
-    extra = _maybe_illustration_item(sem, column)
-    if extra:
-        items.insert(0, extra)
-    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    extra = _maybe_illustration_item(sem, "left")
+    return _split_with_asset(column, items, "left", extra)
 
 
 def build_comparison(sem):
@@ -201,10 +210,8 @@ def build_qa_structure(sem):
     img = C.render_qa(q[0].label, a[0].label, cw, align="left")
     render_fn = lambda s, _q=q[0].label, _a=a[0].label, _cw=cw: C.render_qa(_q, _a, _cw, align="left", scale=s)
     items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
-    extra = _maybe_illustration_item(sem, column)
-    if extra:
-        items.insert(0, extra)
-    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    extra = _maybe_illustration_item(sem, "left")
+    return _split_with_asset(column, items, "left", extra)
 
 
 def build_strong_typography(sem):
@@ -217,10 +224,8 @@ def build_strong_typography(sem):
     img = C.render_headline(el.label, cw, sublabel=el.sublabel, align="left")
     render_fn = lambda s, _el=el, _cw=cw: C.render_headline(_el.label, _cw, sublabel=_el.sublabel, align="left", scale=s)
     items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
-    extra = _maybe_illustration_item(sem, column)
-    if extra:
-        items.insert(0, extra)
-    return [ColumnGroup(column=column, mode="accumulate", items=items)]
+    extra = _maybe_illustration_item(sem, "right")
+    return _split_with_asset(column, items, "right", extra)
 
 
 def build_none(sem):
