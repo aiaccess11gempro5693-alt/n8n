@@ -1,11 +1,11 @@
 {
   "narration_line": "Каждая из этих ситуаций требует разного ответа. И только уточнив запрос, вы сможете дать рекомендацию, которая реально поможет, а не просто \"что-то от иммунитета\".",
-  "prompt": "Photorealistic documentary editorial photography of an attentive female pharmacist in a crisp modern white coat engaged in an active, thoughtful consultation with a customer across a sleek pharmacy counter. Medium shot, authentic candid moment capturing her focused, empathetic listening expression as she clarifies specific needs. Clean contemporary pharmacy interior with softly blurred apothecary shelves in the background, natural warm ambient lighting, shallow depth of field, true-to-life documentary style, genuine human interaction, highly detailed.",
+  "prompt": "Editorial documentary photograph of a focused pharmacist in a crisp white coat leaning forward attentively across a wooden pharmacy counter, engaged in an active, empathetic dialogue with an adult customer to understand their specific needs. Medium shot showing meaningful professional consultation, authentic modern pharmacy interior with softly blurred medicine shelves in the background, natural diffused side lighting creating subtle depth, 35mm photography, shallow depth of field, photorealistic, no text, no branding.",
   "reference_image_path": null,
   "captions": [
-    "Рекомендация, которая реально поможет"
+    "Уточняйте запрос для точной рекомендации"
   ],
   "mime_type": "image/png",
-  "verdict": "OK",
+  "verdict": "**OK**",
   "aspect_ratio": "1:1"
 }
