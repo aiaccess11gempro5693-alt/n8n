@@ -1,11 +1,11 @@
 {
   "narration_line": "Здравствуйте. \"Иммунитет\" — пожалуй, одно из самых популярных слов в современной аптеке. Люди слышат его в рекламе, читают в интернете, обсуждают с друзьями. И приходят к вам с ощущением, что знают, чего хотят.",
-  "prompt": "Photorealistic documentary editorial photography. A customer standing in front of a modern, clean pharmacy counter, looking attentively at shelves with generic wellness and vitamin supplements. Soft natural daylight mixing with realistic pharmacy ambient lighting. Authentic candid atmosphere, natural human expression showing curiosity and confidence. Shot on 35mm lens, eye-level medium shot, shallow depth of field, premium editorial documentary aesthetic. Clean contemporary pharmacy interior, authentic textures, no real brand logos, no text overlays.",
+  "prompt": "Photorealistic documentary editorial photography. A confident adult customer standing at a clean, modern pharmacy counter, engaging in an active, expressive conversation with a pharmacist. Natural bright lighting, shallow depth of field, softly blurred pharmacy shelves with unbranded medicine packages in the background. Genuine facial expressions, authentic skin texture, cinematic composition, eye-level shot, premium aesthetic, 35mm lens look, no logos, no watermarks.",
   "reference_image_path": null,
   "captions": [
     "«Иммунитет» — популярный запрос"
   ],
   "mime_type": "image/png",
-  "verdict": "**OK**",
+  "verdict": "OK",
   "aspect_ratio": "1:1"
 }
