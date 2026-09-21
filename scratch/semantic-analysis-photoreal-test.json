@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "id": "photoreal-test-5",
+      "text": "Помогут несколько простых вопросов: что именно вас беспокоит — частые простуды, постоянная усталость, долгое восстановление после болезни? Как давно вы замечаете это состояние? Принимаете ли сейчас какие-то витамины, добавки или препараты? Есть ли хронические заболевания?",
+      "analysis": {
+        "main_message": "Чек-лист ключевых уточняющих вопросов для выявления потребности покупателя",
+        "information_structure": "Перечень диагностических вопросов скрининга, которые фармацевт последовательно задаёт клиенту у кассы",
+        "visual_goal": "Дать сотруднику чёткую шпаргалку-алгоритм из 4 вопросов для выяснения анамнеза и подкрепить это живой сценой доверительного диалога у первого стола",
+        "asset_required": true,
+        "asset_type": "pharmacy-counter scene",
+        "asset_brief": "Authentic documentary photography of a friendly pharmacist in a modern white uniform actively listening and talking to a customer across the pharmacy counter. Clean pharmacy background with softly blurred shelves, soft natural morning lighting, real people, editorial look, medium shot, candid professional interaction. Highly detailed, photorealistic, 8k. NOT illustration, NOT 3D render, NOT cartoon, NO text, NO watermarks.",
+        "asset_caption": "Диалог с покупателем",
+        "no_asset_reason": null,
+        "composition_intent": "В левой боковой колонке (x < 600) — фотокарточка живого диалога фармацевта с клиентом. В правой боковой колонке (x > 1340) — карточка-чеклист с 4 ключевыми вопросами. Центральная зона аватара свободна.",
+        "motion_intent": "Фотокарточка слева появляется плавно на 1-й секунде; пункты чек-листа справа последовательно подсвечиваются и выпадают синхронно с озвучиванием каждого вопроса диктором.",
+        "visual_concept": "checklist",
+        "asset_strategy": "image",
+        "elements": [
+          {
+            "role": "item",
+            "label": "Что именно беспокоит?",
+            "sublabel": "Симптомы и характер жалоб",
+            "order": 1
+          },
+          {
+            "role": "item",
+            "label": "Как давно это состояние?",
+            "sublabel": "Длительность симптомов",
+            "order": 2
+          },
+          {
+            "role": "item",
+            "label": "Что уже принимаете?",
+            "sublabel": "Витамины, добавки, препараты",
+            "order": 3
+          },
+          {
+            "role": "item",
+            "label": "Есть ли хронические болезни?",
+            "sublabel": "Ограничения и противопоказания",
+            "order": 4
+          }
+        ],
+        "avoid": [
+          "Буквальные иконки каждого симптома (термометр, батарейка, таблетка), чтобы не перегружать экран клипартом",
+          "Иллюстративный или мультяшный стиль изображения диалога"
+        ]
+      }
+    }
+  ]
+}
