@@ -44,16 +44,24 @@ jobs:
           SCENES_JSON: ${{ github.event.inputs.scenes_json }}
           OUTPUT_NAME: ${{ github.event.inputs.output_name }}
         run: |
+          mkdir -p scratch
+          echo "reached step; COMETAPI_KEY length=${#COMETAPI_KEY}" > scratch/debug-marker.txt
           if [ -z "$COMETAPI_KEY" ]; then
             echo "::error::Секрет COMETAPI_KEY не задан в настройках репозитория"
+            echo "FAILED: COMETAPI_KEY empty" >> scratch/debug-marker.txt
             exit 1
           fi
-          mkdir -p scratch
+          echo "secret check passed" >> scratch/debug-marker.txt
           python3 -c "
-          import json, os, re, sys, urllib.request, urllib.error
+          import json, os, re, sys, traceback, urllib.request, urllib.error
 
-          sys.path.insert(0, 'render/visual')
-          from semantic_analysis import ANALYSIS_INSTRUCTIONS as INSTRUCTIONS
+          # semantic_analysis.py is part of the visual/ PACKAGE (it does
+          # \`from . import gh_bridge\` internally) — must be imported as
+          # visual.semantic_analysis, not as a bare top-level module, or
+          # that relative import fails with ImportError before anything
+          # else runs.
+          sys.path.insert(0, 'render')
+          from visual.semantic_analysis import ANALYSIS_INSTRUCTIONS as INSTRUCTIONS
 
           API_KEY = os.environ['COMETAPI_KEY']
           SCENES = json.loads(os.environ['SCENES_JSON'])
@@ -72,8 +80,9 @@ jobs:
                       return resp.status, json.loads(resp.read().decode('utf-8'))
               except urllib.error.HTTPError as e:
                   body_text = e.read().decode('utf-8', errors='replace')
-                  print(f'::error::HTTP {e.code} from {model}: {body_text[:1000]}')
-                  sys.exit(1)
+                  raise RuntimeError(f'HTTP {e.code} from {model}: {body_text[:1000]}')
+              except urllib.error.URLError as e:
+                  raise RuntimeError(f'URLError calling {model}: {e}')
 
           def extract_text(resp):
               parts = (resp.get('candidates') or [{}])[0].get('content', {}).get('parts', [])
@@ -83,27 +92,40 @@ jobs:
               cleaned = re.sub(r'^\`\`\`(json)?|\`\`\`\$', '', text.strip(), flags=re.MULTILINE).strip()
               return json.loads(cleaned)
 
-          results = []
-          for scene in SCENES:
-              sid, text, dur = scene['id'], scene['text'], scene.get('duration')
-              prompt = INSTRUCTIONS + f'\n\nТекст сцены (id={sid}' + (f', длительность {dur}с' if dur else '') + f'):\n\"{text}\"'
-              status, resp = call('gemini-3.5-flash', {'contents': [{'parts': [{'text': prompt}]}]})
-              raw_text = extract_text(resp)
-              if not raw_text:
-                  print(f'::error::scene {sid}: Gemini вернул пустой ответ: ' + json.dumps(resp)[:800])
-                  sys.exit(1)
-              try:
-                  analysis = extract_json(raw_text)
-              except Exception as e:
-                  print(f'::error::scene {sid}: не удалось разобрать JSON ({e}). Сырой ответ: {raw_text[:800]}')
-                  sys.exit(1)
-              print(f'--- scene {sid}: concept={analysis.get(\"visual_concept\")} strategy={analysis.get(\"asset_strategy\")} ---')
-              results.append({'id': sid, 'text': text, 'analysis': analysis})
+          # Everything below is wrapped so that ANY failure (including an
+          # exception this script didn't anticipate) still leaves a
+          # readable artifact in scratch/ — this sandbox cannot fetch raw
+          # job logs (they redirect to Azure Blob, which the proxy blocks)
+          # and the GitHub MCP log tool is not always available either, so
+          # a traceback committed to the repo is the only reliable way to
+          # debug a failed run.
+          try:
+              results = []
+              for scene in SCENES:
+                  sid, text, dur = scene['id'], scene['text'], scene.get('duration')
+                  prompt = INSTRUCTIONS + f'\n\nТекст сцены (id={sid}' + (f', длительность {dur}с' if dur else '') + f'):\n\"{text}\"'
+                  status, resp = call('gemini-3.5-flash', {'contents': [{'parts': [{'text': prompt}]}]})
+                  raw_text = extract_text(resp)
+                  if not raw_text:
+                      raise RuntimeError(f'scene {sid}: Gemini returned empty response: ' + json.dumps(resp)[:800])
+                  try:
+                      analysis = extract_json(raw_text)
+                  except Exception as e:
+                      raise RuntimeError(f'scene {sid}: could not parse JSON ({e}). Raw response: {raw_text[:800]}')
+                  print(f'--- scene {sid}: concept={analysis.get(\"visual_concept\")} strategy={analysis.get(\"asset_strategy\")} ---')
+                  results.append({'id': sid, 'text': text, 'analysis': analysis})
 
-          with open(f'scratch/{NAME}.json', 'w', encoding='utf-8') as f:
-              json.dump({'results': results}, f, ensure_ascii=False, indent=2)
-          print(f'--- written scratch/{NAME}.json ({len(results)} scenes) ---')
+              with open(f'scratch/{NAME}.json', 'w', encoding='utf-8') as f:
+                  json.dump({'results': results}, f, ensure_ascii=False, indent=2)
+              print(f'--- written scratch/{NAME}.json ({len(results)} scenes) ---')
+          except Exception:
+              tb = traceback.format_exc()
+              print('::error::' + tb.replace(chr(10), ' | '))
+              with open(f'scratch/{NAME}.json', 'w', encoding='utf-8') as f:
+                  json.dump({'error': tb}, f, ensure_ascii=False, indent=2)
+              sys.exit(1)
           "
+          echo "python3 exited with $?" >> scratch/debug-marker.txt
 
       - name: Commit response for inspection
         if: always()
@@ -114,6 +136,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           [ -f "scratch/${NAME}.json" ] && git add "scratch/${NAME}.json"
+          [ -f "scratch/debug-marker.txt" ] && git add "scratch/debug-marker.txt"
           if ! git diff --cached --quiet; then
             git commit -m "scratch: semantic analysis output ${NAME} for inspection [skip ci]"
             for i in 1 2 3 4 5; do

@@ -140,13 +140,25 @@ ANALYSIS_INSTRUCTIONS = f"""\
 def dispatch_and_wait(scenes, output_name, ref="main"):
     """Dispatches call-scene-semantic-analysis.yml with the given scenes
     (list of {id,text,duration}) and returns the parsed
-    scratch/<output_name>.json it commits."""
-    gh_bridge.dispatch_and_wait(
-        WORKFLOW_FILE,
-        {"scenes_json": json.dumps(scenes, ensure_ascii=False), "output_name": output_name},
-        ref=ref,
-        label=f"{len(scenes)} scene(s), output_name={output_name!r}",
-    )
+    scratch/<output_name>.json it commits. On failure, still tries to pull
+    and surface whatever error detail the workflow committed (it always
+    writes scratch/<output_name>.json, success or failure — see the
+    workflow's try/except) before re-raising, since this sandbox can't
+    fetch raw job logs directly."""
+    try:
+        gh_bridge.dispatch_and_wait(
+            WORKFLOW_FILE,
+            {"scenes_json": json.dumps(scenes, ensure_ascii=False), "output_name": output_name},
+            ref=ref,
+            label=f"{len(scenes)} scene(s), output_name={output_name!r}",
+        )
+    except Exception as e:
+        try:
+            detail = gh_bridge.pull_and_read(f"scratch/{output_name}.json")
+            print("[semantic_analysis] committed error detail:\n" + detail.get("error", str(detail)))
+        except Exception:
+            pass
+        raise
     return gh_bridge.pull_and_read(f"scratch/{output_name}.json")
 
 
