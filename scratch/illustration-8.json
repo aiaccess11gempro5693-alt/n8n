@@ -1,11 +1,11 @@
 {
   "narration_line": "Иммунитет — это не один препарат. Это системная забота. И вы — часть этой системы. Спасибо, что подходите к этому серьёзно.",
-  "prompt": "Photorealistic documentary editorial photography of an empathetic pharmacist in a pristine white coat warmly consulting a customer across a clean pharmacy counter, discussing a holistic approach to health. Eye-level medium shot capturing genuine eye contact and a sincere, professional expression of partnership and care. Soft diffused natural pharmacy lighting, warm tones, shallow depth of field with authentic medicine shelves softly blurred in the background. Natural skin textures, authentic candid atmosphere, high-end editorial look.",
+  "prompt": "Photorealistic documentary photography of an empathetic professional pharmacist in a modern, brightly lit pharmacy, actively consulting a customer across the counter. Natural soft side lighting, medium shot capturing genuine warm communication and engaged eye contact. The background features neatly organized, slightly defocused pharmacy shelves with unbranded generic medical boxes. Editorial magazine aesthetic, authentic human expressions, high dynamic range, realistic skin textures, zero plastic stock feel, not an illustration, not a 3D render.",
   "reference_image_path": null,
   "captions": [
     "Иммунитет — это системная забота"
   ],
   "mime_type": "image/png",
-  "verdict": "**OK**",
+  "verdict": "OK",
   "aspect_ratio": "1:1"
 }
