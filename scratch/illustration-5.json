@@ -1,9 +1,9 @@
 {
   "narration_line": "Помогут несколько простых вопросов: что именно вас беспокоит — частые простуды, постоянная усталость, долгое восстановление после болезни? Как давно вы замечаете это состояние? Принимаете ли сейчас какие-то витамины, добавки или препараты? Есть ли хронические заболевания?",
-  "prompt": "A warm and professional illustration of a friendly pharmacist in a crisp white lab coat consulting a customer across a modern pharmacy counter, attentively listening and asking clarifying questions. The pharmacist displays an open, empathetic posture in a soft, bright environment. In the background, softly blurred pharmacy shelves with warm lighting, subtle coral accents, clean minimalist aesthetic, premium editorial style, balanced medium-shot composition, no real brand logos, no watermarks.",
+  "prompt": "Documentary-style photorealistic medium close-up photograph of an attentive professional pharmacist in a clean white coat asking clarifying questions to a customer at a modern pharmacy counter. The pharmacist has an engaged, empathetic expression, holding a pen and listening carefully. Natural soft interior lighting of a contemporary pharmacy, authentic clinical atmosphere, genuine human interaction, realistic textures, shallow depth of field, shot on 35mm lens, NOT illustration, NOT 3D render, NO fake stock poses.",
   "reference_image_path": null,
   "captions": [
-    "Уточняющие вопросы при консультации"
+    "Уточняющие вопросы для консультации"
   ],
   "mime_type": "image/png",
   "verdict": "OK",
