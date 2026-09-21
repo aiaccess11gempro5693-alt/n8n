@@ -4,43 +4,37 @@
       "id": 1,
       "text": "Здравствуйте. \"Иммунитет\" — пожалуй, одно из самых популярных слов в современной аптеке. Люди слышат его в рекламе, читают в интернете, обсуждают с друзьями. И приходят к вам с ощущением, что знают, чего хотят.",
       "analysis": {
-        "main_message": "Покупатели приходят в аптеку с устойчивыми представлениями об иммунитете, сформированными рекламой и окружением.",
-        "scene_title": "Запрос на иммунитет",
-        "information_structure": "Описание типичной контекстной ситуации общения покупателя и фармацевта у кассы",
-        "visual_goal": "Показать реальную атмосферу аптеки: покупатель обращается к первостольнику с уверенным запросом, продиктованным внешним инфополем",
+        "main_message": "Покупатели приходят в аптеку с готовыми, но часто поверхностными представлениями об иммунитете, сформированными рекламой и интернетом.",
+        "scene_title": "Запрос на «иммунитет»",
+        "information_structure": "Причинно-следственная связь: влияние внешнего инфополя (реклама, интернет, окружение) на формирование стереотипного запроса покупателя в аптеке.",
+        "visual_goal": "Показать типичную жизненную ситуацию у первого стола: реальный покупатель обращается к фармацевту с уверенным, сформированным рекламой запросом.",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic documentary editorial photograph of a customer at a modern pharmacy counter talking to a pharmacist. Natural candid interaction, realistic pharmacy interior with shelves of products gently blurred in background, natural soft lighting. Real people, authentic emotions, high detail. NOT illustration, NOT 3D render, NOT cartoon, NOT clip-art, no fake stock smiles.",
-        "asset_caption": "Обращение покупателя в аптеку",
+        "asset_brief": "Photorealistic editorial photography of a modern pharmacy counter. A real customer (a friendly adult in casual everyday clothes) is talking to a pharmacist, gesturing confidently as if asking for a well-known immunity product. Warm natural pharmacy lighting, genuine facial expression, authentic pharmacy interior with blurred medicine shelves in the background. Documentary style, premium color grading. NOT illustration, NOT 3D render, NOT cartoon, NO CGI, NO flying shield icons, NO abstract glowing effects.",
+        "asset_caption": "Обращение к фармацевту",
         "no_asset_reason": null,
-        "composition_intent": "В левой колонке размещается скруглённая фотокарточка диалога на кассе, в правой колонке — карточка с ключевыми источниками влияния на клиента",
-        "motion_intent": "Плавное появление фотокарточки слева (fade-in + subtle scale), затем последовательное раскрытие пунктов в правой карточке",
-        "visual_concept": "structured_alternatives",
+        "composition_intent": "В левой колонке располагается карточка с фотореалистичным изображением покупателя у кассы. В правой колонке — карточка со структурой «причина — следствие» (инфополе -> ожидание клиента). Центральная полоса (600–1340px) и нижняя полоса субтитров остаются полностью свободными.",
+        "motion_intent": "Плавный fade-in фотокарточки слева на первой секунде, затем каскадное появление блоков причины и следствия в правой колонке.",
+        "visual_concept": "cause_effect",
         "asset_strategy": "image",
         "elements": [
           {
-            "role": "item",
-            "label": "Реклама и медиа",
-            "sublabel": "Создают устойчивый спрос",
+            "role": "cause",
+            "label": "Давление инфополя",
+            "sublabel": "Реклама, интернет, советы близких",
             "order": 1
           },
           {
-            "role": "item",
-            "label": "Интернет и друзья",
-            "sublabel": "Формируют поверхностное мнение",
+            "role": "effect",
+            "label": "Иллюзия знания",
+            "sublabel": "Уверенность покупателя в своем выборе",
             "order": 2
-          },
-          {
-            "role": "item",
-            "label": "Уверенность на кассе",
-            "sublabel": "Приходят с готовым решением",
-            "order": 3
           }
         ],
         "avoid": [
-          "Клише иммунитета: светящиеся щиты, бактерии, медицинские кресты",
-          "Буквальные иконки телевизора, телефона и рупора",
-          "3D-персонажи и мультяшная графика"
+          "Клипарты и 3D-модели щитов защиты иммунитета",
+          "Иконки вирусов, бактерий или абстрактных микроорганизмов",
+          "Буквальные пиктограммы мегафонов и интернет-браузеров"
         ]
       }
     },
@@ -48,37 +42,43 @@
       "id": 2,
       "text": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
       "analysis": {
-        "main_message": "За уверенным первичным запросом покупателя часто скрывается неназванная истинная причина, которую фармацевт помогает выявить в диалоге.",
+        "main_message": "За уверенным поверхностным запросом покупателя всегда скрывается реальная проблема, которую фармацевт помогает прояснить в диалоге",
         "scene_title": "Поиск истинной потребности",
-        "information_structure": "Контраст между поверхностным запросом покупателя и его реальной скрытой проблемой, разрешаемый экспертным участием фармацевта.",
-        "visual_goal": "Показать ценность внимательного общения у кассы: переход от шаблонного запроса к пониманию реальной сути проблемы покупателя.",
+        "information_structure": "Причинно-следственное раскрытие: переход от внешнего поверхностного запроса к скрытой проблеме через уточняющий диалог фармацевта",
+        "visual_goal": "Показать механизм работы фармацевта — внимательное выслушивание и выявление реальной причины за стандартным вопросом клиента",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic editorial photography of an authentic modern pharmacy interior. An attentive professional pharmacist in a clean white coat leaning forward slightly, listening with genuine focus and empathy to a customer at the pharmacy counter. Natural bright indoor lighting, real people, authentic workplace atmosphere, shallow depth of field. NOT illustration, NOT 3D render, NOT cartoon, NOT stock clipart.",
-        "asset_caption": "Диалог с покупателем",
+        "asset_brief": "Photorealistic documentary photography of a thoughtful pharmacy interaction. A friendly, professional female pharmacist in a clean white medical coat is attentively listening to a middle-aged customer across the pharmacy counter. Natural interior pharmacy lighting, authentic shelves with medications softly blurred in the background. Genuine empathetic expressions, candid editorial shot, cinematic depth of field. Real people, authentic pharmacy environment. NOT illustration, NOT 3D render, NOT cartoon, NOT clipart, no exaggerated cheesy smiles.",
+        "asset_caption": "Внимательный диалог у кассы",
         "no_asset_reason": null,
-        "composition_intent": "В левой колонке размещается карточка с фотореалистичной сценой вовлечённого диалога у кассы, в правой — карточка сравнения видимого запроса и скрытой потребности.",
-        "motion_intent": "Сначала плавно появляется фотокарточка слева, затем на правой карточке последовательно проявляются блоки 'Первичный запрос' и 'Истинная потребность'.",
-        "visual_concept": "comparison",
+        "composition_intent": "Слева от аватара размещается карточка с фотореалистичной сценой консультации, справа — вертикальная цепочка раскрытия от поверхностного запроса к сути",
+        "motion_intent": "Сначала мягко появляется карточка с фотографией слева, затем справа последовательно с небольшой задержкой выстраиваются шаги цепочки",
+        "visual_concept": "cause_effect",
         "asset_strategy": "image",
         "elements": [
           {
-            "role": "left",
-            "label": "Первичный запрос",
-            "sublabel": "Названный препарат или поверхностный симптом",
+            "role": "cause",
+            "label": "Поверхностный запрос",
+            "sublabel": "Первичная просьба клиента",
             "order": 1
           },
           {
-            "role": "right",
-            "label": "Истинная потребность",
-            "sublabel": "Реальная причина недомогания, выявленная фармацевтом",
+            "role": "mechanism",
+            "label": "Уточняющий диалог",
+            "sublabel": "Вопросы фармацевта",
             "order": 2
+          },
+          {
+            "role": "effect",
+            "label": "Истинная потребность",
+            "sublabel": "Реальная суть проблемы",
+            "order": 3
           }
         ],
         "avoid": [
-          "Метафорические клише вроде айсберга или лупы",
-          "Мультипликационную или 3D-графику",
-          "Буквальное цитирование всей реплики диктора в тексте карточек"
+          "Банальные метафоры вроде лупы, детектива или верхушки айсберга",
+          "Иллюстрации или 3D-графика — изображение должно быть строго фотореалистичным",
+          "Негативные или конфликтные эмоции у покупателя и фармацевта"
         ]
       }
     },
@@ -86,48 +86,48 @@
       "id": 3,
       "text": "Итак, покупатель говорит: \"Дайте что-нибудь для иммунитета\". Что он имеет в виду? Возможно, он болеет каждую осень и хочет это изменить. Возможно, только недавно перенёс ОРВИ и чувствует слабость. Возможно, просто устал и решил, что виноват \"плохой иммунитет\". А возможно, он уже принимает три разных БАДа и хочет добавить четвёртый.",
       "analysis": {
-        "main_message": "За стандартным запросом «для иммунитета» скрываются принципиально разные реальные потребности и состояния покупателя",
-        "scene_title": "Истинный запрос покупателя",
-        "information_structure": "Каталог скрытых причин и мотивов за одной типовой фразой клиента",
-        "visual_goal": "Показать разнообразие реальных клинических и жизненных ситуаций, стоящих за размытой просьбой у аптечного прилавка",
+        "main_message": "За стандартной фразой «что-нибудь для иммунитета» скрываются совершенно разные реальные потребности и проблемы покупателя.",
+        "scene_title": "Что стоит за запросом",
+        "information_structure": "перечень альтернативных реальных причин и скрытых потребностей клиента за одной шаблонной фразой",
+        "visual_goal": "показать фармацевту разнообразие скрытых мотивов покупателя, чтобы приучить не предлагать первый попавшийся препарат, а выявлять конкретную причину",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic documentary editorial photograph of a customer interaction at a pharmacy counter. A real customer (30-40 years old, looking slightly tired or concerned) is talking to a pharmacist in a modern, well-lit pharmacy with clean product shelves in soft background blur. Authentic natural lighting, realistic human expressions, cinematic depth of field. NOT illustration, NOT 3D render, NOT cartoon, NOT clipart, real people, documentary style.",
+        "asset_brief": "Photorealistic editorial documentary photo of a modern, clean pharmacy counter. A real customer (a thoughtful middle-aged person in casual autumn clothing) is consulting with a professional pharmacist in a white lab coat. Natural soft pharmacy lighting, realistic shallow depth of field, genuine human expressions, clean retail background with blurred medicine shelves. Authentic atmosphere. NOT an illustration, NOT a 3D render, NOT a cartoon, NO artificial studio glow, NO exaggerated facial expressions.",
         "asset_caption": "Диалог первого стола",
         "no_asset_reason": null,
-        "composition_intent": "В левой колонке карточка с фотореалистичной сценой общения покупателя и фармацевта у кассы, в правой колонке карточка со структурированным списком из 4 возможных скрытых причин запроса",
-        "motion_intent": "Плавный fade-in фото-карточки слева в начале фразы, затем последовательное появление пунктов списка справа по мере их озвучивания диктором",
+        "composition_intent": "В левой колонке размещается фотокарточка живого диалога покупателя и фармацевта у кассы, а в правой колонке — карточка со списком четырёх скрытых альтернативных сценариев запроса.",
+        "motion_intent": "Сначала мягко проявляется карточка с фотографией покупателя на кассе, затем в правой колонке последовательно появляются 4 пункта возможных скрытых причин запроса.",
         "visual_concept": "structured_alternatives",
         "asset_strategy": "image",
         "elements": [
           {
             "role": "item",
             "label": "Частые сезонные простуды",
-            "sublabel": "Желание профилактики",
+            "sublabel": "профилактика частых осенних ОРВИ",
             "order": 1
           },
           {
             "role": "item",
-            "label": "Астения после перенесённой ОРВИ",
-            "sublabel": "Период восстановления",
+            "label": "Слабость после болезни",
+            "sublabel": "поствирусная астения и восстановление",
             "order": 2
           },
           {
             "role": "item",
-            "label": "Хроническая переутомляемость",
-            "sublabel": "Стресс вместо гиповитаминоза",
+            "label": "Обычное переутомление",
+            "sublabel": "усталость и стресс вместо снижения иммунитета",
             "order": 3
           },
           {
             "role": "item",
-            "label": "Избыточный приём БАДов",
-            "sublabel": "Риск дублирования составов",
+            "label": "Полипрагмазия и БАДы",
+            "sublabel": "желание добавить ещё один БАД к уже принимаемым",
             "order": 4
           }
         ],
         "avoid": [
-          "Абстрактные щиты, защитные биополя и светящиеся клетки иммунитета",
-          "Буквальные значки таблеток и клипарты с градусниками"
+          "буквальные иконки лупы, знаков вопроса или термометров для каждого пункта",
+          "карикатурные изображения чихающих или усталых персонажей"
         ]
       }
     },
@@ -135,36 +135,37 @@
       "id": 4,
       "text": "Каждая из этих ситуаций требует разного ответа. И только уточнив запрос, вы сможете дать рекомендацию, которая реально поможет, а не просто \"что-то от иммунитета\".",
       "analysis": {
-        "main_message": "Эффективная помощь возможна только через уточнение запроса, а не шаблонную выдачу средств",
-        "scene_title": "Адресная рекомендация",
-        "information_structure": "Причинно-следственный алгоритм: уточняющий диалог как необходимое условие точной фармацевтической помощи",
-        "visual_goal": "Показать диалог у первого стола: фармацевт внимательно опрашивает посетителя, чтобы подобрать точное решение вместо формальной продажи",
+        "main_message": "Только выяснение конкретных деталей запроса позволяет подобрать действительно эффективный препарат вместо абстрактного средства «для иммунитета».",
+        "scene_title": "Уточнение запроса покупателя",
+        "information_structure": "Причинно-следственная связь между активным выяснением деталей и результатом консультации",
+        "visual_goal": "Показать переход от диалога и выявления деталей к выбору точного индивидуального решения вместо стандартного шаблона",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic documentary editorial photography of a friendly female pharmacist in a modern white coat engaged in an attentive, consultative conversation with a customer at the pharmacy counter. Natural warm lighting, clean and realistic pharmacy interior with softly blurred medicine shelves in background. Natural candid interaction, authentic emotion, genuine communication. NOT illustration, NOT 3D render, NOT cartoon, NO cheesy stock posing, NO floating graphics.",
-        "asset_caption": "Уточняющий диалог у кассы",
+        "asset_brief": "Editorial documentary photograph of a focused pharmacist in a clean white coat attentively talking to and consulting an adult customer across a wooden pharmacy counter. Real people, authentic pharmacy interior with blurred medicine shelves in background, natural soft lighting, warm professional atmosphere. High realism, 35mm lens photo, shallow depth of field. NOT illustration, NOT 3D render, NOT cartoon, NO CGI, NO text on image.",
+        "asset_caption": "Внимательный диалог у кассы",
         "no_asset_reason": null,
-        "composition_intent": "В левой боковой колонке — фотокарточка живого диалога фармацевта с клиентом с акцентной рамкой #FF6B4A; в правой колонке — карточки с двухшаговой логикой консультации",
-        "motion_intent": "Плавное появление фотокарточки слева на 1-й секунде, затем последовательное раскрытие шагов справа с легким акцентом",
-        "visual_concept": "process_flow",
+        "composition_intent": "В левой колонке размещается карточка с фотореалистичной сценой консультации у аптечной кассы. В правой колонке — карточка с двухшаговой причинно-следственной цепочкой (вопрос-уточнение -> точная рекомендация).",
+        "motion_intent": "Сначала мягко проявляется фотокарточка диалога слева, затем справа последовательно возникают карточки причины и следствия со связующей стрелкой.",
+        "visual_concept": "cause_effect",
         "asset_strategy": "image",
         "elements": [
           {
-            "role": "step",
-            "label": "1. Уточните детали запроса",
-            "sublabel": "Кому, симптомы, специфика",
+            "role": "cause",
+            "label": "Уточнение ситуации",
+            "sublabel": "Детализация симптомов и потребностей",
             "order": 1
           },
           {
-            "role": "step",
-            "label": "2. Дайте целевой препарат",
-            "sublabel": "Решение под конкретную задачу",
+            "role": "effect",
+            "label": "Адресная помощь",
+            "sublabel": "Точный препарат вместо шаблона",
             "order": 2
           }
         ],
         "avoid": [
-          "Буквальная иконка знака вопроса или пузыря с речью (комикс-стиль)",
-          "Изображение абстрактного щита иммунитета или таблеток в отрыве от консультации"
+          "Буквальные метафорические значки вроде вопросительных знаков или мишеней",
+          "Иллюстративный клипарт и 3D-графику",
+          "Сравнение двух типов лекарств, так как суть фразы в механизме действия фармацевта (уточнил -> помог)"
         ]
       }
     },
@@ -172,49 +173,48 @@
       "id": 5,
       "text": "Помогут несколько простых вопросов: что именно вас беспокоит — частые простуды, постоянная усталость, долгое восстановление после болезни? Как давно вы замечаете это состояние? Принимаете ли сейчас какие-то витамины, добавки или препараты? Есть ли хронические заболевания?",
       "analysis": {
-        "main_message": "Фармацевт выявляет точную потребность клиента с помощью четырёх ключевых уточняющих вопросов о симптомах, длительности, принимаемых препаратах и хронических заболеваниях.",
-        "scene_title": "Ключевые вопросы покупателю",
-        "information_structure": "чек-лист ключевых вопросов для структурированного сбора анамнеза и выявления потребностей у аптечного прилавка",
-        "visual_goal": "дать чёткий алгоритм опроса из 4 пунктов и подкрепить его реалистичным контекстом живого профессионального общения с клиентом",
+        "main_message": "Четыре ключевых вопроса фармацевта для выяснения реального состояния и потребностей покупателя.",
+        "scene_title": "Опрос покупателя",
+        "information_structure": "Чек-лист обязательных вопросов для первичного сбора анамнеза и выявления жалоб клиента.",
+        "visual_goal": "Сформировать у фармацевта четкий пошаговый алгоритм вопросов для грамотной консультации.",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic documentary editorial photograph of a friendly professional pharmacist in a clean white coat attentively listening and consulting an adult customer across a modern pharmacy counter. Natural bright indoor lighting, genuine facial expressions, realistic pharmacy environment with neatly organized shelves in soft bokeh background. Cinematic editorial look, authentic atmosphere. NOT illustration, NOT 3D render, NOT cartoon, NO CGI, NO distorted hands, NO fantasy graphics.",
-        "asset_caption": "Консультация у кассы",
+        "asset_brief": "Photorealistic documentary editorial photography of a friendly female pharmacist in a clean white coat attentively consulting an adult customer across the pharmacy counter. Natural bright indoor lighting, genuine focused expression, authentic modern pharmacy interior with blurred shelves in the background. Real people, authentic documentary look. NOT 3D render, NOT cartoon, NOT illustration, no clipart, no overlaid graphic badges.",
+        "asset_caption": "Диалог с покупателем",
         "no_asset_reason": null,
-        "composition_intent": "в одной боковой колонке карточка с фото диалога у кассы, во второй колонке карточка-чеклист с 4 ключевыми вопросами",
-        "motion_intent": "карточка с фото появляется сразу, пункты чек-листа последовательно подсвечиваются/появляются по ходу озвучивания вопросов диктором",
+        "composition_intent": "В одной боковой колонке расположена карточка с фотореалистичной сценой консультации у кассы, в противоположной колонке — карточка со структурированным чек-листом вопросов.",
+        "motion_intent": "Пункты чек-листа последовательно активируются и подсвечиваются по мере перечисления вопросов диктором.",
         "visual_concept": "checklist",
         "asset_strategy": "image",
         "elements": [
           {
             "role": "item",
-            "label": "Специфика жалоб и симптомы",
-            "sublabel": "Усталость, частые простуды, упадок сил",
+            "label": "Что именно беспокоит?",
+            "sublabel": "простуды, усталость, слабость",
             "order": 1
           },
           {
             "role": "item",
-            "label": "Длительность состояния",
-            "sublabel": "Как давно проявляются симптомы",
+            "label": "Как давно это длится?",
+            "sublabel": "длительность симптомов",
             "order": 2
           },
           {
             "role": "item",
-            "label": "Текущий приём средств",
-            "sublabel": "Витамины, БАДы, лекарства",
+            "label": "Что уже принимаете?",
+            "sublabel": "витамины, добавки, лекарства",
             "order": 3
           },
           {
             "role": "item",
-            "label": "Хронические заболевания",
-            "sublabel": "Противопоказания и ограничения",
+            "label": "Хронические болезни?",
+            "sublabel": "ограничения и противопоказания",
             "order": 4
           }
         ],
         "avoid": [
-          "иконки вопросительных знаков или луп",
-          "медицинские анатомические схемы органов",
-          "перегруженные дословные цитаты длинных реплик"
+          "Буквальные клишированные иконки вроде вопросительных знаков или стетоскопов",
+          "Дословный длинный текст вопросов, перегружающий карточку"
         ]
       }
     },
@@ -222,36 +222,37 @@
       "id": 6,
       "text": "Эти вопросы не просто помогают подобрать препарат — они защищают покупателя. Например, если человек уже пьёт поливитаминный комплекс с высокой дозой витамина С, добавлять ещё один иммуномодулятор может быть излишним. А тому, кто только вышел из болезни, нужна восстановительная поддержка, а не стимуляция.",
       "analysis": {
-        "main_message": "Уточняющие вопросы защищают покупателя от передозировки и некорректного назначения препаратов.",
+        "main_message": "Уточняющие вопросы защищают покупателя от передозировки и неправильно подобранной схемы приёма",
         "scene_title": "Безопасность покупателя",
-        "information_structure": "Сравнение двух клинических сценариев подбора терапии: предотвращение дублирования действующих веществ против выбора восстановительной поддержки.",
-        "visual_goal": "Показать фармацевту практическую пользу детального опроса: защита от гипервитаминоза и учет текущей фазы выздоровления.",
+        "information_structure": "Два примера рисков, которые предотвращает фармацевт с помощью правильных вопросов: дублирование действующих веществ и назначение стимуляции вместо восстановления",
+        "visual_goal": "Показать два частых сценария риска: избыток активных компонентов при параллельном приёме и ошибочная стимуляция ослабленного организма",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic documentary photography of a professional female pharmacist in a clean white coat warmly consulting a customer across the pharmacy counter, carefully reviewing medicine packaging together. Natural indoor pharmacy lighting, authentic atmosphere, realistic textures and genuine interaction. NOT illustration, NOT 3D render, NOT cartoon, no CGI, no distorted anatomy.",
-        "asset_caption": "Персональный подбор препаратов",
+        "asset_brief": "A photorealistic documentary-style photograph of a professional pharmacist in a modern, well-lit pharmacy speaking with a customer. The pharmacist is attentively checking the label of a vitamin supplement box on the counter, showing care and precision. Natural soft pharmacy lighting, clean shelves in soft focus background, realistic textures and genuine interaction. Photorealistic photography, real people, documentary/editorial style, NOT illustration, NOT 3D render, NOT cartoon.",
+        "asset_caption": "Анализ текущей терапии",
         "no_asset_reason": null,
-        "composition_intent": "В левой колонке размещается фотокарточка с реальным процессом консультации в аптеке. В правой колонке — карточки сравнения двух сценариев подбора препаратов, разделенные по логике 'ситуация — решение'.",
-        "motion_intent": "Плавное появление карточки с фотографией слева, затем последовательное раскрытие карточек со сценариями справа.",
-        "visual_concept": "comparison",
+        "composition_intent": "В левой колонке размещается фотокарточка с консультацией у кассы, в правой колонке — две карточки с примерами рисков (дублирование дозировки и неверная тактика)",
+        "motion_intent": "Карточка с фото появляется первой, затем последовательно раскрываются карточки двух сценариев риска",
+        "visual_concept": "structured_alternatives",
         "asset_strategy": "image",
         "elements": [
           {
-            "role": "left",
-            "label": "Приём поливитаминов",
-            "sublabel": "Исключить дублирование иммуномодуляторов",
+            "role": "item",
+            "label": "Риск дублирования доз",
+            "sublabel": "Комплекс с витамином С + иммуномодулятор",
             "order": 1
           },
           {
-            "role": "right",
+            "role": "item",
             "label": "Период после болезни",
-            "sublabel": "Восстановительная терапия вместо стимуляции",
+            "sublabel": "Нужна поддержка, а не стимуляция",
             "order": 2
           }
         ],
         "avoid": [
-          "Буквальные знаки опасности или перечеркнутые таблетки, создающие тревожный контекст",
-          "Сложные химические формулы витаминов, отвлекающие от алгоритма общения"
+          "Клипарты таблеток со знаками запрета",
+          "Медицинские абстрактные 3D-модели иммунных клеток",
+          "Сложные химические формулы витаминов"
         ]
       }
     },
@@ -259,37 +260,36 @@
       "id": 7,
       "text": "Когда покупатель слышит такие вопросы, он понимает: здесь не просто продают — здесь думают о его здоровье. Это ощущение бесценно.",
       "analysis": {
-        "main_message": "Грамотные уточняющие вопросы показывают искреннюю заботу о здоровье и формируют безусловное доверие покупателя к аптеке.",
-        "scene_title": "Формирование доверия покупателя",
-        "information_structure": "Причинно-следственная связь: правильный диалог фармацевта приводит к ощущению заботы и лояльности клиента.",
-        "visual_goal": "Показать эмоциональный результат качественного сервиса — спокойного, благодарного покупателя, чувствующего внимание и профессионализм фармацевта.",
+        "main_message": "Внимательные вопросы фармацевта формируют у покупателя ощущение искренней заботы о здоровье и создают глубокое доверие.",
+        "scene_title": "Доверие покупателя",
+        "information_structure": "Причинно-следственная связь: правильные вопросы меняют восприятие диалога с коммерческой продажи на профессиональную медицинскую заботу.",
+        "visual_goal": "Показать эмоциональный результат экспертного диалога — возникновение искреннего доверия и благодарности у покупателя.",
         "asset_required": true,
         "asset_type": "pharmacy-counter scene",
-        "asset_brief": "Photorealistic documentary photograph of an interaction at a modern pharmacy counter. A friendly, professional pharmacist in a neat white coat listens attentively and speaks warmly to an adult customer. The customer looks relieved and appreciative, maintaining eye contact with a subtle, trusting smile. Authentic pharmacy interior with soft natural lighting, neatly organized shelves in a gentle background blur. Documentary editorial style, realistic textures and skin tones, genuine human emotion. NOT an illustration, NOT a 3D render, NOT a cartoon, NO fake studio poses, NO cheesy clipart.",
-        "asset_caption": "Доверие через диалог",
+        "asset_brief": "A documentary photorealistic editorial photograph of a grateful customer smiling warmly at a modern pharmacy counter, engaged in a genuine, trusting conversation with a pharmacist. Natural indoor lighting, realistic textures, modern pharmacy interior with softly blurred shelves in the background. Photorealistic photography, real people, documentary editorial style, authentic human emotion, NOT illustration, NOT 3D render, NOT cartoon, no clip art, no text overlays.",
+        "asset_caption": "Искренний диалог и доверие",
         "no_asset_reason": null,
-        "composition_intent": "В левой боковой колонке (x < 600) расположена карточка с фотореалистичной сценой диалога. В правой боковой колонке (x > 1340) — структурированные карточки 'причина -> следствие'. Центральная зона аватара и нижняя зона субтитров полностью свободны.",
-        "motion_intent": "Плавное появление (fade in) карточки с фотографией слева, затем последовательное появление плашек 'Вопросы' и 'Ощущение заботы' справа.",
+        "composition_intent": "В левой боковой колонке расположена карточка с фотореалистичной сценой доверительного общения. В правой боковой колонке — вертикальная карточка cause_effect, показывающая переход от вопросов к ощущению заботы. Зона аватара и субтитров свободны.",
+        "motion_intent": "Мягкое появление фотокарточки слева, затем последовательное раскрытие карточек причины и следствия справа со стрелкой перехода.",
         "visual_concept": "cause_effect",
         "asset_strategy": "image",
         "elements": [
           {
             "role": "cause",
-            "label": "Уточняющие вопросы",
-            "sublabel": "Внимание к проблеме клиента",
+            "label": "Внимательные вопросы",
+            "sublabel": "прояснение реальной ситуации",
             "order": 1
           },
           {
             "role": "effect",
             "label": "Ощущение заботы",
-            "sublabel": "Доверие вместо ощущения продажи",
+            "sublabel": "вместо обычной продажи",
             "order": 2
           }
         ],
         "avoid": [
-          "Бутафорские иконки сердца, рукопожатий или диалоговых облачков",
-          "Иллюстрации и мультяшные 3D-модели",
-          "Перегруженные цитатами длинные текстовые блоки"
+          "Иконки сердец, рукопожатий или смайликов как штампы понятия доверия",
+          "Глянцевые рекламные позы и фальшивые широкие улыбки"
         ]
       }
     },
@@ -297,30 +297,30 @@
       "id": 8,
       "text": "Иммунитет — это не один препарат. Это системная забота. И вы — часть этой системы. Спасибо, что подходите к этому серьёзно.",
       "analysis": {
-        "main_message": "Иммунитет требует комплексного системного подхода, в котором ключевую роль играет экспертная забота фармацевта.",
-        "scene_title": "Комплексная забота",
-        "information_structure": "Финальное резюме и профессиональный манифест о значимости комплексного подхода и роли сотрудника аптеки.",
-        "visual_goal": "Показать реальную ценность работы фармацевта как доверенного эксперта, который помогает клиенту выстроить целостную систему поддержки здоровья, а не просто продаёт лекарство.",
+        "main_message": "Иммунитет требует комплексной системной заботы, в которой фармацевт играет ключевую роль профессионального эксперта.",
+        "scene_title": "Комплексный подход",
+        "information_structure": "Финальное вдохновляющее обобщение и признание профессиональной ценности фармацевта в заботе о здоровье клиентов.",
+        "visual_goal": "Подчеркнуть статус фармацевта как важного звена в системе здоровья и закрепить идею комплексного, осознанного подхода вместо разовых решений.",
         "asset_required": true,
-        "asset_type": "pharmacy consultation scene",
-        "asset_brief": "Photorealistic documentary editorial photography of a professional, empathetic pharmacist in a modern well-lit pharmacy speaking warmly with a customer at the counter. Soft natural daylight, authentic interaction, clean aesthetic pharmacy shelves in the soft-focus background. High-end editorial healthcare magazine style. Real people, natural textures. NOT an illustration, NOT 3D render, NOT cartoon, NO fake plastic smiles, NO clinical CGI.",
-        "asset_caption": "Экспертная поддержка в аптеке",
+        "asset_type": "pharmacy-counter scene",
+        "asset_brief": "Editorial documentary photograph of a professional and confident pharmacist in a clean white coat standing behind a modern pharmacy counter, warmly consulting a customer with genuine care and expertise. Soft natural lighting, realistic pharmacy interior with neatly organized shelves in the soft-focus background. High realism, authentic healthcare setting. NOT illustration, NOT 3D render, NOT cartoon, NO text overlay.",
+        "asset_caption": "Профессиональная поддержка в аптеке",
         "no_asset_reason": null,
-        "composition_intent": "В левой боковой колонке (ширина ~480px) размещается карточка с фотореалистичным изображением живой консультации и подписью. В правой колонке — карточка с акцентной типографикой, усиливающей мысль о системности. Центральная зона аватара (x≈600-1340) и нижняя субтитровая плашка остаются полностью свободными.",
-        "motion_intent": "Синхронное мягкое появление карточек (smooth fade & slide-in) на первой секунде реплики, фиксация на протяжении всей сцены для создания уверенного завершающего впечатления.",
+        "composition_intent": "Размещение фотокарточки в левой боковой колонке для создания теплого эмоционального якоря, текстовой карточки с главным выводом — в правой боковой колонке, не заходя в центральную зону аватара и субтитров.",
+        "motion_intent": "Мягкое синхронное появление фотокарточки и текстовой плашки с легким fade-in на фразе о системной заботе.",
         "visual_concept": "strong_typography",
         "asset_strategy": "image",
         "elements": [
           {
             "role": "headline",
-            "label": "Иммунитет — это система заботы",
-            "sublabel": "Фармацевт — ключевое звено в поддержке здоровья покупателя",
+            "label": "Системная забота об иммунитете",
+            "sublabel": "Фармацевт — ключевое звено комплексного подхода",
             "order": 1
           }
         ],
         "avoid": [
-          "Использование абстрактных клише (щиты, светящиеся барьеры, молекулы, иконки витаминов), так как сцена про человеческое отношение и профессионализм.",
-          "Перегрузка экрана списками препаратов, чтобы не противоречить тезису 'иммунитет — это не один препарат'."
+          "Клишированные абстрактные иконки щита или таблеток",
+          "Перегруз лишними пунктами списков в финальной эмоционально-мотивационной фразе"
         ]
       }
     }
