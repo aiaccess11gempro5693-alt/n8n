@@ -136,6 +136,25 @@ def _wrap(draw, text, fnt, max_width):
     return lines
 
 
+def _wrap_fit(draw, text, font_path, start_size, max_width, min_size=18, step=2):
+    """`_wrap()` alone can't stop a single WORD from itself being wider
+    than `max_width` — it never breaks mid-word, so a long unbroken word
+    (e.g. a long Russian compound) just overflows as its own oversized
+    line. That's exactly what crashed a real production render
+    (validate.py correctly caught a card overflowing AVATAR_ZONE because
+    of this — see CLAUDE.md, 21.09.2026). This shrinks the font size
+    until every wrapped line actually fits within `max_width`, or floors
+    at `min_size`. Returns (lines, font, size)."""
+    size = start_size
+    while True:
+        fnt = S.font(font_path, size)
+        lines = _wrap(draw, text, fnt, max_width)
+        widest = max((draw.textlength(l, font=fnt) for l in lines), default=0)
+        if widest <= max_width or size <= min_size:
+            return lines, fnt, size
+        size -= step
+
+
 def _measure_block(lines, fnt, line_height):
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
@@ -242,14 +261,13 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
     pad = _sz(PAD, scale)
     bar_w = _sz(28, scale) if accent_bar else 0
     f_kick = S.font(S.F_SEMIBOLD, _fs(S.SIZE_KICKER, scale))
-    f_head = S.font(S.F_BLACK, _fs(S.SIZE_HEADLINE, scale))
     f_sub = S.font(S.F_MEDIUM, _fs(S.SIZE_SUBLABEL, scale))
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
 
     text_max_w = max_width - bar_w
-    head_lines = _wrap(d, label, f_head, text_max_w)
-    head_w, head_h = _measure_block(head_lines, f_head, int(_fs(S.SIZE_HEADLINE, scale) * 1.12))
+    head_lines, f_head, head_size = _wrap_fit(d, label, S.F_BLACK, _fs(S.SIZE_HEADLINE, scale), text_max_w, min_size=_fs(28, scale, floor=18))
+    head_w, head_h = _measure_block(head_lines, f_head, int(head_size * 1.12))
     sub_lines = _wrap(d, sublabel, f_sub, text_max_w) if sublabel else []
     sub_w, sub_h = _measure_block(sub_lines, f_sub, int(_fs(S.SIZE_SUBLABEL, scale) * 1.35))
 
@@ -281,7 +299,7 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
     for line in head_lines:
         lw = d.textlength(line, font=f_head)
         _draw_text_shadow(draw, (line_x(lw), y), line, f_head, S.WHITE)
-        y += int(_fs(S.SIZE_HEADLINE, scale) * 1.12)
+        y += int(head_size * 1.12)
     if sublabel:
         y += _sz(10, scale)
         for line in sub_lines:
@@ -446,15 +464,14 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
     height in this design — see safe_zones.py — so a literal centered
     divider/VS mark is not placeable without violating that zone)."""
     pad = _sz(PAD, scale)
-    f_head = S.font(S.F_BLACK, _fs(S.SIZE_HEADLINE, scale))
     f_sub = S.font(S.F_MEDIUM, _fs(S.SIZE_SUBLABEL, scale))
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
 
     chevron_w = _sz(24, scale)
     text_max_w = max_width - chevron_w
-    head_lines = _wrap(d, label, f_head, text_max_w)
-    head_w, head_h = _measure_block(head_lines, f_head, int(_fs(S.SIZE_HEADLINE, scale) * 1.12))
+    head_lines, f_head, head_size = _wrap_fit(d, label, S.F_BLACK, _fs(S.SIZE_HEADLINE, scale), text_max_w, min_size=_fs(28, scale, floor=18))
+    head_w, head_h = _measure_block(head_lines, f_head, int(head_size * 1.12))
     sub_lines = _wrap(d, sublabel, f_sub, text_max_w) if sublabel else []
     sub_w, sub_h = _measure_block(sub_lines, f_sub, int(_fs(S.SIZE_SUBLABEL, scale) * 1.35))
 
@@ -474,7 +491,7 @@ def render_comparison_side(label, sublabel, side, max_width, scale=1.0):
     for line in head_lines:
         lw = d.textlength(line, font=f_head)
         _draw_text_shadow(draw, (line_x(lw), y), line, f_head, S.WHITE)
-        y += int(_fs(S.SIZE_HEADLINE, scale) * 1.12)
+        y += int(head_size * 1.12)
     if sublabel:
         y += _sz(10, scale)
         for line in sub_lines:
@@ -576,14 +593,13 @@ def render_qa(question, answer, max_width, align="left", scale=1.0):
     then answers."""
     pad = _sz(PAD, scale)
     f_q = S.font(S.F_MEDIUM, _fs(S.SIZE_SUBLABEL + 2, scale))
-    f_a = S.font(S.F_BLACK, _fs(S.SIZE_HEADLINE, scale))
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
 
     q_lines = _wrap(d, question, f_q, max_width)
-    a_lines = _wrap(d, answer, f_a, max_width)
+    a_lines, f_a, a_size = _wrap_fit(d, answer, S.F_BLACK, _fs(S.SIZE_HEADLINE, scale), max_width, min_size=_fs(28, scale, floor=18))
     q_w, q_h = _measure_block(q_lines, f_q, int(_fs(S.SIZE_SUBLABEL + 2, scale) * 1.3))
-    a_w, a_h = _measure_block(a_lines, f_a, int(_fs(S.SIZE_HEADLINE, scale) * 1.12))
+    a_w, a_h = _measure_block(a_lines, f_a, int(a_size * 1.12))
     content_w = max(max(q_w, a_w) + _sz(20, scale), max_width)
     content_h = q_h + _sz(12, scale) + a_h
     canvas = _new_canvas(content_w, content_h, pad)
@@ -605,7 +621,7 @@ def render_qa(question, answer, max_width, align="left", scale=1.0):
     for line in a_lines:
         lw = d.textlength(line, font=f_a)
         _draw_text_shadow(draw, (line_x(lw), y), line, f_a, S.WHITE)
-        y += int(_fs(S.SIZE_HEADLINE, scale) * 1.12)
+        y += int(a_size * 1.12)
 
     bar_x = (x0 - _sz(14, scale)) if not right else (content_w - _sz(6, scale))
     draw.rectangle([bar_x, ay0 + _sz(4, scale), bar_x + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
