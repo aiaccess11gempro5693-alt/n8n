@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "titletest-2",
+      "text": "Но за этим уверенным запросом почти всегда стоит что-то конкретное — то, что человек пока не сформулировал. И именно фармацевт помогает добраться до сути.",
+      "analysis": {
+        "main_message": "За стандартным или уверенным запросом покупателя скрывается несформулированная истинная потребность, которую фармацевт помогает раскрыть",
+        "scene_title": "Поиск истинной потребности",
+        "information_structure": "Смысловое сопоставление поверхностного запроса клиента и скрытой реальной проблемы, требующей профессионального уточнения",
+        "visual_goal": "Показать живой профессиональный диалог у кассы, в котором фармацевт внимательно слушает и помогает покупателю прояснить суть обращения",
+        "asset_required": true,
+        "asset_type": "pharmacy-counter scene",
+        "asset_brief": "Editorial documentary photorealistic photo of a professional female pharmacist in a clean white coat standing behind a modern pharmacy counter, attentively listening and gently speaking with a customer. Natural diffused lighting, soft focus background with pharmacy shelves, authentic human emotion and engaged eye contact. Documentary photography style, realistic depth of field, 35mm photography look. NOT an illustration, NOT a 3D render, NOT cartoonish, NO exaggerated stock-photo smiles, NO floating icons, NO text overlays.",
+        "asset_caption": "Диалог первого стола",
+        "no_asset_reason": null,
+        "composition_intent": "В левой колонке размещается карточка с фотореалистичным кадром диалога в аптеке, в правой колонке — карточка сопоставления видимого запроса и скрытой потребности",
+        "motion_intent": "Плавное появление карточки с изображением слева, затем последовательное появление пунктов сравнения в правой карточке",
+        "visual_concept": "comparison",
+        "asset_strategy": "image",
+        "elements": [
+          {
+            "role": "left",
+            "label": "Уверенный запрос",
+            "sublabel": "То, что клиент озвучил вслух",
+            "order": 1
+          },
+          {
+            "role": "right",
+            "label": "Скрытая потребность",
+            "sublabel": "Суть, которую выявляет фармацевт",
+            "order": 2
+          }
+        ],
+        "avoid": [
+          "Буквальные метафоры вроде увеличительного стекла или пазла",
+          "Иллюстрации и клипарты в мультяшном стиле",
+          "Изображение покупателя в карикатурно растерянном виде"
+        ]
+      }
+    }
+  ]
+}
