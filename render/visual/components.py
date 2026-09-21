@@ -636,14 +636,19 @@ def render_top_title(text, max_width, scale=1.0):
     direct user instruction), present in EVERY scene in addition to the
     existing side-column content, not a replacement for it. Sized for
     safe_zones.TOP_TITLE_ZONE (measured real headroom above the avatar's
-    hair, see that module's docstring) — a single short line, small pad
-    (not the full PAD used by side-column components, which would be
-    taller than the zone allows). 21.09.2026 (5): enlarged per direct
-    request ("крупно жирно") — TOP_TITLE_ZONE grew to match (see
-    safe_zones.py), font weight was already F_BLACK (the boldest weight
-    in this project's type system), so "жирно" only needed the size bump."""
-    pad = _sz(14, scale)
-    size = _fs(44, scale, floor=22)
+    hair, see that module's docstring).
+
+    21.09.2026 (10) — restyled per direct feedback ("более современные,
+    в стиле остальных плашек и текста"): the tight pad (14px) made the
+    card's own border sit right against the letters, reading as a thick
+    outline around the text rather than a plate the text sits on. Padding
+    widened to match the breathing room side-cards get, and a slim accent
+    underline replaces that cramped-outline look with the same
+    kicker/accent-bar visual language `render_headline` already uses —
+    the texture plate itself (the part already "in the style of the
+    other plates") is unchanged."""
+    pad = _sz(16, scale)
+    size = _fs(40, scale, floor=22)
     upper = text.upper()
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
@@ -655,7 +660,11 @@ def render_top_title(text, max_width, scale=1.0):
         size -= 2
     f = S.font(S.F_BLACK, size)
     text_w = d.textlength(upper, font=f)
-    canvas = Image.new("RGBA", (int(text_w) + pad * 2, size + pad * 2), (0, 0, 0, 0))
+    bar_h = _sz(4, scale)
+    bar_gap = _sz(6, scale)
+    canvas = Image.new("RGBA", (int(text_w) + pad * 2, size + bar_gap + bar_h + pad * 2), (0, 0, 0, 0))
     draw = ImageDraw.Draw(canvas)
     draw.text((pad, pad), upper, font=f, fill=S.WHITE)
+    bar_y = pad + size + bar_gap
+    draw.rounded_rectangle([pad, bar_y, pad + text_w, bar_y + bar_h], radius=bar_h / 2, fill=S.ACCENT)
     return _finish(_wrap_in_card(canvas, scale))

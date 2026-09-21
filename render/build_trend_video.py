@@ -67,9 +67,23 @@ ACCENT = "0x2A7F82"
 SCENE_KIND = {1: "avatar", 2: "data", 3: "data", 4: "avatar", 5: "data", 6: "data", 7: "avatar", 8: "avatar"}
 
 
+# 21.09.2026 (11) — разнообразие переходов ("усилить монтаж", п.3 из трёх
+# согласованных улучшений). Не случайный набор эффектов на каждый стык, а
+# три смысловых категории смены сцены, каждая — свой характер движения:
+#   аватар -> данные: направленный wipe, СТОРОНА берётся из PAN_DIR той же
+#     сцены (см. ниже), чтобы переход и последующая панорама двигались в
+#     одну сторону, а не спорили друг с другом;
+#   данные -> аватар: фокус возвращается к говорящему — круговое раскрытие
+#     от центра кадра, а не боковой wipe (аватар и так всегда в центре);
+#   всё остальное (данные -> данные, аватар -> аватар): спокойный fade —
+#     тема продолжается, резкий эффект не нужен.
 def transition_for(prev_n, next_n):
-    if SCENE_KIND[next_n] == "data" and SCENE_KIND[prev_n] != "data":
-        return "smoothleft", 0.35
+    prev_kind, next_kind = SCENE_KIND[prev_n], SCENE_KIND[next_n]
+    if next_kind == "data" and prev_kind != "data":
+        side = "smoothright" if PAN_DIR.get(next_n, 0) >= 0 else "smoothleft"
+        return side, 0.35
+    if prev_kind == "data" and next_kind != "data":
+        return "circleopen", 0.45
     return "fade", 0.5
 
 
@@ -96,7 +110,21 @@ print("durations:", durs)
 
 PUNCH = {1: 1.122, 8: 2.614}  # секунда триггерного слова для punch-in
 
-# ---------- шаг 1: Ken Burns (+punch) на каждый сырой клип аватара (канон) ----------
+# 21.09.2026 (10) — лёгкое горизонтальное панорамирование вместо чистого
+# zoom-in везде (по прямому запросу "усилить монтаж", разные сцены
+# двигаются по-разному). Только ГОРИЗОНТАЛЬ: вертикальный запас у
+# TOP_TITLE_ZONE всего 8px (см. render/visual/safe_zones.py) — слишком
+# мало, чтобы рисковать вертикальным дрейфом. Горизонтальный запас у
+# LEFT/RIGHT колонок — 40px до AVATAR_ZONE, с большим запасом.
+# PAN_DIR: -1 = кроп-окно двигается влево (аватар визуально сдвигается
+# вправо), +1 = вправо (аватар сдвигается влево), 0 = чистый zoom, как
+# было. PAN_FRAC — доля от доступного запаса zoom-кропа, не абсолютные
+# пиксели — дрейф растёт вместе с зумом и всегда остаётся физически
+# внутри увеличенного кадра.
+PAN_DIR = {1: 0, 2: 1, 3: -1, 4: 0, 5: -1, 6: 1, 7: 0, 8: -1}
+PAN_FRAC = 0.55
+
+# ---------- шаг 1: Ken Burns (+punch, +pan) на каждый сырой клип аватара (канон) ----------
 kb_paths = {}
 for n in scenes:
     D = durs[n]
@@ -105,16 +133,18 @@ for n in scenes:
     if n in PUNCH:
         T = PUNCH[n]
         zoom += f"+0.05*clip(min((t-({T}-0.4))/0.4\\,({T}+2.1-t)/0.6)\\,0\\,1)"
+    pan = PAN_DIR.get(n, 0)
+    pan_x = "(iw-1920)/2" if pan == 0 else f"(iw-1920)/2*(1+{pan}*{PAN_FRAC}*(t/{D}))"
     out_path = f"{OUT_DIR}/kb-scene-{n}.mp4"
     run([
         "ffmpeg", "-y", "-i", f"{FINAL_SCENES}/scene-{n}.mp4",
         "-vf",
         f"scale=w='trunc(1920*({zoom})/2)*2':h='trunc(1080*({zoom})/2)*2':eval=frame,"
-        f"crop=1920:1080:x='(iw-1920)/2':y='(ih-1080)/2'",
+        f"crop=1920:1080:x='{pan_x}':y='(ih-1080)/2'",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-r", "25",
         "-c:a", "copy",
         out_path,
-    ], f"scene{n} ken burns" + (" + punch" if n in PUNCH else ""))
+    ], f"scene{n} ken burns" + (" + punch" if n in PUNCH else "") + (" + pan" if pan else ""))
     kb_paths[n] = out_path
 
 video_paths = kb_paths
@@ -283,6 +313,19 @@ for idx, (ci, w) in enumerate(all_words):
 # кроссфейде). ----------
 next_input_idx = 2  # 0=combined_video, 1=lavfi canvas
 vis_k = 0
+# 21.09.2026 (10) — slide-in + overshoot entrance (по запросу "усилить
+# монтаж") вместо голого fade-in. "Ease-out-back" (стандартная кривая
+# анимации: значение чуть проскакивает мимо цели и возвращается) —
+# формула из c1/c3, u=прогресс входа 0..1, ease(0)=0, ease(1)=1, с
+# перелётом на подходе к 1. Позиция = финальная - offset*(1-ease(u)):
+# при u=0 элемент сдвинут в сторону (offset), при u=1 — ровно на
+# провалидированном месте (validate.py проверял конечную позицию, не
+# траекторию входа — овершут на 0.4с не считается "постоянным"
+# положением). Заголовок сверху (y<105, TOP_TITLE_ZONE) заходит СВЕРХУ
+# (вертикально), боковые карточки — с той стороны кадра, где они стоят
+# (горизонтально), а не откуда-то произвольно.
+ENT = 0.4
+EASE_C1, EASE_C3 = 1.70158, 2.70158
 for n in scenes:
     for el in visual_manifest["scenes"][n]["elements"]:
         inputs += ["-loop", "1", "-t", f"{combined_dur:.3f}", "-i", f"{VIS_DIR}/{el['file']}"]
@@ -301,8 +344,17 @@ for n in scenes:
             f"[{raw}]fade=t=in:st={start:.3f}:d=0.3:alpha=1,"
             f"fade=t=out:st={fade_out_st:.3f}:d=0.3:alpha=1[{faded}]"
         )
+
+        u = f"min(max((t-{start:.3f})/{ENT}\\,0)\\,1)"
+        ease = f"(1+{EASE_C3}*pow(({u})-1\\,3)+{EASE_C1}*pow(({u})-1\\,2))"
+        if el["y"] < 105:  # верхний заголовок (TOP_TITLE_ZONE) — заходит сверху
+            slide_x, slide_y = el["x"], f"({el['y']}-22*(1-{ease}))"
+        else:
+            direction = -1 if el["x"] < 960 else 1
+            slide_x, slide_y = f"({el['x']}+{direction * 44}*(1-{ease}))", el["y"]
+
         nxt = f"visov{vis_k}"
-        fc2.append(f"[{prev}][{faded}]overlay={el['x']}:{el['y']}:enable='between(t,{start:.3f},{end:.3f})'[{nxt}]")
+        fc2.append(f"[{prev}][{faded}]overlay=x='{slide_x}':y='{slide_y}':enable='between(t,{start:.3f},{end:.3f})'[{nxt}]")
         prev = nxt
         vis_k += 1
 
