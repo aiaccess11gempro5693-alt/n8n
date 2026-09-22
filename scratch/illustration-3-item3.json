@@ -1,9 +1,9 @@
 {
-  "narration_line": "Избыток добавок",
-  "prompt": "Photorealistic editorial macro shot on a home kitchen table overloaded with an excessive variety of dietary supplements. Multiple open unlabeled plastic vitamin jars, overflowing glass dropper bottles, scattered colorful gelatin capsules, tablets, and popped blister packs lying cluttered across the surface. Soft natural window morning lighting, shallow depth of field with crisp macro focus on the messy pile of capsules in the foreground, cinematic documentary photography style, neutral tones, realistic texture, no real brand logos or commercial text.",
+  "narration_line": "Избыточный приём БАДов",
+  "prompt": "Photorealistic close-up documentary shot of an overwhelming amount of opened generic dietary supplement bottles, scattered vitamin capsules, and opened blister packs spread across a kitchen table, emphasizing excess and overconsumption. Natural morning window light, shallow depth of field, neutral color palette, unbranded mock supplement packaging with no real commercial logos or trademarks, realistic textures, 35mm lens photo, NOT 3D render, NOT cartoon, NOT illustration.",
   "reference_image_path": null,
   "captions": [
-    "Избыток добавок"
+    "Избыточный приём БАДов"
   ],
   "mime_type": "image/png",
   "verdict": "OK",
