@@ -433,7 +433,8 @@ def render_checklist_item(label, max_width, scale=1.0):
     draw = ImageDraw.Draw(canvas)
 
     by = pad + (content_h - box) / 2
-    draw.rectangle([pad, by, pad + box, by + box], outline=S.ACCENT, width=max(1, _sz(3, scale)))
+    radius = max(2, _sz(6, scale))
+    draw.rounded_rectangle([pad, by, pad + box, by + box], radius=radius, fill=S.ACCENT)
     ty = pad
     for line in lines:
         _draw_text_shadow(draw, (pad + box_col_w, ty), line, f_label, S.WHITE)
@@ -525,7 +526,8 @@ def render_checklist_item_with_image(label, thumb, max_width, scale=1.0):
 
     mx = pad + thumb_sz + thumb_gap
     by = pad + (content_h - box) / 2
-    draw.rectangle([mx, by, mx + box, by + box], outline=S.ACCENT, width=max(1, _sz(3, scale)))
+    radius = max(2, _sz(6, scale))
+    draw.rounded_rectangle([mx, by, mx + box, by + box], radius=radius, fill=S.ACCENT)
     tx, ty = mx + box_col_w, pad
     for line in lines:
         _draw_text_shadow(draw, (tx, ty), line, f_label, S.WHITE)
