@@ -1,11 +1,11 @@
 {
   "narration_line": "Длительность состояния",
-  "prompt": "Editorial documentary photograph of a pharmacy counter setting, natural soft daylight. A medium close-up shot of a customer in casual attire interacting with a pharmacist, making an explanatory hand gesture indicating a passage of time or counting days on fingers to explain how long symptoms have lasted. In the foreground on the wooden pharmacy desk, an out-of-focus minimal neutral flip calendar is subtly visible. Realistic human expressions, authentic modern pharmacy environment, shallow depth of field, 35mm photography, cinematic documentary style, photorealistic, no 3D render, no visible real brand logos.",
+  "prompt": "Editorial documentary-style photo in a cozy pharmacy setting. Close-up on a customer's expressive hand gesture over a warm wooden pharmacy counter, indicating a span of time or counting days, with a subtle minimalist desk calendar visible in soft focus nearby. Golden-hour ambient lighting with warm amber and honey tones, soft natural highlights, shallow depth of field with blurred warm interior background. Authentic, realistic textures, cinematic 35mm photography aesthetic, NOT illustration, NOT 3D render.",
   "reference_image_path": null,
   "captions": [
     "Длительность состояния"
   ],
   "mime_type": "image/png",
-  "verdict": "OK",
+  "verdict": "Пункт 1: На изображении присутствуют заметные генеративные артефакты — неестественная анатомия пальцев руки и сбитая сетка чисел в календаре (дублирование и пропуск дат).",
   "aspect_ratio": "1:1"
 }
