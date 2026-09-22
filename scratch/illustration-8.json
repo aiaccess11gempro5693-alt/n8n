@@ -1,11 +1,11 @@
 {
-  "narration_line": "Иммунитет — это не один препарат. Это системная забота. И вы — часть этой системы. Спасибо, что подходите к этому серьёзно.",
-  "prompt": "Documentary editorial photography of a confident, compassionate professional pharmacist in a modern well-lit pharmacy, conducting a thoughtful, attentive consultation with a customer. Warm natural lighting, authentic human interaction, conveying dedication to comprehensive health care and systemic wellness. Softly blurred shelves with generic wellness products in the background, realistic pharmacy interior, shallow depth of field, natural skin tones, cinematic 35mm film still aesthetic, photorealistic, no 3D render, no illustration, no text overlays.",
+  "narration_line": "Фармацевт в системе заботы",
+  "prompt": "Photorealistic documentary editorial photography capturing genuine patient care. Medium shot of a warm, approachable pharmacist in a modern pharmacy, leaning in attentively during a one-on-one consultation with a customer, radiating empathy and professional support. Natural human interaction, authentic expressions. Softly blurred background featuring neatly arranged shelves with generic healthcare products and warm wood accents. Cinematic shallow depth of field, natural golden-hour ambient lighting with rich amber and honey tones, cozy pharmacy atmosphere, realistic textures, 35mm lens documentary look, no cool or sterile blue tones.",
   "reference_image_path": null,
   "captions": [
-    "Иммунитет — это системная забота"
+    "Фармацевт в системе заботы"
   ],
   "mime_type": "image/png",
-  "verdict": "**OK**",
+  "verdict": "OK",
   "aspect_ratio": "1:1"
 }
