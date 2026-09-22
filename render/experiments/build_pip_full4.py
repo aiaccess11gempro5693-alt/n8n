@@ -246,11 +246,20 @@ def build_story_items(sem):
     return placed
 
 
+CAPTION_RESERVE = 70  # ~chip_h(49.5) + chip_gap(16), запас под однострочную подпись render_image_card
+
+
 def _duo_card(path, caption, col):
+    """Масштабирует фото так, чтобы ГОТОВАЯ карточка (фото + подпись +
+    рамка/тень render_image_card) целиком влезала в колонку и по ширине,
+    и по высоте — раньше учитывалась только ширина, из-за чего карточка
+    получалась выше колонки (905px против доступных 520px) и подпись
+    уезжала за нижний край кадра, под субтитровую плашку."""
     img = Image.open(path).convert("RGBA")
     margin = 2 * (C.CARD_SHADOW_BLUR + C.PAD)
-    cw = _col_w(col) - margin
-    ratio = cw / img.width
+    max_w = _col_w(col) - margin
+    max_h = _col_h(col) - margin - CAPTION_RESERVE
+    ratio = min(max_w / img.width, max_h / img.height)
     img = img.resize((max(1, int(img.width * ratio)), max(1, int(img.height * ratio))))
     card = C.render_image_card(img, caption=caption)
     x = col["x0"] + max(0, (_col_w(col) - card.width) // 2)
