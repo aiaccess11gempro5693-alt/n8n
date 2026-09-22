@@ -1,11 +1,11 @@
 {
-  "narration_line": "Editorial photo of a modern bright TV screen displaying a vibrant health and wellness vitamin commercial in a warm, cozy living room setting. WARM golden-hour color palette: amber and honey tones, warm wood furniture, soft warm sunlight streaming in — NOT cool or blue-toned, matching a warm pharmacy-interior aesthetic. Natural lighting, documentary style, photorealistic, no 3D render, no illustration, no cartoon.",
-  "prompt": "Editorial documentary photo of a modern thin-bezel TV screen on a warm wooden console in a cozy living room, displaying a bright and vibrant health and wellness vitamin commercial. Golden hour warm sunlight streaming through large windows, creating soft amber and honey highlights across natural wood furniture. Realistic interior photography, natural depth of field, warm cozy aesthetic matching modern pharmacy interior tones, photorealistic, cinematic composition, authentic lighting.",
+  "narration_line": "Реклама и медиа",
+  "prompt": "Editorial documentary photo of a modern sleek TV screen in a warm living room environment showing a bright, dynamic health and wellness commercial. Golden-hour sunlight pouring into the room, soft amber and honeyed tones, realistic cinematic depth of field. The screen displays an active lifestyle advertisement featuring generic vitamins with non-branded Cyrillic text overlay reading 'ЭНЕРГИЯ И ЗДОРОВЬЕ'. Natural warm interior lighting, photorealistic, 35mm lens, no cool tones, no blue tones.",
   "reference_image_path": null,
   "captions": [
-    "Реклама витаминов на ТВ"
+    "Реклама и медиа"
   ],
   "mime_type": "image/png",
-  "verdict": "OK",
+  "verdict": "Пункт 1: На изображении присутствует артефакт генерации текста на экране ТВ — опечатка в слове («ЭНЕРИЯ» вместо «ЭНЕРГИЯ»). По остальным пунктам замечаний нет.",
   "aspect_ratio": "1:1"
 }
