@@ -24,6 +24,8 @@ from .safe_zones import column_width, LEFT_COLUMN, RIGHT_COLUMN
 from .timing import trigger_time, enforce_min_gap
 from . import illustration as ILL
 
+MIN_GAP = 1.2  # минимальный разнос между появлениями двух элементов одной сцены — см. timing.enforce_min_gap
+
 MIN_ASSET_PX = 260  # floor on an illustration's smaller dimension — below this it stops being "a diagram you can read", per layout.py's solver
 
 
@@ -69,6 +71,42 @@ def _first_trigger(sem, default=0.3):
         return default
 
 
+def _element_trigger(sem, element, index, default_step=1.5):
+    """Real, narration-synced trigger time for ONE element — 21.09.2026
+    (13), direct complaint: every element of a scene used to pop onto the
+    screen together, at the scene's first trigger word, so the viewer saw
+    bullets/steps the narrator hadn't reached yet ("диктор говорит одно,
+    а там уже а-ля спойлер к следующему"). Prefers the LLM-supplied
+    `element.trigger_phrase` (an exact narration substring — see
+    semantic_analysis.py) resolved through timing.trigger_time(); falls
+    back to a fixed offset from the scene's first trigger only when that
+    phrase is missing/unmatched (synthetic test scenes with no
+    word_layout.json, or a rare LLM phrase that doesn't match verbatim)."""
+    if element.trigger_phrase:
+        try:
+            return trigger_time(sem.scene_id, element.trigger_phrase)
+        except Exception:
+            pass
+    return _first_trigger(sem) + index * default_step
+
+
+def _synced_triggers(sem, elements, min_gap=MIN_GAP):
+    """Real per-element trigger times, in the SAME order as `elements`,
+    with a minimum gap enforced between whichever two end up closest in
+    ACTUAL narration time (not assumed list order — comparison's
+    left/right pair, for instance, isn't guaranteed to be spoken in that
+    order). Each element's own real trigger is respected; only
+    near-simultaneous pops get nudged apart, and only forward in time,
+    per timing.enforce_min_gap's 'appeared -> flashed -> gone' rule."""
+    raw = [_element_trigger(sem, e, i) for i, e in enumerate(elements)]
+    time_order = sorted(range(len(raw)), key=lambda i: raw[i])
+    adjusted = enforce_min_gap([raw[i] for i in time_order], min_gap=min_gap)
+    out = [0.0] * len(raw)
+    for pos, i in enumerate(time_order):
+        out[i] = adjusted[pos]
+    return out
+
+
 def _split_with_asset(column, items, asset_column, extra):
     """If `extra` (a generated illustration Item) exists, place it ALONE
     in `asset_column` (the side opposite `column`) so the scene's image
@@ -107,38 +145,69 @@ def _maybe_illustration_item(sem, column):
     if img is None:
         return None
     card = C.render_image_card(img, caption=sem.asset_caption)
-    return Item(card, _first_trigger(sem), kind="asset", min_px=MIN_ASSET_PX)
+    trigger = _first_trigger(sem)
+    if sem.asset_trigger_phrase:
+        try:
+            trigger = trigger_time(sem.scene_id, sem.asset_trigger_phrase)
+        except Exception:
+            pass
+    return Item(card, trigger, kind="asset", min_px=MIN_ASSET_PX)
+
+
+def _chain_items(sem, triples):
+    """triples: list[(VisualElement, kicker:str, label:str)] in narration
+    order. Returns one Item PER STEP, each its own card (render_chain_step)
+    with its own real, narration-synced trigger — 21.09.2026 (13), see
+    _element_trigger's docstring. Used by both process_flow and
+    cause_effect, which differ only in whether steps carry a kicker
+    label."""
+    elements = [t[0] for t in triples]
+    triggers = _synced_triggers(sem, elements)
+    n = len(triples)
+    items = []
+    for i, ((_, kicker, label), t) in enumerate(zip(triples, triggers)):
+        is_final = i == n - 1
+        cw = column_width(_col_geom("right"))
+        img = C.render_chain_step(kicker, label, i, is_final, cw)
+        render_fn = lambda s, _k=kicker, _l=label, _i=i, _f=is_final, _cw=cw: C.render_chain_step(_k, _l, _i, _f, _cw, scale=s)
+        items.append(Item(img, t, kind="text", render_fn=render_fn))
+    return items
 
 
 def build_process_flow(sem):
     column = "right"
-    cw = column_width(_col_geom(column))
     steps = _ordered(_by_role(sem, "step"))
     if not steps:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=process_flow but no 'step' elements")
-    times = enforce_min_gap([trigger_time_or_default(sem, i) for i in range(len(steps))], min_gap=1.4)
-    chain = [("", e.label) for e in steps]
-    img = C.render_flow_chain(chain, cw, align="left")
-    render_fn = lambda s, _chain=chain, _cw=cw: C.render_flow_chain(_chain, _cw, align="left", scale=s)
-    items = [Item(img, times[0], kind="text", render_fn=render_fn)]
+    items = _chain_items(sem, [(e, "", e.label) for e in steps])
     extra = _maybe_illustration_item(sem, "left")
     return _split_with_asset(column, items, "left", extra)
 
 
 def build_cause_effect(sem):
     column = "right"
-    cw = column_width(_col_geom(column))
     role_kicker = {"cause": "Причина", "mechanism": "Механизм", "effect": "Следствие"}
     parts = [e for e in sem.elements if e.role in role_kicker]
     parts = _ordered(parts) if any(e.order for e in parts) else sorted(parts, key=lambda e: list(role_kicker).index(e.role))
     if len(parts) < 2:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=cause_effect needs >=2 of cause/mechanism/effect")
-    chain = [(role_kicker[e.role], e.label) for e in parts]
-    img = C.render_flow_chain(chain, cw, align="left")
-    render_fn = lambda s, _chain=chain, _cw=cw: C.render_flow_chain(_chain, _cw, align="left", scale=s)
-    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
+    items = _chain_items(sem, [(e, role_kicker[e.role], e.label) for e in parts])
     extra = _maybe_illustration_item(sem, "left")
     return _split_with_asset(column, items, "left", extra)
+
+
+def _item_illustration(sem, element, index):
+    """Per-BULLET illustration (not a shared scene-level image) — direct
+    user instruction (21.09.2026 (13)): 'после ОРВИ одна картинка, после
+    этого другая. БАДы, например' — each concrete list item gets its own
+    small photo, keyed by a composite id so illustration.py's per-scene
+    cache doesn't collide across items or across scenes."""
+    if not element.asset_brief:
+        return None
+    return ILL.get_or_generate(
+        f"{sem.scene_id}-item{index}", element.asset_brief,
+        narration_text=element.label, max_width=300, aspect_ratio="1:1",
+    )
 
 
 def build_structured_alternatives(sem):
@@ -147,10 +216,17 @@ def build_structured_alternatives(sem):
     items_sem = _ordered(_by_role(sem, "item"))
     if not items_sem:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=structured_alternatives but no 'item' elements")
-    labels = [e.label for e in items_sem]
-    img = C.render_item_list(labels, cw, align="left")
-    render_fn = lambda s, _labels=labels, _cw=cw: C.render_item_list(_labels, _cw, align="left", scale=s)
-    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
+    triggers = _synced_triggers(sem, items_sem)
+    items = []
+    for i, (e, t) in enumerate(zip(items_sem, triggers)):
+        thumb = _item_illustration(sem, e, i)
+        if thumb is not None:
+            img = C.render_list_item_with_image(i, e.label, thumb, cw)
+            render_fn = lambda s, _i=i, _l=e.label, _th=thumb, _cw=cw: C.render_list_item_with_image(_i, _l, _th, _cw, scale=s)
+        else:
+            img = C.render_list_item(i, e.label, cw)
+            render_fn = lambda s, _i=i, _l=e.label, _cw=cw: C.render_list_item(_i, _l, _cw, scale=s)
+        items.append(Item(img, t, kind="text", render_fn=render_fn))
     extra = _maybe_illustration_item(sem, "left")
     return _split_with_asset(column, items, "left", extra)
 
@@ -161,10 +237,17 @@ def build_checklist(sem):
     items_sem = _ordered(_by_role(sem, "item"))
     if not items_sem:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=checklist but no 'item' elements")
-    labels = [e.label for e in items_sem]
-    img = C.render_checklist(labels, cw, align="left")
-    render_fn = lambda s, _labels=labels, _cw=cw: C.render_checklist(_labels, _cw, align="left", scale=s)
-    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
+    triggers = _synced_triggers(sem, items_sem)
+    items = []
+    for i, (e, t) in enumerate(zip(items_sem, triggers)):
+        thumb = _item_illustration(sem, e, i)
+        if thumb is not None:
+            img = C.render_checklist_item_with_image(e.label, thumb, cw)
+            render_fn = lambda s, _l=e.label, _th=thumb, _cw=cw: C.render_checklist_item_with_image(_l, _th, _cw, scale=s)
+        else:
+            img = C.render_checklist_item(e.label, cw)
+            render_fn = lambda s, _l=e.label, _cw=cw: C.render_checklist_item(_l, _cw, scale=s)
+        items.append(Item(img, t, kind="text", render_fn=render_fn))
     extra = _maybe_illustration_item(sem, "left")
     return _split_with_asset(column, items, "left", extra)
 
@@ -189,27 +272,45 @@ def build_comparison(sem):
     img_r = C.render_comparison_side(right_el.label, right_el.sublabel, "right", cw_r)
     render_fn_l = lambda s, _e=left_el, _cw=cw_l: C.render_comparison_side(_e.label, _e.sublabel, "left", _cw, scale=s)
     render_fn_r = lambda s, _e=right_el, _cw=cw_r: C.render_comparison_side(_e.label, _e.sublabel, "right", _cw, scale=s)
-    t = _first_trigger(sem)
-    left_items = [Item(img_l, t, kind="text", render_fn=render_fn_l)]
+    # 21.09.2026 (13): each side gets its OWN real trigger — the two used
+    # to share one (the scene's first trigger word), so both halves popped
+    # in together even when the narrator describes them one after the
+    # other. _synced_triggers sorts by actual narration time, not by
+    # left/right position, so whichever side is spoken first appears
+    # first regardless of its on-screen column.
+    t_l, t_r = _synced_triggers(sem, [left_el, right_el])
+    left_items = [Item(img_l, t_l, kind="text", render_fn=render_fn_l)]
     extra = _maybe_illustration_item(sem, "left")
     if extra:
         left_items.insert(0, extra)
     return [
         ColumnGroup(column="left", mode="accumulate", align="right", items=left_items),
-        ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t, kind="text", render_fn=render_fn_r)]),
+        ColumnGroup(column="right", mode="accumulate", align="left", items=[Item(img_r, t_r, kind="text", render_fn=render_fn_r)]),
     ]
 
 
 def build_qa_structure(sem):
+    """21.09.2026 (13): question and answer now get their OWN cards and
+    their OWN real triggers instead of being baked into one combined
+    image at a single trigger — a question is usually posed, then
+    answered somewhat LATER in the narration; showing the answer at the
+    same moment as the question was exactly the "spoiler" complaint."""
     column = "right"
     cw = column_width(_col_geom(column))
     q = _by_role(sem, "question")
     a = _by_role(sem, "answer")
     if not q or not a:
         raise ValueError(f"scene {sem.scene_id}: visual_concept=qa_structure needs both 'question' and 'answer'")
-    img = C.render_qa(q[0].label, a[0].label, cw, align="left")
-    render_fn = lambda s, _q=q[0].label, _a=a[0].label, _cw=cw: C.render_qa(_q, _a, _cw, align="left", scale=s)
-    items = [Item(img, _first_trigger(sem), kind="text", render_fn=render_fn)]
+    q_el, a_el = q[0], a[0]
+    t_q, t_a = _synced_triggers(sem, [q_el, a_el])
+    img_q = C.render_qa_question(q_el.label, cw)
+    render_fn_q = lambda s, _l=q_el.label, _cw=cw: C.render_qa_question(_l, _cw, scale=s)
+    img_a = C.render_headline(a_el.label, cw, align="left")
+    render_fn_a = lambda s, _l=a_el.label, _cw=cw: C.render_headline(_l, _cw, align="left", scale=s)
+    items = [
+        Item(img_q, t_q, kind="text", render_fn=render_fn_q),
+        Item(img_a, t_a, kind="text", render_fn=render_fn_a),
+    ]
     extra = _maybe_illustration_item(sem, "left")
     return _split_with_asset(column, items, "left", extra)
 
@@ -240,13 +341,6 @@ def build_none(sem):
     if extra:
         return [ColumnGroup(column=column, mode="accumulate", items=[extra])]
     return []
-
-
-def trigger_time_or_default(sem, index, default_step=1.5):
-    try:
-        return trigger_time(sem.scene_id, sem.elements[index].label.split(" ")[0])
-    except Exception:
-        return 0.3 + index * default_step
 
 
 BUILDERS = {

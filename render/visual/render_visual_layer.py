@@ -54,6 +54,15 @@ def build_all(scene_semantics, asset_dir=ASSET_DIR):
         (sem.scene_id, sem.asset_brief, sem.text, "1:1")
         for sem in scene_semantics if sem.asset_required and sem.asset_brief
     ]
+    # 21.09.2026 (13): per-BULLET illustrations (structured_alternatives/
+    # checklist items with their own asset_brief — direct user
+    # instruction, see composition.py's _item_illustration) also go
+    # through the same concurrent prefetch, keyed by a composite id so
+    # they don't collide with the scene-level illustration's cache entry.
+    for sem in scene_semantics:
+        for i, el in enumerate(sem.elements):
+            if el.role == "item" and el.asset_brief:
+                prefetch_reqs.append((f"{sem.scene_id}-item{i}", el.asset_brief, el.label, "1:1"))
     if prefetch_reqs:
         print(f"prefetching {len(prefetch_reqs)} illustration(s) concurrently...")
         ILL.prefetch_all(prefetch_reqs)

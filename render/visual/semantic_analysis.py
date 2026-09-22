@@ -64,6 +64,9 @@ class VisualElement:
     label: str
     sublabel: str = ""
     order: int = 0
+    trigger_phrase: str = ""   # exact substring of the scene's narration text marking where THIS element's content is actually spoken — see CLAUDE.md 21.09.2026 (13)
+    asset_brief: str = ""      # optional per-item illustration prompt (English) — only meaningful for role="item" (structured_alternatives/checklist); "" = no picture for this specific bullet
+    asset_caption: str = ""    # optional short (2-4 word) Russian caption for that per-item illustration, "" if asset_brief is ""
 
 
 @dataclass
@@ -86,6 +89,7 @@ class SceneSemantics:
     visual_concept: str              # TECHNICAL dispatch key (controlled vocabulary, see below)
     asset_strategy: str              # TECHNICAL dispatch key (controlled vocabulary, see below)
     elements: list = field(default_factory=list)          # list[VisualElement]
+    asset_trigger_phrase: str = ""     # exact substring of the scene's narration text marking where the image's content is actually spoken, "" if no asset
 
 
 PROJECT_VISUAL_CONTEXT = """\
@@ -169,12 +173,13 @@ visual_goal, composition_intent, motion_intent) — твоими словами,
   "asset_type": "free text — твоё слово для типа ассета (illustration/diagram/pharmacy-counter scene/annotated object/...), или 'typography' или 'none'",
   "asset_brief": "если asset_required=true: детальный промпт НА АНГЛИЙСКОМ для модели генерации изображений (что нарисовать, стиль, композиция, что НЕ включать); иначе null",
   "asset_caption": "если asset_required=true: короткая подпись на русском, 2-4 слова, под картинку (не дублирует дословно label из elements, а называет ЧТО на картинке); иначе null",
+  "asset_trigger_phrase": "если asset_required=true: ТОЧНАЯ подстрока (2-6 слов, дословно, без изменений) из ДАННОГО ТЕБЕ текста сцены — момент, где диктор произносит то, что изображено на картинке; иначе null",
   "no_asset_reason": "если asset_required=false: почему графика не добавляет пользы; иначе null",
   "composition_intent": "free text — как это должно располагаться относительно аватара/субтитров",
   "motion_intent": "free text — как это должно появляться/анимироваться, или 'static' если не важно",
   "visual_concept": "один из технического списка выше",
   "asset_strategy": "один из технического списка выше, или 'none'",
-  "elements": [{{"role": "...", "label": "краткая подпись на экран, 2-6 слов, русский", "sublabel": "... или null", "order": 1}}],
+  "elements": [{{"role": "...", "label": "краткая подпись на экран, 2-6 слов, русский", "sublabel": "... или null", "order": 1, "trigger_phrase": "точная подстрока (2-6 слов, дословно) из текста сцены — момент, где диктор произносит именно ЭТУ мысль", "asset_brief": "ТОЛЬКО для role=item в structured_alternatives/checklist, когда пункт конкретный и изобразимый: детальный промпт НА АНГЛИЙСКОМ для маленькой иллюстрации именно ЭТОГО пункта; иначе null", "asset_caption": "если задан asset_brief для этого пункта: короткая подпись на русском, 2-4 слова; иначе null"}}],
   "avoid": ["что сознательно НЕ визуализируем и почему, коротко"]
 }}
 
@@ -187,6 +192,52 @@ visual_goal, composition_intent, motion_intent) — твоими словами,
   strong_typography -> ровно 1 элемент, role "headline", можно "sublabel".
   none -> elements: [] (это нормально, если asset_required=true и весь
     смысл несёт картинка, а не текстовые подписи).
+
+КРИТИЧЕСКИ ВАЖНО про "trigger_phrase" (и "asset_trigger_phrase") —
+прямая жалоба руководителя проекта на предыдущую версию системы:
+"надо к каждому текущему предложению сделать картинки, буллиты, чтобы
+не было что диктор говорит одно, а там уже а-ля спойлер к следующему".
+Раньше ВСЕ элементы сцены появлялись на экране одновременно, в начале
+сцены — значит, зритель видел "Истинная потребность" или четвёртый пункт
+списка ДО того, как диктор вообще до него дошёл. Это ошибка. Каждый
+элемент теперь появляется на экране РОВНО в момент, когда диктор
+произносит именно эту мысль — не раньше. Поэтому "trigger_phrase"
+обязателен для КАЖДОГО элемента (кроме случая visual_concept="none",
+где elements пустой) и должен быть:
+  1. Дословной подстрокой из текста сцены, который тебе дан выше (не
+     перефразированной — код ищет её как есть в реальной озвученной
+     речи, малейшее расхождение и триггер не сработает).
+  2. Взят из ТОЙ ЧАСТИ текста, где диктор ДЕЙСТВИТЕЛЬНО говорит про
+     именно этот пункт/шаг/сторону, а не из начала предложения вообще.
+  3. Для elements по порядку (order) в списке/цепочке — фразы почти
+     всегда идут по нарастающей внутри текста сцены (первый элемент
+     раньше по тексту, чем второй, и т.д.), потому что именно в этом
+     порядке диктор их и произносит.
+"asset_trigger_phrase" — то же самое для картинки: момент в тексте, где
+диктор говорит о том, что на ней изображено (часто совпадает с
+trigger_phrase первого элемента, но не обязательно — если картинка,
+например, иллюстрирует общий контекст сцены с самого начала, можно
+взять фразу из начала текста).
+
+ВАЖНО про per-item "asset_brief"/"asset_caption" в elements (только
+structured_alternatives и checklist) — тоже прямое указание руководителя:
+"было бы неплохо, чтобы картинка появлялась именно [на каждом пункте] —
+например после ОРВИ одна картинка, после этого другая. БАДы, например".
+Список из нескольких независимых пунктов (частые простуды / слабость
+после болезни / приём БАДов и т.п.) — это НЕ один общий образ на всю
+сцену, а набор РАЗНЫХ конкретных вещей, и у каждой конкретной вещи
+должна быть СВОЯ маленькая картинка, появляющаяся вместе с этим пунктом
+(не единая иллюстрация в левой колонке на всю сцену). Поэтому для
+КАЖДОГО элемента с role="item" в этих двух концептах: если пункт
+описывает что-то конкретное и изобразимое (физический объект, конкретная
+ситуация/симптом — не абстрактную мысль) — задай "asset_brief" (промпт
+на английском, тот же фотореалистичный документальный стиль, что и для
+основной картинки сцены — см. выше) и "asset_caption" ИМЕННО для этого
+элемента. Если пункт абстрактный и его нечем изобразить — оставь оба
+null для этого элемента, это нормально. Стремись задать картинку
+БОЛЬШИНСТВУ или ВСЕМ пунктам списка, если они хоть сколько-то предметны
+— именно это устраняет "пустоту" и делает список визуально ярким, как
+просил руководитель, а не текстовым списком с одной картинкой в углу.
 
 ВАЖНО: comparison vs cause_effect — не путать "сравнение" с "раскрытием".
 comparison подходит ТОЛЬКО когда два случая РЕАЛЬНО РАВНОЗНАЧНЫ и
@@ -274,14 +325,21 @@ def _parse_one(raw, scene_id, text, duration):
         raise ValueError(f"scene {scene_id}: asset_required=true but no asset_brief was provided")
     if asset_required and not raw.get("asset_caption"):
         raise ValueError(f"scene {scene_id}: asset_required=true but no asset_caption was provided")
+    if asset_required and not raw.get("asset_trigger_phrase"):
+        raise ValueError(f"scene {scene_id}: asset_required=true but no asset_trigger_phrase was provided")
     if not asset_required and not raw.get("no_asset_reason"):
         raise ValueError(f"scene {scene_id}: asset_required=false but no no_asset_reason was provided")
     if not raw.get("scene_title"):
         raise ValueError(f"scene {scene_id}: no scene_title was provided")
-    elements = [
-        VisualElement(role=e["role"], label=e["label"], sublabel=e.get("sublabel") or "", order=e.get("order") or 0)
-        for e in raw.get("elements", [])
-    ]
+    elements = []
+    for e in raw.get("elements", []):
+        if not e.get("trigger_phrase"):
+            raise ValueError(f"scene {scene_id}: element {e.get('role')!r}/{e.get('label')!r} has no trigger_phrase")
+        elements.append(VisualElement(
+            role=e["role"], label=e["label"], sublabel=e.get("sublabel") or "",
+            order=e.get("order") or 0, trigger_phrase=e["trigger_phrase"],
+            asset_brief=e.get("asset_brief") or "", asset_caption=e.get("asset_caption") or "",
+        ))
     return SceneSemantics(
         scene_id=scene_id,
         text=text,
@@ -294,6 +352,7 @@ def _parse_one(raw, scene_id, text, duration):
         asset_type_raw=asset_type_raw,
         asset_brief=raw.get("asset_brief") or "",
         asset_caption=raw.get("asset_caption") or "",
+        asset_trigger_phrase=raw.get("asset_trigger_phrase") or "",
         composition_intent=raw.get("composition_intent", ""),
         motion_intent=raw.get("motion_intent", ""),
         avoid=raw.get("avoid", []),

@@ -10,27 +10,43 @@ they were visually identical except for a circle vs a plain number vs a
 checkbox. That's cosmetic variation, not distinct visual explanation.
 
 This version has ONE component per genuinely distinct structure:
-  - render_flow_chain   -- a CONNECTED chain (arrows between nodes) for
-                            process_flow / cause_effect. The only component
-                            for which order + connection is the point.
-  - render_item_list    -- an UNCONNECTED numbered list for
-                            structured_alternatives. No arrows: the whole
-                            point is that the items are independent.
-  - render_checklist    -- checkbox rows + a left "spine" bracket that
-                            visually groups them as one set to go through —
-                            distinct from render_item_list's plain rows.
+  - render_chain_step   -- ONE step (own card) of a process_flow /
+                            cause_effect chain — a numbered node badge
+                            carries the order, no line/arrow between
+                            steps (see below, 21.09.2026 (13)).
+  - render_list_item    -- ONE row (own card) of an UNCONNECTED numbered
+                            list for structured_alternatives.
+  - render_checklist_item -- ONE checkbox row (own card) of a checklist.
   - render_comparison_side -- one half of a comparison, with a chevron
                             pointing toward the avatar (the shared "axis"),
                             since a literal center divider is impossible —
                             AVATAR_ZONE spans the full frame height (see
                             safe_zones.py), there is no safe center gap to
                             draw a real vs-marker in.
-  - render_qa           -- a muted question line above a bold answer.
+  - render_qa_question / render_headline -- a muted question card, then
+                            (separately) a bold answer card for
+                            qa_structure.
   - render_headline / render_kicker_word -- unchanged, for strong_typography
                             (a single message IS legitimately just typography
                             — this is not the old bug, this is a real
                             asset_strategy="typography" decision made per
                             scene by semantic_analysis, not a default).
+
+21.09.2026 (13) — render_flow_chain / render_item_list / render_checklist
+(one combined image for a whole list, ONE shared trigger) were replaced
+by the per-item render_chain_step / render_list_item / render_checklist_item
+above, each its own card with its own trigger. Direct complaint from the
+project lead forwarded via chat: the combined version made every element
+of a scene pop onto the screen together at the scene's first trigger
+word — so the viewer saw later bullets/steps before the narrator had
+actually said them ("диктор говорит одно, а там уже а-ля спойлер к
+следующему"). composition.py now computes a real per-element trigger
+(from `VisualElement.trigger_phrase`, an LLM-supplied narration anchor —
+see semantic_analysis.py) and calls these per-item renderers once per
+element instead of once per scene. The old connecting line/arrow between
+chain nodes is gone: it can't be drawn sensibly between cards that appear
+on screen at different times, so order is carried by the numbered node
+badge alone.
 
 21.09.2026 (2) — every render_* below now takes a `scale` parameter
 (default 1.0). This exists for layout.py's solver (see its module
@@ -313,14 +329,19 @@ def render_headline(label, max_width, kicker="", sublabel="", align="left", acce
     return _finish(_wrap_in_card(canvas, scale))
 
 
-def render_flow_chain(steps, max_width, align="left", scale=1.0):
-    """steps: list[(kicker:str, label:str)], in order. A CONNECTED vertical
-    chain — circle node, arrow down, next circle node, ... the final node
-    is filled solid (the destination/result). This is the one component
-    where connection/order is the visual point: used for process_flow
-    (kicker="" or step label) and cause_effect (kicker="ПРИЧИНА"/
-    "МЕХАНИЗМ"/"СЛЕДСТВИЕ"). Compare render_item_list, which is
-    deliberately NOT connected."""
+def render_chain_step(kicker, label, index, is_final, max_width, scale=1.0):
+    """ONE step of a process_flow/cause_effect chain, as its own
+    self-contained card. 21.09.2026 (13) — split from the old
+    render_flow_chain (which baked the whole chain into a single image
+    with a single trigger) per a direct complaint from the project lead:
+    every element used to pop onto the screen together, at the scene's
+    very first trigger word, so the viewer saw later steps before the
+    narrator had said them ("диктор говорит одно, а там уже а-ля спойлер
+    к следующему"). Each step now gets its OWN card and its OWN trigger,
+    computed from a real narration anchor (see composition.py). The old
+    node-to-node connecting line/arrow is dropped — it can't be drawn
+    sensibly between two cards that appear on screen at different times —
+    order is instead carried by the numbered node badge alone."""
     pad = _sz(PAD, scale)
     f_kick = S.font(S.F_SEMIBOLD, _fs(S.SIZE_KICKER - 2, scale))
     f_label = S.font(S.F_MEDIUM, _fs(S.SIZE_ITEM_LABEL, scale))
@@ -331,67 +352,43 @@ def render_flow_chain(steps, max_width, align="left", scale=1.0):
     node_r = _sz(16, scale)
     node_col_w = node_r * 2 + _sz(16, scale)
     text_max_w = max_width - node_col_w
-    arrow_gap = _sz(28, scale)
 
-    rows = []
-    for kicker, label in steps:
-        kick_lines = _wrap(d, kicker.upper(), f_kick, text_max_w) if kicker else []
-        label_lines = _wrap(d, label, f_label, text_max_w)
-        kh = len(kick_lines) * int(_fs(S.SIZE_KICKER - 2, scale) * 1.3)
-        lh = len(label_lines) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.3)
-        rows.append({"kick": kick_lines, "label": label_lines, "h": max(kh + lh, node_r * 2)})
-
+    kick_lines = _wrap(d, kicker.upper(), f_kick, text_max_w) if kicker else []
+    label_lines = _wrap(d, label, f_label, text_max_w)
+    kh = len(kick_lines) * int(_fs(S.SIZE_KICKER - 2, scale) * 1.3)
+    lh = len(label_lines) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.3)
+    content_h = max(kh + lh, node_r * 2)
     content_w = max_width
-    content_h = sum(r["h"] for r in rows) + arrow_gap * max(0, len(rows) - 1)
+
     canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
 
-    node_cx = pad + node_r
-    centers, y = [], pad
-    for r in rows:
-        centers.append(y + r["h"] / 2)
-        y += r["h"] + arrow_gap
+    node_cx, node_cy = pad + node_r, pad + content_h / 2
+    if is_final:
+        draw.ellipse([node_cx - node_r, node_cy - node_r, node_cx + node_r, node_cy + node_r], fill=S.ACCENT)
+        num_col = S.WHITE
+    else:
+        draw.ellipse([node_cx - node_r, node_cy - node_r, node_cx + node_r, node_cy + node_r], outline=S.ACCENT, width=max(1, _sz(3, scale)))
+        num_col = S.ACCENT
+    num_text = str(index + 1)
+    bbox = d.textbbox((0, 0), num_text, font=f_num)
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    _draw_text_shadow(draw, (node_cx - tw / 2 - bbox[0], node_cy - th / 2 - bbox[1]), num_text, f_num, num_col, shadow=False)
 
-    y = pad
-    for i, r in enumerate(rows):
-        cy = centers[i]
-        is_last = i == len(rows) - 1
-        if is_last:
-            draw.ellipse([node_cx - node_r, cy - node_r, node_cx + node_r, cy + node_r], fill=S.ACCENT)
-            num_col = S.WHITE
-        else:
-            draw.ellipse([node_cx - node_r, cy - node_r, node_cx + node_r, cy + node_r], outline=S.ACCENT, width=max(1, _sz(3, scale)))
-            num_col = S.ACCENT
-        num_text = str(i + 1)
-        bbox = d.textbbox((0, 0), num_text, font=f_num)
-        tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
-        _draw_text_shadow(draw, (node_cx - tw / 2 - bbox[0], cy - th / 2 - bbox[1]), num_text, f_num, num_col, shadow=False)
-
-        tx, ty = pad + node_col_w, y
-        for line in r["kick"]:
-            _draw_text_shadow(draw, (tx, ty), line, f_kick, S.ACCENT, shadow=False)
-            ty += int(_fs(S.SIZE_KICKER - 2, scale) * 1.3)
-        for line in r["label"]:
-            _draw_text_shadow(draw, (tx, ty), line, f_label, S.WHITE)
-            ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.3)
-
-        if not is_last:
-            next_cy = centers[i + 1]
-            top, bottom = cy + node_r + _sz(4, scale), next_cy - node_r - _sz(4, scale)
-            if bottom > top:
-                draw.line([node_cx, top, node_cx, bottom], fill=S.ACCENT, width=max(1, _sz(3, scale)))
-                aw = _sz(6, scale)
-                draw.polygon([(node_cx - aw, bottom - _sz(8, scale)), (node_cx + aw, bottom - _sz(8, scale)), (node_cx, bottom + _sz(2, scale))], fill=S.ACCENT)
-
-        y += r["h"] + arrow_gap
+    tx, ty = pad + node_col_w, pad + (content_h - (kh + lh)) / 2
+    for line in kick_lines:
+        _draw_text_shadow(draw, (tx, ty), line, f_kick, S.ACCENT, shadow=False)
+        ty += int(_fs(S.SIZE_KICKER - 2, scale) * 1.3)
+    for line in label_lines:
+        _draw_text_shadow(draw, (tx, ty), line, f_label, S.WHITE)
+        ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.3)
 
     return _finish(_wrap_in_card(canvas, scale))
 
 
-def render_item_list(items, max_width, align="left", scale=1.0):
-    """items: list[str]. A plain numbered list, deliberately WITHOUT
-    connectors — for structured_alternatives, where the point is that the
-    items are independent, not sequential. Compare render_flow_chain."""
+def render_list_item(index, label, max_width, scale=1.0):
+    """ONE row of a structured_alternatives list, as its own card — see
+    render_chain_step's docstring (21.09.2026 (13), per-item timing)."""
     pad = _sz(PAD, scale)
     f_marker = S.font(S.F_SEMIBOLD, _fs(S.SIZE_MARKER, scale))
     f_label = S.font(S.F_MEDIUM, _fs(S.SIZE_ITEM_LABEL, scale))
@@ -399,60 +396,162 @@ def render_item_list(items, max_width, align="left", scale=1.0):
     d = ImageDraw.Draw(tmp)
     marker_col_w = _sz(46, scale)
     text_max_w = max_width - marker_col_w
-    gap = _sz(24, scale)
 
-    rows = [_wrap(d, label, f_label, text_max_w) for label in items]
+    lines = _wrap(d, label, f_label, text_max_w)
     content_w = max_width
-    content_h = sum(len(r) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28) for r in rows) + gap * max(0, len(rows) - 1)
+    content_h = len(lines) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
     canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
 
-    y = pad
-    for i, lines in enumerate(rows):
-        _draw_text_shadow(draw, (pad, y), f"{i + 1:02d}", f_marker, S.ACCENT, shadow=False)
-        ty = y
-        for line in lines:
-            _draw_text_shadow(draw, (pad + marker_col_w, ty), line, f_label, S.WHITE)
-            ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
-        y = ty + gap
+    _draw_text_shadow(draw, (pad, pad), f"{index + 1:02d}", f_marker, S.ACCENT, shadow=False)
+    ty = pad
+    for line in lines:
+        _draw_text_shadow(draw, (pad + marker_col_w, ty), line, f_label, S.WHITE)
+        ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
 
     return _finish(_wrap_in_card(canvas, scale))
 
 
-def render_checklist(items, max_width, align="left", scale=1.0):
-    """items: list[str]. Checkbox rows + a left "spine" bracket spanning
-    the whole group — the spine is what visually says "this is one set to
-    go through", distinct from render_item_list's unrelated independent
-    rows."""
+def render_checklist_item(label, max_width, scale=1.0):
+    """ONE checkbox row of a checklist, as its own card. Drops the shared
+    left "spine" bracket the old combined render_checklist drew across
+    the whole group — each item now appears independently, so there is no
+    single moment where a spanning spine would be fully visible. See
+    render_chain_step's docstring (21.09.2026 (13), per-item timing)."""
     pad = _sz(PAD, scale)
     f_label = S.font(S.F_MEDIUM, _fs(S.SIZE_ITEM_LABEL, scale))
     tmp = Image.new("RGBA", (10, 10))
     d = ImageDraw.Draw(tmp)
     box_col_w = _sz(46, scale)
     text_max_w = max_width - box_col_w
-    gap = _sz(22, scale)
     box = _sz(22, scale)
 
-    rows = [_wrap(d, label, f_label, text_max_w) for label in items]
-    row_heights = [max(len(r) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28), box) for r in rows]
+    lines = _wrap(d, label, f_label, text_max_w)
     content_w = max_width
-    content_h = sum(row_heights) + gap * max(0, len(rows) - 1)
-    canvas = _new_canvas(content_w + _sz(12, scale), content_h, pad)
+    content_h = max(len(lines) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28), box)
+    canvas = _new_canvas(content_w, content_h, pad)
     draw = ImageDraw.Draw(canvas)
 
-    spine_x = pad - _sz(8, scale)
-    draw.line([spine_x, pad, spine_x, pad + content_h], fill=S.ACCENT_SOFT, width=max(1, _sz(3, scale)))
+    by = pad + (content_h - box) / 2
+    draw.rectangle([pad, by, pad + box, by + box], outline=S.ACCENT, width=max(1, _sz(3, scale)))
+    ty = pad
+    for line in lines:
+        _draw_text_shadow(draw, (pad + box_col_w, ty), line, f_label, S.WHITE)
+        ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
 
+    return _finish(_wrap_in_card(canvas, scale))
+
+
+THUMB_SIZE = 72  # per-item bullet thumbnail side, at scale=1.0
+
+
+def _draw_thumb(canvas, x, y, size, thumb):
+    """Pastes a per-item generated illustration (`thumb`, a real photo
+    from illustration.py — see composition.py) as a small rounded,
+    accent-bordered square at (x, y) directly onto `canvas`. Shared by
+    render_list_item_with_image/render_checklist_item_with_image below —
+    21.09.2026 (13): direct user instruction, each concrete bullet in a
+    list gets its OWN picture ('после ОРВИ одна картинка, после этого
+    другая. БАДы, например'), not one shared illustration for the whole
+    scene."""
+    img = thumb.convert("RGBA")
+    ratio = size / max(img.width, img.height)
+    img = img.resize((max(1, round(img.width * ratio)), max(1, round(img.height * ratio))))
+    # center-crop to a square if the source isn't already ~1:1
+    if img.width != img.height:
+        side = min(img.width, img.height)
+        left = (img.width - side) // 2
+        top = (img.height - side) // 2
+        img = img.crop((left, top, left + side, top + side)).resize((size, size))
+    mask = _rounded_mask((size, size), size // 5)
+    canvas.paste(img, (int(x), int(y)), mask)
+    ImageDraw.Draw(canvas).rounded_rectangle(
+        [x, y, x + size, y + size], radius=size // 5, outline=S.ACCENT, width=2,
+    )
+
+
+def render_list_item_with_image(index, label, thumb, max_width, scale=1.0):
+    """Like render_list_item, but with a small per-item photo (`thumb`)
+    to the left of the marker+text — see _draw_thumb's docstring."""
+    pad = _sz(PAD, scale)
+    thumb_sz = _sz(THUMB_SIZE, scale)
+    thumb_gap = _sz(16, scale)
+    f_marker = S.font(S.F_SEMIBOLD, _fs(S.SIZE_MARKER, scale))
+    f_label = S.font(S.F_MEDIUM, _fs(S.SIZE_ITEM_LABEL, scale))
+    tmp = Image.new("RGBA", (10, 10))
+    d = ImageDraw.Draw(tmp)
+    marker_col_w = _sz(46, scale)
+    text_max_w = max_width - thumb_sz - thumb_gap - marker_col_w
+
+    lines = _wrap(d, label, f_label, text_max_w)
+    content_w = max_width
+    content_h = max(len(lines) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28), thumb_sz)
+    canvas = _new_canvas(content_w, content_h, pad)
+    draw = ImageDraw.Draw(canvas)
+
+    _draw_thumb(canvas, pad, pad + (content_h - thumb_sz) / 2, thumb_sz, thumb)
+
+    mx = pad + thumb_sz + thumb_gap
+    _draw_text_shadow(draw, (mx, pad), f"{index + 1:02d}", f_marker, S.ACCENT, shadow=False)
+    tx, ty = mx + marker_col_w, pad
+    for line in lines:
+        _draw_text_shadow(draw, (tx, ty), line, f_label, S.WHITE)
+        ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
+
+    return _finish(_wrap_in_card(canvas, scale))
+
+
+def render_checklist_item_with_image(label, thumb, max_width, scale=1.0):
+    """Like render_checklist_item, but with a small per-item photo
+    (`thumb`) to the left of the checkbox+text — see _draw_thumb's
+    docstring."""
+    pad = _sz(PAD, scale)
+    thumb_sz = _sz(THUMB_SIZE, scale)
+    thumb_gap = _sz(16, scale)
+    f_label = S.font(S.F_MEDIUM, _fs(S.SIZE_ITEM_LABEL, scale))
+    tmp = Image.new("RGBA", (10, 10))
+    d = ImageDraw.Draw(tmp)
+    box_col_w = _sz(46, scale)
+    box = _sz(22, scale)
+    text_max_w = max_width - thumb_sz - thumb_gap - box_col_w
+
+    lines = _wrap(d, label, f_label, text_max_w)
+    content_w = max_width
+    content_h = max(len(lines) * int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28), thumb_sz)
+    canvas = _new_canvas(content_w, content_h, pad)
+    draw = ImageDraw.Draw(canvas)
+
+    _draw_thumb(canvas, pad, pad + (content_h - thumb_sz) / 2, thumb_sz, thumb)
+
+    mx = pad + thumb_sz + thumb_gap
+    by = pad + (content_h - box) / 2
+    draw.rectangle([mx, by, mx + box, by + box], outline=S.ACCENT, width=max(1, _sz(3, scale)))
+    tx, ty = mx + box_col_w, pad
+    for line in lines:
+        _draw_text_shadow(draw, (tx, ty), line, f_label, S.WHITE)
+        ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
+
+    return _finish(_wrap_in_card(canvas, scale))
+
+
+def render_qa_question(question, max_width, scale=1.0):
+    """The question half of qa_structure, as its own small card — appears
+    when the narrator poses the question; the answer (rendered via
+    render_headline) appears separately, later, when it's actually
+    answered. See render_chain_step's docstring (21.09.2026 (13))."""
+    pad = _sz(PAD, scale)
+    f_q = S.font(S.F_MEDIUM, _fs(S.SIZE_SUBLABEL + 2, scale))
+    tmp = Image.new("RGBA", (10, 10))
+    d = ImageDraw.Draw(tmp)
+    lines = _wrap(d, question, f_q, max_width)
+    content_w = max_width
+    content_h = len(lines) * int(_fs(S.SIZE_SUBLABEL + 2, scale) * 1.3)
+    canvas = _new_canvas(content_w, content_h, pad)
+    draw = ImageDraw.Draw(canvas)
     y = pad
-    for lines, row_h in zip(rows, row_heights):
-        by = y + (row_h - box) / 2
-        draw.rectangle([pad, by, pad + box, by + box], outline=S.ACCENT, width=max(1, _sz(3, scale)))
-        ty = y
-        for line in lines:
-            _draw_text_shadow(draw, (pad + box_col_w, ty), line, f_label, S.WHITE)
-            ty += int(_fs(S.SIZE_ITEM_LABEL, scale) * 1.28)
-        y += row_h + gap
-
+    for line in lines:
+        _draw_text_shadow(draw, (pad, y), line, f_q, S.MUTED, shadow=False)
+        y += int(_fs(S.SIZE_SUBLABEL + 2, scale) * 1.3)
     return _finish(_wrap_in_card(canvas, scale))
 
 
@@ -588,46 +687,6 @@ def render_image_card(image, caption="", scale=1.0):
     return _finish(canvas)
 
 
-def render_qa(question, answer, max_width, align="left", scale=1.0):
-    """A muted question line above a bold answer headline with an accent
-    bar — for qa_structure, where the text implies a question the scene
-    then answers."""
-    pad = _sz(PAD, scale)
-    f_q = S.font(S.F_MEDIUM, _fs(S.SIZE_SUBLABEL + 2, scale))
-    tmp = Image.new("RGBA", (10, 10))
-    d = ImageDraw.Draw(tmp)
-
-    q_lines = _wrap(d, question, f_q, max_width)
-    a_lines, f_a, a_size = _wrap_fit(d, answer, S.F_BLACK, _fs(S.SIZE_HEADLINE, scale), max_width, min_size=_fs(28, scale, floor=18))
-    q_w, q_h = _measure_block(q_lines, f_q, int(_fs(S.SIZE_SUBLABEL + 2, scale) * 1.3))
-    a_w, a_h = _measure_block(a_lines, f_a, int(a_size * 1.12))
-    content_w = max(max(q_w, a_w) + _sz(20, scale), max_width)
-    content_h = q_h + _sz(12, scale) + a_h
-    canvas = _new_canvas(content_w, content_h, pad)
-    draw = ImageDraw.Draw(canvas)
-
-    right = align == "right"
-    x0 = _sz(20, scale) if not right else 0
-
-    def line_x(lw):
-        return x0 if not right else content_w - _sz(20, scale) - lw
-
-    y = pad
-    for line in q_lines:
-        lw = d.textlength(line, font=f_q)
-        _draw_text_shadow(draw, (line_x(lw), y), line, f_q, S.MUTED, shadow=False)
-        y += int(_fs(S.SIZE_SUBLABEL + 2, scale) * 1.3)
-    y += _sz(12, scale)
-    ay0 = y
-    for line in a_lines:
-        lw = d.textlength(line, font=f_a)
-        _draw_text_shadow(draw, (line_x(lw), y), line, f_a, S.WHITE)
-        y += int(a_size * 1.12)
-
-    bar_x = (x0 - _sz(14, scale)) if not right else (content_w - _sz(6, scale))
-    draw.rectangle([bar_x, ay0 + _sz(4, scale), bar_x + _sz(5, scale), y - _sz(6, scale)], fill=S.ACCENT)
-
-    return _finish(_wrap_in_card(canvas, scale))
 
 
 def render_top_title(text, max_width, scale=1.0):
