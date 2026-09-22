@@ -1,9 +1,9 @@
 {
   "narration_line": "Помогут несколько простых вопросов: что именно вас беспокоит — частые простуды, постоянная усталость, долгое восстановление после болезни? Как давно вы замечаете это состояние? Принимаете ли сейчас какие-то витамины, добавки или препараты? Есть ли хронические заболевания?",
-  "prompt": "Photorealistic documentary editorial photograph of a friendly female pharmacist in a clean crisp white coat leaning slightly forward across the pharmacy counter, actively asking questions with a caring, attentive expression. An adult customer stands opposite her, engaged in conversation about their health symptoms. Natural bright pharmacy lighting, shallow depth of field with softly blurred shelves of unbranded healthcare products in the background. Authentic modern pharmacy setting, real human emotions, documentary realism, high resolution, no 3D render, no cartoon, no graphic overlays.",
+  "prompt": "Editorial documentary photograph of a friendly professional female pharmacist in a clean white medical coat speaking warmly and listening attentively to a customer across a sleek pharmacy counter. Close-up over-the-shoulder angle capturing her empathetic facial expression and engaged dialogue. Modern, brightly lit pharmacy interior with soft-focus shelves in the background, natural warm ambient lighting, realistic textures, shallow depth of field, 85mm lens, authentic candid atmosphere, high resolution, photorealistic.",
   "reference_image_path": null,
   "captions": [
-    "Простые вопросы для консультации"
+    "Простые уточняющие вопросы"
   ],
   "mime_type": "image/png",
   "verdict": "**OK**",
