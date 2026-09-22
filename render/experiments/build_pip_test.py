@@ -113,19 +113,19 @@ fc = []
 fc.append(f"[1:v]format=rgba[bg_base]")
 prev = "bg_base"
 
-# тёплый цвет-грейдинг фото (плюс красный/жёлтый, минус синий) — фото
-# аватара тёплые (дерево/свет аптеки), сгенерированные картинки были
-# холодными; без зума (Ken Burns убран по прямому запросу) — статичный
-# cover-кроп под 16:9.
-WARM_GRADE = "colorbalance=rs=0.25:gs=0.05:bs=-0.25:rm=0.2:gm=0.03:bm=-0.2:rh=0.15:gh=0.02:bh=-0.15"
-
+# 22.09.2026 (4) — прямая правка: НЕ накладывать цвет-грейдинг фильтром
+# поверх картинок ("не надо накладывать бежевый фильтр") — вместо этого
+# сами картинки перегенерированы заново (illustration.get_or_generate,
+# те же composite id "1"/"1-item0..2") с промптом, явно требующим тёплую
+# золотисто-медовую палитру на этапе генерации. Здесь — просто cover-
+# кроп под 16:9, без цвет-коррекции и без зума (убран по запросу).
 for name, start, end, img_path, label_path, lx, ly, is_photo in SEGMENTS:
     inputs += ["-loop", "1", "-t", f"{SCENE_DUR}", "-i", img_path]
     img_idx = idx; idx += 1
     raw = f"{name}_raw"
     if is_photo:
         fc.append(
-            f"[{img_idx}:v]format=rgba,{WARM_GRADE},"
+            f"[{img_idx}:v]format=rgba,"
             f"scale=1920:1920,crop=1920:1080:(iw-1920)/2:(ih-1080)/2[{raw}]"
         )
     else:
