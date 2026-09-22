@@ -1,11 +1,11 @@
 {
-  "narration_line": "Сезонная заболеваемость",
-  "prompt": "A photorealistic documentary-style medium shot of a person wrapped snugly in a cozy knitted warm scarf, looking thoughtfully out of a rain-streaked window. Authentic seasonal cold context, overcast autumn day, condensation and water droplets on the glass, soft diffused natural morning light, realistic skin texture, shallow depth of field, 85mm lens photography, natural colors, quiet and vulnerable mood.",
+  "narration_line": "Сезонная простуда",
+  "prompt": "Photorealistic documentary editorial portrait of an authentic adult bundled up in a thick woolen knitted scarf outdoors on an autumn street. The person shows subtle signs of a seasonal cold, with slightly flushed cheeks and a red nose, holding a warm beverage cup. Overcast moody natural daylight, soft golden-amber autumn foliage softly blurred in the background, 85mm lens, shallow depth of field, natural skin texture, cinematic realism, no cartoon, no 3D render.",
   "reference_image_path": null,
   "captions": [
-    "Сезонная заболеваемость"
+    "Сезонная простуда"
   ],
   "mime_type": "image/png",
-  "verdict": "**OK**",
+  "verdict": "OK",
   "aspect_ratio": "1:1"
 }
