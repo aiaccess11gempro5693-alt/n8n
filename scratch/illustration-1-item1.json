@@ -1,9 +1,9 @@
 {
-  "narration_line": "Интернет и статьи",
-  "prompt": "Close-up realistic documentary photo of hands holding a modern smartphone, viewing a clean generic health and wellness web article with minimalist graphic layout, warm natural sunlight illuminating the scene from a nearby window, shallow depth of field, soft blurred background, lifestyle photography, photorealistic",
+  "narration_line": "Close-up realistic photo of hands holding a smartphone, reading a health blog article about vitamins and the immune system. WARM golden-hour lighting: amber and honey tones, warm skin tones, cozy warm ambient light — NOT cool or blue-toned. Documentary lifestyle photography, photorealistic, no 3D render, no illustration, no cartoon.",
+  "prompt": "Close-up shot of human hands holding a modern smartphone, reading a digital health article about vitamins and the immune system. Warm golden-hour lighting with amber and honey tones, natural skin tones, cozy warm ambient light. Documentary lifestyle photography, photorealistic, natural shallow depth of field, 35mm film aesthetic, no 3D render, no illustration, no cartoon.",
   "reference_image_path": null,
   "captions": [
-    "Интернет и статьи"
+    "Витамины и укрепление иммунитета"
   ],
   "mime_type": "image/png",
   "verdict": "OK",
