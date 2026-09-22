@@ -15,4 +15,5 @@ render/visual_test_previews/
 render/visual_test_previews_assets/
 render/experiments/*.mp4
 render/experiments/assets/
+render/experiments/assets2/
 render/experiments/check_frames/
