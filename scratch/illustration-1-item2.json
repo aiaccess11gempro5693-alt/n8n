@@ -1,11 +1,11 @@
 {
-  "narration_line": "Советы окружения",
-  "prompt": "Documentary lifestyle photography of two realistic adult friends having a casual conversation at a cozy cafe table. One friend is speaking expressively with an open hand gesture as if sharing advice or a personal recommendation, while the other listens attentively with a warm, engaged expression. Medium shot, soft natural daylight streaming through a large cafe window, warm ambient interior, subtle coffee cups on the wooden table, shallow depth of field, authentic candid feel, high realism, 35mm film aesthetic, no readable text or logos.",
+  "narration_line": "Two realistic adult friends sitting at a cozy cafe table, talking casually. WARM golden-hour color palette: amber and honey tones, warm wood table, soft warm daylight — NOT cool or blue-toned, matching a warm pharmacy-interior aesthetic. Documentary lifestyle photography, genuine interaction, photorealistic, no 3D render, no illustration, no cartoon.",
+  "prompt": "Documentary lifestyle photograph of two adult friends sitting opposite each other at a cozy wooden table in a cafe, engaged in a natural, casual conversation. Warm golden-hour lighting with soft amber and honey tones, gentle sunbeams filtering through the window, warm interior aesthetic. Medium shot, candid genuine interaction, shallow depth of field with soft bokeh, photorealistic, 35mm lens, authentic film photography texture.",
   "reference_image_path": null,
   "captions": [
-    "Советы окружения"
+    "Уютная дружеская беседа"
   ],
   "mime_type": "image/png",
-  "verdict": "**OK**",
+  "verdict": "OK",
   "aspect_ratio": "1:1"
 }
