@@ -1,9 +1,9 @@
 {
-  "narration_line": "Эти вопросы не просто помогают подобрать препарат — они защищают покупателя. Например, если человек уже пьёт поливитаминный комплекс с высокой дозой витамина С, добавлять ещё один иммуномодулятор может быть излишним. А тому, кто только вышел из болезни, нужна восстановительная поддержка, а не стимуляция.",
-  "prompt": "Documentary-style editorial photograph of a professional pharmacist in a modern bright pharmacy, thoughtfully examining and comparing two neutral unbranded supplement boxes on the counter to check vitamin dosages, focused and caring expression, clean organized pharmacy shelves in a soft blurred background, natural morning daylight, shallow depth of field, realistic skin texture, authentic cinematic composition, no real brand logos.",
+  "narration_line": "Безопасный подбор",
+  "prompt": "Editorial documentary photograph, medium close-up shot: a focused female pharmacist in a crisp white coat carefully checking and verifying an unbranded medication package before dispensing it, ensuring safe patient selection. Warm pharmacy interior background with soft amber lighting, honey-toned wooden shelves with blurred generic bottles. Natural soft daylight mixed with golden-hour interior glow, shallow depth of field, authentic expression of professional diligence, photorealistic, no commercial brand logos, 85mm portrait lens aesthetic.",
   "reference_image_path": null,
   "captions": [
-    "Вопросы защищают покупателя"
+    "Безопасный подбор препарата"
   ],
   "mime_type": "image/png",
   "verdict": "OK",
