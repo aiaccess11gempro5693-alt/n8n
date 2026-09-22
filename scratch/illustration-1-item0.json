@@ -1,9 +1,9 @@
 {
-  "narration_line": "Реклама и медиа",
-  "prompt": "Editorial documentary-style shot in a cozy modern living room with natural morning light. In the center, a sleek smart TV screen clearly displays a vibrant fictional health and wellness commercial featuring fresh citrus fruits, an unbranded generic vitamin bottle with neutral abstract shapes, and energetic people. Shallow depth of field focusing on the bright screen, soft aesthetic interior in the background, cinematic composition, realistic textures, 4k resolution.",
+  "narration_line": "Editorial photo of a modern bright TV screen displaying a vibrant health and wellness vitamin commercial in a warm, cozy living room setting. WARM golden-hour color palette: amber and honey tones, warm wood furniture, soft warm sunlight streaming in — NOT cool or blue-toned, matching a warm pharmacy-interior aesthetic. Natural lighting, documentary style, photorealistic, no 3D render, no illustration, no cartoon.",
+  "prompt": "Editorial documentary photo of a modern thin-bezel TV screen on a warm wooden console in a cozy living room, displaying a bright and vibrant health and wellness vitamin commercial. Golden hour warm sunlight streaming through large windows, creating soft amber and honey highlights across natural wood furniture. Realistic interior photography, natural depth of field, warm cozy aesthetic matching modern pharmacy interior tones, photorealistic, cinematic composition, authentic lighting.",
   "reference_image_path": null,
   "captions": [
-    "Реклама и медиа"
+    "Реклама витаминов на ТВ"
   ],
   "mime_type": "image/png",
   "verdict": "OK",
