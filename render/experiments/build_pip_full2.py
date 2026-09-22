@@ -144,42 +144,19 @@ def _col_h(col):
     return col["y1"] - col["y0"]
 
 
-# ---------- фикс #2: два ассета сцены 1 показывают экран устройства с
-# читаемым текстом — промпт переписан на явный русский текст + тёплую
-# палитру (та же формулировка, что уже сработала для тёплого тона в
-# прошлом раунде), перегенерируются заново тем же композитным id ----------
-RUSSIAN_TEXT_SUFFIX = (
-    ", any readable text, words or headline visible in the photo must be in "
-    "Russian language using Cyrillic letters, NOT English, NOT Latin script"
-)
-WARM_SUFFIX = (
-    ", warm golden-hour color palette, amber and honeyed tones, warm natural "
-    "light, NOT cool-toned, NOT blue-toned"
-)
-FIXED_BRIEFS = {
-    (1, 0): ANALYSIS[1]["elements"][0]["asset_brief"] + WARM_SUFFIX + RUSSIAN_TEXT_SUFFIX,
-    (1, 1): ANALYSIS[1]["elements"][1]["asset_brief"] + WARM_SUFFIX + RUSSIAN_TEXT_SUFFIX,
-}
-for (n, i), brief in FIXED_BRIEFS.items():
-    ANALYSIS[n]["elements"][i]["asset_brief"] = brief
-with open(SEM_PATH, "w", encoding="utf-8") as f:
-    json.dump(sem_json, f, ensure_ascii=False, indent=2)
-print("patched asset_brief for scene1 item0/item1 (warm + Russian text), regenerating...")
-for (n, i), brief in FIXED_BRIEFS.items():
-    label = ANALYSIS[n]["elements"][i]["label"]
-    img = ILL.get_or_generate(f"{n}-item{i}", brief, narration_text=label, max_width=300, aspect_ratio="1:1")
-    if img is None:
-        raise SystemExit(f"regeneration failed for scene {n} item {i}")
-print("scene1 item0/item1 regenerated")
-
-# ---------- прогреваем кеш illustration.py остальными уже готовыми тёплыми
-# картинками (без новых сетевых вызовов) ----------
+# ---------- фикс #2 (готово ДО этого запуска, см. render/experiments/
+# fix_scene1_text.py): два ассета сцены 1 (ТВ-реклама, статья в телефоне)
+# перегенерированы с конкретной русской фразой для рендера вместо
+# абстрактной инструкции "должно быть на русском" (первая попытка дала
+# искажённую кириллицу на item0 и не тронутый английский на item1) —
+# итог уже влит в scratch/illustration-1-item0.png и -item1.png и в
+# сам asset_brief в scratch/semantic-analysis-production-scenario4.json.
+# Здесь просто прогреваем кеш illustration.py всеми уже готовыми тёплыми
+# картинками с диска — без новых сетевых вызовов. ----------
 for fn in os.listdir(f"{REPO}/scratch"):
     if not fn.startswith("illustration-") or not fn.endswith(".png"):
         continue
     key = fn[len("illustration-"):-len(".png")]
-    if key in ("1-item0", "1-item1"):
-        continue  # уже свежие в кеше после регенерации выше
     if key.startswith(("card-plate", "photoreal", "recal", "testD", "testG")):
         continue
     with ILL._raw_cache_lock:
