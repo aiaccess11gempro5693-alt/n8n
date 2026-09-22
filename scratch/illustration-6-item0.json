@@ -1,11 +1,11 @@
 {
   "narration_line": "Риск дублирования состава",
-  "prompt": "Photorealistic close-up editorial photograph of two different modern minimalist dietary supplement bottles placed side by side on a clean pharmacy counter. A pharmacist in a white lab coat compares the generic mock ingredient labels on both boxes, revealing overlapping identical active components. Crisp focus on the duplicate ingredient lists on the packages, soft natural clinical lighting, shallow depth of field with a subtly blurred pharmacy background, authentic documentary style, 35mm lens, high resolution, NOT illustration, NOT 3D render.",
+  "prompt": "Editorial documentary close-up photograph of two different modern dietary supplement packages and amber glass vitamin bottles standing side-by-side on a clean warm wooden pharmacy counter, showing ingredient list labels compared next to each other to illustrate overlapping and duplicate composition, shallow depth of field, warm golden-hour ambient lighting, rich amber and honey tones, realistic textures, cinematic soft focus background, NOT 3D render, NOT illustration",
   "reference_image_path": null,
   "captions": [
     "Риск дублирования состава"
   ],
   "mime_type": "image/png",
-  "verdict": "OK",
+  "verdict": "**OK**",
   "aspect_ratio": "1:1"
 }
