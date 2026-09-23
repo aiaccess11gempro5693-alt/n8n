@@ -196,7 +196,9 @@ def render_scene(clip, dur, words, mode, enter, items, out, tmp):
             f"scale={G.FRAME_W}:{G.FRAME_H},fps={FPS}")
     p = f"clip(t/{MOVE_D}\\,0\\,1)"
     e = f"({p})*({p})*(3-2*({p}))"                      # smoothstep 0→1 за MOVE_D
-    fc = [f"[1:v]format=rgba,fps={FPS}[bg]"]
+    fc = []
+    if not (mode == "full" and enter == "none"):
+        fc.append(f"[1:v]format=rgba,fps={FPS}[bg]")
     cw, ch, cx, cy = G.CORNER_W, G.CORNER_H, G.CORNER_X, G.CORNER_Y
     fw, fh = G.FRAME_W, G.FRAME_H
 
