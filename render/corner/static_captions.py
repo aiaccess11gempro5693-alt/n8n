@@ -119,7 +119,9 @@ def build_filter(prev_label, timeline, corner_start, panel_color="0xF7F9FBEE",
     fc = []
     prev = prev_label
     for ci, chunk in enumerate(timeline):
-        cond = f"between(t,{chunk['start']},{chunk['end']})"
+        # конец не включительно: на кадре-стыке иначе видны обе фразы —
+        # полупрозрачная плашка новой ложится поверх текста старой ("тень")
+        cond = f"gte(t,{chunk['start']})*lt(t,{chunk['end']})"
         for phase, x in (("centered", G.SUBTITLE_X_CENTERED), ("corner", G.SUBTITLE_X_CORNER)):
             time_cond = (
                 f"lt(t,{corner_start})" if phase == "centered" else f"gte(t,{corner_start})"

@@ -228,26 +228,40 @@ def overlay_items(fc, inputs, prev, items, dur, first_idx):
 
 
 def scene1_items(words):
+    """Правило (23.09.2026 (10)): в кадре одновременно — только элементы
+    ОДНОЙ мысли (текущее предложение/смысловой блок), и ничего не
+    появляется на миг: блок держится, пока диктор его раскрывает.
+      0–5.4    тема ролика (приветствие + "десятки людей" — вступление);
+      5.8–13.4 тревога: иллюстрация встревоженной очереди + заголовок +
+               "за себя / за ребёнка / за близкого";
+      13.5–    контакт взглядом: иллюстрация + заголовок, затем
+               ✗ витрина ✗ ценник ✓ живой специалист (то, что он ищет глазами).
+    """
     T = lambda w, after=0.0: t_of(words, w, after)  # noqa: E731
     L, R, W = 50, 1330, 540
     f = lambda n: f"{TMP}/s1_{n}.png"  # noqa: E731
-    left_end, t_eyes, t_cmp, end = 13.2, T("Первое"), T("витрину"), 23.25
+    t_worry, t_eyes, t_cmp, end = T("почти"), T("Первое"), T("витрину"), 23.25
+    worry_end = t_eyes - 0.1
+    t_self = T("за", t_worry)
+    t_child = T("за", t_self + 0.1)
+    t_close = T("за", t_child + 0.1)
+    worry = K.headline(f("worry"), "Почти каждый приходит", "с лёгкой тревогой", ["тревогой"], size=58, w=W)
+    rows_y = 90 + Image.open(worry[0]).height - 2 * worry[1] + 20  # строки — под фактической высотой заголовка
     return [
-        # левая колонка
         item(K.topic_card(f("topic"), "Тема ролика", "Приветствие и установление контакта",
-                          "Первый шаг к доверию покупателя"), L, 90, 0.4, T("десятки") + 1.4),
-        item(K.image_card(f("people"), f"{IMG}/s5_people.png", W, "Почти каждый приходит с лёгкой тревогой"),
-             L, 90, T("почти"), left_end),
+                          "Первый шаг к доверию покупателя"), L, 90, 0.4, t_worry - 0.3),
+        # блок "тревога"
+        item(K.image_card(f("people"), f"{IMG}/s5_people.png", W), L, 90, t_worry, worry_end),
+        item(worry, R, 90, t_worry, worry_end),
+        item(K.icon_row(f("self"), f"{IMG}/s5_ic_self.png", "За себя"), R, rows_y, t_self, worry_end),
+        item(K.icon_row(f("child"), f"{IMG}/s5_ic_child.png", "За ребёнка"), R, rows_y + 130, t_child, worry_end),
+        item(K.icon_row(f("close"), f"{IMG}/s5_ic_close.png", "За близкого человека"), R, rows_y + 260,
+             t_close, worry_end),
+        # блок "контакт взглядом"
         item(K.image_card(f("eyes"), f"{IMG}/s5_eyes.png", W, "Контакт начинается со взгляда"),
              L, 90, t_eyes, end),
-        # правая колонка
-        item(K.headline(f("tens"), "Каждый день", "десятки людей у вашего стола", ["десятки"], size=56, w=W),
-             R, 90, T("десятки"), left_end),
-        item(K.icon_row(f("self"), f"{IMG}/s5_ic_self.png", "За себя"), R, 350, T("себя"), left_end),
-        item(K.icon_row(f("child"), f"{IMG}/s5_ic_child.png", "За ребёнка"), R, 480, T("ребёнка"), left_end),
-        item(K.icon_row(f("close"), f"{IMG}/s5_ic_close.png", "За близкого человека"), R, 610, T("близкого"), left_end),
         item(K.headline(f("you"), "Главное", "Первым он ищет глазами вас", ["вас"], size=62, w=W),
-             R, 90, t_eyes + 0.3, t_cmp - 0.1),
+             R, 90, t_eyes, t_cmp - 0.1),
         item(K.compare_row(f("c1"), f"{IMG}/s5_ic_showcase.png", "Витрина", False), R, 90, t_cmp, end),
         item(K.compare_row(f("c2"), f"{IMG}/s5_ic_price.png", "Ценник", False), R, 220, T("ценник"), end),
         item(K.compare_row(f("c3"), f"{IMG}/s5_ic_specialist.png", "Живой специалист", True), R, 350,
