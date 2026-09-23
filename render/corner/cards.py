@@ -119,6 +119,10 @@ def _icon(src, size):
     (Nano Banana рисует круг разного размера/смещения), потом вписываем
     в круглую маску нужного размера."""
     im = Image.open(src).convert("RGBA")
+    # иногда генерация оставляет чёрные углы вокруг светлого круга — заливаем их белым
+    for c in ((0, 0), (im.width - 1, 0), (0, im.height - 1), (im.width - 1, im.height - 1)):
+        if sum(im.getpixel(c)[:3]) < 120:
+            ImageDraw.floodfill(im, c, (255, 255, 255, 255), thresh=60)
     gray = ImageOps.invert(im.convert("L")).point(lambda v: 255 if v > 14 else 0)
     bbox = gray.getbbox()
     if bbox:
