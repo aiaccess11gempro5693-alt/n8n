@@ -116,7 +116,7 @@ def scene3(T, dur):
     goods = K.ask_type_card(f("s3_goods"), img("s9_ic_package"), "Вопрос о товаре", "«Какой объём брать?»",
                             "Оформление покупки", False, w=W)
     return [
-        item(head, L, 70, T("Одно"), end),
+        item(head, L, 70, max(T("Одно"), M.MOVE_D), end),  # после возврата аватара
         item(human, L, 70 + h_of(head) + 24, T("человеке"), end),
         item(goods, R, 70, T("товаре"), end),
         item(K.headline(f("s3_help"), "Помогает первый", "Про человека, а не про упаковку", ["человека"],
@@ -146,7 +146,7 @@ def scene5(T, dur):
     survey = K.headline(f("s5_survey"), "И ещё одно", "В конце — несколько вопросов", ["вопросов"], size=52, w=W)
     return [
         # блок «итог»
-        item(formula, L, 90, T("Три"), ask_end),
+        item(formula, L, 90, max(T("Три"), M.MOVE_D), ask_end),  # после возврата аватара
         item(K.icon_row(f("s5_thanks"), img("s9_ic_person"), "Спасибо, что берёте приём в работу", w=W, h=110,
                         text_size=30), L, 90 + h_of(formula) + 24, T("Спасибо"), ask_end),
         item(head, R, 90, T("Не"), ask_end),
