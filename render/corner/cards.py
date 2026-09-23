@@ -307,7 +307,13 @@ def pillars(path, items, w=1000, h=330, isz=130):
     n, gap = len(items), 28
     cw = (w - gap * (n - 1)) // n
     img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
-    f_n, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 34)
+    f_n = S.font(S.F_SEMIBOLD, 24)
+    d0 = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
+    size = 34                         # общий размер подписей: самое длинное слово влезает в колонку
+    while size > 22 and max(d0.textlength(wd, font=S.font(S.F_HEADLINE, size))
+                            for _, lab in items for wd in lab.split()) > cw - 30:
+        size -= 1
+    f_t = S.font(S.F_HEADLINE, size)
     for i, (icon, label) in enumerate(items):
         x = PAD + i * (cw + gap)
         col = _card(cw, h, S.WHITE, radius=26)
@@ -385,5 +391,27 @@ def big_number(path, num, kicker, text, w=540, dim=False):
     for line in lines:
         d.text((PAD + 36, y), line, font=f_t, fill=NAVY if not dim else S.GRAY)
         y += 58
+    img.save(path)
+    return path, PAD
+
+
+def order_card(path, first, second, w=540):
+    """Порядок «сначала → потом»: две строки с крупными номерами и стрелкой
+    вниз между ними; вторая — спокойнее (она вторична)."""
+    f_n, f_t = S.font(S.F_HEADLINE, 64), S.font(S.F_HEADLINE, 40)
+    h = 300
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    for i, (num, text, col) in enumerate((("01", first, S.BLUE), ("02", second, S.GRAY))):
+        y = PAD + 36 + i * 150
+        d.text((PAD + 34, y - 8), num, font=f_n, fill=col)
+        lines = wrap(text, f_t, w - 190)
+        ty = y + (64 - len(lines) * 46) / 2
+        for line in lines:
+            d.text((PAD + 150, ty), line, font=f_t, fill=NAVY if i == 0 else S.GRAY)
+            ty += 46
+    ax, ay = PAD + 66, PAD + 128
+    d.line([(ax, ay), (ax, ay + 44)], fill=S.GREEN, width=6)
+    d.polygon([(ax - 14, ay + 36), (ax + 14, ay + 36), (ax, ay + 56)], fill=S.GREEN)
     img.save(path)
     return path, PAD
