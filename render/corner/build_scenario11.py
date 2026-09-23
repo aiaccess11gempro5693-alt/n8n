@@ -183,7 +183,9 @@ def main():
     parts = []
     for n, a, b, mode, enter, content in SCENES:
         dur = round(b - a, 3)
-        words = [(w, round(t - a, 3)) for w, t in all_words if a <= t < b]
+        # whisper иногда ставит начало первого слова сцены в паузу перед границей
+        # («Не» в 82.60 при границе 82.82) — такое слово относится к следующей сцене
+        words = [(w, round(max(t - a, 0.05), 3)) for w, t in all_words if a <= t + 0.25 < b]
         out = f"{TMP}/s11_scene{n}.mp4"
         parts.append(out)
         if only and n not in only:
