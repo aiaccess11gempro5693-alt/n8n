@@ -1,0 +1,79 @@
+name: Call CometAPI Transcribe
+
+# Распознавание речи через CometAPI (OpenAI-совместимый /v1/audio/transcriptions).
+# Два назначения (CLAUDE.md, 23.09.2026 (7)):
+#   - whisper-1 + verbose_json + word timestamps — точные тайминги слов
+#     (резка озвучки по границам предложений, тайминги субтитров);
+#   - gpt-4o-transcribe — проверка произношения (round-trip: распознанный
+#     текст сравнивается со сценарием, расхождение = перегенерация).
+# Аудио берётся из репозитория (ветка branch), результат (JSON) коммитится
+# в scratch/ той же ветки. Требуется secret COMETAPI_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Ветка, откуда брать аудио и куда класть результат'
+        required: true
+      audio_path:
+        description: 'Путь к аудиофайлу в репозитории (например scratch/foo.mp3)'
+        required: true
+      model:
+        description: 'whisper-1 (с пословными таймингами) или gpt-4o-transcribe'
+        required: false
+        default: 'whisper-1'
+      language:
+        description: 'Язык (ISO-639-1)'
+        required: false
+        default: 'ru'
+      output_name:
+        description: 'Имя JSON-файла в scratch/ (без расширения)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Transcribe
+        env:
+          COMETAPI_KEY: ${{ secrets.COMETAPI_KEY }}
+          AUDIO_PATH: ${{ github.event.inputs.audio_path }}
+          MODEL: ${{ github.event.inputs.model }}
+          LANG_CODE: ${{ github.event.inputs.language }}
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+        run: |
+          if [ -z "$COMETAPI_KEY" ]; then echo "::error::COMETAPI_KEY не задан"; exit 1; fi
+          mkdir -p scratch
+          EXTRA=()
+          if [ "$MODEL" = "whisper-1" ]; then
+            EXTRA=(-F response_format=verbose_json -F "timestamp_granularities[]=word" -F "timestamp_granularities[]=segment")
+          else
+            EXTRA=(-F response_format=json)
+          fi
+          curl -sS -X POST "https://api.cometapi.com/v1/audio/transcriptions" \
+            -H "Authorization: Bearer $COMETAPI_KEY" \
+            -F "file=@${AUDIO_PATH}" -F "model=${MODEL}" -F "language=${LANG_CODE}" \
+            "${EXTRA[@]}" \
+            -o "scratch/${OUTPUT_NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+          echo "--- Response (first 4000 chars) ---"
+          head -c 4000 "scratch/${OUTPUT_NAME}.json"; echo
+
+      - name: Commit result
+        env:
+          OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+          BRANCH: ${{ github.event.inputs.branch }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "scratch/${OUTPUT_NAME}.json"
+          git diff --cached --quiet && exit 0
+          git commit -m "scratch: transcription ${OUTPUT_NAME} [skip ci]"
+          for i in 1 2 3 4; do git push origin "HEAD:${BRANCH}" && exit 0; git pull --rebase origin "${BRANCH}"; done
+          exit 1
