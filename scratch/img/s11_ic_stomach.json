@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_stomach",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a stomach with a small pill and a little lightning bolt, meaning a medicine irritates the stomach; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "средство, которое раздражает желудок"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

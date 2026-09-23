@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_silence",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a speech bubble with a zipper closing it, meaning staying silent; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "молчание"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

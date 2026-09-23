@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_benefit",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a thumbs up with a small plus sign, meaning explained benefit; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "объясняется пользой"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

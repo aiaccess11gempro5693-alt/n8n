@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_need",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a magnifying glass over a person silhouette, meaning understanding the customer's need; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "понятна потребность"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
