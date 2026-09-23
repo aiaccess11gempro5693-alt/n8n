@@ -115,7 +115,16 @@ def image_card(path, src, w, label=None):
 
 
 def _icon(src, size):
+    """Иконка из генерации: обрезаем белые поля до нарисованного круга
+    (Nano Banana рисует круг разного размера/смещения), потом вписываем
+    в круглую маску нужного размера."""
     im = Image.open(src).convert("RGBA")
+    gray = ImageOps.invert(im.convert("L")).point(lambda v: 255 if v > 14 else 0)
+    bbox = gray.getbbox()
+    if bbox:
+        cx, cy = (bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2
+        r = max(bbox[2] - bbox[0], bbox[3] - bbox[1]) / 2 + 4
+        im = im.crop((int(cx - r), int(cy - r), int(cx + r), int(cy + r)))
     im = ImageOps.fit(im, (size, size))
     mask = Image.new("L", (size, size), 0)
     ImageDraw.Draw(mask).ellipse([0, 0, size - 1, size - 1], fill=255)

@@ -4,43 +4,95 @@
     "docs/references/oleg-brand-board-2-2026-09-23.jpg"
   ],
   "jobs": [
-    {"name": "s5_people", "kind": "illustration", "aspect": "4:3",
-     "prompt": "A small queue of several different customers waiting at a bright modern pharmacy counter: a young mother holding a toddler, an elderly man, a middle-aged woman. Each has a slightly worried, anxious expression. View from behind the counter towards the customers, soft daylight.",
-     "meaning": "Каждый день через стол фармацевта проходят десятки людей, и почти каждый приходит с лёгкой тревогой"},
-    {"name": "s5_ic_self", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of one adult person (head and shoulders) with a small worried wavy line above the head",
-     "meaning": "тревога за себя (за своё здоровье)"},
-    {"name": "s5_ic_child", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of an adult holding the hand of a small child",
-     "meaning": "тревога за ребёнка"},
-    {"name": "s5_ic_close", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of an elderly person with a caring hand resting on their shoulder",
-     "meaning": "тревога за близкого человека (пожилого родственника)"},
-    {"name": "s5_eyes", "kind": "illustration", "aspect": "4:3",
-     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
-     "prompt": "A customer walks up to the pharmacy counter and looks for the pharmacist; they make warm eye contact. The pharmacist in a white coat behind the counter smiles welcomingly. Side view, both faces visible, pharmacy shelves softly blurred behind.",
-     "meaning": "Первое, что посетитель ищет глазами, когда подходит к столу, — это фармацевт"},
-    {"name": "s5_ic_showcase", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a pharmacy display shelf with a few medicine boxes and bottles",
-     "meaning": "витрина аптеки"},
-    {"name": "s5_ic_price", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a price tag with a hole and string, no digits on it",
-     "meaning": "ценник"},
-    {"name": "s5_ic_specialist", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a friendly pharmacist (head and shoulders, white coat, small cross badge) with a small speech bubble",
-     "meaning": "живой специалист, который выслушает и поможет"},
-    {"name": "s5_greeting", "kind": "illustration", "aspect": "4:3",
-     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
-     "prompt": "The pharmacist in a white coat behind the counter warmly greets an arriving customer with a genuine smile and a small open-hand welcoming gesture; the customer's tense face softens into a relieved smile. Bright modern pharmacy, soft light.",
-     "meaning": "Тёплое приветствие — первый сильный сигнал человеку: «Я вас вижу. Я готов помочь», и напряжение спадает"},
-    {"name": "s5_ic_phrase", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a speech bubble with a small heart inside",
-     "meaning": "одна короткая тёплая фраза"},
-    {"name": "s5_ic_relief", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a person's head in profile calmly exhaling, a soft small air puff in front of the mouth, relaxed closed eyes",
-     "meaning": "человек выдыхает, напряжение спадает"},
-    {"name": "s5_ic_talk", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of two overlapping speech bubbles, one with three small dots",
-     "meaning": "человек начинает рассказывать спокойнее и подробнее"}
+    {
+      "name": "s5_people",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "prompt": "A small queue of several different customers waiting at a bright modern pharmacy counter: a young mother holding a toddler, an elderly man, a middle-aged woman. Each has a slightly worried, anxious expression. View from behind the counter towards the customers, soft daylight. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "Каждый день через стол фармацевта проходят десятки людей, и почти каждый приходит с лёгкой тревогой"
+    },
+    {
+      "name": "s5_ic_self",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an ordinary adult customer in a casual sweater (head and shoulders, NOT a doctor or pharmacist), slightly worried face, a small wavy worry line above the head",
+      "meaning": "тревога за себя (за своё здоровье)"
+    },
+    {
+      "name": "s5_ic_child",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a worried parent holding a small child close, the child with a thermometer; parent's eyebrows raised in concern",
+      "meaning": "тревога за ребёнка (ребёнок приболел, родитель волнуется)"
+    },
+    {
+      "name": "s5_ic_close",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an elderly person with a caring hand resting on their shoulder",
+      "meaning": "тревога за близкого человека (пожилого родственника)"
+    },
+    {
+      "name": "s5_eyes",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "A customer walks up to the pharmacy counter and looks for the pharmacist; they make warm eye contact. The pharmacist in a white coat behind the counter smiles welcomingly. Side view, both faces visible, pharmacy shelves softly blurred behind. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "Первое, что посетитель ищет глазами, когда подходит к столу, — это фармацевт"
+    },
+    {
+      "name": "s5_ic_showcase",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a pharmacy display shelf with a few medicine boxes and bottles",
+      "meaning": "витрина аптеки"
+    },
+    {
+      "name": "s5_ic_price",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a price tag with a hole and string, no digits on it",
+      "meaning": "ценник"
+    },
+    {
+      "name": "s5_ic_specialist",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a friendly pharmacist (head and shoulders, white coat, small cross badge) with a small speech bubble",
+      "meaning": "живой специалист, который выслушает и поможет"
+    },
+    {
+      "name": "s5_greeting",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "The pharmacist in a white coat behind the counter warmly greets an arriving customer with a genuine smile and a small open-hand welcoming gesture; the customer's tense face softens into a relieved smile. Bright modern pharmacy, soft light. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "Тёплое приветствие — первый сильный сигнал человеку: «Я вас вижу. Я готов помочь», и напряжение спадает"
+    },
+    {
+      "name": "s5_ic_phrase",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a speech bubble with a small heart inside",
+      "meaning": "одна короткая тёплая фраза"
+    },
+    {
+      "name": "s5_ic_relief",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person's head in profile calmly exhaling, a soft small air puff in front of the mouth, relaxed closed eyes",
+      "meaning": "человек выдыхает, напряжение спадает"
+    },
+    {
+      "name": "s5_ic_talk",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of two overlapping speech bubbles, one with three small dots",
+      "meaning": "человек начинает рассказывать спокойнее и подробнее"
+    }
   ]
 }
