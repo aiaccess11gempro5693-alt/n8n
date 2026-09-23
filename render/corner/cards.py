@@ -685,3 +685,170 @@ def ticks_card(path, kicker, items, w=640):
         y += 22
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 9
+# (воронка из уровней с пояснениями «зачем», пара «вопрос о человеке / о товаре»,
+# карточка тревожных признаков, формула «3 вопроса + полминуты = точная помощь»)
+
+AMBER = (230, 140, 30, 255)
+PALE_AMBER = (253, 241, 222, 255)
+
+
+def _fit_font(text, path, sizes, max_w):
+    for size in sizes:
+        f = S.font(path, size)
+        if d0_len(text, f) <= max_w:
+            return f
+    return S.font(path, sizes[-1])
+
+
+def funnel_level(path, num, top_w, bot_w, h, icon_src, kicker, text, color):
+    """Уровень воронки: цветная трапеция (сужается книзу), номер, иконка,
+    киккер и вопрос-цитата белым. Уровни ставятся друг под другом по центру."""
+    img = Image.new("RGBA", (top_w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    cx = PAD + top_w / 2
+    poly = [(cx - top_w / 2, PAD), (cx + top_w / 2, PAD), (cx + bot_w / 2, PAD + h), (cx - bot_w / 2, PAD + h)]
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).polygon([(x, y + 8) for x, y in poly], fill=SHADOW)
+    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(12)))
+    d = ImageDraw.Draw(img)
+    d.polygon(poly, fill=color)
+    inset = (top_w - bot_w) / 2 + 26
+    x = PAD + inset
+    isz = h - 56
+    d.ellipse([x - 4, PAD + 24, x + isz + 4, PAD + 32 + isz], fill=S.WHITE)
+    img.alpha_composite(_icon(icon_src, isz), (int(x), PAD + 28))
+    # номер на иконке
+    ncx, ncy = int(x + isz - 4), PAD + 34
+    d.ellipse([ncx - 20, ncy - 20, ncx + 20, ncy + 20], fill=NAVY, outline=S.WHITE, width=3)
+    f_n = S.font(S.F_SEMIBOLD, 22)
+    d.text((ncx - d.textlength(num, font=f_n) / 2, ncy - 14), num, font=f_n, fill=S.WHITE)
+    tx = x + isz + 26
+    max_w = PAD + top_w - inset - tx
+    d.text((tx, PAD + 30), kicker.upper(), font=S.font(S.F_SEMIBOLD, 22), fill=(225, 236, 255, 255))
+    f_t = _fit_font(text, S.F_HEADLINE, (38, 34, 30, 28), max_w)
+    d.text((tx, PAD + 64), text, font=f_t, fill=S.WHITE)
+    img.save(path)
+    return path, PAD
+
+
+def why_note(path, text, w=440, h=110, color=S.BLUE):
+    """Пояснение «зачем» к уровню воронки: стрелка-треугольник слева
+    указывает на уровень, белая плашка с текстом."""
+    img = _card(w, h, S.WHITE, radius=22)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD, PAD, PAD + 10, PAD + h], 5, fill=color)
+    d.polygon([(PAD + 30, PAD + h // 2 - 14), (PAD + 30, PAD + h // 2 + 14), (PAD + 48, PAD + h // 2)],
+              fill=color)
+    f = S.font(S.F_SEMIBOLD, 32)
+    lines = wrap(text, f, w - 90)
+    if len(lines) > 2:
+        f = S.font(S.F_SEMIBOLD, 28)
+        lines = wrap(text, f, w - 90)
+    lh = int(f.size * 1.22)
+    y = PAD + (h - len(lines) * lh) // 2
+    for line in lines:
+        d.text((PAD + 66, y), line, font=f, fill=NAVY)
+        y += lh
+    img.save(path)
+    return path, PAD
+
+
+def ask_type_card(path, icon_src, kicker, question, result, good, w=540):
+    """Тип вопроса: иконка + киккер, вопрос в пузыре, стрелка вниз и итог —
+    зелёный «✓» (помогает) или серый (не про человека)."""
+    col = S.GREEN if good else S.GRAY
+    f_k, f_q, f_r = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 40), S.font(S.F_HEADLINE, 34)
+    q_lines = wrap(question, f_q, w - 100)
+    r_lines = wrap(result, f_r, w - 150)
+    isz = 84
+    bub_h = len(q_lines) * 48 + 40
+    res_h = max(86, len(r_lines) * 42 + 36)
+    h = 30 + isz + 22 + bub_h + 60 + res_h + 28
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    icon = _icon(icon_src, isz)
+    if not good:
+        icon = Image.blend(Image.new("RGBA", icon.size, (0, 0, 0, 0)), icon, 0.6)
+    img.alpha_composite(icon, (PAD + 30, PAD + 30))
+    d.text((PAD + 30 + isz + 20, PAD + 30 + isz // 2 - 16), kicker.upper(), font=f_k,
+           fill=S.BLUE if good else S.GRAY)
+    y = PAD + 30 + isz + 22
+    bub = PALE_BLUE if good else (238, 240, 243, 255)
+    d.rounded_rectangle([PAD + 30, y, PAD + w - 30, y + bub_h], 22, fill=bub)
+    d.polygon([(PAD + 60, y), (PAD + 90, y), (PAD + 66, y - 18)], fill=bub)
+    yy = y + 20
+    for line in q_lines:
+        d.text((PAD + 54, yy), line, font=f_q, fill=NAVY if good else S.GRAY)
+        yy += 48
+    y += bub_h
+    # стрелка вниз
+    ax = PAD + w // 2
+    d.line([(ax, y + 10), (ax, y + 46)], fill=col, width=6)
+    d.polygon([(ax - 14, y + 40), (ax + 14, y + 40), (ax, y + 56)], fill=col)
+    y += 60
+    d.rounded_rectangle([PAD + 30, y, PAD + w - 30, y + res_h], 22,
+                        fill=(226, 245, 234, 255) if good else (238, 240, 243, 255))
+    if good:
+        _mark(d, PAD + 76, y + res_h // 2, 26, True)
+    else:
+        d.ellipse([PAD + 50, y + res_h // 2 - 26, PAD + 102, y + res_h // 2 + 26], fill=(205, 209, 216, 255))
+        d.text((PAD + 76 - d.textlength("₽", font=f_r) / 2, y + res_h // 2 - 22), "₽", font=f_r, fill=S.WHITE)
+    yy = y + (res_h - len(r_lines) * 42) // 2 - 2
+    for line in r_lines:
+        d.text((PAD + 124, yy), line, font=f_r, fill=S.GREEN if good else S.GRAY)
+        yy += 42
+    img.save(path)
+    return path, PAD
+
+
+def alert_card(path, items, w=640):
+    """Тревожные признаки: янтарная карточка, строки с восклицательным знаком
+    в треугольнике — одной волной."""
+    f_t = S.font(S.F_HEADLINE, 38)
+    rows = [wrap(t, f_t, w - 150) for t in items]
+    h = 34 + sum(len(r) * 46 + 26 for r in rows) + 8
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 28, outline=AMBER, width=4)
+    d.rounded_rectangle([PAD, PAD, PAD + 14, PAD + h], 7, fill=AMBER)
+    y = PAD + 34
+    for r in rows:
+        cx, cy = PAD + 70, y + 23
+        d.polygon([(cx, cy - 24), (cx + 26, cy + 20), (cx - 26, cy + 20)], fill=PALE_AMBER, outline=AMBER)
+        d.polygon([(cx, cy - 22), (cx + 24, cy + 19), (cx - 24, cy + 19)], outline=AMBER, width=4)
+        d.line([(cx, cy - 8), (cx, cy + 6)], fill=AMBER, width=5)
+        d.ellipse([cx - 3, cy + 10, cx + 3, cy + 16], fill=AMBER)
+        for line in r:
+            d.text((PAD + 116, y), line, font=f_t, fill=NAVY)
+            y += 46
+        y += 26
+    img.save(path)
+    return path, PAD
+
+
+def formula_card(path, terms, result, w=540):
+    """Формула столбиком: слагаемые «крупное + подпись» и итог «= …» на
+    зелёной плашке — вывод одной карточкой."""
+    f_big, f_sm, f_op = S.font(S.F_HEADLINE, 64), S.font(S.F_SEMIBOLD, 34), S.font(S.F_HEADLINE, 50)
+    f_r = S.font(S.F_HEADLINE, 44)
+    row = 84
+    res_h = 104
+    h = 30 + len(terms) * row + 16 + res_h + 30
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    y = PAD + 30
+    for k, (big, small) in enumerate(terms):
+        if k:
+            d.text((PAD + 36, y + 6), "+", font=f_op, fill=S.LIGHT_BLUE)
+        d.text((PAD + 90, y), big, font=f_big, fill=S.BLUE)
+        bw = d.textlength(big, font=f_big)
+        d.text((PAD + 90 + bw + 18, y + 24), small, font=f_sm, fill=NAVY)
+        y += row
+    y += 16
+    d.rounded_rectangle([PAD + 24, y, PAD + w - 24, y + res_h], 24, fill=S.GREEN)
+    d.text((PAD + 44, y + 22), "=", font=f_op, fill=S.WHITE)
+    d.text((PAD + 100, y + 26), result, font=f_r, fill=S.WHITE)
+    img.save(path)
+    return path, PAD
