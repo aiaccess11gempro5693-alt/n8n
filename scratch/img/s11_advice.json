@@ -6,25 +6,15 @@
     "extra_refs": [
       "docs/references/oleg-avatar-reference-2026-09-23.jpg"
     ],
-    "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) listens attentively to a customer first, then gives advice; the customer looks trusting and grateful, as if hearing advice from a specialist, not a sales pitch. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes are plain and unlabeled.",
+    "prompt": "Semi-flat illustration, ONE single unified scene (not split into panels). The pharmacist from the photo reference (same face, hair, white coat) behind a plain pharmacy counter gives friendly expert advice, gently pointing to one small plain box; the customer listens with a trusting, grateful expression. Background: only soft blurred shelves with plain unlabeled boxes in brand blues and greens; NO signs, NO boards, NO posters, NO price tags, NO labels, NO letters or text of any kind anywhere in the image.",
     "meaning": "дополнение звучит как совет специалиста"
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "ok": false,
-      "issue": "Image is a photorealistic render with visible text instead of a semi-flat editorial illustration."
-    },
-    {
-      "attempt": 2,
-      "ok": false,
-      "issue": "Remove readable text and signage from the pharmacy background"
-    },
-    {
-      "attempt": 3,
-      "ok": false,
-      "issue": "Remove the duplicate split-panel layout to present a single unified scene."
+      "ok": true,
+      "issue": ""
     }
   ]
 }
