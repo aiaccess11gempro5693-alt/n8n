@@ -1,0 +1,85 @@
+name: List ElevenLabs Voices
+
+# Разовый диагностический мост к ElevenLabs GET /v1/voices — тот же
+# принцип, что и call-elevenlabs-api.yml (песочница без прямого доступа
+# в интернет, у раннера GitHub Actions доступ есть). Используется для
+# поиска голосов по имени в библиотеке аккаунта (например "тёплый
+# наставник") — печатает список имя+voice_id прямо в логи джобы.
+#
+# Требуется тот же repository secret ELEVENLABS_API_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      search:
+        description: 'Подстрока для фильтра по имени голоса (регистронезависимо, пусто = показать все)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  list-voices:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List voices in account
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          SEARCH: ${{ github.event.inputs.search }}
+        run: |
+          if [ -z "$ELEVENLABS_API_KEY" ]; then
+            echo "::error::Секрет ELEVENLABS_API_KEY не задан в настройках репозитория"
+            exit 1
+          fi
+          curl -sS "https://api.elevenlabs.io/v1/voices" \
+            -H "xi-api-key: $ELEVENLABS_API_KEY" \
+            -o /tmp/voices.json \
+            -w "\nHTTP_STATUS:%{http_code}\n"
+          echo "--- Voices in account (name -> voice_id, language) ---"
+          python3 -c "
+          import json, os
+          search = (os.environ.get('SEARCH') or '').lower()
+          try:
+              data = json.load(open('/tmp/voices.json'))
+          except Exception as e:
+              print('Failed to parse response:', e)
+              print(open('/tmp/voices.json').read()[:2000])
+              raise SystemExit(0)
+          voices = data.get('voices', [])
+          print(f'Total voices in account: {len(voices)}')
+          for v in voices:
+              name = v.get('name', '')
+              if search and search not in name.lower():
+                  continue
+              labels = v.get('labels', {}) or {}
+              print(f\"{name!r:40s} id={v.get('voice_id')} category={v.get('category')} labels={labels}\")
+          "
+
+      - name: Search shared voice library too
+        if: always()
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          SEARCH: ${{ github.event.inputs.search }}
+        run: |
+          Q="${SEARCH:-}"
+          curl -sS -G "https://api.elevenlabs.io/v1/shared-voices" \
+            --data-urlencode "search=${Q}" \
+            --data-urlencode "page_size=30" \
+            -H "xi-api-key: $ELEVENLABS_API_KEY" \
+            -o /tmp/shared-voices.json \
+            -w "\nHTTP_STATUS:%{http_code}\n"
+          echo "--- Shared voice library matches ---"
+          python3 -c "
+          import json
+          try:
+              data = json.load(open('/tmp/shared-voices.json'))
+          except Exception as e:
+              print('Failed to parse response:', e)
+              print(open('/tmp/shared-voices.json').read()[:2000])
+              raise SystemExit(0)
+          voices = data.get('voices', [])
+          print(f'Matches: {len(voices)}')
+          for v in voices[:30]:
+              print(f\"{v.get('name', '')!r:40s} id={v.get('voice_id')} lang={v.get('language')} desc={v.get('description','')[:80]}\")
+          "
