@@ -1,0 +1,40 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {"name": "s7_ic_queue", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of three simple people standing in a line one behind another",
+     "meaning": "очередь"},
+    {"name": "s7_ic_phone", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of a desk telephone handset ringing with small vibration lines",
+     "meaning": "звонит телефон"},
+    {"name": "s7_ic_box", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of a cardboard delivery box with a small arrow, meaning goods have arrived",
+     "meaning": "приехал товар"},
+    {"name": "s7_ic_door", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of a person stepping through a doorway already talking, with a small speech bubble",
+     "meaning": "человек с порога говорит, что ему нужно"},
+    {"name": "s7_reply", "kind": "illustration", "aspect": "4:3",
+     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
+     "prompt": "The pharmacist from the photo reference (same face, hair, white coat) behind the pharmacy counter calmly and warmly greets a hurried customer who is already talking and showing a note; the pharmacist raises a hand slightly in a gentle welcoming gesture, smiling, clearly in control of the conversation. Walls and shelves have NO signs, posters, labels or text at all.",
+     "meaning": "покупатель начал с запроса — фармацевт здоровается в ответ и мягко берёт инициативу"},
+    {"name": "s7_queue", "kind": "illustration", "aspect": "4:3",
+     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
+     "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) behind the counter, while serving a customer she looks up at a long line of several waiting people and makes brief friendly eye contact with them; the waiting people look calm and noticed, one of them smiles back. Walls and shelves have NO signs, posters, labels or text at all.",
+     "meaning": "большая очередь — контакт глазами с каждым, кто ждёт"},
+    {"name": "s7_ic_eye", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of an open friendly eye looking directly forward with a small warm spark",
+     "meaning": "смотреть на человека"},
+    {"name": "s7_ic_blank", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of a blank unfocused gaze: eye with a dashed line passing straight through a simple person silhouette, meaning looking through someone",
+     "meaning": "смотреть сквозь человека"},
+    {"name": "s7_ic_warm", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of two hands and a small heart passing back and forth with a circular arrow, meaning warmth that comes back",
+     "meaning": "секунда возвращается человеческим теплом"},
+    {"name": "s7_ic_survey", "kind": "icon", "aspect": "1:1",
+     "prompt": "icon of a speech bubble with a small checklist of two lines and a pencil, meaning a few feedback questions",
+     "meaning": "несколько вопросов, ваше мнение"}
+  ]
+}
