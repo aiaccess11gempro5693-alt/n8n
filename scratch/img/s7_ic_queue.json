@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s7_ic_queue",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of three simple people standing in a line one behind another",
+    "meaning": "очередь"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
