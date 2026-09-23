@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_survey",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a clipboard with two checkbox lines and a small star, meaning a short feedback survey",
+    "meaning": "пара коротких вопросов, ваше мнение"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

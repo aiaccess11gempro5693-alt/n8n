@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_what",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a simple person silhouette with a small highlighted spot on the chest and a magnifying glass, meaning what exactly bothers",
+    "meaning": "что именно беспокоит"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s8_ic_throat",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a simple human neck and throat profile with a small red sore spot",
+    "meaning": "что-нибудь от горла"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the red dot and stick to the blue and green brand palette."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

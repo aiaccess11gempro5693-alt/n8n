@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_who",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an adult and a child silhouette side by side, meaning for whom is the medicine",
+    "meaning": "для кого препарат"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_care",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a speech bubble with a question mark inside a small heart shape, meaning a caring question",
+    "meaning": "вопрос — это забота"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

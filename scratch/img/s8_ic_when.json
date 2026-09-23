@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_when",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a calendar page with a small clock in the corner, meaning how long ago it started",
+    "meaning": "как давно это началось"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
