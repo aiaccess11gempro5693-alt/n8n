@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s5_ic_talk",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two overlapping speech bubbles, one with three small dots",
+    "meaning": "человек начинает рассказывать спокойнее и подробнее"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Does not clearly convey a person speaking calmly and in detail, and icon graphics contain visual line artifacts."
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "The visual represents generic dialogue rather than a person explaining calmly in detail."
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "The generic chat bubbles do not clearly convey speaking more calmly and in detail."
+    }
+  ]
+}

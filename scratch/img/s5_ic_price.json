@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_price",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a price tag with a hole and string, no digits on it",
+    "meaning": "ценник"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

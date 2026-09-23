@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_showcase",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a pharmacy display shelf with a few medicine boxes and bottles",
+    "meaning": "витрина аптеки"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

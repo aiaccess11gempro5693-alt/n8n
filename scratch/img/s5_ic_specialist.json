@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s5_ic_specialist",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a friendly pharmacist (head and shoulders, white coat, small cross badge) with a small speech bubble",
+    "meaning": "живой специалист, который выслушает и поможет"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Replace the cartoon illustration with a photorealistic image of a live specialist matching the brandbook."
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Style should be a photorealistic avatar rather than a 2D cartoon illustration"
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "The illustration style does not match the realistic photo style required by the brandbook."
+    }
+  ]
+}

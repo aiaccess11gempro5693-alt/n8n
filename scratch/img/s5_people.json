@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s5_people",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "prompt": "A small queue of several different customers waiting at a bright modern pharmacy counter: a young mother holding a toddler, an elderly man, a middle-aged woman. Each has a slightly worried, anxious expression. View from behind the counter towards the customers, soft daylight.",
+    "meaning": "Каждый день через стол фармацевта проходят десятки людей, и почти каждый приходит с лёгкой тревогой"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The flat cartoon illustration style does not match the photorealistic brand guide aesthetic."
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Illustration style does not match brand guidelines and contains duplicate cartoon characters."
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

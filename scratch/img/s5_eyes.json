@@ -1,0 +1,30 @@
+{
+  "job": {
+    "name": "s5_eyes",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "A customer walks up to the pharmacy counter and looks for the pharmacist; they make warm eye contact. The pharmacist in a white coat behind the counter smiles welcomingly. Side view, both faces visible, pharmacy shelves softly blurred behind.",
+    "meaning": "Первое, что посетитель ищет глазами, когда подходит к столу, — это фармацевт"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Use realistic style instead of 2D illustration and remove the customer figure per brand guidelines."
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Remove all visible text and signage from the background and shelves."
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "Remove pseudo-text artifact in the green circle on the left background"
+    }
+  ]
+}

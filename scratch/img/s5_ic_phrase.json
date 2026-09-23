@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_phrase",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a speech bubble with a small heart inside",
+    "meaning": "одна короткая тёплая фраза"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
