@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_pharmacist",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a medicine box with a small speech bubble next to it, meaning pharmacist advice on symptoms",
+    "meaning": "фармацевт — симптомы и назначения"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

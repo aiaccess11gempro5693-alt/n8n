@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_head",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a simple human head profile with small zigzag pain lines at the temple, meaning headache",
+    "meaning": "от головы"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
