@@ -141,7 +141,8 @@ def build_filter(prev_label, timeline, corner_start, panel_color="0xF7F9FBEE",
                 line_text = " ".join(line)
                 text_w = _text_width(line_text)
                 lx = x + ACCENT_BAR_W + (G.SUBTITLE_W - ACCENT_BAR_W - text_w) / 2
-                ly = G.SUBTITLE_Y + PAD_TOP + li * LINE_HEIGHT
+                # однострочный чанк — по вертикальному центру плашки
+                ly = G.SUBTITLE_Y + PAD_TOP + (2 - len(chunk["lines"])) * LINE_HEIGHT // 2 + li * LINE_HEIGHT
                 txt_file = f"{os.path.dirname(os.path.abspath(__file__))}/_tmp_line_{ci}_{li}.txt"
                 with open(txt_file, "w", encoding="utf-8") as f:
                     f.write(line_text)
