@@ -4,38 +4,84 @@
     "docs/references/oleg-brand-board-2-2026-09-23.jpg"
   ],
   "jobs": [
-    {"name": "s6_ic_timer", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a stopwatch with a small friendly waving hand next to it, meaning a greeting that takes only two seconds",
-     "meaning": "приём занимает пару секунд"},
-    {"name": "s6_first", "kind": "illustration", "aspect": "4:3",
-     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
-     "prompt": "The pharmacist from the photo reference (same face, hair, white coat) stands behind a pharmacy counter, has just raised her eyes from the counter and warmly greets a customer who is just approaching, making eye contact and smiling first, before the customer has said anything. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
-     "meaning": "фармацевт первой поднимает взгляд и здоровается, раньше чем посетитель начал говорить"},
-    {"name": "s6_window", "kind": "illustration", "aspect": "1:1",
-     "prompt": "A cold impersonal dispensing window: a small glass hatch in a grey wall, only an anonymous hand passing a medicine box through it, no face visible, a customer on the other side looking uneasy. Muted, slightly desaturated palette within the brand colors. NO signs, text or labels anywhere.",
-     "meaning": "безличное окошко выдачи"},
-    {"name": "s6_specialist", "kind": "illustration", "aspect": "1:1",
-     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
-     "prompt": "The pharmacist from the photo reference (same face, hair, white coat) at an open pharmacy counter, leaning slightly toward a customer, attentive eye contact, friendly face-to-face conversation; the customer looks relieved. Warm light. NO signs, text or labels anywhere, shelves hold plain colored boxes.",
-     "meaning": "живой специалист, разговор лицом к лицу"},
-    {"name": "s6_ic_eyes", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of two eyes looking straight ahead with a small spark, meaning eye contact",
-     "meaning": "взгляд в глаза"},
-    {"name": "s6_ic_phrase", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a single short speech bubble with three dots inside",
-     "meaning": "короткая фраза"},
-    {"name": "s6_ic_tone", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a smiling face next to a gentle soft sound wave, meaning a friendly warm tone of voice",
-     "meaning": "доброжелательная интонация"},
-    {"name": "s6_nod", "kind": "illustration", "aspect": "4:3",
-     "extra_refs": ["docs/references/oleg-avatar-reference-2026-09-23.jpg"],
-     "prompt": "The pharmacist from the photo reference (same face, hair, white coat) is serving one customer at the counter, and at the same time glances over and gives a light friendly nod to the next person waiting in line, who smiles back, visibly relaxed. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
-     "meaning": "занята покупателем, но взглядом и кивком даёт понять следующему, что его заметили"},
-    {"name": "s6_ic_habit", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a small wall calendar with several days ticked with checkmarks in a row, meaning a daily habit",
-     "meaning": "привычка через пару дней"},
-    {"name": "s6_ic_survey", "kind": "icon", "aspect": "1:1",
-     "prompt": "icon of a clipboard with two short answer lines and a small heart, meaning a short feedback survey",
-     "meaning": "пара вопросов в конце, ваше мнение важно"}
+    {
+      "name": "s6_ic_timer",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a stopwatch with a small friendly waving hand next to it, meaning a greeting that takes only two seconds",
+      "meaning": "приём занимает пару секунд"
+    },
+    {
+      "name": "s6_first",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "The pharmacist from the photo reference (same face, hair, white coat) stands behind a pharmacy counter, has just raised her eyes from the counter and warmly greets a customer who is just approaching, making eye contact and smiling first, before the customer has said anything. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "фармацевт первой поднимает взгляд и здоровается, раньше чем посетитель начал говорить"
+    },
+    {
+      "name": "s6_window",
+      "kind": "illustration",
+      "aspect": "1:1",
+      "prompt": "A cold impersonal dispensing window: a small glass hatch in a grey wall, only an anonymous hand passing a medicine box through it, no face visible, a customer on the other side looking uneasy. Muted, slightly desaturated palette within the brand colors. NO signs, text or labels anywhere.",
+      "meaning": "безличное окошко выдачи"
+    },
+    {
+      "name": "s6_specialist",
+      "kind": "illustration",
+      "aspect": "1:1",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "The pharmacist from the photo reference (same face, hair, white coat) at an open pharmacy counter, leaning slightly toward a customer, attentive eye contact, friendly face-to-face conversation; the customer looks relieved. Warm light. NO signs, text or labels anywhere, shelves hold plain colored boxes.",
+      "meaning": "живой специалист, разговор лицом к лицу"
+    },
+    {
+      "name": "s6_ic_eyes",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of two eyes looking straight ahead with a small spark, meaning eye contact",
+      "meaning": "взгляд в глаза"
+    },
+    {
+      "name": "s6_ic_phrase",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a single short speech bubble with three dots inside",
+      "meaning": "короткая фраза"
+    },
+    {
+      "name": "s6_ic_tone",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a smiling face next to a gentle soft sound wave, meaning a friendly warm tone of voice",
+      "meaning": "доброжелательная интонация"
+    },
+    {
+      "name": "s6_nod",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration (NOT a photo). The pharmacist from the photo reference (same face, hair, white coat) stands behind the counter handing a box to a customer in front of her, while her head is clearly turned to the RIGHT toward a second person waiting in line a few steps behind; their eyes meet and the pharmacist gives a small friendly nod; the waiting person smiles back, relaxed. Both customers clearly visible. Walls and shelves have NO signs, posters, labels or text at all.",
+      "meaning": "занята покупателем, но взглядом и кивком даёт понять следующему, что его заметили"
+    },
+    {
+      "name": "s6_ic_habit",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a small green sprout growing out of a circular arrow loop, meaning a new daily habit forming. Absolutely no numbers, letters or text.",
+      "meaning": "привычка через пару дней"
+    },
+    {
+      "name": "s6_ic_survey",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clipboard with two short answer lines and a small heart, meaning a short feedback survey",
+      "meaning": "пара вопросов в конце, ваше мнение важно"
+    }
   ]
 }

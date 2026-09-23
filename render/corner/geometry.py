@@ -78,3 +78,12 @@ def transition_exprs(t0, t1, corner_x=CORNER_X, corner_y=CORNER_Y,
         f"if(lt(t\\,{t1})\\,{corner_y}*(t-{t0})/({t1}-{t0})\\,{corner_y}))"
     )
     return w_expr, h_expr, x_expr, y_expr
+
+# Сплит-экран (сценарий 6): фармацевт в полный рост уезжает влево (кадр
+# сдвигается без масштаба, фигура в исходнике — примерно x 620..1320), справа
+# выезжает брендированная панель. Другая логика кадра, чем уход в угол.
+SPLIT_SHIFT = 560                         # на сколько сдвигается кадр аватара влево
+SPLIT_PANEL_X = 820                       # левая граница панели
+SPLIT_PANEL_W = FRAME_W - SPLIT_PANEL_X   # 1100
+SPLIT_SUB_X = SPLIT_PANEL_X + 40          # субтитры — внутри панели
+SPLIT_SUB_W = SPLIT_PANEL_W - 80          # 1020

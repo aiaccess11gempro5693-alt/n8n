@@ -258,3 +258,132 @@ def icon_trio(path, items, w=540, isz=110):
         d.text((cx - tw / 2, PAD + 30 + isz + 16), label, font=f, fill=S.TEXT_DARK)
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 6
+# (другой набор подачи, чем в сценарии 5: реплики-пузыри, опоры-колонны,
+# крупная цифра, картинки с отметкой ✗/✓, крупная нумерация порядка)
+
+def _mark(d, cx, cy, r, good):
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=S.GREEN if good else (224, 86, 86, 255))
+    k = r * 0.45
+    if good:
+        d.line([(cx - k, cy + 0.05 * r), (cx - 0.1 * r, cy + k), (cx + k * 1.2, cy - k)], fill=S.WHITE,
+               width=max(4, r // 5), joint="curve")
+    else:
+        d.line([(cx - k, cy - k), (cx + k, cy + k)], fill=S.WHITE, width=max(4, r // 5))
+        d.line([(cx - k, cy + k), (cx + k, cy - k)], fill=S.WHITE, width=max(4, r // 5))
+
+
+def speech_bubble(path, text, w=620, size=48, color=S.BLUE, tail="left"):
+    """Реплика-пузырь: цветной пузырь с хвостиком, белый крупный текст."""
+    f = S.font(S.F_HEADLINE, size)
+    lines = wrap(text, f, w - 80)
+    lh = int(size * 1.2)
+    h = 44 + len(lines) * lh + 30
+    tail_h = 34
+    img = Image.new("RGBA", (w + 2 * PAD, h + tail_h + 2 * PAD), (0, 0, 0, 0))
+    shape = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ds = ImageDraw.Draw(shape)
+    ds.rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 40, fill=color)
+    tx = PAD + 70 if tail == "left" else PAD + w - 70
+    ds.polygon([(tx - 22, PAD + h - 2), (tx + 22, PAD + h - 2),
+                (tx - 30 if tail == "left" else tx + 30, PAD + h + tail_h)], fill=color)
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    sh.paste((20, 40, 90, 50), (0, 8), shape.split()[3])
+    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(14)))
+    img = Image.alpha_composite(img, shape)
+    d = ImageDraw.Draw(img)
+    y = PAD + 36
+    for line in lines:
+        d.text((PAD + 40, y), line, font=f, fill=S.WHITE)
+        y += lh
+    img.save(path)
+    return path, PAD
+
+
+def pillars(path, items, w=1000, h=330, isz=130):
+    """Опоры-колонны: N белых колонн рядом, в каждой иконка + номер + подпись."""
+    n, gap = len(items), 28
+    cw = (w - gap * (n - 1)) // n
+    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    f_n, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 34)
+    for i, (icon, label) in enumerate(items):
+        x = PAD + i * (cw + gap)
+        col = _card(cw, h, S.WHITE, radius=26)
+        d = ImageDraw.Draw(col)
+        d.rounded_rectangle([PAD, PAD, PAD + cw, PAD + 10], 5, fill=S.GREEN)
+        col.alpha_composite(_icon(icon, isz), (PAD + (cw - isz) // 2, PAD + 38))
+        num = f"0{i + 1}"
+        d.text((PAD + (cw - d.textlength(num, font=f_n)) / 2, PAD + 38 + isz + 16), num, font=f_n, fill=S.LIGHT_BLUE)
+        y = PAD + 38 + isz + 52
+        for line in wrap(label, f_t, cw - 36):
+            d.text((PAD + (cw - d.textlength(line, font=f_t)) / 2, y), line, font=f_t, fill=NAVY)
+            y += 42
+        img.alpha_composite(col, (x - PAD, 0))
+    img.save(path)
+    return path, PAD
+
+
+def big_metric(path, number, unit, caption, w=1000):
+    """Крупная цифра: огромное число + единица слева, пояснение справа."""
+    f_num, f_unit, f_c = S.font(S.F_HEADLINE, 190), S.font(S.F_HEADLINE, 64), S.font(S.F_HEADLINE, 44)
+    h = 230
+    img = _card(w, h, S.BLUE, radius=30)
+    d = ImageDraw.Draw(img)
+    x = PAD + 50
+    d.text((x, PAD - 18), number, font=f_num, fill=S.WHITE)
+    x += d.textlength(number, font=f_num) + 16
+    d.text((x, PAD + 110), unit, font=f_unit, fill=(214, 230, 255, 255))
+    x += d.textlength(unit, font=f_unit) + 50
+    d.rounded_rectangle([x, PAD + 50, x + 6, PAD + h - 50], 3, fill=S.GREEN)
+    lines = wrap(caption, f_c, w - (x - PAD) - 60)
+    y = PAD + (h - len(lines) * 54) / 2
+    for line in lines:
+        d.text((x + 34, y), line, font=f_c, fill=S.WHITE)
+        y += 54
+    img.save(path)
+    return path, PAD
+
+
+def marked_image(path, src, w, label, good):
+    """Картинка с отметкой ✗/✓ в углу и подписью; «плохой» вариант приглушён."""
+    im = Image.open(src).convert("RGBA")
+    iw = w - 24
+    ih = int(iw * im.height / im.width)
+    im = ImageOps.fit(im, (iw, ih))
+    if not good:
+        im = Image.blend(im, ImageOps.grayscale(im).convert("RGBA"), 0.6)
+    f = S.font(S.F_HEADLINE, 38)
+    lines = wrap(label, f, iw - 30)
+    h = 12 + ih + 18 + len(lines) * 48 + 16
+    img = _card(w, h, S.WHITE, radius=24)
+    mask = Image.new("L", (iw, ih), 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, iw - 1, ih - 1], 16, fill=255)
+    img.paste(im, (PAD + 12, PAD + 12), mask)
+    d = ImageDraw.Draw(img)
+    _mark(d, PAD + w - 50, PAD + 50, 34, good)
+    y = PAD + 12 + ih + 16
+    for line in lines:
+        d.text((PAD + 22, y), line, font=f, fill=NAVY if good else S.GRAY)
+        y += 48
+    img.save(path)
+    return path, PAD
+
+
+def big_number(path, num, kicker, text, w=540, dim=False):
+    """Крупная нумерация порядка: огромный номер + киккер + фраза, без карточки."""
+    f_num, f_k, f_t = S.font(S.F_HEADLINE, 150), S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 48)
+    lines = wrap(text, f_t, w - 40)
+    h = 150 + 44 + len(lines) * 58 + 30
+    img = _card(w, h, (255, 255, 255, 235 if not dim else 170), radius=28)
+    d = ImageDraw.Draw(img)
+    col = S.BLUE if not dim else (170, 185, 210, 255)
+    d.text((PAD + 34, PAD - 6), num, font=f_num, fill=col)
+    d.text((PAD + 38, PAD + 160), kicker.upper(), font=f_k, fill=S.GREEN if not dim else S.GRAY)
+    y = PAD + 198
+    for line in lines:
+        d.text((PAD + 36, y), line, font=f_t, fill=NAVY if not dim else S.GRAY)
+        y += 58
+    img.save(path)
+    return path, PAD

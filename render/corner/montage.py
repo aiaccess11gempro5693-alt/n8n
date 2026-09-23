@@ -68,11 +68,11 @@ def word_times(clean_text, whisper_words):
     return list(zip(src, times))
 
 
-def caption_timeline(words, dur):
+def caption_timeline(words, dur, panel_w=G.SUBTITLE_W):
     """Статичные субтитры: чанки ≤2 строк, чанк не пересекает границу
     предложения; висит от своего первого слова до первого слова
     следующего. words — [(слово, время от начала сцены)]."""
-    max_w = G.SUBTITLE_W - C.ACCENT_BAR_W - C.PAD_LEFT - C.PAD_RIGHT
+    max_w = panel_w - C.ACCENT_BAR_W - C.PAD_LEFT - C.PAD_RIGHT
     sentences, cur = [], []
     for w, _ in words:
         cur.append(w)
@@ -156,6 +156,25 @@ def quote_card(path, kicker, text, w=1020, h=170, size=50, color=S.BLUE):
     return path, pad
 
 
+def make_split_panel(path):
+    """Правая панель сплит-экрана: фон брендбука + тень на аватар слева."""
+    m = 40
+    img = Image.new("RGBA", (G.SPLIT_PANEL_W + m, G.FRAME_H), (0, 0, 0, 0))
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).rectangle([m - 6, -50, img.width + 50, G.FRAME_H + 50], fill=(20, 40, 90, 90))
+    img = sh.filter(ImageFilter.GaussianBlur(16))
+    panel = Image.new("RGBA", (G.SPLIT_PANEL_W, G.FRAME_H), S.LIGHT_BG)
+    deco = Image.new("RGBA", panel.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(deco)
+    d.ellipse([760, -300, 1400, 340], fill=(47, 128, 237, 26))
+    d.ellipse([-260, 820, 200, 1280], fill=(39, 174, 96, 20))
+    panel = Image.alpha_composite(panel, deco.filter(ImageFilter.GaussianBlur(2)))
+    ImageDraw.Draw(panel).rectangle([0, 0, 5, G.FRAME_H], fill=S.GREEN)
+    img.alpha_composite(panel, (m, 0))
+    img.save(path)
+    return m
+
+
 def make_corner_frame(path, radius=22, border=5):
     """Рамка поверх аватара в углу: тень, углы вне скругления — цвет фона,
     белая обводка; внутри прозрачно."""
@@ -198,7 +217,8 @@ def _overlay_items(fc, inputs, prev, items, dur, first_idx):
 
 
 def render_scene(clip, dur, words, mode, enter, items, out, tmp):
-    """mode: "full" | "corner"; enter: "none" | "shrink" | "grow"."""
+    """mode: "full" | "corner" | "split"; enter: "none" | "shrink" | "grow"
+    (угол) | "slide" (full→split) | "unslide" (split→full)."""
     bg = make_background(f"{tmp}/_bg.png")
     fm = make_corner_frame(f"{tmp}/_frame.png")
     loop = ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i"]
@@ -212,8 +232,24 @@ def render_scene(clip, dur, words, mode, enter, items, out, tmp):
         fc.append(f"[1:v]format=rgba,fps={FPS}[bg]")
     cw, ch, cx, cy = G.CORNER_W, G.CORNER_H, G.CORNER_X, G.CORNER_Y
     fw, fh = G.FRAME_W, G.FRAME_H
+    sub_panel = None
 
-    if mode == "corner":
+    if mode == "split" or enter == "unslide":
+        # кадр аватара сдвигается влево без масштаба, панель выезжает справа
+        sm = make_split_panel(f"{tmp}/_split.png")
+        inputs[inputs.index(f"{tmp}/_frame.png")] = f"{tmp}/_split.png"
+        k = {"slide": e, "unslide": f"(1-{e})"}.get(enter, "1")
+        fc.append(f"{base},format=rgba[va0]")
+        fc.append(f"[va0]pad={fw + G.SPLIT_SHIFT}:{fh}:0:0:color=black@0[vapad]")
+        fc.append(f"[bg][vapad]overlay=x='-{G.SPLIT_SHIFT}*{k}':y=0:eval=frame[s0]")
+        px = f"{G.SPLIT_PANEL_X - sm}+{fw - G.SPLIT_PANEL_X + sm}*(1-{k})"
+        fc.append(f"[s0][2:v]overlay=x='{px}':y=0:eval=frame[s1]")
+        last = _overlay_items(fc, inputs, "s1", items, dur, 3)
+        fc.append(f"[{last}]format=yuv420p[vb]")
+        corner_start = 10 ** 6
+        if mode == "split":
+            sub_panel = (G.SPLIT_SUB_X, G.SPLIT_SUB_W)
+    elif mode == "corner":
         if enter == "shrink":
             fc.append(f"{base},scale=w='{fw}+({cw}-{fw})*{e}':h='{fh}+({ch}-{fh})*{e}':eval=frame[av]")
             pos = f"x='{cx}*{e}':y='{cy}*{e}':eval=frame"
@@ -237,7 +273,8 @@ def render_scene(clip, dur, words, mode, enter, items, out, tmp):
         last = _overlay_items(fc, inputs, "va", items, dur, 3)
         fc.append(f"[{last}]format=yuv420p[vb]")
         corner_start = 10 ** 6
-    cap, last = C.build_filter("vb", caption_timeline(words, dur), corner_start=corner_start)
+    cap, last = C.build_filter("vb", caption_timeline(words, dur, sub_panel[1] if sub_panel else G.SUBTITLE_W),
+                               corner_start=corner_start, panel=sub_panel)
     fc += cap
     run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc),
          "-map", f"[{last}]", "-an", "-t", f"{dur}", "-c:v", "libx264", "-preset", "medium", "-crf", "18",

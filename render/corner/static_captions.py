@@ -109,7 +109,7 @@ def panel_x_for_time(t, corner_start):
 
 
 def build_filter(prev_label, timeline, corner_start, panel_color="0xF7F9FBEE",
-                  text_color="0x1E2228", accent_color=None):
+                  text_color="0x1E2228", accent_color=None, panel=None):
     """Возвращает (filter_complex-строки, финальный label). Рисует
     плашку + текст поверх prev_label. Панель может быть по центру или
     сдвинута (см. panel_x_for_time) — оба варианта прорисовываются с
@@ -118,18 +118,19 @@ def build_filter(prev_label, timeline, corner_start, panel_color="0xF7F9FBEE",
     accent_color = accent_color or f"0x{S.BLUE[0]:02X}{S.BLUE[1]:02X}{S.BLUE[2]:02X}"
     fc = []
     prev = prev_label
+    # panel=(x, w) — одна фиксированная позиция плашки (сплит-экран)
+    phases = ([("fixed", panel[0], panel[1])] if panel else
+              [("centered", G.SUBTITLE_X_CENTERED, G.SUBTITLE_W), ("corner", G.SUBTITLE_X_CORNER, G.SUBTITLE_W)])
     for ci, chunk in enumerate(timeline):
         # конец не включительно: на кадре-стыке иначе видны обе фразы —
         # полупрозрачная плашка новой ложится поверх текста старой ("тень")
         cond = f"gte(t,{chunk['start']})*lt(t,{chunk['end']})"
-        for phase, x in (("centered", G.SUBTITLE_X_CENTERED), ("corner", G.SUBTITLE_X_CORNER)):
-            time_cond = (
-                f"lt(t,{corner_start})" if phase == "centered" else f"gte(t,{corner_start})"
-            )
+        for phase, x, pw in phases:
+            time_cond = {"fixed": "1", "centered": f"lt(t,{corner_start})"}.get(phase, f"gte(t,{corner_start})")
             full_cond = f"({cond})*({time_cond})"
             pn = f"scap_panel_{ci}_{phase}"
             fc.append(
-                f"[{prev}]drawbox=x={x}:y={G.SUBTITLE_Y}:w={G.SUBTITLE_W}:h={G.SUBTITLE_H}:"
+                f"[{prev}]drawbox=x={x}:y={G.SUBTITLE_Y}:w={pw}:h={G.SUBTITLE_H}:"
                 f"color={panel_color}:t=fill:enable='{full_cond}'[{pn}]"
             )
             prev = pn
@@ -142,7 +143,7 @@ def build_filter(prev_label, timeline, corner_start, panel_color="0xF7F9FBEE",
             for li, line in enumerate(chunk["lines"]):
                 line_text = " ".join(line)
                 text_w = _text_width(line_text)
-                lx = x + ACCENT_BAR_W + (G.SUBTITLE_W - ACCENT_BAR_W - text_w) / 2
+                lx = x + ACCENT_BAR_W + (pw - ACCENT_BAR_W - text_w) / 2
                 # однострочный чанк — по вертикальному центру плашки
                 ly = G.SUBTITLE_Y + PAD_TOP + (2 - len(chunk["lines"])) * LINE_HEIGHT // 2 + li * LINE_HEIGHT
                 txt_file = f"{os.path.dirname(os.path.abspath(__file__))}/_tmp_line_{ci}_{li}.txt"
