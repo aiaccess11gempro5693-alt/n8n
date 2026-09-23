@@ -1018,7 +1018,18 @@ def role_card(path, icon_src, role, text, chips=(), accent=False, w=540, isz=120
     lines = wrap(text, f_t, w - x_t - 30)
     lh = 50
     top = max(isz, 44 + len(lines) * lh)
-    h = 34 + top + (30 + 48 if chips else 0) + 34
+    d0 = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
+    chip_rows, cur, cw = [], [], 0
+    for c in chips:
+        pw = d0.textlength(c, font=f_c) + 44
+        if cur and cw + pw > w - 72:
+            chip_rows.append(cur)
+            cur, cw = [], 0
+        cur.append(c)
+        cw += pw + 12
+    if cur:
+        chip_rows.append(cur)
+    h = 34 + top + (30 + len(chip_rows) * 60 - 12 if chips else 0) + 34
     img = _card(w, h, S.WHITE if accent else (250, 251, 252, 255), radius=28)
     d = ImageDraw.Draw(img)
     if accent:
@@ -1034,10 +1045,12 @@ def role_card(path, icon_src, role, text, chips=(), accent=False, w=540, isz=120
     for line in lines:
         d.text((x, y), line, font=f_t, fill=NAVY if accent else S.GRAY)
         y += lh
-    if chips:
-        cx, cy = PAD + 36, PAD + 34 + top + 30
-        for c in chips:
+    cy = PAD + 34 + top + 30
+    for row in chip_rows:
+        cx = PAD + 36
+        for c in row:
             cx += _pill(d, cx, cy, c, f_c, PALE_GREEN, S.GREEN) + 12
+        cy += 60
     img.save(path)
     return path, PAD
 
@@ -1097,16 +1110,13 @@ def completeness_bars(path, rows, w=640):
     Неполная — серая наполовину пустая полоса, полная — зелёная до конца."""
     f_l, f_n = S.font(S.F_HEADLINE, 38), S.font(S.F_SEMIBOLD, 28)
     row_h = 136
-    h = 30 + len(rows) * row_h + 6
+    h = 30 + sum(row_h + (42 if r[3] else 0) for r in rows) + 6
     img = _card(w, h, S.WHITE, radius=28)
     d = ImageDraw.Draw(img)
     y = PAD + 30
     for label, frac, good, note in rows:
         col = S.GREEN if good else S.GRAY
         d.text((PAD + 36, y), label, font=f_l, fill=NAVY if good else S.GRAY)
-        if note:
-            nw = d.textlength(note, font=f_n)
-            d.text((PAD + w - 36 - nw, y + 8), note, font=f_n, fill=col)
         by = y + 64
         x0, x1 = PAD + 36, PAD + w - 36
         d.rounded_rectangle([x0, by, x1, by + 30], 15, fill=(230, 235, 242, 255))
@@ -1115,7 +1125,10 @@ def completeness_bars(path, rows, w=640):
             xm = x0 + (x1 - x0) * frac
             for xx in range(int(xm) + 14, int(x1) - 6, 22):
                 d.line([(xx, by + 6), (xx + 8, by + 24)], fill=(205, 212, 222, 255), width=3)
-        y += row_h
+        if note:
+            nw = d.textlength(note, font=f_n)
+            d.text((PAD + w - 36 - nw, by + 44), note, font=f_n, fill=col)
+        y += row_h + (42 if note else 0)
     img.save(path)
     return path, PAD
 
