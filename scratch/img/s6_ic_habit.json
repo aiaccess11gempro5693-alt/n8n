@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s6_ic_habit",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small wall calendar with several days ticked with checkmarks in a row, meaning a daily habit",
+    "meaning": "привычка через пару дней"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the numbers and pseudo-text from the calendar icon"
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Remove the text '27AE' from the calendar icon"
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "Remove readable text and numbers from the calendar icon."
+    }
+  ]
+}

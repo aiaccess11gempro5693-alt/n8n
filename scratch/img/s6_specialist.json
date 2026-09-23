@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s6_specialist",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "The pharmacist from the photo reference (same face, hair, white coat) at an open pharmacy counter, leaning slightly toward a customer, attentive eye contact, friendly face-to-face conversation; the customer looks relieved. Warm light. NO signs, text or labels anywhere, shelves hold plain colored boxes.",
+    "meaning": "живой специалист, разговор лицом к лицу"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

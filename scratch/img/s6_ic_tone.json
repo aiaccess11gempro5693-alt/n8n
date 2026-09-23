@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_ic_tone",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a smiling face next to a gentle soft sound wave, meaning a friendly warm tone of voice",
+    "meaning": "доброжелательная интонация"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

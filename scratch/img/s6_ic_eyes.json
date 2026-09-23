@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_ic_eyes",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two eyes looking straight ahead with a small spark, meaning eye contact",
+    "meaning": "взгляд в глаза"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_ic_timer",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a stopwatch with a small friendly waving hand next to it, meaning a greeting that takes only two seconds",
+    "meaning": "приём занимает пару секунд"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
