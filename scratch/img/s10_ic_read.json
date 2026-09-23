@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_read",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an open envelope with a letter and a small eye above it, meaning every answer is read; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "мы читаем каждый ответ"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

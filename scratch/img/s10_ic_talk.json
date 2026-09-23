@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_talk",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two overlapping speech bubbles, meaning a real conversation between two people; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "разговаривайте с людьми"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_honest",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a shield with a check mark, meaning honest professional work; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "оба варианта — профессиональная, честная работа"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

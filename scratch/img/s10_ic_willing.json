@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_willing",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person silhouette with a small speech bubble containing a check mark, meaning a person answers willingly; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "люди охотно отвечают, когда понимают пользу вопроса"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
