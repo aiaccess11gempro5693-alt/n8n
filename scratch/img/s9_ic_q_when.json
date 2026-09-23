@@ -3,7 +3,7 @@
     "name": "s9_ic_q_when",
     "kind": "icon",
     "aspect": "1:1",
-    "prompt": "icon of a calendar page with a small clock in the corner, meaning when it started and how often",
+    "prompt": "icon of a simple calendar page with a regular even grid of days and a small clock in the lower corner, meaning when it started and how often; plain white background outside the light-blue circle, no dark corners",
     "meaning": "второй вопрос: как давно и как часто"
   },
   "status": "ok",
