@@ -1,0 +1,48 @@
+name: Call Brand Images
+
+# Пакетная генерация картинок в стиле брендбука (Nano Banana + QA-гейт
+# Gemini, через CometAPI). Логика — в tools/gen_brand_images.py на
+# указанной ветке (сам workflow лежит в main только ради workflow_dispatch).
+# Требуется secret COMETAPI_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Ветка со скриптом и jobs-файлом; туда же коммитятся картинки'
+        required: true
+      jobs_file:
+        description: 'Путь к jobs-файлу (JSON) в репозитории'
+        required: true
+      only:
+        description: 'Через запятую — сгенерировать только эти name (пусто = все)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      - name: Generate
+        env:
+          COMETAPI_KEY: ${{ secrets.COMETAPI_KEY }}
+          ONLY: ${{ github.event.inputs.only }}
+        run: python3 tools/gen_brand_images.py "${{ github.event.inputs.jobs_file }}"
+      - name: Commit images
+        if: always()
+        env:
+          BRANCH: ${{ github.event.inputs.branch }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scratch/img || true
+          git diff --cached --quiet && exit 0
+          git commit -m "scratch: brand images [skip ci]"
+          for i in 1 2 3 4; do git push origin "HEAD:${BRANCH}" && exit 0; git pull --rebase origin "${BRANCH}"; done
+          exit 1
