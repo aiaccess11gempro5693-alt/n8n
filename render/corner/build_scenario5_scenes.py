@@ -238,7 +238,7 @@ def scene1_items(words):
                           "Первый шаг к доверию покупателя"), L, 90, 0.4, T("десятки") + 1.4),
         item(K.image_card(f("people"), f"{IMG}/s5_people.png", W, "Почти каждый приходит с лёгкой тревогой"),
              L, 90, T("почти"), left_end),
-        item(K.image_card(f("eyes"), f"{IMG}/s5_eyes.png", W, "Первым он ищет глазами — вас"),
+        item(K.image_card(f("eyes"), f"{IMG}/s5_eyes.png", W, "Контакт начинается со взгляда"),
              L, 90, t_eyes, end),
         # правая колонка
         item(K.headline(f("tens"), "Каждый день", "десятки людей у вашего стола", ["десятки"], size=56, w=W),
@@ -264,6 +264,8 @@ def scene2_items(words, t0):
     return [
         {"png": f("header"), "x": 100, "y": 70, "t_in": MOVE_T1, "t_out": None},
         item(K.image_card(f("greet"), f"{IMG}/s5_greeting.png", 640), 100, 230, MOVE_T1 + 0.2),
+        item(K.headline(f("trifle"), "Кажется мелочью?", "На самом деле — сильный сигнал", ["сильный"],
+                        size=54, w=RW), RX, 230, MOVE_T1 + 0.4, T("Я") - 0.05),
         {"png": f("quote"), "x": RX - qpad, "y": 230 - qpad, "t_in": T("Я"), "t_out": None},
         item(K.icon_row(f("r1"), f"{IMG}/s5_ic_phrase.png", "Одна тёплая фраза в первые секунды", w=RW, h=95,
                         num="01", num_color=S.BLUE, text_size=34), RX, 425, T("Одна")),
