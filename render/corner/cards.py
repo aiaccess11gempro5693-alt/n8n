@@ -213,17 +213,22 @@ def compare_row(path, icon_src, text, good, w=540, h=110):
     if not good:
         icon = Image.blend(Image.new("RGBA", icon.size, (0, 0, 0, 0)), icon, 0.55)
     img.alpha_composite(icon, (PAD + 16, PAD + 11))
-    f = S.font(S.F_SEMIBOLD, 38)
     x = PAD + 16 + isz + 22
     col = S.TEXT_DARK if good else S.GRAY
-    lines = wrap(text, f, w - (x - PAD) - 90)
-    y = PAD + (h - len(lines) * 46) // 2
+    # крупно, если влезает в строку; иначе мельче, чтобы 2 строки уместились в карточку
+    for size in (38, 32, 28):
+        f = S.font(S.F_SEMIBOLD, size)
+        lines = wrap(text, f, w - (x - PAD) - 90)
+        lh = int(size * 1.2)
+        if len(lines) * lh <= h - 16 and (len(lines) == 1 or size < 38):
+            break
+    y = PAD + (h - len(lines) * lh) // 2
     for line in lines:
         d.text((x, y), line, font=f, fill=col)
         if not good:
             tw = d.textlength(line, font=f)
-            d.line([x - 4, y + 25, x + tw + 4, y + 25], fill=(214, 69, 65, 255), width=4)
-        y += 46
+            d.line([x - 4, y + lh * 0.55, x + tw + 4, y + lh * 0.55], fill=(214, 69, 65, 255), width=4)
+        y += lh
     # значок справа
     cx, cy, r = PAD + w - 50, PAD + h // 2, 24
     if good:
