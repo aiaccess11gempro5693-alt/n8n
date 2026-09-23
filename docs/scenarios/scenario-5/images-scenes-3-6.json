@@ -1,0 +1,157 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {
+      "name": "s5_ic_help",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a pharmacist's hand giving a small medicine box to another hand, with a small checkmark",
+      "meaning": "фармацевт точнее помогает, даёт подходящее средство"
+    },
+    {
+      "name": "s5_ic_leave",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a smiling person walking away with a small pharmacy bag, relaxed",
+      "meaning": "человек уходит спокойным и довольным"
+    },
+    {
+      "name": "s5_ic_return",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a smiling person with a circular arrow around them meaning coming back again",
+      "meaning": "человек охотно возвращается снова"
+    },
+    {
+      "name": "s5_trust",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "prompt": "A pharmacist in a white coat and a returning regular customer greet each other like old acquaintances across the pharmacy counter, both smiling with genuine trust; warm soft light, a subtle soft glow around them. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "доверие ко всей аптеке начинается с первой секунды контакта",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ]
+    },
+    {
+      "name": "s5_ic_greet",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a raised open hand waving hello with a small smile bubble",
+      "meaning": "приветствие — первый этап диалога"
+    },
+    {
+      "name": "s5_ic_ask",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a speech bubble with a question mark shape made of a dotted line (no letters)",
+      "meaning": "выяснение потребности, вопросы"
+    },
+    {
+      "name": "s5_ic_advice",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a medicine box with a small checkmark badge",
+      "meaning": "рекомендация средства"
+    },
+    {
+      "name": "s5_ic_free",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an open empty palm hand, light and easy gesture",
+      "meaning": "приветствие ничего не стоит фармацевту"
+    },
+    {
+      "name": "s5_ic_heart",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of two hands gently holding a heart",
+      "meaning": "для посетителя это очень много значит"
+    },
+    {
+      "name": "s5_ic_pain",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person holding their head in discomfort, small pain lines, worried eyebrows",
+      "meaning": "посетителю тревожно или больно"
+    },
+    {
+      "name": "s5_first_hello",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "prompt": "A customer is just entering the pharmacy; the pharmacist behind the counter looks up first, makes warm eye contact and greets them first with a friendly smile and a small wave. The customer looks relieved. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "не бойтесь здороваться первым — тепло, глядя человеку в глаза",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ]
+    },
+    {
+      "name": "s5_ic_first",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person waving hello first, with a small number-free star burst near the hand",
+      "meaning": "здороваться первым"
+    },
+    {
+      "name": "s5_ic_warm",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a warm smiling face with a small heart",
+      "meaning": "тепло, с улыбкой"
+    },
+    {
+      "name": "s5_ic_eye",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a friendly open eye with a small sparkle",
+      "meaning": "глядя человеку в глаза"
+    },
+    {
+      "name": "s5_meet",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "prompt": "An elderly woman who looks unwell and worried comes to the pharmacy counter; the pharmacist leans in with care and compassion, listening attentively, offering support. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+      "meaning": "мы первыми встречаем человека в непростую для него минуту",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ]
+    },
+    {
+      "name": "s5_ic_pills",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a simple pill blister pack and a medicine bottle",
+      "meaning": "просто отпустить препараты"
+    },
+    {
+      "name": "s5_survey",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "prompt": "A smartphone held in a hand showing a simple poll screen made only of shapes: round radio buttons, checkmarks and a star rating, no letters or words at all; soft pharmacy background blurred.",
+      "meaning": "в конце ролика — несколько коротких вопросов, опрос-мнение"
+    },
+    {
+      "name": "s5_ic_exam",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an exam sheet with a red grade circle and a pencil, no letters or digits",
+      "meaning": "проверка знаний, экзамен"
+    },
+    {
+      "name": "s5_ic_opinion",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a speech bubble with a star inside",
+      "meaning": "ваше мнение важно"
+    },
+    {
+      "name": "s5_ic_next",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a video play button with a small forward arrow and a sparkle",
+      "meaning": "учтём в следующих роликах"
+    }
+  ]
+}
