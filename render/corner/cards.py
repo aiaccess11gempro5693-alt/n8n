@@ -510,7 +510,7 @@ def counter(path, big, small, w=540):
 
 # ---------------------------------------------------------------- приёмы сценария 8
 # (размытые запросы, карточка вопросов, граница «фармацевт / врач», развилка,
-# зачёркивание «не это — а это», формула «A > B», итог галочками)
+# зачёркивание «не это — а это», итог галочками)
 
 def _dashed_rrect(d, box, r, color, width=3, dash=14, gap=10):
     """Пунктирный скруглённый прямоугольник (прямые участки пунктиром, углы — дугами)."""
@@ -664,34 +664,6 @@ def strike_card(path, wrong, right, w=540):
     d.rounded_rectangle([PAD + 28, y, PAD + w - 28, y + 110], 22, fill=(226, 245, 234, 255))
     _mark(d, PAD + 84, y + 55, 30, True)
     d.text((PAD + 136, y + 18), right, font=f_r, fill=S.GREEN)
-    img.save(path)
-    return path, PAD
-
-
-def formula_card(path, left, op, right, w=1200, caption=None):
-    """Формула «A > B»: две плашки с иконкой и текстом и крупный знак между
-    ними; левая — синяя (главное), правая — белая (с чем сравниваем)."""
-    f_t, f_op, f_c = S.font(S.F_HEADLINE, 44), S.font(S.F_HEADLINE, 120), S.font(S.F_SEMIBOLD, 30)
-    opw = 130
-    bw = (w - opw) // 2
-    ll, rl = wrap(left[1], f_t, bw - 170), wrap(right[1], f_t, bw - 170)
-    bh = max(len(ll), len(rl)) * 52 + 70
-    h = bh + (60 if caption else 0)
-    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
-    for k, ((icon, _), ls, fill, col) in enumerate(((left, ll, S.BLUE, S.WHITE), (right, rl, S.WHITE, NAVY))):
-        x = k * (bw + opw)
-        box = _card(bw, bh, fill, radius=28)
-        db = ImageDraw.Draw(box)
-        box.alpha_composite(_icon(icon, 110), (PAD + 24, PAD + (bh - 110) // 2))
-        y = PAD + (bh - len(ls) * 52) // 2
-        for line in ls:
-            db.text((PAD + 158, y), line, font=f_t, fill=col)
-            y += 52
-        img.alpha_composite(box, (x, 0))
-    d = ImageDraw.Draw(img)
-    d.text((PAD + bw + (opw - d.textlength(op, font=f_op)) / 2, PAD + bh / 2 - 82), op, font=f_op, fill=S.GREEN)
-    if caption:
-        d.text((PAD + 10, PAD + bh + 22), caption, font=f_c, fill=S.GRAY)
     img.save(path)
     return path, PAD
 
