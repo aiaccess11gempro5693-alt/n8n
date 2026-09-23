@@ -856,3 +856,144 @@ def formula_card(path, terms, result, w=540):
     d.text((PAD + 100, y + 26), result, font=f_r, fill=S.WHITE)
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 10
+# («кажется / на деле», фраза с разметкой частей, «поток вопросов / по одному»,
+# ползунки тона для деликатных тем)
+
+PALE_GREEN = (226, 245, 234, 255)
+PALE_GRAY = (238, 240, 243, 255)
+RED = (214, 69, 65, 255)
+
+
+def myth_fact(path, fact, text, w=540):
+    """Строка «кажется / на деле»: метка-плашка сверху и крупный текст.
+    fact=False — серая «Кажется» (ложное впечатление), True — зелёная «На деле»."""
+    tag = "На деле" if fact else "Кажется"
+    f_tag, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 44 if fact else 40)
+    lines = wrap(text, f_t, w - 90)
+    lh = int(f_t.size * 1.18)
+    h = 30 + 42 + 18 + len(lines) * lh + 30
+    img = _card(w, h, S.WHITE if fact else (250, 251, 252, 255), radius=26)
+    d = ImageDraw.Draw(img)
+    col = S.GREEN if fact else S.GRAY
+    if fact:
+        d.rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 26, outline=S.GREEN, width=4)
+    tw = d.textlength(tag.upper(), font=f_tag)
+    d.rounded_rectangle([PAD + 36, PAD + 30, PAD + 36 + tw + 36, PAD + 72], 21,
+                        fill=PALE_GREEN if fact else PALE_GRAY)
+    d.text((PAD + 54, PAD + 38), tag.upper(), font=f_tag, fill=col)
+    y = PAD + 30 + 42 + 18
+    for line in lines:
+        d.text((PAD + 40, y), line, font=f_t, fill=NAVY if fact else S.GRAY)
+        y += lh
+    img.save(path)
+    return path, PAD
+
+
+def annotated_phrase(path, kicker, segments, w=640):
+    """Готовая фраза, разобранная на части: каждая часть — своя строка
+    с цветным подчёркиванием и подписью «что это даёт» под ним."""
+    f_k, f_t, f_l = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 40), S.font(S.F_SEMIBOLD, 26)
+    blocks = [(wrap(t, f_t, w - 80), lab, col) for t, lab, col in segments]
+    h = 34 + 40 + sum(len(ls) * 50 + 14 + 40 + 22 for ls, _, _ in blocks) + 14
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 40, PAD + 32), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 34 + 40
+    for lines, lab, col in blocks:
+        maxw = 0
+        for line in lines:
+            d.text((PAD + 40, y), line, font=f_t, fill=NAVY)
+            maxw = max(maxw, d.textlength(line, font=f_t))
+            y += 50
+        d.rounded_rectangle([PAD + 40, y + 2, PAD + 40 + maxw, y + 10], 4, fill=col)
+        y += 14
+        tw = d.textlength(lab, font=f_l)
+        pale = PALE_GREEN if col == S.GREEN else PALE_BLUE
+        d.rounded_rectangle([PAD + 40, y, PAD + 40 + tw + 32, y + 40], 20, fill=pale)
+        d.text((PAD + 56, y + 5), lab, font=f_l, fill=col)
+        y += 40 + 22
+    img.save(path)
+    return path, PAD
+
+
+def _qdot(d, cx, cy, r, fill, text="?", size=None, color=S.WHITE):
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=fill, outline=S.WHITE, width=3)
+    f = S.font(S.F_HEADLINE, size or int(r * 1.2))
+    d.text((cx - d.textlength(text, font=f) / 2, cy - f.size * 0.62), text, font=f, fill=color)
+
+
+def flood_card(path, count, label, w=620):
+    """«Поток вопросов подряд»: count кружков «?» налезают друг на друга,
+    перечёркнуты; справа — к чему это приводит (серым)."""
+    h = 150
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    r, step = 32, 50
+    x0, cy = PAD + 40 + r, PAD + h // 2
+    for k in range(count):
+        _qdot(d, x0 + k * step, cy + (-10 if k % 2 else 10), r, (150, 160, 178, 255))
+    x_end = x0 + (count - 1) * step + r
+    d.line([(x0 - r - 6, cy + 30), (x_end + 6, cy - 30)], fill=RED, width=7)
+    f = S.font(S.F_HEADLINE, 40)
+    tx = x_end + 40
+    lines = wrap(label, f, PAD + w - 30 - tx)
+    y = cy - len(lines) * 24
+    for line in lines:
+        d.text((tx, y), line, font=f, fill=S.GRAY)
+        y += 48
+    img.save(path)
+    return path, PAD
+
+
+def beat_line(path, beats, w=620):
+    """Ритм разговора по одному: узлы на линии времени (вопрос → пауза →
+    ответ → второй вопрос); пауза — пустое кольцо, вопрос/ответ — кружки."""
+    f_l = S.font(S.F_SEMIBOLD, 26)
+    h = 200
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    n = len(beats)
+    x0, x1, cy = PAD + 80, PAD + w - 80, PAD + 78
+    d.line([(x0, cy), (x1, cy)], fill=(210, 222, 240, 255), width=6)
+    for k, (kind, label) in enumerate(beats):
+        cx = x0 + (x1 - x0) * k / (n - 1)
+        if kind == "pause":
+            d.ellipse([cx - 22, cy - 22, cx + 22, cy + 22], fill=S.WHITE, outline=S.LIGHT_BLUE, width=5)
+            for j in (-9, 0, 9):
+                d.ellipse([cx + j - 3, cy - 3, cx + j + 3, cy + 3], fill=S.LIGHT_BLUE)
+        elif kind == "answer":
+            _qdot(d, cx, cy, 36, S.GREEN, "…", 44)
+        else:
+            _qdot(d, cx, cy, 36, S.BLUE if kind == "q" else S.LIGHT_BLUE)
+        tw = d.textlength(label, font=f_l)
+        d.text((cx - tw / 2, cy + 54), label, font=f_l, fill=NAVY if kind != "pause" else S.LIGHT_BLUE)
+    img.save(path)
+    return path, PAD
+
+
+def tone_sliders(path, kicker, rows, w=540):
+    """Настройка тона: строки «параметр — ползунок — значение»; ручка ползунка
+    стоит на нужной отметке (pos 0..1), значение — зелёным."""
+    f_k, f_n, f_v = S.font(S.F_SEMIBOLD, 24), S.font(S.F_SEMIBOLD, 28), S.font(S.F_HEADLINE, 36)
+    row_h = 118
+    h = 34 + 40 + len(rows) * row_h + 10
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 32), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 34 + 40
+    for name, value, pos in rows:
+        d.text((PAD + 36, y + 4), name, font=f_n, fill=S.GRAY)
+        vw = d.textlength(value, font=f_v)
+        d.text((PAD + w - 36 - vw, y - 2), value, font=f_v, fill=S.GREEN)
+        ty = y + 70
+        tx0, tx1 = PAD + 36, PAD + w - 36
+        d.rounded_rectangle([tx0, ty - 5, tx1, ty + 5], 5, fill=(222, 230, 242, 255))
+        kx = tx0 + (tx1 - tx0) * pos
+        d.rounded_rectangle([tx0, ty - 5, kx, ty + 5], 5, fill=S.LIGHT_BLUE)
+        d.ellipse([kx - 17, ty - 17, kx + 17, ty + 17], fill=S.WHITE, outline=S.BLUE, width=6)
+        y += row_h
+    img.save(path)
+    return path, PAD
