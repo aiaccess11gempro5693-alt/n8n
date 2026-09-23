@@ -109,10 +109,10 @@ def scene3(T, dur):
                                               ("Полное решение", 1.0, True, "выздоровеет быстрее")], w=700)
     return [
         item(head, PX, 40, 0.3, end),
-        item(K.image_card(f("s3_pic"), img("s11_full"), 470), PX + 730, y2, 0.3, end),
-        item(bars, PX, y2, T("половиной"), end),
+        item(K.image_card(f("s3_pic"), img("s11_full"), 470), PX, y2, 0.3, end),
+        item(bars, PX + 500, y2, T("половиной"), end),
         item(K.icon_row(f("s3_done"), img("s11_ic_done"), "Вы сделали всё, что могли, а не промолчали", w=700,
-                        h=120, text_size=32, outline=S.GREEN), PX, y2 + h_of(bars) + 24, T("чувствуете"), end),
+                        h=120, text_size=32, outline=S.GREEN), PX + 500, y2 + h_of(bars) + 24, T("чувствуете"), end),
     ]
 
 
