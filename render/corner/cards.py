@@ -997,3 +997,237 @@ def tone_sliders(path, kicker, rows, w=540):
         y += row_h
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 11
+# (две роли «продавец / фармацевт», пары «средство + дополнение», шкала
+# «половина / полное решение», правило-таймлайн, «человек слышит», «≠»)
+
+def _pill(d, x, y, text, font, fill, color, pad_x=22, h=48):
+    tw = d.textlength(text, font=font)
+    d.rounded_rectangle([x, y, x + tw + 2 * pad_x, y + h], h // 2, fill=fill)
+    d.text((x + pad_x, y + (h - font.size) / 2 - 3), text, font=font, fill=color)
+    return tw + 2 * pad_x
+
+
+def role_card(path, icon_src, role, text, chips=(), accent=False, w=540, isz=120):
+    """Карточка роли: иконка + метка роли + крупная фраза; у акцентной роли —
+    синяя рамка и зелёные чипы (что именно она делает)."""
+    f_r, f_t, f_c = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 40), S.font(S.F_SEMIBOLD, 28)
+    x_t = 36 + isz + 26
+    lines = wrap(text, f_t, w - x_t - 30)
+    lh = 50
+    top = max(isz, 44 + len(lines) * lh)
+    h = 34 + top + (30 + 48 if chips else 0) + 34
+    img = _card(w, h, S.WHITE if accent else (250, 251, 252, 255), radius=28)
+    d = ImageDraw.Draw(img)
+    if accent:
+        d.rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 28, outline=S.BLUE, width=4)
+    ic = _icon(icon_src, isz)
+    if not accent:
+        ic = ImageOps.grayscale(ic.convert("RGB")).convert("RGBA")
+        ic.putalpha(_icon(icon_src, isz).getchannel("A"))
+    img.alpha_composite(ic, (PAD + 36, PAD + 34))
+    x, y = PAD + x_t, PAD + 34
+    d.text((x, y), role.upper(), font=f_r, fill=S.BLUE if accent else S.GRAY)
+    y += 44
+    for line in lines:
+        d.text((x, y), line, font=f_t, fill=NAVY if accent else S.GRAY)
+        y += lh
+    if chips:
+        cx, cy = PAD + 36, PAD + 34 + top + 30
+        for c in chips:
+            cx += _pill(d, cx, cy, c, f_c, PALE_GREEN, S.GREEN) + 12
+    img.save(path)
+    return path, PAD
+
+
+def stamp(path, text, size=34):
+    """Зелёная плашка-итог с галочкой (вывод к карточке над ней)."""
+    f = S.font(S.F_HEADLINE, size)
+    tw = d0_len(text, f)
+    h = size + 44
+    w = int(tw + h + 60)
+    img = _card(w, h, S.GREEN, radius=h // 2)
+    d = ImageDraw.Draw(img)
+    r = h // 2 - 12
+    d.ellipse([PAD + 12, PAD + 12, PAD + 12 + 2 * r, PAD + 12 + 2 * r], fill=S.WHITE)
+    k = r * 0.45
+    cx, cy = PAD + 12 + r, PAD + 12 + r
+    d.line([(cx - k, cy + 0.05 * r), (cx - 0.1 * r, cy + k), (cx + k * 1.2, cy - k)], fill=S.GREEN, width=5,
+           joint="curve")
+    d.text((PAD + h + 14, PAD + (h - size) / 2 - 5), text, font=f, fill=S.WHITE)
+    img.save(path)
+    return path, PAD
+
+
+def plus_combo(path, left, right, w=640, isz=96):
+    """Пара «основное + дополнение»: две половины с иконкой и подписью,
+    между ними зелёный «+»; левая — серо-голубая (то, что попросили),
+    правая — с зелёной рамкой (то, что добавил фармацевт)."""
+    f_t = S.font(S.F_SEMIBOLD, 28)
+    gap = 70
+    cw = (w - 40 - gap) // 2
+    ls = [wrap(t, f_t, cw - 20) for _, t in (left, right)]
+    h = 24 + isz + 14 + max(len(x) for x in ls) * 36 + 24
+    img = _card(w, h, S.WHITE, radius=26)
+    d = ImageDraw.Draw(img)
+    for k, ((src, _), lines) in enumerate(zip((left, right), ls)):
+        x0 = PAD + 20 + k * (cw + gap)
+        if k:
+            d.rounded_rectangle([x0 - 6, PAD + 12, x0 + cw + 6, PAD + h - 12], 20, fill=PALE_GREEN)
+        else:
+            d.rounded_rectangle([x0 - 6, PAD + 12, x0 + cw + 6, PAD + h - 12], 20, fill=PALE_BLUE)
+        img.alpha_composite(_icon(src, isz), (int(x0 + (cw - isz) / 2), PAD + 24))
+        y = PAD + 24 + isz + 14
+        for line in lines:
+            tw = d.textlength(line, font=f_t)
+            d.text((x0 + (cw - tw) / 2, y), line, font=f_t, fill=NAVY if not k else S.GREEN)
+            y += 36
+    cx, cy = PAD + 20 + cw + gap // 2, PAD + h // 2
+    d.ellipse([cx - 26, cy - 26, cx + 26, cy + 26], fill=S.GREEN)
+    d.line([(cx - 12, cy), (cx + 12, cy)], fill=S.WHITE, width=7)
+    d.line([(cx, cy - 12), (cx, cy + 12)], fill=S.WHITE, width=7)
+    img.save(path)
+    return path, PAD
+
+
+def completeness_bars(path, rows, w=640):
+    """Шкалы полноты: строки (подпись, доля 0..1, хорошая?, пометка справа).
+    Неполная — серая наполовину пустая полоса, полная — зелёная до конца."""
+    f_l, f_n = S.font(S.F_HEADLINE, 38), S.font(S.F_SEMIBOLD, 28)
+    row_h = 136
+    h = 30 + len(rows) * row_h + 6
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    y = PAD + 30
+    for label, frac, good, note in rows:
+        col = S.GREEN if good else S.GRAY
+        d.text((PAD + 36, y), label, font=f_l, fill=NAVY if good else S.GRAY)
+        if note:
+            nw = d.textlength(note, font=f_n)
+            d.text((PAD + w - 36 - nw, y + 8), note, font=f_n, fill=col)
+        by = y + 64
+        x0, x1 = PAD + 36, PAD + w - 36
+        d.rounded_rectangle([x0, by, x1, by + 30], 15, fill=(230, 235, 242, 255))
+        d.rounded_rectangle([x0, by, x0 + (x1 - x0) * frac, by + 30], 15, fill=col)
+        if not good:
+            xm = x0 + (x1 - x0) * frac
+            for xx in range(int(xm) + 14, int(x1) - 6, 22):
+                d.line([(xx, by + 6), (xx + 8, by + 24)], fill=(205, 212, 222, 255), width=3)
+        y += row_h
+    img.save(path)
+    return path, PAD
+
+
+def rule_timeline(path, kicker, steps, w=1200, isz=110):
+    """Правило-порядок: узлы-иконки на линии слева направо, под каждым —
+    номер и подпись; первый узел — «замок» порядка (зелёная рамка)."""
+    f_k, f_t, f_n = S.font(S.F_SEMIBOLD, 24), S.font(S.F_SEMIBOLD, 30), S.font(S.F_SEMIBOLD, 22)
+    n = len(steps)
+    colw = (w - 80) / n
+    ls = [wrap(t, f_t, colw - 30) for _, t in steps]
+    h = 30 + 36 + isz + 20 + 34 + max(len(x) for x in ls) * 38 + 26
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 40, PAD + 28), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    cy = PAD + 30 + 36 + isz // 2
+    xs = [PAD + 40 + colw * (k + 0.5) for k in range(n)]
+    d.line([(xs[0], cy), (xs[-1], cy)], fill=(210, 222, 240, 255), width=6)
+    for k in range(n - 1):
+        ax = (xs[k] + xs[k + 1]) / 2
+        d.polygon([(ax + 12, cy), (ax - 8, cy - 12), (ax - 8, cy + 12)], fill=S.LIGHT_BLUE)
+    for k, ((src, _), lines) in enumerate(zip(steps, ls)):
+        x = xs[k]
+        ring = S.GREEN if k == 0 else S.WHITE
+        d.ellipse([x - isz / 2 - 7, cy - isz / 2 - 7, x + isz / 2 + 7, cy + isz / 2 + 7], fill=ring)
+        img.alpha_composite(_icon(src, isz), (int(x - isz / 2), int(cy - isz / 2)))
+        y = cy + isz / 2 + 20
+        num = f"{k + 1}"
+        d.ellipse([x - 17, y, x + 17, y + 34], fill=S.GREEN if k == 0 else S.BLUE)
+        d.text((x - d.textlength(num, font=f_n) / 2, y + 4), num, font=f_n, fill=S.WHITE)
+        y += 46
+        for line in lines:
+            d.text((x - d.textlength(line, font=f_t) / 2, y), line, font=f_t, fill=NAVY)
+            y += 38
+    img.save(path)
+    return path, PAD
+
+
+def heard_as(path, icon_src, kicker, good, bad, w=640, isz=110):
+    """«Как это слышит человек»: иконка + киккер, крупно зелёным — верное
+    восприятие, ниже серым зачёркнутым — то, как звучать не должно."""
+    f_k, f_g, f_b = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 46), S.font(S.F_HEADLINE, 36)
+    x_t = 36 + isz + 26
+    g_lines = wrap(good, f_g, w - x_t - 30)
+    h = 30 + 40 + len(g_lines) * 56 + 20 + 50 + 30
+    h = max(h, isz + 60)
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    img.alpha_composite(_icon(icon_src, isz), (PAD + 36, PAD + (h - isz) // 2))
+    x, y = PAD + x_t, PAD + 30
+    d.text((x, y), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y += 40
+    for line in g_lines:
+        d.text((x, y), line, font=f_g, fill=S.GREEN)
+        y += 56
+    y += 20
+    d.text((x, y), bad, font=f_b, fill=S.GRAY)
+    tw = d.textlength(bad, font=f_b)
+    d.line([(x - 6, y + 26), (x + tw + 6, y + 22)], fill=RED, width=5)
+    img.save(path)
+    return path, PAD
+
+
+def not_equal(path, icon_src, left, right, result, w=540, isz=96):
+    """«A ≠ B» крупно (A с иконкой), под чертой — «= на самом деле» янтарным."""
+    f_w, f_op, f_r = S.font(S.F_HEADLINE, 44), S.font(S.F_HEADLINE, 60), S.font(S.F_HEADLINE, 38)
+    amber = (224, 138, 30, 255)
+    r_lines = wrap(result, f_r, w - 150)
+    h = 30 + isz + 10 + 70 + 24 + len(r_lines) * 48 + 40
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    y = PAD + 30
+    img.alpha_composite(_icon(icon_src, isz), (PAD + 36, y))
+    d.text((PAD + 36 + isz + 24, y + isz / 2 - 30), left, font=f_w, fill=NAVY)
+    y += isz + 10
+    d.text((PAD + 44, y - 4), "≠", font=f_op, fill=RED)
+    d.text((PAD + 120, y + 8), right, font=f_w, fill=S.GRAY)
+    y += 70 + 12
+    d.rounded_rectangle([PAD + 24, y, PAD + w - 24, y + len(r_lines) * 48 + 28], 22, fill=(253, 240, 222, 255))
+    d.text((PAD + 44, y + 6), "=", font=f_op, fill=amber)
+    yy = y + 14
+    for line in r_lines:
+        d.text((PAD + 110, yy), line, font=f_r, fill=amber)
+        yy += 48
+    img.save(path)
+    return path, PAD
+
+
+def word_chips(path, kicker, words, w=540):
+    """Киккер + ряд крупных чипов-наречий («смело · по-доброму · через пользу»)."""
+    f_k, f_c = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 34)
+    d = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
+    rows, cur, cw = [], [], 0
+    for wd in words:
+        pw = d.textlength(wd, font=f_c) + 48
+        if cur and cw + pw > w - 60:
+            rows.append(cur)
+            cur, cw = [], 0
+        cur.append(wd)
+        cw += pw + 14
+    rows.append(cur)
+    h = 30 + 40 + len(rows) * 74 + 16
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 28), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 30 + 40
+    for k, row in enumerate(rows):
+        x = PAD + 36
+        for j, wd in enumerate(row):
+            green = (k + j) % 2 == 1
+            x += _pill(d, x, y, wd, f_c, PALE_GREEN if green else PALE_BLUE, S.GREEN if green else S.BLUE,
+                       pad_x=24, h=60) + 14
+        y += 74
+    img.save(path)
+    return path, PAD
