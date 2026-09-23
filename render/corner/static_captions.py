@@ -134,6 +134,14 @@ def build_filter(prev_label, timeline, corner_start, panel_color="0xF7F9FBEE",
                 f"color={panel_color}:t=fill:enable='{full_cond}'[{pn}]"
             )
             prev = pn
+            if phase == "fixed":
+                # на светлой панели сплита белая плашка сливается с фоном — тонкая рамка
+                on = f"scap_outline_{ci}"
+                fc.append(
+                    f"[{prev}]drawbox=x={x}:y={G.SUBTITLE_Y}:w={pw}:h={G.SUBTITLE_H}:"
+                    f"color=0xC9D8F0@1.0:t=3:enable='{full_cond}'[{on}]"
+                )
+                prev = on
             an = f"scap_accent_{ci}_{phase}"
             fc.append(
                 f"[{prev}]drawbox=x={x}:y={G.SUBTITLE_Y}:w={ACCENT_BAR_W}:h={G.SUBTITLE_H}:"

@@ -68,6 +68,16 @@ def word_times(clean_text, whisper_words):
     return list(zip(src, times))
 
 
+def _balance(lines):
+    """Две строки чанка — поровну по ширине (без одинокого слова внизу)."""
+    if len(lines) != 2:
+        return lines
+    ws = lines[0] + lines[1]
+    best = min(range(1, len(ws)), key=lambda k: max(C._text_width(" ".join(ws[:k])),
+                                                    C._text_width(" ".join(ws[k:]))))
+    return [ws[:best], ws[best:]]
+
+
 def caption_timeline(words, dur, panel_w=G.SUBTITLE_W):
     """Статичные субтитры: чанки ≤2 строк, чанк не пересекает границу
     предложения; висит от своего первого слова до первого слова
@@ -92,7 +102,7 @@ def caption_timeline(words, dur, panel_w=G.SUBTITLE_W):
             even = [C.wrap_into_chunks(" ".join(g), max_w) for g in groups]
             if all(len(e) == 1 for e in even):
                 sch = [e[0] for e in even]
-        chunks += sch
+        chunks += [_balance(ch) for ch in sch]
     tl, i = [], 0
     for ch in chunks:
         tl.append({"lines": ch, "start": max(0.0, words[i][1])})
@@ -274,7 +284,8 @@ def render_scene(clip, dur, words, mode, enter, items, out, tmp):
         fc.append(f"[{last}]format=yuv420p[vb]")
         corner_start = 10 ** 6
     cap, last = C.build_filter("vb", caption_timeline(words, dur, sub_panel[1] if sub_panel else G.SUBTITLE_W),
-                               corner_start=corner_start, panel=sub_panel)
+                               corner_start=corner_start, panel=sub_panel,
+                               **({"panel_color": "0xFFFFFFFF"} if sub_panel else {}))
     fc += cap
     run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc),
          "-map", f"[{last}]", "-an", "-t", f"{dur}", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
