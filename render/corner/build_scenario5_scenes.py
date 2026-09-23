@@ -27,6 +27,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 from . import brand_style as S
 from . import geometry as G
+from . import cards as K
 from . import static_captions as C
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -165,28 +166,13 @@ def make_header(path):
     return img.size
 
 
-def make_quote(path, w=1720, h=170):
+def make_quote(path, w=1020, h=170):
     img, pad = rounded_card(w, h, S.BLUE)
     d = ImageDraw.Draw(img)
     x0, y0 = pad + 56, pad
     d.text((x0 - 8, y0 + 8), "“", font=S.font(S.F_HEADLINE, 150), fill=(255, 255, 255, 70))
     d.text((x0 + 80, y0 + 30), "ЧТО СЛЫШИТ ЧЕЛОВЕК", font=S.font(S.F_SEMIBOLD, 24), fill=(190, 212, 255, 255))
-    d.text((x0 + 80, y0 + 66), "«Я вас вижу. Я готов помочь»", font=S.font(S.F_HEADLINE, 56), fill=S.WHITE)
-    img.save(path)
-    return img.size, pad
-
-
-def make_step(path, num, text, color, w=540, h=230):
-    img, pad = rounded_card(w, h, S.WHITE)
-    d = ImageDraw.Draw(img)
-    x0, y0 = pad + 36, pad + 34
-    d.ellipse([x0, y0, x0 + 64, y0 + 64], fill=color)
-    f_num = S.font(S.F_SEMIBOLD, 28)
-    tw = d.textlength(num, font=f_num)
-    d.text((x0 + 32 - tw / 2, y0 + 15), num, font=f_num, fill=S.WHITE)
-    f = S.font(S.F_SEMIBOLD, 36)
-    for i, line in enumerate(wrap(d, text, f, w - 72)):
-        d.text((x0, y0 + 92 + i * 46), line, font=f, fill=S.TEXT_DARK)
+    d.text((x0 + 80, y0 + 70), "«Я вас вижу. Я готов помочь»", font=S.font(S.F_HEADLINE, 50), fill=S.WHITE)
     img.save(path)
     return img.size, pad
 
@@ -210,76 +196,119 @@ def make_corner_frame(path, radius=22, border=5):
 
 # ---------------------------------------------------------------- рендер
 
+IMG = f"{ROOT}/scratch/img"
+FADE_OUT = 0.3
+
+
 def run(cmd):
     subprocess.run(cmd, check=True)
 
 
+def item(made, x, y, t_in, t_out=None):
+    """made — (png, pad) из cards.*; x/y — позиция видимой части."""
+    png, pad = made
+    return {"png": png, "x": x - pad, "y": y - pad, "t_in": t_in, "t_out": t_out}
+
+
+def overlay_items(fc, inputs, prev, items, dur, first_idx):
+    """Появление: fade + подъём снизу; исчезновение (t_out): fade."""
+    for k, it in enumerate(items):
+        idx = first_idx + k
+        inputs += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i", it["png"]]
+        t, t_out = it["t_in"], it["t_out"]
+        chain = f"[{idx}:v]format=rgba,fade=t=in:st={t:.2f}:d={APPEAR_D}:alpha=1"
+        if t_out:
+            chain += f",fade=t=out:st={t_out - FADE_OUT:.2f}:d={FADE_OUT}:alpha=1"
+        fc.append(chain + f"[it{idx}]")
+        rise = f"{APPEAR_RISE}*(1-clip((t-{t:.2f})/{APPEAR_D}\\,0\\,1))"
+        en = f"between(t,{t:.2f},{t_out:.2f})" if t_out else f"gte(t,{t:.2f})"
+        fc.append(f"[{prev}][it{idx}]overlay=x={it['x']}:y='{it['y']}+{rise}':enable='{en}'[o{idx}]")
+        prev = f"o{idx}"
+    return prev
+
+
+def scene1_items(words):
+    T = lambda w, after=0.0: t_of(words, w, after)  # noqa: E731
+    L, R, W = 50, 1330, 540
+    f = lambda n: f"{TMP}/s1_{n}.png"  # noqa: E731
+    left_end, t_eyes, t_cmp, end = 13.2, T("Первое"), T("витрину"), 23.25
+    return [
+        # левая колонка
+        item(K.topic_card(f("topic"), "Тема ролика", "Приветствие и установление контакта",
+                          "Первый шаг к доверию покупателя"), L, 90, 0.4, T("десятки") + 1.4),
+        item(K.image_card(f("people"), f"{IMG}/s5_people.png", W, "Почти каждый приходит с лёгкой тревогой"),
+             L, 90, T("почти"), left_end),
+        item(K.image_card(f("eyes"), f"{IMG}/s5_eyes.png", W, "Первым он ищет глазами — вас"),
+             L, 90, t_eyes, end),
+        # правая колонка
+        item(K.headline(f("tens"), "Каждый день", "десятки людей у вашего стола", ["десятки"], size=56, w=W),
+             R, 90, T("десятки"), left_end),
+        item(K.icon_row(f("self"), f"{IMG}/s5_ic_self.png", "За себя"), R, 350, T("себя"), left_end),
+        item(K.icon_row(f("child"), f"{IMG}/s5_ic_child.png", "За ребёнка"), R, 480, T("ребёнка"), left_end),
+        item(K.icon_row(f("close"), f"{IMG}/s5_ic_close.png", "За близкого человека"), R, 610, T("близкого"), left_end),
+        item(K.headline(f("you"), "Главное", "Первым он ищет глазами вас", ["вас"], size=62, w=W),
+             R, 90, t_eyes + 0.3, t_cmp - 0.1),
+        item(K.compare_row(f("c1"), f"{IMG}/s5_ic_showcase.png", "Витрина", False), R, 90, t_cmp, end),
+        item(K.compare_row(f("c2"), f"{IMG}/s5_ic_price.png", "Ценник", False), R, 220, T("ценник"), end),
+        item(K.compare_row(f("c3"), f"{IMG}/s5_ic_specialist.png", "Живой специалист", True), R, 350,
+             T("живого"), end),
+    ]
+
+
+def scene2_items(words, t0):
+    T = lambda w: t_of(words, w, t0) - t0  # noqa: E731
+    f = lambda n: f"{TMP}/s2_{n}.png"  # noqa: E731
+    (qw, qh), qpad = make_quote(f("quote"))
+    make_header(f("header"))
+    RX, RW = 800, 1020
+    return [
+        {"png": f("header"), "x": 100, "y": 70, "t_in": MOVE_T1, "t_out": None},
+        item(K.image_card(f("greet"), f"{IMG}/s5_greeting.png", 640), 100, 230, MOVE_T1 + 0.2),
+        {"png": f("quote"), "x": RX - qpad, "y": 230 - qpad, "t_in": T("Я"), "t_out": None},
+        item(K.icon_row(f("r1"), f"{IMG}/s5_ic_phrase.png", "Одна тёплая фраза в первые секунды", w=RW, h=95,
+                        num="01", num_color=S.BLUE, text_size=34), RX, 425, T("Одна")),
+        item(K.icon_row(f("r2"), f"{IMG}/s5_ic_relief.png", "Напряжение спадает, человек выдыхает", w=RW, h=95,
+                        num="02", num_color=S.LIGHT_BLUE, text_size=34), RX, 532, T("напряжение")),
+        item(K.icon_row(f("r3"), f"{IMG}/s5_ic_talk.png", "Рассказывает спокойнее и подробнее", w=RW, h=95,
+                        num="03", num_color=S.GREEN, text_size=34), RX, 639, T("начинает")),
+    ]
+
+
 def render_scene1(words, dur, out):
-    tl = caption_timeline(words, 0.0, dur)
-    fc = [f"[0:v]tpad=stop_mode=clone:stop_duration=1,trim=0:{dur},setpts=PTS-STARTPTS,scale={G.FRAME_W}:{G.FRAME_H},fps={FPS},format=yuv420p[v0]"]
-    cap, last = C.build_filter("v0", tl, corner_start=10 ** 6)
+    items = scene1_items(words)
+    inputs = ["-i", SCENES[0]["clip"]]
+    fc = [f"[0:v]tpad=stop_mode=clone:stop_duration=1,trim=0:{dur},setpts=PTS-STARTPTS,"
+          f"scale={G.FRAME_W}:{G.FRAME_H},fps={FPS},format=rgba[v0]"]
+    last = overlay_items(fc, inputs, "v0", items, dur, 1)
+    fc.append(f"[{last}]format=yuv420p[vo]")
+    cap, last = C.build_filter("vo", caption_timeline(words, 0.0, dur), corner_start=10 ** 6)
     fc += cap
-    run(["ffmpeg", "-v", "error", "-y", "-i", SCENES[0]["clip"], "-filter_complex", ";".join(fc),
-         "-map", f"[{last}]", "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-r", str(FPS), out])
+    run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc),
+         "-map", f"[{last}]", "-an", "-t", f"{dur}", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+         "-r", str(FPS), out])
 
 
 def render_scene2(words, t0, dur, out):
-    os.makedirs(TMP, exist_ok=True)
     bg = f"{TMP}/s2_bg.png"
     make_background(bg)
-    make_header(f"{TMP}/s2_header.png")
-    (qw, qh), qpad = make_quote(f"{TMP}/s2_quote.png")
-    steps = [
-        ("01", "Тёплая фраза в первые секунды", S.BLUE, "Одна"),
-        ("02", "Напряжение спадает", S.LIGHT_BLUE, "напряжение"),
-        ("03", "Человек рассказывает спокойнее и подробнее", S.GREEN, "начинает"),
-    ]
-    step_meta = []
-    for i, (num, text, color, trig) in enumerate(steps):
-        size, pad = make_step(f"{TMP}/s2_step{i}.png", num, text, color)
-        step_meta.append((f"{TMP}/s2_step{i}.png", size, pad, t_of(words, trig, t0) - t0))
+    items = scene2_items(words, t0)
     fm = make_corner_frame(f"{TMP}/s2_frame.png")
-
-    # раскладка: контент — левее колонки аватара/выше угла (см. geometry.py)
-    X0 = 100
-    items = [  # (png, x, y, t_appear)
-        (f"{TMP}/s2_header.png", X0, 90, MOVE_T1),
-        (f"{TMP}/s2_quote.png", X0 - qpad, 290 - qpad, t_of(words, "Я", t0) - t0),
-    ]
-    sx = X0
-    for png, (w, h), pad, t in step_meta:
-        items.append((png, sx - pad, 500 - pad, t))
-        sx += (w - 2 * pad) + 50
-
-    inputs = ["-i", SCENES[1]["clip"], "-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i", bg]
-    for png, *_ in items:
-        inputs += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i", png]
-    inputs += ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i", f"{TMP}/s2_frame.png"]
-
+    inputs = ["-i", SCENES[1]["clip"], "-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i", bg,
+              "-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i", f"{TMP}/s2_frame.png"]
     a, b = MOVE_T0, MOVE_T1
     p = f"clip((t-{a})/({b}-{a})\\,0\\,1)"
     e = f"({p})*({p})*(3-2*({p}))"  # smoothstep
-    w_expr = f"{G.FRAME_W}+({G.CORNER_W}-{G.FRAME_W})*{e}"
-    h_expr = f"{G.FRAME_H}+({G.CORNER_H}-{G.FRAME_H})*{e}"
     fc = [
         f"[1:v]format=rgba,fps={FPS}[bg]",
-        f"[0:v]tpad=stop_mode=clone:stop_duration=1,trim=0:{dur},setpts=PTS-STARTPTS,scale={G.FRAME_W}:{G.FRAME_H},fps={FPS},"
-        f"scale=w='{w_expr}':h='{h_expr}':eval=frame[av]",
+        f"[0:v]tpad=stop_mode=clone:stop_duration=1,trim=0:{dur},setpts=PTS-STARTPTS,"
+        f"scale={G.FRAME_W}:{G.FRAME_H},fps={FPS},"
+        f"scale=w='{G.FRAME_W}+({G.CORNER_W}-{G.FRAME_W})*{e}':h='{G.FRAME_H}+({G.CORNER_H}-{G.FRAME_H})*{e}':eval=frame[av]",
+        f"[2:v]format=rgba,fade=t=in:st={b - 0.1:.2f}:d=0.2:alpha=1[fr]",
     ]
-    prev = "bg"
-    for k, (png, x, y, t) in enumerate(items):
-        idx = k + 2
-        t = max(t, MOVE_T1)
-        fc.append(f"[{idx}:v]format=rgba,fade=t=in:st={t:.2f}:d={APPEAR_D}:alpha=1[it{k}]")
-        rise = f"{APPEAR_RISE}*(1-clip((t-{t:.2f})/{APPEAR_D}\\,0\\,1))"
-        fc.append(f"[{prev}][it{k}]overlay=x={x}:y='{y}+{rise}':enable='gte(t,{t:.2f})'[o{k}]")
-        prev = f"o{k}"
-    fc.append(f"[{prev}][av]overlay=x='{G.CORNER_X}*{e}':y='{G.CORNER_Y}*{e}':eval=frame[wa]")
-    fidx = len(items) + 2
-    fc.append(f"[{fidx}:v]format=rgba,fade=t=in:st={MOVE_T1 - 0.1:.2f}:d=0.2:alpha=1[fr]")
-    fc.append(f"[wa][fr]overlay=x={G.CORNER_X - fm}:y={G.CORNER_Y - fm}:enable='gte(t,{MOVE_T1 - 0.1:.2f})',format=yuv420p[vb]")
-    tl = caption_timeline(words, t0, t0 + dur)
-    cap, last = C.build_filter("vb", tl, corner_start=0.0)
+    last = overlay_items(fc, inputs, "bg", items, dur, 3)
+    fc.append(f"[{last}][av]overlay=x='{G.CORNER_X}*{e}':y='{G.CORNER_Y}*{e}':eval=frame[wa]")
+    fc.append(f"[wa][fr]overlay=x={G.CORNER_X - fm}:y={G.CORNER_Y - fm}:enable='gte(t,{b - 0.1:.2f})',format=yuv420p[vb]")
+    cap, last = C.build_filter("vb", caption_timeline(words, t0, t0 + dur), corner_start=0.0)
     fc += cap
     run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc),
          "-map", f"[{last}]", "-an", "-t", f"{dur}", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
