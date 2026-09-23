@@ -931,14 +931,14 @@ def flood_card(path, count, label, w=620):
     h = 150
     img = _card(w, h, S.WHITE, radius=28)
     d = ImageDraw.Draw(img)
-    r, step = 32, 50
-    x0, cy = PAD + 40 + r, PAD + h // 2
+    r, step = 30, 40
+    x0, cy = PAD + 36 + r, PAD + h // 2
     for k in range(count):
         _qdot(d, x0 + k * step, cy + (-10 if k % 2 else 10), r, (150, 160, 178, 255))
     x_end = x0 + (count - 1) * step + r
     d.line([(x0 - r - 6, cy + 30), (x_end + 6, cy - 30)], fill=RED, width=7)
-    f = S.font(S.F_HEADLINE, 40)
-    tx = x_end + 40
+    f = S.font(S.F_HEADLINE, 36)
+    tx = x_end + 32
     lines = wrap(label, f, PAD + w - 30 - tx)
     y = cy - len(lines) * 24
     for line in lines:

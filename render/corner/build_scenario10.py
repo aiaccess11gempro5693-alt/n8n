@@ -91,7 +91,7 @@ def scene2(T, dur):
         item(K.image_card(f("s2_pic"), img("s10_ask"), 520), PX, y2, M.MOVE_D, end),
         # блок A — объяснить смысл вопроса
         item(head_a, PX, 40, T("Секрет"), a_end),
-        item(phrase, COL2, y2, T("Чтобы"), a_end),
+        item(phrase, COL2, y2, T("Чтобы", T("секунду")), a_end),
         item(K.icon_row(f("s2_willing"), img("s10_ic_willing"), "Охотно отвечают, когда видят пользу",
                         w=COL2_W, h=110, text_size=30), COL2, y2 + h_of(phrase) + 24, T("Люди"), a_end),
         # блок B — по одному
