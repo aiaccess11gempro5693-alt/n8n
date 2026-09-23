@@ -506,3 +506,210 @@ def counter(path, big, small, w=540):
         y += 48
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 8
+# (размытые запросы, карточка вопросов, граница «фармацевт / врач», развилка,
+# зачёркивание «не это — а это», формула «A > B», итог галочками)
+
+def _dashed_rrect(d, box, r, color, width=3, dash=14, gap=10):
+    """Пунктирный скруглённый прямоугольник (прямые участки пунктиром, углы — дугами)."""
+    x0, y0, x1, y1 = box
+    for a, b, fixed, horiz in ((x0 + r, x1 - r, y0, True), (x0 + r, x1 - r, y1, True),
+                               (y0 + r, y1 - r, x0, False), (y0 + r, y1 - r, x1, False)):
+        p = a
+        while p < b:
+            q = min(p + dash, b)
+            d.line([(p, fixed), (q, fixed)] if horiz else [(fixed, p), (fixed, q)], fill=color, width=width)
+            p = q + gap
+    for cx, cy, st in ((x0 + r, y0 + r, 180), (x1 - r, y0 + r, 270), (x1 - r, y1 - r, 0), (x0 + r, y1 - r, 90)):
+        d.arc([cx - r, cy - r, cx + r, cy + r], st, st + 90, fill=color, width=width)
+
+
+def fuzzy_chips(path, items, w=540, isz=72):
+    """Расплывчатые запросы: реплики в кавычках на полупрозрачных плашках с
+    пунктирной рамкой — «неточно», в отличие от чётких белых карточек."""
+    size = 36
+    while size > 24 and max(d0_len(f"«{t}»", S.font(S.F_HEADLINE, size)) for _, t in items) > w - isz - 70:
+        size -= 1
+    f = S.font(S.F_HEADLINE, size)
+    ch, gap = isz + 32, 18
+    h = len(items) * ch + (len(items) - 1) * gap
+    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    for i, (icon, text) in enumerate(items):
+        y = PAD + i * (ch + gap)
+        chip = Image.new("RGBA", (w, ch), (0, 0, 0, 0))
+        d = ImageDraw.Draw(chip)
+        d.rounded_rectangle([0, 0, w - 1, ch - 1], ch // 2, fill=(255, 255, 255, 205))
+        _dashed_rrect(d, [2, 2, w - 3, ch - 3], ch // 2 - 2, (140, 160, 195, 255))
+        ic = _icon(icon, isz)
+        ic.putalpha(ic.getchannel("A").point(lambda v: v * 80 // 100))
+        chip.alpha_composite(ic, (16, 16))
+        d.text((isz + 40, (ch - size * 1.2) // 2), f"«{text}»", font=f, fill=(88, 100, 125, 255))
+        img.alpha_composite(chip, (PAD, y))
+    img.save(path)
+    return path, PAD
+
+
+def question_card(path, kicker, items, w=640, isz=86):
+    """Карточка вопросов: киккер + строки «иконка + вопрос?» с зелёной меткой «?»
+    слева — перечень вопросов одной волной."""
+    f_k, f_q = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 40)
+    row = isz + 26
+    h = 36 + 40 + len(items) * row + 20
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 30), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 80
+    for icon, q in items:
+        cy = y + isz // 2
+        d.ellipse([PAD + 30, cy - 22, PAD + 74, cy + 22], fill=S.GREEN)
+        f_m = S.font(S.F_HEADLINE, 30)
+        d.text((PAD + 52 - d.textlength("?", font=f_m) / 2, cy - 19), "?", font=f_m, fill=S.WHITE)
+        img.alpha_composite(_icon(icon, isz), (PAD + 92, y))
+        d.text((PAD + 92 + isz + 24, cy - 26), q, font=f_q, fill=NAVY)
+        y += row
+    img.save(path)
+    return path, PAD
+
+
+def boundary_card(path, left_icon, left_kicker, left_text, right_icon, right_kicker, right_text, w=1200):
+    """Граница ответственности: слева — зона «ваше» (синяя), справа за
+    вертикальной чертой — «не ваше» (серая, зачёркнутый значок)."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 38)
+    half = (w - 60) // 2
+    ll, rl = wrap(left_text, f_t, half - 170), wrap(right_text, f_t, half - 170)
+    h = max(len(ll), len(rl)) * 46 + 110
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD + 12, PAD + 12, PAD + half, PAD + h - 12], 22, fill=PALE_BLUE)
+    for x, icon, kick, lines, col, kcol in ((PAD + 12, left_icon, left_kicker, ll, NAVY, S.BLUE),
+                                            (PAD + half + 60, right_icon, right_kicker, rl, S.GRAY, S.GRAY)):
+        ic = _icon(icon, 96)
+        if col == S.GRAY:
+            ic = Image.blend(Image.new("RGBA", ic.size, (0, 0, 0, 0)), ic, 0.55)
+        img.alpha_composite(ic, (x + 24, PAD + (h - 96) // 2))
+        d.text((x + 140, PAD + 28), kick.upper(), font=f_k, fill=kcol)
+        y = PAD + 64
+        for line in lines:
+            d.text((x + 140, y), line, font=f_t, fill=col)
+            y += 46
+    # черта-граница
+    bx = PAD + half + 30
+    for yy in range(PAD + 18, PAD + h - 18, 22):
+        d.line([(bx, yy), (bx, min(yy + 12, PAD + h - 18))], fill=(214, 69, 65, 255), width=5)
+    # перечёркнутый кружок на правой иконке
+    cx, cy = PAD + half + 60 + 24 + 48, PAD + h // 2
+    d.ellipse([cx - 52, cy - 52, cx + 52, cy + 52], outline=(214, 69, 65, 255), width=6)
+    d.line([(cx - 36, cy + 36), (cx + 36, cy - 36)], fill=(214, 69, 65, 255), width=6)
+    img.save(path)
+    return path, PAD
+
+
+def fork_card(path, root, left, right, w=1200):
+    """Развилка: сверху корень (синяя плашка), от него две ветки вниз —
+    left/right = (icon, kicker, text, color)."""
+    f_r, f_k, f_t = S.font(S.F_HEADLINE, 38), S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 36)
+    bw = (w - 60) // 2
+    lines = [wrap(t, f_t, bw - 170) for _, _, t, _ in (left, right)]
+    bh = max(len(x) for x in lines) * 44 + 100
+    rw = int(d0_len(root, f_r)) + 100
+    rh, gap = 84, 70
+    h = rh + gap + bh
+    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    rx = PAD + (w - rw) // 2
+    img.alpha_composite(_card(rw, rh, S.BLUE, radius=rh // 2), (rx - PAD, 0))
+    d = ImageDraw.Draw(img)
+    d.text((rx + 50, PAD + (rh - 46) // 2), root, font=f_r, fill=S.WHITE)
+    # ветки: от низа корня вниз, затем в стороны
+    cx, y0, ym = PAD + w // 2, PAD + rh, PAD + rh + gap // 2
+    lx, rx2 = PAD + bw // 2, PAD + w - bw // 2
+    for a, b in (((cx, y0), (cx, ym)), ((lx, ym), (rx2, ym)), ((lx, ym), (lx, PAD + rh + gap)),
+                 ((rx2, ym), (rx2, PAD + rh + gap))):
+        d.line([a, b], fill=S.LIGHT_BLUE, width=5)
+    for k, ((icon, kick, _, col), ls) in enumerate(zip((left, right), lines)):
+        x = PAD + k * (bw + 60)
+        box = _card(bw, bh, S.WHITE, radius=26)
+        db = ImageDraw.Draw(box)
+        db.rounded_rectangle([PAD, PAD, PAD + bw, PAD + bh], 26, outline=col, width=4)
+        box.alpha_composite(_icon(icon, 100), (PAD + 22, PAD + (bh - 100) // 2))
+        db.text((PAD + 144, PAD + 24), kick.upper(), font=f_k, fill=col)
+        y = PAD + 58
+        for line in ls:
+            db.text((PAD + 144, y), line, font=f_t, fill=NAVY)
+            y += 44
+        img.alpha_composite(box, (x - PAD, rh + gap))
+    img.save(path)
+    return path, PAD
+
+
+def d0_len(text, font):
+    return ImageDraw.Draw(Image.new("RGBA", (4, 4))).textlength(text, font=font)
+
+
+def strike_card(path, wrong, right, w=540):
+    """«Не это — а это»: зачёркнутые серые слова столбиком, под ними — верное
+    слово крупно зелёным на светло-зелёной плашке."""
+    f_w, f_r = S.font(S.F_HEADLINE, 46), S.font(S.F_HEADLINE, 64)
+    h = 40 + len(wrong) * 64 + 20 + 110 + 36
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    y = PAD + 36
+    for word in wrong:
+        d.text((PAD + 44, y), word, font=f_w, fill=S.GRAY)
+        tw = d.textlength(word, font=f_w)
+        d.line([(PAD + 36, y + 38), (PAD + 52 + tw, y + 34)], fill=(214, 69, 65, 255), width=6)
+        y += 64
+    y += 20
+    d.rounded_rectangle([PAD + 28, y, PAD + w - 28, y + 110], 22, fill=(226, 245, 234, 255))
+    _mark(d, PAD + 84, y + 55, 30, True)
+    d.text((PAD + 136, y + 18), right, font=f_r, fill=S.GREEN)
+    img.save(path)
+    return path, PAD
+
+
+def formula_card(path, left, op, right, w=1200, caption=None):
+    """Формула «A > B»: две плашки с иконкой и текстом и крупный знак между
+    ними; левая — синяя (главное), правая — белая (с чем сравниваем)."""
+    f_t, f_op, f_c = S.font(S.F_HEADLINE, 44), S.font(S.F_HEADLINE, 120), S.font(S.F_SEMIBOLD, 30)
+    opw = 130
+    bw = (w - opw) // 2
+    ll, rl = wrap(left[1], f_t, bw - 170), wrap(right[1], f_t, bw - 170)
+    bh = max(len(ll), len(rl)) * 52 + 70
+    h = bh + (60 if caption else 0)
+    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    for k, ((icon, _), ls, fill, col) in enumerate(((left, ll, S.BLUE, S.WHITE), (right, rl, S.WHITE, NAVY))):
+        x = k * (bw + opw)
+        box = _card(bw, bh, fill, radius=28)
+        db = ImageDraw.Draw(box)
+        box.alpha_composite(_icon(icon, 110), (PAD + 24, PAD + (bh - 110) // 2))
+        y = PAD + (bh - len(ls) * 52) // 2
+        for line in ls:
+            db.text((PAD + 158, y), line, font=f_t, fill=col)
+            y += 52
+        img.alpha_composite(box, (x, 0))
+    d = ImageDraw.Draw(img)
+    d.text((PAD + bw + (opw - d.textlength(op, font=f_op)) / 2, PAD + bh / 2 - 82), op, font=f_op, fill=S.GREEN)
+    if caption:
+        d.text((PAD + 10, PAD + bh + 22), caption, font=f_c, fill=S.GRAY)
+    img.save(path)
+    return path, PAD
+
+
+def ticks_card(path, kicker, items, w=640):
+    """Итог галочками: киккер и 2-4 строки с зелёной галочкой — одной волной."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 38)
+    rows = [wrap(t, f_t, w - 150) for t in items]
+    h = 36 + 44 + sum(len(r) * 46 + 22 for r in rows) + 20
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 30), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 84
+    for r in rows:
+        _mark(d, PAD + 62, y + 23, 22, True)
+        for line in r:
+            d.text((PAD + 104, y), line, font=f_t, fill=NAVY)
+            y += 46
+        y += 22
+    img.save(path)
+    return path, PAD
