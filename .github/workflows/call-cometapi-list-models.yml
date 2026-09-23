@@ -1,0 +1,59 @@
+name: List CometAPI Models
+
+# Разовый диагностический мост к каталогу моделей CometAPI (GET
+# https://api.cometapi.com/api/models) — тот же принцип, что и другие
+# GitHub Actions-мосты (песочница без прямого доступа в интернет).
+# Используется, чтобы найти реальные audio/speech-модели, доступные
+# через уже подключённый ключ COMETAPI_KEY (та же инфраструктура, что
+# уже используется для Gemini/Nano Banana) — вместо нового вендора.
+#
+# Требуется тот же repository secret COMETAPI_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      search:
+        description: 'Подстрока для фильтра по id/имени модели (регистронезависимо, пусто = показать всё)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  list-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List models
+        env:
+          COMETAPI_KEY: ${{ secrets.COMETAPI_KEY }}
+          SEARCH: ${{ github.event.inputs.search }}
+        run: |
+          if [ -z "$COMETAPI_KEY" ]; then
+            echo "::error::Секрет COMETAPI_KEY не задан в настройках репозитория"
+            exit 1
+          fi
+          curl -sS "https://api.cometapi.com/api/models" \
+            -H "Authorization: Bearer $COMETAPI_KEY" \
+            -o /tmp/models.json \
+            -w "\nHTTP_STATUS:%{http_code}\n"
+          echo "--- Models ---"
+          python3 -c "
+          import json, os
+          search = (os.environ.get('SEARCH') or '').lower()
+          try:
+              data = json.load(open('/tmp/models.json'))
+          except Exception as e:
+              print('Failed to parse response:', e)
+              print(open('/tmp/models.json').read()[:3000])
+              raise SystemExit(0)
+          items = data.get('data', data) if isinstance(data, dict) else data
+          if isinstance(items, dict):
+              items = items.get('models', [])
+          print(f'Total entries: {len(items)}')
+          for m in items:
+              mid = m.get('id') or m.get('model') or m.get('name') or str(m)
+              if search and search not in str(mid).lower():
+                  continue
+              print(mid)
+          "
