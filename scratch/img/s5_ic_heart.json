@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_heart",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two hands gently holding a heart",
+    "meaning": "для посетителя это очень много значит"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_warm",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a warm smiling face with a small heart",
+    "meaning": "тепло, с улыбкой"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

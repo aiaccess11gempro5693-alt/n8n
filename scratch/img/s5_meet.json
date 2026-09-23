@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s5_meet",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "prompt": "An elderly woman who looks unwell and worried comes to the pharmacy counter; the pharmacist leans in with care and compassion, listening attentively, offering support. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+    "meaning": "мы первыми встречаем человека в непростую для него минуту",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ]
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

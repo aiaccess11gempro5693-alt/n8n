@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s5_ic_free",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an open empty palm hand, light and easy gesture",
+    "meaning": "приветствие ничего не стоит фармацевту"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove strange green line artifact on the palm and make the greeting metaphor clearer."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

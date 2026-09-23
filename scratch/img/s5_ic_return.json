@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_return",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a smiling person with a circular arrow around them meaning coming back again",
+    "meaning": "человек охотно возвращается снова"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

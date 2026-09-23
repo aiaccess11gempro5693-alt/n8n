@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s5_survey",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "prompt": "A smartphone held in a hand showing a simple poll screen made only of shapes: round radio buttons, checkmarks and a star rating, no letters or words at all; soft pharmacy background blurred.",
+    "meaning": "в конце ролика — несколько коротких вопросов, опрос-мнение"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Replace the photorealistic hand and background with a semi-flat editorial illustration style."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
