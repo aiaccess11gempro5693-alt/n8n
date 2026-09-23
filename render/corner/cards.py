@@ -240,3 +240,21 @@ def compare_row(path, icon_src, text, good, w=540, h=110):
             d.line([cx - 9, cy - 9 * s, cx + 9, cy + 9 * s], fill=(214, 69, 65, 255), width=5)
     img.save(path)
     return path, PAD
+
+
+def icon_trio(path, items, w=540, isz=120):
+    """Одна карточка с 2-3 иконками в ряд и короткой подписью под каждой —
+    вместо нескольких отдельных строк, всплывающих по одной (меньше мелькания)."""
+    f = S.font(S.F_SEMIBOLD, 30)
+    n = len(items)
+    cell = (w - 40) // n
+    h = 30 + isz + 16 + 40 + 26
+    img = _card(w, h, S.WHITE, radius=24)
+    d = ImageDraw.Draw(img)
+    for k, (src, label) in enumerate(items):
+        cx = PAD + 20 + cell * k + cell // 2
+        img.alpha_composite(_icon(src, isz), (cx - isz // 2, PAD + 30))
+        tw = d.textlength(label, font=f)
+        d.text((cx - tw / 2, PAD + 30 + isz + 16), label, font=f, fill=S.TEXT_DARK)
+    img.save(path)
+    return path, PAD
