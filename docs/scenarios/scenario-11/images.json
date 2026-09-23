@@ -1,0 +1,143 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {
+      "name": "s11_combo",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter places a second small plain box next to the main medicine box and explains its benefit with a friendly open-palm gesture; the customer listens with interest and nods. Warm, caring mood. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes are plain and unlabeled.",
+      "meaning": "к средству логично добавить защиту — полнота помощи"
+    },
+    {
+      "name": "s11_full",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. A customer walks away from the pharmacy counter with a complete paper bag holding two or three plain boxes, looking relieved and confident; the pharmacist from the photo reference (same face, hair, white coat) behind the counter smiles, satisfied with a job well done. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes are plain and unlabeled.",
+      "meaning": "человек уходит не с половиной решения, а с полным"
+    },
+    {
+      "name": "s11_advice",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) listens attentively to a customer first, then gives advice; the customer looks trusting and grateful, as if hearing advice from a specialist, not a sales pitch. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes are plain and unlabeled.",
+      "meaning": "дополнение звучит как совет специалиста"
+    },
+    {
+      "name": "s11_ic_seller",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of two hands passing a plain box over a counter, simple transaction; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "продавец отпускает то, что попросили"
+    },
+    {
+      "name": "s11_ic_pharm",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person's head in profile with a forward arrow and a small medical cross, meaning thinking one step ahead; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "фармацевт думает на шаг вперёд"
+    },
+    {
+      "name": "s11_ic_stomach",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a stomach with a small pill and a little lightning bolt, meaning a medicine irritates the stomach; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "средство, которое раздражает желудок"
+    },
+    {
+      "name": "s11_ic_shield",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a stomach covered by a shield, meaning stomach protection; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "защита желудка"
+    },
+    {
+      "name": "s11_ic_treat",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a capsule pill and a blister pack, meaning the main treatment; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "основное лечение"
+    },
+    {
+      "name": "s11_ic_recover",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person with an upward arrow and a small heart, meaning faster recovery and relief; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "ускорит восстановление, облегчит состояние"
+    },
+    {
+      "name": "s11_ic_care",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clipboard with a heart on it, meaning care expressed as a recommendation; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "забота, оформленная в рекомендацию"
+    },
+    {
+      "name": "s11_ic_done",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a medal ribbon badge with a check mark, meaning a specialist who did everything possible; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "сделал всё, что мог"
+    },
+    {
+      "name": "s11_ic_need",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a magnifying glass over a person silhouette, meaning understanding the customer's need; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "понятна потребность"
+    },
+    {
+      "name": "s11_ic_offer",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an open hand offering a small plain box, meaning a product suggestion; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "предложение"
+    },
+    {
+      "name": "s11_ic_benefit",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a thumbs up with a small plus sign, meaning explained benefit; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "объясняется пользой"
+    },
+    {
+      "name": "s11_ic_silence",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a speech bubble with a zipper closing it, meaning staying silent; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "молчание"
+    },
+    {
+      "name": "s11_ic_thanks",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a heart held in two hands, meaning gratitude; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "спасибо"
+    },
+    {
+      "name": "s11_ic_survey",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clipboard with three short lines and check marks, meaning a short survey; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "несколько вопросов"
+    },
+    {
+      "name": "s11_ic_listen",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an ear with small sound waves and a heart, meaning we want to hear you; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "нам важно услышать именно вас"
+    }
+  ]
+}
