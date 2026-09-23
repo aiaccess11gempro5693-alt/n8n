@@ -84,15 +84,32 @@ def caption_timeline(words, dur, panel_w=G.SUBTITLE_W):
     следующего. words — [(слово, время от начала сцены)]."""
     max_w = panel_w - C.ACCENT_BAR_W - C.PAD_LEFT - C.PAD_RIGHT
     sentences, cur = [], []
-    for w, _ in words:
+    for k, (w, _) in enumerate(words):
         cur.append(w)
-        if re.search(r"[.!?…»]$", w):
+        nxt = words[k + 1][0] if k + 1 < len(words) else "A"
+        # «…» перед строчной буквой — пауза внутри фразы, а не конец предложения
+        if re.search(r"[.!?»]$", w) or (w.endswith("…") and nxt.lstrip("«—")[:1].isupper()):
             sentences.append(cur)
             cur = []
     if cur:
         sentences.append(cur)
-    chunks = []
+    # длинное предложение сначала режем по двоеточию (напр. перед цитатой),
+    # чтобы чанк не рвал цитату: «…за секунду: «Чтобы» / «дать вам…»
+    parts = []
     for sent in sentences:
+        if len(C.wrap_into_chunks(" ".join(sent), max_w)) > 1:
+            cur = []
+            for w in sent:
+                cur.append(w)
+                if w.endswith(":") and len(cur) > 1:
+                    parts.append(cur)
+                    cur = []
+            if cur:
+                parts.append(cur)
+        else:
+            parts.append(sent)
+    chunks = []
+    for sent in parts:
         sch = C.wrap_into_chunks(" ".join(sent), max_w)
         if len(sch) > 1:
             # делим предложение на части поровну, чтобы не оставался "хвост"
