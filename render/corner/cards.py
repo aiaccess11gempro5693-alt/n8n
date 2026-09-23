@@ -415,3 +415,94 @@ def order_card(path, first, second, w=540):
     d.polygon([(ax - 14, ay + 36), (ax + 14, ay + 36), (ax, ay + 56)], fill=S.GREEN)
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 7
+# (метки-ситуации, «ситуация → что делать», готовая фраза-скрипт, счётчик)
+
+def tag_chips(path, items, w=540, isz=64, cols=2):
+    """Метки-ситуации: плашки «иконка + короткое слово» сеткой в cols колонок."""
+    gap, ch = 16, isz + 28
+    cw = (w - gap * (cols - 1)) // cols
+    rows = (len(items) + cols - 1) // cols
+    h = rows * ch + (rows - 1) * gap
+    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    f = S.font(S.F_HEADLINE, 30)
+    for i, (icon, label) in enumerate(items):
+        x, y = PAD + (i % cols) * (cw + gap), PAD + (i // cols) * (ch + gap)
+        chip = _card(cw, ch, S.WHITE, radius=ch // 2)
+        chip.alpha_composite(_icon(icon, isz), (PAD + 14, PAD + 14))
+        d = ImageDraw.Draw(chip)
+        lines = wrap(label, f, cw - isz - 50)
+        ty = PAD + (ch - len(lines) * 36) / 2
+        for line in lines:
+            d.text((PAD + isz + 30, ty), line, font=f, fill=NAVY)
+            ty += 36
+        img.alpha_composite(chip, (x - PAD, y - PAD))
+    img.save(path)
+    return path, PAD
+
+
+def case_card(path, icon_src, situation, action, w=1000):
+    """«Ситуация → что делать»: слева серая ситуация с иконкой, стрелка,
+    справа синий блок с действием."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 38)
+    left_w = int(w * 0.44)
+    right_w = w - left_w - 70
+    ll, rl = wrap(situation, f_t, left_w - 150), wrap(action, f_t, right_w - 60)
+    h = max(len(ll), len(rl)) * 46 + 110
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    img.alpha_composite(_icon(icon_src, 96), (PAD + 26, PAD + (h - 96) // 2))
+    d.text((PAD + 140, PAD + 26), "СИТУАЦИЯ", font=f_k, fill=S.GRAY)
+    y = PAD + 62
+    for line in ll:
+        d.text((PAD + 140, y), line, font=f_t, fill=NAVY)
+        y += 46
+    ax = PAD + left_w + 12
+    d.polygon([(ax, PAD + h / 2 - 18), (ax + 30, PAD + h / 2), (ax, PAD + h / 2 + 18)], fill=S.GREEN)
+    rx = PAD + left_w + 60
+    d.rounded_rectangle([rx, PAD + 12, PAD + w - 12, PAD + h - 12], 22, fill=S.BLUE)
+    d.text((rx + 30, PAD + 26), "ЧТО ДЕЛАТЬ", font=f_k, fill=(214, 230, 255, 255))
+    y = PAD + 62
+    for line in rl:
+        d.text((rx + 30, y), line, font=f_t, fill=S.WHITE)
+        y += 46
+    img.save(path)
+    return path, PAD
+
+
+def script_card(path, label, text, w=1000, size=44):
+    """Готовая фраза: белая карточка, зелёная полоса, метка «Скажите», текст
+    фразы крупно в кавычках."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, size)
+    lines = wrap(text, f_t, w - 150)
+    lh = int(size * 1.25)
+    h = 40 + 40 + len(lines) * lh + 34
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD, PAD, PAD + 12, PAD + h], 6, fill=S.GREEN)
+    d.text((PAD + 50, PAD + 30), label.upper(), font=f_k, fill=S.GREEN)
+    d.text((PAD + w - 110, PAD - 10), "”", font=S.font(S.F_HEADLINE, 150), fill=PALE_BLUE)
+    y = PAD + 76
+    for line in lines:
+        d.text((PAD + 50, y), line, font=f_t, fill=NAVY)
+        y += lh
+    img.save(path)
+    return path, PAD
+
+
+def counter(path, big, small, w=540):
+    """Счётчик: огромное «×100» и подпись под ним, без плашки-фона, в светлой карточке."""
+    f_b, f_s = S.font(S.F_HEADLINE, 150), S.font(S.F_HEADLINE, 38)
+    lines = wrap(small, f_s, w - 70)
+    h = 170 + len(lines) * 48 + 40
+    img = _card(w, h, (255, 255, 255, 240), radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 4), big, font=f_b, fill=S.BLUE)
+    y = PAD + 180
+    for line in lines:
+        d.text((PAD + 38, y), line, font=f_s, fill=NAVY)
+        y += 48
+    img.save(path)
+    return path, PAD
