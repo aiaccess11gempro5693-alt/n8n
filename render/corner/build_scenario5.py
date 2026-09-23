@@ -1,0 +1,241 @@
+"""Сценарий 5 «Приветствие и установление контакта» — полный ролик.
+
+Сцены (границы — середины пауз в озвучке scratch/scenario5-full-v2.mp3):
+  1  0.00–23.50  полный кадр, Avatar IV — тема ролика → тревога → контакт взглядом
+  2 23.50–45.80  угол, Avatar III (съезд) — приветствие как сигнал доверия
+  3 45.80–66.46  угол, Avatar III — цепочка доверия → доверие начинается здесь
+  4 66.46–84.04  полный кадр, Avatar IV (возврат) — приветствие это работа →
+                 вам ничего не стоит / ему очень много значит
+  5 84.04–102.43 угол, Avatar III (съезд) — как здороваться → больше чем отпуск
+                 препаратов → наша профессия помогать, спасибо
+  6 102.43–114.26 полный кадр, Avatar IV (возврат) — опрос в конце
+
+Правило визуального слоя (CLAUDE.md, 23.09.2026 (10)): в кадре одновременно —
+элементы одной мысли; блок держится, пока диктор его раскрывает; ничего
+короче ~2 с. Все картинки — scratch/img/ (генерация tools/gen_brand_images.py
+с брендбуком как референсом, задания docs/scenarios/scenario-5/images-*.json).
+
+Запуск:  python3 -m render.corner.build_scenario5
+Выход:   render/corner/scenario5-full.mp4
+"""
+import json
+import os
+
+from PIL import Image
+
+from . import brand_style as S
+from . import cards as K
+from . import montage as M
+from .montage import item
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+HERE = os.path.dirname(os.path.abspath(__file__))
+TMP = f"{HERE}/_frames"
+IMG = f"{ROOT}/scratch/img"
+AUDIO = f"{ROOT}/scratch/scenario5-full-v2.mp3"
+WHISPER = f"{ROOT}/scratch/scenario5-full-v2-whisper.json"
+SCENARIO = f"{ROOT}/docs/scenarios/scenario-5-greeting.md"
+OUT = f"{HERE}/scenario5-full.mp4"
+
+# раскладка: полный кадр — колонки по бокам от аватара; угол — заголовок
+# сверху, картинка слева, текстовая колонка справа (над углом с аватаром)
+L, R, W = 50, 1330, 540
+CX, CRX, CRW, CY = 100, 800, 1020, 230
+
+
+def f(name):
+    return f"{TMP}/{name}.png"
+
+
+def img(name):
+    return f"{IMG}/{name}.png"
+
+
+def h_of(made):
+    png, pad = made
+    return Image.open(png).height - 2 * pad
+
+
+# ---------------------------------------------------------------- сцены
+
+def scene1(T, dur):
+    t_worry, t_eyes, t_cmp, end = T("почти"), T("Первое"), T("витрину"), dur - 0.25
+    worry_end = t_eyes - 0.1
+    t_self = T("за", t_worry)
+    t_child = T("за", t_self + 0.1)
+    t_close = T("за", t_child + 0.1)
+    worry = K.headline(f("s1_worry"), "Почти каждый приходит", "с лёгкой тревогой", ["тревогой"], size=58, w=W)
+    ry = 90 + h_of(worry) + 20
+    return [
+        item(K.topic_card(f("s1_topic"), "Тема ролика", "Приветствие и установление контакта",
+                          "Первый шаг к доверию покупателя"), L, 90, 0.4, t_worry - 0.3),
+        item(K.image_card(f("s1_people"), img("s5_people"), W), L, 90, t_worry, worry_end),
+        item(worry, R, 90, t_worry, worry_end),
+        item(K.icon_row(f("s1_self"), img("s5_ic_self"), "За себя"), R, ry, t_self, worry_end),
+        item(K.icon_row(f("s1_child"), img("s5_ic_child"), "За ребёнка"), R, ry + 130, t_child, worry_end),
+        item(K.icon_row(f("s1_close"), img("s5_ic_close"), "За близкого человека"), R, ry + 260, t_close,
+             worry_end),
+        item(K.image_card(f("s1_eyes"), img("s5_eyes"), W, "Контакт начинается со взгляда"), L, 90, t_eyes, end),
+        item(K.headline(f("s1_you"), "Главное", "Первым он ищет глазами вас", ["вас"], size=62, w=W),
+             R, 90, t_eyes, t_cmp - 0.1),
+        item(K.compare_row(f("s1_c1"), img("s5_ic_showcase"), "Витрина", False), R, 90, t_cmp, end),
+        item(K.compare_row(f("s1_c2"), img("s5_ic_price"), "Ценник", False), R, 220, T("ценник"), end),
+        item(K.compare_row(f("s1_c3"), img("s5_ic_specialist"), "Живой специалист", True), R, 350,
+             T("живого"), end),
+    ]
+
+
+def scene2(T, dur):
+    t0 = M.MOVE_D
+    t_q = T("Я")
+    return [
+        item(M.section_header(f("s2_header"), "Приветствие", "Первый сигнал доверия"), CX, 70, t0),
+        item(K.image_card(f("s2_greet"), img("s5_greeting"), 640), CX, CY, t0 + 0.2),
+        item(K.headline(f("s2_trifle"), "Кажется мелочью?", "На самом деле — сильный сигнал", ["сильный"],
+                        size=54, w=CRW), CRX, CY, t0 + 0.4, t_q - 0.05),
+        item(M.quote_card(f("s2_quote"), "Что слышит человек", "«Я вас вижу. Я готов помочь»"), CRX, CY, t_q),
+        item(K.icon_row(f("s2_r1"), img("s5_ic_phrase"), "Одна тёплая фраза в первые секунды", w=CRW, h=95,
+                        num="01", num_color=S.BLUE, text_size=34), CRX, 425, T("Одна")),
+        item(K.icon_row(f("s2_r2"), img("s5_ic_relief"), "Напряжение спадает, человек выдыхает", w=CRW, h=95,
+                        num="02", num_color=S.LIGHT_BLUE, text_size=34), CRX, 532, T("напряжение")),
+        item(K.icon_row(f("s2_r3"), img("s5_ic_talk"), "Рассказывает спокойнее и подробнее", w=CRW, h=95,
+                        num="03", num_color=S.GREEN, text_size=34), CRX, 639, T("начинает")),
+    ]
+
+
+def scene3(T, dur):
+    t_trust = T("Доверие")
+    a_end = t_trust - 0.1
+    steps = [
+        ("01", "s5_ic_talk", "Говорит спокойнее и подробнее", S.BLUE, T("спокойнее")),
+        ("02", "s5_ic_help", "Вы точнее помогаете", S.BLUE, T("точнее")),
+        ("03", "s5_ic_leave", "Уходит спокойным", S.LIGHT_BLUE, T("уходит")),
+        ("04", "s5_ic_return", "Охотно возвращается", S.GREEN, T("возвращается")),
+    ]
+    sw, gap = 380, 67                         # 4 карточки + 3 стрелки = 1720
+    out = [item(M.section_header(f("s3_header"), "Почему это важно", "Цепочка доверия"), CX, 70, 0.3, a_end)]
+    x = CX
+    for k, (num, ic, text, col, t) in enumerate(steps):
+        card = K.step_card(f(f"s3_step{k}"), img(ic), text, w=sw, num=num, num_color=col)
+        out.append(item(card, x, CY, t, a_end))
+        if k:
+            out.append(item(K.arrow(f(f"s3_arrow{k}")), x - gap // 2 - 22, CY + 110, t, a_end))
+        x += sw + gap
+    out.append(item(M.quote_card(f("s3_goods"), "Возвращаются", "не за товаром — а к вам", w=1200, h=150,
+                                 size=46, color=S.GREEN), CX, 585, T("товаром"), a_end))
+    # блок "доверие начинается здесь"
+    out += [
+        item(M.section_header(f("s3_header2"), "В эту первую секунду", "Здесь начинается доверие"), CX, 70,
+             t_trust),
+        item(K.image_card(f("s3_trust"), img("s5_trust"), 640), CX, CY, t_trust),
+        item(K.headline(f("s3_trust_h"), "Доверие", "ко всей аптеке начинается с вашего приветствия",
+                        ["приветствия"], size=56, w=CRW), CRX, CY, t_trust + 0.3),
+    ]
+    return out
+
+
+def scene4(T, dur):
+    t0 = M.MOVE_D
+    t_b = T("Оно") - 0.1
+    first = K.headline(f("s4_first"), "Самая первая из самых важных", "Первый этап диалога", ["Первый"],
+                       size=46, w=W)
+    ry = 90 + h_of(first) + 20
+    t_first = T("Самая")
+    return [
+        # блок "приветствие — это работа, первый этап диалога"
+        item(K.headline(f("s4_work"), "Поэтому", "Тёплое приветствие — это работа", ["работа"], size=62, w=W),
+             R, 90, t0, t_b),
+        item(first, L, 90, t_first, t_b),
+        item(K.icon_row(f("s4_st1"), img("s5_ic_greet"), "Приветствие", num="01", num_color=S.GREEN,
+                        outline=S.GREEN), L, ry, t_first + 0.3, t_b),
+        item(K.icon_row(f("s4_st2"), img("s5_ic_ask"), "Выяснение потребности", num="02", dim=True),
+             L, ry + 130, t_first + 0.6, t_b),
+        item(K.icon_row(f("s4_st3"), img("s5_ic_advice"), "Рекомендация", num="03", dim=True),
+             L, ry + 260, t_first + 0.9, t_b),
+        # блок "вам — ничего не стоит / ему — очень много значит"
+        item(K.step_card(f("s4_free"), img("s5_ic_free"), "Ничего не стоит", w=W, kicker="Для вас",
+                         text_size=40), L, 90, t_b + 0.1),
+        item(K.step_card(f("s4_much"), img("s5_ic_heart"), "Очень много значит", w=W,
+                         kicker="Для того, кто перед вами", text_size=40), R, 90, T("очень")),
+        item(K.icon_row(f("s4_pain"), img("s5_ic_pain"), "Особенно когда тревожно или больно", text_size=32),
+             R, 400, T("Особенно")),
+    ]
+
+
+def scene5(T, dur):
+    t0 = M.MOVE_D
+    t_b, t_c = T("Мы"), T("Это")
+    a_end, b_end = t_b - 0.1, t_c - 0.1
+    return [
+        # блок "как здороваться"
+        item(M.section_header(f("s5_h1"), "Как здороваться", "Не бойтесь здороваться первым"), CX, 70, t0, a_end),
+        item(K.image_card(f("s5_hello"), img("s5_first_hello"), 640), CX, CY, t0 + 0.2, a_end),
+        item(K.icon_row(f("s5_r1"), img("s5_ic_first"), "Первым", w=CRW, h=95, text_size=36), CRX, CY,
+             max(t0 + 0.4, T("первым")), a_end),
+        item(K.icon_row(f("s5_r2"), img("s5_ic_warm"), "Тепло, с улыбкой", w=CRW, h=95, text_size=36), CRX,
+             CY + 115, T("тепло"), a_end),
+        item(K.icon_row(f("s5_r3"), img("s5_ic_eye"), "Глядя человеку в глаза", w=CRW, h=95, text_size=36),
+             CRX, CY + 230, T("глядя"), a_end),
+        # блок "больше, чем отпуск препаратов"
+        item(M.section_header(f("s5_h2"), "Наша роль", "Больше, чем отпуск препаратов"), CX, 70, t_b, b_end),
+        item(K.image_card(f("s5_meet"), img("s5_meet"), 640), CX, CY, t_b),
+        item(K.compare_row(f("s5_c1"), img("s5_ic_pills"), "Просто отпускаем препараты", False, w=CRW),
+             CRX, CY, T("просто"), b_end),
+        item(K.compare_row(f("s5_c2"), img("s5_ic_heart"), "Первыми встречаем человека в непростую минуту",
+                           True, w=CRW), CRX, CY + 130, T("первыми"), b_end),
+        # блок "наша профессия — помогать"
+        item(M.section_header(f("s5_h3"), "Главное", "Наша профессия — помогать"), CX, 70, t_c),
+        item(M.quote_card(f("s5_help"), "Это и есть наша профессия", "Помогать", size=60), CRX, CY, t_c),
+        item(M.quote_card(f("s5_thanks"), "Спасибо", "что делаете это по-человечески", size=44, color=S.GREEN),
+             CRX, CY + 210, T("Спасибо")),
+    ]
+
+
+def scene6(T, dur):
+    t_q = T("конце")
+    head = K.headline(f("s6_head"), "В конце ролика", "Несколько коротких вопросов", ["вопросов"], size=56, w=W)
+    ry = 90 + h_of(head) + 20
+    return [
+        item(K.image_card(f("s6_survey"), img("s5_survey"), W, "Опрос-мнение"), L, 90, t_q),
+        item(head, R, 90, t_q),
+        item(K.compare_row(f("s6_c1"), img("s5_ic_exam"), "Проверка знаний", False), R, ry, T("проверка")),
+        item(K.compare_row(f("s6_c2"), img("s5_ic_opinion"), "Ваше мнение", True), R, ry + 130, T("важно")),
+        item(K.compare_row(f("s6_c3"), img("s5_ic_next"), "Учтём в следующих роликах", True), R, ry + 260,
+             T("обязательно")),
+    ]
+
+
+SCENES = [
+    # (номер, начало, конец, mode, enter, контент)
+    (1, 0.00, 23.50, "full", "none", scene1),
+    (2, 23.50, 45.80, "corner", "shrink", scene2),
+    (3, 45.80, 66.46, "corner", "none", scene3),
+    (4, 66.46, 84.04, "full", "grow", scene4),
+    (5, 84.04, 102.43, "corner", "shrink", scene5),
+    (6, 102.43, 114.26, "full", "grow", scene6),
+]
+
+
+def main():
+    os.makedirs(TMP, exist_ok=True)
+    paras = M.scenario_paragraphs(SCENARIO)
+    all_words = M.word_times(" ".join(paras), json.load(open(WHISPER, encoding="utf-8"))["words"])
+    only = {int(x) for x in os.environ.get("ONLY", "").split(",") if x}
+    parts = []
+    for n, a, b, mode, enter, content in SCENES:
+        dur = round(b - a, 3)
+        words = [(w, round(t - a, 3)) for w, t in all_words if a <= t < b]
+        out = f"{TMP}/s5_scene{n}.mp4"
+        parts.append(out)
+        if only and n not in only:
+            continue
+        items = content(M.finder(words), dur)
+        M.render_scene(f"{ROOT}/scratch/s5-scene{n}.mp4", dur, words, mode, enter, items, out, TMP)
+        print(f"scene {n} ok", flush=True)
+    if not only:
+        M.concat(parts, AUDIO, OUT, TMP)
+        print(OUT)
+
+
+if __name__ == "__main__":
+    main()

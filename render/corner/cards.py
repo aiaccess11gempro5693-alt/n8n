@@ -133,9 +133,14 @@ def _icon(src, size):
     return out
 
 
-def icon_row(path, icon_src, text, w=540, h=110, num=None, num_color=None, text_size=36):
-    """Белая строка: круглая иконка + текст (опционально номер-кружок)."""
+def icon_row(path, icon_src, text, w=540, h=110, num=None, num_color=None, text_size=36, dim=False,
+             outline=None):
+    """Белая строка: круглая иконка + текст (опционально номер-кружок).
+    dim — приглушённая строка (этап, до которого ещё не дошли);
+    outline — цвет рамки-акцента (выделенный пункт)."""
     img = _card(w, h, S.WHITE, radius=22)
+    if outline:
+        ImageDraw.Draw(img).rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 22, outline=outline, width=4)
     d = ImageDraw.Draw(img)
     x = PAD + 18
     if num:
@@ -154,8 +159,47 @@ def icon_row(path, icon_src, text, w=540, h=110, num=None, num_color=None, text_
     for line in lines:
         d.text((x, y), line, font=f, fill=S.TEXT_DARK)
         y += lh
+    if dim:
+        a = img.getchannel("A").point(lambda v: v * 45 // 100)
+        img.putalpha(a)
     img.save(path)
     return path, PAD
+
+
+def step_card(path, icon_src, text, w=400, num=None, num_color=None, kicker=None, text_size=34):
+    """Вертикальная карточка: крупная иконка сверху, (номер), текст снизу —
+    для цепочек шагов и пар сравнения."""
+    f = S.font(S.F_SEMIBOLD, text_size)
+    lines = wrap(text, f, w - 56)
+    lh = int(text_size * 1.25)
+    isz = 120
+    h = 30 + isz + 22 + (34 if kicker else 0) + len(lines) * lh + 30
+    img = _card(w, h, S.WHITE, radius=24)
+    d = ImageDraw.Draw(img)
+    img.alpha_composite(_icon(icon_src, isz), (PAD + 28, PAD + 30))
+    if num:
+        cx, cy = PAD + 28 + isz - 6, PAD + 36
+        d.ellipse([cx - 24, cy - 24, cx + 24, cy + 24], fill=num_color or S.BLUE, outline=S.WHITE, width=3)
+        f_n = S.font(S.F_SEMIBOLD, 22)
+        tw = d.textlength(num, font=f_n)
+        d.text((cx - tw / 2, cy - 14), num, font=f_n, fill=S.WHITE)
+    y = PAD + 30 + isz + 22
+    if kicker:
+        d.text((PAD + 28, y), kicker.upper(), font=S.font(S.F_SEMIBOLD, 24), fill=S.LIGHT_BLUE)
+        y += 34
+    for line in lines:
+        d.text((PAD + 28, y), line, font=f, fill=S.TEXT_DARK)
+        y += lh
+    img.save(path)
+    return path, PAD
+
+
+def arrow(path, color=S.LIGHT_BLUE, w=44, h=44):
+    """Шеврон-стрелка между шагами цепочки."""
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    ImageDraw.Draw(img).line([(12, 6), (32, h // 2), (12, h - 6)], fill=color, width=7, joint="curve")
+    img.save(path)
+    return path, 0
 
 
 def compare_row(path, icon_src, text, good, w=540, h=110):
