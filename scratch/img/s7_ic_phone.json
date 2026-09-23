@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s7_ic_phone",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a desk telephone handset ringing with small vibration lines",
+    "meaning": "звонит телефон"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

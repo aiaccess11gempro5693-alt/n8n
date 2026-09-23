@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s7_ic_warm",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two hands and a small heart passing back and forth with a circular arrow, meaning warmth that comes back",
+    "meaning": "секунда возвращается человеческим теплом"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

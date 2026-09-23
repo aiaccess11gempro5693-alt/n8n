@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s7_ic_door",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person stepping through a doorway already talking, with a small speech bubble",
+    "meaning": "человек с порога говорит, что ему нужно"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
