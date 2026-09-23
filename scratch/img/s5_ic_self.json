@@ -3,7 +3,7 @@
     "name": "s5_ic_self",
     "kind": "icon",
     "aspect": "1:1",
-    "prompt": "icon of one adult person (head and shoulders) with a small worried wavy line above the head",
+    "prompt": "icon of an ordinary adult customer in a casual sweater (head and shoulders, NOT a doctor or pharmacist), slightly worried face, a small wavy worry line above the head",
     "meaning": "тревога за себя (за своё здоровье)"
   },
   "status": "ok",

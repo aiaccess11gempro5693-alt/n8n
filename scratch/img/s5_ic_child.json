@@ -3,25 +3,15 @@
     "name": "s5_ic_child",
     "kind": "icon",
     "aspect": "1:1",
-    "prompt": "icon of an adult holding the hand of a small child",
-    "meaning": "тревога за ребёнка"
+    "prompt": "icon of a worried parent holding a small child close, the child with a thermometer; parent's eyebrows raised in concern",
+    "meaning": "тревога за ребёнка (ребёнок приболел, родитель волнуется)"
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "ok": false,
-      "issue": "Conveys child care and happiness instead of anxiety for a child, with odd hand artifacts."
-    },
-    {
-      "attempt": 2,
-      "ok": false,
-      "issue": "The illustration conveys care and support rather than anxiety about a child."
-    },
-    {
-      "attempt": 3,
-      "ok": false,
-      "issue": "Illustration depicts general care rather than anxiety or concern for a child"
+      "ok": true,
+      "issue": ""
     }
   ]
 }

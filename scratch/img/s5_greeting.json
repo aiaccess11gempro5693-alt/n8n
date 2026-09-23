@@ -6,25 +6,15 @@
     "extra_refs": [
       "docs/references/oleg-avatar-reference-2026-09-23.jpg"
     ],
-    "prompt": "The pharmacist in a white coat behind the counter warmly greets an arriving customer with a genuine smile and a small open-hand welcoming gesture; the customer's tense face softens into a relieved smile. Bright modern pharmacy, soft light.",
+    "prompt": "The pharmacist in a white coat behind the counter warmly greets an arriving customer with a genuine smile and a small open-hand welcoming gesture; the customer's tense face softens into a relieved smile. Bright modern pharmacy, soft light. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
     "meaning": "Тёплое приветствие — первый сильный сигнал человеку: «Я вас вижу. Я готов помочь», и напряжение спадает"
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "ok": false,
-      "issue": "Remove illegible text and lettering from the background signage."
-    },
-    {
-      "attempt": 2,
-      "ok": false,
-      "issue": "Remove visible text and background signs from the image"
-    },
-    {
-      "attempt": 3,
-      "ok": false,
-      "issue": "Image has illustrated style and background text artifacts instead of realistic photo style"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
