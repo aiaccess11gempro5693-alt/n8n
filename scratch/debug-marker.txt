@@ -1,3 +1,0 @@
-reached step; COMETAPI_KEY length=51
-secret check passed
-python3 exited with 0
