@@ -242,10 +242,10 @@ def compare_row(path, icon_src, text, good, w=540, h=110):
     return path, PAD
 
 
-def icon_trio(path, items, w=540, isz=120):
+def icon_trio(path, items, w=540, isz=110):
     """Одна карточка с 2-3 иконками в ряд и короткой подписью под каждой —
     вместо нескольких отдельных строк, всплывающих по одной (меньше мелькания)."""
-    f = S.font(S.F_SEMIBOLD, 30)
+    f = S.font(S.F_SEMIBOLD, 26)
     n = len(items)
     cell = (w - 40) // n
     h = 30 + isz + 16 + 40 + 26

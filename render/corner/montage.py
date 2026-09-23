@@ -81,7 +81,18 @@ def caption_timeline(words, dur):
             cur = []
     if cur:
         sentences.append(cur)
-    chunks = [ch for sent in sentences for ch in C.wrap_into_chunks(" ".join(sent), max_w)]
+    chunks = []
+    for sent in sentences:
+        sch = C.wrap_into_chunks(" ".join(sent), max_w)
+        if len(sch) > 1:
+            # делим предложение на части поровну, чтобы не оставался "хвост"
+            # из одного слова (напр. "минуту.") отдельной фразой на экране
+            n, k = len(sch), len(sent)
+            groups = [sent[round(i * k / n):round((i + 1) * k / n)] for i in range(n)]
+            even = [C.wrap_into_chunks(" ".join(g), max_w) for g in groups]
+            if all(len(e) == 1 for e in even):
+                sch = [e[0] for e in even]
+        chunks += sch
     tl, i = [], 0
     for ch in chunks:
         tl.append({"lines": ch, "start": max(0.0, words[i][1])})

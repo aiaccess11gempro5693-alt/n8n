@@ -58,58 +58,71 @@ def h_of(made):
 
 # ---------------------------------------------------------------- сцены
 
-# Правило текста на экране (23.09.2026 (12)): диктор говорит, субтитры
-# дублируют речь дословно — поэтому на экране НЕ повторяем реплику, а даём
-# короткий тезис (вывод/суть) и визуализацию; внутри кадра тоже без повторов
-# (заголовок и карточка под ним не говорят одно и то же). Смен на экране —
-# как можно меньше: блок = одна мысль, появляется целиком.
+# Правило текста на экране (23.09.2026 (12)-(13)): "золотая середина".
+# Каждое предложение диктора визуализировано — ОДИН элемент на мысль:
+# ключевые слова самой реплики в сжатом виде (узнаваемо, что это о том же,
+# что звучит) + картинка/иконки; но не пересказ целиком и не по слову
+# в секунду. Внутри кадра без повторов. Группу, которую диктор перечисляет
+# подряд, показываем одной карточкой; элементы держатся весь смысловой блок.
 
 def scene1(T, dur):
-    t_worry, t_eyes, end = T("почти"), T("Первое"), dur - 0.25
+    t_tens, t_worry, t_eyes, t_cmp, end = T("десятки"), T("почти"), T("Первое"), T("витрину"), dur - 0.25
     worry_end = t_eyes - 0.1
-    worry = K.headline(f("s1_worry"), "Важно понимать", "Посетитель часто встревожен", ["встревожен"],
-                       size=56, w=W)
+    worry = K.headline(f("s1_worry"), "Почти каждый приходит", "с лёгкой тревогой", ["тревогой"], size=56, w=W)
     return [
+        # "Здравствуйте. Через ваш стол каждый день проходят десятки людей."
         item(K.topic_card(f("s1_topic"), "Тема ролика", "Приветствие и установление контакта",
                           "Первый шаг к доверию покупателя"), L, 90, 0.4, t_worry - 0.3),
-        # блок "тревога": иллюстрация + тезис + кто его беспокоит (одной карточкой)
+        item(K.headline(f("s1_tens"), "Каждый день", "Десятки людей у вашего стола", ["Десятки"], size=54, w=W),
+             R, 90, t_tens - 0.6, t_worry - 0.3),
+        # "И почти каждый приходит с лёгкой тревогой: за себя, за ребёнка, за близкого человека."
         item(K.image_card(f("s1_people"), img("s5_people"), W), L, 90, t_worry, worry_end),
         item(worry, R, 90, t_worry, worry_end),
-        item(K.icon_trio(f("s1_trio"), [(img("s5_ic_self"), "за себя"), (img("s5_ic_child"), "за детей"),
+        item(K.icon_trio(f("s1_trio"), [(img("s5_ic_self"), "за себя"), (img("s5_ic_child"), "за ребёнка"),
                                         (img("s5_ic_close"), "за близких")]),
              R, 90 + h_of(worry) + 20, T("за", t_worry), worry_end),
-        # блок "контакт": вы — лицо аптеки
-        item(K.image_card(f("s1_eyes"), img("s5_eyes"), W), L, 90, t_eyes, end),
-        item(K.headline(f("s1_face"), "Главное", "Вы — лицо аптеки", ["лицо"], size=64, w=W), R, 90, t_eyes, end),
-        item(K.compare_row(f("s1_c3"), img("s5_ic_specialist"), "Важнее витрины и цены", True), R, 330,
+        # "Первое, что он ищет глазами, когда подходит, — это вы."
+        item(K.image_card(f("s1_eyes"), img("s5_eyes"), W, "Контакт начинается со взгляда"), L, 90, t_eyes, end),
+        item(K.headline(f("s1_you"), "Первым он ищет глазами", "Вас", ["Вас"], size=90, w=W), R, 90, t_eyes,
+             t_cmp - 0.1),
+        # "Не витрину, не ценник — а живого специалиста, который выслушает и поможет."
+        item(K.compare_row(f("s1_c1"), img("s5_ic_showcase"), "Витрину", False), R, 90, t_cmp, end),
+        item(K.compare_row(f("s1_c2"), img("s5_ic_price"), "Ценник", False), R, 220, T("ценник"), end),
+        item(K.compare_row(f("s1_c3"), img("s5_ic_specialist"), "Живого специалиста", True), R, 350,
              T("живого"), end),
     ]
 
 
 def scene2(T, dur):
     t0 = M.MOVE_D
+    t_q, t_one = T("Я"), T("Одна")
     return [
-        item(M.section_header(f("s2_header"), "Не мелочь", "Приветствие — сигнал доверия"), CX, 70, t0),
+        # "Приветствие кажется мелочью. На самом деле это первый и очень сильный сигнал…"
+        item(M.section_header(f("s2_header"), "Кажется мелочью?", "На самом деле — сильный сигнал"), CX, 70, t0),
         item(K.image_card(f("s2_greet"), img("s5_greeting"), 640), CX, CY, t0 + 0.2),
-        item(M.quote_card(f("s2_hear"), "Что слышит посетитель", "«Меня видят и готовы помочь»", size=48),
-             CRX, CY, t0 + 0.4, T("Одна") - 0.1),
-        item(K.headline(f("s2_eff"), "Эффект первых секунд", "Что даёт тёплая фраза", [], size=46, w=CRW),
-             CRX, CY, T("Одна")),
-        item(K.icon_row(f("s2_r1"), img("s5_ic_relief"), "Меньше напряжения", w=CRW, h=95, num="01",
+        # "«Я вас вижу. Я готов помочь»"
+        item(M.quote_card(f("s2_quote"), "Что слышит человек", "«Я вас вижу. Я готов помочь»"), CRX, CY,
+             t_q - 0.3, t_one - 0.1),
+        # "Одна короткая тёплая фраза в первые секунды — и напряжение спадает. … рассказывает спокойнее и подробнее."
+        item(K.headline(f("s2_eff"), "В первые секунды", "Одна тёплая фраза", ["тёплая"], size=48, w=CRW),
+             CRX, CY, t_one),
+        item(K.icon_row(f("s2_r1"), img("s5_ic_relief"), "Напряжение спадает", w=CRW, h=95, num="01",
                         num_color=S.BLUE, text_size=36), CRX, 425, T("напряжение")),
-        item(K.icon_row(f("s2_r2"), img("s5_ic_talk"), "Больше деталей от посетителя", w=CRW, h=95, num="02",
-                        num_color=S.GREEN, text_size=36), CRX, 532, T("начинает")),
+        item(K.icon_row(f("s2_r2"), img("s5_ic_talk"), "Рассказывает спокойнее и подробнее", w=CRW, h=95,
+                        num="02", num_color=S.GREEN, text_size=36), CRX, 532, T("начинает")),
     ]
 
 
 def scene3(T, dur):
     t_trust = T("Доверие")
     a_end = t_trust - 0.1
+    # "Чем спокойнее и подробнее он говорит, тем точнее вы сможете помочь.
+    #  Тем спокойнее он уходит — и тем охотнее возвращается."
     steps = [
-        ("01", "s5_ic_talk", "Открытый разговор", S.BLUE, T("спокойнее")),
-        ("02", "s5_ic_help", "Точная помощь", S.BLUE, T("точнее")),
-        ("03", "s5_ic_leave", "Спокойный уход", S.LIGHT_BLUE, T("уходит")),
-        ("04", "s5_ic_return", "Возвращение", S.GREEN, T("возвращается")),
+        ("01", "s5_ic_talk", "Говорит подробнее", S.BLUE, T("спокойнее")),
+        ("02", "s5_ic_help", "Вы точнее помогаете", S.BLUE, T("точнее")),
+        ("03", "s5_ic_leave", "Уходит спокойным", S.LIGHT_BLUE, T("уходит")),
+        ("04", "s5_ic_return", "Охотно возвращается", S.GREEN, T("возвращается")),
     ]
     sw, gap = 380, 67                         # 4 карточки + 3 стрелки = 1720
     out = [item(M.section_header(f("s3_header"), "Почему это важно", "Цепочка доверия"), CX, 70, 0.3, a_end)]
@@ -120,13 +133,15 @@ def scene3(T, dur):
         if k:
             out.append(item(K.arrow(f(f"s3_arrow{k}")), x - gap // 2 - 22, CY + 110, t, a_end))
         x += sw + gap
-    out.append(item(M.quote_card(f("s3_goods"), "Итог", "Лояльность — к специалисту, не к товару", w=1300,
-                                 h=150, size=44, color=S.GREEN), CX, 585, T("товаром"), a_end))
+    # "Не за товаром — а к вам. К человеку, которому доверяет."
+    out.append(item(M.quote_card(f("s3_goods"), "Возвращается", "не за товаром — а к вам", w=1200, h=150,
+                                 size=46, color=S.GREEN), CX, 585, T("товаром"), a_end))
+    # "Доверие ко всей аптеке начинается вот здесь. В эту первую секунду."
     out += [
-        item(M.section_header(f("s3_header2"), "Первая секунда", "С неё начинается доверие"), CX, 70, t_trust),
+        item(M.section_header(f("s3_header2"), "Доверие ко всей аптеке", "Начинается в первую секунду"), CX, 70,
+             t_trust),
         item(K.image_card(f("s3_trust"), img("s5_trust"), 640), CX, CY, t_trust),
-        item(M.quote_card(f("s3_formula"), "Формула", "Приветствие = доверие к аптеке", size=48), CRX, CY,
-             t_trust + 0.3),
+        item(M.quote_card(f("s3_formula"), "Формула", "Приветствие = доверие", size=50), CRX, CY, t_trust + 0.3),
     ]
     return out
 
@@ -134,12 +149,14 @@ def scene3(T, dur):
 def scene4(T, dur):
     t0 = M.MOVE_D
     t_b = T("Оно") - 0.1
-    first = K.headline(f("s4_first"), "Этапы диалога", "С чего всё начинается", [], size=46, w=W)
+    first = K.headline(f("s4_first"), "За весь диалог", "Самый первый и важный этап", ["первый"], size=44, w=W)
     ry = 90 + h_of(first) + 20
     t_first = T("Самая")
     return [
-        item(K.headline(f("s4_work"), "Профессиональный навык", "Не вежливость, а работа", ["работа"],
-                        size=58, w=W), R, 90, t0, t_b),
+        # "Поэтому тёплое приветствие — это работа."
+        item(K.headline(f("s4_work"), "Поэтому", "Приветствие — это работа", ["работа"], size=60, w=W),
+             R, 90, t0, t_b),
+        # "Самая первая и одна из самых важных за весь диалог."
         item(first, L, 90, t_first, t_b),
         item(K.icon_row(f("s4_st1"), img("s5_ic_greet"), "Приветствие", num="01", num_color=S.GREEN,
                         outline=S.GREEN), L, ry, t_first, t_b),
@@ -147,12 +164,13 @@ def scene4(T, dur):
              L, ry + 130, t_first, t_b),
         item(K.icon_row(f("s4_st3"), img("s5_ic_advice"), "Рекомендация", num="03", dim=True),
              L, ry + 260, t_first, t_b),
-        # блок "цена / ценность"
-        item(K.step_card(f("s4_free"), img("s5_ic_free"), "0 ₽ и пара секунд", w=W, kicker="Цена для вас",
+        # "Оно ничего не стоит вам — и очень много значит для того, кто стоит перед вами."
+        item(K.step_card(f("s4_free"), img("s5_ic_free"), "Ничего не стоит", w=W, kicker="Для вас",
                          text_size=40), L, 90, t_b + 0.1),
-        item(K.step_card(f("s4_much"), img("s5_ic_heart"), "Чувство поддержки", w=W,
-                         kicker="Ценность для посетителя", text_size=40), R, 90, T("очень")),
-        item(K.icon_row(f("s4_pain"), img("s5_ic_pain"), "Вдвойне — при тревоге и боли", text_size=32),
+        item(K.step_card(f("s4_much"), img("s5_ic_heart"), "Очень много значит", w=W,
+                         kicker="Для посетителя", text_size=40), R, 90, T("очень")),
+        # "Особенно когда ему тревожно… или больно."
+        item(K.icon_row(f("s4_pain"), img("s5_ic_pain"), "Особенно когда тревожно или больно", text_size=32),
              R, 400, T("Особенно")),
     ]
 
@@ -162,38 +180,39 @@ def scene5(T, dur):
     t_b, t_c = T("Мы"), T("Это")
     a_end = t_b - 0.1
     return [
-        # блок "правило приветствия" — чек-лист появляется целиком
-        item(M.section_header(f("s5_h1"), "Правило", "Здоровайтесь первым"), CX, 70, t0, a_end),
+        # "Не бойтесь здороваться первым — тепло, глядя человеку в глаза." — чек-лист целиком
+        item(M.section_header(f("s5_h1"), "Не бойтесь", "Здоровайтесь первым"), CX, 70, t0, a_end),
         item(K.image_card(f("s5_hello"), img("s5_first_hello"), 640), CX, CY, t0 + 0.2, a_end),
-        item(K.icon_row(f("s5_r1"), img("s5_ic_first"), "Инициатива за вами", w=CRW, h=95, text_size=36), CRX,
+        item(K.icon_row(f("s5_r1"), img("s5_ic_first"), "Первым", w=CRW, h=95, text_size=36), CRX,
              CY, t0 + 0.4, a_end),
-        item(K.icon_row(f("s5_r2"), img("s5_ic_warm"), "Тёплый тон и улыбка", w=CRW, h=95, text_size=36), CRX,
+        item(K.icon_row(f("s5_r2"), img("s5_ic_warm"), "Тепло, с улыбкой", w=CRW, h=95, text_size=36), CRX,
              CY + 115, t0 + 0.4, a_end),
-        item(K.icon_row(f("s5_r3"), img("s5_ic_eye"), "Зрительный контакт", w=CRW, h=95, text_size=36), CRX,
+        item(K.icon_row(f("s5_r3"), img("s5_ic_eye"), "Глядя в глаза", w=CRW, h=95, text_size=36), CRX,
              CY + 230, t0 + 0.4, a_end),
-        # блок "роль фармацевта" — заголовок и картинка держатся до конца сцены
+        # "Мы ведь с вами не просто отпускаем препараты: мы первыми встречаем человека в непростую минуту."
         item(M.section_header(f("s5_h2"), "Наша роль", "Кто мы для посетителя"), CX, 70, t_b),
         item(K.image_card(f("s5_meet"), img("s5_meet"), 640), CX, CY, t_b),
-        item(K.compare_row(f("s5_c1"), img("s5_ic_pills"), "Выдача препаратов", False, w=CRW), CRX, CY, t_b + 0.3,
-             t_c - 0.1),
-        item(K.compare_row(f("s5_c2"), img("s5_ic_heart"), "Поддержка в трудный момент", True, w=CRW), CRX,
-             CY + 130, T("первыми"), t_c - 0.1),
-        item(M.quote_card(f("s5_mission"), "Миссия", "Помощь — суть профессии", size=52), CRX, CY, t_c),
-        item(M.quote_card(f("s5_thanks"), "Спасибо", "за человечность в работе", size=44, color=S.GREEN),
+        item(K.compare_row(f("s5_c1"), img("s5_ic_pills"), "Не просто отпускаем препараты", False, w=CRW), CRX,
+             CY, t_b + 0.3, t_c - 0.1),
+        item(K.compare_row(f("s5_c2"), img("s5_ic_heart"), "Первыми встречаем в трудную минуту", True, w=CRW),
+             CRX, CY + 130, T("первыми"), t_c - 0.1),
+        # "Это и есть наша профессия — помогать. Спасибо, что делаете это по-человечески."
+        item(M.quote_card(f("s5_mission"), "Наша профессия", "Помогать", size=60), CRX, CY, t_c),
+        item(M.quote_card(f("s5_thanks"), "Спасибо", "что делаете это по-человечески", size=44, color=S.GREEN),
              CRX, CY + 210, T("Спасибо")),
     ]
 
 
 def scene6(T, dur):
     t_q = T("конце")
-    head = K.headline(f("s6_head"), "Далее", "Короткий опрос", ["опрос"], size=60, w=W)
+    head = K.headline(f("s6_head"), "В конце ролика", "Несколько коротких вопросов", ["вопросов"], size=54, w=W)
     ry = 90 + h_of(head) + 20
     return [
         item(K.image_card(f("s6_survey"), img("s5_survey"), W), L, 90, t_q),
         item(head, R, 90, t_q),
         item(K.compare_row(f("s6_c1"), img("s5_ic_exam"), "Проверка знаний", False), R, ry, T("проверка")),
         item(K.compare_row(f("s6_c2"), img("s5_ic_opinion"), "Важно ваше мнение", True), R, ry + 130, T("важно")),
-        item(K.compare_row(f("s6_c3"), img("s5_ic_next"), "Улучшим следующие ролики", True), R, ry + 260,
+        item(K.compare_row(f("s6_c3"), img("s5_ic_next"), "Учтём в следующих роликах", True), R, ry + 260,
              T("обязательно")),
     ]
 
