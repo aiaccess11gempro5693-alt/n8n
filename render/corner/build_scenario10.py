@@ -13,8 +13,8 @@
   2  13.88–44.34  угол (съезд), Avatar III — смысл вопроса за секунду; по одному
   3  44.34–60.71  весь кадр (возврат), Avatar IV — деликатные темы
   4  60.71–73.86  угол (съезд), Avatar III — ориентир: понять → помочь или к врачу
-  5  73.86–S5_END весь кадр (возврат), Avatar IV — услышать проблему; спасибо
-  6  S5_END–конец угол (съезд), Avatar III — опрос
+  5  73.86–95.50  весь кадр (возврат), Avatar IV — услышать проблему; спасибо
+  6  95.50–107.23 угол (съезд), Avatar III — опрос
 
 Запуск:  python3 -m render.corner.build_scenario10   (ONLY=2,3 — только эти сцены)
 Выход:   render/corner/scenario10-full.mp4
@@ -165,12 +165,40 @@ def scene6(T, dur):
     ]
 
 
-# (номер, начало, конец, mode, enter, контент); S5_END/END — после вклейки фразы
+# (номер, начало, конец, mode, enter, контент)
 SCENES = [
     (1, 0.00, 13.88, "full", "none", scene1),
     (2, 13.88, 44.34, "corner", "shrink", scene2),
     (3, 44.34, 60.71, "full", "grow", scene3),
     (4, 60.71, 73.86, "corner", "shrink", scene4),
-    (5, 73.86, None, "full", "grow", scene5),
-    (6, None, None, "corner", "shrink", scene6),
+    (5, 73.86, 95.50, "full", "grow", scene5),
+    (6, 95.50, 107.23, "corner", "shrink", scene6),
 ]
+
+
+def main():
+    os.makedirs(TMP, exist_ok=True)
+    paras = M.scenario_paragraphs(SCENARIO)
+    all_words = M.word_times(" ".join(paras), json.load(open(WHISPER, encoding="utf-8"))["words"])
+    only = {int(x) for x in os.environ.get("ONLY", "").split(",") if x}
+    parts = []
+    for n, a, b, mode, enter, content in SCENES:
+        dur = round(b - a, 3)
+        words = [(w, round(t - a, 3)) for w, t in all_words if a <= t < b]
+        out = f"{TMP}/s10_scene{n}.mp4"
+        parts.append(out)
+        if only and n not in only:
+            continue
+        clip = f"{ROOT}/scratch/s10-scene{n}.mp4"
+        if not os.path.exists(clip):          # пока нет клипа HeyGen — черновик на подставном
+            clip = os.environ.get("DRAFT_CLIP", f"{ROOT}/scratch/s9-scene1.mp4")
+        items = content(M.finder(words), dur)
+        M.render_scene(clip, dur, words, mode, enter, items, out, TMP)
+        print(f"scene {n} ok", flush=True)
+    if not only:
+        M.concat(parts, AUDIO, OUT, TMP)
+        print(OUT)
+
+
+if __name__ == "__main__":
+    main()
