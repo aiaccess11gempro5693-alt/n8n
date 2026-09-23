@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s9_ic_q_when",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a calendar page with a small clock in the corner, meaning when it started and how often",
+    "meaning": "второй вопрос: как давно и как часто"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

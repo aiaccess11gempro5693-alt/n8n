@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s9_ic_q_what",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a simple person silhouette with a small speech bubble containing a question mark, meaning asking what bothers the person",
+    "meaning": "первый вопрос: что беспокоит"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

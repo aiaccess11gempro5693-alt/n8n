@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s9_ic_q_took",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small medicine box with a blister pack of pills next to it, meaning what medicine was already taken",
+    "meaning": "третий вопрос: что уже принимали"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

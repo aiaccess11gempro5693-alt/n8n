@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s9_ic_person",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person silhouette with a small heart next to it, meaning attention to the person",
+    "meaning": "вопрос о человеке — выявление потребности"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Replace health pulse symbols with a question mark or dialogue element to clearly indicate asking questions and identifying needs"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

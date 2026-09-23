@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s9_ic_habit",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a circular arrow around a small check mark, meaning a repeated daily habit",
+    "meaning": "задавайте вопросы как привычку"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Missing a question mark or speech bubble element to convey asking questions."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
