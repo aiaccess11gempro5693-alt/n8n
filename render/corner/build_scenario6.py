@@ -140,7 +140,7 @@ def scene6(T, dur):
         # блок «привычка»
         item(rule, L, 90, T("Попробуйте"), habit_end),
         item(habit, L, 90 + h_of(rule) + 20, T("Через"), habit_end),
-        item(K.speech_bubble(f("s6_back"), "Люди отвечают тем же", w=W, size=40, color=K.S.GREEN, tail="right"),
+        item(K.speech_bubble(f("s6_back"), "Люди отвечают тем же", w=W, size=36, color=K.S.GREEN, tail="right"),
              R, 90, T("Люди"), habit_end),
         # блок «опрос»
         item(K.headline(f("s6_survey"), "В самом конце", "Пара вопросов", ["вопросов"], size=64, w=W),
