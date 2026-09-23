@@ -112,7 +112,7 @@ def scene4(T, dur):
         item(K.counter(f("s4_count"), "×100", "«Здравствуйте» за смену — и каждое звучит по-разному"),
              L, 90, T("Одна"), tone_end),
         item(live, R, 90, T("Секрет"), tone_end),
-        item(K.compare_row(f("s4_through"), img("s7_ic_blank"), "Не сквозь него", False), R,
+        item(K.compare_row(f("s4_through"), img("s7_ic_blank"), "Сквозь него", False), R,
              90 + h_of(live) + 20, T("Секрет"), tone_end),
         # блок «спасибо»: тезис слева держится, ниже на одном месте сменяются мысли
         item(warm, L, 90, t_warm, end),
