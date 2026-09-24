@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "s13_ic_miss",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a dartboard target with a dart that clearly missed and stuck outside the target, meaning an offer that misses the point; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "невпопад"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The dart hits the bullseye instead of missing the target to convey being off-target."
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.017726, need: ＄0.031200 (request id: 20260924143819258102184SzhXZlXa)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.006612, need: ＄0.031200 (request id: 20260924143819902263820BNwEHKme)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

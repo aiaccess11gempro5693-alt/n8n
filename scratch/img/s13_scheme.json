@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s13_scheme",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter calmly lays out three different plain unlabeled medicine packages side by side next to a doctor's prescription sheet with only abstract lines instead of writing, and explains to an attentive customer how they work together. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+    "meaning": "врач назначил схему из нескольких препаратов — они работают вместе"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143823133617343ldXsKZiD)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.000588, need: ＄0.031200 (request id: 20260924143823755452468WtZSazgL)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.000588, need: ＄0.031200 (request id: 20260924143824494769269VCbKhulq)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

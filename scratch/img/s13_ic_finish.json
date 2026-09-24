@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "s13_ic_finish",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a finish flag at the end of a short path with a green check mark, meaning carrying help through to the end; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "доводите помощь до конца"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143822227500327nlOafGZU)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143822834639163KIrbAxKx)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143823401033233IsrlByhA)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

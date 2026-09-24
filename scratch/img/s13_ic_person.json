@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "s13_ic_person",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person with a small speech bubble containing a medical cross, meaning the person's situation and request; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "ситуация и запрос человека"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Add intentional green accents to the icon and remove the artifact dot on the head outline"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.006612, need: ＄0.031200 (request id: 20260924143819956059693HtWTgEAd)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.006612, need: ＄0.031200 (request id: 20260924143820594314581CTcoXmKU)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

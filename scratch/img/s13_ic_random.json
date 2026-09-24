@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "s13_ic_random",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a random unrelated product box floating at a tilted angle with small motion lines, meaning a random unrelated offer; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "случайное, без связи"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Icon represents delivery instead of a random or disconnected concept"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143821904614349LgXHljHl)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143822547840658zZsvnzkr)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

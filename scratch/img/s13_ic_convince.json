@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "s13_ic_convince",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a lightbulb glowing next to a small green check mark, meaning an explained benefit that convinces; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "объяснённая польза убеждает"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.006612, need: ＄0.031200 (request id: 20260924143821186200307eEmQwHoe)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143821900666703cPitUjmP)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143822514904084TDxTXYxq)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

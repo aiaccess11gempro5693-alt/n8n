@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "s13_ic_return",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person walking back along a circular return arrow toward a pharmacy cross, with a small amber warning triangle, meaning the person comes back with a complication; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "возвращается с осложнением"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.006612, need: ＄0.031200 (request id: 20260924143820546545693OUZDzmhS)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.006612, need: ＄0.031200 (request id: 20260924143821171276327HNcYRmnk)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143821805740431coRwXfBN)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

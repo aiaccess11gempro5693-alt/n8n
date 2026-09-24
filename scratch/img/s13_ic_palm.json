@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_palm",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a calm open hand gently raised, politely declining, with a small soft circle behind it, meaning a polite refusal; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "отказ сегодня"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

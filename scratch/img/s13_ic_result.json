@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "s13_ic_result",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a target with an arrow exactly in the center and a green check mark, meaning the result of treatment; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "результат"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.027198, need: ＄0.031200 (request id: 20260924143816389903425pKxudmqD)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.027198, need: ＄0.031200 (request id: 20260924143817156003659YoCTjnwS)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.027198, need: ＄0.031200 (request id: 20260924143817935734102XhyNsOLK)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}

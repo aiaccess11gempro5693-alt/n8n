@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s13_refusal",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter hands a customer one plain bag with the main purchase and smiles warmly and calmly; the customer politely says no thanks to an extra item with a small relaxed gesture, and both look at ease and friendly, no tension. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+    "meaning": "спокойное отношение к отказу: «спасибо, только основное» — «конечно»"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 20260924143822449433189DZfkxdUR)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.001676, need: ＄0.031200 (request id: 2026092414382324716343cvUbyCZs)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.000588, need: ＄0.031200 (request id: 20260924143823687354239jjWsCBMp)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+    }
+  ]
+}
