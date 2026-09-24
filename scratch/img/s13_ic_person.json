@@ -6,19 +6,12 @@
     "prompt": "icon of a person with a small speech bubble containing a medical cross, meaning the person's situation and request; plain white background outside the light-blue circle, no dark corners, no letters or text",
     "meaning": "ситуация и запрос человека"
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.000588, need: ＄0.031200 (request id: 20260924153547719180513XWFaUdgA)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
-    },
-    {
-      "attempt": 2,
-      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.000588, need: ＄0.031200 (request id: 20260924153548440420049BsWASGgN)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
-    },
-    {
-      "attempt": 3,
-      "error": "HTTP 403 gemini-2.5-flash-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined remaining quota: ＄0.000588, need: ＄0.031200 (request id: 2026092415354931568299upJlycyo)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
