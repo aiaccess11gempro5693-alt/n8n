@@ -15,7 +15,7 @@
       "name": "s13_ic_miss",
       "kind": "icon",
       "aspect": "1:1",
-      "prompt": "icon of a dartboard target with a dart that clearly missed and stuck outside the target, meaning an offer that misses the point; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "prompt": "icon of a puzzle piece that does NOT fit: it is held at a tilted angle beside an empty slot of a clearly different shape, with a small red cross mark, meaning an offer that does not fit the situation; plain white background outside the light-blue circle, no dark corners, no letters or text",
       "meaning": "невпопад"
     },
     {
@@ -29,7 +29,7 @@
       "name": "s13_ic_random",
       "kind": "icon",
       "aspect": "1:1",
-      "prompt": "icon of a random unrelated product box floating at a tilted angle with small motion lines, meaning a random unrelated offer; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "prompt": "icon of a plain product box next to a broken chain link (two separated chain links with a gap between them), meaning an offer with no connection to the request; plain white background outside the light-blue circle, no dark corners, no letters or text",
       "meaning": "случайное, без связи"
     },
     {
@@ -118,16 +118,6 @@
       ],
       "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter hands a customer one plain bag with the main purchase and smiles warmly and calmly; the customer politely says no thanks to an extra item with a small relaxed gesture, and both look at ease and friendly, no tension. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
       "meaning": "спокойное отношение к отказу: «спасибо, только основное» — «конечно»"
-    },
-    {
-      "name": "s13_scheme",
-      "kind": "illustration",
-      "aspect": "4:3",
-      "extra_refs": [
-        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
-      ],
-      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter calmly lays out three different plain unlabeled medicine packages side by side next to a doctor's prescription sheet with only abstract lines instead of writing, and explains to an attentive customer how they work together. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
-      "meaning": "врач назначил схему из нескольких препаратов — они работают вместе"
     }
   ]
 }
