@@ -1244,3 +1244,153 @@ def word_chips(path, kicker, words, w=540):
         y += 74
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 12
+# (сквозная схема «основное → дополнение → польза»: ячейки-колонки, которые
+# в примерах заполняются тем же цветом; операторы «+ / =»; замена слова;
+# карточка приёма; вертикальная схема-итог)
+
+SCHEME_COLORS = {"main": S.LIGHT_BLUE, "add": S.BLUE, "benefit": S.GREEN}
+
+
+def scheme_cell(path, kind, label, icon_src, text, w=360, h=330, isz=112, text_size=30, dim=False):
+    """Ячейка схемы: цветная шапка с меткой колонки (ОСНОВНОЕ / ДОПОЛНЕНИЕ /
+    ПОЛЬЗА), иконка по центру, подпись под ней. Цвет колонки один и тот же
+    во всех сценах ролика — зритель узнаёт схему в примерах."""
+    col = SCHEME_COLORS[kind]
+    f_l, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, text_size)
+    img = _card(w, h, S.WHITE, radius=26)
+    d = ImageDraw.Draw(img)
+    band = 58
+    d.rounded_rectangle([PAD, PAD, PAD + w, PAD + band + 26], 26, fill=col)
+    d.rectangle([PAD, PAD + band, PAD + w, PAD + band + 26], fill=S.WHITE)
+    lw = d.textlength(label.upper(), font=f_l)
+    d.text((PAD + (w - lw) / 2, PAD + 15), label.upper(), font=f_l, fill=S.WHITE)
+    ic = _icon(icon_src, isz)
+    img.alpha_composite(ic, (PAD + (w - isz) // 2, PAD + band + 22))
+    y = PAD + band + 22 + isz + 18
+    lh = int(text_size * 1.22)
+    for line in wrap(text, f_t, w - 44):
+        tw = d.textlength(line, font=f_t)
+        d.text((PAD + (w - tw) / 2, y), line, font=f_t, fill=NAVY)
+        y += lh
+    if dim:
+        img.putalpha(img.getchannel("A").point(lambda v: int(v * 0.45)))
+    img.save(path)
+    return path, PAD
+
+
+def op_badge(path, sym, color=S.GREEN, size=64):
+    """Круглый оператор между ячейками схемы: «+», «=» или «→»."""
+    img = Image.new("RGBA", (size + 2 * PAD, size + 2 * PAD), (0, 0, 0, 0))
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sh).ellipse([PAD, PAD + 5, PAD + size, PAD + size + 5], fill=SHADOW)
+    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(8)))
+    d = ImageDraw.Draw(img)
+    d.ellipse([PAD, PAD, PAD + size, PAD + size], fill=color)
+    c, k, t = PAD + size / 2, size * 0.2, max(5, size // 11)
+    if sym == "+":
+        d.line([(c - k, c), (c + k, c)], fill=S.WHITE, width=t)
+        d.line([(c, c - k), (c, c + k)], fill=S.WHITE, width=t)
+    elif sym == "=":
+        d.line([(c - k, c - k * 0.45), (c + k, c - k * 0.45)], fill=S.WHITE, width=t)
+        d.line([(c - k, c + k * 0.45), (c + k, c + k * 0.45)], fill=S.WHITE, width=t)
+    else:
+        d.line([(c - k, c), (c + k * 0.7, c)], fill=S.WHITE, width=t)
+        d.polygon([(c + k * 1.15, c), (c + k * 0.3, c - k * 0.7), (c + k * 0.3, c + k * 0.7)], fill=S.WHITE)
+    img.save(path)
+    return path, PAD
+
+
+def word_swap(path, kicker, old, news, w=540):
+    """Замена слова: старое слово серым в плашке, зачёркнуто; стрелка вниз;
+    новые слова — зелёные чипы (переносятся на следующую строку, если не
+    влезают). «взять» → «показать» / «взглянуть»."""
+    f_k, f_o, f_n = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 44), S.font(S.F_HEADLINE, 40)
+    d0 = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
+    rows, cur, cw = [], [], 0
+    for wd in news:
+        pw = d0.textlength(f"«{wd}»", font=f_n) + 48
+        if cur and cw + pw > w - 72:
+            rows.append(cur)
+            cur, cw = [], 0
+        cur.append(wd)
+        cw += pw + 14
+    rows.append(cur)
+    h = 30 + 40 + 76 + 70 + len(rows) * 80 + 24
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 28), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 30 + 40
+    ow = _pill(d, PAD + 36, y, f"«{old}»", f_o, PALE_GRAY, S.GRAY, pad_x=26, h=72)
+    d.line([(PAD + 48, y + 38), (PAD + 24 + ow, y + 38)], fill=RED, width=6)
+    ax = PAD + 36 + ow / 2
+    y += 76 + 10
+    d.line([(ax, y), (ax, y + 38)], fill=S.GREEN, width=6)
+    d.polygon([(ax - 16, y + 34), (ax + 16, y + 34), (ax, y + 54)], fill=S.GREEN)
+    y += 60
+    for row in rows:
+        x = PAD + 36
+        for wd in row:
+            x += _pill(d, x, y, f"«{wd}»", f_n, PALE_GREEN, S.GREEN, pad_x=24, h=68) + 14
+        y += 80
+    img.save(path)
+    return path, PAD
+
+
+def technique_card(path, num, icon_src, kicker, title, quote, w=540, isz=100):
+    """Карточка приёма: номер-кружок + киккер «приём N», крупное название,
+    иконка; ниже — голубая плашка-цитата с примером из речи."""
+    f_k, f_t, f_q = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 42), S.font(S.F_MEDIUM, 32)
+    x_t = 36 + isz + 24
+    t_lines = wrap(title, f_t, w - x_t - 30)
+    q_lines = wrap(f"«{quote}»", f_q, w - 110)
+    top = max(isz, 40 + len(t_lines) * 50)
+    h = 32 + top + 24 + len(q_lines) * 42 + 40 + 30
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    img.alpha_composite(_icon(icon_src, isz), (PAD + 36, PAD + 32))
+    d.ellipse([PAD + 36 + isz - 34, PAD + 26, PAD + 36 + isz + 6, PAD + 66], fill=S.GREEN)
+    ns = str(num)
+    d.text((PAD + 36 + isz - 14 - d.textlength(ns, font=f_k) / 2, PAD + 32), ns, font=f_k, fill=S.WHITE)
+    x, y = PAD + x_t, PAD + 32
+    d.text((x, y), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y += 40
+    for line in t_lines:
+        d.text((x, y), line, font=f_t, fill=NAVY)
+        y += 50
+    y = PAD + 32 + top + 24
+    d.rounded_rectangle([PAD + 30, y, PAD + w - 30, y + len(q_lines) * 42 + 40], 20, fill=PALE_BLUE)
+    d.rounded_rectangle([PAD + 30, y, PAD + 38, y + len(q_lines) * 42 + 40], 4, fill=S.BLUE)
+    yy = y + 18
+    for line in q_lines:
+        d.text((PAD + 60, yy), line, font=f_q, fill=S.BLUE)
+        yy += 42
+    img.save(path)
+    return path, PAD
+
+
+def scheme_stack(path, kicker, rows, w=540, isz=84):
+    """Схема-итог вертикально: строки (kind, icon, слово) цветами колонок
+    схемы, соединены стрелками вниз; kind — ключ SCHEME_COLORS."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 44)
+    row_h, gap = isz + 24, 34
+    h = 30 + 40 + len(rows) * row_h + (len(rows) - 1) * gap + 30
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 36, PAD + 28), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y = PAD + 30 + 40
+    for k, (kind, src, word) in enumerate(rows):
+        col = SCHEME_COLORS[kind]
+        d.rounded_rectangle([PAD + 28, y, PAD + w - 28, y + row_h], 22, fill=PALE_BLUE)
+        d.rounded_rectangle([PAD + 28, y, PAD + 40, y + row_h], 6, fill=col)
+        img.alpha_composite(_icon(src, isz), (PAD + 56, y + 12))
+        d.text((PAD + 56 + isz + 24, y + (row_h - 44) / 2 - 6), word, font=f_t, fill=NAVY)
+        y += row_h
+        if k < len(rows) - 1:
+            ax = PAD + 56 + isz / 2
+            d.polygon([(ax - 14, y + 8), (ax + 14, y + 8), (ax, y + gap - 6)], fill=SCHEME_COLORS[rows[k + 1][0]])
+            y += gap
+    img.save(path)
+    return path, PAD
