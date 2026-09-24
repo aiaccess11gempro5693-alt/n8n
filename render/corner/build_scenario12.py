@@ -15,10 +15,10 @@
   2  7.88–22.83    угол (съезд), Avatar III — два шага: три ячейки схемы
   3  22.83–41.13   угол, Avatar III — пример 1: спрей + пастилки = между применениями
   4  41.13–60.69   весь кадр (возврат), Avatar IV — два приёма
-  5  60.69–(*)     угол (съезд), Avatar III — пример 2: капли + раствор
-  6  (*)–(*)       весь кадр (возврат), Avatar IV — схема простая, не бойтесь
-  7  (*)–конец     угол (съезд), Avatar III — опрос
-(*) — после вклейки переозвученной фразы «К каплям…» границы сдвинуты, см. SCENES.
+  5  60.69–74.58   угол (съезд), Avatar III — пример 2: капли + раствор
+  6  74.58–96.35   весь кадр (возврат), Avatar IV — схема простая, не бойтесь
+  7  96.35–106.34  угол (съезд), Avatar III — опрос
+Дорожка v2 = v1 с переозвученной фразой «К каплям…» (в v1 «К» проглочено).
 
 Запуск:  python3 -m render.corner.build_scenario12   (ONLY=2,3 — только эти сцены)
 Выход:   render/corner/scenario12-full.mp4
@@ -103,9 +103,14 @@ def scene2(T, dur):
                             ("add", "Шаг 2", "s12_ic_addon", "Предложите дополнение"),
                             ("benefit", "Коротко", "s12_ic_benefit", "Объясните, зачем оно")],
                      ["→", "+"], y2, t0, T("второй"), end)
-    calm = K.image_card(f("s2_calm"), img("s12_calm"), CELL_W, label="Спокоен и открыт")
+    # «человек спокоен и открыт» — картинка под шагом 1 и зелёная плашка рядом, одной волной
+    y3 = y2 + CELL_H + 30
+    calm = K.image_card(f("s2_calm"), img("s12_calm"), CELL_W)
+    ok = K.stamp(f("s2_ok"), "Спокоен и открыт", size=34)
+    t_calm = T("Человек")
     return [item(head, PX, 40, M.MOVE_D, end)] + row + [
-        item(calm, PX, y2 + CELL_H + 30, T("Человек"), end),
+        item(calm, PX, y3, t_calm, end),
+        item(ok, PX + CELL_W + 30, y3 + (h_of(calm) - h_of(ok)) // 2, t_calm, end),
     ]
 
 
@@ -192,8 +197,8 @@ def scene7(T, dur):
     ]
 
 
-# (номер, начало, конец, mode, enter, контент) — границы для v2 задаются в BOUNDS
-BOUNDS = json.loads(os.environ.get("BOUNDS", "null") or "null") or [0, 7.88, 22.83, 41.13, 60.69, 74.59, 96.36, 106.37]
+# границы сцен в дорожке v2 (BOUNDS='[...]' в окружении — переопределить)
+BOUNDS = json.loads(os.environ.get("BOUNDS", "null") or "null") or [0, 7.88, 22.83, 41.13, 60.69, 74.58, 96.35, 106.34]
 KINDS = [("full", "none", scene1), ("corner", "shrink", scene2), ("corner", "none", scene3),
          ("full", "grow", scene4), ("corner", "shrink", scene5), ("full", "grow", scene6),
          ("corner", "shrink", scene7)]
