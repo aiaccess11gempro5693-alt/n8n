@@ -1394,3 +1394,266 @@ def scheme_stack(path, kicker, rows, w=540, isz=84):
             y += gap
     img.save(path)
     return path, PAD
+
+
+# ---------------------------------------------------------------- приёмы сценария 13
+# (уместно / невпопад плитками; «связь с запросом» — сплошная или разорванная
+# линия между ситуацией и дополнением; стрелки доверия; диалог-мессенджер;
+# «сегодня → завтра»; «не про … — а про …»; команда препаратов; последствие;
+# итог сеткой 2×2)
+
+def verdict_tile(path, icon_src, kicker, text, note=None, good=True, w=540, isz=100):
+    """Плитка-вердикт: цветная полоса слева (зелёная — уместно, красная —
+    невпопад), иконка, киккер цветом вердикта, крупный текст, мелкая пометка."""
+    col = S.GREEN if good else RED
+    f_k, f_t, f_n = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 40), S.font(S.F_SEMIBOLD, 26)
+    x_t = 40 + isz + 24
+    t_lines = wrap(text, f_t, w - x_t - 24)
+    n_lines = wrap(note, f_n, w - x_t - 24) if note else []
+    h = max(isz + 56, 30 + 36 + len(t_lines) * 50 + (10 + len(n_lines) * 34 if n_lines else 0) + 28)
+    img = _card(w, h, S.WHITE, radius=26)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD, PAD, PAD + 12, PAD + h], 6, fill=col)
+    img.alpha_composite(_icon(icon_src, isz), (PAD + 40, PAD + (h - isz) // 2))
+    x, y = PAD + x_t, PAD + 30
+    d.text((x, y), kicker.upper(), font=f_k, fill=col)
+    y += 36
+    for line in t_lines:
+        d.text((x, y), line, font=f_t, fill=NAVY)
+        y += 50
+    y += 10
+    for line in n_lines:
+        d.text((x, y), line, font=f_n, fill=S.GRAY)
+        y += 34
+    img.save(path)
+    return path, PAD
+
+
+def link_row(path, left, right, linked=True, w=880, isz=110):
+    """«Связь с запросом»: два узла (иконка + подпись) и линия между ними.
+    linked — сплошная зелёная линия с галочкой посередине; иначе — серый
+    пунктир с разрывом и красным ✗."""
+    f_t = S.font(S.F_SEMIBOLD, 28)
+    nw = 230
+    ls = [wrap(t, f_t, nw) for _, t in (left, right)]
+    h = 26 + isz + 12 + max(len(x) for x in ls) * 36 + 22
+    img = _card(w, h, S.WHITE, radius=26)
+    if linked:
+        ImageDraw.Draw(img).rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 26, outline=S.GREEN, width=4)
+    d = ImageDraw.Draw(img)
+    cxs = [PAD + 30 + nw / 2, PAD + w - 30 - nw / 2]
+    cy = PAD + 26 + isz / 2
+    x0, x1 = cxs[0] + isz / 2 + 18, cxs[1] - isz / 2 - 18
+    mx = (x0 + x1) / 2
+    if linked:
+        d.line([(x0, cy), (x1, cy)], fill=S.GREEN, width=8)
+        _mark(d, mx, cy, 26, True)
+    else:
+        for xs, xe in ((x0, mx - 44), (mx + 44, x1)):
+            xx = xs
+            while xx < xe:
+                d.line([(xx, cy), (min(xx + 16, xe), cy)], fill=(190, 198, 210, 255), width=6)
+                xx += 28
+        _mark(d, mx, cy, 26, False)
+    for k, ((src, _), lines) in enumerate(zip((left, right), ls)):
+        ic = _icon(src, isz)
+        if not linked and k == 1:
+            ic.putalpha(ic.getchannel("A").point(lambda v: v * 55 // 100))
+        img.alpha_composite(ic, (int(cxs[k] - isz / 2), PAD + 26))
+        y = PAD + 26 + isz + 12
+        for line in lines:
+            tw = d.textlength(line, font=f_t)
+            d.text((cxs[k] - tw / 2, y), line, font=f_t, fill=NAVY if linked or k == 0 else S.GRAY)
+            y += 36
+    img.save(path)
+    return path, PAD
+
+
+def trend_badge(path, text, up=True, size=34):
+    """Плашка-тренд: круг со стрелкой вверх (зелёная) или вниз (серо-красная) + текст."""
+    col = S.GREEN if up else RED
+    f = S.font(S.F_HEADLINE, size)
+    h = size + 50
+    w = int(d0_len(text, f) + h + 50)
+    img = _card(w, h, S.WHITE, radius=h // 2)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD, PAD, PAD + w, PAD + h], h // 2, outline=col, width=4)
+    r = h // 2 - 12
+    cx, cy = PAD + 12 + r, PAD + 12 + r
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=col)
+    k = r * 0.55
+    sgn = -1 if up else 1
+    d.line([(cx, cy - sgn * k), (cx, cy + sgn * k)], fill=S.WHITE, width=6)
+    d.polygon([(cx, cy + sgn * k + sgn * 4), (cx - k * 0.8, cy + sgn * k * 0.1), (cx + k * 0.8, cy + sgn * k * 0.1)],
+              fill=S.WHITE)
+    d.text((PAD + h + 8, PAD + (h - size) / 2 - 5), text, font=f, fill=col)
+    img.save(path)
+    return path, PAD
+
+
+def chat_bubble(path, who, text, mine=False, w=700, size=40):
+    """Реплика диалога в стиле мессенджера: метка «кто говорит» над пузырём;
+    посетитель — светло-серый пузырь с хвостиком слева, «вы» — синий справа."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, size)
+    lines = wrap(text, f_t, w - 90)
+    lh = int(size * 1.22)
+    bw = int(max(d0_len(l, f_t) for l in lines) + 80)
+    bh = 30 + len(lines) * lh + 24
+    h = 34 + bh + 14
+    img = Image.new("RGBA", (w + 2 * PAD, h + 2 * PAD), (0, 0, 0, 0))
+    bx = PAD + (w - bw if mine else 0)
+    fill = S.BLUE if mine else (232, 236, 242, 255)
+    shape = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ds = ImageDraw.Draw(shape)
+    ds.rounded_rectangle([bx, PAD + 34, bx + bw, PAD + 34 + bh], 30, fill=fill)
+    if mine:
+        ds.polygon([(bx + bw - 40, PAD + 34 + bh - 2), (bx + bw - 6, PAD + 34 + bh - 2), (bx + bw + 4, PAD + h)],
+                   fill=fill)
+    else:
+        ds.polygon([(bx + 6, PAD + 34 + bh - 2), (bx + 40, PAD + 34 + bh - 2), (bx - 4, PAD + h)], fill=fill)
+    sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    sh.paste((20, 40, 90, 40), (0, 6), shape.split()[3])
+    img = Image.alpha_composite(img, sh.filter(ImageFilter.GaussianBlur(12)))
+    img = Image.alpha_composite(img, shape)
+    d = ImageDraw.Draw(img)
+    kw = d.textlength(who.upper(), font=f_k)
+    d.text((bx + bw - kw - 10 if mine else bx + 10, PAD), who.upper(), font=f_k,
+           fill=S.BLUE if mine else S.GRAY)
+    y = PAD + 34 + 28
+    for line in lines:
+        d.text((bx + 40, y), line, font=f_t, fill=S.WHITE if mine else NAVY)
+        y += lh
+    img.save(path)
+    return path, PAD
+
+
+def today_tomorrow(path, left, right, w=780, isz=96):
+    """«Сегодня → завтра»: две половины (иконка, киккер, слово), серая слева,
+    зелёная справа, между ними стрелка."""
+    f_k, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 44)
+    gap = 80
+    cw = (w - 40 - gap) // 2
+    h = 28 + isz + 16 + 34 + 56 + 24
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    for k, (src, kicker, text) in enumerate((left, right)):
+        x0 = PAD + 20 + k * (cw + gap)
+        d.rounded_rectangle([x0, PAD + 14, x0 + cw, PAD + h - 14], 22, fill=PALE_GREEN if k else PALE_GRAY)
+        img.alpha_composite(_icon(src, isz), (int(x0 + (cw - isz) / 2), PAD + 28))
+        y = PAD + 28 + isz + 16
+        kw = d.textlength(kicker.upper(), font=f_k)
+        d.text((x0 + (cw - kw) / 2, y), kicker.upper(), font=f_k, fill=S.GREEN if k else S.GRAY)
+        tw = d.textlength(text, font=f_t)
+        d.text((x0 + (cw - tw) / 2, y + 34), text, font=f_t, fill=S.GREEN if k else NAVY)
+    cx, cy = PAD + 20 + cw + gap / 2, PAD + h / 2
+    d.line([(cx - 24, cy), (cx + 16, cy)], fill=S.GREEN, width=8)
+    d.polygon([(cx + 28, cy), (cx + 8, cy - 18), (cx + 8, cy + 18)], fill=S.GREEN)
+    img.save(path)
+    return path, PAD
+
+
+def pivot_card(path, weak, strong, w=540, isz=120):
+    """«Не про X — а про Y»: сверху мелко и серо «не про» + X (иконка
+    приглушена), ниже крупно зелёным «а про» + Y с иконкой."""
+    (w_icon, w_text), (s_icon, s_text) = weak, strong
+    f_k, f_w, f_s = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 40), S.font(S.F_HEADLINE, 60)
+    wi = 80
+    h = 30 + wi + 26 + 2 + 26 + isz + 34
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    y = PAD + 30
+    ic = _icon(w_icon, wi)
+    ic.putalpha(ic.getchannel("A").point(lambda v: v * 50 // 100))
+    img.alpha_composite(ic, (PAD + 36, y))
+    d.text((PAD + 36 + wi + 22, y + 2), "НЕ ПРО", font=f_k, fill=S.GRAY)
+    d.text((PAD + 36 + wi + 22, y + 32), w_text, font=f_w, fill=S.GRAY)
+    y += wi + 26
+    d.line([(PAD + 36, y), (PAD + w - 36, y)], fill=(225, 230, 238, 255), width=2)
+    y += 26
+    d.rounded_rectangle([PAD + 20, y - 10, PAD + w - 20, y + isz + 12], 24, fill=PALE_GREEN)
+    img.alpha_composite(_icon(s_icon, isz), (PAD + 36, y))
+    d.text((PAD + 36 + isz + 24, y + 12), "А ПРО", font=f_k, fill=S.GREEN)
+    d.text((PAD + 36 + isz + 24, y + 42), s_text, font=f_s, fill=S.GREEN)
+    img.save(path)
+    return path, PAD
+
+
+def team_card(path, kicker, members, w=1200, isz=120):
+    """Команда препаратов: киккер, в ряд — пронумерованные «участники»
+    (иконка + роль), снизу общая скобка, которая их объединяет."""
+    f_k, f_t, f_n = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 36), S.font(S.F_SEMIBOLD, 24)
+    n = len(members)
+    colw = (w - 80) / n
+    ls = [wrap(t, f_t, colw - 40) for _, t in members]
+    h = 30 + 44 + isz + 18 + max(len(x) for x in ls) * 44 + 20 + 40
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.text((PAD + 40, PAD + 30), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    for k, ((src, _), lines) in enumerate(zip(members, ls)):
+        cx = PAD + 40 + colw * (k + 0.5)
+        y = PAD + 30 + 44
+        img.alpha_composite(_icon(src, isz), (int(cx - isz / 2), y))
+        num = str(k + 1)
+        d.ellipse([cx + isz / 2 - 30, y - 6, cx + isz / 2 + 6, y + 30], fill=S.BLUE)
+        d.text((cx + isz / 2 - 12 - d.textlength(num, font=f_n) / 2, y), num, font=f_n, fill=S.WHITE)
+        y += isz + 18
+        for line in lines:
+            d.text((cx - d.textlength(line, font=f_t) / 2, y), line, font=f_t, fill=NAVY)
+            y += 44
+    by = PAD + h - 40
+    xa, xb = PAD + 40 + colw * 0.2, PAD + 40 + colw * (n - 0.2)
+    d.line([(xa, by - 14), (xa, by), (xb, by), (xb, by - 14)], fill=S.GREEN, width=6, joint="curve")
+    img.save(path)
+    return path, PAD
+
+
+def consequence_card(path, icon_src, kicker, cause, effect, w=540, isz=100):
+    """Последствие (янтарный акцент): иконка, киккер, «причина →» и крупно
+    «следствие»."""
+    f_k, f_c, f_e = S.font(S.F_SEMIBOLD, 24), S.font(S.F_SEMIBOLD, 30), S.font(S.F_HEADLINE, 40)
+    x_t = 36 + isz + 24
+    e_lines = wrap(effect, f_e, w - x_t - 30)
+    h = max(isz + 60, 30 + 36 + 44 + len(e_lines) * 50 + 26)
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([PAD, PAD, PAD + w, PAD + h], 28, outline=AMBER, width=4)
+    img.alpha_composite(_icon(icon_src, isz), (PAD + 36, PAD + (h - isz) // 2))
+    x, y = PAD + x_t, PAD + 30
+    d.text((x, y), kicker.upper(), font=f_k, fill=AMBER)
+    y += 36
+    d.text((x, y), cause + "  →", font=f_c, fill=S.GRAY)
+    y += 44
+    for line in e_lines:
+        d.text((x, y), line, font=f_e, fill=NAVY)
+        y += 50
+    img.save(path)
+    return path, PAD
+
+
+def recap_grid(path, kicker, title, cells, w=540, isz=84):
+    """Итог сеткой 2×2: киккер + заголовок, ниже четыре плитки
+    «иконка + слово» — одной волной."""
+    f_k, f_h, f_t = S.font(S.F_SEMIBOLD, 24), S.font(S.F_HEADLINE, 38), S.font(S.F_SEMIBOLD, 28)
+    h_lines = wrap(title, f_h, w - 72)
+    tw_ = (w - 72 - 20) // 2
+    th = isz + 20 + 2 * 34 + 10
+    h = 30 + 36 + len(h_lines) * 46 + 20 + 2 * th + 20 + 30
+    img = _card(w, h, S.WHITE, radius=28)
+    d = ImageDraw.Draw(img)
+    x, y = PAD + 36, PAD + 30
+    d.text((x, y), kicker.upper(), font=f_k, fill=S.LIGHT_BLUE)
+    y += 36
+    for line in h_lines:
+        d.text((x, y), line, font=f_h, fill=NAVY)
+        y += 46
+    y += 20
+    for k, (src, text) in enumerate(cells):
+        tx, ty = x + (k % 2) * (tw_ + 20), y + (k // 2) * (th + 20)
+        d.rounded_rectangle([tx, ty, tx + tw_, ty + th], 20, fill=PALE_GREEN if k % 3 == 0 else PALE_BLUE)
+        img.alpha_composite(_icon(src, isz), (int(tx + (tw_ - isz) / 2), ty + 14))
+        yy = ty + 14 + isz + 8
+        for line in wrap(text, f_t, tw_ - 24):
+            d.text((tx + (tw_ - d.textlength(line, font=f_t)) / 2, yy), line, font=f_t, fill=NAVY)
+            yy += 34
+    img.save(path)
+    return path, PAD
