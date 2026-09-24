@@ -130,7 +130,7 @@ def scene3(T, dur):
     b2 = K.chat_bubble(f("s3_b2"), "Вы", "«Конечно. Если понадобится, вы знаете, где нас найти»", mine=True, w=cw)
     y_b2 = y2 + h_of(b1) + 10
     tt = K.today_tomorrow(f("s3_tt"), (img("s13_ic_palm"), "Сегодня", "Отказ"),
-                          (img("s13_ic_trust"), "Завтра", "Доверие"), w=cw, isz=76)
+                          (img("s13_ic_trust"), "Завтра", "Доверие"), w=cw, isz=92)
     t0 = max(T("Второе"), 0.3)
     return [
         item(head, PX, 40, t0, end),
