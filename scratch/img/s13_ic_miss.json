@@ -3,25 +3,15 @@
     "name": "s13_ic_miss",
     "kind": "icon",
     "aspect": "1:1",
-    "prompt": "icon of a dartboard target with a dart that clearly missed and stuck outside the target, meaning an offer that misses the point; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "prompt": "icon of a puzzle piece that does NOT fit: it is held at a tilted angle beside an empty slot of a clearly different shape, with a small red cross mark, meaning an offer that does not fit the situation; plain white background outside the light-blue circle, no dark corners, no letters or text",
     "meaning": "невпопад"
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "ok": false,
-      "issue": "The dart hits the bullseye instead of missing the target to represent being off-target."
-    },
-    {
-      "attempt": 2,
-      "ok": false,
-      "issue": "The dart hits the bullseye instead of missing the target to represent being off-target."
-    },
-    {
-      "attempt": 3,
-      "ok": false,
-      "issue": "The dart should miss the target to illustrate being off-target."
+      "ok": true,
+      "issue": ""
     }
   ]
 }

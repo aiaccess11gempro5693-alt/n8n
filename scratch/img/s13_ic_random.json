@@ -3,25 +3,15 @@
     "name": "s13_ic_random",
     "kind": "icon",
     "aspect": "1:1",
-    "prompt": "icon of a random unrelated product box floating at a tilted angle with small motion lines, meaning a random unrelated offer; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "prompt": "icon of a plain product box next to a broken chain link (two separated chain links with a gap between them), meaning an offer with no connection to the request; plain white background outside the light-blue circle, no dark corners, no letters or text",
     "meaning": "случайное, без связи"
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "ok": false,
-      "issue": "Icon depicts package delivery instead of randomness or disconnected concepts"
-    },
-    {
-      "attempt": 2,
-      "ok": false,
-      "issue": "Icon depicts delivery rather than random or disconnected concepts."
-    },
-    {
-      "attempt": 3,
-      "ok": false,
-      "issue": "Icon depicts a delivery box instead of randomness or disconnection"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
