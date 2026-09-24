@@ -83,12 +83,17 @@ def caption_timeline(words, dur, panel_w=G.SUBTITLE_W):
     предложения; висит от своего первого слова до первого слова
     следующего. words — [(слово, время от начала сцены)]."""
     max_w = panel_w - C.ACCENT_BAR_W - C.PAD_LEFT - C.PAD_RIGHT
-    sentences, cur = [], []
+    sentences, cur, depth = [], [], 0
     for k, (w, _) in enumerate(words):
         cur.append(w)
+        depth += w.count("«") - w.count("»")
         nxt = words[k + 1][0] if k + 1 < len(words) else "A"
-        # «…» перед строчной буквой — пауза внутри фразы, а не конец предложения
-        if re.search(r"[.!?»]$", w) or (w.endswith("…") and nxt.lstrip("«—")[:1].isupper()):
+        upper_next = nxt.lstrip("«—")[:1].isupper()
+        if depth > 0:
+            continue      # внутри цитаты «…» предложение не заканчивается
+        # «…» перед строчной буквой — пауза внутри фразы, а не конец предложения;
+        # закрытая цитата перед «— принимаете…» — тоже не конец
+        if re.search(r"[.!?]»?$", w) or (re.search(r"[…»]$", w) and upper_next):
             sentences.append(cur)
             cur = []
     if cur:
