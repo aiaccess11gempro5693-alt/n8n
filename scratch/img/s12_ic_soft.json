@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_soft",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a light feather next to a small speech bubble, meaning a soft gentle wording; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "мягкая формулировка"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

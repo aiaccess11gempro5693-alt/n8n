@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_lozenge",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of three round medicinal lozenges (throat pastilles) in a small open blister; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "пастилки с антисептиком"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

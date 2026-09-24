@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_clean",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a nose in profile with small sparkles and a green check mark, meaning clean mucosa and longer effect; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "очищает слизистую, продлевает эффект"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

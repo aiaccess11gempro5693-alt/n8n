@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s12_drops",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter places a plain nasal rinse bottle next to a small nasal drops bottle and briefly explains; the customer with a slightly red nose nods, relieved. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+    "meaning": "пример: к каплям от насморка — промывающий раствор"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

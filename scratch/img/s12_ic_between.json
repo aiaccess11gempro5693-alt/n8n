@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_between",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a clock face with two small spray mist marks on opposite sides and a green arc between them, meaning action between applications; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "действуют между применениями"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

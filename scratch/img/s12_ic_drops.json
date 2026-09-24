@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_drops",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small nasal drops bottle with a dropper and one drop; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "капли от насморка"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
