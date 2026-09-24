@@ -1,0 +1,143 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {
+      "name": "s12_ic_main",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a hand passing one plain medicine box forward, meaning the main product the customer asked for; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "основной товар"
+    },
+    {
+      "name": "s12_ic_addon",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a small plain box with a green plus sign next to it, meaning a useful addition; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "дополнение"
+    },
+    {
+      "name": "s12_ic_benefit",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a heart with a small green check mark and sparkles, meaning benefit for the person; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "польза"
+    },
+    {
+      "name": "s12_ic_spray",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a small throat spray bottle with a nozzle and a few mist dots; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "спрей от боли в горле"
+    },
+    {
+      "name": "s12_ic_lozenge",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of three round medicinal lozenges (throat pastilles) in a small open blister; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "пастилки с антисептиком"
+    },
+    {
+      "name": "s12_ic_between",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clock face with two small spray mist marks on opposite sides and a green arc between them, meaning action between applications; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "действуют между применениями"
+    },
+    {
+      "name": "s12_ic_drops",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a small nasal drops bottle with a dropper and one drop; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "капли от насморка"
+    },
+    {
+      "name": "s12_ic_rinse",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a nasal rinse bottle with a gentle water wave, meaning saline washing solution; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "промывающий раствор"
+    },
+    {
+      "name": "s12_ic_clean",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a nose in profile with small sparkles and a green check mark, meaning clean mucosa and longer effect; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "очищает слизистую, продлевает эффект"
+    },
+    {
+      "name": "s12_ic_explain",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a speech bubble with a small green heart inside, meaning explaining the benefit; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "объясните пользу"
+    },
+    {
+      "name": "s12_ic_soft",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a light feather next to a small speech bubble, meaning a soft gentle wording; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "мягкая формулировка"
+    },
+    {
+      "name": "s12_ic_help",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of two hands gently holding a small medical cross, meaning helping fully; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "помогайте полно"
+    },
+    {
+      "name": "s12_ic_thanks",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a heart held in an open palm, meaning gratitude; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "спасибо"
+    },
+    {
+      "name": "s12_ic_survey",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clipboard with two short lines and check marks, meaning a couple of short questions; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "пара коротких вопросов"
+    },
+    {
+      "name": "s12_ic_opinion",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a speech bubble with a star inside, meaning your opinion is valuable; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "ваше мнение ценно"
+    },
+    {
+      "name": "s12_spray",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter has just handed a customer a throat spray and now gently shows a small plain box of throat lozenges beside it, with a friendly open-palm gesture; the customer, calm and open, looks at it with interest. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+      "meaning": "пример: к спрею от горла — пастилки с антисептиком, «Показать?»"
+    },
+    {
+      "name": "s12_drops",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter places a plain nasal rinse bottle next to a small nasal drops bottle and briefly explains; the customer with a slightly red nose nods, relieved. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+      "meaning": "пример: к каплям от насморка — промывающий раствор"
+    },
+    {
+      "name": "s12_calm",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) behind the pharmacy counter hands a customer a plain medicine box; the customer takes it, calm, relaxed and open, smiling slightly. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+      "meaning": "шаг 1: человек получил то, за чем пришёл, спокоен и открыт"
+    }
+  ]
+}
