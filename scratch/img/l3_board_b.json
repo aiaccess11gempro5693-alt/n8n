@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l3_board_b",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l2_board_reels.png",
+      "scratch/img/l3_expert_9x16.png"
+    ],
+    "meaning": "дизайн-система ролика «Как не попасться телефонным мошенникам» на основе всего брендбука «Reels-эксперт» (первый референс) с нашим экспертом (второй референс) и 6 раскладками вертикальных кадров. Вариант B «Тревожный экран»: тот же брендбук, но подача через интерфейс телефона — экраны звонка, уведомления, красные тревожные полосы, глитч и сканлайны",
+    "prompt": "Create a complete design system board (brand style guide sheet) for SHORT VERTICAL 9:16 expert videos. The FIRST attached image is the approved brand board «Reels-эксперт» — take the WHOLE brand book from it: palette (deep black #0E0E10, acid yellow #FFE600, alarm red #FF3B30, white #FFFFFF, grey #8E8E93), typography (Unbounded Black headlines, Montserrat ExtraBold subheads), its icon style, stamps, brush strokes, decorative elements and principles — and keep the same block structure (hero, colour palette with HEX, typography, presenter style, graphic elements, icons/stickers, infographic examples, decorative elements, footer principles). The SECOND attached image is our presenter: use EXACTLY this man (same face, short dark-blond hair, stubble, black shirt) everywhere on the board instead of the man on the first board. All text in Russian, short and correctly spelled. Hero title: «Как не попасться телефонным мошенникам». IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS of this video: (1) presenter full frame + an incoming-call card «Служба безопасности банка» with a red stamp «ОПАСНО»; (2) full-screen typography without the presenter: a huge «3» and «признака мошенника»; (3) presenter lower-right, numbered stickers on the left: «1 Торопит и пугает», «2 Просит код из СМС» with a crossed-out code «••••»; (4) presenter's face in a viewfinder frame on top, below «Безопасный счёт» and a red stamp «НЕ СУЩЕСТВУЕТ»; (5) presenter on the left, on the right a red «положите трубку» button then a yellow «перезвоните сами» button and a bank card back with the phone number highlighted; (6) presenter full frame with the takeaway «1 минута паузы = деньги целы». Every frame has a big subtitle bar at the bottom with ONE word highlighted in yellow. No real bank names or logos. VARIANT B «Тревожный экран»: same brand book, but the visual language is a smartphone interface — incoming call screens, push notifications, SMS bubbles, red alarm stripes «warning tape» in red/black, subtle glitch and scanline textures, yellow highlight boxes around dangerous elements. Mood: tense, alert, tech."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
