@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "l1b_board_pop",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+      "scratch/img/l2_board_reels.png",
+      "scratch/img/l1_anna2_16x9.png"
+    ],
+    "meaning": "дизайн-борд ролика «Возврат товара» с Анной (то же лицо, что на приложенном фото), стиль «Поп-ритейл»: яркие цветовые блоки — кобальт/мандарин/лайм, тяжёлый округлый гротеск, крупные цифры, карточки в форме ценников; не похож на светло-голубой корпоративный стиль",
+    "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame style, graphic elements, icon style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. It must look clearly different from a generic corporate light-blue style. Niche: short training videos for retail store staff. Hero title: «Как принять возврат товара за 4 шага». Hero subtitle: «Обучение персонала магазина». Presenter: the SAME woman as in the attached photo (Anna, store administrator: light-brown shoulder-length hair, dark navy polo, white badge «Анна / Администратор»), shown in the style's frames. Example slides: a topic slide, a 4-step progress tracker «Выслушать → Проверить → Оформить → Вернуть», a «Нет чека — не беда» tip, a final «Сегодня возврат — завтра постоянный покупатель». Style: «Поп-ритейл» — bold, playful flat colour-block retail style, like a modern sale campaign. Palette: cobalt #2F4BFF, tangerine #FF7A1A, lime #C6F432, white #FFFFFF, ink #111433. Typography: «Rubik» extra-bold rounded for headlines, «Golos Text» for body — show them. Graphic elements: big flat colour blocks and circles, cards shaped like price tags with a hole, huge step numbers «1 2 3 4», thick rounded arrows, simple filled icons, confetti-like geometric shapes. Footer principles: Ярко · Быстро · Понятно · Дружелюбно."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
