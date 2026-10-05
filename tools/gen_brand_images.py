@@ -139,7 +139,7 @@ def generate_gpt(job, refs, fix_note):
     paths = refs + job.get("extra_refs", [])
     fields = {"model": job.get("model") or "gpt-image-2", "prompt": build_prompt(job, fix_note),
               "size": job.get("size") or GPT_SIZES.get(job.get("aspect", "1:1"), "auto"),
-              "quality": job.get("quality", "high"), "n": "1"}
+              "quality": job.get("quality", "high"), "n": 1}
     if paths:
         boundary = "----genbrand" + os.urandom(8).hex()
         body = b""
