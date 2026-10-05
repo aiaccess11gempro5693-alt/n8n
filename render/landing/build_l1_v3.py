@@ -258,12 +258,14 @@ def render_scene(k, sc, t0, t1, caps):
         tout = (el[4] - t0) if len(el) > 4 else dur
         tin = max(0.0, tin)
         cut = len(el) > 5 and el[5] == "cut"   # смена состояния на месте — без въезда
+        # если на этом же месте сразу идёт следующее состояние (cut) — не гасить,
+        # иначе между состояниями мелькает пустой фон
+        handoff = any(len(e2) > 5 and e2[5] == "cut" and (e2[1], e2[2]) == (x, y) and abs(e2[3] - el[4]) < 0.01
+                      for e2 in sc["els"]) if len(el) > 4 else False
+        fin = "" if cut else f"fade=t=in:st={tin:.2f}:d={APPEAR}:alpha=1,"
+        fout = "" if handoff else f"fade=t=out:st={max(tin, tout - 0.2):.2f}:d=0.2:alpha=1,"
         inputs += [*loop, png]
-        if cut:
-            fc.append(f"[{idx}:v]format=rgba[e{j}]")
-        else:
-            fc.append(f"[{idx}:v]format=rgba,fade=t=in:st={tin:.2f}:d={APPEAR}:alpha=1,"
-                      f"fade=t=out:st={max(tin, tout - 0.2):.2f}:d=0.2:alpha=1[e{j}]")
+        fc.append(f"[{idx}:v]format=rgba,{fin}{fout}null[e{j}]")
         slide = "0" if cut else f"90*pow(1-clip((t-{tin:.2f})/{APPEAR}\\,0\\,1)\\,2)"
         fc.append(f"[{last}][e{j}]overlay=x='{x}-{slide}':y={y}:enable='between(t,{tin:.2f},{tout:.2f})'[o{j}]")
         last, idx = f"o{j}", idx + 1
