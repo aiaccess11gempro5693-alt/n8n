@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l1h_ic_shirt",
+    "engine": "gpt-image-2",
+    "kind": "icon",
+    "aspect": "1:1",
+    "style": "Use the attached design board as the STRICT style reference (its icon section): a single bold clean WHITE line icon centred inside a solid signal-red #E63B2E circle that fills most of the image; flat solid dark graphite #22252B background around the circle. Strict, modern. No text, no letters, no numbers, no logos.",
+    "style_qa": "белая линейная иконка в сплошном красном круге на графитовом фоне, как иконки борда «Графит и красный»",
+    "audience": "для персонала магазина (ритейл)",
+    "meaning": "вещь не носили",
+    "prompt": "a folded t-shirt"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
