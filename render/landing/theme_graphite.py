@@ -303,10 +303,11 @@ def strike_word(path, text, w_max=900, size=120):
     """Слово капслоком сталью, перечёркнутое красной полосой («скандал»)."""
     f = font(F_HEAD, size)
     t = text.upper()
-    w, h = int(tw(t, f)) + 40, int(size * 1.35)
+    l, tt, r, b = f.getbbox(t)
+    w, h = r - l + 40, b - tt + 40
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    d.text((20, 0), t, font=f, fill=STEEL)
+    d.text((20 - l, 20 - tt), t, font=f, fill=STEEL)
     d.polygon([(0, h * 0.50), (w, h * 0.38), (w, h * 0.50), (0, h * 0.62)], fill=RED)
     im.save(path)
     return path
@@ -459,7 +460,7 @@ def quote(path, text, w, kicker=None):
     """Цитата: огромная красная кавычка + фраза Oswald."""
     fq, ft, fk = font(F_HEAD, 220), font(F_HEAD_M, 78), font(F_BODY_B, 32)
     lines = wrap(text.upper(), ft, w - 40)
-    top = 170
+    top = 200
     h = top + len(lines) * 90 + (70 if kicker else 20)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
