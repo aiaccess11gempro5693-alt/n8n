@@ -39,3 +39,13 @@ Unbounded Black + Montserrat ExtraBold, штампы, жёлтые мазки, �
 Субтитры — крупные (Montserrat ExtraBold ~64), белые на чёрной плашке, **текущее
 слово подсвечено жёлтым** (стиль Reels, решение для примеров сайта 05.10.2026).
 Переход — жёлтый мазок кисти, пролетающий через кадр.
+
+## Статус вертикали (05.10.2026)
+
+- Выбран дизайн **A «Классический Reels»** (`scratch/img/l3_board_a.png`).
+- HeyGen: photo avatar `d4f9cb52180178230ff161a87e04482c` (первая попытка `673a99e1…` зависла в processing),
+  клип 9:16 webm с прозрачным фоном `238e8a7431ea907929fc6aec3d169b7c` → `scratch/l3-v-expert.webm`
+  (`avatar_iv` + `expressiveness: high`, аудио — `scratch/l3-v-full-v2.mp3`). Ниже 1769 px клип пустой
+  (край фото) — ведущий всегда ставится так, чтобы срез был за кадром (проверяется в `check_layout`).
+- Иконки — `docs/scenarios/landing-3/images-icons.json` (`scratch/img/l3_ic_*`).
+- Монтаж — `render/landing/build_l3.py` + стиль `render/landing/theme_reels.py`, выход `render/landing/l3-9x16.mp4`.

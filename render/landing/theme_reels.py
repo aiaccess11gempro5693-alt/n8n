@@ -160,7 +160,7 @@ def background(path, W, H, variant="plain", seed=0):
 
 # ---------------------------------------------------------------- типографика
 
-def headline(path, lines, w, size=96, align="left", lh=1.12):
+def headline(path, lines, w, size=96, align="left", lh=1.22):
     """Заголовок Unbounded капслоком. lines — список строк; строка — список
     кусков (текст, режим): 'w' белый, 'y' жёлтый, 'b' чёрный по жёлтому мазку,
     'r' белый по красному мазку."""
@@ -179,9 +179,9 @@ def headline(path, lines, w, size=96, align="left", lh=1.12):
             bw = tw(t, f)
             if m in ("b", "r"):
                 bb = tbox(t, f)
-                br = brush(int(bw + size * 0.6), int((bb[3] - bb[1]) + size * 0.55),
+                br = brush(int(bw + size * 0.6), int((bb[3] - bb[1]) + size * 0.34),
                            YELLOW if m == "b" else RED, seed=li * 7 + si + len(t))
-                im.alpha_composite(br, (int(x - size * 0.3), int(y + bb[1] - size * 0.27)))
+                im.alpha_composite(br, (int(x - size * 0.3), int(y + bb[1] - size * 0.17)))
             col = {"w": WHITE, "y": YELLOW, "b": BLACK, "r": WHITE}[m]
             d.text((x, y), t, font=f, fill=col)
             x += bw + tw(" ", f)
@@ -192,7 +192,7 @@ def headline(path, lines, w, size=96, align="left", lh=1.12):
 def big_three(path, w):
     """Типографика на весь экран: огромная жёлтая «3», «признака» белым,
     «мошенника» чёрным по жёлтому мазку, жёлтая стрелка-росчерк."""
-    fn, fh = font(F_HEAD, 760), font(F_HEAD, 104)
+    fn, fh = font(F_HEAD, 760), font(F_HEAD, 96)
     h = 1250
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
@@ -332,19 +332,30 @@ def call_card(path, w=900):
     return _save(_shadow(im, blur=18, k=0.7), path)
 
 
-def sticker(path, num, lines, icon=None, w=620):
+def sticker(path, num, lines, icon=None, w=620, vertical=False):
     """Стикер-признак: тёмная карточка с белым контуром, жёлтый номер,
-    иконка и крупный текст."""
-    ft, fn = font(F_BODY, 50), font(F_HEAD, 46)
-    lh = 60
-    ic = 150 if icon else 0
-    h = max(ic + 60, 60 + len(lines) * lh + 40)
+    иконка и крупный текст. vertical — иконка сверху, текст под ней."""
+    ft, fn = font(F_BODY, 50 if not vertical else 46), font(F_HEAD, 46)
+    lh = 60 if not vertical else 56
+    ic = (150 if not vertical else 150) if icon else 0
+    if vertical:
+        h = 40 + ic + 16 + len(lines) * lh + 30
+    else:
+        h = max(ic + 60, 60 + len(lines) * lh + 40)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     d.rounded_rectangle([0, 0, w - 1, h - 1], radius=30, fill=CARD, outline=(255, 255, 255, 220), width=4)
     d.ellipse([-14, -14, 66, 66], fill=YELLOW)
     nb = tbox(str(num), fn)
     d.text((26 - (nb[2] - nb[0]) / 2 - nb[0], 26 - (nb[3] - nb[1]) / 2 - nb[1]), str(num), font=fn, fill=BLACK)
+    if vertical:
+        if icon:
+            im.alpha_composite(icon_from_black(icon, ic), ((w - ic) // 2, 40))
+        y = 40 + ic + 16
+        for line in lines:
+            d.text(((w - tw(line, ft)) / 2, y), line, font=ft, fill=WHITE)
+            y += lh
+        return _save(_shadow(im, blur=14, k=0.6), path)
     x = 36
     if icon:
         im.alpha_composite(icon_from_black(icon, ic), (24, (h - ic) // 2))
@@ -356,25 +367,29 @@ def sticker(path, num, lines, icon=None, w=620):
     return _save(_shadow(im, blur=14, k=0.6), path)
 
 
-def code_card(path, w=620):
+def code_card(path, w=620, pill_lines=("БАНК НЕ СПРАШИВАЕТ",)):
     """Код из СМС «••••», перечёркнутый красным, + плашка «банк не спрашивает»."""
-    fd, fp = font(F_HEAD, 96), font(F_BODY, 40)
-    h = 300
+    fp = font(F_BODY, 40)
+    bw, bh = min(400, w - 40), 150
+    ph = 40 + len(pill_lines) * 50
+    h = bh + 50 + ph + 10
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    bw, bh = 400, 150
     bx = (w - bw) // 2
     d.rounded_rectangle([bx, 0, bx + bw, bh], radius=26, fill=CARD, outline=WHITE, width=5)
+    step = (bw - 100) / 3
     for i in range(4):
-        cx = bx + 70 + i * 87
-        d.ellipse([cx - 22, bh / 2 - 22, cx + 22, bh / 2 + 22], fill=WHITE)
-    d.line([(bx - 20, bh + 10), (bx + bw + 20, -10)], fill=RED, width=16)
-    t = "БАНК НЕ СПРАШИВАЕТ"
-    pw = tw(t, fp) + 60
+        cx = bx + 50 + i * step
+        d.ellipse([cx - 20, bh / 2 - 20, cx + 20, bh / 2 + 20], fill=WHITE)
+    d.line([(bx - 14, bh + 4), (bx + bw + 14, -4)], fill=RED, width=16)
+    pw = max(tw(t, fp) for t in pill_lines) + 60
     px = (w - pw) / 2
-    d.rounded_rectangle([px, bh + 50, px + pw, bh + 50 + 76], radius=38, fill=RED)
-    pb = tbox(t, fp)
-    d.text((px + 30, bh + 50 + (76 - (pb[3] - pb[1])) / 2 - pb[1]), t, font=fp, fill=WHITE)
+    d.rounded_rectangle([px, bh + 50, px + pw, bh + 50 + ph], radius=34, fill=RED)
+    y = bh + 50 + 20
+    for t in pill_lines:
+        pb = tbox(t, fp)
+        d.text(((w - tw(t, fp)) / 2, y - pb[1] + 4), t, font=fp, fill=WHITE)
+        y += 50
     return _save(_shadow(im, blur=14, k=0.6), path)
 
 
@@ -418,9 +433,15 @@ def action_button(path, label_lines, color, hang, w=None):
     return _save(_shadow(im, blur=12, k=0.6), path)
 
 
-def card_back(path, w=600):
+def card_back(path, w=600, _base=True):
     """Оборот банковской карты: полоса, подпись, номер телефона банка в
     жёлтом росчерке-овале. Номер — заглушка, без реальных банков."""
+    if _base and w != 600:
+        card_back(path, 600, _base=False)
+        im = Image.open(path)
+        k = w / 600
+        im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS).save(path)
+        return path
     fs, fn = font(F_BODY_S, 26), font(F_BODY, 44)
     h = int(w * 0.63)
     pad = 40
@@ -430,12 +451,12 @@ def card_back(path, w=600):
                         outline=(255, 255, 255, 60), width=2)
     d.rectangle([pad, pad + 40, pad + w, pad + 110], fill=(10, 10, 12, 255))
     d.rectangle([pad + 36, pad + 140, pad + w * 0.62, pad + 190], fill=(230, 230, 230, 255))
-    d.text((pad + 36, pad + 225), "Телефон банка — на обороте карты", font=fs, fill=GREY)
+    d.text((pad + 36, pad + 214), "Телефон банка", font=fs, fill=GREY)
     num = "8 800 •••-••-••"
-    d.text((pad + 36, pad + 268), num, font=fn, fill=WHITE)
+    d.text((pad + 36, pad + 262), num, font=fn, fill=WHITE)
     nb = tbox(num, fn)
-    ex0, ey0 = pad + 36 + nb[0] - 26, pad + 268 + nb[1] - 22
-    ex1, ey1 = pad + 36 + nb[2] + 26, pad + 268 + nb[3] + 22
+    ex0, ey0 = pad + 36 + nb[0] - 26, pad + 262 + nb[1] - 22
+    ex1, ey1 = pad + 36 + nb[2] + 26, pad + 262 + nb[3] + 22
     d.ellipse([ex0, ey0, ex1, ey1], outline=YELLOW, width=8)
     d.ellipse([ex0 + 8, ey0 - 6, ex1 - 4, ey1 + 4], outline=YELLOW, width=4)
     im = im.rotate(-5, resample=Image.BICUBIC, expand=True)

@@ -57,8 +57,9 @@ SHOW = {"три": "3"}
 
 # Силуэт эксперта в кадре клипа HeyGen 1080×1920 (голова, плечи; ниже —
 # только корпус в чёрной рубашке, там допустимы субтитры). Измерено по альфе.
-AVATAR_BOX = (150, 330, 930, 1150)
-FACE = (540, 600, 250)   # центр лица и половина стороны кропа для видоискателя
+AVATAR_BOX = (110, 300, 980, 1100)
+FACE = (535, 545, 265)
+CLIP_BOTTOM = 1769   # ниже — пусто (край исходного фото): всегда за кадром   # центр лица и половина стороны кропа для видоискателя
 
 
 def run(cmd):
@@ -122,36 +123,36 @@ def scenes(F):
     T.background(p("bg_dots"), W, H, "dots")
     T.background(p("bg_type"), W, H, "type")
     ic = lambda n: f"{IMG}/l3_ic_{n}.png"
-    full = {"kind": "scale", "s": 1.0, "x": 0, "y": 420, "zoom": 0.03}
+    full = {"kind": "scale", "s": 1.0, "x": 0, "y": 340, "zoom": 0.03}
     return [
         {"bg": p("bg_dots"), "av": full, "els": [
-            (T.call_card(p("s1_call"), 940), 40, 60, 0.15),
-            (T.stamp(p("s1_stamp"), "ОПАСНО", size=120, angle=-9), 470, 300, F("банка") + 0.05, None, "stamp"),
+            (T.call_card(p("s1_call"), 940), 40, 40, 0.15),
+            (T.stamp(p("s1_stamp"), "ОПАСНО", size=120, angle=-9), 470, 270, F("банка»?") + 0.05, None, "stamp"),
         ]},
         {"bg": p("bg_type"), "av": None, "els": [
-            (T.big_three(p("s2_three"), 1000), 40, 170, b[1] + 0.05),
+            (T.big_three(p("s2_three"), 1000), 10, 170, b[1] + 0.05),
         ]},
-        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.92, "x": 330, "y": 520}, "els": [
-            (T.sticker(p("s3_st1"), 1, ["Торопит", "и пугает"], ic("bolt"), 640), 30, 90, F("Первый:")),
-            (T.sticker(p("s3_st2"), 2, ["Просит код", "из СМС"], ic("sms"), 640), 30, 400, F("Второй:")),
-            (T.code_card(p("s3_code"), 620), 40, 720, F("Банк")),
+        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.9, "x": 820 - 486, "y": 619}, "els": [
+            (T.sticker(p("s3_st1"), 1, ["Торопит и пугает"], ic("bolt"), 1000), 10, 30, F("Первый:")),
+            (T.sticker(p("s3_st2"), 2, ["Просит код из СМС"], ic("sms"), 1000), 10, 310, F("Второй:")),
+            (T.code_card(p("s3_code"), 360, ("БАНК НЕ", "СПРАШИВАЕТ")), 0, 610, F("банк")),
         ]},
         {"bg": p("bg_dots"), "av": {"kind": "finder", "size": 560, "x": (W - 560) // 2, "y": 110}, "els": [
-            (T.viewfinder(p("s4_vf"), 560), (W - 560) // 2 - 20, 90, b[3] + 0.05),
-            (T.headline(p("s4_head"), [[("«Безопасный", "w")], [("счёт»", "b")]], 1000, size=96,
-                        align="center"), 40, 760, F("Предлагает")),
-            (T.stamp(p("s4_stamp"), "НЕ СУЩЕСТВУЕТ", size=104, angle=-6, seed=9), 90, 1130,
+            (T.viewfinder(p("s4_vf"), 560), (W - 560) // 2 - 20, 90, b[3] + 0.05, None, "frame"),
+            (T.headline(p("s4_head"), [[("«Безопасный", "w")], [("счёт»", "b")]], 1000, size=92,
+                        align="center"), 40, 740, F("Предлагает")),
+            (T.stamp(p("s4_stamp"), "НЕ СУЩЕСТВУЕТ", size=104, angle=-6, seed=9), 90, 1110,
              F("Такого") + 0.05, None, "stamp"),
         ]},
-        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.95, "x": -330, "y": 480}, "els": [
-            (T.headline(p("s5_head"), [[("Что", "w")], [("делать?", "b")]], 640, size=92), 420, 70, b[4] + 0.05),
-            (T.action_button(p("s5_hang"), ["Положите", "трубку"], T.RED, True), 470, 450, F("Положите")),
-            (T.action_button(p("s5_call"), ["Перезвоните", "сами"], T.YELLOW, False), 470, 700, F("перезвоните")),
-            (T.card_back(p("s5_card"), 540), 440, 960, F("номеру") - 0.2),
+        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.85, "x": 180 - 459, "y": 635}, "els": [
+            (T.headline(p("s5_head"), [[("Что", "w"), ("делать?", "b")]], 1000, size=84), 40, 40, b[4] + 0.05),
+            (T.action_button(p("s5_hang"), ["Положите", "трубку"], T.RED, True), 40, 250, F("Положите")),
+            (T.action_button(p("s5_call"), ["Перезвоните", "сами"], T.YELLOW, False), 40, 480, F("перезвоните")),
+            (T.card_back(p("s5_card"), 420), 540, 900, F("банк", 21.5) - 0.1),
         ]},
-        {"bg": p("bg_dots"), "av": {"kind": "scale", "s": 1.0, "x": 0, "y": 480, "zoom": 0.06}, "els": [
+        {"bg": p("bg_dots"), "av": {"kind": "scale", "s": 1.0, "x": 0, "y": 340, "zoom": 0.06}, "els": [
             (T.headline(p("s6_head"), [[("1 минута", "w")], [("паузы", "b")], [("= деньги целы", "y")]], 1000,
-                        size=92, align="center"), 40, 70, b[5] + 0.05),
+                        size=88, align="center"), 40, 40, b[5] + 0.05),
         ]},
     ]
 
@@ -183,14 +184,22 @@ def check_layout(k, sc, t0, t1, caps):
         if z > 0 and a < dur:
             hh = caption_height(c)
             boxes.append((f"субтитр «{c['words'][0][0]}…»", (CAP_X, CAP_BOTTOM - hh, CAP_X + CAP_W, CAP_BOTTOM), a, z))
+    errs = []
     els = []
     for el in sc["els"]:
         tin = max(0.0, el[3] - t0)
         tout = (el[4] - t0) if len(el) > 4 and el[4] is not None else dur
-        els.append((os.path.basename(el[0]), V._rect(el[0], el[1], el[2]), tin, tout))
-    errs = []
-    for i, (n, rr, a, z) in enumerate(els):
-        for n2, r2, a2, z2 in boxes + els[i + 1:]:
+        mode = el[5] if len(el) > 5 else "pop"
+        els.append((os.path.basename(el[0]), V._rect(el[0], el[1], el[2]), tin, tout, mode))
+    av = sc["av"]
+    if av and av["kind"] == "scale" and av["y"] + CLIP_BOTTOM * av["s"] < H:
+        errs.append(f"сцена {k + 1}: нижний край клипа эксперта виден в кадре")
+    for i, (n, rr, a, z, m) in enumerate(els):
+        if m == "frame":
+            continue       # рамка видоискателя намеренно обрамляет лицо эксперта
+        for n2, r2, a2, z2, *m2 in [(*bx, None) for bx in boxes] + els[i + 1:]:
+            if "stamp" in (m, *m2) and m2 and m2[0] is not None:
+                continue   # штамп намеренно ложится на карточку, которую «штампует»
             if a < z2 - 0.05 and a2 < z - 0.05 and V._hit(rr, r2, pad=8):
                 errs.append(f"сцена {k + 1}: {n} {tuple(map(int, rr))} наезжает на {n2} {tuple(map(int, r2))}")
         if rr and (rr[0] < 0 or rr[1] < 0 or rr[2] > W or rr[3] > H):
