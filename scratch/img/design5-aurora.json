@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "design5-aurora",
+    "kind": "mockup",
+    "aspect": "16:9",
+    "model": "gemini-3-pro-image-preview",
+    "meaning": "Aurora: тёмно-синий фон со светящимися градиентами, стеклянные карточки, футуристичный AI-стиль",
+    "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: AURORA GLASS. Dark navy background with soft glowing aurora gradients (violet, cyan, pink), frosted glass cards (glassmorphism) with subtle borders. Hero: digital presenter video inside a glowing glass frame, headline and a gradient button. Below: glass cards with industry examples, laptop and phone mockups with videos, pricing in glass cards. Elegant, high-tech."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

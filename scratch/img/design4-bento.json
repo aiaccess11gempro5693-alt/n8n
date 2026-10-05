@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "design4-bento",
+    "kind": "mockup",
+    "aspect": "16:9",
+    "model": "gemini-3-pro-image-preview",
+    "meaning": "Бенто-сетка: плитки разного размера, крупная типографика, лаймовый акцент",
+    "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: BENTO GRID. The page is built from rounded tiles of different sizes: a big tile with a digital presenter video, a tall tile with a vertical phone video, small tiles with icons and big numbers («60 сек», «10 языков», «от 1 000 ₽»), a tile with a voice waveform. Bold oversized typography, off-white background, black text, one bright accent color (lime green). Trendy Apple-style bento layout."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

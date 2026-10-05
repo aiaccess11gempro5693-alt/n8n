@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "design3-pipeline",
+    "kind": "mockup",
+    "aspect": "16:9",
+    "model": "gemini-3-pro-image-preview",
+    "meaning": "Живой конвейер: изометрическая схема документ → сценарий → голос → аватар → готовый ролик",
+    "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: ISOMETRIC PIPELINE. Main hero visual is an isometric 3D conveyor going across the page: a paper document enters on the left, passes stations (script, voice waveform, digital avatar, editing timeline) and comes out on the right as a finished video on a laptop and a smartphone. Light background, soft pastel blue and mint accents, playful but professional. Headline and buttons above the conveyor. Below: grid of example videos and pricing cards."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
