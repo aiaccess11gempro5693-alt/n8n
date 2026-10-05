@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l2_board_reels",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+      "scratch/img/l1_board.png"
+    ],
+    "meaning": "дизайн-борд стиля «Reels-эксперт» для вертикальных роликов экспертного блога (тема — телефонные мошенники): чёрный/кислотно-жёлтый/красный, крупная жирная типографика, штампы и стикеры, крупные субтитры со словом-подсветкой, совсем не похоже на корпоративный светлый стиль референса",
+    "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame/composition style, graphic elements, icon or sticker style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. This is a COMPLETELY DIFFERENT visual style from the references, for a different niche of short videos with a digital presenter. Style: «Reels-эксперт» — bold, punchy social-media style for vertical 9:16 expert videos. Palette: deep black #0E0E10, acid yellow #FFE600, alarm red #FF3B30, white #FFFFFF, grey #8E8E93. Typography: «Unbounded Black» for huge headlines, «Montserrat ExtraBold» for captions — show them. Hero title: «Как не попасться телефонным мошенникам». Hero subtitle: «Эксперт объясняет за 30 секунд». Presenter: a confident Russian man of about 40, a financial security consultant, short dark hair, dark shirt, shown in vertical phone frames. Graphic elements: red rubber stamp «ОПАСНО», yellow highlighter behind a word, sticker-like icons with thick white outline (phone with incoming call, shield, lock, warning sign, bank card), arrows drawn by hand. Caption style example: big centered words with one word highlighted on a yellow block, e.g. «НЕ называйте КОД из СМС». Example slides (vertical 9:16 phone mockups): a hook frame with a big question, a «3 признака мошенника» list, a red «ОПАСНО» frame, a final «Положите трубку» frame. Footer principles: Коротко · Ярко · По делу · Безопасно."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
