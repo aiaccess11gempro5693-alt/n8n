@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l1g_anna_9x16",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l1c_board_graphite.png"
+    ],
+    "meaning": "та же Анна, что на приложенном борде «Графит и красный» (тёмные волосы, тёмно-графитовая рубашка с красными деталями, бейдж «Анна / Администратор»), вертикальный кадр ПО ПОЯС, лицо крупное в верхней трети, спокойное уверенное лицо, губы слегка приоткрыты, без улыбки; фон — тёмный графит с красными диагональными акцентами, в палитре борда",
+    "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as the presenter Anna on the attached design board — identical face, dark hair, age about 30, dark graphite shirt with signal-red collar details, small dark name badge with readable Russian text in two lines «Анна» / «Администратор». Background: a clean dark graphite studio wall (#22252B) with a few bold signal-red (#E63B2E) diagonal stripes on one side, soft even studio light — in the board's palette, no store, no shelves. WAIST-UP shot: she stands in the centre facing the camera and looking straight into the lens, her face large and sharp in the upper third, clear headroom above the head, hands relaxed and visible near the bottom edge. Her face is calm and confident, NEUTRAL, relaxed like in the middle of a sentence: lips slightly parted, a hint of teeth, NO smile, relaxed jaw; face evenly lit from the front, no hair over the mouth or chin. Natural skin texture, sharp focus on the face. No other text, no logos."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
