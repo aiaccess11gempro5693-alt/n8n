@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l1_anna_16x9",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "16:9",
+    "meaning": "Анна, старший администратор магазина одежды и товаров для дома (НЕ фармацевт): горизонтальный кадр по пояс, по центру, смотрит в камеру, на фоне светлый магазин",
+    "prompt": "Photorealistic photograph, horizontal frame. A friendly Russian woman of about 33 — Anna, senior administrator of a bright modern store of clothing and home goods. Shoulder-length chestnut hair, light natural makeup, warm genuine slight smile with closed lips, kind confident eyes. She wears a dark navy polo shirt with a small plain coral name badge without any text. Waist-up shot, she stands in the exact centre of the frame facing the camera and looking straight into the lens, hands loosely clasped at waist level, relaxed shoulders. Background: softly blurred interior of the store — wooden shelves with neatly folded textiles and towels, ceramic dishes, a few green plants, warm natural daylight, a cash desk far behind. The person occupies the central third of the frame with some headroom above, head and hands fully visible. Even soft light on the face, sharp focus on the face, natural skin texture, 50mm lens look. No readable signs, no logos, no text anywhere."
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"invalid request body: field \\\"n\\\" has the wrong type (expected a number) (request id: 20261005175751361146907NOKQLqaa)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"bad_request_body\"}}"
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"invalid request body: field \\\"n\\\" has the wrong type (expected a number) (request id: 20261005175751518190183cLymOfpS)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"bad_request_body\"}}"
+    },
+    {
+      "attempt": 3,
+      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"invalid request body: field \\\"n\\\" has the wrong type (expected a number) (request id: 20261005175751667212100ZjKVhdiY)\",\"type\":\"comet_api_error\",\"param\":\"\",\"code\":\"bad_request_body\"}}"
+    }
+  ]
+}
