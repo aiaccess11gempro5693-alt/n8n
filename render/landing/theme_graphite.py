@@ -460,11 +460,13 @@ def quote(path, text, w, kicker=None):
     """Цитата: огромная красная кавычка + фраза Oswald."""
     fq, ft, fk = font(F_HEAD, 220), font(F_HEAD_M, 78), font(F_BODY_B, 32)
     lines = wrap(text.upper(), ft, w - 40)
-    top = 200
+    # кавычка — отдельной строкой над текстом, по реальным границам глифа
+    l, qt, r, qb = fq.getbbox("«")
+    top = (qb - qt) + 36
     h = top + len(lines) * 90 + (70 if kicker else 20)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    d.text((0, -20), "«", font=fq, fill=RED)
+    d.text((-l, -qt), "«", font=fq, fill=RED)
     y = top
     for line in lines:
         d.text((0, y), line, font=ft, fill=WHITE)

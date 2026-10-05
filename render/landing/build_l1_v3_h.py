@@ -51,17 +51,18 @@ def scenes(F):
     T.background(p("bg_plain"), W, H, "plain")
     T.background(p("bg_diag"), W, H, "diag")
     T.background(p("bg_split"), W, H, "split")
-    T.photo_bg(p("bg_counter"), f"{IMG}/l1h_ph_counter.png", W, H, dark=0.35)
+    T.photo_bg(p("bg_counter"), f"{IMG}/l1h_ph_counter.png", W, H, rect=(0, 0, 1150, H), dark=0.25,
+               fade_side="right", ax=0.35)
     T.photo_bg(p("bg_tag"), f"{IMG}/l1h_ph_tag.png", W, H, rect=(0, 0, 1100, H), dark=0.2, fade_side="right", ax=0.85)
     T.photo_bg(p("bg_phone"), f"{IMG}/l1h_ph_phone.png", W, H, rect=(0, 0, 1100, H), dark=0.2, fade_side="right")
     T.photo_bg(p("bg_refund"), f"{IMG}/l1h_ph_refund.png", W, H, dark=0.6)
     form = [("Паспорт", "4510 ••• 218"), ("Причина", "не подошёл размер"), ("Подпись", "А. Смирнова")]
     fts = [F("паспорта"), F("причина"), F("подпись")]
     return [
-        {"bg": p("bg_counter"), "av": None, "els": [
+        {"bg": p("bg_counter"), "av": None, "keep": [(230, 0, 890, 880)], "els": [
             (T.headline(p("h1"), ["У кассы —", "возврат"], 900, size=130, red_words=["возврат"],
-                        kicker="Ситуация"), 1020, 120, 0.3),
-            (T.note(p("h1n"), "Что происходит", "Продавец напрягается", 780), 1020, 560, F("Многие")),
+                        kicker="Ситуация"), 1180, 120, 0.3),
+            (T.note(p("h1n"), "Что происходит", "Продавец напрягается", 680), 1180, 560, F("Многие")),
         ]},
         {"bg": p("bg_diag"), "av": anna(625), "els": [
             (T.headline(p("h2"), ["Возврат —", "проверка", "сервиса"], 560, size=110, red_words=["сервиса"],
@@ -69,7 +70,6 @@ def scenes(F):
             (T.strike_word(p("h2s"), "скандал"), 1330, 250, F("скандал") - 0.2),
         ]},
         {"bg": p("bg_split"), "av": anna(1180), "els": [
-            (T.nameplate(p("h3n"), "Анна", "администратор"), 1150, 720, b[2] + 0.2),
             (T.roadmap(p("h3r"), ["Разговор", "Осмотр", "Документы", "Расчёт"], 620,
                        title="Порядок для любого магазина"), 100, 200, F("порядок")),
         ]},
@@ -102,7 +102,7 @@ def scenes(F):
             (T.pay_card(p("h8a"), f"{IMG}/l1h_ic_card.png", "Картой", "на карту"), 110, 300, F("Платили")),
             (T.pay_card(p("h8b"), f"{IMG}/l1h_ic_cash.png", "Наличными", "из кассы"), 1370, 300, F("Наличными")),
         ]},
-        {"bg": p("bg_diag"), "av": anna(625), "els": [
+        {"bg": p("bg_diag"), "av": anna(595), "els": [
             (T.quote(p("h9q"), "Спасибо, что пришли к нам", 560, kicker="Скажите напоследок"), 60, 140,
              F("Напоследок")),
             (T.statement(p("h9s"), "Спокойный возврат", "Придёт снова — с друзьями", 600), 1260, 140,

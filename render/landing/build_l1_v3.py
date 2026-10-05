@@ -171,7 +171,61 @@ def scenes(F):
     ]
 
 
+# Силуэт ведущей в кадре клипа HeyGen 1080×1920 (голова, плечи и бейдж; ниже
+# 1100 px — только корпус, там допустимы субтитры). Измерено по альфе клипа.
+AVATAR_BOX = (110, 290, 1030, 1100)
+
+
+def _rect(png, x, y):
+    b = Image.open(png).getchannel("A").getbbox()
+    return (x + b[0], y + b[1], x + b[2], y + b[3]) if b else None
+
+
+def _hit(a, b, pad=12):
+    return a and b and a[0] < b[2] + pad and b[0] < a[2] + pad and a[1] < b[3] + pad and b[1] < a[3] + pad
+
+
+def check_layout(k, sc, t0, t1, caps):
+    """Правило 05.10.2026: надписи НИКОГДА не наезжают друг на друга, на субтитры,
+    на лицо/плечи ведущей и на людей на фото (sc["keep"] — их прямоугольники).
+    Нарушение — ошибка сборки, а не повод «посмотреть потом»."""
+    dur = t1 - t0
+    boxes = []
+    av = sc.get("av")
+    if av and av["kind"] == "scale":
+        s_, (ax0, ay0, ax1, ay1) = av["s"], AVATAR_BOX
+        boxes.append(("ведущая", (av["x"] + ax0 * s_, av["y"] + ay0 * s_, av["x"] + ax1 * s_, av["y"] + ay1 * s_),
+                      0, dur))
+    elif av:
+        boxes.append(("ведущая в круге", (av["x"] - 12, av["y"] - 12, av["x"] + av["size"] + 12,
+                                           av["y"] + av["size"] + 12), 0, dur))
+    for j, r in enumerate(sc.get("keep", [])):
+        boxes.append((f"человек на фото {j + 1}", r, 0, dur))
+    for c in caps:
+        a, z = max(0.0, c["t0"] - t0), min(dur, c["t1"] - t0)
+        if z > 0 and a < dur:
+            f = T.font(T.F_BODY_B, 46)
+            hh = 34 + len(c["lines"]) * 60 + 26
+            cy = CAP_Y if CAP_BOTTOM is None else CAP_BOTTOM - hh
+            boxes.append((f"субтитр «{c['lines'][0][:20]}»", (CAP_X, cy, CAP_X + CAP_W, cy + hh), a, z))
+    errs = []
+    els = []
+    for el in sc["els"]:
+        tin = max(0.0, el[3] - t0)
+        tout = (el[4] - t0) if len(el) > 4 else dur
+        els.append((os.path.basename(el[0]), _rect(el[0], el[1], el[2]), tin, tout))
+    for i, (n, r, a, z) in enumerate(els):
+        for n2, r2, a2, z2 in boxes + els[i + 1:]:
+            if a < z2 - 0.05 and a2 < z - 0.05 and _hit(r, r2):
+                errs.append(f"сцена {k + 1}: {n} наезжает на {n2}")
+        if r and (r[0] < 0 or r[1] < 0 or r[2] > W or r[3] > H):
+            errs.append(f"сцена {k + 1}: {n} выходит за кадр {r}")
+    if errs:
+        raise SystemExit("Наложение элементов:\n" + "\n".join(errs))
+
+
 def render_scene(k, sc, t0, t1, caps):
+    check_layout(k, sc, t0, t1, caps)
     dur = round(t1 - t0, 3)
     loop = ["-loop", "1", "-framerate", str(FPS), "-t", f"{dur}", "-i"]
     inputs = [*loop, sc["bg"]]
