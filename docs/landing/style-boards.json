@@ -1,0 +1,41 @@
+{
+  "style_refs": [],
+  "jobs": [
+    {
+      "name": "l2_board_reels",
+      "engine": "gpt-image-2",
+      "kind": "board",
+      "aspect": "16:9",
+      "extra_refs": [
+        "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+        "scratch/img/l1_board.png"
+      ],
+      "meaning": "дизайн-борд стиля «Reels-эксперт» для вертикальных роликов экспертного блога (тема — телефонные мошенники): чёрный/кислотно-жёлтый/красный, крупная жирная типографика, штампы и стикеры, крупные субтитры со словом-подсветкой, совсем не похоже на корпоративный светлый стиль референса",
+      "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame/composition style, graphic elements, icon or sticker style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. This is a COMPLETELY DIFFERENT visual style from the references, for a different niche of short videos with a digital presenter. Style: «Reels-эксперт» — bold, punchy social-media style for vertical 9:16 expert videos. Palette: deep black #0E0E10, acid yellow #FFE600, alarm red #FF3B30, white #FFFFFF, grey #8E8E93. Typography: «Unbounded Black» for huge headlines, «Montserrat ExtraBold» for captions — show them. Hero title: «Как не попасться телефонным мошенникам». Hero subtitle: «Эксперт объясняет за 30 секунд». Presenter: a confident Russian man of about 40, a financial security consultant, short dark hair, dark shirt, shown in vertical phone frames. Graphic elements: red rubber stamp «ОПАСНО», yellow highlighter behind a word, sticker-like icons with thick white outline (phone with incoming call, shield, lock, warning sign, bank card), arrows drawn by hand. Caption style example: big centered words with one word highlighted on a yellow block, e.g. «НЕ называйте КОД из СМС». Example slides (vertical 9:16 phone mockups): a hook frame with a big question, a «3 признака мошенника» list, a red «ОПАСНО» frame, a final «Положите трубку» frame. Footer principles: Коротко · Ярко · По делу · Безопасно."
+    },
+    {
+      "name": "l4_board_product",
+      "engine": "gpt-image-2",
+      "kind": "board",
+      "aspect": "16:9",
+      "extra_refs": [
+        "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+        "scratch/img/l1_board.png"
+      ],
+      "meaning": "дизайн-борд стиля «Тёмный продукт» для ролика «гаджет за 60 секунд»: тёмный фон, неоновые акценты, стеклянные панели, макеты устройства, ведущий без фона поверх продуктовых сцен; совсем не похоже на светлый корпоративный стиль референса",
+      "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame/composition style, graphic elements, icon or sticker style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. This is a COMPLETELY DIFFERENT visual style from the references, for a different niche of short videos with a digital presenter. Style: «Тёмный продукт» — premium dark tech product-launch style. Palette: near-black #0B0D17, deep navy #141A33, neon cyan #3BE8FF, violet #8B5CF6, soft white #EEF2FF. Typography: «Space Grotesk» for headlines, «Manrope» for body — show them. Hero title: «Наушники Pulse за 60 секунд» (fictional brand). Hero subtitle: «Знакомство с продуктом». Presenter: a young Russian woman of about 28, product manager, sleek dark top, shown CUT OUT with no background floating over a dark product scene with neon rim light. Graphic elements: frosted-glass panels with thin neon borders, glowing spec chips («40 ч работы», «шумоподавление», «быстрая зарядка»), device mockups (wireless earbuds and case, smartphone app), thin grid lines, light streaks. Example slides: hero product shot with presenter, three feature chips around the product, comparison «было / стало», call-to-action «Попробуйте 30 дней». Footer principles: Чисто · Технологично · Наглядно · Коротко."
+    },
+    {
+      "name": "l5_board_premium",
+      "engine": "gpt-image-2",
+      "kind": "board",
+      "aspect": "16:9",
+      "extra_refs": [
+        "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+        "scratch/img/l1_board.png"
+      ],
+      "meaning": "дизайн-борд стиля «Премиальный корпоративный» для приветствия директора новым сотрудникам (RU и EN): кремовый/графит/золото, антиква, кинематографичный кадр с полями, плашка «имя — должность»; совсем не похоже на светлый карточный стиль референса",
+      "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame/composition style, graphic elements, icon or sticker style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. This is a COMPLETELY DIFFERENT visual style from the references, for a different niche of short videos with a digital presenter. Style: «Премиальный корпоративный» — calm, elegant, cinematic executive address. Palette: warm cream #F4EFE6, graphite #1C1C1E, muted gold #B08D57, deep burgundy #6B1F2A, stone grey #8A8580. Typography: «Playfair Display» serif for headlines, «Manrope» for body — show them. Hero title: «Добро пожаловать в команду». Hero subtitle: «Обращение генерального директора · RU / EN». Presenter: a Russian man of about 50, CEO, grey suit, white shirt, no tie, calm confident look, in a modern office with warm light; frame with cinematic letterbox bars. Graphic elements: thin gold lines, lower-third name title «Андрей Соколов — генеральный директор», elegant RU / EN language switch, large serif numerals («01», «02»), quote with serif quotation marks, generous empty space. Example slides: letterboxed presenter with lower third, quote slide «Мы растём вместе с вами», three company values in serif numerals, the same frame in English «Welcome to the team». Footer principles: Спокойно · Достойно · Лично · На двух языках."
+    }
+  ]
+}
