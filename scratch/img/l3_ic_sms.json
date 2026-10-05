@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l3_ic_sms",
+    "engine": "gpt-image-2",
+    "kind": "icon",
+    "aspect": "1:1",
+    "style": "Use the attached design board as the STRICT style reference (its «ИКОНКИ / СТИКЕРЫ» section): a single bold clean icon drawn with thick WHITE outlines and ACID YELLOW #FFE600 accents (and alarm red #FF3B30 only where the subject says so), small hand-drawn yellow spark marks around it like on the board, centred, filling about 70% of the image, on a perfectly FLAT solid deep black #0E0E10 background (no gradient, no vignette, no frame, no circle behind). No text, no letters, no numbers, no logos.",
+    "style_qa": "белая контурная иконка с жёлтыми акцентами на ровном чёрном фоне, как иконки борда «Reels-эксперт»",
+    "audience": "для широкой аудитории, тема — телефонное мошенничество",
+    "meaning": "просит код из СМС",
+    "prompt": "a white smartphone with an SMS message bubble showing four dots and a small yellow padlock"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
