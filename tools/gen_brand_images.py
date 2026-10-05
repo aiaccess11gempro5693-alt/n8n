@@ -12,7 +12,9 @@
      если не OK, картинка перегенерируется с учётом замечания (до MAX_TRIES).
 
 jobs-файл (JSON): {"style_refs": [...пути...], "jobs": [{"name", "prompt",
-"meaning", "aspect", "kind": "icon"|"illustration", "extra_refs": [...]}]}
+"meaning", "aspect", "kind": "icon"|"illustration"|"mockup"|"photo"|"board",
+"extra_refs": [...], "engine": "gpt-image-2" (необязательно — ChatGPT Image 2
+вместо Nano Banana; QA всё равно Gemini)}]}
 Результат: scratch/img/<name>.png + scratch/img/<name>.json (вердикты).
 """
 import base64
@@ -48,13 +50,48 @@ STYLE = {
     ),
     # Макет страницы (лендинг и т.п.): стиль задаёт сам промпт, брендбук не нужен.
     "mockup": "",
+    # Фото персонажа для HeyGen photo avatar и дизайн-борд ниши: всё задаёт промпт.
+    "photo": "",
+    "board": "",
 }
+
+# Свои kind'ы, у которых промпт целиком задаётся в задании (без STYLE-префикса).
+FREE_KINDS = ("mockup", "photo", "board")
 
 
 STYLE_QA = {
     "icon": "простая линейная иконка синим цветом с зелёными акцентами в светло-голубом круге на белом фоне, как раздел 'ИКОНКИ' брендбука",
     "illustration": "современная полуплоская (semi-flat) редакционная иллюстрация в палитре брендбука (синий/голубой/зелёный/светлый фон), НЕ фото",
     "mockup": "макет веб-страницы (дизайн-концепт сайта), стиль описан в задании",
+}
+
+FREE_QA = {
+    "mockup": (
+        "Ты — арт-директор. Это сгенерированный дизайн-концепт веб-страницы.\n"
+        "Задумано: «{meaning}».\n"
+        "Проверь только: 1) это цельный правдоподобный макет страницы сайта, а не коллаж/набор "
+        "разрозненных картинок; 2) стиль соответствует задуманному; 3) нет грубых артефактов "
+        "(искажённые лица, сломанная вёрстка, наложение блоков друг на друга); 4) крупный текст, "
+        "если есть, читается и не превращается в бессмысленные символы (мелкий текст-заглушка допустим).\n"
+    ),
+    "photo": (
+        "Ты — строгий фоторедактор. Это фото персонажа, из которого будет сделан говорящий аватар "
+        "(HeyGen photo avatar).\nЗадумано: «{meaning}».\n"
+        "Проверь: 1) фотореалистично, похоже на настоящую фотографию, а не на рендер/иллюстрацию; "
+        "2) один человек, лицо анфас, смотрит в камеру, рот закрыт или слегка приоткрыт, лицо и руки "
+        "без искажений (пальцы, зубы, глаза); 3) человек по центру кадра, голова не обрезана, сверху "
+        "есть небольшой запас; 4) на фоне нет читаемых брендов/логотипов и нет псевдо-текста крупным "
+        "планом; 5) соответствует задуманному (роль, обстановка, кадрирование). Если в задании есть "
+        "приложенное фото-референс того же человека — лицо, причёска и одежда должны совпадать.\n"
+    ),
+    "board": (
+        "Ты — арт-директор. Это дизайн-борд (брендбук) визуального стиля обучающих видео.\n"
+        "Задумано: «{meaning}».\n"
+        "Проверь: 1) это цельный аккуратный борд из блоков (палитра с HEX, типографика, иконки, "
+        "графические элементы, примеры слайдов), по формату как приложенный референс; 2) русский текст "
+        "в заголовках блоков читается без искажений; 3) нет грубых артефактов, лица не искажены; "
+        "4) стиль соответствует задуманному и не копирует фармацевтическую тематику референса.\n"
+    ),
 }
 
 
@@ -80,17 +117,67 @@ def text_of(resp):
     return "".join(p.get("text", "") for p in parts).strip()
 
 
-def generate(job, refs, fix_note):
-    parts = [img_part(p) for p in refs + job.get("extra_refs", [])]
-    if job["kind"] == "mockup":
+def build_prompt(job, fix_note):
+    if job["kind"] in FREE_KINDS:
         prompt = job["prompt"]
     else:
         prompt = STYLE[job["kind"]] + " Do not copy the reference's layout or subject, only its visual style.\n\nSubject: " + job["prompt"]
-    if job.get("extra_refs"):
-        prompt += "\nThe pharmacist in the image must look like the woman in the attached photo (same face, hair, white coat)."
+        if job.get("extra_refs"):
+            prompt += "\nThe pharmacist in the image must look like the woman in the attached photo (same face, hair, white coat)."
     if fix_note:
         prompt += f"\n\nIMPORTANT — a previous attempt was rejected for this reason, fix it: {fix_note}"
-    parts.append({"text": prompt})
+    return prompt
+
+
+GPT_SIZES = {"1:1": "1024x1024", "16:9": "1536x1024", "3:2": "1536x1024",
+             "9:16": "1024x1536", "2:3": "1024x1536"}
+
+
+def generate_gpt(job, refs, fix_note):
+    """ChatGPT Image 2 (gpt-image-2) через OpenAI-совместимый API CometAPI.
+    С референсами — /v1/images/edits (multipart, несколько image[]), без — /generations."""
+    paths = refs + job.get("extra_refs", [])
+    fields = {"model": job.get("model") or "gpt-image-2", "prompt": build_prompt(job, fix_note),
+              "size": job.get("size") or GPT_SIZES.get(job.get("aspect", "1:1"), "auto"),
+              "quality": job.get("quality", "high"), "n": "1"}
+    if paths:
+        boundary = "----genbrand" + os.urandom(8).hex()
+        body = b""
+        for k, v in fields.items():
+            body += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{k}\"\r\n\r\n{v}\r\n").encode()
+        for path in paths:
+            mime = "image/jpeg" if path.lower().endswith((".jpg", ".jpeg")) else "image/png"
+            with open(path, "rb") as f:
+                data = f.read()
+            body += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"image[]\"; "
+                     f"filename=\"{os.path.basename(path)}\"\r\nContent-Type: {mime}\r\n\r\n").encode()
+            body += data + b"\r\n"
+        body += f"--{boundary}--\r\n".encode()
+        url, ctype = "https://api.cometapi.com/v1/images/edits", f"multipart/form-data; boundary={boundary}"
+    else:
+        body = json.dumps(fields).encode()
+        url, ctype = "https://api.cometapi.com/v1/images/generations", "application/json"
+    req = urllib.request.Request(url, data=body, method="POST",
+                                 headers={"Authorization": f"Bearer {API_KEY}", "content-type": ctype})
+    try:
+        with urllib.request.urlopen(req, timeout=600) as r:
+            resp = json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"HTTP {e.code} gpt-image: {e.read().decode(errors='replace')[:500]}")
+    d = (resp.get("data") or [{}])[0]
+    if d.get("b64_json"):
+        return d["b64_json"], "image/png"
+    if d.get("url"):
+        with urllib.request.urlopen(d["url"], timeout=180) as r:
+            return base64.b64encode(r.read()).decode(), "image/png"
+    raise RuntimeError("no image: " + json.dumps(resp)[:300])
+
+
+def generate(job, refs, fix_note):
+    if job.get("engine") == "gpt-image-2":
+        return generate_gpt(job, refs, fix_note)
+    parts = [img_part(p) for p in refs + job.get("extra_refs", [])]
+    parts.append({"text": build_prompt(job, fix_note)})
     body = {"contents": [{"parts": parts}], "generationConfig": {
         "responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": job.get("aspect", "1:1")}}}
     # job["model"] — предпочтительная модель (например Nano Banana Pro); при ошибке — IMAGE_MODEL.
@@ -109,18 +196,14 @@ def generate(job, refs, fix_note):
 
 
 def qa(job, b64, mime, refs):
-    if job["kind"] == "mockup":
-        q = (
-            "Ты — арт-директор. Это сгенерированный дизайн-концепт веб-страницы.\n"
-            f"Задумано: «{job['meaning']}».\n"
-            "Проверь только: 1) это цельный правдоподобный макет страницы сайта, а не коллаж/набор "
-            "разрозненных картинок; 2) стиль соответствует задуманному; 3) нет грубых артефактов "
-            "(искажённые лица, сломанная вёрстка, наложение блоков друг на друга); 4) крупный текст, "
-            "если есть, читается и не превращается в бессмысленные символы (мелкий текст-заглушка допустим).\n"
+    if job["kind"] in FREE_KINDS:
+        q = FREE_QA[job["kind"]].format(meaning=job["meaning"]) + (
             "Ответь СТРОГО JSON без markdown: {\"ok\": true|false, \"issue\": \"коротко по-английски, "
             "что исправить, или пусто\"}"
         )
-        parts = [{"text": q}, {"inline_data": {"mime_type": mime, "data": b64}}]
+        qrefs = [img_part(p) for p in refs + job.get("extra_refs", [])] if job["kind"] != "mockup" else []
+        parts = qrefs + [{"text": q + "\nПоследнее изображение — проверяемое, остальные — референсы."},
+                         {"inline_data": {"mime_type": mime, "data": b64}}]
         t = text_of(call(TEXT_MODEL, {"contents": [{"parts": parts}]}))
         try:
             return json.loads(re.sub(r"^```(json)?|```$", "", t.strip(), flags=re.M).strip())

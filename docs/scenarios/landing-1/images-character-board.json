@@ -1,0 +1,22 @@
+{
+  "style_refs": [],
+  "jobs": [
+    {
+      "name": "l1_anna_16x9",
+      "engine": "gpt-image-2",
+      "kind": "photo",
+      "aspect": "16:9",
+      "meaning": "Анна, старший администратор магазина одежды и товаров для дома (НЕ фармацевт): горизонтальный кадр по пояс, по центру, смотрит в камеру, на фоне светлый магазин",
+      "prompt": "Photorealistic photograph, horizontal frame. A friendly Russian woman of about 33 — Anna, senior administrator of a bright modern store of clothing and home goods. Shoulder-length chestnut hair, light natural makeup, warm genuine slight smile with closed lips, kind confident eyes. She wears a dark navy polo shirt with a small plain coral name badge without any text. Waist-up shot, she stands in the exact centre of the frame facing the camera and looking straight into the lens, hands loosely clasped at waist level, relaxed shoulders. Background: softly blurred interior of the store — wooden shelves with neatly folded textiles and towels, ceramic dishes, a few green plants, warm natural daylight, a cash desk far behind. The person occupies the central third of the frame with some headroom above, head and hands fully visible. Even soft light on the face, sharp focus on the face, natural skin texture, 50mm lens look. No readable signs, no logos, no text anywhere."
+    },
+    {
+      "name": "l1_board",
+      "engine": "gpt-image-2",
+      "kind": "board",
+      "aspect": "16:9",
+      "extra_refs": ["docs/references/oleg-brand-board-1-2026-09-23.jpg", "docs/references/oleg-brand-board-2-2026-09-23.jpg"],
+      "meaning": "дизайн-борд стиля обучающих видео для персонала магазина (ритейл), в формате приложенного фарма-брендбука, но в своей палитре (тёмно-синий, коралл, мятный, тёплый светлый фон)",
+      "prompt": "Create a design board (brand style guide sheet) in the exact format and block structure of the attached reference boards — hero block «Визуальный стиль» with the presenter, «Цветовая палитра» with HEX codes and meanings, «Типографика», «Стиль кадров», «Графические элементы», «Иконки (стиль)», «Инфографика (примеры)», «Примеры слайдов в роликах», «Декоративные элементы», and a footer row of values — but for a different niche: training videos for staff of retail stores (clothing and home goods). All text in Russian, short and correctly spelled. Hero title: «Обучающие видео для персонала магазина». Hero subtitle: «Понятно. Быстро. По-человечески.» Palette: deep navy #1F2A44, coral #F2643D, mint green #2BB59A, warm light background #FAF7F2, grey #6B7280. Typography: Inter / Manrope. The presenter in the hero and frame-style blocks is a friendly woman store administrator in a dark navy polo shirt in a bright store (NOT a pharmacist, no white coat, no medicine). Icons: rounded line icons in navy with coral accents inside light circles — receipt, shopping bag, return arrow, handshake, ID document, card payment. Slide examples: a topic card «Возврат товара», numbered steps 1–4, a «Полезный совет» card, an «Итог» card. Clean modern flat corporate look like the reference; do not reuse pharmacy content or the reference's blue/green palette."
+    }
+  ]
+}
