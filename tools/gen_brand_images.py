@@ -46,12 +46,15 @@ STYLE = {
         "white, warm natural skin tones. Calm, caring, professional pharmacy atmosphere. "
         "No text, no letters, no logos, no brand names anywhere in the image."
     ),
+    # Макет страницы (лендинг и т.п.): стиль задаёт сам промпт, брендбук не нужен.
+    "mockup": "",
 }
 
 
 STYLE_QA = {
     "icon": "простая линейная иконка синим цветом с зелёными акцентами в светло-голубом круге на белом фоне, как раздел 'ИКОНКИ' брендбука",
     "illustration": "современная полуплоская (semi-flat) редакционная иллюстрация в палитре брендбука (синий/голубой/зелёный/светлый фон), НЕ фото",
+    "mockup": "макет веб-страницы (дизайн-концепт сайта), стиль описан в задании",
 }
 
 
@@ -79,14 +82,25 @@ def text_of(resp):
 
 def generate(job, refs, fix_note):
     parts = [img_part(p) for p in refs + job.get("extra_refs", [])]
-    prompt = STYLE[job["kind"]] + " Do not copy the reference's layout or subject, only its visual style.\n\nSubject: " + job["prompt"]
+    if job["kind"] == "mockup":
+        prompt = job["prompt"]
+    else:
+        prompt = STYLE[job["kind"]] + " Do not copy the reference's layout or subject, only its visual style.\n\nSubject: " + job["prompt"]
     if job.get("extra_refs"):
         prompt += "\nThe pharmacist in the image must look like the woman in the attached photo (same face, hair, white coat)."
     if fix_note:
         prompt += f"\n\nIMPORTANT — a previous attempt was rejected for this reason, fix it: {fix_note}"
     parts.append({"text": prompt})
-    resp = call(IMAGE_MODEL, {"contents": [{"parts": parts}], "generationConfig": {
-        "responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": job.get("aspect", "1:1")}}})
+    body = {"contents": [{"parts": parts}], "generationConfig": {
+        "responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": job.get("aspect", "1:1")}}}
+    # job["model"] — предпочтительная модель (например Nano Banana Pro); при ошибке — IMAGE_MODEL.
+    try:
+        resp = call(job.get("model") or IMAGE_MODEL, body)
+    except RuntimeError as e:
+        if not job.get("model"):
+            raise
+        print(f"{job['name']}: {job['model']} failed, fallback to {IMAGE_MODEL}: {e}", flush=True)
+        resp = call(IMAGE_MODEL, body)
     cand = (resp.get("candidates") or [{}])[0].get("content", {}).get("parts", [])
     p = next((x for x in cand if x.get("inlineData", {}).get("data")), None)
     if not p:
@@ -95,6 +109,23 @@ def generate(job, refs, fix_note):
 
 
 def qa(job, b64, mime, refs):
+    if job["kind"] == "mockup":
+        q = (
+            "Ты — арт-директор. Это сгенерированный дизайн-концепт веб-страницы.\n"
+            f"Задумано: «{job['meaning']}».\n"
+            "Проверь только: 1) это цельный правдоподобный макет страницы сайта, а не коллаж/набор "
+            "разрозненных картинок; 2) стиль соответствует задуманному; 3) нет грубых артефактов "
+            "(искажённые лица, сломанная вёрстка, наложение блоков друг на друга); 4) крупный текст, "
+            "если есть, читается и не превращается в бессмысленные символы (мелкий текст-заглушка допустим).\n"
+            "Ответь СТРОГО JSON без markdown: {\"ok\": true|false, \"issue\": \"коротко по-английски, "
+            "что исправить, или пусто\"}"
+        )
+        parts = [{"text": q}, {"inline_data": {"mime_type": mime, "data": b64}}]
+        t = text_of(call(TEXT_MODEL, {"contents": [{"parts": parts}]}))
+        try:
+            return json.loads(re.sub(r"^```(json)?|```$", "", t.strip(), flags=re.M).strip())
+        except Exception:
+            return {"ok": False, "issue": f"unparsable QA answer: {t[:200]}"}
     q = (
         "Ты — строгий арт-директор обучающего видео для фармацевтов. Первые изображения — брендбук "
         "(референс стиля), последнее — сгенерированная картинка.\n"
