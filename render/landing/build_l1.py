@@ -281,6 +281,27 @@ def clean_text():
     return C.strip_emotion_tags(re.sub(r"\s*\n\s*", " ", body.strip()))
 
 
+def word_times(text, whisper_words):
+    """Как montage.word_times, но слово, которого whisper не услышал
+    (напр. «Первый:» — он пишет его цифрой «1.»), получает время СЛЕДУЮЩЕГО
+    услышанного слова минус 0.45 с, а не предыдущего — иначе субтитр с ним
+    появляется раньше, чем слово звучит (и даже в предыдущей сцене)."""
+    import difflib
+    src = text.split()
+    a = [M.norm(w) for w in src]
+    b = [M.norm(w["word"]) for w in whisper_words]
+    times = [None] * len(src)
+    for blk in difflib.SequenceMatcher(None, a, b, autojunk=False).get_matching_blocks():
+        for j in range(blk.size):
+            times[blk.a + j] = whisper_words[blk.b + j]["start"]
+    nxt = None
+    for i in range(len(times) - 1, -1, -1):
+        if times[i] is None:
+            times[i] = max(0.0, nxt - 0.45) if nxt is not None else whisper_words[-1]["start"]
+        nxt = times[i]
+    return list(zip(src, times))
+
+
 def scene_words(k, words):
     """Слова сцены k со временем от начала сцены (запас 0.25 с — whisper
     иногда ставит начало первого слова в паузу перед границей)."""
@@ -408,7 +429,7 @@ def prep_vertical_clip(src, dst):
 def main():
     os.makedirs(TMP, exist_ok=True)
     wh = json.load(open(WHISPER, encoding="utf-8"))
-    words = M.word_times(clean_text(), wh["words"])
+    words = word_times(clean_text(), wh["words"])
     total = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
                                   "csv=p=0", AUDIO], capture_output=True, text=True).stdout)
     plan = {"h": [("full", "none", h_scene1), ("corner", "shrink", h_scene2), ("full", "grow", h_scene3)],
