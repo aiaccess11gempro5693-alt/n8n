@@ -270,3 +270,205 @@ def caption(path, lines, w):
         y += lh
     im.save(path)
     return path
+
+
+# ---------------------------------------------------------------- 16:9 (виток 3)
+
+def photo_bg(path, photo, W, H, rect=None, dark=0.35, fade_side=None, ax=0.5):
+    """Фон-кадр: графит + фото (cover-кроп) в прямоугольнике rect (x, y, w, h),
+    затемнённое на dark; fade_side='right'|'left' — фото уходит в графит."""
+    im = Image.open(background(path, W, H, "plain")).convert("RGBA")
+    x, y, w, h = rect or (0, 0, W, H)
+    ph = Image.open(photo).convert("RGB")
+    k = max(w / ph.width, h / ph.height)
+    ph = ph.resize((round(ph.width * k), round(ph.height * k)), Image.LANCZOS)
+    ox = int((ph.width - w) * ax)
+    ph = ph.crop((ox, (ph.height - h) // 2, ox + w, (ph.height - h) // 2 + h))
+    ph = Image.blend(ph, Image.new("RGB", ph.size, GRAPHITE[:3]), dark).convert("RGBA")
+    if fade_side:
+        a = Image.new("L", (w, h), 255)
+        d = ImageDraw.Draw(a)
+        band = int(w * 0.35)
+        for i in range(band):
+            v = int(255 * i / band)
+            xx = w - band + i if fade_side == "right" else band - i
+            d.line([(xx, 0), (xx, h)], fill=255 - v)
+        ph.putalpha(a)
+    im.alpha_composite(ph, (x, y))
+    im.save(path)
+    return path
+
+
+def strike_word(path, text, w_max=900, size=120):
+    """Слово капслоком сталью, перечёркнутое красной полосой («скандал»)."""
+    f = font(F_HEAD, size)
+    t = text.upper()
+    w, h = int(tw(t, f)) + 40, int(size * 1.35)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.text((20, 0), t, font=f, fill=STEEL)
+    d.polygon([(0, h * 0.50), (w, h * 0.38), (w, h * 0.50), (0, h * 0.62)], fill=RED)
+    im.save(path)
+    return path
+
+
+def roadmap(path, items, w, title=None):
+    """Оглавление: строки «01  Разговор» с красными номерами, тонкие разделители."""
+    fn, ft, fk = font(F_HEAD, 64), font(F_HEAD_M, 64), font(F_BODY_B, 32)
+    top = 76 if title else 0
+    rh = 104
+    h = top + len(items) * rh + 6
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    if title:
+        d.rectangle([0, 0, tw(title.upper(), fk) + 36, 52], fill=RED)
+        d.text((18, 7), title.upper(), font=fk, fill=WHITE)
+    y = top
+    for i, it in enumerate(items):
+        d.text((0, y + 8), f"{i + 1:02d}", font=fn, fill=RED)
+        d.text((130, y + 8), it.upper(), font=ft, fill=WHITE)
+        d.line([(0, y + rh - 2), (w, y + rh - 2)], fill=(70, 74, 82, 255), width=2)
+        y += rh
+    im.save(path)
+    return path
+
+
+def nameplate(path, name, role):
+    """Плашка «имя — должность»: красный блок с именем + чёрный с должностью."""
+    fn, fr = font(F_HEAD, 58), font(F_BODY, 34)
+    w1, w2 = int(tw(name.upper(), fn)) + 60, int(tw(role, fr)) + 60
+    h = 90
+    im = Image.new("RGBA", (w1 + w2, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w1, h], fill=RED)
+    d.text((30, 6), name.upper(), font=fn, fill=WHITE)
+    d.rectangle([w1, 0, w1 + w2, h], fill=BLACK)
+    d.text((w1 + 30, 24), role, font=fr, fill=MILK)
+    im.save(path)
+    return path
+
+
+def step_label(path, num, title):
+    """«02 ОСМОТР»: огромный красный номер + слово Oswald."""
+    fn, ft = font(F_HEAD, 150), font(F_HEAD, 96)
+    w = int(tw(f"{num:02d}", fn) + 30 + tw(title.upper(), ft)) + 20
+    h = 190
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.text((0, -10), f"{num:02d}", font=fn, fill=RED)
+    d.text((tw(f"{num:02d}", fn) + 30, 46), title.upper(), font=ft, fill=WHITE)
+    im.save(path)
+    return path
+
+
+def _icon_circle(src, size):
+    """Иконку gpt-image (белая линия в красном круге на графите) — вырезать круг."""
+    ic = Image.open(src).convert("RGB")
+    px = ic.load()
+    xs, ys = [], []
+    for y in range(0, ic.height, 4):
+        for x in range(0, ic.width, 4):
+            r, g, b = px[x, y]
+            if r > 170 and g < 110 and b < 100:
+                xs.append(x)
+                ys.append(y)
+    box = (min(xs), min(ys), max(xs), max(ys))
+    ic = ic.crop(box).resize((size, size), Image.LANCZOS).convert("RGBA")
+    m = Image.new("L", (size * 4, size * 4), 0)
+    ImageDraw.Draw(m).ellipse([6, 6, size * 4 - 7, size * 4 - 7], fill=255)
+    ic.putalpha(m.resize((size, size), Image.LANCZOS))
+    return ic
+
+
+def icon_tile(path, icon, label, w=270, size=210):
+    """Плитка: иконка в красном круге + подпись капслоком под ней."""
+    ft = font(F_HEAD_M, 46)
+    lines = wrap(label.upper(), ft, w - 20)
+    h = size + 24 + len(lines) * 54
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    im.alpha_composite(_icon_circle(icon, size), ((w - size) // 2, 0))
+    d = ImageDraw.Draw(im)
+    y = size + 24
+    for line in lines:
+        d.text(((w - tw(line, ft)) / 2, y), line, font=ft, fill=WHITE)
+        y += 54
+    im.save(path)
+    return path
+
+
+def big_days(path, num, unit, sub):
+    """«14 дней с покупки»: крупная красная цифра + подпись."""
+    fn, fu, fs = font(F_HEAD, 220), font(F_HEAD, 90), font(F_BODY, 40)
+    wn = tw(num, fn)
+    w = int(wn + 30 + max(tw(unit.upper(), fu), tw(sub, fs))) + 10
+    h = 250
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.text((0, -30), num, font=fn, fill=RED)
+    d.text((wn + 30, 40), unit.upper(), font=fu, fill=WHITE)
+    d.text((wn + 32, 160), sub, font=fs, fill=STEEL)
+    im.save(path)
+    return path
+
+
+def form_card(path, title, rows, w, filled):
+    """Бланк заявления: молочный лист, поля; filled — сколько полей заполнено
+    (рисуем по картинке на каждое состояние и меняем их по таймингу)."""
+    fk, ft, fr, fv = font(F_BODY_B, 30), font(F_HEAD, 64), font(F_HEAD_M, 50), font(F_BODY, 34)
+    h = 140 + len(rows) * 120 + 40
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w, h], fill=MILK)
+    d.rectangle([0, 0, w, 14], fill=RED)
+    d.text((50, 46), title.upper(), font=ft, fill=BLACK)
+    y = 150
+    for i, (label, value) in enumerate(rows):
+        done = i < filled
+        d.rectangle([50, y + 10, 104, y + 64], outline=RED if done else STEEL, width=5)
+        if done:
+            d.line([(60, y + 36), (74, y + 52), (98, y + 18)], fill=RED, width=8)
+        d.text((130, y + 4), label.upper(), font=fr, fill=BLACK if done else (120, 124, 132, 255))
+        lx = 130 + tw(label.upper(), fr) + 30
+        d.line([(lx, y + 60), (w - 50, y + 60)], fill=STEEL, width=3)
+        if done and value:
+            d.text((lx + 10, y + 18), value, font=fv, fill=GRAPHITE)
+        y += 120
+    im.save(path)
+    return path
+
+
+def pay_card(path, icon, top, bottom, w=440):
+    """Карточка способа оплаты: иконка, «КАРТОЙ», красная стрелка, «на карту»."""
+    ft, fb = font(F_HEAD, 70), font(F_HEAD_M, 54)
+    h = 520
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w, h], fill=BLACK)
+    d.rectangle([0, h - 12, w, h], fill=RED)
+    im.alpha_composite(_icon_circle(icon, 150), ((w - 150) // 2, 40))
+    d.text(((w - tw(top.upper(), ft)) / 2, 210), top.upper(), font=ft, fill=WHITE)
+    cx = w // 2
+    d.line([(cx, 310), (cx, 370)], fill=RED, width=10)
+    d.polygon([(cx - 26, 362), (cx + 26, 362), (cx, 394)], fill=RED)
+    d.text(((w - tw(bottom.upper(), fb)) / 2, 410), bottom.upper(), font=fb, fill=MILK)
+    im.save(path)
+    return path
+
+
+def quote(path, text, w, kicker=None):
+    """Цитата: огромная красная кавычка + фраза Oswald."""
+    fq, ft, fk = font(F_HEAD, 220), font(F_HEAD_M, 78), font(F_BODY_B, 32)
+    lines = wrap(text.upper(), ft, w - 40)
+    top = 170
+    h = top + len(lines) * 90 + (70 if kicker else 20)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.text((0, -20), "«", font=fq, fill=RED)
+    y = top
+    for line in lines:
+        d.text((0, y), line, font=ft, fill=WHITE)
+        y += 90
+    if kicker:
+        d.text((0, y + 16), kicker.upper(), font=fk, fill=STEEL)
+    im.save(path)
+    return path

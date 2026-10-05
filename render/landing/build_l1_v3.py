@@ -57,9 +57,13 @@ def norm(w):
     return re.sub(r"[^\w]+", "", w.lower().replace("ё", "е"))
 
 
+TEXT_HEAD, TEXT_END = "## Текст 9:16 (до 30 с)", "## Текст 16:9, виток 3"
+CAP_BOTTOM = None   # для 16:9 плашка субтитров прижимается к низу кадра
+
+
 def clean_text():
     s = open(TEXTS, encoding="utf-8").read()
-    body = s.split("## Текст 9:16 (до 30 с)")[1].split("## Раскладка 9:16")[0]
+    body = s.split(TEXT_HEAD)[1].split(TEXT_END)[0]
     line = [l for l in body.splitlines() if l.startswith("[")][0]
     return re.sub(r"\s+", " ", re.sub(r"\[[^\]]*\]", "", line)).strip()
 
@@ -199,10 +203,14 @@ def render_scene(k, sc, t0, t1, caps):
         png, x, y, tin = el[0], el[1], el[2], el[3] - t0
         tout = (el[4] - t0) if len(el) > 4 else dur
         tin = max(0.0, tin)
+        cut = len(el) > 5 and el[5] == "cut"   # смена состояния на месте — без въезда
         inputs += [*loop, png]
-        fc.append(f"[{idx}:v]format=rgba,fade=t=in:st={tin:.2f}:d={APPEAR}:alpha=1,"
-                  f"fade=t=out:st={max(tin, tout - 0.2):.2f}:d=0.2:alpha=1[e{j}]")
-        slide = f"90*pow(1-clip((t-{tin:.2f})/{APPEAR}\\,0\\,1)\\,2)"
+        if cut:
+            fc.append(f"[{idx}:v]format=rgba[e{j}]")
+        else:
+            fc.append(f"[{idx}:v]format=rgba,fade=t=in:st={tin:.2f}:d={APPEAR}:alpha=1,"
+                      f"fade=t=out:st={max(tin, tout - 0.2):.2f}:d=0.2:alpha=1[e{j}]")
+        slide = "0" if cut else f"90*pow(1-clip((t-{tin:.2f})/{APPEAR}\\,0\\,1)\\,2)"
         fc.append(f"[{last}][e{j}]overlay=x='{x}-{slide}':y={y}:enable='between(t,{tin:.2f},{tout:.2f})'[o{j}]")
         last, idx = f"o{j}", idx + 1
     for j, c in enumerate(caps):
@@ -210,8 +218,9 @@ def render_scene(k, sc, t0, t1, caps):
         if z <= 0 or a >= dur:
             continue
         T.caption(p(f"cap_{k}_{j}"), c["lines"], CAP_W)
+        cy = CAP_Y if CAP_BOTTOM is None else CAP_BOTTOM - Image.open(p(f"cap_{k}_{j}")).height
         inputs += [*loop, p(f"cap_{k}_{j}")]
-        fc.append(f"[{last}][{idx}:v]overlay={CAP_X}:{CAP_Y}:enable='gte(t,{a:.2f})*lt(t,{z:.2f})'[c{j}]")
+        fc.append(f"[{last}][{idx}:v]overlay={CAP_X}:{cy}:enable='gte(t,{a:.2f})*lt(t,{z:.2f})'[c{j}]")
         last, idx = f"c{j}", idx + 1
     if k > 0:   # смена раскладки: красная диагональ пролетает через кадр
         T.slash(p("slash"), W, H)
