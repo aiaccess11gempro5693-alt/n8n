@@ -14,9 +14,23 @@
       "engine": "gpt-image-2",
       "kind": "board",
       "aspect": "16:9",
-      "extra_refs": ["docs/references/oleg-brand-board-1-2026-09-23.jpg", "docs/references/oleg-brand-board-2-2026-09-23.jpg"],
+      "extra_refs": [
+        "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+        "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+      ],
       "meaning": "дизайн-борд стиля обучающих видео для персонала магазина (ритейл), в формате приложенного фарма-брендбука, но в своей палитре (тёмно-синий, коралл, мятный, тёплый светлый фон)",
       "prompt": "Create a design board (brand style guide sheet) in the exact format and block structure of the attached reference boards — hero block «Визуальный стиль» with the presenter, «Цветовая палитра» with HEX codes and meanings, «Типографика», «Стиль кадров», «Графические элементы», «Иконки (стиль)», «Инфографика (примеры)», «Примеры слайдов в роликах», «Декоративные элементы», and a footer row of values — but for a different niche: training videos for staff of retail stores (clothing and home goods). All text in Russian, short and correctly spelled. Hero title: «Обучающие видео для персонала магазина». Hero subtitle: «Понятно. Быстро. По-человечески.» Palette: deep navy #1F2A44, coral #F2643D, mint green #2BB59A, warm light background #FAF7F2, grey #6B7280. Typography: Inter / Manrope. The presenter in the hero and frame-style blocks is a friendly woman store administrator in a dark navy polo shirt in a bright store (NOT a pharmacist, no white coat, no medicine). Icons: rounded line icons in navy with coral accents inside light circles — receipt, shopping bag, return arrow, handshake, ID document, card payment. Slide examples: a topic card «Возврат товара», numbered steps 1–4, a «Полезный совет» card, an «Итог» card. Clean modern flat corporate look like the reference; do not reuse pharmacy content or the reference's blue/green palette."
+    },
+    {
+      "name": "l1_anna_9x16",
+      "engine": "gpt-image-2",
+      "kind": "photo",
+      "aspect": "9:16",
+      "extra_refs": [
+        "scratch/img/l1_anna_16x9.png"
+      ],
+      "meaning": "та же Анна, что на приложенном фото (то же лицо, причёска, тёмно-синее поло с коралловым бейджем, тот же магазин), но вертикальный кадр для 9:16: по пояс, по центру, смотрит в камеру, сверху запас над головой",
+      "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as in the attached photo — identical face, hair, dark navy polo shirt and plain coral name badge without text, same bright store of textiles and home goods in the background, same lighting and colour grading. Vertical composition: she stands in the centre facing the camera and looking straight into the lens, framed from the top of the head to just below the waist, with clear headroom above the head (about 12% of the frame height), hands loosely clasped at waist level and fully visible. Softly blurred background, sharp focus on the face, natural skin texture. No readable signs, no logos, no text anywhere."
     }
   ]
 }
