@@ -145,7 +145,7 @@ def step_detail(path, icon_src, num, title, keys, w, isz=150):
     """Карточка текущего шага: крупная иконка, «шаг N», заголовок-глагол,
     ключевые слова реплики чипами."""
     P = K.PAD
-    f_k, f_t, f_c = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 56), S.font(S.F_SEMIBOLD, 30)
+    f_k, f_t, f_c = S.font(S.F_SEMIBOLD, 26), S.font(S.F_HEADLINE, 50), S.font(S.F_SEMIBOLD, 30)
     tx = 40 + isz + 36
     t_lines = K.wrap(title, f_t, w - tx - 30)
     # чипы — по строкам
@@ -159,7 +159,7 @@ def step_detail(path, icon_src, num, title, keys, w, isz=150):
         cw += kw + 12
     if cur:
         rows.append(cur)
-    h = max(40 + isz + 40, 40 + 36 + len(t_lines) * 64 + 16 + len(rows) * 62 + 30)
+    h = max(40 + isz + 40, 40 + 36 + len(t_lines) * 58 + 16 + len(rows) * 62 + 30)
     im = K._card(w, h, S.WHITE, radius=28)
     d = ImageDraw.Draw(im)
     im.alpha_composite(K._icon(icon_src, isz), (P + 40, P + (h - isz) // 2))
@@ -168,7 +168,7 @@ def step_detail(path, icon_src, num, title, keys, w, isz=150):
     y += 36
     for line in t_lines:
         d.text((x, y), line, font=f_t, fill=NAVY)
-        y += 64
+        y += 58
     y += 16
     for row in rows:
         cx = x
@@ -314,7 +314,7 @@ def scene_words(k, words):
 
 # ---------------------------------------------------------------- сцены 16:9
 
-L, R, W = 60, 1320, 540     # весь кадр: колонки по бокам от аватара
+L, R, W = 60, 1380, 500     # весь кадр: колонки по бокам от аватара (Анна v2 крупнее)
 PX = 100                    # угол: контент от x=100
 
 
