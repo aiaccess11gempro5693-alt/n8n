@@ -122,9 +122,10 @@ def build_prompt(job, fix_note):
     if job["kind"] in FREE_KINDS:
         prompt = job["prompt"]
     else:
-        prompt = STYLE[job["kind"]] + " Do not copy the reference's layout or subject, only its visual style.\n\nSubject: " + job["prompt"]
+        style = job.get("style") or STYLE[job["kind"]]
+        prompt = style + " Do not copy the reference's layout or subject, only its visual style.\n\nSubject: " + job["prompt"]
         if job.get("extra_refs"):
-            prompt += "\nThe pharmacist in the image must look like the woman in the attached photo (same face, hair, white coat)."
+            prompt += "\n" + job.get("person_note", "The pharmacist in the image must look like the woman in the attached photo (same face, hair, white coat).")
     if fix_note:
         prompt += f"\n\nIMPORTANT — a previous attempt was rejected for this reason, fix it: {fix_note}"
     return prompt
@@ -211,10 +212,10 @@ def qa(job, b64, mime, refs):
         except Exception:
             return {"ok": False, "issue": f"unparsable QA answer: {t[:200]}"}
     q = (
-        "Ты — строгий арт-директор обучающего видео для фармацевтов. Первые изображения — брендбук "
+        f"Ты — строгий арт-директор обучающего видео {job.get('audience', 'для фармацевтов')}. Первые изображения — брендбук "
         "(референс стиля), последнее — сгенерированная картинка.\n"
         f"Картинка должна визуализировать: «{job['meaning']}».\n"
-        f"Задуманный стиль (он утверждён, НЕ требуй другого — например фотореализма): {STYLE_QA[job['kind']]}\n"
+        f"Задуманный стиль (он утверждён, НЕ требуй другого — например фотореализма): {job.get('style_qa') or STYLE_QA[job['kind']]}\n"
         "Проверь: 1) по смыслу картинка понятно передаёт эту мысль (не требуй буквальности, достаточно "
         "ясной ассоциации); 2) стиль соответствует задуманному, палитра — брендбуку; 3) нет читаемого или "
         "псевдо-текста, букв, логотипов, вывесок с надписями; 4) нет артефактов (лишние/сросшиеся пальцы, "
