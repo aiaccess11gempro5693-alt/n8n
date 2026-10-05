@@ -67,8 +67,10 @@ OUT = f"{HERE}/l1-{'16x9' if FMT == 'h' else '9x16'}.mp4"
 
 # границы сцен — середины пауз (как резались клипы HeyGen)
 BOUNDS = {"h": [0.0, 17.40, 51.53], "v": [0.0, 6.90, 25.38]}[FMT]
-CLIPS = {"h": [f"{ROOT}/scratch/l1-h-scene{k}.mp4" for k in (1, 2, 3)],
-         "v": [f"{ROOT}/scratch/l1-v-scene{k}.mp4" for k in (1, 2, 3)]}[FMT]
+# v2 — клипы новой Анны (фото с нейтральным лицом, 05.10.2026 (8)): весь кадр —
+# avatar_iv + expressiveness high, угол — avatar_iii
+CLIPS = {"h": [f"{ROOT}/scratch/l1-h2-scene{k}.mp4" for k in (1, 2, 3)],
+         "v": [f"{ROOT}/scratch/l1-v2-scene{k}.mp4" for k in (1, 2, 3)]}[FMT]
 
 
 def f(name):
