@@ -29,6 +29,9 @@ from render.corner import geometry as G
 
 FMT = (sys.argv[1] if len(sys.argv) > 1 else "h")
 assert FMT in ("h", "v")
+# Стиль оформления: "pop" — «Поп-ритейл» (render/landing/theme_pop.py, выбран
+# пользователем 05.10.2026), "corporate" — первый вариант в духе фармы.
+THEME = os.environ.get("THEME", "pop")
 
 # ---------------------------------------------------------------- палитра ниши
 NAVY = (31, 42, 68, 255)        # #1F2A44
@@ -56,14 +59,18 @@ from render.corner.montage import item    # noqa: E402
 K.NAVY, K.PALE_BLUE, K.SHADOW = NAVY, PALE, (31, 42, 68, 46)
 M.NAVY = NAVY
 
+if THEME == "pop":
+    from render.landing import theme_pop as TH
+    TH.setup(G, S, M, C)
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 HERE = os.path.dirname(os.path.abspath(__file__))
-TMP = f"{HERE}/_frames_{FMT}"
+TMP = f"{HERE}/_frames_{FMT}_{os.environ.get('THEME', 'pop')}"
 IMG = f"{ROOT}/scratch/img"
 AUDIO = f"{ROOT}/scratch/l1-{FMT}-full-v2.mp3"
 WHISPER = f"{ROOT}/scratch/l1-{FMT}-full-v2-whisper-1.json"
 TEXTS = f"{ROOT}/docs/scenarios/landing-1-returns.md"
-OUT = f"{HERE}/l1-{'16x9' if FMT == 'h' else '9x16'}.mp4"
+OUT = f"{HERE}/l1-{'16x9' if FMT == 'h' else '9x16'}{'' if THEME == 'pop' else '-corporate'}.mp4"
 
 # границы сцен — середины пауз (как резались клипы HeyGen)
 BOUNDS = {"h": [0.0, 17.40, 51.53], "v": [0.0, 6.90, 25.38]}[FMT]
@@ -105,7 +112,8 @@ def make_background(path):
     return path
 
 
-M.make_background = make_background
+if THEME != "pop":
+    M.make_background = make_background
 
 STEP_LABELS = ["Выслушать", "Проверить", "Оформить", "Вернуть"]
 
@@ -312,6 +320,46 @@ def scene_words(k, words):
     return [(w, max(0.0, t - t0)) for w, t in words if t0 - 0.25 <= t < t1 - 0.25]
 
 
+# ---------------------------------------------------------------- выбор компонентов по стилю
+
+CORP_ICONS = {"listen": "l1_ic_listen", "check": "l1_ic_check", "form": "l1_ic_form",
+              "refund": "l1_ic_refund", "bank": "l1_ic_bank", "loyal": "l1_ic_loyal"}
+
+
+def ic(key):
+    return img((TH.ICONS if THEME == "pop" else CORP_ICONS)[key])
+
+
+class UI:
+    """Один интерфейс компонентов для сцен; реализация — из файла стиля."""
+
+    @staticmethod
+    def topic(path, kicker, title, sub, w):
+        return TH.topic_card(path, kicker, title, sub, w) if THEME == "pop" else K.topic_card(path, kicker, title, sub, w=w)
+
+    @staticmethod
+    def chance(path, w):
+        if THEME == "pop":
+            return TH.headline(path, "Покупатель вернулся", "Не конфликт, а шанс", w)
+        return K.headline(path, "Покупатель вернулся", "Не конфликт, а шанс", ["шанс"], size=58, w=w)
+
+    four = staticmethod(lambda path, w: (TH.four_card if THEME == "pop" else four_card)(path, w))
+    stepper = staticmethod(lambda path, k, w: (TH.stepper if THEME == "pop" else stepper)(path, k, w))
+    step = staticmethod(lambda path, icon, num, title, keys, w, isz: (TH.step_detail if THEME == "pop" else step_detail)(path, icon, num, title, keys, w, isz=isz))
+    note = staticmethod(lambda path, icon, kicker, text, w, isz=96: (TH.note_card if THEME == "pop" else note_card)(path, icon, kicker, text, w, isz=isz))
+    verbs = staticmethod(lambda path, w: (TH.verbs_card if THEME == "pop" else verbs_card)(path, w))
+
+    @staticmethod
+    def today(path, w):
+        return TH.today_tomorrow(path, w, ic("loyal")) if THEME == "pop" else today_tomorrow(path, w)
+
+    @staticmethod
+    def ill(path, w):
+        if THEME == "pop":
+            return TH.image_card(path, img(TH.ILL), w)
+        return K.image_card(path, img("l1_ill_counter"), w)
+
+
 # ---------------------------------------------------------------- сцены 16:9
 
 L, R, W = 60, 1380, 500     # весь кадр: колонки по бокам от аватара (Анна v2 крупнее)
@@ -320,10 +368,9 @@ PX = 100                    # угол: контент от x=100
 
 def h_scene1(T, dur):
     end = dur - 0.25
-    topic = K.topic_card(f("h1_topic"), "Обучение персонала", "Возврат товара",
-                         "Как принять без конфликта", w=W)
-    chance = K.headline(f("h1_chance"), "Покупатель вернулся", "Не конфликт, а шанс", ["шанс"], size=58, w=W)
-    four = four_card(f("h1_four"), W)
+    topic = UI.topic(f("h1_topic"), "Обучение персонала", "Возврат товара", "Как принять без конфликта", W)
+    chance = UI.chance(f("h1_chance"), W)
+    four = UI.four(f("h1_four"), W)
     t2 = T("конфликт")
     return [
         item(topic, L, 80, T("возврат") - 0.3, t2 - 0.2),
@@ -334,10 +381,10 @@ def h_scene1(T, dur):
 
 STEPS_H = [
     # (номер, иконка, глагол, ключевые слова, слово-триггер)
-    (1, "l1_ic_listen", "Улыбнитесь и выслушайте", ["не спорить", "не перебивать", "что случилось?"], "Шаг"),
-    (2, "l1_ic_check", "Проверьте товар и покупку", ["ярлыки", "товарный вид", "чек"], "второй"),
-    (3, "l1_ic_form", "Оформите заявление", ["паспорт", "причина", "подпись"], "третий"),
-    (4, "l1_ic_refund", "Верните деньги", ["тем же способом", "спасибо, что пришли"], "четвертый"),
+    (1, "listen", "Улыбнитесь и выслушайте", ["не спорить", "не перебивать", "что случилось?"], "Шаг"),
+    (2, "check", "Проверьте товар и покупку", ["ярлыки", "товарный вид", "чек"], "второй"),
+    (3, "form", "Оформите заявление", ["паспорт", "причина", "подпись"], "третий"),
+    (4, "refund", "Верните деньги", ["тем же способом", "спасибо, что пришли"], "четвертый"),
 ]
 
 
@@ -348,24 +395,24 @@ def h_scene2(T, dur):
     sw = 1220
     for k in range(4):
         t_in, t_out = t_steps[k], (t_steps[k + 1] if k < 3 else end)
-        out.append(item(stepper(f(f"h2_bar{k}"), k, sw), PX, 50, t_in, t_out if k < 3 else end))
-    ill = K.image_card(f("h2_ill"), img("l1_ill_counter"), 560)
+        out.append(item(UI.stepper(f(f"h2_bar{k}"), k, sw), PX, 50, t_in, t_out if k < 3 else end))
+    ill = UI.ill(f("h2_ill"), 560)
     out.append(item(ill, PX, 260, t_steps[0], end))
-    dx, dw = PX + 560 + 40, 620
+    dx, dw = PX + 560 + 40, 660 if THEME == "pop" else 620
     for k, (num, icon, title, keys, _) in enumerate(STEPS_H):
         t_in, t_out = t_steps[k], (t_steps[k + 1] if k < 3 else end)
-        card = step_detail(f(f"h2_step{k}"), img(icon), num, title, keys, dw, isz=120)
+        card = UI.step(f(f"h2_step{k}"), ic(icon), num, title, keys, dw, 120)
         out.append(item(card, dx, 260, t_in, t_out))
         if num == 2:
-            note = note_card(f("h2_note"), img("l1_ic_bank"), "Нет чека — не беда", "Подойдёт выписка из банка", dw)
+            note = UI.note(f("h2_note"), ic("bank"), "Нет чека — не беда", "Подойдёт выписка из банка", dw)
             out.append(item(note, dx, 260 + h_of(card) + 26, T("Нет"), t_out))
     return out
 
 
 def h_scene3(T, dur):
     end = dur - 0.25
-    verbs = verbs_card(f("h3_verbs"), W)
-    tt = today_tomorrow(f("h3_tt"), W)
+    verbs = UI.verbs(f("h3_verbs"), W)
+    tt = UI.today(f("h3_tt"), W)
     return [
         item(verbs, L, 90, max(T("Выслушать"), M.MOVE_D), end),
         item(tt, R, 90, T("Спокойный"), end),
@@ -379,8 +426,7 @@ VX, VW = 60, 960            # контент по ширине кадра
 
 def v_scene1(T, dur):
     end = dur - 0.25
-    topic = K.topic_card(f("v1_topic"), "Обучение персонала", "Возврат товара за 4 шага",
-                         "Не конфликт, а шанс", w=VW)
+    topic = UI.topic(f("v1_topic"), "Обучение персонала", "Возврат товара за 4 шага", "Не конфликт, а шанс", VW)
     return [item(topic, VX, 1130, 0.4, end)]
 
 
@@ -390,28 +436,28 @@ def v_scene2(T, dur):
     out = []
     for k in range(4):
         t_in, t_out = t_steps[k], (t_steps[k + 1] if k < 3 else end)
-        out.append(item(stepper(f(f"v2_bar{k}"), k, VW), VX, 80, t_in, t_out))
+        out.append(item(UI.stepper(f(f"v2_bar{k}"), k, VW), VX, 80, t_in, t_out))
     steps = [
-        (1, "l1_ic_listen", "Выслушайте", ["не спорьте"]),
-        (2, "l1_ic_check", "Проверьте", ["ярлыки", "вид", "чек"]),
-        (3, "l1_ic_form", "Заявление", ["паспорт", "причина", "подпись"]),
-        (4, "l1_ic_refund", "Верните деньги", ["тем же способом", "спасибо"]),
+        (1, "listen", "Выслушайте", ["не спорьте"]),
+        (2, "check", "Проверьте", ["ярлыки", "вид", "чек"]),
+        (3, "form", "Заявление", ["паспорт", "причина", "подпись"]),
+        (4, "refund", "Верните деньги", ["тем же способом", "спасибо"]),
     ]
-    ill = K.image_card(f("v2_ill"), img("l1_ill_counter"), VW - 120)
+    ill = UI.ill(f("v2_ill"), VW - 120)
     out.append(item(ill, VX + 60, 620, t_steps[0], end))
     for k, (num, icon, title, keys) in enumerate(steps):
         t_in, t_out = t_steps[k], (t_steps[k + 1] if k < 3 else end)
-        card = step_detail(f(f"v2_step{k}"), img(icon), num, title, keys, VW, isz=130)
+        card = UI.step(f(f"v2_step{k}"), ic(icon), num, title, keys, VW, 130)
         out.append(item(card, VX, 290, t_in, t_out))
         if num == 2:
-            note = note_card(f("v2_note"), img("l1_ic_bank"), "Нет чека", "Выписка из банка", 580, isz=80)
+            note = UI.note(f("v2_note"), ic("bank"), "Нет чека", "Выписка из банка", 580, isz=80)
             out.append(item(note, 40, 1236, T("нет"), t_out))
     return out
 
 
 def v_scene3(T, dur):
     end = dur - 0.25
-    tt = today_tomorrow(f("v3_tt"), VW)
+    tt = UI.today(f("v3_tt"), VW)
     return [item(tt, VX, 1080, max(0.3, M.MOVE_D), end)]
 
 

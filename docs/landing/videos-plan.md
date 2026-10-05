@@ -74,9 +74,12 @@
 
 | Ролик | Стиль | Борд |
 |---|---|---|
-| 1 Возврат товара | Корпоративный (светлые карточки, Inter, угол) | `scratch/img/l1_board.png` |
+| 1 Возврат товара | **Поп-ритейл** (выбран 05.10.2026): кобальт/мандарин/лайм/чернила, Rubik ExtraBold + Golos Text, карточки-ценники, жёсткие тени; файл стиля `render/landing/theme_pop.py` | `scratch/img/l1b_board_pop.png` |
 | 3 Мошенники | Reels-эксперт: чёрный/жёлтый/красный, Unbounded Black + Montserrat ExtraBold, штампы, крупные субтитры со словом-подсветкой | `scratch/img/l2_board_reels.png` |
 | 4 Гаджет за 60 с | Тёмный продукт: неон, стекло, Space Grotesk + Manrope, ведущий без фона над продуктовыми сценами | `scratch/img/l4_board_product.png` |
 | 5 Директор RU/EN | Премиальный корпоративный: крем/графит/золото/бордо, Playfair Display + Manrope, кадр с полями, плашка «имя — должность» | `scratch/img/l5_board_premium.png` |
 
 - **Ведущий без фона работает:** HeyGen `outputFormat: "webm"` для фото-аватара отдаёт VP9 с альфой (проверено на «Анна v2b», `scratch/test-alpha.webm`, композит — `scratch/img/test-alpha-composite.png`). Декодировать с `-c:v libvpx-vp9`, иначе альфа теряется.
+
+- **Стиль = отдельный файл.** `render/landing/theme_pop.py` — компоненты (`topic_card`, `stepper`, `step_detail`, `note_card`, `verbs_card`, `today_tomorrow`, `image_card`) и `setup()` (фон кадра, рамка угла, субтитры: чернильная плашка, белый Golos Text, лаймовый акцент). `build_l1.py` выбирает стиль через `THEME` (по умолчанию `pop`; `THEME=corporate` — прежний вид). Для следующих роликов — свой `theme_*.py` по их борду.
+- Шрифты Rubik и Golos Text (OFL) собраны из пакетов @fontsource (latin + cyrillic) — `render/fonts/Rubik-*.ttf`, `GolosText-*.ttf`; GitHub google/fonts из песочницы отдаёт 403. Символа «→» в подмножествах нет — стрелки рисовать фигурами.
