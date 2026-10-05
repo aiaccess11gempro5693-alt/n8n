@@ -358,7 +358,7 @@ def v_scene1(T, dur):
     end = dur - 0.25
     topic = K.topic_card(f("v1_topic"), "Обучение персонала", "Возврат товара за 4 шага",
                          "Не конфликт, а шанс", w=VW)
-    return [item(topic, VX, 1060, 0.4, end)]
+    return [item(topic, VX, 1130, 0.4, end)]
 
 
 def v_scene2(T, dur):
@@ -389,18 +389,18 @@ def v_scene2(T, dur):
 def v_scene3(T, dur):
     end = dur - 0.25
     tt = today_tomorrow(f("v3_tt"), VW)
-    return [item(tt, VX, 1000, max(0.3, M.MOVE_D), end)]
+    return [item(tt, VX, 1080, max(0.3, M.MOVE_D), end)]
 
 
 # ---------------------------------------------------------------- сборка
 
 def prep_vertical_clip(src, dst):
-    """Клип 9:16 (Анна в полный рост) — приближение ×1.25 к верхней части
+    """Клип 9:16 (Анна в полный рост) — приближение ×1.4 к верхней части
     кадра, чтобы лицо было крупнее (указание пользователя 05.10.2026)."""
     if os.path.exists(dst) and os.path.getmtime(dst) > os.path.getmtime(src):
         return dst
     M.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vf",
-           "crop=864:1536:108:0,scale=1080:1920,setsar=1", "-an", "-c:v", "libx264", "-crf", "16",
+           "crop=772:1372:154:40,scale=1080:1920,setsar=1", "-an", "-c:v", "libx264", "-crf", "16",
            "-preset", "fast", dst])
     return dst
 
