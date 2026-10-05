@@ -7,8 +7,8 @@
     "extra_refs": [
       "scratch/img/l1_anna_16x9.png"
     ],
-    "meaning": "та же Анна, что на приложенном фото (то же лицо, причёска, тёмно-синее поло с коралловым бейджем, тот же магазин), но вертикальный кадр для 9:16: по пояс, по центру, смотрит в камеру, сверху запас над головой",
-    "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as in the attached photo — identical face, hair, dark navy polo shirt and plain coral name badge without text, same bright store of textiles and home goods in the background, same lighting and colour grading. Vertical composition: she stands in the centre facing the camera and looking straight into the lens, framed from the top of the head to just below the waist, with clear headroom above the head (about 12% of the frame height), hands loosely clasped at waist level and fully visible. Softly blurred background, sharp focus on the face, natural skin texture. No readable signs, no logos, no text anywhere."
+    "meaning": "та же Анна, что на приложенном фото (то же лицо, причёска, тёмно-синее поло, тот же бейдж с надписями «Анна» / «Администратор», тот же магазин), вертикальный кадр в полный рост или почти в полный рост, по центру, смотрит в камеру",
+    "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as in the attached photo — identical face, hair, eyes, dark navy polo shirt, and the same white name badge with a coral top stripe and readable Russian text in two lines «Анна» / «Администратор», same bright store of textiles and home goods, same lighting and colour grading. Vertical composition: she stands in the centre facing the camera and looking straight into the lens, framed from above the head to the knees, clear headroom above the head, hands loosely clasped at waist level. Softly blurred background, sharp focus on the face, natural skin texture. No readable signs or logos in the background."
   },
   "status": "ok",
   "attempts": [
