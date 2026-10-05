@@ -40,9 +40,10 @@
   (`call-elevenlabs-list-voices.yml`).
 - ✅ CometAPI: `whisper-1` (мост `call-cometapi-transcribe.yml`), Nano Banana
   (`call-brand-images.yml` → `tools/gen_brand_images.py`).
-- ❗ **Моста для `gpt-image-2` нет** — нужно написать (OpenAI-совместимые
-  `/v1/images/generations` и `/v1/images/edits` для референсов через CometAPI,
-  ключ `COMETAPI_KEY`). Баланс CometAPI раньше заканчивался — следить.
+- ✅ **`gpt-image-2` подключён** (05.10.2026) — в тот же `tools/gen_brand_images.py`
+  (мост `call-brand-images.yml`): в задании `"engine": "gpt-image-2"`, виды `photo`
+  (фото персонажа) и `board` (дизайн-борд); с референсами — `/v1/images/edits`,
+  без — `/generations`; QA — по-прежнему Gemini. Баланс CometAPI раньше заканчивался — следить.
 - ❗ **Монтажа 9:16 нет** — строить на первом ролике (сейчас `render/corner/` только 16:9).
 
 ## Куда класть результат
