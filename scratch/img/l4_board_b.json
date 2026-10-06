@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l4_board_b",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_board_product.png",
+      "scratch/img/l4_host_9x16.png"
+    ],
+    "meaning": "дизайн-система ролика «Быстро — продукты за 60 минут» на основе всего брендбука «Тёмный продукт» (первый референс) с нашим ведущим (второй референс) и 6 раскладками вертикальных кадров; вариант B «HUD-интерфейс»: та же палитра, но язык футуристичного интерфейса — тонкие циан-линии, сетки, уголки-видоискатели вокруг продукта, цифровые счётчики и таймеры, сканлайны, данные-выноски; почти без стеклянных карточек",
+    "prompt": "Create a complete design system board (brand style guide sheet) for SHORT VERTICAL 9:16 product advertising videos. The FIRST attached image is the approved brand board «Тёмный продукт» — take the WHOLE brand book from it: palette (near-black #0B0D17, deep navy #141A33, neon cyan #3BE8FF, violet #8B5CF6, soft white #EEF2FF), typography (Space Grotesk headlines, Manrope body), its icon style, glass panels, neon glows, decorative elements and principles — and keep the same block structure (hero, colour palette with HEX, typography, presenter style, graphic elements, icons, infographic examples, decorative elements, footer principles). The SECOND attached image is our presenter: use EXACTLY this man (same face, short dark-brown hair, black zip-up tech jacket) everywhere on the board instead of the woman on the first board. The product is a fictional grocery delivery service «Быстро» (delivery in 60 minutes) — replace the headphones with it: a smartphone app with a map and a courier dot, a paper grocery bag, a timer. All text in Russian, short and correctly spelled. Hero title: «Быстро — продукты за 60 минут». IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS of this video: (1) hook without the presenter: an open EMPTY fridge glowing in the dark and a big timer «60:00» on top; (2) presenter full frame with the logo «Быстро» flashing above his head; (3) the product hero: a big smartphone with the app (map, route, courier dot) in the centre and feature chips around it «60 мин», «0 ₽ от 1 000 ₽», «курьер на карте»; (4) split «Было / Стало»: top half grey and dull «очереди, пакеты, пробки», bottom half neon «3 касания»; (5) presenter's face in a glowing circle with three audience chips «занятым», «мамам», «всем, кому дорог вечер»; (6) call to action: a grocery bag at a door, a neon button «Скачать «Быстро»» and the timer stopped. Every frame has a subtitle bar at the bottom. No real brand names or logos. VARIANT B «HUD-интерфейс»: same palette and fonts, but the visual language is a futuristic heads-up display — thin 1-2px neon cyan lines, technical grids, corner-bracket viewfinder frames around the product, callout lines with data labels pointing to product parts, big digital counters and countdown timers in monospaced style, subtle scanlines, radar/progress arcs, violet only for highlights; flat outlines instead of glass cards. Mood: precise, high-tech, energetic."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
