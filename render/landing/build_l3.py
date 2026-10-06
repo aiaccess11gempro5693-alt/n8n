@@ -39,18 +39,18 @@ ROOT = V.ROOT
 HERE = V.HERE
 IMG = f"{ROOT}/scratch/img"
 TMP = f"{HERE}/_frames_l3"
-AUDIO = f"{ROOT}/scratch/l3-v-full-v2.mp3"
-CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l3-v-expert.webm")
+AUDIO = f"{ROOT}/scratch/l3-v-full-v3a.mp3"
+CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l3-v3a-expert.webm")
 OUT = f"{HERE}/l3-9x16.mp4"
 
 W, H, FPS = 1080, 1920, 25
 # границы сцен — середины пауз между предложениями (silencedetect)
-BOUNDS = [0.0, 2.79, 5.61, 12.92, 19.11, 24.90]
+BOUNDS = [0.0, 3.26, 5.77, 13.73, 18.94, 24.85]
 CAP_W, CAP_X, CAP_BOTTOM = 980, 50, 1850
 POP = 0.32
 
 V.TEXTS = f"{ROOT}/docs/scenarios/landing-3-scams.md"
-V.WHISPER = f"{ROOT}/scratch/l3-v-full-v2-whisper-1.json"
+V.WHISPER = f"{ROOT}/scratch/l3-v-full-v3a-whisper-1.json"
 V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с)", "## Раскладка 9:16"
 
 # числа на экране и в субтитрах — цифрами
