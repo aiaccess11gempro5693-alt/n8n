@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l3h_ph_parents",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "style": "Cinematic editorial photograph colour-graded to the attached design board palette «Reels-эксперт»: deep black #0E0E10 shadows, acid yellow #FFE600 light accents (a warm-yellow lamp, a yellow rim light), alarm red #FF3B30 accents only where the subject says so; moody, high contrast, low key, shallow depth of field. Phone screens may glow but show NO readable text, no letters, no numbers, no logos, no app icons with text, no signs.",
+    "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Reels-эксперт»: глубокие чёрные тени, жёлтые световые акценты, красные — по смыслу",
+    "audience": "для широкой аудитории, тема — телефонное мошенничество",
+    "meaning": "взрослая дочь объясняет пожилым родителям, как не попасться мошенникам, тёплая сцена",
+    "prompt": "An adult daughter of about 35 sitting on a sofa next to her elderly parents (about 70), showing them something on a smartphone and explaining calmly; the parents listen attentively; cozy dim living room with a warm-yellow lamp, deep black shadows; the group on the RIGHT half of the frame, the left half is a dark wall (space for text). Faces natural, no distortion."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
