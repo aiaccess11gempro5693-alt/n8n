@@ -59,7 +59,9 @@ SHOW = {"три": "3"}
 # только корпус в чёрной рубашке, там допустимы субтитры). Измерено по альфе.
 AVATAR_BOX = (110, 300, 980, 1100)
 FACE = (535, 545, 265)
-CLIP_BOTTOM = 1769   # ниже — пусто (край исходного фото): всегда за кадром   # центр лица и половина стороны кропа для видоискателя
+CLIP_BOTTOM = 1769   # ниже — пусто (край исходного фото): всегда за кадром
+FACE_Y = FACE[1] / 1920   # доля высоты клипа, где лицо: точка опоры резкого наезда
+PUNCH = 0.13              # резкий наезд на ключевом слове: +13% к масштабу   # центр лица и половина стороны кропа для видоискателя
 
 
 def run(cmd):
@@ -164,10 +166,12 @@ def _avatar_rect(av):
         return None
     if av["kind"] == "finder":
         return (av["x"], av["y"], av["x"] + av["size"], av["y"] + av["size"])
-    s = av["s"] * (1 + av.get("zoom", 0))
+    s0 = av["s"]
+    s = s0 * (1 + av.get("zoom", 0)) * (1 + PUNCH * len(av.get("punch", ())))
     ax0, ay0, ax1, ay1 = AVATAR_BOX
-    cx = av["x"] + 540 * av["s"]   # наезд — от центра верхней части силуэта
-    return (cx + (ax0 - 540) * s, av["y"] + ay0 * s, cx + (ax1 - 540) * s, av["y"] + ay1 * s)
+    cx = av["x"] + 540 * s0
+    top = av["y"] - (s - s0) * 1920 * FACE_Y   # наезд — к лицу (точка лица стоит на месте)
+    return (cx + (ax0 - 540) * s, top + ay0 * s, cx + (ax1 - 540) * s, top + ay1 * s)
 
 
 def check_layout(k, sc, t0, t1, caps):
@@ -222,11 +226,13 @@ def render_scene(k, sc, t0, t1, caps):
         inputs += ["-c:v", "libvpx-vp9", "-ss", f"{t0}", "-t", f"{dur}", "-i", CLIP]
         if av["kind"] == "scale":
             z = av.get("zoom", 0)
-            k_ = f"({av['s']}*(1+{z}*t/{dur}))"
+            pn = "".join(f"+{PUNCH}*clip((t-{tp - t0:.2f})/0.09\\,0\\,1)" for tp in av.get("punch", ()))
+            k_ = f"({av['s']}*(1+{z}*t/{dur})*(1{pn}))"
             fc.append(f"[{idx}:v]format=rgba,fps={FPS},scale=w='trunc(1080*{k_}/2)*2':h='trunc(1920*{k_}/2)*2'"
                       f":eval=frame[av]")
             cx = av["x"] + 540 * av["s"]
-            fc.append(f"[{last}][av]overlay=x='{cx}-w/2':y={av['y']}:shortest=0[a0]")
+            h0 = 1920 * av["s"]
+            fc.append(f"[{last}][av]overlay=x='{cx}-w/2':y='{av['y']}-(h-{h0})*{FACE_Y:.4f}':shortest=0[a0]")
         else:   # видоискатель: квадратный кроп лица
             cx, cy, r = FACE
             fc.append(f"[{idx}:v]format=rgba,fps={FPS},crop={2 * r}:{2 * r}:{cx - r}:{cy - r},"
@@ -270,6 +276,20 @@ def render_scene(k, sc, t0, t1, caps):
             inputs += [*loop, path]
             fc.append(f"[{last}][{idx}:v]overlay={CAP_X}:{cy}:enable='gte(t,{s0:.3f})*lt(t,{s1:.3f})'[c{n}]")
             last, idx, n = f"c{n}", idx + 1, n + 1
+    for j, (tf, col) in enumerate(sc.get("flash", [])):   # вспышка цвета на акценте
+        a = max(0.0, tf - t0)
+        T.flash(p(f"flash_{col}"), W, H, col)
+        inputs += [*loop, p(f"flash_{col}")]
+        fc.append(f"[{idx}:v]format=rgba,fade=t=in:st={a:.2f}:d=0.04:alpha=1,"
+                  f"fade=t=out:st={a + 0.06:.2f}:d=0.32:alpha=1[fl{j}]")
+        fc.append(f"[{last}][fl{j}]overlay=0:0:enable='between(t,{a:.2f},{a + 0.4:.2f})'[f{j}]")
+        last, idx = f"f{j}", idx + 1
+    shakes = [max(0.0, ts - t0) for ts in sc.get("shake", [])]
+    if shakes:   # тряска кадра на ударе штампа
+        amp = "+".join(f"between(t\\,{a:.2f}\\,{a + 0.32:.2f})*(1-(t-{a:.2f})/0.32)" for a in shakes)
+        fc.append(f"[{last}]pad={W + 48}:{H + 48}:24:24:color=0x0E0E10,"
+                  f"crop={W}:{H}:x='24+16*sin(t*97)*({amp})':y='24+12*cos(t*83)*({amp})'[shk]")
+        last = "shk"
     if k > 0:   # смена раскладки: жёлтый мазок пролетает через кадр
         T.swipe(p("swipe"), W, H)
         inputs += [*loop, p("swipe")]

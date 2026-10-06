@@ -619,3 +619,10 @@ def icon_text(path, icon, lines, w=760, ic=170, size=56, color=WHITE):
         d.text((ic + 28, y), line, font=f, fill=color)
         y += lh
     return _save(_shadow(im, blur=10, k=0.6), path)
+
+
+def flash(path, W, H, color="red"):
+    """Полупрозрачная вспышка на весь кадр (красная — опасность, жёлтая — акцент)."""
+    c = {"red": (255, 59, 48, 120), "yellow": (255, 230, 0, 110), "white": (255, 255, 255, 150)}[color]
+    Image.new("RGBA", (W, H), c).save(path)
+    return path
