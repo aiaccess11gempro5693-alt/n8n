@@ -1,0 +1,48 @@
+{
+ "style_refs": [
+  "scratch/img/l4_board_product.png"
+ ],
+ "jobs": [
+  {
+   "name": "l4_host_9x16",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "meaning": "новый ведущий — техноблогер / продакт-менеджер, мужчина ~30 лет, славянская внешность, тёмное техно-худи на молнии, фон — почти чёрный студийный с неоновыми циан и фиолетовым контровым светом из палитры борда «Тёмный продукт» (НЕ женщина с борда); вертикальный кадр по пояс, по центру, смотрит в камеру, лицо нейтрально-уверенное, губы слегка приоткрыты, без улыбки, запас над головой; без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16 portrait frame. A NEW man (NOT the woman on the attached board) of about 30, Russian/Slavic appearance: short modern dark-brown hair with a neat textured top, clean-shaven or very light stubble, brown-green eyes, friendly energetic but focused face. He is a tech blogger / product manager. His expression is NEUTRAL and confident, like a person in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes looking straight into the lens. Face lit evenly from the front with a soft key light, a neon cyan #3BE8FF rim light on one shoulder and a violet #8B5CF6 rim light on the other, matching the attached board palette (near-black #0B0D17, deep navy #141A33). He wears a plain matte black technical zip-up jacket/hoodie over a black t-shirt, no logos, no text, no badge, no headphones. Waist-up shot, he stands in the exact centre facing the camera, arms relaxed down along the body (hands out of frame), shoulders square. Headroom: the top of his head is about 18% of the frame height below the upper edge; the face is large and sharp. Background: near-black navy studio backdrop with a soft gradient and a faint blurred cyan-violet light arc far behind, no objects, no screens, no text. Sharp focus on the face, natural skin texture, 85mm lens look, cinematic tech-commercial grading."
+  },
+  {
+   "name": "l4_p_fridge",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Premium dark product/advertising photograph colour-graded to the attached design board «Тёмный продукт»: near-black #0B0D17 and deep navy #141A33 shadows, neon cyan #3BE8FF and violet #8B5CF6 rim lights and glows, soft white #EEF2FF highlights; glossy, clean, high-end tech commercial look, shallow depth of field, subtle reflections. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "рекламное продуктовое фото (фотореализм задуман) в тёмной гамме борда «Тёмный продукт»: почти чёрный/тёмно-синий, неоновые циан и фиолетовый акценты",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "открытый ПУСТОЙ холодильник ночью на тёмной кухне — хук «гости через час, а холодильник пустой»",
+   "prompt": "A modern refrigerator standing open at night in a dark minimalist kitchen, its shelves completely EMPTY and glowing with cold cyan interior light that spills onto the dark floor, a faint violet rim light on the fridge door edge; shot slightly from below, the fridge in the lower two thirds of the vertical frame, the upper third is dark empty space (space for text). Moody, cinematic, high contrast."
+  },
+  {
+   "name": "l4_p_bag",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Premium dark product/advertising photograph colour-graded to the attached design board «Тёмный продукт»: near-black #0B0D17 and deep navy #141A33 shadows, neon cyan #3BE8FF and violet #8B5CF6 rim lights and glows, soft white #EEF2FF highlights; glossy, clean, high-end tech commercial look, shallow depth of field, subtle reflections. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "рекламное продуктовое фото (фотореализм задуман) в тёмной гамме борда «Тёмный продукт»: почти чёрный/тёмно-синий, неоновые циан и фиолетовый акценты",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "пакет с продуктами доставлен к двери квартиры — результат сервиса, «ужин у двери»",
+   "prompt": "A neat paper grocery bag full of fresh groceries (baguette, greens, fruit, a bottle of juice, no labels) standing on the floor right at an apartment front door in a dark hallway, the door slightly open with warm-white light from inside, the bag lit by a cyan rim light and a violet glow on the floor, glossy floor reflection; the bag in the lower half of the vertical frame, upper part dark space for text. Premium product shot, hero object."
+  },
+  {
+   "name": "l4_p_phone",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Premium dark product/advertising photograph colour-graded to the attached design board «Тёмный продукт»: near-black #0B0D17 and deep navy #141A33 shadows, neon cyan #3BE8FF and violet #8B5CF6 rim lights and glows, soft white #EEF2FF highlights; glossy, clean, high-end tech commercial look, shallow depth of field, subtle reflections. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "рекламное продуктовое фото (фотореализм задуман) в тёмной гамме борда «Тёмный продукт»: почти чёрный/тёмно-синий, неоновые циан и фиолетовый акценты",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "смартфон в руке: на экране приложения карта с маршрутом и точкой курьера — «курьер на карте»",
+   "prompt": "A hand holding a modern smartphone vertically in the dark, the screen glowing: an abstract dark city map with a bright neon cyan route line and a glowing violet courier dot moving along it toward a home pin, only shapes and lines on the screen — absolutely no text, no numbers, no app names. Cyan and violet light reflects on the fingers, dark navy blurred background with bokeh. The phone fills the centre of the vertical frame."
+  }
+ ]
+}
