@@ -32,6 +32,7 @@ import subprocess
 from PIL import Image
 
 from render.landing import build_l1_v3 as V
+from render.landing import sfx as SFX
 from render.landing import theme_reels as T
 
 ROOT = V.ROOT
@@ -80,6 +81,10 @@ def caption_chunks(words, total):
     f = T.font(T.F_BODY, T.CAP_F)
     sents, cur = [], []
     for w, t in words:
+        w = w.replace("\u0301", "")   # знак ударения — для озвучки, не для экрана
+        letters = re.sub(r"[^\w]", "", w)
+        if letters.isupper() and len(letters) > 1 and letters != "СМС":
+            w = w.lower()   # КАПС в тексте — подсказка ударения для eleven_v3, не для экрана
         cur.append((SHOW.get(w.lower(), w), t))
         if re.search(r"[.!?]»?$", w):
             sents.append(cur)
@@ -90,8 +95,9 @@ def caption_chunks(words, total):
     for s in sents:
         piece = []
         for w, t in s:
-            if w == "—" and piece:
-                parts.append(piece)
+            if w == "—":
+                if piece:
+                    parts.append(piece)
                 piece = []
                 continue
             piece.append((w, t))
@@ -125,34 +131,38 @@ def scenes(F):
     T.background(p("bg_dots"), W, H, "dots")
     T.background(p("bg_type"), W, H, "type")
     ic = lambda n: f"{IMG}/l3_ic_{n}.png"
-    full = {"kind": "scale", "s": 1.0, "x": 0, "y": 340, "zoom": 0.03}
+    full = {"kind": "scale", "s": 1.0, "x": 0, "y": 340, "zoom": 0.03, "punch": [F("банка»?")]}
     return [
-        {"bg": p("bg_dots"), "av": full, "els": [
+        {"bg": p("bg_dots"), "av": full, "sfx": [(0.1, "ring", 0.4)], "els": [
             (T.call_card(p("s1_call"), 940), 40, 40, 0.15),
             (T.stamp(p("s1_stamp"), "ОПАСНО", size=120, angle=-9), 470, 270, F("банка»?") + 0.05, None, "stamp"),
         ]},
-        {"bg": p("bg_type"), "av": None, "els": [
+        {"bg": p("bg_type"), "av": None, "flash": [(b[1] + 0.05, "yellow")], "els": [
             (T.big_three(p("s2_three"), 1000), 10, 170, b[1] + 0.05),
         ]},
-        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.9, "x": 820 - 486, "y": 619}, "els": [
+        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.9, "x": 820 - 486, "y": 619},
+         "sfx": [(F("Первый:"), "tick", 0.35), (F("Второй:"), "glitch", 0.3)], "els": [
             (T.sticker(p("s3_st1"), 1, ["Торопит и пугает"], ic("bolt"), 1000), 10, 30, F("Первый:")),
             (T.sticker(p("s3_st2"), 2, ["Просит код из СМС"], ic("sms"), 1000), 10, 310, F("Второй:")),
             (T.code_card(p("s3_code"), 360, ("БАНК НЕ", "СПРАШИВАЕТ")), 0, 610, F("банк")),
         ]},
-        {"bg": p("bg_dots"), "av": {"kind": "finder", "size": 560, "x": (W - 560) // 2, "y": 110}, "els": [
+        {"bg": p("bg_dots"), "av": {"kind": "finder", "size": 560, "x": (W - 560) // 2, "y": 110},
+         "sfx": [(b[3] + 0.05, "glitch", 0.35), (F("Такого") - 1.15, "riser", 0.45)], "els": [
             (T.viewfinder(p("s4_vf"), 560), (W - 560) // 2 - 20, 90, b[3] + 0.05, None, "frame"),
             (T.headline(p("s4_head"), [[("«Безопасный", "w")], [("счёт»", "b")]], 1000, size=92,
                         align="center"), 40, 740, F("Предлагает")),
             (T.stamp(p("s4_stamp"), "НЕ СУЩЕСТВУЕТ", size=104, angle=-6, seed=9), 90, 1110,
              F("Такого") + 0.05, None, "stamp"),
         ]},
-        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.85, "x": 180 - 459, "y": 635}, "els": [
+        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.85, "x": 180 - 459, "y": 635, "punch": [F("Положите")]},
+         "els": [
             (T.headline(p("s5_head"), [[("Что", "w"), ("делать?", "b")]], 1000, size=84), 40, 40, b[4] + 0.05),
             (T.action_button(p("s5_hang"), ["Положите", "трубку"], T.RED, True), 40, 250, F("Положите")),
             (T.action_button(p("s5_call"), ["Перезвоните", "сами"], T.YELLOW, False), 40, 480, F("перезвоните")),
             (T.card_back(p("s5_card"), 420), 540, 900, F("банк", 21.5) - 0.1),
         ]},
-        {"bg": p("bg_dots"), "av": {"kind": "scale", "s": 1.0, "x": 0, "y": 340, "zoom": 0.06}, "els": [
+        {"bg": p("bg_dots"), "av": {"kind": "scale", "s": 1.0, "x": 0, "y": 340, "zoom": 0.04, "punch": [F("сбережёт")]},
+         "flash": [(b[5] + 0.05, "yellow")], "els": [
             (T.headline(p("s6_head"), [[("1 минута", "w")], [("паузы", "b")], [("= деньги целы", "y")]], 1000,
                         size=88, align="center"), 40, 40, b[5] + 0.05),
         ]},
@@ -302,13 +312,46 @@ def render_scene(k, sc, t0, t1, caps):
     return out
 
 
+def enrich(sc_list):
+    """Акценты по умолчанию: штамп — тряска кадра + красная вспышка."""
+    for sc in sc_list:
+        for el in sc["els"]:
+            if len(el) > 5 and el[5] == "stamp":
+                sc.setdefault("shake", []).append(el[3])
+                sc.setdefault("flash", []).append((el[3], "red"))
+    return sc_list
+
+
+def sound_events(sc_list, bounds):
+    """Звук из событий кадра: смена сцены — вжух, появление — поп, штамп —
+    удар, вспышка/наезд — «бум»; плюс свои звуки сцены (sc["sfx"])."""
+    ev = []
+    for k, sc in enumerate(sc_list):
+        if k > 0:
+            ev.append((bounds[k] - 0.12, "whoosh", 0.55))
+        for el in sc["els"]:
+            mode = el[5] if len(el) > 5 else "pop"
+            if mode == "stamp":
+                ev += [(el[3], "stamp", 0.9), (el[3], "hit", 0.45)]
+            elif mode != "frame":
+                ev.append((el[3], "pop", 0.3))
+        for tf, col in sc.get("flash", []):
+            if col != "red":
+                ev.append((tf, "hit", 0.5))
+        av = sc.get("av") or {}
+        for tp in av.get("punch", ()):
+            ev.append((tp, "hit", 0.35))
+        ev += sc.get("sfx", [])
+    return ev
+
+
 def main():
     os.makedirs(TMP, exist_ok=True)
     total = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
                                   "csv=p=0", AUDIO], capture_output=True, text=True).stdout)
     words = V.word_times()
     caps = caption_chunks(words, total)
-    sc = scenes(V.finder(words))
+    sc = enrich(scenes(V.finder(words)))
     bounds = BOUNDS + [total]
     only = os.environ.get("ONLY")
     for k, s in enumerate(sc):
@@ -327,7 +370,8 @@ def main():
     lst = f"{TMP}/concat.txt"
     with open(lst, "w") as fh:
         fh.writelines(f"file '{x}'\n" for x in parts)
-    run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-i", AUDIO, "-map", "0:v",
+    mixed = SFX.mix(AUDIO, sound_events(sc, bounds), f"{TMP}/mix.wav", f"{TMP}/sfx", total=total)
+    run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-i", mixed, "-map", "0:v",
          "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", OUT])
     print("done", OUT)
 

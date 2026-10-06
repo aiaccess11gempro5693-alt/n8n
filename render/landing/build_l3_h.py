@@ -46,9 +46,10 @@ B.BOUNDS = [0.0, 6.75, 12.83, 19.11, 25.99, 34.91, 40.01, 47.88, 49.95]
 p = B.p
 
 
-def expert(cx, s=0.66, y=0, zoom=0.0):
-    """Эксперт с центром силуэта в cx; срез клипа (1769 px) всегда ниже кадра."""
-    return {"kind": "scale", "s": s, "x": cx - 540 * s, "y": y, "zoom": zoom}
+def expert(cx, s=0.66, y=0, zoom=0.0, punch=()):
+    """Эксперт с центром силуэта в cx; срез клипа (1769 px) всегда ниже кадра.
+    punch — моменты резкого наезда к лицу на ключевых словах."""
+    return {"kind": "scale", "s": s, "x": cx - 540 * s, "y": y, "zoom": zoom, "punch": list(punch)}
 
 
 def scenes(F):
@@ -63,29 +64,31 @@ def scenes(F):
     T.photo_bg(p("bg_card"), ph("card"), W, H, rect=(0, 0, 1150, H), dark=0.15, fade_side="right", ax=0.25)
     T.photo_bg(p("bg_parents"), ph("parents"), W, H, rect=(0, 0, 1300, H), dark=0.1, fade_side="right", ax=0.2)
     return [
-        {"bg": p("bg_ring"), "av": None, "els": [
+        {"bg": p("bg_ring"), "av": None, "sfx": [(0.15, "ring", 0.45), (F("Вежливый"), "glitch", 0.25)], "els": [
             (T.call_card(p("h1_call"), 800), 1040, 140, 0.2, F("Вежливый") - 0.1),
             (T.quote_card(p("h1_quote"), ["Иван Сергеевич,", "добрый день!"], 700, 56), 1140, 130,
              F("Вежливый")),
         ]},
-        {"bg": p("bg_dots"), "av": expert(1440), "els": [
+        {"bg": p("bg_dots"), "av": expert(1440, punch=[F("четыре")]), "els": [
             (T.tag(p("h2_tag"), "Эксперт по безопасности"), 70, 120, F("специалист")),
             (T.headline(p("h2_head"), [[("4", "y"), ("признака", "w")], [("мошенника", "b")]], 900, size=96),
              70, 330, F("четыре")),
         ]},
-        {"bg": p("bg_rush"), "av": None, "keep": [(830, 60, 1600, H)], "els": [
+        {"bg": p("bg_rush"), "av": None, "keep": [(830, 60, 1600, H)], "sfx": [(F("давление."), "tick", 0.4)],
+         "els": [
             (T.tag(p("h3_tag"), "01 · Давление"), 70, 50, F("Первый:")),
             (T.icon_text(p("h3_fear"), ic("timer"), ["Спешка", "и страх"], 700, 210, 66), 60, 200, F("давление.")),
-            (T.stamp(p("h3_stamp"), "СРОЧНО!", size=110, angle=-8, seed=23), 90, 470, F("«Срочно,") + 0.05,
+            (T.stamp(p("h3_stamp"), "СРОЧНО!", size=110, angle=-8, seed=23), 90, 470, F("«Срочно!") + 0.05,
              None, "stamp"),
         ]},
-        {"bg": p("bg_plain"), "av": expert(430), "els": [
+        {"bg": p("bg_plain"), "av": expert(430, punch=[F("НИКОГДА")]), "els": [
             (T.tag(p("h4_tag"), "02 · Код из СМС"), 900, 50, F("Второй:")),
             (T.icon_text(p("h4_ask"), ic("chat"), ["Просят", "продиктовать код"], 920, 190, 56), 900, 175,
              F("просят")),
             (T.code_card(p("h4_code"), 700, ("БАНК НЕ СПРАШИВАЕТ",)), 900, 430, F("Банк")),
         ]},
-        {"bg": p("bg_dots"), "av": expert(960), "els": [
+        {"bg": p("bg_dots"), "av": expert(960, punch=[F("Деньги", b[4])]), "sfx": [(F("Таких") - 1.15, "riser", 0.45)],
+         "els": [
             (T.tag(p("h5_tag"), "03 · Перевод"), 40, 80, F("Третий:")),
             (T.headline(p("h5_head"), [[("«Резервный", "w")], [("счёт»", "b")]], 620, size=56), 30, 210,
              F("резервный")),
@@ -94,7 +97,7 @@ def scenes(F):
             (T.icon_text(p("h5_money"), ic("transfer"), ["Деньги —", "к ворам"], 600, 200, 58), 1290, 220,
              F("сбережения")),
         ]},
-        {"bg": p("bg_type"), "av": None, "els": [
+        {"bg": p("bg_type"), "av": None, "sfx": [(b[5] + 0.05, "glitch", 0.35)], "els": [
             (T.tag(p("h6_tag"), "04 · Приложение"), 760, 90, b[5] + 0.05),
             (T.icon_tile(p("h6_icon"), ic("app"), 380), 170, 250, b[5] + 0.3),
             (T.headline(p("h6_head"), [[("«Для", "w")], [("защиты»", "b")], [("телефона", "w")]], 1000, size=90),
@@ -112,7 +115,8 @@ def scenes(F):
             (T.icon_text(p("h8_fam"), ic("family"), ["Расскажите", "родителям"], 620, 200, 54), 1258, 240,
              b[7] + 0.05),
         ]},
-        {"bg": p("bg_dots"), "av": expert(960, zoom=0.04), "els": [
+        {"bg": p("bg_dots"), "av": expert(960, zoom=0.03, punch=[F("защита.")]), "flash": [(F("защита.") , "yellow")],
+         "els": [
             (T.headline(p("h9_l"), [[("Положить", "w")], [("трубку —", "w")], [("не грубость", "r")]], 640,
                         size=58), 20, 200, b[8] + 0.05),
             (T.headline(p("h9_r"), [[("Это ваша", "w")], [("защита", "b")]], 600, size=64), 1290, 260,
