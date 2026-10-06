@@ -256,6 +256,11 @@ def run_job(job, refs):
 def main():
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
     only = set(filter(None, (os.environ.get("ONLY") or "").split(",")))
+    if spec.get("mode") == "audio_check":   # прослушивание озвучки (tools/check_audio.py)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import check_audio
+        check_audio.run(spec, only)
+        return
     jobs = [j for j in spec["jobs"] if not only or j["name"] in only]
     os.makedirs(OUT_DIR, exist_ok=True)
     with cf.ThreadPoolExecutor(max_workers=6) as ex:
