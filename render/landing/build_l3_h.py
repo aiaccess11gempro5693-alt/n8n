@@ -33,15 +33,15 @@ W, H = 1920, 1080
 
 B.W, B.H = W, H
 B.TMP = f"{HERE}/_frames_l3h"
-B.AUDIO = f"{ROOT}/scratch/l3-h-full-v2.mp3"
-B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l3-h-expert.webm")
+B.AUDIO = f"{ROOT}/scratch/l3-h-full-v4.mp3"
+B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l3-h4-expert.webm")
 B.OUT = f"{HERE}/l3-16x9.mp4"
 B.CAP_W, B.CAP_X, B.CAP_BOTTOM = 1100, 410, 1050
 B.SHOW = {**B.SHOW, "четыре": "4"}
-V.WHISPER = f"{ROOT}/scratch/l3-h-full-v2-whisper-1.json"
+V.WHISPER = f"{ROOT}/scratch/l3-h-full-v4-whisper-1.json"
 V.TEXT_HEAD, V.TEXT_END = "## Текст 16:9 (до 60 с)", "## Раскладка 16:9"
 # границы сцен — середины пауз между предложениями (silencedetect)
-B.BOUNDS = [0.0, 6.75, 12.83, 19.11, 25.99, 34.91, 40.01, 47.88, 49.95]
+B.BOUNDS = [0.0, 6.97, 12.88, 19.42, 25.47, 35.62, 40.23, 48.34, 50.52]
 
 p = B.p
 
@@ -92,7 +92,7 @@ def scenes(F):
             (T.tag(p("h5_tag"), "03 · Перевод"), 40, 80, F("Третий:")),
             (T.headline(p("h5_head"), [[("«Резервный", "w")], [("счёт»", "b")]], 620, size=56), 30, 210,
              F("резервный")),
-            (T.stamp(p("h5_stamp"), "НЕ СУЩЕСТВУЕТ", size=72, angle=-7, seed=13), 40, 440, F("Таких") + 0.05,
+            (T.stamp(p("h5_stamp"), "НЕ СУЩЕСТВУЕТ", size=64, angle=-7, seed=13), 10, 440, F("Таких") + 0.05,
              None, "stamp"),
             (T.icon_text(p("h5_money"), ic("transfer"), ["Деньги —", "к ворам"], 600, 200, 58), 1290, 220,
              F("сбережения")),
@@ -119,7 +119,7 @@ def scenes(F):
          "els": [
             (T.headline(p("h9_l"), [[("Положить", "w")], [("трубку —", "w")], [("не грубость", "r")]], 640,
                         size=58), 20, 200, b[8] + 0.05),
-            (T.headline(p("h9_r"), [[("Это ваша", "w")], [("защита", "b")]], 600, size=64), 1290, 260,
+            (T.headline(p("h9_r"), [[("Это ваша", "w")], [("защита", "b")]], 580, size=64), 1310, 260,
              F("грубость")),
         ]},
     ]
