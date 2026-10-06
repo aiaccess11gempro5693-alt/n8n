@@ -154,7 +154,7 @@ def scenes(F):
             (T.stamp(p("s4_stamp"), "НЕ СУЩЕСТВУЕТ", size=104, angle=-6, seed=9), 90, 1110,
              F("Такого") + 0.05, None, "stamp"),
         ]},
-        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.85, "x": 180 - 459, "y": 635, "punch": [F("Положите")]},
+        {"bg": p("bg_plain"), "av": {"kind": "scale", "s": 0.85, "x": 135 - 459, "y": 635, "punch": [F("Положите")]},
          "els": [
             (T.headline(p("s5_head"), [[("Что", "w"), ("делать?", "b")]], 1000, size=84), 40, 40, b[4] + 0.05),
             (T.action_button(p("s5_hang"), ["Положите", "трубку"], T.RED, True), 40, 250, F("Положите")),
