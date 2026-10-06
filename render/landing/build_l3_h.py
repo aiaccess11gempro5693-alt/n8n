@@ -59,7 +59,7 @@ def scenes(F):
     T.background(p("bg_dots"), W, H, "dots")
     T.background(p("bg_type"), W, H, "type")
     T.photo_bg(p("bg_ring"), ph("ring"), W, H, rect=(0, 0, 1250, H), dark=0.15, fade_side="right", ax=0.0)
-    T.photo_bg(p("bg_rush"), ph("rush"), W, H, dark=0.3, ay=0.3)
+    T.photo_bg(p("bg_rush"), ph("rush"), W, H, rect=(700, 0, 1220, H), dark=0.2, fade_side="left", ax=0.0)
     T.photo_bg(p("bg_card"), ph("card"), W, H, rect=(0, 0, 1150, H), dark=0.15, fade_side="right", ax=0.25)
     T.photo_bg(p("bg_parents"), ph("parents"), W, H, rect=(0, 0, 1300, H), dark=0.1, fade_side="right", ax=0.2)
     return [
@@ -73,17 +73,17 @@ def scenes(F):
             (T.headline(p("h2_head"), [[("4", "y"), ("признака", "w")], [("мошенника", "b")]], 900, size=96),
              70, 330, F("четыре")),
         ]},
-        {"bg": p("bg_rush"), "av": None, "keep": [(1080, 120, 1720, H)], "els": [
-            (T.tag(p("h3_tag"), "01 · Давление"), 80, 40, F("Первый:")),
-            (T.quote_card(p("h3_quote"), ["«Срочно, иначе", "деньги спишут!»"], 700, 50), 80, 215, F("«Срочно,")),
-            (T.icon_text(p("h3_why"), ic("timer"), ["Чтобы вы не", "успели подумать"], 880, 130, 46), 80, 620,
-             F("чтобы")),
+        {"bg": p("bg_rush"), "av": None, "keep": [(830, 60, 1600, H)], "els": [
+            (T.tag(p("h3_tag"), "01 · Давление"), 70, 50, F("Первый:")),
+            (T.icon_text(p("h3_fear"), ic("timer"), ["Спешка", "и страх"], 700, 210, 66), 60, 200, F("давление.")),
+            (T.stamp(p("h3_stamp"), "СРОЧНО!", size=110, angle=-8, seed=23), 90, 470, F("«Срочно,") + 0.05,
+             None, "stamp"),
         ]},
         {"bg": p("bg_plain"), "av": expert(430), "els": [
             (T.tag(p("h4_tag"), "02 · Код из СМС"), 900, 50, F("Второй:")),
-            (T.icon_text(p("h4_ask"), ic("chat"), ["Просят", "продиктовать код"], 900, 140, 50), 900, 185,
+            (T.icon_text(p("h4_ask"), ic("chat"), ["Просят", "продиктовать код"], 920, 190, 56), 900, 175,
              F("просят")),
-            (T.code_card(p("h4_code"), 700, ("БАНК НИКОГДА", "НЕ СПРАШИВАЕТ")), 900, 395, F("Банк")),
+            (T.code_card(p("h4_code"), 700, ("БАНК НЕ СПРАШИВАЕТ",)), 900, 430, F("Банк")),
         ]},
         {"bg": p("bg_dots"), "av": expert(960), "els": [
             (T.tag(p("h5_tag"), "03 · Перевод"), 40, 80, F("Третий:")),
@@ -91,7 +91,7 @@ def scenes(F):
              F("резервный")),
             (T.stamp(p("h5_stamp"), "НЕ СУЩЕСТВУЕТ", size=72, angle=-7, seed=13), 40, 440, F("Таких") + 0.05,
              None, "stamp"),
-            (T.icon_text(p("h5_money"), ic("transfer"), ["Деньги —", "к ворам"], 600, 150, 52), 1300, 230,
+            (T.icon_text(p("h5_money"), ic("transfer"), ["Деньги —", "к ворам"], 600, 200, 58), 1290, 220,
              F("сбережения")),
         ]},
         {"bg": p("bg_type"), "av": None, "els": [
@@ -108,8 +108,8 @@ def scenes(F):
             (T.step_row(p("h7_s2"), 2, "Положите трубку", 780), 1100, 420, F("положить")),
             (T.step_row(p("h7_s3"), 3, "Перезвоните сами", 780), 1100, 580, F("Позвоните")),
         ]},
-        {"bg": p("bg_parents"), "av": None, "keep": [(420, 350, 1250, H)], "els": [
-            (T.icon_text(p("h8_fam"), ic("family"), ["Расскажите", "родителям"], 620, 170, 54), 1270, 260,
+        {"bg": p("bg_parents"), "av": None, "keep": [(420, 350, 1240, H)], "els": [
+            (T.icon_text(p("h8_fam"), ic("family"), ["Расскажите", "родителям"], 620, 200, 54), 1258, 240,
              b[7] + 0.05),
         ]},
         {"bg": p("bg_dots"), "av": expert(960, zoom=0.04), "els": [
