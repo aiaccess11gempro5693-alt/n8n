@@ -1,0 +1,127 @@
+"""Лендинг, ролик 3 «Как не попасться телефонным мошенникам» — горизонталь 16:9.
+
+Тот же стиль «Reels-эксперт» A, тот же эксперт (photo avatar
+d4f9cb52180178230ff161a87e04482c, клип HeyGen 9:16 с прозрачным фоном
+ставится в горизонтальный кадр) и голос Синев, что у вертикали (build_l3.py),
+но СВОЙ расширенный текст (4 признака) и свои картинки — кинокадры и иконки
+от gpt-image-2 (docs/scenarios/landing-3/images-h.json). Движок — общий
+(render_scene / check_layout из build_l3).
+
+Раскладка меняется каждую сцену:
+  1 кадр-фото звонящего телефона, справа карточка звонка → реплика «по имени»
+  2 эксперт справа, слева «4 признака мошенника»
+  3 фото человека в панике (справа), слева «01 давление» + реплика + таймер
+  4 эксперт слева, справа «02 код из СМС» и перечёркнутый код
+  5 эксперт по центру между двумя колонками: «резервный счёт» / деньги ворам
+  6 типографика без эксперта: «04» приложение «для защиты» + штамп
+  7 фото руки с картой (слева), справа «что делать» — 3 шага
+  8 фото семьи, справа «расскажите родителям»
+  9 эксперт по центру, по бокам итог «не грубость» / «ваша защита»
+
+Запуск:  python3 -m render.landing.build_l3_h
+Выход:   render/landing/l3-16x9.mp4
+"""
+import os
+
+from render.landing import build_l1_v3 as V
+from render.landing import build_l3 as B
+from render.landing import theme_reels as T
+
+ROOT, HERE = B.ROOT, B.HERE
+IMG = f"{ROOT}/scratch/img"
+W, H = 1920, 1080
+
+B.W, B.H = W, H
+B.TMP = f"{HERE}/_frames_l3h"
+B.AUDIO = f"{ROOT}/scratch/l3-h-full-v2.mp3"
+B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l3-h-expert.webm")
+B.OUT = f"{HERE}/l3-16x9.mp4"
+B.CAP_W, B.CAP_X, B.CAP_BOTTOM = 1100, 410, 1050
+B.SHOW = {**B.SHOW, "четыре": "4"}
+V.WHISPER = f"{ROOT}/scratch/l3-h-full-v2-whisper-1.json"
+V.TEXT_HEAD, V.TEXT_END = "## Текст 16:9 (до 60 с)", "## Раскладка 16:9"
+# границы сцен — середины пауз между предложениями (silencedetect)
+B.BOUNDS = [0.0, 6.75, 12.83, 19.11, 25.99, 34.91, 40.01, 47.88, 49.95]
+
+p = B.p
+
+
+def expert(cx, s=0.66, y=0, zoom=0.0):
+    """Эксперт с центром силуэта в cx; срез клипа (1769 px) всегда ниже кадра."""
+    return {"kind": "scale", "s": s, "x": cx - 540 * s, "y": y, "zoom": zoom}
+
+
+def scenes(F):
+    b = B.BOUNDS
+    ph = lambda n: f"{IMG}/l3h_ph_{n}.png"
+    ic = lambda n: f"{IMG}/l3h_ic_{n}.png"
+    T.background(p("bg_plain"), W, H, "plain")
+    T.background(p("bg_dots"), W, H, "dots")
+    T.background(p("bg_type"), W, H, "type")
+    T.photo_bg(p("bg_ring"), ph("ring"), W, H, rect=(0, 0, 1250, H), dark=0.15, fade_side="right", ax=0.0)
+    T.photo_bg(p("bg_rush"), ph("rush"), W, H, dark=0.3, ay=0.3)
+    T.photo_bg(p("bg_card"), ph("card"), W, H, rect=(0, 0, 1150, H), dark=0.15, fade_side="right", ax=0.25)
+    T.photo_bg(p("bg_parents"), ph("parents"), W, H, rect=(0, 0, 1300, H), dark=0.1, fade_side="right", ax=0.2)
+    return [
+        {"bg": p("bg_ring"), "av": None, "els": [
+            (T.call_card(p("h1_call"), 800), 1040, 140, 0.2, F("Вежливый") - 0.1),
+            (T.quote_card(p("h1_quote"), ["Иван Сергеевич,", "добрый день!"], 700, 56), 1140, 130,
+             F("Вежливый")),
+        ]},
+        {"bg": p("bg_dots"), "av": expert(1440), "els": [
+            (T.tag(p("h2_tag"), "Эксперт по безопасности"), 70, 120, F("специалист")),
+            (T.headline(p("h2_head"), [[("4", "y"), ("признака", "w")], [("мошенника", "b")]], 900, size=96),
+             70, 330, F("четыре")),
+        ]},
+        {"bg": p("bg_rush"), "av": None, "keep": [(1080, 120, 1720, H)], "els": [
+            (T.tag(p("h3_tag"), "01 · Давление"), 80, 40, F("Первый:")),
+            (T.quote_card(p("h3_quote"), ["«Срочно, иначе", "деньги спишут!»"], 700, 50), 80, 215, F("«Срочно,")),
+            (T.icon_text(p("h3_why"), ic("timer"), ["Чтобы вы не", "успели подумать"], 880, 130, 46), 80, 620,
+             F("чтобы")),
+        ]},
+        {"bg": p("bg_plain"), "av": expert(430), "els": [
+            (T.tag(p("h4_tag"), "02 · Код из СМС"), 900, 50, F("Второй:")),
+            (T.icon_text(p("h4_ask"), ic("chat"), ["Просят", "продиктовать код"], 900, 140, 50), 900, 185,
+             F("просят")),
+            (T.code_card(p("h4_code"), 700, ("БАНК НИКОГДА", "НЕ СПРАШИВАЕТ")), 900, 395, F("Банк")),
+        ]},
+        {"bg": p("bg_dots"), "av": expert(960), "els": [
+            (T.tag(p("h5_tag"), "03 · Перевод"), 40, 80, F("Третий:")),
+            (T.headline(p("h5_head"), [[("«Резервный", "w")], [("счёт»", "b")]], 620, size=56), 30, 210,
+             F("резервный")),
+            (T.stamp(p("h5_stamp"), "НЕ СУЩЕСТВУЕТ", size=72, angle=-7, seed=13), 40, 440, F("Таких") + 0.05,
+             None, "stamp"),
+            (T.icon_text(p("h5_money"), ic("transfer"), ["Деньги —", "к ворам"], 600, 150, 52), 1300, 230,
+             F("сбережения")),
+        ]},
+        {"bg": p("bg_type"), "av": None, "els": [
+            (T.tag(p("h6_tag"), "04 · Приложение"), 760, 90, b[5] + 0.05),
+            (T.icon_tile(p("h6_icon"), ic("app"), 380), 170, 250, b[5] + 0.3),
+            (T.headline(p("h6_head"), [[("«Для", "w")], [("защиты»", "b")], [("телефона", "w")]], 1000, size=90),
+             720, 230, F("приложение")),
+            (T.stamp(p("h6_stamp"), "ЛОВУШКА", size=90, angle=-8, seed=17), 1300, 600, F("защиты»") + 0.05,
+             None, "stamp"),
+        ]},
+        {"bg": p("bg_card"), "av": None, "keep": [(120, 300, 1080, H)], "els": [
+            (T.headline(p("h7_head"), [[("Что", "w"), ("делать?", "b")]], 800, size=76), 1100, 40, F("Что")),
+            (T.step_row(p("h7_s1"), 1, "Ничего не диктуйте", 780), 1100, 260, F("Ничего")),
+            (T.step_row(p("h7_s2"), 2, "Положите трубку", 780), 1100, 420, F("положить")),
+            (T.step_row(p("h7_s3"), 3, "Перезвоните сами", 780), 1100, 580, F("Позвоните")),
+        ]},
+        {"bg": p("bg_parents"), "av": None, "keep": [(420, 350, 1250, H)], "els": [
+            (T.icon_text(p("h8_fam"), ic("family"), ["Расскажите", "родителям"], 620, 170, 54), 1270, 260,
+             b[7] + 0.05),
+        ]},
+        {"bg": p("bg_dots"), "av": expert(960, zoom=0.04), "els": [
+            (T.headline(p("h9_l"), [[("Положить", "w")], [("трубку —", "w")], [("не грубость", "r")]], 640,
+                        size=58), 20, 200, b[8] + 0.05),
+            (T.headline(p("h9_r"), [[("Это ваша", "w")], [("защита", "b")]], 600, size=64), 1290, 260,
+             F("грубость")),
+        ]},
+    ]
+
+
+B.scenes = scenes
+
+if __name__ == "__main__":
+    B.main()

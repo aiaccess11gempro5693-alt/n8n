@@ -309,7 +309,10 @@ def icon_from_black(src, size):
 def call_card(path, w=900):
     """Входящий звонок: тёмная карточка, «Служба безопасности банка»,
     красная и зелёная кнопки."""
-    fk, fn, fs = font(F_BODY_S, 30), font(F_BODY, 56), font(F_BODY_S, 30)
+    size = 56
+    while size > 36 and tw("Служба безопасности", font(F_BODY, size)) > w - 260:
+        size -= 2
+    fk, fn, fs = font(F_BODY_S, 30), font(F_BODY, size), font(F_BODY_S, 30)
     h = 470
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
@@ -323,7 +326,7 @@ def call_card(path, w=900):
     y = 112
     for line in ["Служба безопасности", "банка"]:
         d.text((220, y), line, font=fn, fill=WHITE)
-        y += 68
+        y += int(size * 1.2)
     d.text((222, y + 6), "+7 9•• ••• •• ••", font=fs, fill=GREY)
     for cx, col, hang in ((w * 0.27, RED, True), (w * 0.73, GREEN, False)):
         cy, r = 375, 58
@@ -525,3 +528,94 @@ def swipe(path, W, H):
         im = br.crop((cx, cy, cx + W, cy + H))
     im.save(path)
     return path
+
+
+# ---------------------------------------------------------------- 16:9
+
+def photo_bg(path, photo, W, H, rect=None, dark=0.3, fade_side=None, ax=0.5, ay=0.5):
+    """Фон-кадр: чёрный + фото (cover-кроп) в прямоугольнике rect (x, y, w, h),
+    затемнённое на dark; fade_side='right'|'left' — фото уходит в черноту."""
+    im = Image.open(background(path, W, H, "plain")).convert("RGBA")
+    x, y, w, h = rect or (0, 0, W, H)
+    ph = Image.open(photo).convert("RGB")
+    k = max(w / ph.width, h / ph.height)
+    ph = ph.resize((round(ph.width * k), round(ph.height * k)), Image.LANCZOS)
+    ox, oy = int((ph.width - w) * ax), int((ph.height - h) * ay)
+    ph = ph.crop((ox, oy, ox + w, oy + h))
+    ph = Image.blend(ph, Image.new("RGB", ph.size, BLACK[:3]), dark).convert("RGBA")
+    if fade_side:
+        a = Image.new("L", (w, h), 255)
+        d = ImageDraw.Draw(a)
+        band = int(w * 0.4)
+        for i in range(band):
+            v = int(255 * (i / band) ** 1.5)
+            xx = w - band + i if fade_side == "right" else band - i
+            d.line([(xx, 0), (xx, h)], fill=255 - v)
+        ph.putalpha(a)
+    im.alpha_composite(ph, (x, y))
+    im.save(path)
+    return path
+
+
+def tag(path, text, color=YELLOW, size=44):
+    """Плашка-метка Unbounded: «01 · ДАВЛЕНИЕ»."""
+    f = font(F_HEAD, size)
+    bb = tbox(text.upper(), f)
+    w, h = int(bb[2] - bb[0] + 56), int(bb[3] - bb[1] + 40)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=14, fill=color)
+    d.text((28 - bb[0], 20 - bb[1]), text.upper(), font=f, fill=BLACK if color == YELLOW else WHITE)
+    im = im.rotate(-2, resample=Image.BICUBIC, expand=True)
+    return _save(_shadow(im, blur=10, k=0.5), path)
+
+
+def quote_card(path, lines, w=720, size=58, color=WHITE, ink=BLACK):
+    """Реплика собеседника: белая карточка-«пузырь» с жёлтой кавычкой,
+    кавычка — отдельной строкой над текстом (ничего не наезжает)."""
+    f, fq = font(F_BODY, size), font(F_HEAD, int(size * 1.7))
+    lh = int(size * 1.22)
+    qb = tbox("“", fq)
+    qh = qb[3] - qb[1]
+    h = 40 + qh + 16 + len(lines) * lh + 46
+    im = Image.new("RGBA", (w, h + 40), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=34, fill=color)
+    d.polygon([(70, h - 2), (150, h - 2), (60, h + 38)], fill=color)
+    d.text((44 - qb[0], 40 - qb[1]), "“", font=fq, fill=YELLOW if color == WHITE else BLACK)
+    y = 40 + qh + 16
+    for line in lines:
+        d.text((44, y), line, font=f, fill=ink)
+        y += lh
+    im = im.rotate(2, resample=Image.BICUBIC, expand=True)
+    return _save(_shadow(im, blur=16, k=0.6), path)
+
+
+def step_row(path, num, text, w=760, done=False):
+    """Шаг «что делать»: жёлтый квадрат с цифрой + крупный текст."""
+    fn, ft = font(F_HEAD, 54), font(F_BODY, 56)
+    s = 96
+    h = s + 8
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 4, s, 4 + s], radius=18, fill=YELLOW)
+    nb = tbox(str(num), fn)
+    d.text(((s - (nb[2] - nb[0])) / 2 - nb[0], 4 + (s - (nb[3] - nb[1])) / 2 - nb[1]), str(num), font=fn, fill=BLACK)
+    tb = tbox(text, ft)
+    d.text((s + 30, 4 + (s - (tb[3] - tb[1])) / 2 - tb[1]), text, font=ft, fill=WHITE)
+    return _save(_shadow(im, blur=10, k=0.6), path)
+
+
+def icon_text(path, icon, lines, w=760, ic=170, size=56, color=WHITE):
+    """Иконка слева + крупный текст справа (без карточки)."""
+    f = font(F_BODY, size)
+    lh = int(size * 1.2)
+    h = max(ic, len(lines) * lh) + 10
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    im.alpha_composite(icon_from_black(icon, ic), (0, (h - ic) // 2))
+    y = (h - len(lines) * lh) / 2
+    for line in lines:
+        d.text((ic + 28, y), line, font=f, fill=color)
+        y += lh
+    return _save(_shadow(im, blur=10, k=0.6), path)
