@@ -1,0 +1,106 @@
+{
+  "style_refs": [
+    "scratch/img/l3_board_a.png"
+  ],
+  "jobs": [
+    {
+      "name": "l3h_ph_ring",
+      "engine": "gpt-image-2",
+      "kind": "illustration",
+      "aspect": "16:9",
+      "style": "Cinematic editorial photograph colour-graded to the attached design board palette «Reels-эксперт»: deep black #0E0E10 shadows, acid yellow #FFE600 light accents (a warm-yellow lamp, a yellow rim light), alarm red #FF3B30 accents only where the subject says so; moody, high contrast, low key, shallow depth of field. Phone screens may glow but show NO readable text, no letters, no numbers, no logos, no app icons with text, no signs.",
+      "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Reels-эксперт»: глубокие чёрные тени, жёлтые световые акценты, красные — по смыслу",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "на столе звонит смартфон, экран светится — входящий звонок, тревожное ожидание",
+      "prompt": "A smartphone lying face up on a dark wooden table at night, its screen glowing with an incoming-call screen (only abstract shapes: a round avatar circle and a red and a green round button, no text), the phone slightly vibrating with motion blur, a cup of tea and keys nearby out of focus, the right half of the frame is dark empty table and darkness (space for text)."
+    },
+    {
+      "name": "l3h_ph_rush",
+      "engine": "gpt-image-2",
+      "kind": "illustration",
+      "aspect": "16:9",
+      "style": "Cinematic editorial photograph colour-graded to the attached design board palette «Reels-эксперт»: deep black #0E0E10 shadows, acid yellow #FFE600 light accents (a warm-yellow lamp, a yellow rim light), alarm red #FF3B30 accents only where the subject says so; moody, high contrast, low key, shallow depth of field. Phone screens may glow but show NO readable text, no letters, no numbers, no logos, no app icons with text, no signs.",
+      "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Reels-эксперт»: глубокие чёрные тени, жёлтые световые акценты, красные — по смыслу",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "человек в панике у телефона — его торопят и пугают",
+      "prompt": "A man in his 40s holding a smartphone to his ear with a tense, worried face, other hand on his forehead, sitting at a kitchen table at night, a harsh warm-yellow lamp light from the side, red reflections; the person on the LEFT third of the frame, the right two thirds dark and empty (space for text)."
+    },
+    {
+      "name": "l3h_ph_parents",
+      "engine": "gpt-image-2",
+      "kind": "illustration",
+      "aspect": "16:9",
+      "style": "Cinematic editorial photograph colour-graded to the attached design board palette «Reels-эксперт»: deep black #0E0E10 shadows, acid yellow #FFE600 light accents (a warm-yellow lamp, a yellow rim light), alarm red #FF3B30 accents only where the subject says so; moody, high contrast, low key, shallow depth of field. Phone screens may glow but show NO readable text, no letters, no numbers, no logos, no app icons with text, no signs.",
+      "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Reels-эксперт»: глубокие чёрные тени, жёлтые световые акценты, красные — по смыслу",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "взрослая дочь объясняет пожилым родителям, как не попасться мошенникам, тёплая сцена",
+      "prompt": "An adult daughter of about 35 sitting on a sofa next to her elderly parents (about 70), showing them something on a smartphone and explaining calmly; the parents listen attentively; cozy dim living room with a warm-yellow lamp, deep black shadows; the group on the RIGHT half of the frame, the left half is a dark wall (space for text). Faces natural, no distortion."
+    },
+    {
+      "name": "l3h_ph_card",
+      "engine": "gpt-image-2",
+      "kind": "illustration",
+      "aspect": "16:9",
+      "style": "Cinematic editorial photograph colour-graded to the attached design board palette «Reels-эксперт»: deep black #0E0E10 shadows, acid yellow #FFE600 light accents (a warm-yellow lamp, a yellow rim light), alarm red #FF3B30 accents only where the subject says so; moody, high contrast, low key, shallow depth of field. Phone screens may glow but show NO readable text, no letters, no numbers, no logos, no app icons with text, no signs.",
+      "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Reels-эксперт»: глубокие чёрные тени, жёлтые световые акценты, красные — по смыслу",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "рука держит банковскую карту оборотом и телефон — человек сам звонит в банк",
+      "prompt": "Close-up of two hands: one holding a plain dark bank card showing its BACK side (magnetic stripe, blank signature strip, no logos, no readable numbers), the other hand holding a smartphone about to dial; dark background, warm-yellow rim light on the fingers; the hands on the LEFT half of the frame, the right half dark (space for text)."
+    },
+    {
+      "name": "l3h_ic_timer",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "style": "Use the attached design board as the STRICT style reference (its «ИКОНКИ / СТИКЕРЫ» section): a single bold clean icon drawn with thick WHITE outlines and ACID YELLOW #FFE600 accents (and alarm red #FF3B30 only where the subject says so), small hand-drawn yellow spark marks around it like on the board, centred, filling about 70% of the image, on a perfectly FLAT solid deep black #0E0E10 background (no gradient, no vignette, no frame, no circle behind). No text, no letters, no numbers, no logos.",
+      "style_qa": "белая контурная иконка с жёлтыми акцентами на ровном чёрном фоне, как иконки борда «Reels-эксперт»",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "давление и спешка",
+      "prompt": "an alarm clock ringing hard with motion lines, yellow accents"
+    },
+    {
+      "name": "l3h_ic_chat",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "style": "Use the attached design board as the STRICT style reference (its «ИКОНКИ / СТИКЕРЫ» section): a single bold clean icon drawn with thick WHITE outlines and ACID YELLOW #FFE600 accents (and alarm red #FF3B30 only where the subject says so), small hand-drawn yellow spark marks around it like on the board, centred, filling about 70% of the image, on a perfectly FLAT solid deep black #0E0E10 background (no gradient, no vignette, no frame, no circle behind). No text, no letters, no numbers, no logos.",
+      "style_qa": "белая контурная иконка с жёлтыми акцентами на ровном чёрном фоне, как иконки борда «Reels-эксперт»",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "просят продиктовать код из сообщения",
+      "prompt": "a white speech bubble with four dots inside and an alarm-red crossed-out mark over it"
+    },
+    {
+      "name": "l3h_ic_transfer",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "style": "Use the attached design board as the STRICT style reference (its «ИКОНКИ / СТИКЕРЫ» section): a single bold clean icon drawn with thick WHITE outlines and ACID YELLOW #FFE600 accents (and alarm red #FF3B30 only where the subject says so), small hand-drawn yellow spark marks around it like on the board, centred, filling about 70% of the image, on a perfectly FLAT solid deep black #0E0E10 background (no gradient, no vignette, no frame, no circle behind). No text, no letters, no numbers, no logos.",
+      "style_qa": "белая контурная иконка с жёлтыми акцентами на ровном чёрном фоне, как иконки борда «Reels-эксперт»",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "перевод сбережений на «резервный счёт»",
+      "prompt": "a stack of banknotes flying with a curved arrow toward a dark hooded silhouette, alarm-red warning accent"
+    },
+    {
+      "name": "l3h_ic_app",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "style": "Use the attached design board as the STRICT style reference (its «ИКОНКИ / СТИКЕРЫ» section): a single bold clean icon drawn with thick WHITE outlines and ACID YELLOW #FFE600 accents (and alarm red #FF3B30 only where the subject says so), small hand-drawn yellow spark marks around it like on the board, centred, filling about 70% of the image, on a perfectly FLAT solid deep black #0E0E10 background (no gradient, no vignette, no frame, no circle behind). No text, no letters, no numbers, no logos.",
+      "style_qa": "белая контурная иконка с жёлтыми акцентами на ровном чёрном фоне, как иконки борда «Reels-эксперт»",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "просят установить приложение",
+      "prompt": "a white smartphone with a big download arrow on the screen and a small alarm-red exclamation mark triangle"
+    },
+    {
+      "name": "l3h_ic_family",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "style": "Use the attached design board as the STRICT style reference (its «ИКОНКИ / СТИКЕРЫ» section): a single bold clean icon drawn with thick WHITE outlines and ACID YELLOW #FFE600 accents (and alarm red #FF3B30 only where the subject says so), small hand-drawn yellow spark marks around it like on the board, centred, filling about 70% of the image, on a perfectly FLAT solid deep black #0E0E10 background (no gradient, no vignette, no frame, no circle behind). No text, no letters, no numbers, no logos.",
+      "style_qa": "белая контурная иконка с жёлтыми акцентами на ровном чёрном фоне, как иконки борда «Reels-эксперт»",
+      "audience": "для широкой аудитории, тема — телефонное мошенничество",
+      "meaning": "расскажите родителям",
+      "prompt": "two elderly people (grandmother and grandfather) as simple line portraits with a small yellow heart"
+    }
+  ]
+}
