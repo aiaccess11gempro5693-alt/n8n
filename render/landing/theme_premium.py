@@ -91,7 +91,7 @@ def background(path, W, H, variant="ivory"):
     frame — то же, но с внутренним «окном» под ведущую (светлее, чем поля);
     bordo — глубокое бордо с золотыми уголками (для переключателя языка);
     map — слоновая кость с картой мира (scratch/img/l5_map.png) в верхней части."""
-    m = int(W * 0.055)
+    m = int(min(W, H) * 0.055)
     if variant == "bordo":
         im = Image.new("RGBA", (W, H), BORDO)
         d = ImageDraw.Draw(im)
