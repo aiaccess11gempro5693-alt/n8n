@@ -1,20 +1,25 @@
 """Лендинг, ролик 5 «Приветствие директора: русский и английский», вертикаль 9:16.
 
-Локализация: директор вымышленной компании «Меридиан» Елена Орлова говорит
-сначала по-русски, потом по-английски — тем же голосом и лицом. Стиль A
-«Премиальный корпоративный» (render/landing/theme_premium.py, борд
-scratch/img/l5_board_a.png), фото scratch/img/l5_ceo_9x16.png → HeyGen photo
-avatar 53ba82e5b13921585f38cac0f06b8441, клип webm с прозрачным фоном; голос
-Ana (eleven_v3, jCQ8uWWBzw3HoBe23v4N). Сценарий — docs/scenarios/landing-5-ceo.md.
-Движок — build_l3 через build_l4 (подклад — спокойный SFX.pad).
+Локализация через живой сюжет (сценарий v2): директор вымышленной компании
+«Меридиан» Елена Орлова обращается к команде, к которой в этом году
+присоединились коллеги из Лондона и Дубая, и, чтобы каждый услышал её на своём
+языке, продолжает по-английски — тем же голосом и лицом. Стиль A «Премиальный
+корпоративный» (render/landing/theme_premium.py, борд scratch/img/l5_board_a.png),
+фото scratch/img/l5_ceo_9x16.png → HeyGen photo avatar
+53ba82e5b13921585f38cac0f06b8441, клип webm с прозрачным фоном; голос Ana
+(eleven_v3, jCQ8uWWBzw3HoBe23v4N). Сценарий — docs/scenarios/landing-5-ceo.md.
+Подклад — готовый трек из библиотеки HeyGen (scratch/music/l5-music-2-full.mp3),
+тихо (синтезированные pad/piano/corporate отклонены: «жутко», «для сна», «не то»).
+Движок — build_l3 через build_l4.
 
 Раскладка меняется каждую сцену:
-  1 hook  — типографика без директора: «Этот ролик никто не снимал», по словам
-            зачёркиваются «камера», «студия», «переводчик»
-  2 RU    — директор в кадре с полями, чип RU, плашка «имя — должность», логотип
-  3 смена — бордовый экран, большой переключатель RU → EN щёлкает на слове
-  4 EN    — директор ниже, чип EN, сверху «Hello!» → карта офисов, «wherever you are»
-  5 итог  — «Одно обращение — на любом языке», ряд языков, кнопка
+  1 RU    — директор в кадре с полями, чип RU, плашка «имя — должность», логотип
+  2 карта — без директора: «Новые команды», карта мира, по словам загораются
+            Москва → Лондон → Дубай
+  3 смена — бордовый экран: «каждый — на своём языке», переключатель RU → EN
+            щёлкает на слове «языке»
+  4 EN    — директор, чип EN, плашка «Elena Orlova — CEO», логотип латиницей
+  5 итог  — директор ниже, «Одно видео — на любом языке», ряд языков, кнопка
 
 Запуск:  python3 -m render.landing.build_l5
 Выход:   render/landing/l5-9x16.mp4
@@ -36,19 +41,19 @@ W, H = 1080, 1920
 B.T = T
 L.T = T
 B.TMP = f"{HERE}/_frames_l5"
-B.AUDIO = f"{ROOT}/scratch/l5v-final.mp3"
-B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l5v-ceo.webm")
+B.AUDIO = f"{ROOT}/scratch/l5v2-final.mp3"
+B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l5v2-ceo.webm")
 B.OUT = f"{HERE}/l5-9x16.mp4"
 B.CAP_W, B.CAP_X, B.CAP_BOTTOM = 920, 80, 1820
 B.SHOW = {"ceo": "CEO"}
 # границы сцен — середины пауз (silencedetect)
-B.BOUNDS = [0.0, 5.80, 13.90, 16.26, 23.59]
+B.BOUNDS = [0.0, 4.50, 8.82, 12.83, 15.68]
 V.TEXTS = f"{ROOT}/docs/scenarios/landing-5-ceo.md"
-V.WHISPER = f"{ROOT}/scratch/l5v-final-whisper-1.json"
-V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v1", "## Набросок раскладки"
-# whisper делит «по-английски» на два слова; «CEO» не превращать в строчные (КАПС-правило субтитров)
-L.ALIAS = {"по-английски.": "английски"}
-L.BED, L.BED_GAIN, L.STAMP_FLASH = SFX.pad, 0.26, "gold"
+V.WHISPER = f"{ROOT}/scratch/l5v2-final-whisper-1.json"
+V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v2", "## Набросок раскладки v2"
+L.ALIAS = {}
+# готовый трек, тише прежнего подклада (жалоба «не так громко»)
+L.BED, L.BED_GAIN, L.STAMP_FLASH = SFX.music_bed(f"{ROOT}/scratch/music/l5-music-2-full.mp3"), 0.13, "gold"
 
 # Силуэт директора в клипе HeyGen 1080×1920 (голова и плечи) — измерен по альфе.
 B.AVATAR_BOX = (140, 279, 990, 960)
@@ -91,68 +96,74 @@ def scenes(F):
     T.background(p("bg_frame"), W, H, "frame")
     T.background(p("bg_bordo"), W, H, "bordo")
 
-    s1_kick = T.kicker(p("s1_kick"), "Меридиан · обращение", size=30)
-    s1_head = T.headline(p("s1_head"), [[("Этот ролик", "k")], [("никто", "b")], [("не снимал", "k")]], 900,
-                         size=130)
-    s1_w = [T.strike_word(p(f"s1_w{i}"), t, size=110, angle=a) for i, (t, a) in
-            enumerate([("камера", 2), ("студия", -2), ("переводчик", 1)])]
-    s2_ru = T.lang_chip(p("s2_ru"), "RU")
-    s2_logo = T.word_logo(p("s2_logo"), "Меридиан", size=78)
-    s2_name = T.name_plate(p("s2_name"), "Елена Орлова", "генеральный директор", w=640)
-    s3_kick = T.kicker(p("s3_kick"), "тот же голос", color=T.GOLD, size=34)
+    s1_ru = T.lang_chip(p("s1_ru"), "RU")
+    s1_logo = T.word_logo(p("s1_logo"), "Меридиан", size=78)
+    s1_name = T.name_plate(p("s1_name"), "Елена Орлова", "генеральный директор", w=640)
+    s2_kick = T.kicker(p("s2_kick"), "в этом году", size=32)
+    s2_head = T.headline(p("s2_head"), [[("Новые", "k")], [("команды", "b")]], 900, size=120)
+    s2_map = map_el(p("s2_map"), w=1000)
+    s2_msk = T.city_chip(p("s2_msk"), "Москва")
+    s2_lon = T.city_chip(p("s2_lon"), "Лондон")
+    s2_dxb = T.city_chip(p("s2_dxb"), "Дубай")
+    s3_head = T.headline(p("s3_head"), [[("каждый —", "w")], [("на своём языке", "g")]], 940, size=96,
+                         align="center")
     s3_ru = T.lang_switch(p("s3_ru"), "RU", w=860)
     s3_en = T.lang_switch(p("s3_en"), "EN", w=860)
-    s3_sub = T.headline(p("s3_sub"), [[("другой язык", "w")]], 700, size=88, align="center")
     s4_en = T.lang_chip(p("s4_en"), "EN")
-    s4_hello = T.headline(p("s4_hello"), [[("Hello!", "b")]], 600, size=150, align="center")
-    s4_map = map_el(p("s4_map"))
-    s4_where = T.kicker(p("s4_where"), "wherever you are", color=T.BORDO, size=32)
-    s5_head = T.headline(p("s5_head"), [[("Одно обращение —", "k")], [("на любом языке", "b")]], 940,
-                         size=92, align="center")
+    s4_logo = T.word_logo(p("s4_logo"), "Meridian", size=78)
+    s4_name = T.name_plate(p("s4_name"), "Elena Orlova", "CEO, Meridian", w=640)
+    s5_head = T.headline(p("s5_head"), [[("Одно видео —", "k")], [("на любом языке", "b")]], 940,
+                         size=96, align="center")
     s5_langs = T.lang_row(p("s5_langs"), ("RU", "EN", "DE", "ES", "FR"), active=2, size=42)
     s5_cta = T.cta_button(p("s5_cta"), "Заказать ролик", w=560, size=46)
 
+    # карта (1000 px): точки офисов в координатах элемента — Москва, Лондон, Дубай
+    mx, my = cx(s2_map), 660
+    city = {"msk": (601, 186), "lon": (435, 196), "dxb": (619, 290)}
+
+    def at(chip, key, dx, dy):
+        x0, y0 = city[key]
+        return mx + x0 + dx, my + y0 + dy
+
     return [
-        # 1 hook — типографика, зачёркиваются камера / студия / переводчик
+        # 1 RU — директор в кадре с полями, чип, имя, логотип
+        {"bg": p("bg_frame"), "av": host(1.0, 540, 230, zoom=0.03, punch=[F("«Меридиана».")]),
+         "sfx": [(0.05, "chime", 0.3)], "els": [
+            (s1_ru, 90, 90, 0.1),
+            (s1_name, 50, 1300, F("Елена")),
+            (s1_logo, W - 90 - size(s1_logo)[0], 110, F("«Меридиана».")),
+        ]},
+        # 2 карта — новые команды: Москва → Лондон → Дубай
         {"bg": p("bg_ivory"), "av": None,
-         "sfx": [(0.05, "bass", 0.45), (F("снимал."), "click", 0.5), (F("студии,"), "click", 0.5),
-                 (F("переводчика."), "click", 0.5)], "els": [
-            (s1_kick, 100, 150, 0.05),
-            (s1_head, 100, 240, 0.1),
-            (s1_w[0], 100, 860, F("снимал.")),
-            (s1_w[1], 400, 1080, F("студии,")),
-            (s1_w[2], 140, 1300, F("переводчика.")),
+         "sfx": [(F("Лондона"), "pop", 0.4), (F("Дубая."), "pop", 0.4), (F("Дубая."), "ding", 0.3)], "els": [
+            (s2_map, mx, my, b[1] + 0.25, None, "frame"),
+            (s2_kick, 100, 150, b[1] + 0.05),
+            (s2_head, 100, 220, F("команды")),
+            (s2_msk, *at(s2_msk, "msk", 30, -110), b[1] + 0.5),
+            (s2_lon, *at(s2_lon, "lon", -330, 20), F("Лондона")),
+            (s2_dxb, *at(s2_dxb, "dxb", -20, 50), F("Дубая.")),
         ]},
-        # 2 RU — директор в кадре с полями, чип, имя, логотип
-        {"bg": p("bg_frame"), "av": host(1.0, 540, 230, zoom=0.03, punch=[F("Рада")]),
-         "flash": [(F("Рада") + 0.05, "gold")], "sfx": [(F("Здравствуйте!"), "chime", 0.35)], "els": [
-            (s2_ru, 90, 90, b[1] + 0.1),
-            (s2_logo, W - 90 - size(s2_logo)[0], 110, F("«Меридиана».")),
-            (s2_name, 50, 1300, F("Елена")),
-        ]},
-        # 3 смена языка — бордовый экран, переключатель щёлкает RU → EN
+        # 3 смена языка — бордовый экран, переключатель щёлкает на «языке»
         {"bg": p("bg_bordo"), "av": None,
-         "flash": [(F("по-английски.") + 0.05, "gold")],
-         "sfx": [(F("по-английски."), "click", 0.7), (F("по-английски.") + 0.05, "chime", 0.5)], "els": [
-            (s3_kick, cx(s3_kick), 520, b[2] + 0.05),
-            (s3_ru, cx(s3_ru), 660, b[2] + 0.1, F("по-английски."), "cut"),
-            (s3_en, cx(s3_en), 660, F("по-английски."), None, "cut"),
-            (s3_sub, cx(s3_sub), 1060, F("по-английски.") + 0.1),
+         "flash": [(F("языке.") + 0.05, "gold")],
+         "sfx": [(F("языке."), "click", 0.7), (F("языке.") + 0.05, "chime", 0.5)], "els": [
+            (s3_head, cx(s3_head), 380, F("каждый")),
+            (s3_ru, cx(s3_ru), 760, b[2] + 0.1, F("языке."), "cut"),
+            (s3_en, cx(s3_en), 760, F("языке."), None, "cut"),
         ]},
-        # 4 EN — директор ниже, сверху «Hello!» → карта офисов
-        {"bg": p("bg_frame"), "av": host(0.8, 540, 740, zoom=0.03, punch=[F("Welcome")]),
-         "sfx": [(F("Welcome"), "ding", 0.35)], "els": [
-            (s4_en, 90, 90, b[3] + 0.1, F("Welcome")),
-            (s4_hello, cx(s4_hello), 330, F("Hello!"), F("Welcome")),
-            (s4_map, cx(s4_map), 110, F("Welcome")),
-            (s4_where, cx(s4_where), 700, F("wherever")),
+        # 4 EN — директор, чип EN, имя латиницей, логотип
+        {"bg": p("bg_frame"), "av": host(1.0, 540, 230, zoom=0.03, punch=[F("Welcome")]),
+         "sfx": [(F("Welcome"), "chime", 0.3)], "els": [
+            (s4_en, 90, 90, b[3] + 0.1),
+            (s4_name, 50, 1300, F("Dear") + 0.3),
+            (s4_logo, W - 90 - size(s4_logo)[0], 110, F("Meridian.")),
         ]},
         # 5 итог — формула, ряд языков, кнопка
-        {"bg": p("bg_ivory"), "av": host(0.86, 540, 700, zoom=0.04, punch=[F("любом")]),
-         "sfx": [(F("Одно"), "bass", 0.4), (F("любом"), "chime", 0.4)], "els": [
+        {"bg": p("bg_ivory"), "av": host(0.86, 540, 700, zoom=0.04, punch=[F("wherever")]),
+         "sfx": [(F("We"), "ding", 0.3)], "els": [
             (s5_head, cx(s5_head), 110, b[4] + 0.05),
-            (s5_langs, cx(s5_langs), 400, F("любом")),
-            (s5_cta, cx(s5_cta), 560, F("языке.")),
+            (s5_langs, cx(s5_langs), 400, F("team")),
+            (s5_cta, cx(s5_cta), 560, F("wherever")),
         ]},
     ]
 

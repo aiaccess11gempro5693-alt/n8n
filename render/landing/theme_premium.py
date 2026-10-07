@@ -371,3 +371,19 @@ def flash(path, W, H, color="gold"):
          "bordo": (110, 31, 43, 90), "red": (110, 31, 43, 90), "green": (233, 217, 184, 130)}[color]
     Image.new("RGBA", (W, H), c).save(path)
     return path
+
+
+def city_chip(path, text, size=40):
+    """Подпись города на карте: бумажная пилюля с бордовой точкой и золотой обводкой."""
+    f = font(F_BODY_X, size)
+    bb = tbox(text, f)
+    r = int(size * 0.28)
+    h = int((bb[3] - bb[1]) + size * 0.9)
+    w = int(tw(text, f) + size * 1.1 + r * 2 + 12)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=h // 2, fill=PAPER, outline=GOLD, width=3)
+    cx0 = int(size * 0.55) + r
+    d.ellipse([cx0 - r, h / 2 - r, cx0 + r, h / 2 + r], fill=BORDO)
+    d.text((cx0 + r + 12, (h - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f, fill=GRAPHITE)
+    return _save(_shadow(im, k=0.12), path)
