@@ -16,6 +16,8 @@
   ding    — светлый «динь» (появление цены, успех)
   bass    — бас-удар (саб-дроп) на главном слове
   groove  — бодрый подклад: бочка, хэт, пульсирующий аккорд (ролик 4)
+  pad     — спокойный «премиальный» подклад: тянущиеся аккорды + мягкий пульс (ролик 5)
+  chime   — мягкий двойной колокольчик (переключение языка, ролик 5)
 
 mix(voice, events, bed, out): озвучка + подклад (с приглушением под голос)
 + эффекты в заданные моменты, нормализация громкости.
@@ -230,8 +232,54 @@ def groove(d, bpm=112):
     return x / np.abs(x).max() * 0.5
 
 
+def chime(d=1.2):
+    """Мягкий двойной колокольчик: две ноты (ля → ми) с долгим хвостом."""
+    t = _t(d)
+    x = np.zeros_like(t)
+    for off, f in ((0.0, 880.0), (0.12, 1318.5)):
+        s = int(SR * off)
+        tt = t[: len(t) - s]
+        n = (np.sin(2 * np.pi * f * tt) + 0.35 * np.sin(2 * np.pi * 2 * f * tt)) * np.exp(-tt * 4.5)
+        x[s:] += n
+    return x / np.abs(x).max() * 0.45 * _env(len(t), 0.003, 0.2)
+
+
+def pad(d, bpm=76):
+    """Спокойный подклад: тянущиеся аккорды (ре-мажорная гармония D–Bm–G–A, мягкая
+    атака, лёгкое вибрато) + приглушённый пульс баса на сильную долю."""
+    t = _t(d)
+    beat = 60 / bpm
+    bar = beat * 4
+    chords = [(146.8, 185.0, 220.0, 293.7), (123.5, 185.0, 246.9, 293.7),
+              (98.0, 196.0, 246.9, 293.7), (110.0, 220.0, 277.2, 329.6)]
+    x = np.zeros_like(t)
+    n = int(d / bar) + 1
+    for k in range(n):
+        s = int(SR * k * bar)
+        if s >= len(x):
+            break
+        ct = _t(bar * 1.15)
+        ch = chords[k % 4]
+        vib = 1 + 0.002 * np.sin(2 * np.pi * 5 * ct)
+        tone = sum(np.sin(2 * np.pi * f * vib * ct) + 0.25 * np.sin(2 * np.pi * 2 * f * vib * ct) for f in ch)
+        tone *= _env(len(ct), 0.6, 0.6) * 0.12
+        e = min(len(tone), len(x) - s)
+        x[s:s + e] += tone[:e]
+        for b in range(4):   # мягкий бас-пульс
+            sb = int(SR * (k * bar + b * beat))
+            bt = _t(0.4)
+            p = np.sin(2 * np.pi * ch[0] / 2 * bt) * np.exp(-bt * 7) * (0.5 if b == 0 else 0.25)
+            e2 = min(len(p), len(x) - sb)
+            if e2 > 0:
+                x[sb:sb + e2] += p[:e2]
+    x = _lowpass(x, 3500)
+    x *= _env(len(t), 1.0, 1.2)
+    return x / np.abs(x).max() * 0.5
+
+
 GEN = {"whoosh": whoosh, "hit": hit, "stamp": stamp, "pop": pop, "ring": ring, "tick": tick,
-       "riser": riser, "glitch": glitch, "click": click, "beep": beep, "ding": ding, "bass": bass}
+       "riser": riser, "glitch": glitch, "click": click, "beep": beep, "ding": ding, "bass": bass,
+       "chime": chime}
 
 
 def render_all(folder):

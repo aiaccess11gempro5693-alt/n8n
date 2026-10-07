@@ -59,6 +59,9 @@ B.FACE_Y = B.FACE[1] / 1920
 
 p = B.p
 
+# общие настройки main(), ролики-наследники переопределяют: L.BED = SFX.pad
+BED, BED_GAIN, STAMP_FLASH = SFX.groove, 0.28, "yellow"
+
 # whisper пишет некоторые слова иначе, чем в тексте: слово сценария → слово whisper
 ALIAS = {"БЕСПЛАТНО.": "бесплатная", "Два:": None}
 
@@ -213,8 +216,8 @@ def main():
     words = word_times()
     caps = B.caption_chunks(words, total)
     sc = B.enrich(scenes(V.finder(words)))
-    for s in sc:   # у штампа вспышка — тёплая жёлтая, не тревожная красная
-        s["flash"] = [(t, "yellow" if c == "red" else c) for t, c in s.get("flash", [])]
+    for s in sc:   # у штампа вспышка — тёплая (STAMP_FLASH), не тревожная красная
+        s["flash"] = [(t, STAMP_FLASH if c == "red" else c) for t, c in s.get("flash", [])]
     sc[-1]["flash"] = []   # финал не заливаем вспышкой — последний кадр должен читаться
     bounds = B.BOUNDS + [total]
     for k, s in enumerate(sc):
@@ -235,7 +238,7 @@ def main():
     with open(lst, "w") as fh:
         fh.writelines(f"file '{x}'\n" for x in parts)
     mixed = SFX.mix(B.AUDIO, sound_events(sc, bounds), f"{B.TMP}/mix.wav", f"{B.TMP}/sfx", total=total,
-                    bed_fn=SFX.groove, bed_gain=0.28)
+                    bed_fn=BED, bed_gain=BED_GAIN)
     B.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-i", mixed, "-map", "0:v",
            "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest",
            B.OUT])
