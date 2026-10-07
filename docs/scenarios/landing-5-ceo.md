@@ -41,6 +41,23 @@ C «Шалфей и камень» (камень / шалфей / лесной /
 
 [warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [heartfelt] We are one team — wherever you are.
 
+## Текст 9:16 (до 30 с), v3
+
+Просьба 07.10.2026: добавить в короткую версию ≈10 секунд английской речи.
+Русская часть — как в v2, английская расширена.
+
+[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [sincerely] London, Dubai, Moscow — we work in different cities, [warm] but we share one goal: to make our clients' lives easier. [heartfelt] Thank you for being part of it. We are one team — wherever you are.
+
+## Текст 16:9 (до 60 с), v1
+
+Тот же сюжет, расширенный и другими словами: представление, рост компании,
+обращение к каждому на его языке; английская часть — не перевод русской, а
+продолжение разговора.
+
+[warm, confident] Добрый день, коллеги! Меня зовут Елена Орлова, я генеральный директор компании «Меридиан». [proud] Этот год стал для нас особенным: к нам присоединились сильные команды из Лондона и Дубая. [sincerely] Теперь мы работаем в трёх странах, и каждый из вас — важная часть общего дела. [warm] Поэтому я хочу обратиться к каждому — на его родном языке. [warm, confident] Good afternoon, everyone! [proud] Welcome to Meridian. [sincerely] Whether you are in London, Dubai or Moscow, your ideas shape our future. [warm] Our doors are always open — share your thoughts, ask questions, and let's grow together. [heartfelt] We are one team — wherever you are.
+
+## Раскладка 16:9
+
 ## Набросок раскладки v2
 
 | Сцена | Реплика | Раскладка |
