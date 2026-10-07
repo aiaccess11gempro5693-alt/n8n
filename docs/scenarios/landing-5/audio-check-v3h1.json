@@ -1,0 +1,81 @@
+{
+ "mode": "audio_check",
+ "jobs": [
+  {
+   "name": "l5-stress-v3b",
+   "audio": "scratch/l5v3b-trim.mp3",
+   "text": "[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [sincerely] London, Dubai, Moscow — we work in different cities, [warm] but we share one goal: to make our clients' lives easier. [heartfelt] Thank you for being part of it. We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "«Меридиан»",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "трёх",
+    "родном",
+    "обратиться",
+    "clients'",
+    "wherever",
+    "Whether",
+    "Moscow"
+   ]
+  },
+  {
+   "name": "l5-stress-h1a",
+   "audio": "scratch/l5h1a-trim.mp3",
+   "text": "[warm, confident] Добрый день, коллеги! Меня зовут Елена Орлова, я генеральный директор компании «Меридиан». [proud] Этот год стал для нас особенным: к нам присоединились сильные команды из Лондона и Дубая. [sincerely] Теперь мы работаем в трёх странах, и каждый из вас — важная часть общего дела. [warm] Поэтому я хочу обратиться к каждому — на его родном языке. [warm, confident] Good afternoon, everyone! [proud] Welcome to Meridian. [sincerely] Whether you are in London, Dubai or Moscow, your ideas shape our future. [warm] Our doors are always open — share your thoughts, ask questions, and let's grow together. [heartfelt] We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "«Меридиан»",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "трёх",
+    "родном",
+    "обратиться",
+    "clients'",
+    "wherever",
+    "Whether",
+    "Moscow"
+   ]
+  },
+  {
+   "name": "l5-stress-h1b",
+   "audio": "scratch/l5h1b-trim.mp3",
+   "text": "[warm, confident] Добрый день, коллеги! Меня зовут Елена Орлова, я генеральный директор компании «Меридиан». [proud] Этот год стал для нас особенным: к нам присоединились сильные команды из Лондона и Дубая. [sincerely] Теперь мы работаем в трёх странах, и каждый из вас — важная часть общего дела. [warm] Поэтому я хочу обратиться к каждому — на его родном языке. [warm, confident] Good afternoon, everyone! [proud] Welcome to Meridian. [sincerely] Whether you are in London, Dubai or Moscow, your ideas shape our future. [warm] Our doors are always open — share your thoughts, ask questions, and let's grow together. [heartfelt] We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "«Меридиан»",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "трёх",
+    "родном",
+    "обратиться",
+    "clients'",
+    "wherever",
+    "Whether",
+    "Moscow"
+   ]
+  },
+  {
+   "name": "l5-stress-h1c",
+   "audio": "scratch/l5h1c-trim.mp3",
+   "text": "[warm, confident] Добрый день, коллеги! Меня зовут Елена Орлова, я генеральный директор компании «Меридиан». [proud] Этот год стал для нас особенным: к нам присоединились сильные команды из Лондона и Дубая. [sincerely] Теперь мы работаем в трёх странах, и каждый из вас — важная часть общего дела. [warm] Поэтому я хочу обратиться к каждому — на его родном языке. [warm, confident] Good afternoon, everyone! [proud] Welcome to Meridian. [sincerely] Whether you are in London, Dubai or Moscow, your ideas shape our future. [warm] Our doors are always open — share your thoughts, ask questions, and let's grow together. [heartfelt] We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "«Меридиан»",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "трёх",
+    "родном",
+    "обратиться",
+    "clients'",
+    "wherever",
+    "Whether",
+    "Moscow"
+   ]
+  }
+ ]
+}
