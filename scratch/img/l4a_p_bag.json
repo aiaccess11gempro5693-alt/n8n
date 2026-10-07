@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "l4a_p_bag",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "пакет с продуктами у двери квартиры днём — «ужин у двери»",
+    "prompt": "A kraft paper grocery bag full of fresh groceries (baguette, greens, tomatoes, lemons, a bottle of milk, no labels) standing on a doormat right at a sage-green apartment front door in a bright hallway, daylight; the bag in the lower half of the vertical frame, the upper part is a plain wall (space for text). Hero product shot."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

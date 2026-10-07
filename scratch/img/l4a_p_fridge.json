@@ -1,0 +1,33 @@
+{
+  "job": {
+    "name": "l4a_p_fridge",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "открытый ПУСТОЙ холодильник на светлой кухне днём — хук «гости через час, а холодильник пустой»",
+    "prompt": "A modern white refrigerator standing open in a bright cream-coloured kitchen in daylight, its shelves completely EMPTY, only one lonely lemon on a shelf, a green plant on the counter; the fridge in the lower two thirds of the vertical frame, the upper third is a plain cream wall (space for text)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Replace the lab coat with casual everyday clothing suitable for a home host."
+    },
+    {
+      "attempt": 2,
+      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"Your request was rejected by the safety system. If you believe this is an error, contact us at Azure support ticket and include the request ID 4273677e-8bff-4075-bead-f63c3ebcddda.\",\"type\":\"image_generation_user_error\",\"param\":\"\",\"code\":\"moderation_blocked\"}}"
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
