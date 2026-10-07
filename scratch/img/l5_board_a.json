@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "l5_board_a",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [],
+    "meaning": "Дизайн-система для ролика «Приветствие директора RU+EN»: ПРЕМИАЛЬНЫЙ КОРПОРАТИВНЫЙ: слоновая кость, графит, золото, бордо; Playfair Display + Manrope; кадр с полями, тонкие золотые линии, плашка имени; спокойный редакционный стиль; ведущая в графитовом жакете на светлом фоне; 6 вертикальных раскладок",
+    "prompt": "Create a complete design system board (brand style guide sheet, 16:9) for SHORT VERTICAL 9:16 corporate videos of a fictional international company «Меридиан»: the CEO greets employees and partners in Russian and then in English (the video showcases AI localization: the same person, the same voice, two languages). Presenter: a confident female CEO of about 45, waist-up, neutral face. Board blocks: hero (title «Меридиан — обращение директора» + presenter), colour palette with 5 HEX swatches, typography (named fonts, H1/H2/body), presenter style, graphic elements, icon style (9 icons: globe, language, handshake, growth chart, office, team, calendar, message, star), infographic examples, decorative elements, footer principles. IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS: (1) hook without the presenter: huge typography «Этот ролик никто не снимал»; (2) the director waist-up with a name plate «Елена Орлова — генеральный директор»; (3) a big language switch toggle «RU ⇄ EN» in the middle of the frame; (4) split frame: the same director on the left half with a chip «RU» and on the right half with a chip «EN»; (5) the director small inside a framed card plus a minimal world map with five office dots; (6) final: «Одно обращение — на любом языке» with a button «Заказать ролик». Every frame has a subtitle bar at the bottom. All text in Russian (except «EN», «RU» and short English words on EN frames), short and correctly spelled. No real brand names or logos. STYLE A «Премиальный корпоративный»: calm, expensive, editorial. Background ivory #F6F1E7; colours: graphite #2B2D33, muted gold #B8935A, deep bordeaux #6E1F2B, warm grey #A39E96. Fonts: «Playfair Display» serif headlines, «Manrope» body. Visual language: the video frame sits inside generous ivory margins like a magazine page, thin gold hairlines and corner ticks, elegant name plate «имя — должность» with a gold rule, small caps labels, a refined RU/EN switch made of two serif letters pairs, line-art gold icons. The CEO wears a graphite tailored blazer over an ivory blouse, photographed in soft daylight on a light warm-grey background. Mood: trust, heritage, quiet luxury. NO dark full-screen backgrounds, NO neon."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
