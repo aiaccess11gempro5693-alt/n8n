@@ -113,6 +113,8 @@ def background(path, W, H, variant="plain", seed=0):
     """Кремовый фон. plain — мягкие пятна цвета; doodle — плюс дудлы
     (искры, листики-дуги, точки); green / mustard / tomato — заливка цветом
     палитры для типографических сцен."""
+    flat = variant.endswith("_flat")   # заливка цветом без дудлов (под заголовки)
+    variant = variant.replace("_flat", "")
     base = {"green": GREEN, "mustard": MUSTARD, "tomato": TOMATO}.get(variant, CREAM)
     im = Image.new("RGBA", (W, H), base)
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -123,7 +125,7 @@ def background(path, W, H, variant="plain", seed=0):
     else:
         g.ellipse([-W * 0.3, -H * 0.2, W * 0.9, H * 0.45], fill=(255, 255, 255, 50))
     im.alpha_composite(glow.filter(ImageFilter.GaussianBlur(170)))
-    if variant in ("doodle", "green", "mustard", "tomato"):
+    if variant in ("doodle", "green", "mustard", "tomato") and not flat:
         rnd = random.Random(seed + 11)
         d = ImageDraw.Draw(im)
         col = (255, 255, 255, 90) if base != CREAM else (35, 164, 85, 70)

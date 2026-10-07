@@ -60,12 +60,12 @@ def scenes(F):
     T.background(p("bg_doodle"), W, H, "doodle", seed=7)
     T.background(p("bg_plain"), W, H, "plain")
     T.background(p("bg_green"), W, H, "green", seed=8)
-    T.background(p("bg_tomato"), W, H, "tomato", seed=9)
+    T.background(p("bg_tomato"), W, H, "tomato_flat", seed=9)
     T.photo_bg(p("bg_feed"), ph("feed"), W, H, ay=0.25)
     T.photo_bg(p("bg_fridge"), ph("fridge"), W, H, ay=0.6)
 
-    s1_stop = T.sticker_text(p("s1_stop"), "СТОП!", fill=T.TOMATO, size=110, angle=-6)
-    s1_head = T.headline(p("s1_head"), [[("Слюнки", "k"), ("потекли?", "T")]], 1000, size=80)
+    s1_stop = T.sticker_text(p("s1_stop"), "СТОП!", fill=T.TOMATO, size=96, angle=-6)
+    s1_head = T.headline(p("s1_head"), [[("Слюнки", "k"), ("потекли?", "T")]], 1000, size=68)
     s2_logo = T.logo(p("s2_logo"), size=112, text="Повтори")
     s3_chip = T.sticker_text(p("s3_chip"), "нейросеть · 1 сек", fill=T.MUSTARD, ink=T.INK, size=60, angle=-4)
     s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 600, 400, angle=3)
@@ -87,10 +87,10 @@ def scenes(F):
 
     return [
         # 1 hook — лента с видео-рецептом, «СТОП!»
-        {"bg": p("bg_feed"), "av": None, "keep": [(300, 368, 860, 1650)],
+        {"bg": p("bg_feed"), "av": None, "keep": [(300, 350, 860, 1650)],
          "sfx": [(0.0, "bass", 0.6), (F("слюнки"), "ding", 0.35)], "els": [
-            (s1_stop, 40, 20, 0.0, None, "stamp"),
-            (s1_head, 30, 185, F("слюнки")),
+            (s1_stop, 40, 0, 0.0, None, "stamp"),
+            (s1_head, 30, 170, F("слюнки")),
         ]},
         # 2 ведущая на весь кадр, логотип над головой
         {"bg": p("bg_doodle"), "av": host(1.0, 540, 200, zoom=0.03, punch=[F("«Повтори»")]),
