@@ -137,5 +137,17 @@ def scenes(F):
 
 L.scenes = scenes
 
+TAIL = 0.8   # «хвост» после последнего слова: кадр держится, музыка затихает (не обрывать)
+
+
+def pad_audio():
+    """Озвучка + TAIL секунд тишины — финал не обрывается на последнем звуке."""
+    src = B.AUDIO
+    out = f"{B.TMP}/voice_tail.wav"
+    os.makedirs(B.TMP, exist_ok=True)
+    B.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-af", f"apad=pad_dur={TAIL}", "-ar", "48000", out])
+    B.AUDIO = out
+
 if __name__ == "__main__":
+    pad_audio()
     L.main()
