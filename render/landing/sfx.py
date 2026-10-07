@@ -17,7 +17,9 @@
   bass    — бас-удар (саб-дроп) на главном слове
   groove  — бодрый подклад: бочка, хэт, пульсирующий аккорд (ролик 4)
   pad     — тянущиеся аккорды + бас-пульс (ролик 5, ОТКЛОНЁН: «жутко, как в фильме ужасов»)
-  piano   — светлый подклад: мажорные арпеджио-переборы в среднем/высоком регистре (ролик 5)
+  piano   — светлый перебор пианино (ролик 5, ОТКЛОНЁН: «музыка для сна»)
+  corporate — бодрый корпоративный подклад: перебор пианино шестнадцатыми,
+            мягкая бочка, хлопок на 2 и 4, шейкер, 118 bpm (ролик 5)
   chime   — мягкий двойной колокольчик (переключение языка, ролик 5)
 
 mix(voice, events, bed, out): озвучка + подклад (с приглушением под голос)
@@ -310,6 +312,56 @@ def piano(d, bpm=100):
             x[s:s + e] += n[:e]
         k += 1
     x *= _env(len(t), 0.8, 1.5)
+    return x / np.abs(x).max() * 0.5
+
+
+def corporate(d, bpm=118):
+    """Бодрый корпоративный подклад (вдохновляющая реклама): мажор D–A–Bm–G,
+    перебор «пианино» шестнадцатыми, мягкая бочка на каждую долю, хлопок на
+    2 и 4, шейкер на восьмые, басовая нота на долю."""
+    t = _t(d)
+    x = np.zeros_like(t)
+    beat = 60 / bpm
+    s16 = beat / 4
+    prog = [(73.4, (293.7, 370.0, 440.0, 587.3)), (110.0, (277.2, 329.6, 440.0, 554.4)),
+            (123.5, (246.9, 293.7, 370.0, 493.9)), (98.0, (293.7, 392.0, 493.9, 587.3))]
+    pat = [0, 1, 2, 3, 2, 1, 2, 3, 0, 1, 2, 3, 2, 3, 2, 1]
+
+    def pluck(f, dur, amp):
+        nt = _t(dur)
+        v = (np.sin(2 * np.pi * f * nt) + 0.45 * np.sin(2 * np.pi * 2 * f * nt) * np.exp(-nt * 6)
+             + 0.2 * np.sin(2 * np.pi * 3 * f * nt) * np.exp(-nt * 9))
+        return v * np.exp(-nt * 7) * _env(len(nt), 0.003, 0.03) * amp
+
+    def add(sig, at):
+        st = int(SR * at)
+        e = min(len(sig), len(x) - st)
+        if e > 0:
+            x[st:st + e] += sig[:e]
+
+    kt = _t(0.25)
+    kick = np.sin(2 * np.pi * (95 * np.exp(-kt * 30) + 50) * kt) * np.exp(-kt * 14)
+    ct = _t(0.18)
+    rng = np.random.default_rng(5)
+    clap = rng.normal(0, 1, len(ct)) * np.exp(-ct * 30)
+    clap = clap - _lowpass(clap, 1200)
+    sh_t = _t(0.06)
+    shaker = rng.normal(0, 1, len(sh_t)) * np.exp(-sh_t * 70)
+    shaker = shaker - _lowpass(shaker, 6000)
+    n16 = int(d / s16) + 1
+    for k in range(n16):
+        at = k * s16
+        bar, step = divmod(k, 16)
+        bass, arp = prog[bar % 4]
+        add(pluck(arp[pat[step]], 0.5, 0.22), at)
+        if step % 4 == 0:   # доля
+            add(kick * 0.55, at)
+            add(pluck(bass, 0.45, 0.35), at)
+            if step in (4, 12):
+                add(clap * 0.35, at)
+        if step % 2 == 0:
+            add(shaker * (0.10 if step % 4 else 0.06), at)
+    x *= _env(len(t), 0.3, 1.2)
     return x / np.abs(x).max() * 0.5
 
 
