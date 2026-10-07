@@ -52,9 +52,9 @@ V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 под сборщика, v2", "## 
 
 # Силуэт ведущего в кадре клипа HeyGen 1080×1920 (голова и плечи; ниже —
 # корпус в фартуке, там допустимы субтитры). Измерено по альфе клипа.
-B.AVATAR_BOX = tuple(int(v) for v in os.environ.get("AVATAR_BOX", "120,250,960,1100").split(","))
-B.FACE = tuple(int(v) for v in os.environ.get("FACE", "540,560,260").split(","))
-B.CLIP_BOTTOM = int(os.environ.get("CLIP_BOTTOM", "1920"))
+B.AVATAR_BOX = tuple(int(v) for v in os.environ.get("AVATAR_BOX", "140,240,980,1060").split(","))
+B.FACE = tuple(int(v) for v in os.environ.get("FACE", "540,590,300").split(","))
+B.CLIP_BOTTOM = int(os.environ.get("CLIP_BOTTOM", "1769"))
 B.FACE_Y = B.FACE[1] / 1920
 
 p = B.p
@@ -180,9 +180,8 @@ def scenes(F):
             (s8_cta, cx(s8_cta), 400, F("Скачайте")),
         ]},
         # 9 финал — ведущий, штамп «Соберу сам!»
-        {"bg": p("bg_doodle"), "av": host(1.0, 540, 200, zoom=0.04, punch=[F("САМ!")]),
-         "flash": [(F("САМ!") + 0.05, "yellow")], "els": [
-            (s9_sam, cx(s9_sam), 40, F("САМ!"), None, "stamp"),
+        {"bg": p("bg_doodle"), "av": host(1.0, 540, 260, zoom=0.04, punch=[F("соберу")]), "els": [
+            (s9_sam, cx(s9_sam), 40, F("соберу"), None, "stamp"),
         ]},
     ]
 
@@ -216,6 +215,7 @@ def main():
     sc = B.enrich(scenes(V.finder(words)))
     for s in sc:   # у штампа вспышка — тёплая жёлтая, не тревожная красная
         s["flash"] = [(t, "yellow" if c == "red" else c) for t, c in s.get("flash", [])]
+    sc[-1]["flash"] = []   # финал не заливаем вспышкой — последний кадр должен читаться
     bounds = B.BOUNDS + [total]
     for k, s in enumerate(sc):
         B.check_layout(k, s, bounds[k], bounds[k + 1], caps)
