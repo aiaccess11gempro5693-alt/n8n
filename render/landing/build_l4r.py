@@ -43,9 +43,9 @@ V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v1", "## Набро�
 L.ALIAS = {}
 
 # Силуэт ведущей в клипе HeyGen 1080×1920 (голова и плечи) — измерен по альфе.
-B.AVATAR_BOX = tuple(int(v) for v in os.environ.get("AVATAR_BOX", "200,260,880,1000").split(","))
-B.FACE = tuple(int(v) for v in os.environ.get("FACE", "540,520,240").split(","))
-B.CLIP_BOTTOM = int(os.environ.get("CLIP_BOTTOM", "1920"))
+B.AVATAR_BOX = tuple(int(v) for v in os.environ.get("AVATAR_BOX", "180,380,900,1000").split(","))
+B.FACE = tuple(int(v) for v in os.environ.get("FACE", "530,560,230").split(","))
+B.CLIP_BOTTOM = int(os.environ.get("CLIP_BOTTOM", "1769"))
 B.FACE_Y = B.FACE[1] / 1920
 
 p = B.p
@@ -64,21 +64,21 @@ def scenes(F):
     s1_head = T.headline(p("s1_head"), [[("Рецепт в ленте —", "k")], [("хочу СЕЙЧАС!", "T")]], 1000, size=96)
     s2_logo = T.logo(p("s2_logo"), size=112, text="Повтори")
     s3_chip = T.sticker_text(p("s3_chip"), "нейросеть", fill=T.MUSTARD, ink=T.INK, size=64, angle=-4)
-    s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 640, 520, angle=3)
+    s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 600, 400, angle=3)
     items = ["паста", "томаты черри", "базилик", "пармезан", "сливки"]
-    s3_list = [T.list_card(p(f"s3_list{k}"), "Корзина", items, k, w=860, size=54) for k in (0, 2, 5)]
+    s3_list = [T.list_card(p(f"s3_list{k}"), "Корзина", items, k, w=860, size=48) for k in (0, 2, 5)]
     s4_head = T.headline(p("s4_head"), [[("Уже дома —", "k")], [("не покупаем", "G")]], 1000, size=92)
-    s4_c = [T.strike_chip(p(f"s4_c{i}"), t, size=60, angle=a) for i, (t, a) in
+    s4_c = [T.strike_chip(p(f"s4_c{i}"), t, size=72, angle=a) for i, (t, a) in
             enumerate([("яйца", -3), ("масло", 2), ("сыр", -2)])]
-    s5_sp = T.photo_card(p("s5_sp"), ph("spices"), 520, 520, angle=-3)
+    s5_sp = T.photo_card(p("s5_sp"), ph("spices"), 480, 480, angle=-3)
     s5_found = T.sticker_text(p("s5_found"), "Найдено!", fill=T.GREEN, size=80, angle=-8)
-    s5_por = T.big_number(p("s5_por"), "6", "порций", "на всех гостей", color=T.TOMATO, w=560)
+    s5_por = T.big_number(p("s5_por"), "6", "порций", "на всех гостей", color=T.TOMATO, w=300, k=0.55)
     s6_ring = T.ring(p("s6_ring"), 560)
     s6_num = T.big_number(p("s6_num"), "15", "мин", "курьер у двери", w=760)
     s6_tap = T.sticker_text(p("s6_tap"), "1 касание", fill=T.MUSTARD, ink=T.INK, size=72, angle=-5)
     s7_dish = T.photo_card(p("s7_dish"), ph("dish"), 860, 860, angle=-2)
     s7_stamp = T.sticker_text(p("s7_stamp"), "Увидела — повторила!", fill=T.TOMATO, size=72, angle=-5)
-    s8_cta = T.cta_button(p("s8_cta"), "Скачать «Повтори»", w=900)
+    s8_cta = T.cta_button(p("s8_cta"), "Скачать «Повтори»", w=760, size=70)
 
     return [
         # 1 hook — лента с видео-рецептом
@@ -94,24 +94,24 @@ def scenes(F):
         {"bg": p("bg_plain"), "av": None, "sfx": [(F("разбирает"), "beep", 0.4), (F("корзину."), "ding", 0.4)],
          "els": [
             (s3_chip, 40, 40, b[2] + 0.1),
-            (s3_ingr, cx(s3_ingr), 180, F("разбирает")),
-            (s3_list[0], cx(s3_list[0]), 800, F("собирает"), F("собирает") + 0.35, "cut"),
-            (s3_list[1], cx(s3_list[1]), 800, F("собирает") + 0.35, F("корзину."), "cut"),
-            (s3_list[2], cx(s3_list[2]), 800, F("корзину."), None, "cut"),
+            (s3_ingr, cx(s3_ingr), 270, F("разбирает")),
+            (s3_list[0], cx(s3_list[0]), 820, F("собирает"), F("собирает") + 0.35, "cut"),
+            (s3_list[1], cx(s3_list[1]), 820, F("собирает") + 0.35, F("корзину."), "cut"),
+            (s3_list[2], cx(s3_list[2]), 820, F("корзину."), None, "cut"),
         ]},
         # 4 холодильник: что уже есть дома
         {"bg": p("bg_fridge"), "av": None, "sfx": [(F("УЖЕ"), "click", 0.45), (F("есть"), "click", 0.45),
                                                     (F("холодильнике."), "click", 0.45)], "els": [
             (s4_head, 40, 40, F("Учитывает,")),
-            (s4_c[0], 60, 330, F("УЖЕ")),
-            (s4_c[1], 400, 330, F("есть")),
-            (s4_c[2], 740, 330, F("холодильнике.")),
+            (s4_c[0], 40, 400, F("УЖЕ")),
+            (s4_c[1], 440, 400, F("есть")),
+            (s4_c[2], 250, 620, F("холодильнике.")),
         ]},
         # 5 ведущая справа, специи и порции
-        {"bg": p("bg_doodle"), "av": host(0.72, 780, 640, punch=[F("всех")]), "els": [
+        {"bg": p("bg_doodle"), "av": host(0.72, 880, 700), "els": [
             (s5_sp, 20, 40, F("специи")),
-            (s5_found, 300, 520, F("найдёт.") + 0.05, None, "stamp"),
-            (s5_por, 20, 760, F("Порции")),
+            (s5_found, 80, 400, F("найдёт.") + 0.05, None, "stamp"),
+            (s5_por, 10, 690, F("Порции")),
         ]},
         # 6 зелёный фон: лицо в круге, 15 мин
         {"bg": p("bg_green"), "av": {"kind": "circle", "size": 500, "x": (W - 500) // 2, "y": 70},
@@ -119,7 +119,7 @@ def scenes(F):
          "sfx": [(F("касание"), "click", 0.6), (F("ПЯТНАДЦАТЬ"), "bass", 0.5), (F("курьер"), "beep", 0.35)], "els": [
             (s6_ring, (W - size(s6_ring)[0]) // 2, 40, b[5] + 0.05, None, "frame"),
             (s6_tap, 40, 560, F("касание")),
-            (s6_num, cx(s6_num), 760, F("ПЯТНАДЦАТЬ")),
+            (s6_num, cx(s6_num), 810, F("ПЯТНАДЦАТЬ")),
         ]},
         # 7 готовое блюдо
         {"bg": p("bg_plain"), "av": None, "els": [

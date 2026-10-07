@@ -259,14 +259,16 @@ def timer(path, text="60:00", size=170, fill=TOMATO, angle=-4):
     return _save(_shadow(im), path)
 
 
-def big_number(path, num, unit, sub, color=GREEN, w=760):
-    """Огромная цифра + единица («60 мин») и подпись под ней; карточка-стикер."""
-    fn = font(F_HEAD, 300)
-    fu = font(F_HEAD, 110)
-    fs = font(F_BODY, 62)
+def big_number(path, num, unit, sub, color=GREEN, w=760, k=1.0):
+    """Огромная цифра + единица («60 мин») и подпись под ней; карточка-стикер.
+    k — масштаб шрифтов (для тесных раскладок)."""
+    fn = font(F_HEAD, int(300 * k))
+    fu = font(F_HEAD, int(110 * k))
+    fs = font(F_BODY, int(62 * k))
     nb = tbox(num, fn)
     nw = text_w(num, fn)
     uw = text_w(unit, fu)
+    w = max(w, int(nw + 24 + uw + 120), int(text_w(sub, fs) + 68 + 80))   # содержимое всегда влезает
     h = 70 + (nb[3] - nb[1]) + 40 + 90 + 50
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
@@ -390,9 +392,9 @@ def strike_chip(path, text, size=56, angle=0):
     w = int(tw(text, f) + size * 1.1)
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=h // 2, fill=(232, 228, 220, 255))
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=h // 2, fill=WHITE)
     x0 = size * 0.55
-    d.text((x0 - bb[0], (h - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f, fill=GREY)
+    d.text((x0 - bb[0], (h - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f, fill=INK)
     d.line([(x0 - 10, h / 2 + 6), (x0 + tw(text, f) + 10, h / 2 - 6)], fill=TOMATO, width=max(6, size // 7))
     im = _outline(_pad(im, 10), 8)
     if angle:
