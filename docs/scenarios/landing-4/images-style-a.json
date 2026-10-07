@@ -58,7 +58,8 @@
    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
    "meaning": "открытый ПУСТОЙ холодильник на светлой кухне днём — хук «гости через час, а холодильник пустой»",
-   "prompt": "A modern white refrigerator standing open in a bright cream-coloured kitchen in daylight, its shelves completely EMPTY, only one lonely lemon on a shelf, a green plant on the counter; the fridge in the lower two thirds of the vertical frame, the upper third is a plain cream wall (space for text)."
+   "prompt": "A modern white refrigerator standing open in a bright cream-coloured kitchen in daylight, its shelves completely EMPTY, only one lonely lemon on a shelf, a green plant on the counter; the fridge in the lower two thirds of the vertical frame, the upper third is a plain cream wall (space for text).",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
   },
   {
    "name": "l4a_p_phone",
@@ -72,7 +73,8 @@
    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
    "meaning": "смартфон в руке: на экране светлая карта с зелёным маршрутом и точкой курьера — «курьер на карте»",
-   "prompt": "A hand holding a modern smartphone vertically against a soft cream background, the screen shows a LIGHT abstract city map with a bold leaf-green route line, a small tomato-red courier dot and a home pin — only shapes and lines, absolutely no text, no numbers, no app names. The phone fills the centre of the vertical frame."
+   "prompt": "A hand holding a modern smartphone vertically against a soft cream background, the screen shows a LIGHT abstract city map with a bold leaf-green route line, a small tomato-red courier dot and a home pin — only shapes and lines, absolutely no text, no numbers, no app names. The phone fills the centre of the vertical frame.",
+   "person_note": "There are absolutely NO people and no hands in this image (except the single hand holding the phone where the prompt says so)."
   },
   {
    "name": "l4a_p_bag",
@@ -86,7 +88,8 @@
    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
    "meaning": "пакет с продуктами у двери квартиры днём — «ужин у двери»",
-   "prompt": "A kraft paper grocery bag full of fresh groceries (baguette, greens, tomatoes, lemons, a bottle of milk, no labels) standing on a doormat right at a sage-green apartment front door in a bright hallway, daylight; the bag in the lower half of the vertical frame, the upper part is a plain wall (space for text). Hero product shot."
+   "prompt": "A kraft paper grocery bag full of fresh groceries (baguette, greens, tomatoes, lemons, a bottle of milk, no labels) standing on a doormat right at a sage-green apartment front door in a bright hallway, daylight; the bag in the lower half of the vertical frame, the upper part is a plain wall (space for text). Hero product shot.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
   }
  ]
 }
