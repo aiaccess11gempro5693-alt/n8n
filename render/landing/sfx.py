@@ -22,6 +22,9 @@
             мягкая бочка, хлопок на 2 и 4, шейкер, 118 bpm (ролик 5)
   chime   — мягкий двойной колокольчик (переключение языка, ролик 5)
 
+music_bed(path) — готовый трек (например из библиотеки HeyGen) вместо синтеза:
+  возвращает функцию-подклад для mix(bed_fn=...).
+
 mix(voice, events, bed, out): озвучка + подклад (с приглушением под голос)
 + эффекты в заданные моменты, нормализация громкости.
 """
@@ -363,6 +366,22 @@ def corporate(d, bpm=118):
             add(shaker * (0.10 if step % 4 else 0.06), at)
     x *= _env(len(t), 0.3, 1.2)
     return x / np.abs(x).max() * 0.5
+
+
+def music_bed(path, fade=1.5):
+    """Подклад из готового трека: декодирует файл в моно 48 кГц, обрезает под
+    длину ролика (при нехватке — повторяет), плавное начало и конец; пик 0.5,
+    как у синтезированных подкладов — громкость задаёт bed_gain в mix()."""
+    def fn(d):
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
+                             capture_output=True, check=True).stdout
+        x = np.frombuffer(raw, np.float32).astype(float)
+        n = int(SR * d)
+        while len(x) < n:
+            x = np.concatenate([x, x])
+        x = x[:n] * _env(n, 0.4, fade)
+        return x / max(np.abs(x).max(), 1e-6) * 0.5
+    return fn
 
 
 GEN = {"whoosh": whoosh, "hit": hit, "stamp": stamp, "pop": pop, "ring": ring, "tick": tick,
