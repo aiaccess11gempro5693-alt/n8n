@@ -32,17 +32,17 @@ IMG = f"{ROOT}/scratch/img"
 W, H = 1080, 1920
 
 B.TMP = f"{HERE}/_frames_l4r"
-B.AUDIO = f"{ROOT}/scratch/l4r-v3-final.mp3"
-B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l4r-v3-host.webm")
+B.AUDIO = f"{ROOT}/scratch/l4r-v4-final.mp3"
+B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l4r-v4-host.webm")
 B.OUT = f"{HERE}/l4r-9x16.mp4"
 B.SHOW = {"пятнадцать": "15", "тридцать": "30"}
 # границы сцен — середины пауз (3→4 режется между словами: пауз там нет)
-B.BOUNDS = [0.0, 4.78, 6.30, 9.06, 11.59, 14.06, 17.57, 20.71]
+B.BOUNDS = [0.0, 5.11, 7.03, 13.15, 15.87, 19.66, 22.81]
 V.TEXTS = f"{ROOT}/docs/scenarios/landing-4-recipe.md"
-V.WHISPER = f"{ROOT}/scratch/l4r-v3-final-whisper-1.json"
-V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v3", "## Набросок раскладки"
+V.WHISPER = f"{ROOT}/scratch/l4r-v4-final-whisper-1.json"
+V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v4", "## Набросок раскладки"
 # whisper склеивает «рецепт и» → «рецепты», «курьер у» → «курьеру», пишет числа цифрами
-L.ALIAS = {"курьер": "курьеру", "тридцать": "30", "покупаю.": "покупая"}
+L.ALIAS = {"тридцать": "30"}
 
 # Силуэт ведущей в клипе HeyGen 1080×1920 (голова и плечи) — измерен по альфе.
 B.AVATAR_BOX = tuple(int(v) for v in os.environ.get("AVATAR_BOX", "180,380,900,1000").split(","))
@@ -68,7 +68,7 @@ def scenes(F):
     s1_head = T.headline(p("s1_head"), [[("Слюнки", "k"), ("потекли?", "T")]], 1000, size=68)
     s2_logo = T.logo(p("s2_logo"), size=112, text="Повтори")
     s3_chip = T.sticker_text(p("s3_chip"), "нейросеть", fill=T.MUSTARD, ink=T.INK, size=60, angle=-4)
-    s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 600, 400, angle=3)
+    s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 540, 330, angle=3)
     items = ["паста", "томаты черри", "базилик", "сливки", "яйца", "сыр"]
     s3_full = T.list_card(p("s3_full"), "Корзина", items, 6, w=860, size=46)
     s3_home = T.list_card(p("s3_home"), "Корзина", items, 6, w=860, size=46, struck=("яйца", "сыр"))
@@ -102,9 +102,9 @@ def scenes(F):
                  (F("дома,") + 0.15, "click", 0.5)],
          "els": [
             (s3_chip, 40, 40, F("нейросеть")),
-            (s3_ingr, cx(s3_ingr), 230, F("нейросеть") + 0.2),
-            (s3_full, cx(s3_full), 720, F("собирает"), F("дома,"), "cut"),
-            (s3_home, cx(s3_home), 720, F("дома,"), None, "cut"),
+            (s3_ingr, cx(s3_ingr), 270, F("нейросеть") + 0.2),
+            (s3_full, cx(s3_full), 750, F("собирает"), F("дома,"), "cut"),
+            (s3_home, cx(s3_home), 750, F("дома,"), None, "cut"),
             (s3_save, W - 40 - size(s3_save)[0], 40, F("покупаю."), None, "stamp"),
         ]},
         # 5 ведущая справа, специи + «Нашла!»
