@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l4h_st_tomato",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "фото-стикер: горсть плотных спелых помидоров на ветке, на кремовом фоне",
+    "prompt": "A close-up product photo of a vine of firm, ripe, glossy red tomatoes with fresh green stems, centred, on a plain warm cream #FFF6E9 background, soft daylight, appetising.",
+    "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l4h_ph_queue",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "«было»: очередь у кассы и тяжёлые пакеты — уставшие люди (со спины, без лиц крупно)",
+    "prompt": "A crowded supermarket checkout queue in the evening: tired shoppers seen mostly from behind holding heavy plastic shopping bags, full trolleys, harsh fluorescent light, slightly greyish dull colours; documentary feel; no readable signs or text.",
+    "person_note": "People are seen from behind or far away, no clear faces in close-up."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
