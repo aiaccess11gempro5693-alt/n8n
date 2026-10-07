@@ -69,11 +69,10 @@ def scenes(F):
     s2_logo = T.logo(p("s2_logo"), size=112, text="Повтори")
     s3_chip = T.sticker_text(p("s3_chip"), "нейросеть", fill=T.MUSTARD, ink=T.INK, size=60, angle=-4)
     s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 600, 400, angle=3)
-    items = ["паста", "томаты черри", "базилик", "пармезан", "сливки"]
-    s3_list = [T.list_card(p(f"s3_list{k}"), "Корзина", items, k, w=860, size=48) for k in (0, 2, 5)]
-    s4_head = T.headline(p("s4_head"), [[("Что есть дома —", "k")], [("не покупаю", "G")]], 1000, size=84)
-    s4_c = [T.strike_chip(p(f"s4_c{i}"), t, size=72, angle=a) for i, (t, a) in
-            enumerate([("яйца", -3), ("масло", 2), ("сыр", -2)])]
+    items = ["паста", "томаты черри", "базилик", "сливки", "яйца", "сыр"]
+    s3_full = T.list_card(p("s3_full"), "Корзина", items, 6, w=860, size=46)
+    s3_home = T.list_card(p("s3_home"), "Корзина", items, 6, w=860, size=46, struck=("яйца", "сыр"))
+    s3_save = T.sticker_text(p("s3_save"), "не покупаю!", fill=T.GREEN, size=64, angle=-5)
     s5_sp = T.photo_card(p("s5_sp"), ph("spices"), 560, 560, angle=-3)
     s5_found = T.sticker_text(p("s5_found"), "Нашла!", fill=T.GREEN, size=96, angle=-8)
     s6_ring = T.ring(p("s6_ring"), 560)
@@ -97,22 +96,16 @@ def scenes(F):
          "flash": [(F("приложение") + 0.05, "yellow")], "sfx": [(F("Кидаю"), "whoosh", 0.4)], "els": [
             (s2_logo, cx(s2_logo), 10, b[1] + 0.15),
         ]},
-        # 3 нейросеть за секунду собирает корзину
-        {"bg": p("bg_plain"), "av": None, "sfx": [(F("нейросеть"), "beep", 0.4), (F("корзину!"), "ding", 0.4)],
+        # 3 нейросеть собирает корзину; что уже есть дома — зачёркивается (одна карточка, держится ~4 с)
+        {"bg": p("bg_plain"), "av": None,
+         "sfx": [(F("нейросеть"), "beep", 0.4), (F("собирает"), "ding", 0.4), (F("дома,"), "click", 0.5),
+                 (F("дома,") + 0.15, "click", 0.5)],
          "els": [
             (s3_chip, 40, 40, F("нейросеть")),
-            (s3_ingr, cx(s3_ingr), 270, F("нейросеть") + 0.2),
-            (s3_list[0], cx(s3_list[0]), 820, F("мгновенно"), F("собирает"), "cut"),
-            (s3_list[1], cx(s3_list[1]), 820, F("собирает"), F("корзину!"), "cut"),
-            (s3_list[2], cx(s3_list[2]), 820, F("корзину!"), None, "cut"),
-        ]},
-        # 4 холодильник: что есть дома — не покупаю
-        {"bg": p("bg_fridge"), "av": None, "sfx": [(F("уже"), "click", 0.45), (F("есть"), "click", 0.45),
-                                                    (F("дома,"), "click", 0.45)], "els": [
-            (s4_head, 40, 40, F("Всё,")),
-            (s4_c[0], 40, 430, F("уже")),
-            (s4_c[1], 440, 430, F("есть")),
-            (s4_c[2], 250, 660, F("дома,")),
+            (s3_ingr, cx(s3_ingr), 230, F("нейросеть") + 0.2),
+            (s3_full, cx(s3_full), 720, F("собирает"), F("дома,"), "cut"),
+            (s3_home, cx(s3_home), 720, F("дома,"), None, "cut"),
+            (s3_save, W - 40 - size(s3_save)[0], 40, F("покупаю."), None, "stamp"),
         ]},
         # 5 ведущая справа, специи + «Нашла!»
         {"bg": p("bg_doodle"), "av": host(0.72, 880, 700, punch=[F("нашла!")]), "els": [
@@ -123,7 +116,7 @@ def scenes(F):
         {"bg": p("bg_green"), "av": {"kind": "circle", "size": 500, "x": (W - 500) // 2, "y": 70},
          "flash": [(F("четверть") + 0.05, "yellow")],
          "sfx": [(F("касание"), "click", 0.6), (F("четверть"), "bass", 0.5), (F("курьер"), "beep", 0.35)], "els": [
-            (s6_ring, (W - size(s6_ring)[0]) // 2, 40, b[5] + 0.05, None, "frame"),
+            (s6_ring, (W - size(s6_ring)[0]) // 2, 40, b[4] + 0.05, None, "frame"),
             (s6_tap, 40, 560, F("касание")),
             (s6_num, cx(s6_num), 810, F("четверть")),
         ]},

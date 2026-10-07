@@ -404,8 +404,9 @@ def strike_chip(path, text, size=56, angle=0):
     return _save(_shadow(im), path)
 
 
-def list_card(path, title, items, done, w=860, size=56):
-    """Карточка-корзина: заголовок и пункты; первые done пунктов — с зелёной галочкой."""
+def list_card(path, title, items, done, w=860, size=56, struck=(), tag="есть дома"):
+    """Карточка-корзина: заголовок и пункты; первые done пунктов — с зелёной галочкой;
+    пункты из struck зачёркнуты томатной линией с пометкой tag («есть дома»)."""
     fh = font(F_HEAD, int(size * 1.15))
     fi = font(F_BODY, size)
     step = int(size * 1.6)
@@ -418,7 +419,7 @@ def list_card(path, title, items, done, w=860, size=56):
     for i, it in enumerate(items):
         r = size * 0.5
         cyy = y + size * 0.55
-        if i < done:
+        if i < done and it not in struck:
             d.ellipse([48, cyy - r, 48 + 2 * r, cyy + r], fill=GREEN)
             check_mark(d, 48 + r * 0.45, cyy - r * 0.5, r * 1.1, WHITE, max(5, size // 9))
             col = INK
@@ -426,7 +427,19 @@ def list_card(path, title, items, done, w=860, size=56):
             d.ellipse([48, cyy - r, 48 + 2 * r, cyy + r], outline=(210, 205, 195, 255), width=5)
             col = (190, 186, 178, 255)
         tb = tbox(it, fi)
-        d.text((48 + 2 * r + 26, cyy - (tb[1] + tb[3]) / 2 + size * 0.06), it, font=fi, fill=col)
+        tx = 48 + 2 * r + 26
+        if it in struck:
+            col = GREY
+        d.text((tx, cyy - (tb[1] + tb[3]) / 2 + size * 0.06), it, font=fi, fill=col)
+        if it in struck:
+            d.line([(tx - 6, cyy + 4), (tx + tw(it, fi) + 6, cyy - 4)], fill=TOMATO, width=max(5, size // 8))
+            ft = font(F_HEAD, int(size * 0.62))
+            bb2 = tbox(tag, ft)
+            px = tx + tw(it, fi) + 30
+            ph_ = (bb2[3] - bb2[1]) + 16
+            d.rounded_rectangle([px, cyy - ph_ / 2, px + (bb2[2] - bb2[0]) + 32, cyy + ph_ / 2], radius=ph_ // 2,
+                                fill=TOMATO)
+            d.text((px + 16 - bb2[0], cyy - (bb2[3] - bb2[1]) / 2 - bb2[1]), tag, font=ft, fill=WHITE)
         y += step
     return _save(_shadow(_outline(_pad(im, 12), 10)), path)
 
