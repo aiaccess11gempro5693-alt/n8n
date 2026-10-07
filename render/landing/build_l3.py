@@ -76,7 +76,7 @@ def p(name):
 # ---------------------------------------------------------------- субтитры
 
 def caption_chunks(words, total):
-    """Предложение → чанки: режем по «—», длинное (>2 строк) — поровну.
+    """Предложение → чанки: режем по «—» и «…», длинное (>2 строк) — поровну.
     Каждый чанк — список (слово, время); показывается до начала следующего."""
     f = T.font(T.F_BODY, T.CAP_F)
     sents, cur = [], []
@@ -101,6 +101,9 @@ def caption_chunks(words, total):
                 piece = []
                 continue
             piece.append((w, t))
+            if w.endswith("…"):   # пауза-многоточие — тоже граница чанка
+                parts.append(piece)
+                piece = []
         if piece:
             parts.append(piece)
     chunks = []
