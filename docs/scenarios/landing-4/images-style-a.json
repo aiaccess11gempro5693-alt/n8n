@@ -1,0 +1,92 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "l4_host_a1",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png",
+    "scratch/img/l4_host_9x16.png"
+   ],
+   "meaning": "ведущий 1 — тот же мужчина ~30, что на борде A (лицо из референса), оливково-зелёная рубашка поверх белой футболки; кремовый дневной фон и одежда в палитре борда «Свежий рынок»; по пояс, по центру, нейтральное лицо, губы слегка приоткрыты, без улыбки; без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16 portrait frame, waist-up, the person stands in the exact centre facing the camera, arms relaxed down (hands out of frame), shoulders square. Expression NEUTRAL and confident, like in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes straight into the lens. Headroom: top of the head about 18% of the frame height below the upper edge; the face is large and sharp. Style and colours from the attached design board «Свежий рынок» (use it ONLY for palette and mood, do NOT copy the man on it unless told): soft bright daylight, plain warm cream #FFF6E9 studio background with a very subtle lighter gradient, no objects, no text, no logos, no badge. Clothes in the board palette (leaf green #23A455, white, mustard #FFC531 or tomato #FF4B2E accents). Natural skin texture, 85mm lens look, clean commercial grading. The person is EXACTLY the man from the second attached photo (same face and hairstyle): about 30, short dark-brown hair. He wears a light olive-green overshirt open over a white t-shirt."
+  },
+  {
+   "name": "l4_host_a2",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "meaning": "ведущая 2 — НОВАЯ женщина ~28, продакт-менеджер, тёмно-русые волосы в низком хвосте, горчичный джемпер; кремовый дневной фон и одежда в палитре борда «Свежий рынок»; по пояс, по центру, нейтральное лицо, губы слегка приоткрыты, без улыбки; без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16 portrait frame, waist-up, the person stands in the exact centre facing the camera, arms relaxed down (hands out of frame), shoulders square. Expression NEUTRAL and confident, like in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes straight into the lens. Headroom: top of the head about 18% of the frame height below the upper edge; the face is large and sharp. Style and colours from the attached design board «Свежий рынок» (use it ONLY for palette and mood, do NOT copy the man on it unless told): soft bright daylight, plain warm cream #FFF6E9 studio background with a very subtle lighter gradient, no objects, no text, no logos, no badge. Clothes in the board palette (leaf green #23A455, white, mustard #FFC531 or tomato #FF4B2E accents). Natural skin texture, 85mm lens look, clean commercial grading. A NEW woman of about 28, Russian/Slavic appearance, dark-blond hair in a neat low ponytail, light natural make-up, a product manager. She wears a mustard-yellow fine-knit jumper over a white collar."
+  },
+  {
+   "name": "l4_host_a3",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "meaning": "ведущий 3 — НОВЫЙ мужчина ~38 с аккуратной бородой, дружелюбный 'шеф', зелёная джинсовая рубашка с закатанными рукавами; кремовый дневной фон и одежда в палитре борда «Свежий рынок»; по пояс, по центру, нейтральное лицо, губы слегка приоткрыты, без улыбки; без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16 portrait frame, waist-up, the person stands in the exact centre facing the camera, arms relaxed down (hands out of frame), shoulders square. Expression NEUTRAL and confident, like in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes straight into the lens. Headroom: top of the head about 18% of the frame height below the upper edge; the face is large and sharp. Style and colours from the attached design board «Свежий рынок» (use it ONLY for palette and mood, do NOT copy the man on it unless told): soft bright daylight, plain warm cream #FFF6E9 studio background with a very subtle lighter gradient, no objects, no text, no logos, no badge. Clothes in the board palette (leaf green #23A455, white, mustard #FFC531 or tomato #FF4B2E accents). Natural skin texture, 85mm lens look, clean commercial grading. A NEW man of about 38, Russian/Slavic appearance, short brown hair and a neat short beard, warm approachable face. He wears a leaf-green cotton work shirt with sleeves rolled up over a white t-shirt."
+  },
+  {
+   "name": "l4_host_a4",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "meaning": "ведущая 4 — НОВАЯ девушка ~24, техноблогер, каре цвета каштан, белая футболка и томатно-красная куртка-бомбер; кремовый дневной фон и одежда в палитре борда «Свежий рынок»; по пояс, по центру, нейтральное лицо, губы слегка приоткрыты, без улыбки; без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16 portrait frame, waist-up, the person stands in the exact centre facing the camera, arms relaxed down (hands out of frame), shoulders square. Expression NEUTRAL and confident, like in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes straight into the lens. Headroom: top of the head about 18% of the frame height below the upper edge; the face is large and sharp. Style and colours from the attached design board «Свежий рынок» (use it ONLY for palette and mood, do NOT copy the man on it unless told): soft bright daylight, plain warm cream #FFF6E9 studio background with a very subtle lighter gradient, no objects, no text, no logos, no badge. Clothes in the board palette (leaf green #23A455, white, mustard #FFC531 or tomato #FF4B2E accents). Natural skin texture, 85mm lens look, clean commercial grading. A NEW young woman of about 24, Russian/Slavic appearance, chestnut bob haircut, freckles, energetic tech blogger. She wears a white t-shirt under an open tomato-red bomber jacket."
+  },
+  {
+   "name": "l4a_p_fridge",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "открытый ПУСТОЙ холодильник на светлой кухне днём — хук «гости через час, а холодильник пустой»",
+   "prompt": "A modern white refrigerator standing open in a bright cream-coloured kitchen in daylight, its shelves completely EMPTY, only one lonely lemon on a shelf, a green plant on the counter; the fridge in the lower two thirds of the vertical frame, the upper third is a plain cream wall (space for text)."
+  },
+  {
+   "name": "l4a_p_phone",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "смартфон в руке: на экране светлая карта с зелёным маршрутом и точкой курьера — «курьер на карте»",
+   "prompt": "A hand holding a modern smartphone vertically against a soft cream background, the screen shows a LIGHT abstract city map with a bold leaf-green route line, a small tomato-red courier dot and a home pin — only shapes and lines, absolutely no text, no numbers, no app names. The phone fills the centre of the vertical frame."
+  },
+  {
+   "name": "l4a_p_bag",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "пакет с продуктами у двери квартиры днём — «ужин у двери»",
+   "prompt": "A kraft paper grocery bag full of fresh groceries (baguette, greens, tomatoes, lemons, a bottle of milk, no labels) standing on a doormat right at a sage-green apartment front door in a bright hallway, daylight; the bag in the lower half of the vertical frame, the upper part is a plain wall (space for text). Hero product shot."
+  }
+ ]
+}
