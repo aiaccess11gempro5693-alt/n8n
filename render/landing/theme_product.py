@@ -147,6 +147,33 @@ def photo_bg(path, photo, W, H, ax=0.5, ay=0.5, zoom=1.0):
     return path
 
 
+def photo_half(path, photo, W, H, rect, fade_side=None, ax=0.5, ay=0.5, variant="plain", grey=0.0):
+    """Кремовый фон + фото в прямоугольнике rect (x, y, w, h); fade_side —
+    сторона, где фото растворяется в фон; grey — доля обесцвечивания («было»)."""
+    im = Image.open(background(path, W, H, variant)).convert("RGBA")
+    x, y, w, h = rect
+    ph = Image.open(photo).convert("RGB")
+    k = max(w / ph.width, h / ph.height)
+    ph = ph.resize((round(ph.width * k), round(ph.height * k)), Image.LANCZOS)
+    ox, oy = int((ph.width - w) * ax), int((ph.height - h) * ay)
+    ph = ph.crop((ox, oy, ox + w, oy + h))
+    if grey:
+        ph = Image.blend(ph, ph.convert("L").convert("RGB"), grey)
+    ph = ph.convert("RGBA")
+    if fade_side:
+        a = Image.new("L", (w, h), 255)
+        d = ImageDraw.Draw(a)
+        band = int(w * 0.35)
+        for i in range(band):
+            v = int(255 * (i / band) ** 1.6)
+            xx = w - band + i if fade_side == "right" else band - 1 - i
+            d.line([(xx, 0), (xx, h)], fill=255 - v)
+        ph.putalpha(a)
+    im.alpha_composite(ph, (x, y))
+    im.save(path)
+    return path
+
+
 # ---------------------------------------------------------------- типографика
 
 def headline(path, lines, w, size=104, align="left", lh=1.12):
@@ -402,6 +429,74 @@ def doodle_arrow(path, w=240, h=200, color=GREEN, flip=False):
     if flip:
         im = im.transpose(Image.FLIP_LEFT_RIGHT)
     return _save(im, path)
+
+
+def check_mark(d, x, y, s, color=WHITE, width=None):
+    width = width or max(6, int(s * 0.16))
+    d.line([(x, y + s * 0.5), (x + s * 0.38, y + s * 0.85), (x + s, y + s * 0.1)], fill=color, width=width,
+           joint="curve")
+
+
+def tick_tag(path, text, fill=GREEN, size=60, angle=0):
+    """Бирка с галочкой: «плотные ✓»."""
+    f = font(F_HEAD, size)
+    bb = tbox(text, f)
+    h = int((bb[3] - bb[1]) + size * 0.8)
+    r = h * 0.36
+    w = int(tw(text, f) + size * 0.6 + 2 * r + size * 0.5)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=h // 2, fill=fill)
+    cxx = size * 0.35 + r
+    d.ellipse([cxx - r, h / 2 - r, cxx + r, h / 2 + r], fill=WHITE)
+    check_mark(d, cxx - r * 0.55, h / 2 - r * 0.5, r * 1.1, fill, max(5, int(size * 0.1)))
+    d.text((cxx + r + size * 0.3 - bb[0], (h - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f, fill=WHITE)
+    im = _outline(_pad(im, 10), 8)
+    if angle:
+        im = im.rotate(angle, resample=Image.BICUBIC, expand=True)
+    return _save(_shadow(im), path)
+
+
+def notif_card(path, title, sub, w=720):
+    """Пуш-уведомление: белая карточка, зелёный значок-корзина, заголовок и строка."""
+    ft = font(F_HEAD, 58)
+    fs = font(F_BODY_S, 46)
+    h = 190
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=44, fill=WHITE)
+    d.rounded_rectangle([30, 35, 150, 155], radius=32, fill=GREEN)
+    # корзина
+    d.polygon([(55, 80), (125, 80), (115, 130), (65, 130)], fill=WHITE)
+    d.arc([70, 55, 110, 95], 180, 360, fill=WHITE, width=7)
+    d.text((180 - tbox(title, ft)[0], 40 - tbox(title, ft)[1]), title, font=ft, fill=INK)
+    d.text((180, 118 - tbox(sub, fs)[1]), sub, font=fs, fill=GREY)
+    d.ellipse([w - 60, 30, w - 30, 60], fill=TOMATO)
+    return _save(_shadow(_outline(_pad(im, 10), 8)), path)
+
+
+def steps_card(path, steps, w=960):
+    """«Стало»: зелёная карточка с тремя шагами-кругами и стрелками."""
+    fh = font(F_HEAD, 70)
+    fs = font(F_HEAD, 52)
+    h = 470
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=56, fill=GREEN)
+    d.text((56, 44 - tbox("Стало: 3 касания", fh)[1]), "Стало: 3 касания", font=fh, fill=WHITE)
+    n = len(steps)
+    seg = (w - 80) / n
+    for i, st in enumerate(steps):
+        cxx = 40 + seg * (i + 0.5)
+        d.ellipse([cxx - 70, 170, cxx + 70, 310], fill=WHITE)
+        nb = tbox(str(i + 1), fh)
+        d.text((cxx - (nb[2] - nb[0]) / 2 - nb[0], 240 - (nb[3] - nb[1]) / 2 - nb[1]), str(i + 1), font=fh, fill=GREEN)
+        sb = tbox(st, fs)
+        d.text((cxx - (sb[2] - sb[0]) / 2 - sb[0], 350 - sb[1]), st, font=fs, fill=WHITE)
+        if i < n - 1:
+            ax = cxx + 95
+            d.polygon([(ax, 222), (ax + 34, 240), (ax, 258)], fill=MUSTARD)
+    return _save(_shadow(_outline(_pad(im, 12), 10)), path)
 
 
 def down_arrow(path, h=160, color=GREEN):
