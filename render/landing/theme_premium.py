@@ -387,3 +387,38 @@ def city_chip(path, text, size=40):
     d.ellipse([cx0 - r, h / 2 - r, cx0 + r, h / 2 + r], fill=BORDO)
     d.text((cx0 + r + 12, (h - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f, fill=GRAPHITE)
     return _save(_shadow(im, k=0.12), path)
+
+
+def photo_card(path, photo, w, h, ax=0.5, ay=0.5, caption=None):
+    """Фото в «паспарту»: поля цвета бумаги, тонкая золотая кайма, подпись-капитель снизу."""
+    src = Image.open(photo).convert("RGBA")
+    k = max(w / src.width, h / src.height)
+    sw, sh = int(src.width * k) + 1, int(src.height * k) + 1
+    src = src.resize((sw, sh), Image.LANCZOS)
+    left, top = int((sw - w) * ax), int((sh - h) * ay)
+    src = src.crop((left, top, left + w, top + h))
+    m = 18
+    capH = 64 if caption else 0
+    im = Image.new("RGBA", (w + 2 * m, h + 2 * m + capH), PAPER)
+    im.alpha_composite(src, (m, m))
+    d = ImageDraw.Draw(im)
+    d.rectangle([m - 6, m - 6, m + w + 5, m + h + 5], outline=GOLD, width=2)
+    if caption:
+        f = font(F_BODY_X, 30)
+        t = " ".join(caption.upper())
+        d.text(((im.width - tw(t, f)) / 2, h + 2 * m + 6), t, font=f, fill=BORDO)
+    return _save(_shadow(im), path)
+
+
+def bullet(path, num, text, w=760, size=50):
+    """Пункт списка: золотой номер Playfair + текст Manrope, тонкая линия снизу."""
+    fn, ft = font(F_HEAD, int(size * 1.3)), font(F_BODY, size)
+    h = int(size * 1.9)
+    w = max(w, int(tw(text, ft)) + 150)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.text((0, int(size * 0.05)), num, font=fn, fill=GOLD)
+    bb = tbox(text, ft)
+    d.text((110, (h - (bb[3] - bb[1])) / 2 - bb[1] - 6), text, font=ft, fill=GRAPHITE)
+    d.line([(110, h - 4), (w, h - 4)], fill=GOLD_L, width=2)
+    return _save(im, path)
