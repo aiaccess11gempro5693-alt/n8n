@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l4rh_ph_empty",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+    "meaning": "вечер: на столе пустая разделочная доска, рядом раскрытая кулинарная книга и пустой пакет — «нет ни сливок, ни специй»; правая часть кадра свободна",
+    "prompt": "A calm evening kitchen counter: an empty wooden cutting board, an open blank notebook, an empty folded paper grocery bag and an empty spice rack with a few empty jars, soft warm light, slightly melancholic; objects on the LEFT half, the RIGHT half is a plain cream wall (space for text). No text anywhere.",
+    "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
