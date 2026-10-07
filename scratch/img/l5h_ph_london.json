@@ -1,0 +1,28 @@
+{
+  "job": {
+    "name": "l5h_ph_london",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l5_board_a.png"
+    ],
+    "person_note": "NO people at all.",
+    "style": "Premium editorial architectural photograph in the palette of the attached board «Премиальный корпоративный»: warm ivory light, muted gold and deep bordeaux accents (furniture, textiles), graphite details, soft natural daylight, calm and expensive, shallow depth of field. NO people. NO readable text, NO letters, NO logos, NO signs, NO brand names.",
+    "style_qa": "premium architectural office photograph, ivory/gold/bordeaux palette, no people, no text",
+    "meaning": "A bright modern office meeting room with a large window view of the London skyli",
+    "prompt": "A bright modern office meeting room with a large window view of the London skyline (the Thames and classic London architecture), a long table, bordeaux leather chairs, ivory walls."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "Remote end closed connection without response"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
