@@ -32,15 +32,17 @@ IMG = f"{ROOT}/scratch/img"
 W, H = 1080, 1920
 
 B.TMP = f"{HERE}/_frames_l4r"
-B.AUDIO = f"{ROOT}/scratch/l4r-v-full-final.mp3"
-B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l4r-v-host.webm")
+B.AUDIO = f"{ROOT}/scratch/l4r-v2-final.mp3"
+B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/l4r-v2-host.webm")
 B.OUT = f"{HERE}/l4r-9x16.mp4"
-B.SHOW = {"пятнадцать": "15"}
-B.BOUNDS = [0.0, 3.52, 7.03, 10.45, 13.77, 18.48, 22.45, 25.06]
+B.SHOW = {"пятнадцать": "15", "тридцать": "30"}
+# границы сцен — середины пауз (3→4 режется между словами: пауз там нет)
+B.BOUNDS = [0.0, 3.86, 5.50, 8.45, 10.56, 13.60, 17.39, 20.18]
 V.TEXTS = f"{ROOT}/docs/scenarios/landing-4-recipe.md"
-V.WHISPER = f"{ROOT}/scratch/l4r-v-full-final-whisper-1.json"
-V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v1", "## Набросок раскладки"
-L.ALIAS = {}
+V.WHISPER = f"{ROOT}/scratch/l4r-v2-final-whisper-1.json"
+V.TEXT_HEAD, V.TEXT_END = "## Текст 9:16 (до 30 с), v2", "## Набросок раскладки"
+# whisper склеивает «рецепт и» → «рецепты», «курьер у» → «курьеру», пишет числа цифрами
+L.ALIAS = {"рецепт": "рецепты", "курьер": "курьеру", "пятна́дцать": "15", "тридцать": "30"}
 
 # Силуэт ведущей в клипе HeyGen 1080×1920 (голова и плечи) — измерен по альфе.
 B.AVATAR_BOX = tuple(int(v) for v in os.environ.get("AVATAR_BOX", "180,380,900,1000").split(","))
@@ -58,78 +60,84 @@ def scenes(F):
     T.background(p("bg_doodle"), W, H, "doodle", seed=7)
     T.background(p("bg_plain"), W, H, "plain")
     T.background(p("bg_green"), W, H, "green", seed=8)
+    T.background(p("bg_tomato"), W, H, "tomato", seed=9)
     T.photo_bg(p("bg_feed"), ph("feed"), W, H, ay=0.25)
     T.photo_bg(p("bg_fridge"), ph("fridge"), W, H, ay=0.6)
 
-    s1_head = T.headline(p("s1_head"), [[("Рецепт в ленте —", "k")], [("хочу СЕЙЧАС!", "T")]], 1000, size=80)
+    s1_stop = T.sticker_text(p("s1_stop"), "СТОП!", fill=T.TOMATO, size=110, angle=-6)
+    s1_head = T.headline(p("s1_head"), [[("Слюнки", "k"), ("потекли?", "T")]], 1000, size=80)
     s2_logo = T.logo(p("s2_logo"), size=112, text="Повтори")
-    s3_chip = T.sticker_text(p("s3_chip"), "нейросеть", fill=T.MUSTARD, ink=T.INK, size=64, angle=-4)
+    s3_chip = T.sticker_text(p("s3_chip"), "нейросеть · 1 сек", fill=T.MUSTARD, ink=T.INK, size=60, angle=-4)
     s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 600, 400, angle=3)
     items = ["паста", "томаты черри", "базилик", "пармезан", "сливки"]
     s3_list = [T.list_card(p(f"s3_list{k}"), "Корзина", items, k, w=860, size=48) for k in (0, 2, 5)]
-    s4_head = T.headline(p("s4_head"), [[("Уже дома —", "k")], [("не покупаем", "G")]], 1000, size=92)
+    s4_head = T.headline(p("s4_head"), [[("Что есть дома —", "k")], [("не покупаю", "G")]], 1000, size=84)
     s4_c = [T.strike_chip(p(f"s4_c{i}"), t, size=72, angle=a) for i, (t, a) in
             enumerate([("яйца", -3), ("масло", 2), ("сыр", -2)])]
-    s5_sp = T.photo_card(p("s5_sp"), ph("spices"), 480, 480, angle=-3)
-    s5_found = T.sticker_text(p("s5_found"), "Найдено!", fill=T.GREEN, size=80, angle=-8)
-    s5_por = T.big_number(p("s5_por"), "6", "порций", "на всех гостей", color=T.TOMATO, w=300, k=0.55)
+    s5_sp = T.photo_card(p("s5_sp"), ph("spices"), 560, 560, angle=-3)
+    s5_found = T.sticker_text(p("s5_found"), "Нашла!", fill=T.GREEN, size=96, angle=-8)
     s6_ring = T.ring(p("s6_ring"), 560)
     s6_num = T.big_number(p("s6_num"), "15", "мин", "курьер у двери", w=760)
     s6_tap = T.sticker_text(p("s6_tap"), "1 касание", fill=T.MUSTARD, ink=T.INK, size=72, angle=-5)
-    s7_dish = T.photo_card(p("s7_dish"), ph("dish"), 860, 860, angle=-2)
-    s7_stamp = T.sticker_text(p("s7_stamp"), "Увидела — повторила!", fill=T.TOMATO, size=72, angle=-5)
+    s7_dish = T.photo_card(p("s7_dish"), ph("dish"), 760, 640, angle=-2)
+    s7_head = T.headline(p("s7_head"), [[("Первая корзина", "w")]], 1000, size=84)
+    s7_off = T.sticker_text(p("s7_off"), "−30%", fill=T.MUSTARD, ink=T.INK, size=200, angle=-7)
     s8_cta = T.cta_button(p("s8_cta"), "Скачать «Повтори»", w=760, size=70)
+    s8_sl = T.sticker_text(p("s8_sl"), "Увидели? Повторили!", fill=T.TOMATO, size=64, angle=-4)
 
     return [
-        # 1 hook — лента с видео-рецептом
-        {"bg": p("bg_feed"), "av": None, "keep": [(300, 368, 860, 1650)], "sfx": [(0.1, "click", 0.4), (F("захотелось"), "ding", 0.35)], "els": [
-            (s1_head, 40, 0, F("захотелось") - 0.2),
+        # 1 hook — лента с видео-рецептом, «СТОП!»
+        {"bg": p("bg_feed"), "av": None, "keep": [(300, 368, 860, 1650)],
+         "sfx": [(0.0, "bass", 0.6), (F("слюнки"), "ding", 0.35)], "els": [
+            (s1_stop, 40, 20, 0.0, None, "stamp"),
+            (s1_head, 30, 185, F("слюнки")),
         ]},
         # 2 ведущая на весь кадр, логотип над головой
-        {"bg": p("bg_doodle"), "av": host(1.0, 540, 200, zoom=0.03, punch=[F("«Повтори»…")]),
-         "flash": [(F("«Повтори»…") + 0.05, "yellow")], "sfx": [(F("Скидываю"), "whoosh", 0.4)], "els": [
-            (s2_logo, cx(s2_logo), 10, F("«Повтори»…")),
+        {"bg": p("bg_doodle"), "av": host(1.0, 540, 200, zoom=0.03, punch=[F("«Повтори»")]),
+         "flash": [(F("«Повтори»") + 0.05, "yellow")], "sfx": [(F("Кидаю"), "whoosh", 0.4)], "els": [
+            (s2_logo, cx(s2_logo), 10, F("«Повтори»")),
         ]},
-        # 3 нейросеть собирает корзину
-        {"bg": p("bg_plain"), "av": None, "sfx": [(F("разбирает"), "beep", 0.4), (F("корзину."), "ding", 0.4)],
+        # 3 нейросеть за секунду собирает корзину
+        {"bg": p("bg_plain"), "av": None, "sfx": [(F("нейросеть"), "beep", 0.4), (F("корзину!"), "ding", 0.4)],
          "els": [
-            (s3_chip, 40, 40, b[2] + 0.1),
-            (s3_ingr, cx(s3_ingr), 270, F("разбирает")),
-            (s3_list[0], cx(s3_list[0]), 820, F("собирает"), F("собирает") + 0.35, "cut"),
-            (s3_list[1], cx(s3_list[1]), 820, F("собирает") + 0.35, F("корзину."), "cut"),
-            (s3_list[2], cx(s3_list[2]), 820, F("корзину."), None, "cut"),
+            (s3_chip, 40, 40, F("нейросеть")),
+            (s3_ingr, cx(s3_ingr), 270, F("нейросеть") + 0.2),
+            (s3_list[0], cx(s3_list[0]), 820, F("СЕКУНДУ"), F("собирает"), "cut"),
+            (s3_list[1], cx(s3_list[1]), 820, F("собирает"), F("корзину!"), "cut"),
+            (s3_list[2], cx(s3_list[2]), 820, F("корзину!"), None, "cut"),
         ]},
-        # 4 холодильник: что уже есть дома
-        {"bg": p("bg_fridge"), "av": None, "sfx": [(F("УЖЕ"), "click", 0.45), (F("есть"), "click", 0.45),
-                                                    (F("холодильнике."), "click", 0.45)], "els": [
-            (s4_head, 40, 40, F("Учитывает,")),
-            (s4_c[0], 40, 430, F("УЖЕ")),
+        # 4 холодильник: что есть дома — не покупаю
+        {"bg": p("bg_fridge"), "av": None, "sfx": [(F("уже"), "click", 0.45), (F("есть"), "click", 0.45),
+                                                    (F("дома,"), "click", 0.45)], "els": [
+            (s4_head, 40, 40, F("Всё,")),
+            (s4_c[0], 40, 430, F("уже")),
             (s4_c[1], 440, 430, F("есть")),
-            (s4_c[2], 250, 660, F("холодильнике.")),
+            (s4_c[2], 250, 660, F("дома,")),
         ]},
-        # 5 ведущая справа, специи и порции
-        {"bg": p("bg_doodle"), "av": host(0.72, 880, 700), "els": [
-            (s5_sp, 20, 40, F("специи")),
-            (s5_found, 80, 400, F("найдёт.") + 0.05, None, "stamp"),
-            (s5_por, 10, 690, F("Порции")),
+        # 5 ведущая справа, специи + «Нашла!»
+        {"bg": p("bg_doodle"), "av": host(0.72, 880, 700, punch=[F("нашла!")]), "els": [
+            (s5_sp, 20, 60, F("специи")),
+            (s5_found, 120, 560, F("нашла!"), None, "stamp"),
         ]},
-        # 6 зелёный фон: лицо в круге, 15 мин
+        # 6 зелёный фон: лицо в круге, 1 касание, 15 мин
         {"bg": p("bg_green"), "av": {"kind": "circle", "size": 500, "x": (W - 500) // 2, "y": 70},
-         "flash": [(F("ПЯТНАДЦАТЬ") + 0.05, "yellow")],
-         "sfx": [(F("касание"), "click", 0.6), (F("ПЯТНАДЦАТЬ"), "bass", 0.5), (F("курьер"), "beep", 0.35)], "els": [
+         "flash": [(F("пятна́дцать") + 0.05, "yellow")],
+         "sfx": [(F("касание"), "click", 0.6), (F("пятна́дцать"), "bass", 0.5), (F("курьер"), "beep", 0.35)], "els": [
             (s6_ring, (W - size(s6_ring)[0]) // 2, 40, b[5] + 0.05, None, "frame"),
             (s6_tap, 40, 560, F("касание")),
-            (s6_num, cx(s6_num), 810, F("ПЯТНАДЦАТЬ")),
+            (s6_num, cx(s6_num), 810, F("пятна́дцать")),
         ]},
-        # 7 готовое блюдо
-        {"bg": p("bg_plain"), "av": None, "els": [
-            (s7_dish, cx(s7_dish), 90, b[6] + 0.05),
-            (s7_stamp, cx(s7_stamp), 1060, F("повторила.") - 0.1, None, "stamp"),
+        # 7 оффер: первая корзина −30%
+        {"bg": p("bg_tomato"), "av": None, "sfx": [(F("минус"), "ding", 0.5)], "els": [
+            (s7_head, 40, 40, F("Первая")),
+            (s7_dish, cx(s7_dish), 260, F("Первая") + 0.1),
+            (s7_off, cx(s7_off), 900, F("минус"), None, "stamp"),
         ]},
-        # 8 финал: ведущая, кнопка
-        {"bg": p("bg_doodle"), "av": host(1.0, 540, 260, zoom=0.04, punch=[F("вдохновляет!")]),
-         "sfx": [(F("Скачайте") + 0.1, "click", 0.55)], "els": [
-            (s8_cta, cx(s8_cta), 40, F("Скачайте")),
+        # 8 финал: ведущая, кнопка, слоган
+        {"bg": p("bg_doodle"), "av": host(1.0, 540, 280, zoom=0.04, punch=[F("увидели,")]),
+         "sfx": [(F("Скачивайте") + 0.1, "click", 0.55)], "els": [
+            (s8_cta, cx(s8_cta), 20, F("Скачивайте")),
+            (s8_sl, cx(s8_sl), 300, F("увидели,"), None, "stamp"),
         ]},
     ]
 
