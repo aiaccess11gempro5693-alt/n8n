@@ -206,10 +206,10 @@ def headline(path, lines, w, size=104, align="left", lh=1.12):
     return _save(_shadow(_pad(im, 12), k=0.18), path)
 
 
-def logo(path, size=150, angle=-6):
-    """Логотип-стикер «Быстро» с молнией-стрелкой: зелёная пилюля, белая обводка."""
+def logo(path, size=150, angle=-6, text="Быстро"):
+    """Логотип-стикер (по умолчанию «Быстро») с полосками скорости: зелёная пилюля, белая обводка."""
     f = font(F_HEAD, size)
-    t = "Быстро"
+    t = text
     bb = tbox(t, f)
     tw_ = bb[2] - bb[0]
     w, h = int(tw_ + size * 1.5), int((bb[3] - bb[1]) + size * 0.7)
@@ -379,6 +379,51 @@ def now_card(path, big="3", text="касания", w=940):
         cx, cy = w - 110 - i * 120, 110
         d.ellipse([cx - 40, cy - 40, cx + 40, cy + 40], fill=WHITE)
         d.ellipse([cx - 58, cy - 58, cx + 58, cy + 58], outline=(255, 255, 255, 140), width=6)
+    return _save(_shadow(_outline(_pad(im, 12), 10)), path)
+
+
+def strike_chip(path, text, size=56, angle=0):
+    """Серый чип с томатным зачёркиванием: «уже дома — не покупаем»."""
+    f = font(F_HEAD, size)
+    bb = tbox(text, f)
+    h = int((bb[3] - bb[1]) + size * 0.8)
+    w = int(tw(text, f) + size * 1.1)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=h // 2, fill=(232, 228, 220, 255))
+    x0 = size * 0.55
+    d.text((x0 - bb[0], (h - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f, fill=GREY)
+    d.line([(x0 - 10, h / 2 + 6), (x0 + tw(text, f) + 10, h / 2 - 6)], fill=TOMATO, width=max(6, size // 7))
+    im = _outline(_pad(im, 10), 8)
+    if angle:
+        im = im.rotate(angle, resample=Image.BICUBIC, expand=True)
+    return _save(_shadow(im), path)
+
+
+def list_card(path, title, items, done, w=860, size=56):
+    """Карточка-корзина: заголовок и пункты; первые done пунктов — с зелёной галочкой."""
+    fh = font(F_HEAD, int(size * 1.15))
+    fi = font(F_BODY, size)
+    step = int(size * 1.6)
+    h = 50 + int(size * 1.4) + 30 + len(items) * step + 30
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], radius=48, fill=WHITE)
+    d.text((48, 50 - tbox(title, fh)[1]), title, font=fh, fill=GREEN)
+    y = 50 + int(size * 1.4) + 30
+    for i, it in enumerate(items):
+        r = size * 0.5
+        cyy = y + size * 0.55
+        if i < done:
+            d.ellipse([48, cyy - r, 48 + 2 * r, cyy + r], fill=GREEN)
+            check_mark(d, 48 + r * 0.45, cyy - r * 0.5, r * 1.1, WHITE, max(5, size // 9))
+            col = INK
+        else:
+            d.ellipse([48, cyy - r, 48 + 2 * r, cyy + r], outline=(210, 205, 195, 255), width=5)
+            col = (190, 186, 178, 255)
+        tb = tbox(it, fi)
+        d.text((48 + 2 * r + 26, cyy - (tb[1] + tb[3]) / 2 + size * 0.06), it, font=fi, fill=col)
+        y += step
     return _save(_shadow(_outline(_pad(im, 12), 10)), path)
 
 
