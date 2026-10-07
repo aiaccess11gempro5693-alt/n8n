@@ -10,23 +10,16 @@
     "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
     "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
     "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
-    "meaning": "«для вас»: семья ужинает дома вечером — тёплый свет, свежие продукты на столе; правая часть кадра — семья, левая — место под текст",
-    "prompt": "A happy family (mum, dad and a little girl) having dinner at home in the evening at a wooden table with fresh salad, bread, tomatoes, warm lamp light, cream walls with green accents; the family is on the RIGHT half of the frame, the LEFT half is softly blurred kitchen (space for text). Natural candid moment, warm and cosy.",
-    "person_note": "Natural candid people, not models, no logos."
+    "meaning": "«для вас»: двое взрослых (пара) ужинают дома вечером — тёплый свет, свежие продукты на столе; пара справа, слева место под текст",
+    "prompt": "A cosy evening at home: a young adult couple sitting at a wooden kitchen table, sharing a fresh salad, bread and tomatoes, relaxed and happy, warm lamp light, cream walls with green plants; the couple is on the RIGHT half of the frame, the LEFT half is a softly blurred kitchen (space for text). Natural, candid, wholesome lifestyle photo.",
+    "person_note": "Two adults only, fully clothed, natural candid people, no logos."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"Your request was rejected by the safety system. If you believe this is an error, contact us at Azure support ticket and include the request ID 5acb5a89-6368-4272-9941-33de302c8c3b.\",\"type\":\"image_generation_user_error\",\"param\":\"\",\"code\":\"moderation_blocked\"}}"
-    },
-    {
-      "attempt": 2,
-      "error": "The read operation timed out"
-    },
-    {
-      "attempt": 3,
-      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"Your request was rejected by the safety system. If you believe this is an error, contact us at Azure support ticket and include the request ID a64548b0-101a-406d-b279-f178c9c6f86e.\",\"type\":\"image_generation_user_error\",\"param\":\"\",\"code\":\"moderation_blocked\"}}"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
