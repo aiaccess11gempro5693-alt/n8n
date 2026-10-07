@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "l4_board2_b",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_host_9x16.png"
+    ],
+    "meaning": "СВЕТЛАЯ дизайн-система «Бумажный коллаж» для рекламного ролика вымышленного сервиса доставки «Быстро» (с нуля, не тёмная, не неон, не на основе тёмного борда); референс — только лицо ведущего; крафт-бумага и газетная текстура, вырезанные фото, скотч, маркерные надписи от руки, красный и синий карандаш; ведущий вырезан как фото-стикер; редакционный аналоговый стиль; 6 вертикальных раскладок",
+    "prompt": "Create a complete design system board (brand style guide sheet, 16:9) for SHORT VERTICAL 9:16 advertising videos of a fictional grocery delivery service «Быстро» (groceries delivered in 60 minutes). The attached photo is ONLY a face reference: use EXACTLY this man's face and hairstyle as our presenter everywhere on the board, but DRESS him and LIGHT him in this board's own palette and background (NOT the dark studio, NOT black clothes, NOT neon). Board blocks: hero (title «Быстро — продукты за 60 минут» + presenter + product), colour palette with 5 HEX swatches, typography (named fonts, H1/H2/body), presenter style, graphic elements, icon style (9 icons: time, delivery, map, basket, payment, gift, chat, heart, profile), infographic examples, decorative elements, footer principles. IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS: (1) hook without the presenter: an open EMPTY fridge and a big timer «60:00»; (2) presenter with the logo «Быстро» popping above his head; (3) product hero: a smartphone with the app (map, route, courier) and three feature chips «60 мин», «0 ₽ от 1 000 ₽», «курьер на карте»; (4) «Было / Стало»: «очереди, пакеты, пробки» vs «3 касания»; (5) presenter with three audience chips «занятым», «мамам», «всем, кому дорог вечер»; (6) call to action: a grocery bag at a door and a button «Скачать «Быстро»». Every frame has a subtitle bar at the bottom. All text in Russian, short and correctly spelled. No real brand names or logos. STRICTLY NO dark/black backgrounds, NO neon glow, NO glassmorphism, NO cyber/tech look. STYLE B «Бумажный коллаж»: ANALOG editorial collage, totally non-digital. Background: kraft paper #D8B98C and off-white newsprint #F3EEE3 textures with torn paper edges; colours: marker red #E63B2E, ballpoint blue #2546C9, black ink #161616. Fonts: «PT Serif» bold headlines, «Caveat» handwriting for notes. Visual language: cut-out photos with torn white borders, pieces of masking tape, hand-drawn marker circles, arrows and underlines, stamps, receipt-paper strips with prices, grocery list on notebook paper with ticks, sticky notes. The presenter is a cut-out photo sticker with a white paper border, wearing a light-blue denim shirt. Mood: handmade, warm, witty, magazine-zine."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Typo in block header 'СРЕТИКАЛЬНЫЕ КАДРЫ 9:16' instead of 'ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16'"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

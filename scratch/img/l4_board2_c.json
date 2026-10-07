@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_board2_c",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_host_9x16.png"
+    ],
+    "meaning": "СВЕТЛАЯ дизайн-система «Мягкий 3D» для рекламного ролика вымышленного сервиса доставки «Быстро» (с нуля, не тёмная, не неон, не на основе тёмного борда); референс — только лицо ведущего; пастельный воздушный 3D: сиреневый, мятный, персиковый, мягкие градиенты, глиняные 3D-объекты (пакет, телефон, таймер, курьер-самокат), скруглённые карточки; ведущий в пастельном свитшоте в светлой студии; 6 вертикальных раскладок",
+    "prompt": "Create a complete design system board (brand style guide sheet, 16:9) for SHORT VERTICAL 9:16 advertising videos of a fictional grocery delivery service «Быстро» (groceries delivered in 60 minutes). The attached photo is ONLY a face reference: use EXACTLY this man's face and hairstyle as our presenter everywhere on the board, but DRESS him and LIGHT him in this board's own palette and background (NOT the dark studio, NOT black clothes, NOT neon). Board blocks: hero (title «Быстро — продукты за 60 минут» + presenter + product), colour palette with 5 HEX swatches, typography (named fonts, H1/H2/body), presenter style, graphic elements, icon style (9 icons: time, delivery, map, basket, payment, gift, chat, heart, profile), infographic examples, decorative elements, footer principles. IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS: (1) hook without the presenter: an open EMPTY fridge and a big timer «60:00»; (2) presenter with the logo «Быстро» popping above his head; (3) product hero: a smartphone with the app (map, route, courier) and three feature chips «60 мин», «0 ₽ от 1 000 ₽», «курьер на карте»; (4) «Было / Стало»: «очереди, пакеты, пробки» vs «3 касания»; (5) presenter with three audience chips «занятым», «мамам», «всем, кому дорог вечер»; (6) call to action: a grocery bag at a door and a button «Скачать «Быстро»». Every frame has a subtitle bar at the bottom. All text in Russian, short and correctly spelled. No real brand names or logos. STRICTLY NO dark/black backgrounds, NO neon glow, NO glassmorphism, NO cyber/tech look. STYLE C «Мягкий 3D»: AIRY pastel 3D world. Background very light lavender #F1EDFF with soft gradients to mint #CFF5E7 and peach #FFD9C7; accents: grape violet #6C4CF5, coral #FF7A59, ink #20203A. Fonts: «Comfortaa» bold headlines, «Manrope» body. Visual language: glossy clay-like 3D renders (a 3D grocery bag, a 3D smartphone with a map, a 3D alarm clock timer, a 3D scooter courier, floating 3D fruit), soft long shadows, big rounded white cards, pill chips, floating shapes (spheres, rings). The presenter wears a soft lavender sweatshirt in a bright pastel studio with soft light. Mood: light, playful, premium-friendly, app-store illustration."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
