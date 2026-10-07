@@ -1,0 +1,65 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "l4rh_ph_saved",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+   "meaning": "смартфон на столе: на экране сетка из множества сохранённых видео-рецептов (только картинки блюд, без текста) — «сохранили и не приготовили»; телефон слева",
+   "prompt": "A smartphone lying on a light wooden kitchen table, its screen shows a grid of many small food video thumbnails (pasta, salads, desserts, soups) like a saved collection — only pictures of dishes, absolutely no text, no icons, no numbers; the phone is on the LEFT half of the frame, the right half is softly blurred cream kitchen (space for text).",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4rh_ph_empty",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+   "meaning": "вечер: на столе пустая разделочная доска, рядом раскрытая кулинарная книга и пустой пакет — «нет ни сливок, ни специй»; правая часть кадра свободна",
+   "prompt": "A calm evening kitchen counter: an empty wooden cutting board, an open blank notebook, an empty folded paper grocery bag and an empty spice rack with a few empty jars, soft warm light, slightly melancholic; objects on the LEFT half, the RIGHT half is a plain cream wall (space for text). No text anywhere.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4rh_ph_feast",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+   "meaning": "стол с тремя блюдами сверху: паста, плов, тирамису — «любое видео превращается в ужин»; блюда по центру-справа",
+   "prompt": "A top-down view of a wooden dinner table with three finished dishes side by side: creamy tomato pasta, a big plate of Uzbek plov with carrots and garlic, and a square glass dish of tiramisu dusted with cocoa; linen napkins in leaf green, cream background; dishes occupy the RIGHT two thirds, the LEFT third is plain table (space for text). Restaurant-quality food photography.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4rh_ph_door",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+   "meaning": "курьер передаёт пакет с продуктами у двери квартиры — видны только руки и пакет; слева свободно",
+   "prompt": "At an apartment front door: a courier's hand in a leaf-green sleeve passing a kraft paper grocery bag full of fresh groceries (greens, baguette, tomatoes) to a customer's hand, only hands and the bag visible, no faces, bright hallway, sage-green door; action on the RIGHT half, LEFT half calm wall (space for text). No logos, no text.",
+   "person_note": "Only two hands are visible, no faces, no logos."
+  }
+ ]
+}
