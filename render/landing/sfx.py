@@ -11,6 +11,11 @@
   riser   — нарастающий тон перед кульминацией
   glitch  — цифровой сбой (для «тревожных» моментов)
   bed     — тревожный подклад: низкий гул + пульс, бесшовный на всю длину
+  click   — UI-клик касания (ролик 4)
+  beep    — двухтоновый «бип» уведомления
+  ding    — светлый «динь» (появление цены, успех)
+  bass    — бас-удар (саб-дроп) на главном слове
+  groove  — бодрый подклад: бочка, хэт, пульсирующий аккорд (ролик 4)
 
 mix(voice, events, bed, out): озвучка + подклад (с приглушением под голос)
 + эффекты в заданные моменты, нормализация громкости.
@@ -162,8 +167,71 @@ def bed(d, bpm=92):
     return x / np.abs(x).max() * 0.5
 
 
+def click(d=0.06):
+    t = _t(d)
+    x = np.sin(2 * np.pi * 3200 * t) * np.exp(-t * 220) + 0.5 * np.sin(2 * np.pi * 1600 * t) * np.exp(-t * 160)
+    return x * 0.6
+
+
+def beep(d=0.32):
+    t = _t(d)
+    f = np.where(t < 0.13, 1318.5, 1760.0)
+    x = np.sin(2 * np.pi * np.cumsum(f) / SR) * ((t < 0.11) | (t > 0.15))
+    return _lowpass(x, 6000) * _env(len(t), 0.004, 0.06) * 0.45
+
+
+def ding(d=0.9):
+    t = _t(d)
+    x = sum(a * np.sin(2 * np.pi * f * t) * np.exp(-t * k)
+            for f, a, k in ((1568, 1.0, 5), (2349, 0.5, 7), (3136, 0.25, 9)))
+    return x / np.abs(x).max() * 0.5 * _env(len(t), 0.002, 0.1)
+
+
+def bass(d=0.8):
+    t = _t(d)
+    f = 70 * np.exp(-t * 4) + 42
+    x = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 3.5)
+    x += _lowpass(np.random.default_rng(11).normal(0, 1, len(t)), 1800) * np.exp(-t * 60) * 0.3
+    return x / np.abs(x).max() * 0.9
+
+
+def groove(d, bpm=112):
+    """Бодрый подклад: бочка на долю, хэт на восьмые, мягкий аккорд-пульс
+    (до-мажорная гармония A–F–C–G по такту)."""
+    t = _t(d)
+    beat = 60 / bpm
+    x = np.zeros_like(t)
+    kick_t = _t(0.3)
+    kick = np.sin(2 * np.pi * (110 * np.exp(-kick_t * 25) + 45) * kick_t) * np.exp(-kick_t * 9)
+    hat_t = _t(0.05)
+    hat = np.random.default_rng(2).normal(0, 1, len(hat_t)) * np.exp(-hat_t * 90)
+    hat = hat - _lowpass(hat, 7000)
+    chords = [(220.0, 261.6, 329.6), (174.6, 220.0, 261.6), (196.0, 261.6, 329.6), (196.0, 246.9, 293.7)]
+    n = int(d / beat)
+    for k in range(n):
+        s = int(SR * k * beat)
+        e = min(len(kick), len(x) - s)
+        if e > 0:
+            x[s:s + e] += kick[:e] * 0.9
+        for half in (0.0, 0.5):
+            s2 = int(SR * (k + half) * beat)
+            e2 = min(len(hat), len(x) - s2)
+            if e2 > 0:
+                x[s2:s2 + e2] += hat[:e2] * (0.18 if half else 0.1)
+        if k % 2 == 1:   # аккорд-«стаб» на слабую долю
+            ct = _t(beat * 0.9)
+            ch = chords[(k // 4) % 4]
+            stab = sum(np.sin(2 * np.pi * f * ct) + 0.3 * np.sin(2 * np.pi * 2 * f * ct) for f in ch)
+            stab *= np.exp(-ct * 6) * 0.12
+            e3 = min(len(stab), len(x) - s)
+            if e3 > 0:
+                x[s:s + e3] += stab[:e3]
+    x *= _env(len(t), 0.3, 1.2)
+    return x / np.abs(x).max() * 0.5
+
+
 GEN = {"whoosh": whoosh, "hit": hit, "stamp": stamp, "pop": pop, "ring": ring, "tick": tick,
-       "riser": riser, "glitch": glitch}
+       "riser": riser, "glitch": glitch, "click": click, "beep": beep, "ding": ding, "bass": bass}
 
 
 def render_all(folder):
@@ -174,14 +242,14 @@ def render_all(folder):
     return out
 
 
-def mix(voice, events, out, folder, bed_gain=0.22, total=None):
+def mix(voice, events, out, folder, bed_gain=0.22, total=None, bed_fn=None):
     """voice — mp3 озвучки; events — [(время, имя, громкость)]; подклад
     приглушается под голос (sidechaincompress), эффекты — поверх."""
     files = render_all(folder)
     if total is None:
         total = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
                                       "csv=p=0", voice], capture_output=True, text=True).stdout)
-    bed_path = _save(f"{folder}/bed.wav", bed(total + 0.5))
+    bed_path = _save(f"{folder}/bed.wav", (bed_fn or bed)(total + 0.5))
     inputs = ["-i", voice, "-i", bed_path]
     fc = ["[0:a]aformat=sample_rates=48000:channel_layouts=mono,asplit=2[v][sc]",
           f"[1:a]volume={bed_gain}[b0]",

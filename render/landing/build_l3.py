@@ -174,7 +174,7 @@ def scenes(F):
 def _avatar_rect(av):
     if not av:
         return None
-    if av["kind"] == "finder":
+    if av["kind"] in ("finder", "circle"):
         return (av["x"], av["y"], av["x"] + av["size"], av["y"] + av["size"])
     s0 = av["s"]
     s = s0 * (1 + av.get("zoom", 0)) * (1 + PUNCH * len(av.get("punch", ())))
@@ -243,10 +243,12 @@ def render_scene(k, sc, t0, t1, caps):
             cx = av["x"] + 540 * av["s"]
             h0 = 1920 * av["s"]
             fc.append(f"[{last}][av]overlay=x='{cx}-w/2':y='{av['y']}-(h-{h0})*{FACE_Y:.4f}':shortest=0[a0]")
-        else:   # видоискатель: квадратный кроп лица
+        else:   # видоискатель: квадратный кроп лица; circle — круглый
             cx, cy, r = FACE
+            circ = (",geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='if(lt(hypot(X-W/2,Y-H/2),W/2-1),alpha(X,Y),0)'"
+                    if av["kind"] == "circle" else "")
             fc.append(f"[{idx}:v]format=rgba,fps={FPS},crop={2 * r}:{2 * r}:{cx - r}:{cy - r},"
-                      f"scale={av['size']}:{av['size']}[av]")
+                      f"scale={av['size']}:{av['size']}{circ}[av]")
             fc.append(f"[{last}][av]overlay={av['x']}:{av['y']}[a0]")
         last, idx = "a0", idx + 1
     for j, el in enumerate(sc["els"]):
@@ -297,7 +299,7 @@ def render_scene(k, sc, t0, t1, caps):
     shakes = [max(0.0, ts - t0) for ts in sc.get("shake", [])]
     if shakes:   # тряска кадра на ударе штампа
         amp = "+".join(f"between(t\\,{a:.2f}\\,{a + 0.32:.2f})*(1-(t-{a:.2f})/0.32)" for a in shakes)
-        fc.append(f"[{last}]pad={W + 48}:{H + 48}:24:24:color=0x0E0E10,"
+        fc.append(f"[{last}]pad={W + 48}:{H + 48}:24:24:color={getattr(T, 'PAD_COLOR', '0x0E0E10')},"
                   f"crop={W}:{H}:x='24+16*sin(t*97)*({amp})':y='24+12*cos(t*83)*({amp})'[shk]")
         last = "shk"
     if k > 0:   # смена раскладки: жёлтый мазок пролетает через кадр
