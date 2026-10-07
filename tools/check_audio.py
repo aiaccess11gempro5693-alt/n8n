@@ -37,6 +37,15 @@ PROMPT = """Ты — строгий редактор русской диктор
 """
 
 
+# Слова-ловушки задания (числительные, редкие слова): Gemini проверяет их отдельно —
+# общим проходом он пропустил «пятнадцА́ть» вместо «пятнА́дцать» (07.10.2026).
+WATCH = """
+
+ОСОБО проверь ударение в этих словах (слушай каждое отдельно, числительные — особенно
+внимательно): {}. Если в любом из них ударение не по норме — обязательно внеси в stress_errors.
+"""
+
+
 def call(model, body):
     req = urllib.request.Request(
         f"{BASE}/{model}:generateContent", data=json.dumps(body).encode(), method="POST",
@@ -53,7 +62,8 @@ def check(job):
         audio = base64.b64encode(f.read()).decode()
     model = job.get("model", "gemini-3.5-flash")
     body = {"contents": [{"role": "user", "parts": [
-        {"text": PROMPT + job["text"]},
+        {"text": PROMPT + job["text"] + WATCH.format(", ".join(job["watch"])) if job.get("watch")
+         else PROMPT + job["text"]},
         {"inline_data": {"mime_type": "audio/mpeg", "data": audio}}]}],
         "generationConfig": {"temperature": 0.1, "response_mime_type": "application/json"}}
     resp = call(model, body)
