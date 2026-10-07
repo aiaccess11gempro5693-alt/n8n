@@ -402,11 +402,12 @@ def chip(path, text, fill=WHITE, ink=INK, size=66, angle=0, dot=None):
     return _save(_shadow(im), path)
 
 
-def cta_button(path, text="Скачать «Быстро»", w=960):
+def cta_button(path, text="Скачать «Быстро»", w=960, size=82):
     """Кнопка-призыв: томатная пилюля со стрелкой-треугольником."""
-    f = font(F_HEAD, 82)
+    f = font(F_HEAD, size)
     bb = tbox(text, f)
-    h = 190
+    h = int(size * 2.3)
+    w = max(w, int((bb[2] - bb[0]) + 90 + size * 1.6))   # текст и стрелка всегда влезают
     im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     d.rounded_rectangle([0, 0, w - 1, h - 1], radius=h // 2, fill=TOMATO)
