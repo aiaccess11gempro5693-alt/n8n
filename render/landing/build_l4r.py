@@ -58,10 +58,10 @@ def scenes(F):
     T.background(p("bg_doodle"), W, H, "doodle", seed=7)
     T.background(p("bg_plain"), W, H, "plain")
     T.background(p("bg_green"), W, H, "green", seed=8)
-    T.photo_bg(p("bg_feed"), ph("feed"), W, H, ay=0.6)
+    T.photo_bg(p("bg_feed"), ph("feed"), W, H, ay=0.25)
     T.photo_bg(p("bg_fridge"), ph("fridge"), W, H, ay=0.6)
 
-    s1_head = T.headline(p("s1_head"), [[("Рецепт в ленте —", "k")], [("хочу СЕЙЧАС!", "T")]], 1000, size=96)
+    s1_head = T.headline(p("s1_head"), [[("Рецепт в ленте —", "k")], [("хочу СЕЙЧАС!", "T")]], 1000, size=80)
     s2_logo = T.logo(p("s2_logo"), size=112, text="Повтори")
     s3_chip = T.sticker_text(p("s3_chip"), "нейросеть", fill=T.MUSTARD, ink=T.INK, size=64, angle=-4)
     s3_ingr = T.photo_card(p("s3_ingr"), ph("ingredients"), 600, 400, angle=3)
@@ -82,8 +82,8 @@ def scenes(F):
 
     return [
         # 1 hook — лента с видео-рецептом
-        {"bg": p("bg_feed"), "av": None, "sfx": [(0.1, "click", 0.4), (F("захотелось"), "ding", 0.35)], "els": [
-            (s1_head, 40, 40, F("захотелось") - 0.2),
+        {"bg": p("bg_feed"), "av": None, "keep": [(300, 368, 860, 1650)], "sfx": [(0.1, "click", 0.4), (F("захотелось"), "ding", 0.35)], "els": [
+            (s1_head, 40, 0, F("захотелось") - 0.2),
         ]},
         # 2 ведущая на весь кадр, логотип над головой
         {"bg": p("bg_doodle"), "av": host(1.0, 540, 200, zoom=0.03, punch=[F("«Повтори»…")]),
@@ -103,9 +103,9 @@ def scenes(F):
         {"bg": p("bg_fridge"), "av": None, "sfx": [(F("УЖЕ"), "click", 0.45), (F("есть"), "click", 0.45),
                                                     (F("холодильнике."), "click", 0.45)], "els": [
             (s4_head, 40, 40, F("Учитывает,")),
-            (s4_c[0], 40, 400, F("УЖЕ")),
-            (s4_c[1], 440, 400, F("есть")),
-            (s4_c[2], 250, 620, F("холодильнике.")),
+            (s4_c[0], 40, 430, F("УЖЕ")),
+            (s4_c[1], 440, 430, F("есть")),
+            (s4_c[2], 250, 660, F("холодильнике.")),
         ]},
         # 5 ведущая справа, специи и порции
         {"bg": p("bg_doodle"), "av": host(0.72, 880, 700), "els": [
