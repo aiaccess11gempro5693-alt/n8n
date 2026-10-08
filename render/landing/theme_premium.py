@@ -422,3 +422,30 @@ def bullet(path, num, text, w=760, size=50):
     d.text((110, (h - (bb[3] - bb[1])) / 2 - bb[1] - 6), text, font=ft, fill=GRAPHITE)
     d.line([(110, h - 4), (w, h - 4)], fill=GOLD_L, width=2)
     return _save(im, path)
+
+
+def day_timeline(path, stops, active, w=1100):
+    """Шкала дня: золотая линия с узлами «время / город»; пройденные узлы — бордо,
+    текущий — крупнее с ореолом, будущие — контур."""
+    ft, fc = font(F_HEAD, 46), font(F_BODY_X, 28)
+    h = 190
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    n = len(stops)
+    xs = [int(130 + i * (w - 260) / (n - 1)) for i in range(n)]
+    y = 70
+    d.line([(xs[0], y), (xs[-1], y)], fill=GOLD_L, width=6)
+    d.line([(xs[0], y), (xs[active], y)], fill=GOLD, width=6)
+    for i, (x, (tm, city)) in enumerate(zip(xs, stops)):
+        r = 22 if i == active else 14
+        if i == active:
+            d.ellipse([x - 38, y - 38, x + 38, y + 38], fill=(110, 31, 43, 50))
+        if i <= active:
+            d.ellipse([x - r, y - r, x + r, y + r], fill=BORDO, outline=GOLD, width=3)
+        else:
+            d.ellipse([x - r, y - r, x + r, y + r], fill=PAPER, outline=GOLD, width=3)
+        col = GRAPHITE if i <= active else WGREY
+        d.text((x - tw(tm, ft) / 2, y + 34), tm, font=ft, fill=col)
+        c = " ".join(city.upper())
+        d.text((x - tw(c, fc) / 2, y - 70), c, font=fc, fill=BORDO if i == active else WGREY)
+    return _save(im, path)
