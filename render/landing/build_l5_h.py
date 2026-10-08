@@ -87,10 +87,10 @@ def scenes(F):
     c3_mad = T.city_chip(p("c3_mad"), "Мадрид")
     c4_head = T.headline(p("c4_head"), [[("с каждой командой —", "w")], [("на её родном языке", "g")]], 1400,
                          size=88, align="center")
-    c4_l = [T.lang_chip(p(f"c4_{c}"), c, size=96) for c in ("RU", "EN", "ES")]
+    c4_l = [T.lang_chip(p(f"c4_{c}"), c, active=False, size=96) for c in ("RU", "EN", "ES")]   # на бордо — светлые
     c5_en = T.lang_chip(p("c5_en"), "EN")
     c5_kick = T.kicker(p("c5_kick"), "newest team", color=T.BORDO, size=30)
-    c5_head = T.headline(p("c5_head"), [[("and the", "k")], [("fastest-growing", "b")]], 640, size=80)
+    c5_head = T.headline(p("c5_head"), [[("The fastest", "k")], [("growing team", "b")]], 640, size=80)
     c6_ph = T.photo_card(p("c6_ph"), ph("london"), 860, 500, ax=0.6, caption="London")
     c6_head = T.headline(p("c6_head"), [[("A team", "k")], [("that speaks", "k")], [("their language", "b")]],
                          640, size=78)
