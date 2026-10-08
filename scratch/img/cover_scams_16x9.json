@@ -12,24 +12,14 @@
     "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Reels-эксперт» from the FIRST attached board: black #0E0E10, acid yellow #FFE600, alarm red #FF3B30, white; heavy Unbounded-like headlines with yellow marker strokes and a red stamp. The presenter is the bank cybersecurity expert man from the SECOND attached photo (same face, black shirt) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Экспертный контент» and a big title in two lines «Как не попасться» / «телефонным мошенникам». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
     "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Экспертный контент» и Как не попасться телефонным мошенникам без ошибок, другого текста нет",
     "meaning": "обложка 16:9 ролика «Как не попасться телефонным мошенникам»",
-    "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a smartphone with an incoming call screen labelled only with a red warning icon (no readable words on the phone), red stamp shape with the word «ОПАСНО»."
+    "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a smartphone with an incoming call screen labelled only with a red warning icon (no readable words on the phone), a big red round warning stamp with only an exclamation mark «!» inside (no words)."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "ok": false,
-      "issue": "Remove the extra 'ОПАСНО' text stamp from the cover."
-    },
-    {
-      "attempt": 2,
-      "ok": false,
-      "issue": "Remove the extra 'ОПАСНО' text stamp to match text requirements"
-    },
-    {
-      "attempt": 3,
-      "ok": false,
-      "issue": "Remove the unauthorized text stamp saying ОПАСНО."
+      "ok": true,
+      "issue": ""
     }
   ]
 }
