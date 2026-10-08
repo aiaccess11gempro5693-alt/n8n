@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l2h_cover_b",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l2h_ref_host.png",
+      "scratch/img/l2h_ref_poster.jpg"
+    ],
+    "person_note": "The presenter must look exactly like the young curly-haired archaeologist in the first attached frame.",
+    "style": "A finished YouTube-style COVER (thumbnail) for an online history lesson, 16:9, in EXACTLY the visual style of the attached frames from the lesson video: warm semi-realistic digital painting / modern animated-film illustration, golden Egyptian palette (sand, gold, warm orange) with deep teal accents, a teal textured border band with small Egyptian lotus ornaments. The presenter is the young curly-haired archaeologist from the attached frame (same face, curly brown hair, short beard, green shirt, leather bag strap) — keep him recognisable. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: big title «Тутанхамон и золотая маска» (two lines max) and a small pill label «Урок истории». No other words, no logos, no watermarks. Strong focal point, high contrast, readable at small size.",
+    "style_qa": "готовая обложка урока истории в стиле приложенных кадров (тёплая иллюстрация, золото и бирюза), ведущий-археолог узнаваем, крупный заголовок «Тутанхамон и золотая маска» и плашка «Урок истории» без ошибок, другого текста нет",
+    "meaning": "обложка урока истории «Тутанхамон и золотая маска», Layout: centered composition — the golden mask of Tutankhamun big in the centre, lit drama",
+    "prompt": "Layout: centered composition — the golden mask of Tutankhamun big in the centre, lit dramatically against a deep teal background with golden hieroglyph patterns; the presenter smaller in the lower-left corner looking at the mask in awe; the title across the top in large gold-and-cream letters, the pill label above it."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
