@@ -56,7 +56,20 @@ C «Шалфей и камень» (камень / шалфей / лесной /
 
 [warm, confident] Добрый день, коллеги! Меня зовут Елена Орлова, я генеральный директор компании «Меридиан». [proud] Этот год стал для нас особенным: к нам присоединились сильные команды из Лондона и Дубая. [sincerely] Теперь мы работаем в трёх странах, и каждый из вас — важная часть общего дела. [warm] Поэтому я хочу обратиться к каждому — на его родном языке. [warm, confident] Good afternoon, everyone! [proud] Welcome to Meridian. [sincerely] Whether you are in London, Dubai or Moscow, your ideas shape our future. [warm] Our doors are always open — share your thoughts, ask questions, and let's grow together. [heartfelt] We are one team — wherever you are.
 
-## Раскладка 16:9
+## Текст 16:9 (до 60 с), v2 — «Один день директора»
+
+Жалоба на v1 (08.10.2026): горизонталь должна быть на минуту, не тем же сюжетом,
+а сильно расширеннее и интереснее. Новый сюжет — один день Елены: утром она
+говорит с Москвой по-русски, в полдень — с новой командой в Лондоне
+по-английски, вечером — с новой командой в Мадриде по-испански; в конце снова
+по-русски. На экране — шкала дня 09:00 → 12:00 → 18:00, чип языка, офисы.
+Три языка тем же голосом и лицом — сильнее показывают локализацию, чем два.
+
+[warm, confident] Девять утра, Москва. Я Елена Орлова, генеральный директор «Меридиана». [thoughtfully] Ещё год назад вся наша команда помещалась в одной переговорной. [proud] А сегодня мы открываем офисы в Лондоне и Мадриде. [sincerely] И с каждой новой командой я хочу поговорить — на её родном языке. [warm, confident] Good afternoon, London! [proud] You are our newest team — and already the fastest-growing one. [sincerely] Our clients in the UK have waited a long time for people who speak their language. [warm] Your first project starts on Monday — and I can't wait to see what you build. [warm, cheerful] ¡Buenas tardes, Madrid! [proud] Bienvenidos a Meridian. [sincerely] Vuestra energía y vuestras ideas son exactamente lo que necesitamos. [warm, emphatic] Три города, три языка — [heartfelt] и одна команда. Спасибо, что вы с нами!
+
+## Раскладка 16:9 v2
+
+## Раскладка 16:9 (v1)
 
 ## Набросок раскладки v2
 
