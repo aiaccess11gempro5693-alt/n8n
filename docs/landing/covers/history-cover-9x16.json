@@ -1,0 +1,20 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "l2h_cover_a_9x16",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l2h_cover_a.png",
+    "scratch/img/l2h_ref_host.png"
+   ],
+   "person_note": "The presenter must look exactly like the archaeologist on the attached cover.",
+   "style": "A finished vertical 9:16 COVER (Reels/Shorts thumbnail) for an online history lesson, in EXACTLY the style of the FIRST attached image (the horizontal cover): warm semi-realistic animated-film illustration, golden Egyptian palette with deep teal accents, a teal ornament band with small gold lotus motifs at the very top and bottom. Same presenter (young curly-haired archaeologist, short beard, green shirt, leather bag strap) and the same golden funerary mask of Tutankhamun as on the attached cover. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: small teal pill label «Урок истории», big title «Тутанхамон» and under it «и золотая маска» in gold. No other words, no logos, no watermarks.",
+   "style_qa": "вертикальная обложка урока истории в стиле приложенной горизонтальной (тёплая иллюстрация, золото и бирюза), тот же ведущий и золотая маска, надписи «Урок истории», «Тутанхамон», «и золотая маска» без ошибок, другого текста нет",
+   "meaning": "вертикальная обложка 9:16 урока «Тутанхамон и золотая маска» по горизонтальному варианту A",
+   "prompt": "Layout for vertical: the pill label and the two-line title in the top third; the golden mask big in the middle, glowing in warm light rays with Valley of the Kings cliffs behind; the presenter in the lower third in front, excited, pointing up at the mask. Keep important content away from the outer 6% edges."
+  }
+ ]
+}
