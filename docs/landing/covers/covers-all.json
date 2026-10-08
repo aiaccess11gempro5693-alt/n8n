@@ -1,0 +1,125 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "cover_returns_16x9",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l1c_board_graphite.png",
+    "scratch/img/l1g_anna_9x16.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Графит и красный» from the FIRST attached board: graphite #23262B, signal red #E3342F, white, light grey; condensed bold Oswald-like headlines; red diagonal stripes. The presenter is the store administrator woman from the SECOND attached photo (same face and hair, graphite shirt with red accents) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Обучение персонала» and a big title in two lines «Возврат товара» / «за 4 шага». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Обучение персонала» и Возврат товара за 4 шага без ошибок, другого текста нет",
+   "meaning": "обложка 16:9 ролика «Возврат товара за 4 шага»",
+   "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a shop checkout counter with a returned item box and a receipt, clean modern retail interior."
+  },
+  {
+   "name": "cover_returns_9x16",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l1c_board_graphite.png",
+    "scratch/img/l1g_anna_9x16.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Графит и красный» from the FIRST attached board: graphite #23262B, signal red #E3342F, white, light grey; condensed bold Oswald-like headlines; red diagonal stripes. The presenter is the store administrator woman from the SECOND attached photo (same face and hair, graphite shirt with red accents) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Обучение персонала» and a big title in two lines «Возврат товара» / «за 4 шага». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Обучение персонала» и Возврат товара за 4 шага без ошибок, другого текста нет",
+   "meaning": "обложка 9:16 ролика «Возврат товара за 4 шага»",
+   "prompt": "Vertical layout: the pill label and the title in the top third, the key visual in the middle, the presenter waist-up in the lower half; keep ALL text inside the central 84% of the WIDTH. Key visual: a shop checkout counter with a returned item box and a receipt, clean modern retail interior."
+  },
+  {
+   "name": "cover_scams_16x9",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l3_board_a.png",
+    "scratch/img/l3_expert_9x16.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Reels-эксперт» from the FIRST attached board: black #0E0E10, acid yellow #FFE600, alarm red #FF3B30, white; heavy Unbounded-like headlines with yellow marker strokes and a red stamp. The presenter is the bank cybersecurity expert man from the SECOND attached photo (same face, black shirt) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Экспертный контент» and a big title in two lines «Как не попасться» / «телефонным мошенникам». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Экспертный контент» и Как не попасться телефонным мошенникам без ошибок, другого текста нет",
+   "meaning": "обложка 16:9 ролика «Как не попасться телефонным мошенникам»",
+   "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a smartphone with an incoming call screen labelled only with a red warning icon (no readable words on the phone), red stamp shape with the word «ОПАСНО»."
+  },
+  {
+   "name": "cover_scams_9x16",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l3_board_a.png",
+    "scratch/img/l3_expert_9x16.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Reels-эксперт» from the FIRST attached board: black #0E0E10, acid yellow #FFE600, alarm red #FF3B30, white; heavy Unbounded-like headlines with yellow marker strokes and a red stamp. The presenter is the bank cybersecurity expert man from the SECOND attached photo (same face, black shirt) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Экспертный контент» and a big title in two lines «Как не попасться» / «телефонным мошенникам». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Экспертный контент» и Как не попасться телефонным мошенникам без ошибок, другого текста нет",
+   "meaning": "обложка 9:16 ролика «Как не попасться телефонным мошенникам»",
+   "prompt": "Vertical layout: the pill label and the title in the top third, the key visual in the middle, the presenter waist-up in the lower half; keep ALL text inside the central 84% of the WIDTH. Key visual: a smartphone with an incoming call screen labelled only with a red warning icon (no readable words on the phone), red stamp shape with the word «ОПАСНО»."
+  },
+  {
+   "name": "cover_recipe_16x9",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Свежий рынок» from the FIRST attached board: warm cream #FFF6E9, leaf green #23A455, tomato red #FF4B2E, mustard #FFC531; rounded bold Nunito-like headlines, sticker shapes with white outlines. The presenter is the red-haired food blogger woman from the SECOND attached photo (same face, freckles, mustard sweatshirt) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Продукт и продажи» and a big title in two lines ««Повтори»:» / «ужин из видео-рецепта». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Продукт и продажи» и «Повтори»: ужин из видео-рецепта без ошибок, другого текста нет",
+   "meaning": "обложка 16:9 ролика ««Повтори»: ужин из видео-рецепта»",
+   "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a smartphone showing a pasta recipe video, flying fresh ingredients (tomatoes, basil, pasta) turning into a grocery bag, a sticker «−30%»."
+  },
+  {
+   "name": "cover_recipe_9x16",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Свежий рынок» from the FIRST attached board: warm cream #FFF6E9, leaf green #23A455, tomato red #FF4B2E, mustard #FFC531; rounded bold Nunito-like headlines, sticker shapes with white outlines. The presenter is the red-haired food blogger woman from the SECOND attached photo (same face, freckles, mustard sweatshirt) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Продукт и продажи» and a big title in two lines ««Повтори»:» / «ужин из видео-рецепта». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Продукт и продажи» и «Повтори»: ужин из видео-рецепта без ошибок, другого текста нет",
+   "meaning": "обложка 9:16 ролика ««Повтори»: ужин из видео-рецепта»",
+   "prompt": "Vertical layout: the pill label and the title in the top third, the key visual in the middle, the presenter waist-up in the lower half; keep ALL text inside the central 84% of the WIDTH. Key visual: a smartphone showing a pasta recipe video, flying fresh ingredients (tomatoes, basil, pasta) turning into a grocery bag, a sticker «−30%»."
+  },
+  {
+   "name": "cover_ceo_16x9",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l5_board_a.png",
+    "scratch/img/l5_ceo_9x16.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Премиальный корпоративный» from the FIRST attached board: ivory #F6F1E7, graphite #2B2D33, muted gold #B8935A, deep bordeaux #6E1F2B; elegant Playfair Display-like serif headlines, thin gold hairlines and corner ticks. The presenter is the CEO woman from the SECOND attached photo (same face, dark hair in a low bun, bordeaux blazer) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Локализация» and a big title in two lines «Одно обращение —» / «три языка». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Локализация» и Одно обращение — три языка без ошибок, другого текста нет",
+   "meaning": "обложка 16:9 ролика «Одно обращение — три языка»",
+   "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a dotted gold world map with Moscow, London and Madrid markers and three language chips «RU», «EN», «ES»."
+  },
+  {
+   "name": "cover_ceo_9x16",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/l5_board_a.png",
+    "scratch/img/l5_ceo_9x16.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Премиальный корпоративный» from the FIRST attached board: ivory #F6F1E7, graphite #2B2D33, muted gold #B8935A, deep bordeaux #6E1F2B; elegant Playfair Display-like serif headlines, thin gold hairlines and corner ticks. The presenter is the CEO woman from the SECOND attached photo (same face, dark hair in a low bun, bordeaux blazer) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Локализация» and a big title in two lines «Одно обращение —» / «три языка». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+   "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Локализация» и Одно обращение — три языка без ошибок, другого текста нет",
+   "meaning": "обложка 9:16 ролика «Одно обращение — три языка»",
+   "prompt": "Vertical layout: the pill label and the title in the top third, the key visual in the middle, the presenter waist-up in the lower half; keep ALL text inside the central 84% of the WIDTH. Key visual: a dotted gold world map with Moscow, London and Madrid markers and three language chips «RU», «EN», «ES»."
+  }
+ ]
+}
