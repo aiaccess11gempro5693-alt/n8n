@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "bot_avatar_monogram",
+    "engine": "gpt-image-2",
+    "kind": "logo",
+    "aspect": "1:1",
+    "prompt": "Square avatar for a Telegram bot of «ИИаватар» — an AI video production service (text turns into video with a digital presenter). Design system of the website: deep black background #0E0E0E, white bold geometric grotesque type, one acid lime-yellow accent #D7F23C. Composition strictly centred, everything important inside the central 70% (the image will be cropped to a circle). A bold white monogram «ИИ» (two Cyrillic letters И, perfectly spelled, heavy grotesque, tight spacing) with a small solid lime-yellow play-triangle integrated next to or inside the letters. Flat vector, crisp, minimal, premium, high contrast, readable at 64 px. No other text, no gradients-noise, no mockup frame, no shadows around the canvas.",
+    "meaning": "аватарка бота ИИаватар: белая монограмма «ИИ» и лаймовый треугольник «play» на чёрном фоне, по центру"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

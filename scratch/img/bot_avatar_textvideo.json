@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "bot_avatar_textvideo",
+    "engine": "gpt-image-2",
+    "kind": "logo",
+    "aspect": "1:1",
+    "prompt": "Square avatar for a Telegram bot that receives client requests for «ИИаватар» — a service that turns text into video. Deep black background #0E0E0E, white, one acid lime-yellow accent #D7F23C. Strictly centred composition, all inside the central 70% (cropped to a circle). A minimal flat vector symbol of the idea «text → video»: a white chat/message bubble with three short horizontal text lines (abstract lines, not letters) that morphs on its right side into a lime-yellow play-triangle. One single cohesive mark. Crisp, modern, premium, high contrast, readable at 64 px. NO text, no letters at all.",
+    "meaning": "аватарка бота заявок ИИаватар без текста: белое облачко сообщения, переходящее в лаймовый треугольник play (текст → видео), чёрный фон"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
