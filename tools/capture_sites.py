@@ -21,6 +21,12 @@ def ensure_playwright():
         import playwright  # noqa
     except ImportError:
         subprocess.run([sys.executable, "-m", "pip", "install", "-q", "playwright", "pillow"], check=True)
+        # pip ставит в user site, которого не было в sys.path при старте процесса
+        import importlib, site
+        for d in [site.getusersitepackages()] + site.getsitepackages():
+            if d not in sys.path:
+                sys.path.append(d)
+        importlib.invalidate_caches()
     subprocess.run([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"], check=True)
 
 
