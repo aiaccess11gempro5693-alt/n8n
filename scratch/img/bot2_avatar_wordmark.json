@@ -1,0 +1,31 @@
+{
+  "job": {
+    "name": "bot2_avatar_wordmark",
+    "engine": "gpt-image-2",
+    "kind": "logo",
+    "aspect": "1:1",
+    "extra_refs": [
+      "docs/landing/site-refs/orange-studio.jpg"
+    ],
+    "prompt": "Square avatar for the Telegram bot of «ИИАВАТАР» — an AI video studio (text turns into video with a digital presenter). Match the attached website hero image: near-black graphite background #111311 with a subtle warm orange glow, one signal orange accent #F3531B, off-white #F9F9F6. Strictly centred, everything inside the central 65% (cropped to a circle). A bold monogram «ИИ» (two Cyrillic letters И, perfectly spelled, extra-bold geometric grotesque like Sora ExtraBold, off-white) with a solid orange #F3531B play-triangle integrated into the right letter. Flat vector, crisp, premium, high contrast, readable at 64 px. No other text, no frame, no mockup.",
+    "meaning": "аватарка бота ИИАВАТАР: монограмма «ИИ» с оранжевым треугольником play на графитовом фоне с тёплым свечением, по центру, в стиле сайта (графит + оранжевый)"
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "First letter resembles Latin 'N' instead of Cyrillic 'И'"
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Second letter resembles Latin N instead of Cyrillic И"
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "Distorted letterforms with anatomical glitches in the monogram"
+    }
+  ]
+}
