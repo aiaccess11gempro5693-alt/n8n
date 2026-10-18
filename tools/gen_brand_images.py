@@ -278,6 +278,11 @@ def main():
         import check_audio
         check_audio.run(spec, only)
         return
+    if spec.get("mode") == "site_capture":  # скриншоты сайтов (tools/capture_sites.py)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import capture_sites
+        capture_sites.run(spec, only)
+        return
     jobs = [j for j in spec["jobs"] if not only or j["name"] in only]
     os.makedirs(OUT_DIR, exist_ok=True)
     with cf.ThreadPoolExecutor(max_workers=6) as ex:

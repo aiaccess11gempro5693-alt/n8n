@@ -1,0 +1,18 @@
+{
+ "mode": "site_capture",
+ "sites": [
+  {"name": "minakov", "url": "https://minakovai.ru/ai-video-production/"},
+  {"name": "mediabanda", "url": "https://mediabanda.ru/services/ai-videoroliki/", "extra": ["https://mediabanda.ru/price/"]},
+  {"name": "clyovo", "url": "https://clyovo.ru/services/ai-avatar"},
+  {"name": "champvideo", "url": "https://champvideo.pro/ii-production"},
+  {"name": "bizzz", "url": "https://studio.bizzz.media/ru/ai"},
+  {"name": "videohunter", "url": "https://videohunter.pro/uslugi/ai-video/"},
+  {"name": "svyazi", "url": "https://svyazi-agency.ru/landing/motion/ai"},
+  {"name": "neurocartel", "url": "https://neurocartel.com/"},
+  {"name": "vnedrenie", "url": "https://vnedrenie-ii.ru/ii-reklamnye-roliki-pod-klyuch/"},
+  {"name": "vavs", "url": "https://vavs.ai/"},
+  {"name": "content2go", "url": "https://content2go.app/"},
+  {"name": "avatarbox", "url": "https://avatarbox.ru/"},
+  {"name": "visper", "url": "https://visper.tech/"}
+ ]
+}
