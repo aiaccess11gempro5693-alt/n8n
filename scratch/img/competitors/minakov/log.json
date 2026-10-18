@@ -1,0 +1,17 @@
+[
+ {
+  "tag": "home",
+  "url": "https://minakovai.ru/ai-video-production/",
+  "ok": true
+ },
+ {
+  "tag": "page1",
+  "url": "https://minakovai.ru/services/",
+  "ok": true
+ },
+ {
+  "tag": "page2",
+  "url": "https://minakovai.ru/payment/",
+  "ok": true
+ }
+]
