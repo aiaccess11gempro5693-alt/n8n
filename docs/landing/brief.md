@@ -53,6 +53,12 @@ reg.ru у пользователя не грузится — выбор назв
 - не проверены: nocam.ru, avio-ai.ru, nexvid.ru, cinemo.ru, vidzen.ru, govori-ai.ru, snyato-ai.ru,
   motor-ai.ru, lectora.ru, voxa.ru, studiozero.ru, talkit.ru, vidus.ru, avatarly.ru, explainly.ru.
 
+Варианты названия, предложенные 13.10.2026 (домены не проверены, кроме frameo.ru):
+«Без камеры» bezkamery.ru · «Текстокадр» tekstokadr.ru · «Говорун» govorun.ru ·
+«Дубль Ноль» dubl0.ru · «Кадрово» kadrovo.ru · «Видеоцех» videoceh.ru ·
+«Мотор!» motor-video.ru · «Сказано» skazano.ru · «Лектора» lectora.ru · «Фрейма» frameo.ru.
+Фавориты: «Без камеры», «Видеоцех»; «Говорун» запоминается, но несерьёзен для корпоратов.
+
 ## Заголовок первого экрана (на выбор)
 «Видео без съёмок» — рабочий заголовок в макетах (это не название сайта).
 Предложено: **«Из текста — в видео» + подзаголовок «Без съёмок, студии и актёров»** (рекомендация);
