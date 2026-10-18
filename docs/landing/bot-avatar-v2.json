@@ -1,0 +1,32 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "bot2_avatar_wordmark",
+   "engine": "gpt-image-2",
+   "kind": "logo",
+   "aspect": "1:1",
+   "extra_refs": ["docs/landing/site-refs/orange-studio.jpg"],
+   "prompt": "Square avatar for the Telegram bot of «ИИАВАТАР» — an AI video studio (text turns into video with a digital presenter). Match the attached website hero image: near-black graphite background #111311 with a subtle warm orange glow, one signal orange accent #F3531B, off-white #F9F9F6. Strictly centred, everything inside the central 65% (cropped to a circle). A bold monogram «ИИ» (two Cyrillic letters И, perfectly spelled, extra-bold geometric grotesque like Sora ExtraBold, off-white) with a solid orange #F3531B play-triangle integrated into the right letter. Flat vector, crisp, premium, high contrast, readable at 64 px. No other text, no frame, no mockup.",
+   "meaning": "аватарка бота ИИАВАТАР: монограмма «ИИ» с оранжевым треугольником play на графитовом фоне с тёплым свечением, по центру, в стиле сайта (графит + оранжевый)"
+  },
+  {
+   "name": "bot2_avatar_play",
+   "engine": "gpt-image-2",
+   "kind": "logo",
+   "aspect": "1:1",
+   "extra_refs": ["docs/landing/site-refs/orange-studio.jpg"],
+   "prompt": "Square avatar for the Telegram bot of «ИИАВАТАР» — an AI video studio. Match the attached website hero image: near-black graphite background #111311, signal orange #F3531B accent, off-white #F9F9F6, soft warm orange rim light like a studio lamp. Strictly centred, everything inside the central 65% (cropped to a circle). A single minimal mark: a solid orange rounded play-triangle with a simple off-white stylised presenter silhouette (head and shoulders, geometric, no facial details) cut out inside it. Flat vector with a subtle glow, crisp, premium, readable at 64 px. NO text, no letters.",
+   "meaning": "аватарка бота ИИАВАТАР без текста: оранжевый треугольник play с силуэтом ведущего внутри, графитовый фон, в стиле сайта"
+  },
+  {
+   "name": "bot2_welcome",
+   "engine": "gpt-image-2",
+   "kind": "banner",
+   "aspect": "16:9",
+   "extra_refs": ["docs/landing/site-refs/orange-studio.jpg"],
+   "prompt": "Wide welcome banner (16:9, will be shown at 640x360) for the Telegram bot that delivers client requests from the website of «ИИАВАТАР» — an AI video studio that turns text into video with a digital presenter. Match the attached website hero image exactly in mood and palette: dark graphite studio #111311, warm orange studio lamp glow, signal orange #F3531B accent, off-white #F9F9F6. Composition: on the LEFT half big extra-bold uppercase Russian typography (Sora ExtraBold style), two lines «ЗАЯВКИ» in off-white and «С САЙТА» in orange #F3531B, above them a small off-white wordmark «ИИАВАТАР». On the RIGHT half a photorealistic dark desk scene like the reference: a monitor showing a friendly woman presenter in a dark blazer, and a smartphone in the foreground showing a chat with an orange notification badge. Keep a safe margin from all edges. Perfect Russian spelling; no other text, no logos, no watermarks, no UI gibberish on screens.",
+   "meaning": "приветственная картинка бота: слева «ИИАВАТАР» мелко, крупно «ЗАЯВКИ» белым и «С САЙТА» оранжевым; справа тёмная студия с монитором с ведущей и телефоном с уведомлением; стиль сайта (графит + оранжевый)"
+  }
+ ]
+}
