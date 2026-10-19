@@ -16,19 +16,12 @@
     "meaning": "баннер объявления (ad_avito)",
     "prompt": "Horizontal 3:2 canvas that will be CROPPED to 4:3: keep ALL text, badges and faces inside the central 84% of the WIDTH; headline top-left, phones on the right, price badge under the headline, pills under the price, bottom line centered."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "Remote end closed connection without response"
-    },
-    {
-      "attempt": 2,
-      "error": "Remote end closed connection without response"
-    },
-    {
-      "attempt": 3,
-      "error": "Remote end closed connection without response"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
