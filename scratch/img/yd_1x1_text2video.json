@@ -1,0 +1,34 @@
+{
+  "job": {
+    "name": "yd_1x1_text2video",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+    "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Из текста — в видео» and small line «без съёмок и актёров». No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+    "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Из текста — в видео» and small line «без съёмок и актёров»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "креатив Директа yd_1x1_text2video",
+    "prompt": "Visual metaphor: a sheet of paper with grey text lines on the left turns (orange arrow) into a smartphone playing a video with the presenter from photo 2 on the right; headline at the top."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the extra text 'ИИАВАТАР' in the top-left corner"
+    },
+    {
+      "attempt": 2,
+      "error": "Remote end closed connection without response"
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

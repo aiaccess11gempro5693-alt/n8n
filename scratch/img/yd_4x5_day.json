@@ -1,0 +1,30 @@
+{
+  "job": {
+    "name": "yd_4x5_day",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "2:3",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+    "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Видео с ИИ-ведущим» and second line «за 1 день» in orange. No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+    "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Видео с ИИ-ведущим» and second line «за 1 день» in orange; лишнего текста, ссылок и телефонов нет",
+    "meaning": "креатив Директа yd_4x5_day",
+    "prompt": "Vertical layout that will be cropped to 4:5: headline in the top third, the presenter (photo 2) waist-up below, a small video frame with a play icon; keep all text and the face inside the central 84% of the HEIGHT."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the extra text 'ИИАВАТАР' at the top"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
