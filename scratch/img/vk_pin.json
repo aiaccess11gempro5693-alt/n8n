@@ -1,0 +1,34 @@
+{
+  "job": {
+    "name": "vk_pin",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "2:3",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l1g_anna_9x16.png",
+      "scratch/img/l3_expert_9x16.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: headline «Видео с ИИ-ведущим» , second line in orange «из вашего текста», three pills «Reels и клипы» «Реклама» «Обучение», orange badge «от 1 000 ₽ за минуту», and small bottom line «Пишите в сообщения». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+    "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: headline «Видео с ИИ-ведущим» , second line in orange «из вашего текста», three pills «Reels и клипы» «Реклама» «Обучение», orange badge «от 1 000 ₽ за минуту», and small bottom line «Пишите в сообщения»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "оформление ВК vk_pin",
+    "prompt": "Vertical poster cropped later to 4:5: keep everything inside the central 84% of the HEIGHT; headline at top, three presenters in a row of vertical video frames in the middle, pills and price badge below.",
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    },
+    {
+      "attempt": 2,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    },
+    {
+      "attempt": 3,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    }
+  ]
+}

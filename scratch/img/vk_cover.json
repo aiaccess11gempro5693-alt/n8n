@@ -1,0 +1,34 @@
+{
+  "job": {
+    "name": "vk_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "3:2",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l1g_anna_9x16.png",
+      "scratch/img/l3_expert_9x16.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: wordmark «ИИАВАТАР» and below it «Видео с ИИ-ведущим за 1 день». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+    "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: wordmark «ИИАВАТАР» and below it «Видео с ИИ-ведущим за 1 день»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "оформление ВК vk_cover",
+    "prompt": "VK community COVER that will be cropped to a wide 2.5:1 strip: put EVERYTHING (text and faces) inside the central horizontal band = middle 55% of the HEIGHT; top and bottom 22% must be only plain background. Text block centered-left, three presenters from photos 2–4 in small rounded video frames on the right.",
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    },
+    {
+      "attempt": 2,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    },
+    {
+      "attempt": 3,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    }
+  ]
+}
