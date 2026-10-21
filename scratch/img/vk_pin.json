@@ -16,19 +16,17 @@
     "prompt": "Vertical poster cropped later to 4:5: keep everything inside the central 84% of the HEIGHT; headline at top, three presenters in a row of vertical video frames in the middle, pills and price badge below.",
     "person_note": "Presenters must be exactly the people from the attached photos after the first one."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+      "ok": false,
+      "issue": "Add the missing bottom line text 'Пишите в сообщения'"
     },
     {
       "attempt": 2,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
-    },
-    {
-      "attempt": 3,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+      "ok": true,
+      "issue": ""
     }
   ]
 }

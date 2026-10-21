@@ -14,19 +14,12 @@
     "prompt": "Square product card: presenter from photo 2 in a vertical phone frame on the right with a play icon, title and price on the left.",
     "person_note": "Presenters must be exactly the people from the attached photos after the first one."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
-    },
-    {
-      "attempt": 2,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
-    },
-    {
-      "attempt": 3,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+      "ok": true,
+      "issue": ""
     }
   ]
 }

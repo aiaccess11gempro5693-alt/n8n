@@ -16,19 +16,12 @@
     "prompt": "VK community COVER that will be cropped to a wide 2.5:1 strip: put EVERYTHING (text and faces) inside the central horizontal band = middle 55% of the HEIGHT; top and bottom 22% must be only plain background. Text block centered-left, three presenters from photos 2–4 in small rounded video frames on the right.",
     "person_note": "Presenters must be exactly the people from the attached photos after the first one."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
-    },
-    {
-      "attempt": 2,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
-    },
-    {
-      "attempt": 3,
-      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
