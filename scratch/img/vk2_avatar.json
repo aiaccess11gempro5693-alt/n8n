@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "vk2_avatar",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [],
+    "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: NO text at all. No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+    "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: NO text at all; лишнего текста, ссылок и телефонов нет",
+    "meaning": "ВК vk2_avatar",
+    "prompt": "Community avatar icon shown in a small circle: a minimal bold symbol — a stylized human head-and-shoulders silhouette of a presenter inside a rounded video frame with an orange play triangle, orange glow on graphite; centered, large, readable at 50px; nothing near the edges."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

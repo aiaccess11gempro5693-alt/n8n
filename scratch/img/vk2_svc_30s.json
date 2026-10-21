@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "vk2_svc_30s",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [],
+    "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Ролик 30 секунд» and orange price «от 500 ₽». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+    "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: title «Ролик 30 секунд» and orange price «от 500 ₽»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "ВК vk2_svc_30s",
+    "prompt": "Square product card: a vertical smartphone playing a short clip with a young AI presenter, floating hearts and views icons around it; title and price on the left."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove extra metrics text on notification bubbles and fix deformed fingers on presenter's hands."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
