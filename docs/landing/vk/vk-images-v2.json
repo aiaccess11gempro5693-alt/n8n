@@ -1,0 +1,82 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "vk2_avatar",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: NO text at all. No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: NO text at all; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_avatar",
+   "prompt": "Community avatar icon shown in a small circle: a minimal bold symbol — a stylized human head-and-shoulders silhouette of a presenter inside a rounded video frame with an orange play triangle, orange glow on graphite; centered, large, readable at 50px; nothing near the edges."
+  },
+  {
+   "name": "vk2_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: wordmark «ИИАВАТАР» and below it «Из текста — в видео с ИИ-ведущим». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: wordmark «ИИАВАТАР» and below it «Из текста — в видео с ИИ-ведущим»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_cover",
+   "prompt": "Wide cover that will be cropped to a 2.5:1 strip: put EVERYTHING inside the middle 55% of the HEIGHT, top and bottom 22% only plain background. Left: the text block. Right: a story — a paper document with grey text lines flows via a glowing orange arrow into a large screen where a friendly AI presenter woman speaks, with small subtitle bar (no readable words)."
+  },
+  {
+   "name": "vk2_pin",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "2:3",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: headline «Любое видео без съёмок», four small labels under the screens «Реклама» «Обучение» «Reels» «30+ языков», orange badge «от 1 000 ₽ за минуту», small bottom line «Пишите в сообщения». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: headline «Любое видео без съёмок», four small labels under the screens «Реклама» «Обучение» «Reels» «30+ языков», orange badge «от 1 000 ₽ за минуту», small bottom line «Пишите в сообщения»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_pin",
+   "prompt": "Vertical poster, keep everything inside the central 86% of the HEIGHT: headline at the top; a 2×2 grid of four screens, each with a DIFFERENT AI presenter in a different business context (ad for a product, office training with a slide, vertical phone clip with hearts, presenter with flags of several countries), each screen with its label under it; orange price badge below; small line at the bottom."
+  },
+  {
+   "name": "vk2_svc_30s",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Ролик 30 секунд» and orange price «от 500 ₽». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: title «Ролик 30 секунд» and orange price «от 500 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_svc_30s",
+   "prompt": "Square product card: a vertical smartphone playing a short clip with a young AI presenter, floating hearts and views icons around it; title and price on the left."
+  },
+  {
+   "name": "vk2_svc_1min",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Ролик 1 минута» and orange price «от 1 000 ₽». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: title «Ролик 1 минута» and orange price «от 1 000 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_svc_1min",
+   "prompt": "Square product card: a horizontal video frame where an AI presenter stands next to a simple infographic slide (icons and bars, no readable words) — a training or explainer video; title and price at the top."
+  },
+  {
+   "name": "vk2_svc_persona",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Свой ИИ-ведущий» and orange price «от 3 000 ₽». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: title «Свой ИИ-ведущий» and orange price «от 3 000 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_svc_persona",
+   "prompt": "Square product card: transformation — on the left a simple portrait photo of a man in a business shirt, an orange arrow, on the right the same man as a glowing digital presenter in a video frame with a play icon; title and price at the top."
+  },
+  {
+   "name": "vk2_svc_generator",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [],
+   "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Генератор видео под ключ» and orange price «от 100 000 ₽». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+   "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: title «Генератор видео под ключ» and orange price «от 100 000 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "ВК vk2_svc_generator",
+   "prompt": "Square product card: an isometric conveyor — documents enter a sleek machine with gears and an AI chip, finished video frames with presenters come out on the other side, glowing orange lines; title and price at the top."
+  }
+ ]
+}
