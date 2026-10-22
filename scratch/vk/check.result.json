@@ -1,0 +1,5 @@
+{
+ "group_token": false,
+ "user_token": false,
+ "error": "Нет ни VK_GROUP_TOKEN, ни VK_USER_TOKEN в секретах репозитория"
+}
