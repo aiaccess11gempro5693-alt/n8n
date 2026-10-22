@@ -1,0 +1,136 @@
+"""Публикация в сообщество ВК через API (запуск — мост .github/workflows/vk-post.yml).
+
+python3 tools/vk_post.py check                     — проверить ключи и права, ничего не публикуя
+python3 tools/vk_post.py post docs/landing/vk/posts/001.json
+
+Пост (JSON): {"text": "...", "images": ["путь.jpg"], "videos": [{"path": "x.mp4", "title": "..."}],
+              "publish_date": "2026-10-23T10:00:00+03:00" (необязательно — отложенный пост),
+              "pin": false}
+Ключи из окружения: VK_GROUP_TOKEN (ключ сообщества) и, если есть, VK_USER_TOKEN
+(ключ администратора — нужен для загрузки фото/видео, если ключ сообщества этого не умеет).
+Результат пишется в scratch/vk/<имя>.result.json.
+"""
+import datetime
+import json
+import os
+import sys
+import urllib.parse
+import urllib.request
+import uuid
+
+API = "https://api.vk.com/method/"
+V = "5.199"
+GROUP = os.environ.get("VK_GROUP_TOKEN", "").strip()
+USER = os.environ.get("VK_USER_TOKEN", "").strip()
+
+
+def call(method, token, **params):
+    params.update(access_token=token, v=V)
+    data = urllib.parse.urlencode(params).encode()
+    with urllib.request.urlopen(urllib.request.Request(API + method, data=data), timeout=120) as r:
+        resp = json.loads(r.read().decode())
+    if "error" in resp:
+        e = resp["error"]
+        raise RuntimeError(f"{method}: {e.get('error_code')} {e.get('error_msg')}")
+    return resp["response"]
+
+
+def upload(url, field, path):
+    boundary = uuid.uuid4().hex
+    with open(path, "rb") as f:
+        data = f.read()
+    body = (f"--{boundary}\r\nContent-Disposition: form-data; name=\"{field}\"; "
+            f"filename=\"{os.path.basename(path)}\"\r\nContent-Type: application/octet-stream\r\n\r\n").encode()
+    body += data + f"\r\n--{boundary}--\r\n".encode()
+    req = urllib.request.Request(url, data=body, method="POST",
+                                 headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
+    with urllib.request.urlopen(req, timeout=600) as r:
+        return json.loads(r.read().decode())
+
+
+def group_id():
+    if os.environ.get("VK_GROUP_ID"):
+        return int(os.environ["VK_GROUP_ID"])
+    r = call("groups.getById", GROUP)
+    groups = r["groups"] if isinstance(r, dict) else r
+    return int(groups[0]["id"])
+
+
+def media_token():
+    return USER or GROUP
+
+
+def upload_photo(gid, path):
+    tok = media_token()
+    server = call("photos.getWallUploadServer", tok, group_id=gid)["upload_url"]
+    up = upload(server, "photo", path)
+    saved = call("photos.saveWallPhoto", tok, group_id=gid, photo=up["photo"], server=up["server"], hash=up["hash"])[0]
+    return f"photo{saved['owner_id']}_{saved['id']}"
+
+
+def upload_video(gid, item):
+    tok = media_token()
+    meta = call("video.save", tok, group_id=gid, name=item.get("title", ""), description=item.get("description", ""),
+                wallpost=0)
+    upload(meta["upload_url"], "video_file", item["path"])
+    return f"video{meta['owner_id']}_{meta['video_id']}"
+
+
+def check():
+    out = {"group_token": bool(GROUP), "user_token": bool(USER)}
+    if not GROUP and not USER:
+        out["error"] = "Нет ни VK_GROUP_TOKEN, ни VK_USER_TOKEN в секретах репозитория"
+        return out
+    try:
+        gid = group_id()
+        out["group_id"] = gid
+        g = call("groups.getById", GROUP or USER, group_id=gid)
+        g = (g["groups"] if isinstance(g, dict) else g)[0]
+        out["group"] = {"name": g.get("name"), "screen_name": g.get("screen_name")}
+    except Exception as e:
+        out["group_error"] = str(e)
+        return out
+    if GROUP:
+        try:
+            out["group_token_permissions"] = [p["name"] for p in call("groups.getTokenPermissions", GROUP)["permissions"]]
+        except Exception as e:
+            out["group_token_permissions_error"] = str(e)
+    for name, tok in (("group", GROUP), ("user", USER)):
+        if not tok:
+            continue
+        try:
+            call("photos.getWallUploadServer", tok, group_id=gid)
+            out[f"{name}_can_upload_photo"] = True
+        except Exception as e:
+            out[f"{name}_can_upload_photo"] = str(e)
+    return out
+
+
+def post(path):
+    spec = json.load(open(path))
+    gid = group_id()
+    att = [upload_photo(gid, p) for p in spec.get("images", [])]
+    att += [upload_video(gid, v) for v in spec.get("videos", [])]
+    params = {"owner_id": -gid, "from_group": 1, "message": spec.get("text", "")}
+    if att:
+        params["attachments"] = ",".join(att)
+    if spec.get("publish_date"):
+        params["publish_date"] = int(datetime.datetime.fromisoformat(spec["publish_date"]).timestamp())
+    r = call("wall.post", GROUP or USER, **params)
+    out = {"post_id": r["post_id"], "url": f"https://vk.com/wall-{gid}_{r['post_id']}", "attachments": att}
+    if spec.get("pin") and not spec.get("publish_date"):
+        call("wall.pin", USER or GROUP, owner_id=-gid, post_id=r["post_id"])
+        out["pinned"] = True
+    return out
+
+
+if __name__ == "__main__":
+    mode = sys.argv[1]
+    os.makedirs("scratch/vk", exist_ok=True)
+    name = "check" if mode == "check" else os.path.splitext(os.path.basename(sys.argv[2]))[0]
+    try:
+        result = check() if mode == "check" else post(sys.argv[2])
+    except Exception as e:
+        result = {"error": str(e)}
+    print(json.dumps(result, ensure_ascii=False, indent=1))
+    json.dump(result, open(f"scratch/vk/{name}.result.json", "w"), ensure_ascii=False, indent=1)
