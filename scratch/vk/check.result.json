@@ -1,5 +1,19 @@
 {
- "group_token": false,
+ "group_token": true,
  "user_token": false,
- "error": "Нет ни VK_GROUP_TOKEN, ни VK_USER_TOKEN в секретах репозитория"
+ "group_id": 242478374,
+ "group": {
+  "name": "ИИАВАТАР | Видео с ИИ-ведущим",
+  "screen_name": "club242478374"
+ },
+ "group_token_permissions": [
+  "photos",
+  "docs",
+  "messages",
+  "wall",
+  "manage",
+  "stories",
+  "market"
+ ],
+ "group_can_upload_photo": "photos.getWallUploadServer: 27 Group authorization failed: method is unavailable with group auth."
 }
