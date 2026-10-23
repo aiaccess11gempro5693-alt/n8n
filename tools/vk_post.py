@@ -61,11 +61,18 @@ def media_token():
 
 
 def upload_photo(gid, path):
-    tok = media_token()
-    server = call("photos.getWallUploadServer", tok, group_id=gid)["upload_url"]
-    up = upload(server, "photo", path)
-    saved = call("photos.saveWallPhoto", tok, group_id=gid, photo=up["photo"], server=up["server"], hash=up["hash"])[0]
-    return f"photo{saved['owner_id']}_{saved['id']}"
+    if USER:
+        server = call("photos.getWallUploadServer", USER, group_id=gid)["upload_url"]
+        up = upload(server, "photo", path)
+        saved = call("photos.saveWallPhoto", USER, group_id=gid, photo=up["photo"], server=up["server"],
+                     hash=up["hash"])[0]
+    else:
+        # С ключом сообщества стена недоступна — грузим через сервер сообщений сообщества.
+        server = call("photos.getMessagesUploadServer", GROUP, peer_id=0)["upload_url"]
+        up = upload(server, "photo", path)
+        saved = call("photos.saveMessagesPhoto", GROUP, photo=up["photo"], server=up["server"], hash=up["hash"])[0]
+    key = f"_{saved['access_key']}" if saved.get("access_key") else ""
+    return f"photo{saved['owner_id']}_{saved['id']}{key}"
 
 
 def upload_video(gid, item):
@@ -103,6 +110,10 @@ def check():
             out[f"{name}_can_upload_photo"] = True
         except Exception as e:
             out[f"{name}_can_upload_photo"] = str(e)
+    try:
+        out["test_photo_upload"] = upload_photo(gid, os.environ.get("VK_TEST_IMAGE", "docs/landing/vk/vk-avatar.jpg"))
+    except Exception as e:
+        out["test_photo_upload"] = str(e)
     return out
 
 
