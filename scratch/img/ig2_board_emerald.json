@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig2_board_emerald",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "палитра «Изумруд и мята»: тёмный изумруд #0E2A24, мятный #3DDC97, кремовый #F3EEE3, золотистый акцент #E8B04B; ведущий-мужчина ~32",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours or fonts. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge 2-3 word headline, one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), an INFOGRAPHIC example — a line chart «кривая забывания» where the line drops and then jumps back up at three repetitions, END CARD with call to action «Напишите «ВЕДУЩИЙ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook, (2) presenter lower half + chart card above, (3) full-screen typography without presenter, (4) presenter in a round frame + three topic chips. Presenter on the board: a NEW confident Russian MAN about 32, Slavic features, modern and likeable expert (not a fashion model), waist-up, his clothes in the palette colours, a studio backdrop in the palette colours. The SAME man appears in all frames. All text in Russian, short, correctly spelled. Mood: calm, smart, premium-educational. Palette «Изумруд и мята»: deep emerald #0E2A24 background, mint #3DDC97 highlights, cream #F3EEE3 text and cards, warm gold accent #E8B04B. Typography: «Manrope ExtraBold» headlines + «Manrope». The man wears a cream knit sweater over an emerald shirt."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig2_board_light",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "светлая редакционная палитра: тёплый белый #F5F3EE, чёрный #111111, ярко-красный #FF3B30; ведущий-мужчина ~32",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours or fonts. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge 2-3 word headline, one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), an INFOGRAPHIC example — a line chart «кривая забывания» where the line drops and then jumps back up at three repetitions, END CARD with call to action «Напишите «ВЕДУЩИЙ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook, (2) presenter lower half + chart card above, (3) full-screen typography without presenter, (4) presenter in a round frame + three topic chips. Presenter on the board: a NEW confident Russian MAN about 32, Slavic features, modern and likeable expert (not a fashion model), waist-up, his clothes in the palette colours, a studio backdrop in the palette colours. The SAME man appears in all frames. All text in Russian, short, correctly spelled. Mood: bold light editorial magazine style, high contrast. Palette: warm white #F5F3EE background, ink black #111111 typography, signal red #FF3B30 highlights (red marker boxes and underlines). Typography: «Bebas Neue»-like condensed headlines + «Inter». The man wears a black t-shirt and a light grey overshirt."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
