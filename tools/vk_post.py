@@ -3,7 +3,7 @@
 python3 tools/vk_post.py check                     — проверить ключи и права, ничего не публикуя
 python3 tools/vk_post.py post docs/landing/vk/posts/001.json
 
-Пост (JSON): {"text": "...", "images": ["путь.jpg"], "videos": [{"path": "x.mp4", "title": "..."}],
+Пост (JSON): {"text": "...", "images": ["путь.jpg"], "videos": [{"path": "x.mp4", "title": "...", "clip": true}],
               "publish_date": "2026-10-23T10:00:00+03:00" (необязательно — отложенный пост),
               "pin": false}
 Ключи из окружения: VK_GROUP_TOKEN (ключ сообщества) и, если есть, VK_USER_TOKEN
@@ -76,8 +76,18 @@ def upload_photo(gid, path):
 
 
 def upload_video(gid, item):
-    tok = media_token()
-    meta = call("video.save", tok, group_id=gid, name=item.get("title", ""), description=item.get("description", ""),
+    """Видео в сообщество (нужен VK_USER_TOKEN). clip=true — сначала пробуем как клип (shortVideo)."""
+    if not USER:
+        raise RuntimeError("Для загрузки видео нужен VK_USER_TOKEN (ключ администратора)")
+    if item.get("clip"):
+        try:
+            meta = call("shortVideo.create", USER, group_id=gid, file_size=os.path.getsize(item["path"]),
+                        description=item.get("description", ""))
+            upload(meta["upload_url"], "file", item["path"])
+            return f"video{meta['owner_id']}_{meta['video_id']}"
+        except Exception as e:
+            item["clip_error"] = str(e)
+    meta = call("video.save", USER, group_id=gid, name=item.get("title", ""), description=item.get("description", ""),
                 wallpost=0)
     upload(meta["upload_url"], "video_file", item["path"])
     return f"video{meta['owner_id']}_{meta['video_id']}"
@@ -110,6 +120,14 @@ def check():
             out[f"{name}_can_upload_photo"] = True
         except Exception as e:
             out[f"{name}_can_upload_photo"] = str(e)
+    if USER:
+        try:
+            u = call("users.get", USER)[0]
+            out["user"] = f"{u.get('first_name')} {u.get('last_name')}"
+            g = call("groups.get", USER, filter="admin,editor")
+            out["user_is_admin_of_group"] = gid in g.get("items", [])
+        except Exception as e:
+            out["user_error"] = str(e)
     try:
         out["test_photo_upload"] = upload_photo(gid, os.environ.get("VK_TEST_IMAGE", "docs/landing/vk/vk-avatar.jpg"))
     except Exception as e:
@@ -128,7 +146,8 @@ def post(path):
     if spec.get("publish_date"):
         params["publish_date"] = int(datetime.datetime.fromisoformat(spec["publish_date"]).timestamp())
     r = call("wall.post", GROUP or USER, **params)
-    out = {"post_id": r["post_id"], "url": f"https://vk.com/wall-{gid}_{r['post_id']}", "attachments": att}
+    out = {"post_id": r["post_id"], "url": f"https://vk.com/wall-{gid}_{r['post_id']}", "attachments": att,
+           "clip_errors": [v["clip_error"] for v in spec.get("videos", []) if v.get("clip_error")]}
     if spec.get("pin") and not spec.get("publish_date"):
         call("wall.pin", USER or GROUP, owner_id=-gid, post_id=r["post_id"])
         out["pinned"] = True
