@@ -36,19 +36,20 @@ from render.landing import theme_brand as T
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 HERE = os.path.dirname(os.path.abspath(__file__))
 TMP = f"{HERE}/_frames_ig1"
-AUDIO = f"{ROOT}/scratch/ig1-full-b-trim.mp3"
-WHISPER = f"{ROOT}/scratch/ig1-full-b-whisper-1.json"
-CLIP = f"{ROOT}/scratch/ig1-host.mp4"
+AUDIO = f"{ROOT}/scratch/ig1-v2-b-trim.mp3"
+WHISPER = f"{ROOT}/scratch/ig1-v2-b-whisper-1.json"
+CLIP = f"{ROOT}/scratch/ig1-host-v2.mp4"
 MUSIC = f"{ROOT}/scratch/ig1-music.mp3"
 TEXTS = f"{ROOT}/docs/scenarios/insta-1-not-exist.md"
 OUT = f"{HERE}/ig1-9x16.mp4"
 
 W, H, FPS = 1080, 1920, 25
 TAIL = 0.8
-BOUNDS = [0.0, 4.30, 7.30, 16.30, 18.45, 23.55]
+BOUNDS = [0.0, 7.75, 11.35, 22.85, 26.55, 32.95]
 CAP_W, CAP_X, CAP_BOTTOM = 980, 50, 1840
 POP = 0.32
-PUNCH = 0.12
+TOTAL = 1.0
+PROGRESS_H = 12          # оранжевая полоса прогресса сверху (удержание)
 # Голова ведущей в кадре клипа (1080×1920): волосы, лицо, шея — измерено по кадру.
 HEAD = (350, 240, 730, 760)
 FACE = (540, 520)          # центр лица — точка опоры наезда
@@ -144,30 +145,34 @@ def caption_chunks(words, total):
 # ---------------------------------------------------------------- сцены
 
 def scenes(F):
+    """«cuts» — монтажные склейки-наезды (jump cut): с момента t ведущая крупнее
+    в k раз. Каждая новая фраза — новый план, кадр не стоит на месте."""
     b = BOUNDS
     T.background(p("bg"), W, H, "plain")
     T.background(p("bg_grid"), W, H, "grid")
     rules = ["Лицо в кадре", "1 мысль = 1 сцена", "Субтитры"]
     return [
-        {"bg": p("bg"), "av": dict(LAYOUT["full"], punch=[0.02]), "sfx": [(0.0, "bass", 0.6)],
+        {"bg": p("bg"), "av": dict(LAYOUT["full"], cuts=[(0.0, 1.25), (F("Две"), 1.0), (F("Столько"), 1.12),
+                                                        (F("Получилось"), 1.25)]),
+         "flash": [(0.02, "white")], "shake": [0.02], "sfx": [(0.0, "bass", 0.7)],
          "els": [
-             (T.headline(p("s1_stop"), [[("Стоп.", "w")]], 1000, size=150), 40, -10, 0.05),
-             (T.headline(p("s1_sec"), [[("2 секунды", "box")]], 1000, size=120), 40, 180, F("Две")),
+             (T.headline(p("s1_stop"), [[("Стоп.", "w")]], 1000, size=210), 40, -110, 0.02),
+             (T.headline(p("s1_sec"), [[("2 секунды", "box")]], 1000, size=112), 40, 150, F("Две")),
          ]},
         {"bg": p("bg_grid"), "av": None, "flash": [(b[1] + 0.03, "orange")], "els": [
             (T.big_number(p("s2_three"), "3", [[("правила", "w"), ("видео,", "w")], [("которое", "w")],
                                                 [("досматривают", "box")]], 1000), 40, 110, b[1] + 0.05),
         ]},
-        {"bg": p("bg"), "av": LAYOUT["panel"], "els": [
+        {"bg": p("bg"), "av": dict(LAYOUT["panel"], cuts=[(F("Второе"), 1.1), (F("Третье"), 1.0)]), "els": [
             (T.rules_card(p("s3_r0"), rules, 0), 10, 30, b[2] + 0.05, F("Второе"), "pop", True),
             (T.rules_card(p("s3_r1"), rules, 1), 10, 30, F("Второе"), F("Третье"), "state"),
             (T.rules_card(p("s3_r2"), rules, 2), 10, 30, F("Третье"), None, "state"),
         ], "sfx": [(F("Первое"), "click", 0.4), (F("Второе"), "click", 0.4), (F("Третье"), "click", 0.4)]},
-        {"bg": p("bg"), "av": dict(LAYOUT["full"], punch=[F("существует")]),
-         "glitch": [(F("существует") - 0.05, 0.42), (F("существует") + 0.62, 0.18)],
-         "flash": [(F("существует"), "white")],
+        {"bg": p("bg"), "av": dict(LAYOUT["full"], cuts=[(F("меня", b[3]), 1.12), (F("существует"), 1.3)]),
+         "glitch": [(F("существует") - 0.05, 0.5), (F("существует") + 0.7, 0.2)],
+         "flash": [(F("существует"), "white")], "shake": [F("существует")],
          "sfx": [(b[3] + 0.1, "riser", 0.45), (F("существует") - 0.05, "glitch", 0.7)], "els": [
-             (T.headline(p("s4_head"), [[("Меня не", "w")], [("существует", "box")]], 1000, size=104), 40, 20,
+             (T.headline(p("s4_head"), [[("Меня не", "w")], [("существует", "box")]], 1000, size=100), 40, 0,
               F("существует")),
          ]},
         {"bg": p("bg_grid"), "av": LAYOUT["circle"], "els": [
@@ -177,7 +182,7 @@ def scenes(F):
             (T.flow(p("s5_flow"), "ТЕКСТ", "ВИДЕО", 960), 30, 880, F("собран")),
             (T.tag(p("s5_day"), "за 1 день", 64), 320, 1140, F("день")),
         ], "sfx": [(F("нейросеть"), "glitch", 0.35)]},
-        {"bg": p("bg"), "av": dict(LAYOUT["low"], punch=[F("Напишите")]), "els": [
+        {"bg": p("bg"), "av": dict(LAYOUT["low"], cuts=[(F("Напишите"), 1.12)]), "els": [
             (T.headline(p("s6_q"), [[("Хотите", "w"), ("такого", "w")], [("ведущего?", "box")]], 1000, size=110),
              40, 60, b[5] + 0.05, F("Напишите"), "pop", True),
             (T.cta_card(p("s6_cta"), 1000), 40, 40, F("Напишите"), None, "state"),
@@ -202,7 +207,7 @@ def head_rect(av):
         return None
     if av["kind"] == "circle":
         return (av["x"], av["y"], av["x"] + av["size"], av["y"] + av["size"])
-    s = av["s"] * (1 + PUNCH * len(av.get("punch", ())))
+    s = av["s"] * max([1.0] + [k for _, k in av.get("cuts", ())])
     s0 = av["s"]
     cx = 540
     fy = av["y"] + FACE[1] * s0                      # лицо стоит на месте при наезде
@@ -259,8 +264,11 @@ def render_scene(k, sc, t0, t1, caps):
             fc.append(f"{src}[cl]")
             fc.append(f"[{idx + 1}:v]format=gray,fps={FPS}[mk]")
             fc.append("[cl][mk]alphamerge[clm]")
-            pn = "".join(f"+{PUNCH}*clip((t-{tp - t0:.2f})/0.09\\,0\\,1)" for tp in av.get("punch", ()))
-            ks = f"({av['s']}*(1+0.03*t/{dur})*(1{pn}))"
+            kk, prev = "1", 1.0
+            for tc, kc in sorted(av.get("cuts", ())):
+                kk += f"+{kc - prev:.3f}*gte(t\\,{max(0.0, tc - t0):.2f})"
+                prev = kc
+            ks = f"({av['s']}*(1+0.03*t/{dur})*({kk}))"
             fc.append(f"[clm]scale=w='trunc(1080*{ks}/2)*2':h='trunc(1920*{ks}/2)*2':eval=frame[av]")
             fy = av["y"] + FACE[1] * av["s"]
             fc.append(f"[{last}][av]overlay=x='540-w/2':y='{fy}-h*{FACE[1] / 1920:.4f}':shortest=0[a0]")
@@ -330,6 +338,15 @@ def render_scene(k, sc, t0, t1, caps):
                   f"fade=t=out:st={a + 0.06:.2f}:d=0.3:alpha=1[fl{j}]")
         fc.append(f"[{last}][fl{j}]overlay=0:0:enable='between(t,{a:.2f},{a + 0.4:.2f})'[f{j}]")
         last, idx = f"f{j}", idx + 1
+    shakes = [max(0.0, ts - t0) for ts in sc.get("shake", [])]
+    if shakes:   # тряска кадра на ударном слове
+        amp = "+".join(f"between(t\\,{a:.2f}\\,{a + 0.35:.2f})*(1-(t-{a:.2f})/0.35)" for a in shakes)
+        fc.append(f"[{last}]pad={W + 48}:{H + 48}:24:24:color={T.PAD_COLOR},"
+                  f"crop={W}:{H}:x='24+18*sin(t*97)*({amp})':y='24+14*cos(t*83)*({amp})'[shk]")
+        last = "shk"
+    # полоса прогресса сверху — растёт на всю длину ролика
+    fc.append(f"[{last}]drawbox=x=0:y=0:w='{W}*(t+{t0:.3f})/{TOTAL:.3f}':h={PROGRESS_H}:color=0xF3531B:t=fill[pg]")
+    last = "pg"
     if k > 0:
         T.swipe(p("swipe"), W, H)
         inputs += [*loop, p("swipe")]
@@ -353,8 +370,9 @@ def sound_events(sc_list, bounds):
                 ev.append((el[3], "pop", 0.3))
         for tf, col in sc.get("flash", []):
             ev.append((tf, "hit", 0.45))
-        for tp in (sc.get("av") or {}).get("punch", ()):
-            ev.append((tp, "hit", 0.35))
+        for tc, _ in (sc.get("av") or {}).get("cuts", ()):
+            if tc > bounds[k] + 0.05:
+                ev.append((tc, "whoosh", 0.18))   # склейка-наезд — лёгкий вжух
         ev += sc.get("sfx", [])
     return ev
 
@@ -364,6 +382,8 @@ def main():
     voice = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
                                   AUDIO], capture_output=True, text=True).stdout)
     total = round(voice + TAIL, 2)
+    global TOTAL
+    TOTAL = total
     words = word_times()
     caps = caption_chunks(words, voice)
     sc = scenes(finder(words))
