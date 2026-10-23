@@ -150,9 +150,9 @@ def headline(path, lines, w, size=120, align="center", lh=1.12):
     return _save(_shadow(im, blur=14, k=0.55), path)
 
 
-def big_number(path, num, sub_lines, w):
+def big_number(path, num, sub_lines, w, size=820):
     """Типографика на весь экран: огромная оранжевая цифра + подпись."""
-    fn, fs = font(F_HEAD, 820), font(F_HEAD, 104)
+    fn, fs = font(F_HEAD, size), font(F_HEAD, 104)
     bb = tbox(num, fn)
     nh = bb[3] - bb[1]
     h = nh + 60 + len(sub_lines) * 128 + 40

@@ -7,6 +7,7 @@ python3 tools/ig_post.py post docs/landing/insta/posts/001.json
               "share_to_feed": true}
           или {"type": "image", "image_url": "https://...jpg", "caption": "..."}
           или {"type": "carousel", "image_urls": ["https://...", ...], "caption": "..."}
+          или {"type": "story", "image_url": "https://...jpg"} / {"type": "story", "video_url": "https://...mp4"}
 Instagram забирает картинки, обложки и видео по публичной ссылке ("video_url" — ролик на сайте).
 Ключ — секрет IG_TOKEN (маркер из приложения Meta, живёт 60 дней). Результат — scratch/ig/<имя>.result.json.
 """
@@ -82,6 +83,14 @@ def post(path):
                 up = req("POST", c["uri"], raw=f.read(), headers={
                     "Authorization": f"OAuth {TOKEN}", "offset": "0", "file_size": str(size)})
         container = c["id"]
+    elif kind == "story":
+        params = {"media_type": "STORIES"}
+        if item.get("video_url"):
+            params["video_url"] = item["video_url"]
+        else:
+            params["image_url"] = item["image_url"]
+        container = req("POST", f"{uid}/media", params)["id"]
+        up = None
     elif kind == "image":
         container = req("POST", f"{uid}/media", {"image_url": item["image_url"], "caption": caption})["id"]
         up = None
