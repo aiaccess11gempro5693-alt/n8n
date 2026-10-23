@@ -32,7 +32,7 @@ def site_token():
     if not key:
         return "", ""
     site = os.environ.get("VK_SITE_URL", "").strip() or "https://iiavatar.ru"
-    req = urllib.request.Request(site.rstrip("/") + "/api/vk?token=1", headers={"x-vk-bridge-key": key})
+    req = urllib.request.Request(site.rstrip("/") + "/api/vk?token=1", headers={"x-vk-bridge-key": key, "User-Agent": "Mozilla/5.0 (iiavatar-bridge)"})
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             return json.load(r)["access_token"], ""
