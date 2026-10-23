@@ -1,0 +1,20 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig3_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig3_board_led.png",
+    "scratch/img/ig3_host.png"
+   ],
+   "person_note": "The presenter must be exactly the woman from the second attached photo.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER built EXACTLY in the «Табло лифта» design system from the FIRST attached board: near-black #0E0E10, glowing amber LED #FFB000 with dot-matrix texture, brushed steel #3A3D42, white condensed bold headlines (Oswald-like). The presenter is the woman with the short dark pixie haircut in a black turtleneck from the SECOND attached photo (same face, hair, clothes) — photorealistic, the same person, standing in a dark elevator lobby with steel doors and a tall mirror glowing with an amber frame behind her. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: big title in two lines «ЛИФТ, КОТОРЫЙ» / «ВСЕ НЕНАВИДЕЛИ» (the word «НЕНАВИДЕЛИ» glowing amber). No other words, no numbers, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+   "style_qa": "обложка в стиле приложенного борда «Табло лифта», ведущая из приложенного фото узнаваема и не искажена, надпись «ЛИФТ, КОТОРЫЙ ВСЕ НЕНАВИДЕЛИ» без ошибок, другого текста нет",
+   "meaning": "обложка 9:16 Reels «Лифт и зеркала»",
+   "prompt": "Vertical 9:16. The presenter waist-up in the lower half, centred, looking at the viewer with an intriguing expression. The title sits in the upper-middle part, centred, starting about 20% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid."
+  }
+ ]
+}
