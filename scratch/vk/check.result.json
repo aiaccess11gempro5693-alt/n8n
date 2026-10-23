@@ -1,20 +1,6 @@
 {
  "group_token": true,
  "user_token": false,
- "group_id": 242478374,
- "group": {
-  "name": "ИИАВАТАР | Видео с ИИ-ведущим",
-  "screen_name": "club242478374"
- },
- "group_token_permissions": [
-  "photos",
-  "docs",
-  "messages",
-  "wall",
-  "manage",
-  "stories",
-  "market"
- ],
- "group_can_upload_photo": "photos.getWallUploadServer: 27 Group authorization failed: method is unavailable with group auth.",
- "test_photo_upload": "photo-242478374_457239025_23d4d20760e769e425"
+ "user_token_error": "сайт ответил 403: error code: 1010\n",
+ "group_error": "groups.getById: 5 User authorization failed: invalid access_token (4)."
 }
