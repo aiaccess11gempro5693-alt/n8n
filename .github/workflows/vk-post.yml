@@ -2,7 +2,8 @@ name: VK Post
 
 # Публикация в сообщество ВК через API (песочница без прямого доступа в интернет).
 # Логика — tools/vk_post.py на указанной ветке; результат коммитится в scratch/vk/.
-# Секреты: VK_GROUP_TOKEN (ключ сообщества), необязательно VK_USER_TOKEN и VK_GROUP_ID.
+# Секреты: VK_GROUP_TOKEN (ключ сообщества), VK_BRIDGE_KEY (ключ администратора берётся с сайта),
+# необязательно VK_USER_TOKEN, VK_GROUP_ID и VK_SITE_URL.
 
 on:
   workflow_dispatch:
@@ -34,6 +35,8 @@ jobs:
           VK_GROUP_TOKEN: ${{ secrets.VK_GROUP_TOKEN }}
           VK_USER_TOKEN: ${{ secrets.VK_USER_TOKEN }}
           VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+          VK_BRIDGE_KEY: ${{ secrets.VK_BRIDGE_KEY }}
+          VK_SITE_URL: ${{ secrets.VK_SITE_URL }}
         run: python3 tools/vk_post.py "${{ github.event.inputs.mode }}" "${{ github.event.inputs.post_file }}"
       - name: Commit result
         if: always()
