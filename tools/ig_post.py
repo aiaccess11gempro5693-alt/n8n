@@ -3,7 +3,7 @@
 python3 tools/ig_post.py check                    — проверить ключ и аккаунт, ничего не публикуя
 python3 tools/ig_post.py post docs/landing/insta/posts/001.json
 
-Пост (JSON): {"type": "reel", "video": "путь.mp4", "caption": "...", "cover_url": "https://...jpg" (необязательно),
+Пост (JSON): {"type": "reel", "video": "путь.mp4", "caption": "...", "cover_url": "https://...jpg" или "thumb_offset_ms": 1500 (кадр обложки, необязательно),
               "share_to_feed": true}
           или {"type": "image", "image_url": "https://...jpg", "caption": "..."}
           или {"type": "carousel", "image_urls": ["https://...", ...], "caption": "..."}
@@ -67,6 +67,8 @@ def post(path):
                   "share_to_feed": str(item.get("share_to_feed", True)).lower()}
         if item.get("cover_url"):
             params["cover_url"] = item["cover_url"]
+        elif item.get("thumb_offset_ms") is not None:
+            params["thumb_offset"] = str(item["thumb_offset_ms"])
         c = req("POST", f"{uid}/media", params)
         size = os.path.getsize(item["video"])
         with open(item["video"], "rb") as f:
