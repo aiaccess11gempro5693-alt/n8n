@@ -15,5 +15,6 @@
   "stories",
   "market"
  ],
- "group_can_upload_photo": "photos.getWallUploadServer: 27 Group authorization failed: method is unavailable with group auth."
+ "group_can_upload_photo": "photos.getWallUploadServer: 27 Group authorization failed: method is unavailable with group auth.",
+ "test_photo_upload": "photo-242478374_457239025_23d4d20760e769e425"
 }
