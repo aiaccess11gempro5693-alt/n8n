@@ -1,0 +1,69 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig3_host",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig3_board_led.png"
+   ],
+   "person_note": "The woman must be exactly the presenter from the attached board (same face, short dark pixie haircut).",
+   "meaning": "ведущая с борда «Табло лифта» ~28: короткая тёмная стрижка, чёрная водолазка с янтарной деталью, фон — тёмная стальная стена лифтового холла с янтарной подсветкой; по пояс, обе руки в кадре, лицо нейтральное, губы приоткрыты, без улыбки, фотореализм, без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16, of exactly the presenter woman from the attached board (same face, short dark pixie haircut) — a confident, likeable storyteller about 28, NOT a fashion model, natural skin texture. FRAMING (very important): waist-up, centred, BOTH shoulders and BOTH arms fully inside the frame with generous margin (at least 12% of width) on left and right, hands relaxed at waist level holding nothing. Top of the head about 18% of frame height below the upper edge; face large and sharp. Expression: lively eyes, face NEUTRAL as in the middle of a sentence: lips slightly parted with a hint of teeth, NO smile. Clothes: black turtleneck with a thin amber #FFB000 detail. Background: a dark elevator lobby wall of brushed steel #3A3D42, softly out of focus, with a warm amber #FFB000 glow; soft key light on the face. No text, no letters, no logos, nothing covering the face, no headphones, no microphone."
+  },
+  {
+   "name": "ig3_crowd",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/ig3_board_led.png"
+   ],
+   "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+   "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+   "meaning": "раздражённая толпа офисных людей ждёт лифт в холле небоскрёба, кто-то смотрит на часы, кто-то вздыхает",
+   "prompt": "A crowd of annoyed office people in coats waiting in front of closed steel elevator doors in a skyscraper lobby; one checks his wristwatch, a woman sighs with folded arms, a man taps his foot. Amber floor indicator glow above the doors (only abstract dots/arrows)."
+  },
+  {
+   "name": "ig3_engineers",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/ig3_board_led.png"
+   ],
+   "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+   "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+   "meaning": "инженеры у технических чертежей лифтовой шахты и стопки денег — дорогой ремонт",
+   "prompt": "Two worried engineers in a dim technical room lean over large technical drawings of an elevator shaft spread on a steel table, beside a tall stack of banknotes and a calculator; amber desk light. The drawings contain only lines and shapes, no letters or numbers."
+  },
+  {
+   "name": "ig3_mirrors",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/ig3_board_led.png"
+   ],
+   "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+   "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+   "meaning": "те же люди в холле у лифтов смотрят в большие зеркала: поправляют причёску, улыбаются, разглядывают себя и соседей — ожидание не замечают",
+   "prompt": "The same skyscraper elevator lobby, now with tall mirrors in thin amber-lit frames on the walls next to the elevator doors. Relaxed office people look at their reflections: a woman fixes her hair, a man straightens his tie, two colleagues glance at each other in the mirror and smile. Calm, amused mood."
+  },
+  {
+   "name": "ig3_tower",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "2:3",
+   "extra_refs": [
+    "scratch/img/ig3_board_led.png"
+   ],
+   "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+   "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+   "meaning": "ночной небоскрёб снизу вверх, светящиеся окна, янтарный свет — атмосферный фон",
+   "prompt": "A tall skyscraper at night seen from below, dramatic perspective, a vertical strip of lit windows looks like an elevator shaft glowing amber, dark sky, light haze. Lots of dark empty space in the upper part of the image."
+  }
+ ]
+}
