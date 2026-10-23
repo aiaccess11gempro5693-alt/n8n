@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig3_board_blueprint",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "«Чертёж»: синий чертёжный #0D3B66, белые линии, ярко-жёлтый #FFD23F, светло-голубой #EAF2FB; ведущая ~32, рыжеватые волосы до плеч",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours, fonts or look. The Reels tells a story: tenants of a skyscraper hated the slow elevators; fixing them would cost millions and a year; it was solved in one day by hanging MIRRORS next to the elevators. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge headline «ЛИФТ, КОТОРЫЙ ВСЕ НЕНАВИДЕЛИ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), an INFOGRAPHIC card «Ускорить лифты: миллионы · 1 год» with a STAMP «РЕШИЛИ ЗА 1 ДЕНЬ», an ILLUSTRATION example (people waiting at elevators, looking at themselves in a big mirror), END CARD «Напишите «ЛИФТ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline, (2) presenter in the lower half + illustration card above, (3) presenter in a round frame + three chips «Обучение / Реклама / Блог», (4) full-screen typography «КАК? — В КОНЦЕ» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN, likeable storyteller (not a fashion model), waist-up, her clothes in the palette colours, a backdrop in the palette colours. The SAME woman appears in all frames. All text in Russian, short, correctly spelled. Mood: smart engineering story, ARCHITECT BLUEPRINT look — white thin technical line drawings of a skyscraper, elevator shafts, measurement arrows and grid on blueprint blue, hand-drawn annotations, yellow marker highlights. Palette: blueprint blue #0D3B66 background with a fine white grid, white line art, bright yellow #FFD23F highlights and stamp, pale blue #EAF2FB cards. Typography: «Unbounded» bold headlines + «IBM Plex Mono»-like technical captions. The woman is about 32, shoulder-length auburn hair, wears a white shirt with rolled sleeves."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
