@@ -1,0 +1,52 @@
+[
+ {
+  "name": "ex-not-exist",
+  "type": "story",
+  "video_url": "https://resource2.heygen.ai/video/8f41ff85c7d249cb8d3739ed4bdd28ae/original.mp4"
+ },
+ {
+  "name": "ex-scams",
+  "type": "story",
+  "video_url": "https://talking-heads-studio.lovable.app/examples/expert-scams-9x16.mp4"
+ },
+ {
+  "name": "ex-recipe",
+  "type": "story",
+  "video_url": "https://talking-heads-studio.lovable.app/examples/product-recipe-9x16.mp4"
+ },
+ {
+  "name": "ex-returns",
+  "type": "story",
+  "video_url": "https://talking-heads-studio.lovable.app/examples/training-returns-9x16.mp4"
+ },
+ {
+  "name": "ex-ceo",
+  "type": "story",
+  "video_url": "https://talking-heads-studio.lovable.app/examples/localization-ceo-9x16.mp4"
+ },
+ {
+  "name": "prices-1",
+  "type": "story",
+  "image_url": "https://resource2.heygen.ai/image/e9788a38c51740ca986ffed7afeaa0f5/original.jpg"
+ },
+ {
+  "name": "prices-2",
+  "type": "story",
+  "image_url": "https://resource2.heygen.ai/image/9726969eb7374001adec7f1a410c67dc/original.jpg"
+ },
+ {
+  "name": "order-1",
+  "type": "story",
+  "image_url": "https://resource2.heygen.ai/image/526df6cc94f44cae9f8674f96bee6eb0/original.jpg"
+ },
+ {
+  "name": "langs-1",
+  "type": "story",
+  "image_url": "https://resource2.heygen.ai/image/a43723b726f642cb9175ec7f1f8636b6/original.jpg"
+ },
+ {
+  "name": "langs-ceo",
+  "type": "story",
+  "video_url": "https://talking-heads-studio.lovable.app/examples/localization-ceo-9x16.mp4"
+ }
+]

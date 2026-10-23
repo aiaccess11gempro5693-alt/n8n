@@ -59,7 +59,20 @@ def wait_ready(container):
 
 
 def post(path):
-    item = json.load(open(path))
+    data = json.load(open(path))
+    if isinstance(data, list):   # пачка — по порядку (истории для «Актуального» и т.п.)
+        out = []
+        for it in data:
+            try:
+                out.append(post_item(it))
+            except Exception as e:
+                out.append({"error": str(e), "item": it.get("name")})
+                break
+        return out
+    return post_item(data)
+
+
+def post_item(item):
     uid = me()["user_id"]
     kind = item.get("type", "reel")
     caption = item.get("caption", "")
@@ -107,7 +120,7 @@ def post(path):
     wait_ready(container)
     pub = req("POST", f"{uid}/media_publish", {"creation_id": container})
     link = req("GET", pub["id"], {"fields": "permalink"}).get("permalink")
-    return {"container": container, "upload": up, "media_id": pub["id"], "permalink": link}
+    return {"name": item.get("name"), "container": container, "upload": up, "media_id": pub["id"], "permalink": link}
 
 
 def check():
