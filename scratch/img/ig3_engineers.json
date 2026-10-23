@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "ig3_engineers",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/ig3_board_led.png"
+    ],
+    "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+    "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+    "meaning": "инженеры у технических чертежей лифтовой шахты и стопки денег — дорогой ремонт",
+    "prompt": "Two worried engineers in a dim technical room lean over large technical drawings of an elevator shaft spread on a steel table, beside a tall stack of banknotes and a calculator; amber desk light. The drawings contain only lines and shapes, no letters or numbers."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
