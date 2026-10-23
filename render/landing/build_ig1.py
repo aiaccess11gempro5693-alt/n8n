@@ -352,7 +352,7 @@ def render_scene(k, sc, t0, t1, caps):
                   f"crop={W}:{H}:x='24+18*sin(t*97)*({amp})':y='24+14*cos(t*83)*({amp})'[shk]")
         last = "shk"
     # полоса прогресса сверху — растёт на всю длину ролика
-    fc.append(f"[{last}]drawbox=x=0:y=0:w='{W}*(t+{t0:.3f})/{TOTAL:.3f}':h={PROGRESS_H}:color=0xF3531B:t=fill[pg]")
+    fc.append(f"[{last}]drawbox=x=0:y=0:w='{W}*(t+{t0:.3f})/{TOTAL:.3f}':h={PROGRESS_H}:color={getattr(T, 'PROGRESS_COLOR', '0xF3531B')}:t=fill[pg]")
     last = "pg"
     if k > 0:
         T.swipe(p("swipe"), W, H)
