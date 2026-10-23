@@ -115,6 +115,39 @@ def upload_video(gid, item):
     return f"video{meta['owner_id']}_{meta['video_id']}"
 
 
+def video_test(path="scratch/vk/test-video.mp4"):
+    """Пробуем загрузить видео ключом сообщества разными способами; удачную загрузку сразу удаляем."""
+    gid = group_id()
+    out = {"group_id": gid}
+    tries = {
+        "video.save group_id private": lambda: call("video.save", GROUP, group_id=gid, name="test", is_private=1),
+        "video.save group_id": lambda: call("video.save", GROUP, group_id=gid, name="test", wallpost=0),
+        "video.save no group_id private": lambda: call("video.save", GROUP, name="test", is_private=1),
+        "shortVideo.create": lambda: call("shortVideo.create", GROUP, group_id=gid, file_size=os.path.getsize(path)),
+        "docs.getMessagesUploadServer": lambda: call("docs.getMessagesUploadServer", GROUP, peer_id=0, type="doc"),
+    }
+    for name, fn in tries.items():
+        if name == "video.save group_id" and "upload" in out.get("video.save group_id private", {}):
+            continue  # закрытая загрузка уже прошла — открытую (видна в группе) не пробуем
+        try:
+            meta = fn()
+            res = {"meta": {k: v for k, v in meta.items() if k != "upload_url"}}
+            field = "file" if name in ("shortVideo.create", "docs.getMessagesUploadServer") else "video_file"
+            res["upload"] = upload(meta["upload_url"], field, path)
+            if name.startswith("docs"):
+                res["saved"] = call("docs.save", GROUP, file=res["upload"]["file"], title="test")
+            vid, owner = meta.get("video_id"), meta.get("owner_id")
+            if vid and owner:
+                try:
+                    res["deleted"] = call("video.delete", GROUP, video_id=vid, owner_id=owner)
+                except Exception as e:
+                    res["delete_error"] = str(e)
+            out[name] = res
+        except Exception as e:
+            out[name] = {"error": str(e)}
+    return out
+
+
 def check():
     out = {"group_token": bool(GROUP), "user_token": bool(USER)}
     if USER_ERROR:
@@ -181,9 +214,9 @@ def post(path):
 if __name__ == "__main__":
     mode = sys.argv[1]
     os.makedirs("scratch/vk", exist_ok=True)
-    name = "check" if mode == "check" else os.path.splitext(os.path.basename(sys.argv[2]))[0]
+    name = mode if mode in ("check", "video_test") else os.path.splitext(os.path.basename(sys.argv[2]))[0]
     try:
-        result = check() if mode == "check" else post(sys.argv[2])
+        result = check() if mode == "check" else video_test() if mode == "video_test" else post(sys.argv[2])
     except Exception as e:
         result = {"error": str(e)}
     print(json.dumps(result, ensure_ascii=False, indent=1))
