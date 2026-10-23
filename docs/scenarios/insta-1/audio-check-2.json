@@ -1,0 +1,53 @@
+{
+ "mode": "audio_check",
+ "jobs": [
+  {
+   "name": "ig1-v2-stress-a",
+   "audio": "scratch/ig1-v2-a.mp3",
+   "text": "[upbeat, confident] Стоп. [pause] [slowly] Две секунды… [pause] столько у меня есть, чтобы вы не пролистали. [pause] [playful] Получилось? [pause] [confident, persuasive] Тогда — три правила видео, [pause] которое досматривают. [pause] [emphatic] Первое. [pause] Лицо в кадре. Мы смотрим на людей, а не на текст. [pause] [emphatic] Второе. [pause] Одна мысль — одна сцена. [pause] [emphatic] Третье. [pause] Субтитры: многие смотрят ленту без звука. [long pause] [mysterious, softly, slowly] И кстати… [pause] меня… не существует. [pause] [amazed] Ни камеры. Ни студии. [pause] Я — нейросеть. А этот ролик собран из текста за один день. [pause] [warm, energetic] Хотите такого ведущего для своего бизнеса? [pause] Напишите «ведущий» в директ. [long pause] [whispers] Пока-пока.",
+   "watch": [
+    "секунды",
+    "пролистали",
+    "досматривают",
+    "субтитры",
+    "существует",
+    "нейросеть",
+    "ведущего",
+    "директ",
+    "студии"
+   ]
+  },
+  {
+   "name": "ig1-v2-stress-b",
+   "audio": "scratch/ig1-v2-b.mp3",
+   "text": "[upbeat, confident] Стоп. [pause] [slowly] Две секунды… [pause] столько у меня есть, чтобы вы не пролистали. [pause] [playful] Получилось? [pause] [confident, persuasive] Тогда — три правила видео, [pause] которое досматривают. [pause] [emphatic] Первое. [pause] Лицо в кадре. Мы смотрим на людей, а не на текст. [pause] [emphatic] Второе. [pause] Одна мысль — одна сцена. [pause] [emphatic] Третье. [pause] Субтитры: многие смотрят ленту без звука. [long pause] [mysterious, softly, slowly] И кстати… [pause] меня… не существует. [pause] [amazed] Ни камеры. Ни студии. [pause] Я — нейросеть. А этот ролик собран из текста за один день. [pause] [warm, energetic] Хотите такого ведущего для своего бизнеса? [pause] Напишите «ведущий» в директ. [long pause] [whispers] Пока-пока.",
+   "watch": [
+    "секунды",
+    "пролистали",
+    "досматривают",
+    "субтитры",
+    "существует",
+    "нейросеть",
+    "ведущего",
+    "директ",
+    "студии"
+   ]
+  },
+  {
+   "name": "ig1-v2-stress-c",
+   "audio": "scratch/ig1-v2-c.mp3",
+   "text": "[upbeat, confident] Стоп. [pause] [slowly] Две секунды… [pause] столько у меня есть, чтобы вы не пролистали. [pause] [playful] Получилось? [pause] [confident, persuasive] Тогда — три правила видео, [pause] которое досматривают. [pause] [emphatic] Первое. [pause] Лицо в кадре. Мы смотрим на людей, а не на текст. [pause] [emphatic] Второе. [pause] Одна мысль — одна сцена. [pause] [emphatic] Третье. [pause] Субтитры: многие смотрят ленту без звука. [long pause] [mysterious, softly, slowly] И кстати… [pause] меня… не существует. [pause] [amazed] Ни камеры. Ни студии. [pause] Я — нейросеть. А этот ролик собран из текста за один день. [pause] [warm, energetic] Хотите такого ведущего для своего бизнеса? [pause] Напишите «ведущий» в директ. [long pause] [whispers] Пока-пока.",
+   "watch": [
+    "секунды",
+    "пролистали",
+    "досматривают",
+    "субтитры",
+    "существует",
+    "нейросеть",
+    "ведущего",
+    "директ",
+    "студии"
+   ]
+  }
+ ]
+}
