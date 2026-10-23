@@ -1,0 +1,20 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig1_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig1_board.png",
+    "scratch/img/ig1_host_b.png"
+   ],
+   "person_note": "The presenter must be exactly the person from the second attached photo.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER built EXACTLY in the design system «ИИАВАТАР · Reels» from the FIRST attached board: graphite #111311, vivid orange #F3531B, warm white; condensed bold Oswald-like headlines; orange highlight boxes; subtle digital glitch (RGB split, scan lines) on one side of the presenter. The presenter is the woman in the orange blazer from the SECOND attached photo (same face, hair, clothes) — photorealistic, the same person. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: big title in two lines «МЕНЯ НЕ» / «СУЩЕСТВУЕТ» (the second line white on an orange box). No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+   "style_qa": "обложка в стиле приложенного борда, ведущая из приложенного фото узнаваема и не искажена, надпись «МЕНЯ НЕ СУЩЕСТВУЕТ» без ошибок, другого текста нет",
+   "meaning": "обложка 9:16 Reels «Меня не существует»",
+   "prompt": "Vertical 9:16. The presenter waist-up in the lower two thirds, centred, looking at the viewer; the right half of her silhouette is slightly glitched. The title sits in the upper third, centred, inside the central 4:5 safe area so it is not cropped in the profile grid."
+  }
+ ]
+}
