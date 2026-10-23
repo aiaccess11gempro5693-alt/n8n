@@ -1,0 +1,17 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig2_host",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig2_board_light.png"
+   ],
+   "person_note": "The man must be exactly the presenter from the attached board (same face, hair, stubble).",
+   "meaning": "ведущий-мужчина ~32 с борда «Светлый журнальный»: чёрная футболка, светло-серая рубашка нараспашку, тёплый белый студийный фон; по пояс, обе руки в кадре, лицо нейтральное, губы приоткрыты, без улыбки, фотореализм, без надписей",
+   "prompt": "Photorealistic photograph, vertical 9:16, of exactly the presenter man from the attached board (same face, hair and light stubble) — a confident, likeable Russian expert about 32, NOT a fashion model, natural skin texture. FRAMING (very important): waist-up, centred, BOTH shoulders and BOTH arms fully inside the frame with generous margin (at least 12% of width) on left and right, hands relaxed at waist level holding nothing. Top of the head about 14% of frame height below the upper edge; face large and sharp. Expression: confident, lively eyes, face NEUTRAL as in the middle of a sentence: lips slightly parted with a hint of teeth, NO smile. Clothes: black t-shirt and a light grey overshirt, open. Background: a plain seamless warm white #F5F3EE studio backdrop with a very soft shadow, bright even soft light. No text, no logos, nothing covering the face, no headphones, no microphone."
+  }
+ ]
+}
