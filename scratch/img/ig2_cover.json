@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "ig2_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig2_board_light.png",
+      "scratch/img/ig2_host.png"
+    ],
+    "person_note": "The presenter must be exactly the man from the second attached photo.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER built EXACTLY in the light editorial design system from the FIRST attached board: warm off-white #F5F3EE background, black #111111 condensed bold headlines, vivid red #FF3B30 highlight box, thin red line chart. The presenter is the man in the grey shirt over a black T-shirt from the SECOND attached photo (same face, hair, clothes) — photorealistic, the same person. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: big title in two lines «ВЫ ЗАБУДЕТЕ» / «ЭТО ВИДЕО» (the second line white on a red box). No other words, no numbers, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+    "style_qa": "обложка в стиле приложенного светлого борда, ведущий из приложенного фото узнаваем и не искажён, надпись «ВЫ ЗАБУДЕТЕ ЭТО ВИДЕО» без ошибок, другого текста нет",
+    "meaning": "обложка 9:16 Reels «Вы забудете это видео» (кривая забывания)",
+    "prompt": "Vertical 9:16. The presenter waist-up in the lower two thirds, centred, looking at the viewer with a slightly intriguing expression. Behind him a thin red falling curve (forgetting curve) sweeps across the background, without axis labels. The title sits in the upper third, centred, inside the central 4:5 safe area so it is not cropped in the profile grid."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
