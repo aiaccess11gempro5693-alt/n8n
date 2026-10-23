@@ -36,16 +36,16 @@ from render.landing import theme_brand as T
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 HERE = os.path.dirname(os.path.abspath(__file__))
 TMP = f"{HERE}/_frames_ig1"
-AUDIO = f"{ROOT}/scratch/ig1-v2-b-trim.mp3"
-WHISPER = f"{ROOT}/scratch/ig1-v2-b-whisper-1.json"
-CLIP = f"{ROOT}/scratch/ig1-host-v2.mp4"
+AUDIO = f"{ROOT}/scratch/ig1-v3-b-trim.mp3"
+WHISPER = f"{ROOT}/scratch/ig1-v3-b-whisper-1.json"
+CLIP = f"{ROOT}/scratch/ig1-host-v3.mp4"
 MUSIC = f"{ROOT}/scratch/ig1-music.mp3"
 TEXTS = f"{ROOT}/docs/scenarios/insta-1-not-exist.md"
 OUT = f"{HERE}/ig1-9x16.mp4"
 
 W, H, FPS = 1080, 1920, 25
 TAIL = 0.8
-BOUNDS = [0.0, 7.75, 11.35, 22.85, 26.55, 32.95]
+BOUNDS = [0.0, 5.35, 8.45, 18.2, 20.85, 26.4]
 CAP_W, CAP_X, CAP_BOTTOM = 980, 50, 1840
 POP = 0.32
 TOTAL = 1.0
@@ -163,7 +163,7 @@ def scenes(F):
             (T.big_number(p("s2_three"), "3", [[("правила", "w"), ("видео,", "w")], [("которое", "w")],
                                                 [("досматривают", "box")]], 1000), 40, 110, b[1] + 0.05),
         ]},
-        {"bg": p("bg"), "av": dict(LAYOUT["panel"], cuts=[(F("Второе"), 1.1), (F("Третье"), 1.0)]), "els": [
+        {"bg": p("bg"), "av": dict(LAYOUT["panel"], cuts=[(F("Мы"), 1.12), (F("Второе"), 1.0), (F("Третье"), 1.15), (F("Многие"), 1.0)]), "els": [
             (T.rules_card(p("s3_r0"), rules, 0), 10, 30, b[2] + 0.05, F("Второе"), "pop", True),
             (T.rules_card(p("s3_r1"), rules, 1), 10, 30, F("Второе"), F("Третье"), "state"),
             (T.rules_card(p("s3_r2"), rules, 2), 10, 30, F("Третье"), None, "state"),
