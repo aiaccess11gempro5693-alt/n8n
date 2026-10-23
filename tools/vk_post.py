@@ -6,8 +6,9 @@ python3 tools/vk_post.py post docs/landing/vk/posts/001.json
 Пост (JSON): {"text": "...", "images": ["путь.jpg"], "videos": [{"path": "x.mp4", "title": "...", "clip": true}],
               "publish_date": "2026-10-23T10:00:00+03:00" (необязательно — отложенный пост),
               "pin": false}
-Ключи из окружения: VK_GROUP_TOKEN (ключ сообщества) и, если есть, VK_USER_TOKEN
-(ключ администратора — нужен для загрузки фото/видео, если ключ сообщества этого не умеет).
+Ключи из окружения: VK_GROUP_TOKEN (ключ сообщества) и ключ администратора (нужен для видео):
+VK_USER_TOKEN напрямую или VK_BRIDGE_KEY — тогда свежий ключ берётся с сайта
+(VK_SITE_URL, по умолчанию https://iiavatar.ru, маршрут /api/vk?token=1; вход — /api/vk?login=1).
 Результат пишется в scratch/vk/<имя>.result.json.
 """
 import datetime
@@ -15,6 +16,7 @@ import json
 import os
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 import uuid
 
@@ -22,6 +24,26 @@ API = "https://api.vk.com/method/"
 V = "5.199"
 GROUP = os.environ.get("VK_GROUP_TOKEN", "").strip()
 USER = os.environ.get("VK_USER_TOKEN", "").strip()
+USER_ERROR = ""
+
+
+def site_token():
+    key = os.environ.get("VK_BRIDGE_KEY", "").strip()
+    if not key:
+        return "", ""
+    site = os.environ.get("VK_SITE_URL", "").strip() or "https://iiavatar.ru"
+    req = urllib.request.Request(site.rstrip("/") + "/api/vk?token=1", headers={"x-vk-bridge-key": key})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)["access_token"], ""
+    except urllib.error.HTTPError as e:
+        return "", f"сайт ответил {e.code}: {e.read().decode()[:300]}"
+    except Exception as e:
+        return "", f"сайт недоступен: {e}"
+
+
+if not USER:
+    USER, USER_ERROR = site_token()
 
 
 def call(method, token, **params):
@@ -78,7 +100,7 @@ def upload_photo(gid, path):
 def upload_video(gid, item):
     """Видео в сообщество (нужен VK_USER_TOKEN). clip=true — сначала пробуем как клип (shortVideo)."""
     if not USER:
-        raise RuntimeError("Для загрузки видео нужен VK_USER_TOKEN (ключ администратора)")
+        raise RuntimeError("Для загрузки видео нужен ключ администратора: " + (USER_ERROR or "нет VK_BRIDGE_KEY / VK_USER_TOKEN"))
     if item.get("clip"):
         try:
             meta = call("shortVideo.create", USER, group_id=gid, file_size=os.path.getsize(item["path"]),
@@ -95,6 +117,8 @@ def upload_video(gid, item):
 
 def check():
     out = {"group_token": bool(GROUP), "user_token": bool(USER)}
+    if USER_ERROR:
+        out["user_token_error"] = USER_ERROR
     if not GROUP and not USER:
         out["error"] = "Нет ни VK_GROUP_TOKEN, ни VK_USER_TOKEN в секретах репозитория"
         return out
