@@ -46,7 +46,11 @@ OUT = f"{HERE}/ig1-9x16.mp4"
 W, H, FPS = 1080, 1920, 25
 TAIL = 0.8
 BOUNDS = [0.0, 5.35, 8.45, 18.2, 20.85, 26.4]
-CAP_W, CAP_X, CAP_BOTTOM = 980, 50, 1840
+# Безопасная зона Instagram (iPhone 17 Pro, 23.10.2026): сверху статус-бар и кнопки
+# «назад/камера», снизу имя аккаунта, подпись и кнопки справа. Надписи и субтитры —
+# только между SAFE_TOP и SAFE_BOTTOM; check_layout это проверяет.
+SAFE_TOP, SAFE_BOTTOM = 250, 1500
+CAP_W, CAP_X, CAP_BOTTOM = 980, 50, SAFE_BOTTOM - 20
 POP = 0.32
 TOTAL = 1.0
 PROGRESS_H = 12          # оранжевая полоса прогресса сверху (удержание)
@@ -242,6 +246,9 @@ def check_layout(k, sc, t0, t1, caps):
                 errs.append(f"сцена {k + 1}: {n} {tuple(map(int, rr))} наезжает на {n2} {tuple(map(int, r2))}")
         if rr and (rr[0] < 0 or rr[1] < 0 or rr[2] > W or rr[3] > H):
             errs.append(f"сцена {k + 1}: {n} выходит за кадр {rr}")
+        elif rr and (rr[1] < SAFE_TOP or rr[3] > SAFE_BOTTOM):
+            errs.append(f"сцена {k + 1}: {n} {tuple(map(int, rr))} вне безопасной зоны Instagram "
+                        f"(по высоте {SAFE_TOP}–{SAFE_BOTTOM})")
     if errs:
         raise SystemExit("Наложение элементов:\n" + "\n".join(errs))
 
@@ -414,5 +421,12 @@ def main():
     print("done", OUT)
 
 
+def legacy_layout():
+    """Раскладка опубликованных Reels №1–2 — сделаны до правила безопасной зоны."""
+    global SAFE_TOP, SAFE_BOTTOM, CAP_BOTTOM
+    SAFE_TOP, SAFE_BOTTOM, CAP_BOTTOM = 0, H, 1840
+
+
 if __name__ == "__main__":
+    legacy_layout()
     main()

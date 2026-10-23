@@ -104,6 +104,7 @@ def scenes(F):
 
 
 B.scenes = scenes
+B.legacy_layout()   # опубликован до правила безопасной зоны Instagram
 
 if __name__ == "__main__":
     B.main()
