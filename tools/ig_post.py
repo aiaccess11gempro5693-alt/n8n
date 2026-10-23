@@ -7,7 +7,7 @@ python3 tools/ig_post.py post docs/landing/insta/posts/001.json
               "share_to_feed": true}
           или {"type": "image", "image_url": "https://...jpg", "caption": "..."}
           или {"type": "carousel", "image_urls": ["https://...", ...], "caption": "..."}
-Картинки Instagram забирает только по публичной ссылке (JPEG); Reels загружаем файлом напрямую.
+Instagram забирает картинки, обложки и видео по публичной ссылке ("video_url" — ролик на сайте).
 Ключ — секрет IG_TOKEN (маркер из приложения Meta, живёт 60 дней). Результат — scratch/ig/<имя>.result.json.
 """
 import json
@@ -63,17 +63,24 @@ def post(path):
     kind = item.get("type", "reel")
     caption = item.get("caption", "")
     if kind == "reel":
-        params = {"media_type": "REELS", "upload_type": "resumable", "caption": caption,
+        params = {"media_type": "REELS", "caption": caption,
                   "share_to_feed": str(item.get("share_to_feed", True)).lower()}
         if item.get("cover_url"):
             params["cover_url"] = item["cover_url"]
         elif item.get("thumb_offset_ms") is not None:
             params["thumb_offset"] = str(item["thumb_offset_ms"])
-        c = req("POST", f"{uid}/media", params)
-        size = os.path.getsize(item["video"])
-        with open(item["video"], "rb") as f:
-            up = req("POST", c["uri"], raw=f.read(), headers={
-                "Authorization": f"OAuth {TOKEN}", "offset": "0", "file_size": str(size)})
+        if item.get("video_url"):
+            # API с входом через Instagram принимает видео по публичной ссылке
+            params["video_url"] = item["video_url"]
+            c = req("POST", f"{uid}/media", params)
+            up = None
+        else:
+            params["upload_type"] = "resumable"
+            c = req("POST", f"{uid}/media", params)
+            size = os.path.getsize(item["video"])
+            with open(item["video"], "rb") as f:
+                up = req("POST", c["uri"], raw=f.read(), headers={
+                    "Authorization": f"OAuth {TOKEN}", "offset": "0", "file_size": str(size)})
         container = c["id"]
     elif kind == "image":
         container = req("POST", f"{uid}/media", {"image_url": item["image_url"], "caption": caption})["id"]
