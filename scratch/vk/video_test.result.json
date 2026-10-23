@@ -1,3 +1,18 @@
 {
- "error": "groups.getById: 5 User authorization failed: invalid access_token (4)."
+ "group_id": 242478374,
+ "video.save group_id private": {
+  "error": "video.save: 5 User authorization failed"
+ },
+ "video.save group_id": {
+  "error": "video.save: 5 User authorization failed"
+ },
+ "video.save no group_id private": {
+  "error": "video.save: 5 User authorization failed"
+ },
+ "shortVideo.create": {
+  "error": "shortVideo.create: 27 Group authorization failed: method is unavailable with group auth."
+ },
+ "docs.getMessagesUploadServer": {
+  "error": "docs.getMessagesUploadServer: 100 One of the parameters specified was missing or invalid: peer_id is invalid"
+ }
 }
