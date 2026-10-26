@@ -1,6 +1,6 @@
 {
  "mode": "site_capture",
- "jobs": [
+ "sites": [
   {"name": "ref_reel_1", "url": "https://www.instagram.com/reel/DZ_R-L6sPBV/"}
  ]
 }
