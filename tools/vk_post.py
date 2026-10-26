@@ -8,7 +8,7 @@ python3 tools/vk_post.py post docs/landing/vk/posts/001.json
               "pin": false}
 Ключи из окружения: VK_GROUP_TOKEN (ключ сообщества) и ключ администратора (нужен для видео):
 VK_USER_TOKEN напрямую или VK_BRIDGE_KEY — тогда свежий ключ берётся с сайта
-(VK_SITE_URL, по умолчанию https://iiavatar.ru, маршрут /api/vk?token=1; вход — /api/vk?login=1).
+(VK_SITE_URL, по умолчанию адрес Lovable — iiavatar.ru за Cloudflare отвечает мосту 1010, маршрут /api/vk?token=1; вход — /api/vk?login=1).
 Результат пишется в scratch/vk/<имя>.result.json.
 """
 import datetime
@@ -31,7 +31,7 @@ def site_token():
     key = os.environ.get("VK_BRIDGE_KEY", "").strip()
     if not key:
         return "", ""
-    site = os.environ.get("VK_SITE_URL", "").strip() or "https://iiavatar.ru"
+    site = os.environ.get("VK_SITE_URL", "").strip() or "https://talking-heads-studio.lovable.app"
     req = urllib.request.Request(site.rstrip("/") + "/api/vk?token=1", headers={"x-vk-bridge-key": key, "User-Agent": "Mozilla/5.0 (iiavatar-bridge)"})
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
