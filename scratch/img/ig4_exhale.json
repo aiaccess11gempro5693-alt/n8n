@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "ig4_exhale",
+    "meaning": "взрослый мужчина ~30 в профиль выдыхает большое облако пара в тёмной комнате",
+    "prompt": "An adult man about 30 in profile exhaling a big cloud of vapour in a dark navy room, rim light in warm cognac tone, the cloud lit with a slight coral glow, moody and serious. Adult only. No device brand visible, no text.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/ig4_board.png"
+    ],
+    "style": "Cinematic photorealistic still in the design system from the attached board: deep navy #1B2A4A and charcoal #232428 shadows, warm cognac #B8743A light accents, a touch of coral-red #E5533D for danger. Premium medical-documentary look, shallow depth of field, clean. Absolutely NO readable text, NO letters, NO brand names, NO logos anywhere.",
+    "style_qa": "кинематографичный фотореалистичный кадр в палитре борда (тёмно-синий, графит, коньячный свет, коралловый акцент), без надписей, брендов и логотипов, смысл соответствует описанию"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
