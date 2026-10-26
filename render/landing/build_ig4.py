@@ -37,11 +37,11 @@ B.OUT = f"{B.HERE}/ig4-9x16.mp4"
 B.BOUNDS = [0.0, 6.45, 12.0, 18.85, 27.75, 35.0, 41.3, 47.15]
 # Голова ведущей в кадре клипа 1080×1920 (волосы, лицо, шея) — по фото.
 B.HEAD = (230, 230, 830, 700)
-B.FACE = (503, 430)
+B.FACE = (503, 470)
 B.SHOW = {}
 B.LAYOUT = {
     "full": {"kind": "scale", "s": 1.0, "y": 390, "mask": dict(top=200)},
-    "panel": {"kind": "scale", "s": 0.7, "y": 755, "mask": dict(top=200, side=160)},
+    "panel": {"kind": "scale", "s": 0.7, "y": 755, "mask": dict(top=200, side=330)},
     "circle": {"kind": "circle", "size": 400, "x": 340, "y": 260, "r": 330},
 }
 P = B.p
