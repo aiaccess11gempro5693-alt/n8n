@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "vk3_post_steps",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [],
+    "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: big headline «ВИДЕО ИЗ ТЕКСТА» and below it «за 4 шага», plus four small numbered labels «1 Текст», «2 Сценарий», «3 Ведущий», «4 Готовый ролик». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+    "style_qa": "графика в графитово-оранжевом стиле ИИАВАТАР, надписи без ошибок: big headline «ВИДЕО ИЗ ТЕКСТА» and below it «за 4 шага», plus four small numbered labels «1 Текст», «2 Сценарий», «3 Ведущий», «4 Готовый ролик»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "ВК пост vk3_post_steps",
+    "prompt": "A clean horizontal or zig-zag process path of four rounded cards connected by glowing orange arrows: a paper document → a script page with a pencil → a friendly AI presenter woman in a video frame → a finished video with a play button. Headline at the top. Square post image, all text large and readable on a phone, safe margins 8% on every side."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

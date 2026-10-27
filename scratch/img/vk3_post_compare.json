@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "vk3_post_compare",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [],
+    "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: headline «СЪЁМКА или ИИ-ВЕДУЩИЙ» and two column titles «Студия» and «ИИАВАТАР» with short lines under them: «2–3 недели» / «1 день», «пересъёмка» / «правка текста». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+    "style_qa": "графика в графитово-оранжевом стиле ИИАВАТАР, надписи без ошибок: headline «СЪЁМКА или ИИ-ВЕДУЩИЙ» and two column titles «Студия» and «ИИАВАТАР» with short lines under them: «2–3 недели» / «1 день», «пересъёмка» / «правка текста»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "ВК пост vk3_post_compare",
+    "prompt": "Split comparison: left half muted grey with a film camera, lights and a clapperboard (old way), right half glowing orange-accented with a friendly AI presenter on a screen (new way); a thin divider; headline across the top. Square post image, all text large and readable on a phone, safe margins 8% on every side."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

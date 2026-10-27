@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "vk3_post_uses",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [],
+    "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: big headline «ГДЕ ПРИГОДИТСЯ ИИ-ВЕДУЩИЙ» and a 2×3 grid of short labels «Обучение», «Реклама», «Блог», «Онлайн-уроки», «Перевод», «Регламенты». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+    "style_qa": "графика в графитово-оранжевом стиле ИИАВАТАР, надписи без ошибок: big headline «ГДЕ ПРИГОДИТСЯ ИИ-ВЕДУЩИЙ» and a 2×3 grid of short labels «Обучение», «Реклама», «Блог», «Онлайн-уроки», «Перевод», «Регламенты»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "ВК пост vk3_post_uses",
+    "prompt": "A neat 2×3 bento grid of rounded dark tiles, each with a simple orange line icon (graduation cap, megaphone, microphone, laptop, globe, document) and its label; headline at the top. Square post image, all text large and readable on a phone, safe margins 8% on every side."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
