@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig5_board_cafe",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "«Венское кафе 1920-х»: кофейный #3B2A20, сливочный #F4EBDD, бутылочно-зелёный #1F4D3A, медь #C47A3D; ведущая ~35, светлые волосы в каре",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours, fonts or look. The Reels tells a story about the ZEIGARNIK EFFECT: why we can't stop a TV series in the middle of an episode; about 100 years ago psychologist Bluma Zeigarnik noticed that a café waiter remembers every order until it is paid and forgets it right after; unfinished tasks are remembered about twice as well. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge headline «ПОЧЕМУ ВЫ НЕ МОЖЕТЕ БРОСИТЬ СЕРИАЛ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), an INFOGRAPHIC card «Незаконченное помнят ≈ 2× лучше» with two bars, an ILLUSTRATION example (a 1920s café, a waiter with a notepad of orders, some orders crossed out and fading), a «OPEN LOOP» icon (an unclosed circle that closes at the end), END CARD «Напишите «ПЕТЛЯ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline and a video progress bar cut in the middle, (2) presenter in the lower half + illustration card above, (3) presenter in a round frame + the 2× chart, (4) full-screen typography «СЛЕДУЮЩАЯ СЕРИЯ ЧЕРЕЗ 5…» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN, likeable storyteller (not a fashion model), waist-up, her clothes in the palette colours, a backdrop in the palette colours. The SAME woman appears in all frames. All text in Russian, short, correctly spelled. Mood: a cozy 1920s European café — bentwood chairs, marble tables, coffee cups, handwritten bills and order slips, Art Nouveau ornament lines, warm lamp light; storytelling with charm. Palette: coffee brown #3B2A20, cream paper #F4EBDD cards, bottle green #1F4D3A, copper #C47A3D highlights. Typography: an elegant serif display face for headlines (like «Playfair Display» Cyrillic) + handwritten-style notes + «Manrope». The woman is about 35, blond bob, wears a bottle-green blouse with a copper brooch."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
