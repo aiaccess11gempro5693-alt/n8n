@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "ig5_cafe",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/ig5_board_notepad.png"
+    ],
+    "style": "Hand-drawn pencil SKETCH illustration in the «Блокнот» look from the attached design board: graphite #2B2B2B line art with light hatching on cream squared notebook paper #FAF6EC, a few accents in red pencil #D7263D and yellow marker #FFD447, like a smart doodle explainer. Clean, readable, centred composition with paper margin around. Absolutely NO readable text, NO letters, NO numbers, NO logos anywhere; lists are drawn as abstract scribble lines.",
+    "style_qa": "рисованный карандашный скетч на бумаге в клетку в стиле борда «Блокнот» (графит, красный карандаш, жёлтый маркер), без читаемых надписей, букв и цифр, смысл соответствует описанию",
+    "meaning": "официант 1920-х в жилете и бабочке у столика кафе держит блокнот с заказами; часть строк зачёркнута красным и исчезает",
+    "prompt": "A 1920s café waiter in a waistcoat and bow tie standing by a small marble café table with coffee cups, holding a small order notepad; on the notepad several abstract scribble lines, some crossed out in red pencil and fading away; bentwood chairs in the background."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "ig5_host",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig5_board_notepad.png"
+    ],
+    "person_note": "The woman must be exactly the presenter from the attached board (same face, red hair in a ponytail).",
+    "meaning": "ведущая с борда «Блокнот» ~27: рыжие волосы в хвосте, белая футболка и жёлтый кардиган, фон — светлая стена цвета бумаги с лёгкой клеткой; по пояс, обе руки в кадре, лицо нейтральное, губы приоткрыты, без улыбки, фотореализм, без надписей",
+    "prompt": "Photorealistic photograph, vertical 9:16, of exactly the presenter woman from the attached board (same face, red hair in a ponytail) — a confident, likeable storyteller about 27, NOT a fashion model, natural skin texture and freckles. FRAMING (very important): waist-up, centred, BOTH shoulders and BOTH arms fully inside the frame with generous margin (at least 12% of width) on left and right, hands relaxed at waist level holding nothing. Top of the head about 18% of frame height below the upper edge; face large and sharp. Expression: lively eyes, face NEUTRAL as in the middle of a sentence: lips slightly parted with a hint of teeth, NO smile. Clothes: white T-shirt and a mustard-yellow #FFD447 cardigan. Background: a plain warm cream wall #FAF6EC with a very faint squared-paper grid, softly out of focus, bright soft daylight. No text, no letters, no logos, nothing covering the face, no headphones, no microphone."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

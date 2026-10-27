@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "ig5_lab",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/ig5_board_notepad.png"
+    ],
+    "style": "Hand-drawn pencil SKETCH illustration in the «Блокнот» look from the attached design board: graphite #2B2B2B line art with light hatching on cream squared notebook paper #FAF6EC, a few accents in red pencil #D7263D and yellow marker #FFD447, like a smart doodle explainer. Clean, readable, centred composition with paper margin around. Absolutely NO readable text, NO letters, NO numbers, NO logos anywhere; lists are drawn as abstract scribble lines.",
+    "style_qa": "рисованный карандашный скетч на бумаге в клетку в стиле борда «Блокнот» (графит, красный карандаш, жёлтый маркер), без читаемых надписей, букв и цифр, смысл соответствует описанию",
+    "meaning": "учёная 1920-х в лаборатории даёт испытуемому простые задачи: коробочки, бусы, головоломки; часть задач прервана",
+    "prompt": "A 1920s woman psychologist in a simple dark dress at a lab table, giving a seated participant small tasks — stacking little boxes, stringing beads, a half-finished puzzle; one task clearly interrupted, the puzzle left half done; a red pencil circle around the unfinished puzzle."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
