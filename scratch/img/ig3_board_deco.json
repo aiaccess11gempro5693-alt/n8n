@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "ig3_board_deco",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "«Ар-деко 50-х»: тёмно-синий #14213D, латунное золото #C9A227, сливочный #F3EAD7, бордо #8C1C13; ведущая ~35, тёмные волосы, собранные в низкий пучок",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours, fonts or look. The Reels tells a story: tenants of a skyscraper hated the slow elevators; fixing them would cost millions and a year; it was solved in one day by hanging MIRRORS next to the elevators. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge headline «ЛИФТ, КОТОРЫЙ ВСЕ НЕНАВИДЕЛИ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), an INFOGRAPHIC card «Ускорить лифты: миллионы · 1 год» with a STAMP «РЕШИЛИ ЗА 1 ДЕНЬ», an ILLUSTRATION example (people waiting at elevators, looking at themselves in a big mirror), END CARD «Напишите «ЛИФТ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline, (2) presenter in the lower half + illustration card above, (3) presenter in a round frame + three chips «Обучение / Реклама / Блог», (4) full-screen typography «КАК? — В КОНЦЕ» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN, likeable storyteller (not a fashion model), waist-up, her clothes in the palette colours, a backdrop in the palette colours. The SAME woman appears in all frames. All text in Russian, short, correctly spelled. Mood: elegant 1950s New York skyscraper, art-deco lobby, brass elevator doors, storytelling with class. Palette: deep navy #14213D, brass gold #C9A227 (lines, frames, highlights), cream #F3EAD7 cards and text, burgundy #8C1C13 for the stamp. Art-deco geometric ornaments, sunburst lines, thin gold frames. Typography: a tall elegant art-deco display face for headlines (like «Poiret One» or «Limelight»-style, but Cyrillic) + «Manrope». The woman is about 35, dark hair in a low bun, wears a navy dress with a thin gold detail."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Include missing bordeaux #8C1C13 swatch in the palette block"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

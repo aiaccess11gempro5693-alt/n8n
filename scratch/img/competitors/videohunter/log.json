@@ -1,0 +1,17 @@
+[
+ {
+  "tag": "home",
+  "url": "https://videohunter.pro/uslugi/ai-video/",
+  "ok": true
+ },
+ {
+  "tag": "page1",
+  "url": "https://videohunter.pro/uslugi/",
+  "ok": true
+ },
+ {
+  "tag": "page2",
+  "url": "https://videohunter.pro/ceny/",
+  "ok": true
+ }
+]

@@ -1,0 +1,33 @@
+{
+  "job": {
+    "name": "vk_svc_1min",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l3_expert_9x16.png"
+    ],
+    "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Ролик 1 минута» and orange price «от 1 000 ₽». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+    "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: title «Ролик 1 минута» and orange price «от 1 000 ₽»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "оформление ВК vk_svc_1min",
+    "prompt": "Square product card: presenter from photo 2 in a horizontal video frame, title and price above it.",
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    },
+    {
+      "attempt": 2,
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:2417)>"
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

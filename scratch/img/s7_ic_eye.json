@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s7_ic_eye",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an open friendly eye looking directly forward with a small warm spark",
+    "meaning": "смотреть на человека"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

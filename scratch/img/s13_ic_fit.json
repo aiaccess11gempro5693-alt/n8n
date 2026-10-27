@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_fit",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a puzzle piece clicking neatly into its matching slot with a small green check mark, meaning an addition that fits the situation; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "уместно, подходит к ситуации"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

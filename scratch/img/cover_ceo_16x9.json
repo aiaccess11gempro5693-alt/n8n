@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "cover_ceo_16x9",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l5_board_a.png",
+      "scratch/img/l5_ceo_9x16.png"
+    ],
+    "person_note": "The presenter must be exactly the person from the second attached photo.",
+    "style": "A finished, eye-catching video COVER (YouTube/Reels thumbnail) for an example video of an AI video production service, built EXACTLY in the design system «Премиальный корпоративный» from the FIRST attached board: ivory #F6F1E7, graphite #2B2D33, muted gold #B8935A, deep bordeaux #6E1F2B; elegant Playfair Display-like serif headlines, thin gold hairlines and corner ticks. The presenter is the CEO woman from the SECOND attached photo (same face, dark hair in a low bun, bordeaux blazer) — photorealistic, the same person, cut out and integrated into the graphic design. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text on the cover: a small pill label «Локализация» and a big title in two lines «Одно обращение —» / «три языка». No other words, no logos, no watermarks, no UI elements. High contrast, readable at small size, modern and premium.",
+    "style_qa": "обложка ролика в стиле приложенного борда, ведущий из приложенного фото узнаваем и не искажён, надписи «Локализация» и Одно обращение — три языка без ошибок, другого текста нет",
+    "meaning": "обложка 16:9 ролика «Одно обращение — три языка»",
+    "prompt": "Horizontal layout: the presenter on one side (waist-up, large, looking at the viewer), the title block on the other side, the key visual between or behind them; keep ALL text and the face inside the central 80% of the HEIGHT (top and bottom 10% may be cropped later). Key visual: a dotted gold world map with Moscow, London and Madrid markers and three language chips «RU», «EN», «ES»."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_greet",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a raised open hand waving hello with a small smile bubble",
+    "meaning": "приветствие — первый этап диалога"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

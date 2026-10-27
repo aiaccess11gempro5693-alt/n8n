@@ -1,0 +1,118 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {
+      "name": "s10_hurry",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. A customer in a coat with a bag on the shoulder leans over the pharmacy counter in a hurry, glancing at a wristwatch, impatient; the pharmacist from the photo reference (same face, hair, white coat) behind the counter stays calm and friendly, about to ask a short question. Walls and shelves have NO signs, posters, labels or text at all.",
+      "meaning": "человек спешит: «просто дайте что-нибудь, только быстро»"
+    },
+    {
+      "name": "s10_ask",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) behind a plain pharmacy counter calmly asks one short question with a gentle open-palm gesture; the customer, relaxed now, answers willingly and nods. Background: only soft blurred shelves with plain unlabeled boxes in brand blues and greens; NO signs, NO boards, NO posters, NO price tags, NO labels, NO letters or text of any kind anywhere in the image.",
+      "meaning": "спокойно задать один вопрос — посетитель охотно отвечает"
+    },
+    {
+      "name": "s10_goal",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter listens very attentively to a customer, leaning slightly forward, with an understanding expression; the customer explains their situation. Warm, respectful, professional mood. Walls and shelves have NO signs, posters, labels or text at all.",
+      "meaning": "цель — понять человека, затем помочь или направить к врачу"
+    },
+    {
+      "name": "s10_grateful",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. A customer walking away from the pharmacy counter with a small paper bag, turning back with a grateful smile and a small wave; the pharmacist from the photo reference (same face, hair, white coat) smiles back warmly. Walls and shelves have NO signs, posters, labels or text at all.",
+      "meaning": "посетитель, который торопился, уходит благодарным"
+    },
+    {
+      "name": "s10_ic_willing",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person silhouette with a small speech bubble containing a check mark, meaning a person answers willingly; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "люди охотно отвечают, когда понимают пользу вопроса"
+    },
+    {
+      "name": "s10_ic_private",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a closed padlock with a small heart on it, meaning private intimate topics handled with care; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "интимные темы"
+    },
+    {
+      "name": "s10_ic_child",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a small child silhouette next to a teddy bear, meaning children's health; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "детские темы"
+    },
+    {
+      "name": "s10_ic_chronic",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a heart with a heartbeat pulse line and a small circular repeat arrow, meaning a long-term chronic condition; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "хронические состояния"
+    },
+    {
+      "name": "s10_ic_care",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an open palm hand gently holding a small heart, meaning care; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "человек должен чувствовать заботу"
+    },
+    {
+      "name": "s10_ic_honest",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a shield with a check mark, meaning honest professional work; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "оба варианта — профессиональная, честная работа"
+    },
+    {
+      "name": "s10_ic_talk",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of two overlapping speech bubbles, meaning a real conversation between two people; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "разговаривайте с людьми"
+    },
+    {
+      "name": "s10_ic_thanks",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a heart with small sparkles, meaning gratitude; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "спасибо, что относитесь к делу именно так"
+    },
+    {
+      "name": "s10_ic_survey",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clipboard with a short checklist of two lines with check marks, meaning a short survey; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "ответьте на пару вопросов"
+    },
+    {
+      "name": "s10_ic_read",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of an open envelope with a letter and a small eye above it, meaning every answer is read; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "мы читаем каждый ответ"
+    }
+  ]
+}

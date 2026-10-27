@@ -1,0 +1,22 @@
+[
+ {
+  "tag": "home",
+  "url": "https://mediabanda.ru/services/ai-videoroliki/",
+  "ok": true
+ },
+ {
+  "tag": "page1",
+  "url": "https://mediabanda.ru/price/",
+  "ok": true
+ },
+ {
+  "tag": "page2",
+  "url": "https://mediabanda.ru/services/",
+  "ok": true
+ },
+ {
+  "tag": "page3",
+  "url": "https://mediabanda.ru/ai-video-zavod/klinikam/",
+  "ok": true
+ }
+]

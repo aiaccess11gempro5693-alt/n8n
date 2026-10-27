@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "s10_goal",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter listens very attentively to a customer, leaning slightly forward, with an understanding expression; the customer explains their situation. Warm, respectful, professional mood. Walls and shelves have NO signs, posters, labels or text at all.",
+    "meaning": "цель — понять человека, затем помочь или направить к врачу"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove all readable text and labels from shelves and counter"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

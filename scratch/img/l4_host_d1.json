@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_host_d1",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "meaning": "курьер-девушка ~24 на электросамокате: розово-рыжие волосы до плеч, томатная куртка курьера, на шее висит шлем-полусфера, лямки термо-рюкзака; фон зелёный; живой человек-типаж из сферы доставки (не модель, не сток), фотореализм, однотонный фон палитры «Свежий рынок»; по пояс, по центру, лицо нейтральное, губы приоткрыты, без улыбки; без надписей и логотипов",
+    "prompt": "Photorealistic photograph of a real everyday person with a vivid, recognisable CHARACTER (a memorable type from real life, like a hero of a warm TV commercial — NOT a fashion model, NOT a stock-photo office worker). Vertical 9:16, waist-up, the person in the centre facing the camera, shoulders square, hands out of frame. Expression: lively eyes full of personality, but the face NEUTRAL like in the middle of a sentence: lips slightly parted with a hint of teeth, NO smile. Headroom: top of the head about 16% of the frame height below the upper edge; the face is large and sharp. Colours from the attached board «Свежий рынок» (palette only, do NOT copy the man on it): leaf green #23A455, tomato red #FF4B2E, mustard #FFC531, cream #FFF6E9 — clothes and details use these colours. Background: a plain seamless backdrop in ONE palette colour (given below), bright even daylight-like lighting, natural skin texture, cheerful but natural look. No text, no logos, no brand names, no badges, nothing covering the face. Type: a cheerful female grocery delivery courier of about 24 who rides an e-scooter, shoulder-length dyed copper-pink hair, a tomato-red courier windbreaker, an open-face bike helmet hanging around her neck by the strap (NOT on her head), straps of an insulated delivery backpack on her shoulders (no logo). Backdrop: leaf green #23A455."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

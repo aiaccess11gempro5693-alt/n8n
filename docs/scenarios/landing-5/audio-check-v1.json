@@ -1,0 +1,69 @@
+{
+ "mode": "audio_check",
+ "jobs": [
+  {
+   "name": "l5v-stress-v1a",
+   "audio": "scratch/l5v-v1a-trim.mp3",
+   "text": "[confident, intriguing] Этот ролик никто не снимал. [pause] Ни студии, ни переводчика. [warm, confident] Здравствуйте! Я Елена Орлова, генеральный директор «Меридиана». [proud] Рада приветствовать новых коллег и партнёров. [playful] А теперь — по-английски. [confident, warm] Hello! I'm Elena Orlova, CEO of Meridian. [proud] Welcome to the team — wherever you are. [energetic, emphatic] Одно обращение — на любом языке.",
+   "watch": [
+    "Меридиана",
+    "партнёров",
+    "генеральный",
+    "приветствовать",
+    "переводчика",
+    "обращение",
+    "Meridian",
+    "CEO",
+    "wherever"
+   ]
+  },
+  {
+   "name": "l5v-stress-v1b",
+   "audio": "scratch/l5v-v1b-trim.mp3",
+   "text": "[confident, intriguing] Этот ролик никто не снимал. [pause] Ни студии, ни переводчика. [warm, confident] Здравствуйте! Я Елена Орлова, генеральный директор «Меридиана». [proud] Рада приветствовать новых коллег и партнёров. [playful] А теперь — по-английски. [confident, warm] Hello! I'm Elena Orlova, CEO of Meridian. [proud] Welcome to the team — wherever you are. [energetic, emphatic] Одно обращение — на любом языке.",
+   "watch": [
+    "Меридиана",
+    "партнёров",
+    "генеральный",
+    "приветствовать",
+    "переводчика",
+    "обращение",
+    "Meridian",
+    "CEO",
+    "wherever"
+   ]
+  },
+  {
+   "name": "l5v-stress-v1c",
+   "audio": "scratch/l5v-v1c-trim.mp3",
+   "text": "[confident, intriguing] Этот ролик никто не снимал. [pause] Ни студии, ни переводчика. [warm, confident] Здравствуйте! Я Елена Орлова, генеральный директор «Меридиана». [proud] Рада приветствовать новых коллег и партнёров. [playful] А теперь — по-английски. [confident, warm] Hello! I'm Elena Orlova, CEO of Meridian. [proud] Welcome to the team — wherever you are. [energetic, emphatic] Одно обращение — на любом языке.",
+   "watch": [
+    "Меридиана",
+    "партнёров",
+    "генеральный",
+    "приветствовать",
+    "переводчика",
+    "обращение",
+    "Meridian",
+    "CEO",
+    "wherever"
+   ]
+  },
+  {
+   "name": "l5v-stress-v1d",
+   "audio": "scratch/l5v-v1d-trim.mp3",
+   "text": "[confident, intriguing] Этот ролик никто не снимал. [pause] Ни студии, ни переводчика. [warm, confident] Здравствуйте! Я Елена Орлова, генеральный директор «Меридиана». [proud] Рада приветствовать новых коллег и партнёров. [playful] А теперь — по-английски. [confident, warm] Hello! I'm Elena Orlova, CEO of Meridian. [proud] Welcome to the team — wherever you are. [energetic, emphatic] Одно обращение — на любом языке.",
+   "watch": [
+    "Меридиана",
+    "партнёров",
+    "генеральный",
+    "приветствовать",
+    "переводчика",
+    "обращение",
+    "Meridian",
+    "CEO",
+    "wherever"
+   ]
+  }
+ ]
+}

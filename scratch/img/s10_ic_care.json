@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_care",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an open palm hand gently holding a small heart, meaning care; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "человек должен чувствовать заботу"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+ "group_token": true,
+ "user_token": false,
+ "user_token_error": "сайт ответил 403: forbidden",
+ "group_id": 242478374,
+ "group": {
+  "name": "ИИАВАТАР | Видео с ИИ-ведущим",
+  "screen_name": "club242478374"
+ },
+ "group_token_permissions": [
+  "photos",
+  "docs",
+  "messages",
+  "wall",
+  "manage",
+  "stories",
+  "market"
+ ],
+ "group_can_upload_photo": "photos.getWallUploadServer: 27 Group authorization failed: method is unavailable with group auth.",
+ "test_photo_upload": "photo-242478374_457239026_d58bd9cd32937b03c5"
+}

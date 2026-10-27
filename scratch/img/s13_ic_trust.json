@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_trust",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a handshake with a small green heart above it, meaning trust; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "доверие завтра"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

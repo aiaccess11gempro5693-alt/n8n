@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "design2-saas",
+    "kind": "mockup",
+    "aspect": "16:9",
+    "model": "gemini-3-pro-image-preview",
+    "meaning": "Светлый продукт: чистый светлый SaaS-стиль, карточки, синий акцент, много воздуха",
+    "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: LIGHT CLEAN SAAS. White and very light blue background, rounded white cards with soft shadows, blue accent color, lots of air. Hero: headline and buttons on the left, on the right a laptop mockup and a phone mockup showing a digital presenter video. Below: tabs with industries (Обучение, Образование, Эксперты, Продукты, Локализация), a 4-step 'how it works' row with simple line icons, three pricing cards with the middle one highlighted. Trustworthy corporate feel."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

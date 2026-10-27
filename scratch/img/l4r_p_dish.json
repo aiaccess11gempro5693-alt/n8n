@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l4r_p_dish",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+    "meaning": "готовое блюдо: красиво поданная паста с томатами и базиликом в тарелке, вид сверху, на кремовом фоне",
+    "prompt": "A beautifully plated bowl of creamy tomato pasta with fresh basil and grated parmesan, top view, on a warm cream #FFF6E9 surface with a linen napkin in leaf green, soft daylight, restaurant-quality food photography.",
+    "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

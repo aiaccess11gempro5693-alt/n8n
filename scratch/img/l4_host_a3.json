@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_host_a3",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "meaning": "ведущий 3 — НОВЫЙ мужчина ~38 с аккуратной бородой, дружелюбный 'шеф', зелёная джинсовая рубашка с закатанными рукавами; кремовый дневной фон и одежда в палитре борда «Свежий рынок»; по пояс, по центру, нейтральное лицо, губы слегка приоткрыты, без улыбки; без надписей",
+    "prompt": "Photorealistic photograph, vertical 9:16 portrait frame, waist-up, the person stands in the exact centre facing the camera, arms relaxed down (hands out of frame), shoulders square. Expression NEUTRAL and confident, like in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes straight into the lens. Headroom: top of the head about 18% of the frame height below the upper edge; the face is large and sharp. Style and colours from the attached design board «Свежий рынок» (use it ONLY for palette and mood, do NOT copy the man on it unless told): soft bright daylight, plain warm cream #FFF6E9 studio background with a very subtle lighter gradient, no objects, no text, no logos, no badge. Clothes in the board palette (leaf green #23A455, white, mustard #FFC531 or tomato #FF4B2E accents). Natural skin texture, 85mm lens look, clean commercial grading. A NEW man of about 38, Russian/Slavic appearance, short brown hair and a neat short beard, warm approachable face. He wears a leaf-green cotton work shirt with sleeves rolled up over a white t-shirt."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_symptom",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a medical thermometer with a green downward arrow beside it, meaning relieving a symptom; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "снимает симптом"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

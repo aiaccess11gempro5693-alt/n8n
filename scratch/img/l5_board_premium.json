@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l5_board_premium",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+      "scratch/img/l1_board.png"
+    ],
+    "meaning": "дизайн-борд стиля «Премиальный корпоративный» для приветствия директора новым сотрудникам (RU и EN): кремовый/графит/золото, антиква, кинематографичный кадр с полями, плашка «имя — должность»; совсем не похоже на светлый карточный стиль референса",
+    "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame/composition style, graphic elements, icon or sticker style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. This is a COMPLETELY DIFFERENT visual style from the references, for a different niche of short videos with a digital presenter. Style: «Премиальный корпоративный» — calm, elegant, cinematic executive address. Palette: warm cream #F4EFE6, graphite #1C1C1E, muted gold #B08D57, deep burgundy #6B1F2A, stone grey #8A8580. Typography: «Playfair Display» serif for headlines, «Manrope» for body — show them. Hero title: «Добро пожаловать в команду». Hero subtitle: «Обращение генерального директора · RU / EN». Presenter: a Russian man of about 50, CEO, grey suit, white shirt, no tie, calm confident look, in a modern office with warm light; frame with cinematic letterbox bars. Graphic elements: thin gold lines, lower-third name title «Андрей Соколов — генеральный директор», elegant RU / EN language switch, large serif numerals («01», «02»), quote with serif quotation marks, generous empty space. Example slides: letterboxed presenter with lower third, quote slide «Мы растём вместе с вами», three company values in serif numerals, the same frame in English «Welcome to the team». Footer principles: Спокойно · Достойно · Лично · На двух языках."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

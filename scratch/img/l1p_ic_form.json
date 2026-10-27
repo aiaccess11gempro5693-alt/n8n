@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l1p_ic_form",
+    "engine": "gpt-image-2",
+    "kind": "icon",
+    "aspect": "1:1",
+    "quality": "medium",
+    "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of lime green #C6F432. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+    "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+    "audience": "для персонала магазина (ритейл)",
+    "meaning": "шаг 3 — заявление: паспорт, причина, подпись",
+    "prompt": "a clipboard form with a pen signing and a small passport booklet"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_person",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person with a small speech bubble containing a medical cross, meaning the person's situation and request; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "ситуация и запрос человека"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

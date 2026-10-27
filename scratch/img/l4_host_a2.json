@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_host_a2",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "meaning": "ведущая 2 — НОВАЯ женщина ~28, продакт-менеджер, тёмно-русые волосы в низком хвосте, горчичный джемпер; кремовый дневной фон и одежда в палитре борда «Свежий рынок»; по пояс, по центру, нейтральное лицо, губы слегка приоткрыты, без улыбки; без надписей",
+    "prompt": "Photorealistic photograph, vertical 9:16 portrait frame, waist-up, the person stands in the exact centre facing the camera, arms relaxed down (hands out of frame), shoulders square. Expression NEUTRAL and confident, like in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes straight into the lens. Headroom: top of the head about 18% of the frame height below the upper edge; the face is large and sharp. Style and colours from the attached design board «Свежий рынок» (use it ONLY for palette and mood, do NOT copy the man on it unless told): soft bright daylight, plain warm cream #FFF6E9 studio background with a very subtle lighter gradient, no objects, no text, no logos, no badge. Clothes in the board palette (leaf green #23A455, white, mustard #FFC531 or tomato #FF4B2E accents). Natural skin texture, 85mm lens look, clean commercial grading. A NEW woman of about 28, Russian/Slavic appearance, dark-blond hair in a neat low ponytail, light natural make-up, a product manager. She wears a mustard-yellow fine-knit jumper over a white collar."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

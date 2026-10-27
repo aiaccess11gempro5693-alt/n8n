@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_seller",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two hands passing a plain box over a counter, simple transaction; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "продавец отпускает то, что попросили"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l3h_ph_ring",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "style": "Cinematic editorial photograph colour-graded to the attached design board palette «Reels-эксперт»: deep black #0E0E10 shadows, acid yellow #FFE600 light accents (a warm-yellow lamp, a yellow rim light), alarm red #FF3B30 accents only where the subject says so; moody, high contrast, low key, shallow depth of field. Phone screens may glow but show NO readable text, no letters, no numbers, no logos, no app icons with text, no signs.",
+    "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Reels-эксперт»: глубокие чёрные тени, жёлтые световые акценты, красные — по смыслу",
+    "audience": "для широкой аудитории, тема — телефонное мошенничество",
+    "meaning": "на столе звонит смартфон, экран светится — входящий звонок, тревожное ожидание",
+    "prompt": "A smartphone lying face up on a dark wooden table at night, its screen glowing with an incoming-call screen (only abstract shapes: a round avatar circle and a red and a green round button, no text), the phone slightly vibrating with motion blur, a cup of tea and keys nearby out of focus, the right half of the frame is dark empty table and darkness (space for text)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

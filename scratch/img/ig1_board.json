@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "ig1_board",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/landing/vk/vk-cover-1920x768.jpg",
+      "docs/landing/vk/vk-pin-1080x1350.jpg"
+    ],
+    "meaning": "дизайн-система серии вертикальных Reels бренда ИИАВАТАР (графит #111311, оранжевый #F3531B, светлый #F4F1EC): хук-заголовок, крупные субтитры с подсветкой слова, кадр «раскрытия» с глитчем, финальная карточка с призывом «Напишите ВЕДУЩИЙ», 4 разные раскладки 9:16",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached images ONLY as the brand reference: graphite #111311 background, vivid orange #F3531B accent, warm off-white #F4F1EC; bold modern grotesque headlines. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography (bold condensed headline font + clean sans body), HOOK headline style (huge 2-3 word headline at the top, one word highlighted in orange), SUBTITLES style (large white bold words in the lower third, the current word highlighted with an orange marker box), the REVEAL frame (digital glitch effect, RGB split and scan lines over the presenter, short caption «Меня не существует»), END CARD (presenter small, big call to action «Напишите «ВЕДУЩИЙ» в директ», handle @iiavatar.video), and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames showing 4 different layouts: (1) presenter full frame + hook headline, (2) presenter lower half + big number card above, (3) full-screen typography without presenter, (4) glitch reveal. Presenter on the board: a confident young Russian woman ~27 in a modern dark loft with orange accent light. All text in Russian, short, correctly spelled. Mood: bold, modern, premium-tech, energetic."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

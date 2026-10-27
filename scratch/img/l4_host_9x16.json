@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "l4_host_9x16",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "meaning": "новый ведущий — техноблогер / продакт-менеджер, мужчина ~30 лет, славянская внешность, тёмное техно-худи на молнии, фон — почти чёрный студийный с неоновыми циан и фиолетовым контровым светом из палитры борда «Тёмный продукт» (НЕ женщина с борда); вертикальный кадр по пояс, по центру, смотрит в камеру, лицо нейтрально-уверенное, губы слегка приоткрыты, без улыбки, запас над головой; без надписей",
+    "prompt": "Photorealistic photograph, vertical 9:16 portrait frame. A NEW man (NOT the woman on the attached board) of about 30, Russian/Slavic appearance: short modern dark-brown hair with a neat textured top, clean-shaven or very light stubble, brown-green eyes, friendly energetic but focused face. He is a tech blogger / product manager. His expression is NEUTRAL and confident, like a person in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, eyes looking straight into the lens. Face lit evenly from the front with a soft key light, a neon cyan #3BE8FF rim light on one shoulder and a violet #8B5CF6 rim light on the other, matching the attached board palette (near-black #0B0D17, deep navy #141A33). He wears a plain matte black technical zip-up jacket/hoodie over a black t-shirt, no logos, no text, no badge, no headphones. Waist-up shot, he stands in the exact centre facing the camera, arms relaxed down along the body (hands out of frame), shoulders square. Headroom: the top of his head is about 18% of the frame height below the upper edge; the face is large and sharp. Background: near-black navy studio backdrop with a soft gradient and a faint blurred cyan-violet light arc far behind, no objects, no screens, no text. Sharp focus on the face, natural skin texture, 85mm lens look, cinematic tech-commercial grading."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

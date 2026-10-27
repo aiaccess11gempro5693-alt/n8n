@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_cause",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a capsule pill aiming at a round virus germ, meaning a drug that treats the cause; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "лечит причину"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

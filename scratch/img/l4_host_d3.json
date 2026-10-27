@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_host_d3",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "meaning": "опытный курьер ~45: седые виски, густые усы, добрые глаза, горчичная куртка курьера, лямки термо-рюкзака; фон томатный; живой человек-типаж из сферы доставки (не модель, не сток), фотореализм, однотонный фон палитры «Свежий рынок»; по пояс, по центру, лицо нейтральное, губы приоткрыты, без улыбки; без надписей и логотипов",
+    "prompt": "Photorealistic photograph of a real everyday person with a vivid, recognisable CHARACTER (a memorable type from real life, like a hero of a warm TV commercial — NOT a fashion model, NOT a stock-photo office worker). Vertical 9:16, waist-up, the person in the centre facing the camera, shoulders square, hands out of frame. Expression: lively eyes full of personality, but the face NEUTRAL like in the middle of a sentence: lips slightly parted with a hint of teeth, NO smile. Headroom: top of the head about 16% of the frame height below the upper edge; the face is large and sharp. Colours from the attached board «Свежий рынок» (palette only, do NOT copy the man on it): leaf green #23A455, tomato red #FF4B2E, mustard #FFC531, cream #FFF6E9 — clothes and details use these colours. Background: a plain seamless backdrop in ONE palette colour (given below), bright even daylight-like lighting, natural skin texture, cheerful but natural look. No text, no logos, no brand names, no badges, nothing covering the face. Type: an experienced, reliable delivery courier of about 45, greying temples, thick moustache, kind crinkly eyes, weathered friendly face, a mustard-yellow courier jacket, straps of an insulated delivery backpack on his shoulders (no logo). Backdrop: tomato red #FF4B2E."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

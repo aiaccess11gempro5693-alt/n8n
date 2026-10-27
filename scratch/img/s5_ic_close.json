@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s5_ic_close",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an elderly person with a caring hand resting on their shoulder",
+    "meaning": "тревога за близкого человека (пожилого родственника)"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Convey anxiety and an elderly relative clearly instead of a calm profile"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

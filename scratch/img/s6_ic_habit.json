@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_ic_habit",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small green sprout growing out of a circular arrow loop, meaning a new daily habit forming. Absolutely no numbers, letters or text.",
+    "meaning": "привычка через пару дней"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

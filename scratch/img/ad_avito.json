@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "ad_avito",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "3:2",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l1g_anna_9x16.png",
+      "scratch/img/l3_expert_9x16.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "person_note": "The three presenters must be exactly the people from the attached photos 2, 3 and 4.",
+    "style": "A finished, eye-catching ADVERTISING BANNER for a classified-ads listing of an AI video production service «ИИАВАТАР», built in the design of the FIRST attached image (the brand's bot welcome card): deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque headlines, clean premium look. Show 3 vertical smartphone screens / video frames side by side, each playing a different short video with a presenter: the woman from the SECOND attached photo, the man from the THIRD, the woman from the FOURTH — photorealistic, the same people, with small play icons and subtle subtitles bars (no readable words inside the frames). Perfectly spelled Russian typography is REQUIRED and is the only text: a huge headline in two lines «ВИДЕО С ИИ-ВЕДУЩИМ» / «В РАЗЫ ДЕШЕВЛЕ СТУДИЙ» (the second line in orange); a row of four small pill labels «Reels и Shorts» «Реклама» «Обучение» «Любые ролики»; a big orange price badge «от 25 ₽ за секунду»; and at the very bottom one thin line of small text «Свой генератор видео под ключ — от 100 000 ₽». No other words, no logos, no phone numbers, no links, no watermarks. High contrast, readable on a small phone screen.",
+    "style_qa": "рекламный баннер в графитово-оранжевом стиле, три кадра с ведущими из приложенных фото, все надписи на русском без ошибок: ВИДЕО С ИИ-ВЕДУЩИМ, В РАЗЫ ДЕШЕВЛЕ СТУДИЙ, Reels и Shorts, Реклама, Обучение, Любые ролики, от 25 ₽ за секунду, Свой генератор видео под ключ — от 100 000 ₽; лишнего текста, ссылок и телефонов нет",
+    "meaning": "баннер объявления (ad_avito)",
+    "prompt": "Horizontal 3:2 canvas that will be CROPPED to 4:3: keep ALL text, badges and faces inside the central 84% of the WIDTH; headline top-left, phones on the right, price badge under the headline, pills under the price, bottom line centered."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

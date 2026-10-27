@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_relief",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person's head in profile calmly exhaling, a soft small air puff in front of the mouth, relaxed closed eyes",
+    "meaning": "человек выдыхает, напряжение спадает"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_immunity",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a shield with a small plus sign, meaning immune protection",
+    "meaning": "для иммунитета"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

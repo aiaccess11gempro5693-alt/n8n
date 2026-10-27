@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s7_ic_blank",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a blank unfocused gaze: eye with a dashed line passing straight through a simple person silhouette, meaning looking through someone",
+    "meaning": "смотреть сквозь человека"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

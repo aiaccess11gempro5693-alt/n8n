@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_p_phone",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Premium dark product/advertising photograph colour-graded to the attached design board «Тёмный продукт»: near-black #0B0D17 and deep navy #141A33 shadows, neon cyan #3BE8FF and violet #8B5CF6 rim lights and glows, soft white #EEF2FF highlights; glossy, clean, high-end tech commercial look, shallow depth of field, subtle reflections. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "рекламное продуктовое фото (фотореализм задуман) в тёмной гамме борда «Тёмный продукт»: почти чёрный/тёмно-синий, неоновые циан и фиолетовый акценты",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "смартфон в руке: на экране приложения карта с маршрутом и точкой курьера — «курьер на карте»",
+    "prompt": "A hand holding a modern smartphone vertically in the dark, the screen glowing: an abstract dark city map with a bright neon cyan route line and a glowing violet courier dot moving along it toward a home pin, only shapes and lines on the screen — absolutely no text, no numbers, no app names. Cyan and violet light reflects on the fingers, dark navy blurred background with bokeh. The phone fills the centre of the vertical frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

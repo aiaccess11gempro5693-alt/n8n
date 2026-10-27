@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_ic_survey",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a clipboard with two short answer lines and a small heart, meaning a short feedback survey",
+    "meaning": "пара вопросов в конце, ваше мнение важно"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

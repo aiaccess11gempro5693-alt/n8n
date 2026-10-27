@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig1_host_a",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [],
+    "meaning": "ведущая ~27, славянская внешность, тёмно-русое каре, графитовый оверсайз-пиджак поверх белой футболки, тонкая цепочка; лофт графит + оранжевая подсветка; по пояс, обе руки в кадре, лицо нейтральное, губы приоткрыты, без улыбки, фотореализм, без надписей",
+    "prompt": "Photorealistic photograph, vertical 9:16, of a real-looking person who could be a popular Russian Instagram creator — NOT a fashion model, NOT a stock photo, natural skin texture, believable. FRAMING (very important): waist-up, person in the centre, BOTH shoulders and BOTH arms fully inside the frame with generous margin (at least 12% of width) on left and right, hands relaxed at waist level holding nothing. Top of the head about 14% of frame height below the upper edge; face large and sharp. Expression: confident, lively eyes, face NEUTRAL as in the middle of a sentence: lips slightly parted with a hint of teeth, NO smile. Setting: a modern dark loft studio, graphite walls #111311 slightly out of focus, a warm orange #F3531B accent light (neon strip or rim light) behind, soft key light on the face — cinematic but natural. Clothes harmonise with graphite and orange. No text, no logos, nothing covering the face, no headphones, no microphone. A young woman about 27, Slavic features, dark-blonde sleek bob haircut, natural make-up, a graphite oversized blazer over a plain white T-shirt, a thin silver chain."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

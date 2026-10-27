@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_child",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small child silhouette next to a teddy bear, meaning children's health; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "детские темы"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

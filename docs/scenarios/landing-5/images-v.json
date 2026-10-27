@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "l5_map",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l5_board_a.png"
+   ],
+   "person_note": "NO people at all.",
+   "style": "Minimal premium editorial infographic in the palette of the attached board «Премиальный корпоративный»: flat ivory #F6F1E7 background, a world map made ONLY of small muted-gold #B8935A dots (dot-matrix style), five slightly larger deep bordeaux #6E1F2B dots with thin gold rings marking office cities (Moscow, Dubai, Singapore, London, New York), thin elegant gold hairline arcs connecting Moscow with the other four. Clean, airy, flat, no shadows, no 3D. NO text, NO letters, NO labels, NO numbers, NO logos.",
+   "style_qa": "flat minimal dot-matrix world map in gold dots on ivory with five bordeaux office dots and thin gold arcs; no text",
+   "meaning": "минималистичная карта мира из золотых точек на фоне слоновой кости, пять бордовых точек-офисов и тонкие золотые дуги из Москвы; без надписей",
+   "prompt": "A minimal dot-matrix world map infographic, flat ivory background, gold dots, five bordeaux office markers, thin gold connecting arcs from Moscow. No text."
+  }
+ ]
+}

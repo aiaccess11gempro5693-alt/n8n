@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s9_ic_package",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a closed product box with a shopping basket, meaning a question about the product and the purchase",
+    "meaning": "вопрос о товаре — оформление покупки"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

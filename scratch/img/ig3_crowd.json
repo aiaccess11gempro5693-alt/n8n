@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "ig3_crowd",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/ig3_board_led.png"
+    ],
+    "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+    "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+    "meaning": "раздражённая толпа офисных людей ждёт лифт в холле небоскрёба, кто-то смотрит на часы, кто-то вздыхает",
+    "prompt": "A crowd of annoyed office people in coats waiting in front of closed steel elevator doors in a skyscraper lobby; one checks his wristwatch, a woman sighs with folded arms, a man taps his foot. Amber floor indicator glow above the doors (only abstract dots/arrows)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

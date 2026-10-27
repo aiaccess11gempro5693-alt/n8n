@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_random",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a plain product box next to a broken chain link (two separated chain links with a gap between them), meaning an offer with no connection to the request; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "случайное, без связи"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

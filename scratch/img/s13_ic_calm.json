@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_calm",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a calm smiling face with a small green leaf, meaning a calm manner; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "спокойно"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

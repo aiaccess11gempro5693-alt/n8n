@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "bot_avatar_presenter",
+    "engine": "gpt-image-2",
+    "kind": "logo",
+    "aspect": "1:1",
+    "prompt": "Square avatar for a Telegram bot of «ИИаватар» — an AI video production service with digital presenters. Deep black background #0E0E0E with one acid lime-yellow accent #D7F23C and white. Strictly centred composition, all inside the central 70% (cropped to a circle). A minimal flat vector icon: a stylised friendly head-and-shoulders silhouette of a digital presenter (simple geometric shapes, no facial details) framed inside a rounded video frame, with a small lime-yellow play-triangle badge at the lower right of the frame. Crisp, modern, premium, high contrast, readable at 64 px. NO text, no letters at all.",
+    "meaning": "аватарка бота ИИаватар без текста: силуэт цифрового ведущего в видео-рамке с лаймовым значком play, чёрный фон"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

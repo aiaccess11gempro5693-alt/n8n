@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_rinse",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a nasal rinse bottle with a gentle water wave, meaning saline washing solution; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "промывающий раствор"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

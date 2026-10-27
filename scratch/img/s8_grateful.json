@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s8_grateful",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. A customer walks away from the pharmacy counter holding a small paper bag and turns back with a grateful smile and a small wave; the pharmacist from the photo reference (same face, hair, white coat) smiles back warmly with quiet satisfaction. Walls and shelves have NO signs, posters, labels or text at all.",
+    "meaning": "человека услышали, он уходит с благодарностью; у фармацевта — ощущение хорошо сделанной работы"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

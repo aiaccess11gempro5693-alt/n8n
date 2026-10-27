@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_addon",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small plain box with a green plus sign next to it, meaning a useful addition; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "дополнение"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

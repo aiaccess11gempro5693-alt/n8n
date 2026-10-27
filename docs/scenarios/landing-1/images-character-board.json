@@ -1,0 +1,55 @@
+{
+  "style_refs": [],
+  "jobs": [
+    {
+      "name": "l1_anna_16x9",
+      "engine": "gpt-image-2",
+      "kind": "photo",
+      "aspect": "16:9",
+      "meaning": "Анна, старший администратор магазина одежды и товаров для дома (НЕ фармацевт), внешность славянского типа (светло-русые волосы, светлые глаза); на бейдже ЧИТАЕМО по-русски две строки: «Анна» и ниже «Администратор»; горизонтальный кадр по пояс, по центру, смотрит в камеру, запас над головой, на фоне светлый магазин",
+      "prompt": "Photorealistic photograph, horizontal frame. A friendly Russian woman of about 32 with a typical Slavic appearance — light-brown (light ash-blonde) shoulder-length hair, light grey-blue eyes, fair skin with a soft natural blush, soft rounded facial features, light natural makeup, warm genuine slight smile with closed lips. She is Anna, senior administrator of a bright modern store of clothing and home goods. She wears a dark navy polo shirt. On her chest there is a white rectangular name badge with a coral top stripe and clearly readable, correctly spelled Russian text in two separate lines: first line large bold «Анна», second line smaller «Администратор». No other text. Waist-up shot, she stands in the exact centre of the frame facing the camera and looking straight into the lens, hands loosely clasped at waist level, relaxed shoulders. Generous headroom: the top of her head is about 15% of the frame height below the upper edge; hands fully visible above the lower edge. Background: softly blurred interior of the store — wooden shelves with neatly folded textiles and towels, ceramic dishes, green plants, warm natural daylight, a cash desk far behind. Even soft light on the face, sharp focus on the face, natural skin texture, 50mm lens look. No readable signs or logos in the background."
+    },
+    {
+      "name": "l1_board",
+      "engine": "gpt-image-2",
+      "kind": "board",
+      "aspect": "16:9",
+      "extra_refs": [
+        "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+        "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+      ],
+      "meaning": "дизайн-борд стиля обучающих видео для персонала магазина (ритейл), в формате приложенного фарма-брендбука, но в своей палитре (тёмно-синий, коралл, мятный, тёплый светлый фон)",
+      "prompt": "Create a design board (brand style guide sheet) in the exact format and block structure of the attached reference boards — hero block «Визуальный стиль» with the presenter, «Цветовая палитра» with HEX codes and meanings, «Типографика», «Стиль кадров», «Графические элементы», «Иконки (стиль)», «Инфографика (примеры)», «Примеры слайдов в роликах», «Декоративные элементы», and a footer row of values — but for a different niche: training videos for staff of retail stores (clothing and home goods). All text in Russian, short and correctly spelled. Hero title: «Обучающие видео для персонала магазина». Hero subtitle: «Понятно. Быстро. По-человечески.» Palette: deep navy #1F2A44, coral #F2643D, mint green #2BB59A, warm light background #FAF7F2, grey #6B7280. Typography: Inter / Manrope. The presenter in the hero and frame-style blocks is a friendly woman store administrator in a dark navy polo shirt in a bright store (NOT a pharmacist, no white coat, no medicine). Icons: rounded line icons in navy with coral accents inside light circles — receipt, shopping bag, return arrow, handshake, ID document, card payment. Slide examples: a topic card «Возврат товара», numbered steps 1–4, a «Полезный совет» card, an «Итог» card. Clean modern flat corporate look like the reference; do not reuse pharmacy content or the reference's blue/green palette."
+    },
+    {
+      "name": "l1_anna_9x16",
+      "engine": "gpt-image-2",
+      "kind": "photo",
+      "aspect": "9:16",
+      "extra_refs": [
+        "scratch/img/l1_anna_16x9.png"
+      ],
+      "meaning": "та же Анна, что на приложенном фото (то же лицо, причёска, тёмно-синее поло, тот же бейдж с надписями «Анна» / «Администратор», тот же магазин), вертикальный кадр в полный рост или почти в полный рост, по центру, смотрит в камеру",
+      "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as in the attached photo — identical face, hair, eyes, dark navy polo shirt, and the same white name badge with a coral top stripe and readable Russian text in two lines «Анна» / «Администратор», same bright store of textiles and home goods, same lighting and colour grading. Vertical composition: she stands in the centre facing the camera and looking straight into the lens, framed from above the head to the knees, clear headroom above the head, hands loosely clasped at waist level. Softly blurred background, sharp focus on the face, natural skin texture. No readable signs or logos in the background."
+    },
+    {
+      "name": "l1_anna2_16x9",
+      "engine": "gpt-image-2",
+      "kind": "photo",
+      "aspect": "16:9",
+      "meaning": "Анна, старший администратор магазина одежды и товаров для дома (НЕ фармацевт), внешность славянского типа (светло-русые волосы, светлые глаза); на бейдже ЧИТАЕМО по-русски две строки: «Анна» и ниже «Администратор»; горизонтальный кадр по пояс, по центру, смотрит в камеру, лицо спокойное нейтрально-доброжелательное, губы слегка приоткрыты, без широкой улыбки и без улыбки с сомкнутыми губами (это фото для анимации рта), запас над головой, на фоне светлый магазин",
+      "prompt": "Photorealistic photograph, horizontal frame. A friendly Russian woman of about 32 with a typical Slavic appearance — light-brown (light ash-blonde) shoulder-length hair, light grey-blue eyes, fair skin with a soft natural blush, soft rounded facial features, light natural makeup. Her face is calm and NEUTRAL-friendly, relaxed like a person in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO broad smile, NO closed-lip smirk, relaxed jaw and cheeks, soft friendly eyes. Face well lit, evenly, from the front, no hair covering the mouth or chin. She is Anna, senior administrator of a bright modern store of clothing and home goods. She wears a dark navy polo shirt. On her chest there is a white rectangular name badge with a coral top stripe and clearly readable, correctly spelled Russian text in two separate lines: first line large bold «Анна», second line smaller «Администратор». No other text. Waist-up shot, she stands in the exact centre of the frame facing the camera and looking straight into the lens, hands loosely clasped at waist level, relaxed shoulders. Generous headroom: the top of her head is about 15% of the frame height below the upper edge; hands fully visible above the lower edge. Background: softly blurred interior of the store — wooden shelves with neatly folded textiles and towels, ceramic dishes, green plants, warm natural daylight, a cash desk far behind. Even soft light on the face, sharp focus on the face, natural skin texture, 50mm lens look. No readable signs or logos in the background."
+    },
+    {
+      "name": "l1_anna2_9x16",
+      "engine": "gpt-image-2",
+      "kind": "photo",
+      "aspect": "9:16",
+      "extra_refs": [
+        "scratch/img/l1_anna2_16x9.png"
+      ],
+      "meaning": "та же Анна, что на приложенном фото (лицо, причёска, тёмно-синее поло, бейдж «Анна» / «Администратор», тот же магазин), вертикальный кадр ПО ПОЯС, лицо крупное в верхней трети, спокойное, губы слегка приоткрыты, без широкой улыбки",
+      "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as in the attached photo — identical face, hair, eyes, dark navy polo shirt, and the same white name badge with a coral top stripe and readable Russian text in two lines «Анна» / «Администратор», same bright store of textiles and home goods, same lighting and colour grading. Vertical composition: WAIST-UP shot (from slightly above the head to the waist), she stands in the centre facing the camera and looking straight into the lens, her face large and sharp in the upper third of the frame, clear headroom above the head, hands loosely clasped at waist level near the bottom edge. Her face is calm and NEUTRAL-friendly, relaxed like a person in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO broad smile, NO closed-lip smirk, relaxed jaw and cheeks, soft friendly eyes. Face well lit, evenly, from the front, no hair covering the mouth or chin. Softly blurred background, natural skin texture. No readable signs or logos in the background."
+    }
+  ]
+}

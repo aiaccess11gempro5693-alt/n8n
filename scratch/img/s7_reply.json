@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s7_reply",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "The pharmacist from the photo reference (same face, hair, white coat) behind the pharmacy counter calmly and warmly greets a hurried customer who is already talking and showing a note; the pharmacist raises a hand slightly in a gentle welcoming gesture, smiling, clearly in control of the conversation. Walls and shelves have NO signs, posters, labels or text at all.",
+    "meaning": "покупатель начал с запроса — фармацевт здоровается в ответ и мягко берёт инициативу"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

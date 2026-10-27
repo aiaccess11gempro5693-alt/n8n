@@ -1,0 +1,125 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "l4h_ph_kitchen",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "вечерняя кухня, открытый холодильник почти пустой — внутри один лимон; правая половина кадра — спокойная стена (место под текст)",
+   "prompt": "A cosy kitchen in the evening with warm lamp light, an open white refrigerator on the LEFT third of the frame, its shelves empty except ONE lonely lemon on a middle shelf, a window with dusk sky; the right half of the frame is a calm cream wall with soft warm light (space for text). Cosy, slightly comic mood.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4h_ph_store",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "склад-даркстор: стеллажи со свежими овощами, фруктами, хлебом, зелёные корзины; левая треть кадра спокойная (место под текст)",
+   "prompt": "A bright clean modern grocery dark-store warehouse aisle: tall shelves with crates of fresh tomatoes, cucumbers, greens, apples, bread loaves, green plastic picking baskets on a trolley, daylight-white light with warm accents; slight depth perspective, the LEFT third of the frame is a calmer blurred part of the aisle (space for text). Fresh, appetising, orderly.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4h_ph_queue",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "«было»: очередь у кассы и тяжёлые пакеты — уставшие люди (со спины, без лиц крупно)",
+   "prompt": "A crowded supermarket checkout queue in the evening: tired shoppers seen mostly from behind holding heavy plastic shopping bags, full trolleys, harsh fluorescent light, slightly greyish dull colours; documentary feel; no readable signs or text.",
+   "person_note": "People are seen from behind or far away, no clear faces in close-up."
+  },
+  {
+   "name": "l4h_ph_dinner",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "«для вас»: двое взрослых (пара) ужинают дома вечером — тёплый свет, свежие продукты на столе; пара справа, слева место под текст",
+   "prompt": "A cosy evening at home: a young adult couple sitting at a wooden kitchen table, sharing a fresh salad, bread and tomatoes, relaxed and happy, warm lamp light, cream walls with green plants; the couple is on the RIGHT half of the frame, the LEFT half is a softly blurred kitchen (space for text). Natural, candid, wholesome lifestyle photo.",
+   "person_note": "Two adults only, fully clothed, natural candid people, no logos."
+  },
+  {
+   "name": "l4h_ph_phone",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "смартфон с картой: зелёный маршрут, точка курьера у дома — на светлом столе; телефон слева",
+   "prompt": "A smartphone lying on a light wooden kitchen table next to a bowl of fresh fruit, its screen shows a LIGHT abstract city map with a bold leaf-green route line ending at a home pin and a small tomato-red courier dot right next to the home — only shapes, no text, no numbers; the phone is on the LEFT half of the frame, the right half is soft blurred table and cream wall (space for text).",
+   "person_note": "There are absolutely NO people and no hands in this image."
+  },
+  {
+   "name": "l4h_st_tomato",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "фото-стикер: горсть плотных спелых помидоров на ветке, на кремовом фоне",
+   "prompt": "A close-up product photo of a vine of firm, ripe, glossy red tomatoes with fresh green stems, centred, on a plain warm cream #FFF6E9 background, soft daylight, appetising.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4h_st_greens",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "фото-стикер: пучок хрустящей свежей зелени (салат, укроп, петрушка) с каплями воды, на кремовом фоне",
+   "prompt": "A close-up product photo of a crisp fresh bunch of greens (lettuce, dill, parsley) with water droplets, centred, on a plain warm cream #FFF6E9 background, soft daylight, appetising.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  {
+   "name": "l4h_st_bread",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/l4_board2_a.png"
+   ],
+   "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+   "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+   "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+   "meaning": "фото-стикер: свежий хрустящий батон/багет сегодняшней выпечки, на кремовом фоне",
+   "prompt": "A close-up product photo of a freshly baked crusty golden loaf of bread and a baguette, steam-fresh look, centred, on a plain warm cream #FFF6E9 background, soft daylight, appetising.",
+   "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  }
+ ]
+}

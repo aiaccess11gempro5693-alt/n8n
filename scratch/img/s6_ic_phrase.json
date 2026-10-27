@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_ic_phrase",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a single short speech bubble with three dots inside",
+    "meaning": "короткая фраза"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

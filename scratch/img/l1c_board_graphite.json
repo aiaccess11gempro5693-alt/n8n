@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l1c_board_graphite",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/references/oleg-brand-board-1-2026-09-23.jpg"
+    ],
+    "meaning": "полная дизайн-система для вертикальных обучающих роликов ритейла, палитра «Графит и сигнальный красный»: графит, красный, молочно-белый, сталь; с новой Анной в этих же цветах и блоком из 5 разных раскладок вертикальных кадров",
+    "prompt": "Create a complete design system board (brand style guide sheet) in the same FORMAT as the attached reference (blocks: hero, colour palette with HEX codes and meanings, typography, presenter style, graphic elements, icon style, infographic examples, decorative elements, footer principles) — but with a COMPLETELY NEW look; do NOT reuse the reference's colours, fonts or layout. All text in Russian, short and correctly spelled. Niche: short VERTICAL 9:16 training videos for retail store staff. Hero title: «Как принять возврат товара за 4 шага». Presenter: a NEW woman named Anna, about 30, store administrator, Russian/Slavic appearance, calm CONFIDENT expression with lips slightly parted (as if speaking), her clothes and the background behind her are in THIS palette (studio-like backdrop in the palette colours, not a warm wooden store), so the photo fits the graphics perfectly; she wears a name badge «Анна / Администратор». The SAME Anna appears everywhere on the board. IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 5 phone-shaped frames showing FIVE DIFFERENT LAYOUTS: (1) presenter full frame with a big headline on top, (2) presenter cut out on the lower half with a step card above, (3) full-screen typography with a big number and no presenter, (4) split screen — presenter on one side, a checklist on the other, (5) presenter small in a round badge with a large infographic. Each layout uses the palette and shows one step of the return process (выслушать / проверить / оформить / вернуть). Palette: graphite #22252B, signal red #E63B2E, off-white #F2F0EB, steel #9AA3AE, black #101114. Typography: «Oswald Bold» condensed headlines + «Inter» body. Mood: strict, editorial, very confident."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

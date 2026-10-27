@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_talk",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two overlapping speech bubbles, one with three small dots",
+    "meaning": "человек начинает рассказывать спокойнее и подробнее"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

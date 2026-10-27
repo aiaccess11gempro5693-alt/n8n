@@ -1,0 +1,45 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "design1-cinema",
+   "kind": "mockup",
+   "aspect": "16:9",
+   "model": "gemini-3-pro-image-preview",
+   "meaning": "Кинозал: тёмный кинематографичный стиль, крупное видео на первом экране, галерея роликов, оранжевый акцент",
+   "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: DARK CINEMATIC. Near-black background, deep charcoal panels, one vivid accent color (electric orange), soft film-like glow. Hero: huge video frame showing a friendly digital presenter (a smiling woman in a blazer), headline and two buttons over it. Below: horizontal row of video thumbnails like a streaming gallery; a laptop mockup and a smartphone mockup side by side playing the same video in landscape and vertical formats; three dark pricing cards. Premium feel."
+  },
+  {
+   "name": "design2-saas",
+   "kind": "mockup",
+   "aspect": "16:9",
+   "model": "gemini-3-pro-image-preview",
+   "meaning": "Светлый продукт: чистый светлый SaaS-стиль, карточки, синий акцент, много воздуха",
+   "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: LIGHT CLEAN SAAS. White and very light blue background, rounded white cards with soft shadows, blue accent color, lots of air. Hero: headline and buttons on the left, on the right a laptop mockup and a phone mockup showing a digital presenter video. Below: tabs with industries (Обучение, Образование, Эксперты, Продукты, Локализация), a 4-step 'how it works' row with simple line icons, three pricing cards with the middle one highlighted. Trustworthy corporate feel."
+  },
+  {
+   "name": "design3-pipeline",
+   "kind": "mockup",
+   "aspect": "16:9",
+   "model": "gemini-3-pro-image-preview",
+   "meaning": "Живой конвейер: изометрическая схема документ → сценарий → голос → аватар → готовый ролик",
+   "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: ISOMETRIC PIPELINE. Main hero visual is an isometric 3D conveyor going across the page: a paper document enters on the left, passes stations (script, voice waveform, digital avatar, editing timeline) and comes out on the right as a finished video on a laptop and a smartphone. Light background, soft pastel blue and mint accents, playful but professional. Headline and buttons above the conveyor. Below: grid of example videos and pricing cards."
+  },
+  {
+   "name": "design4-bento",
+   "kind": "mockup",
+   "aspect": "16:9",
+   "model": "gemini-3-pro-image-preview",
+   "meaning": "Бенто-сетка: плитки разного размера, крупная типографика, лаймовый акцент",
+   "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: BENTO GRID. The page is built from rounded tiles of different sizes: a big tile with a digital presenter video, a tall tile with a vertical phone video, small tiles with icons and big numbers («60 сек», «10 языков», «от 1 000 ₽»), a tile with a voice waveform. Bold oversized typography, off-white background, black text, one bright accent color (lime green). Trendy Apple-style bento layout."
+  },
+  {
+   "name": "design5-aurora",
+   "kind": "mockup",
+   "aspect": "16:9",
+   "model": "gemini-3-pro-image-preview",
+   "meaning": "Aurora: тёмно-синий фон со светящимися градиентами, стеклянные карточки, футуристичный AI-стиль",
+   "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: AURORA GLASS. Dark navy background with soft glowing aurora gradients (violet, cyan, pink), frosted glass cards (glassmorphism) with subtle borders. Hero: digital presenter video inside a glowing glass frame, headline and a gradient button. Below: glass cards with industry examples, laptop and phone mockups with videos, pricing in glass cards. Elegant, high-tech."
+  }
+ ]
+}

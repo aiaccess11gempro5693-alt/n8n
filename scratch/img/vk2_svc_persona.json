@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "vk2_svc_persona",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [],
+    "style": "A finished, premium, modern graphic for the VK social-network community of «ИИАВАТАР» — a service that turns any text into a video with an AI presenter (digital avatar), for business: ads, staff training, Reels/short clips, online lessons, videos in 30+ languages. Brand style: deep graphite #111311 background, vivid orange #F3531B accent with subtle orange glow, white text, bold modern condensed grotesque headlines, clean and minimal, high contrast, 2026 tech-product aesthetic. Any people are photorealistic, diverse, friendly professionals (NOT celebrities). Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Свой ИИ-ведущий» and orange price «от 3 000 ₽». No other words, no phone numbers, no links, no watermarks, no real app UI or logos.",
+    "style_qa": "графика в графитово-оранжевом стиле, понятно что это сервис видео с ИИ-ведущим из текста, надписи без ошибок: title «Свой ИИ-ведущий» and orange price «от 3 000 ₽»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "ВК vk2_svc_persona",
+    "prompt": "Square product card: transformation — on the left a simple portrait photo of a man in a business shirt, an orange arrow, on the right the same man as a glowing digital presenter in a video frame with a play icon; title and price at the top."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

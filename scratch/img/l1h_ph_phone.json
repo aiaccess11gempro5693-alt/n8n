@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l1h_ph_phone",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "style": "Cinematic editorial photograph colour-graded to the attached design board palette: deep graphite #22252B shadows, signal red #E63B2E accents (a red light strip, small red objects), milk white #F2F0EB highlights; muted, high contrast, clean modern clothing and home goods store, shallow depth of field. No text, no letters, no numbers, no logos, no signs, no screens with writing.",
+    "style_qa": "кинематографичное фото (фотореализм задуман), тонированное под палитру борда «Графит и красный»: графитовые тени, красные акценты, молочные светлые тона",
+    "audience": "для персонала магазина (ритейл)",
+    "meaning": "нет чека — покупатель показывает оплату в банковском приложении",
+    "prompt": "Close-up of a hand holding a smartphone towards the camera across a store counter; the phone screen shows an abstract payment confirmation: a big round check-mark symbol and a few blank grey bars, NO readable text or numbers."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_child",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a worried parent holding a small child close, the child with a thermometer; parent's eyebrows raised in concern",
+    "meaning": "тревога за ребёнка (ребёнок приболел, родитель волнуется)"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

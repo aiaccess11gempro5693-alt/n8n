@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s5_eyes",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "A customer walks up to the pharmacy counter and looks for the pharmacist; they make warm eye contact. The pharmacist in a white coat behind the counter smiles welcomingly. Side view, both faces visible, pharmacy shelves softly blurred behind. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+    "meaning": "Первое, что посетитель ищет глазами, когда подходит к столу, — это фармацевт"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

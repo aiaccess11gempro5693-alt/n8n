@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_help",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of two hands gently holding a small medical cross, meaning helping fully; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "помогайте полно"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

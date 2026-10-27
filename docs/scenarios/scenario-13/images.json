@@ -1,0 +1,123 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {
+      "name": "s13_ic_fit",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a puzzle piece clicking neatly into its matching slot with a small green check mark, meaning an addition that fits the situation; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "уместно, подходит к ситуации"
+    },
+    {
+      "name": "s13_ic_miss",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a puzzle piece that does NOT fit: it is held at a tilted angle beside an empty slot of a clearly different shape, with a small red cross mark, meaning an offer that does not fit the situation; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "невпопад"
+    },
+    {
+      "name": "s13_ic_person",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person with a small speech bubble containing a medical cross, meaning the person's situation and request; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "ситуация и запрос человека"
+    },
+    {
+      "name": "s13_ic_random",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a plain product box next to a broken chain link (two separated chain links with a gap between them), meaning an offer with no connection to the request; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "случайное, без связи"
+    },
+    {
+      "name": "s13_ic_palm",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a calm open hand gently raised, politely declining, with a small soft circle behind it, meaning a polite refusal; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "отказ сегодня"
+    },
+    {
+      "name": "s13_ic_trust",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a handshake with a small green heart above it, meaning trust; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "доверие завтра"
+    },
+    {
+      "name": "s13_ic_comfort",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a soft pillow with a small cloud, meaning comfort; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "комфорт"
+    },
+    {
+      "name": "s13_ic_result",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a target with an arrow exactly in the center and a green check mark, meaning the result of treatment; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "результат"
+    },
+    {
+      "name": "s13_ic_cause",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a capsule pill aiming at a round virus germ, meaning a drug that treats the cause; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "лечит причину"
+    },
+    {
+      "name": "s13_ic_symptom",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a medical thermometer with a green downward arrow beside it, meaning relieving a symptom; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "снимает симптом"
+    },
+    {
+      "name": "s13_ic_organ",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a shield protecting a simple stylized stomach organ, meaning protecting another organ; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "защищает другой орган"
+    },
+    {
+      "name": "s13_ic_return",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person walking back along a circular return arrow toward a pharmacy cross, with a small amber warning triangle, meaning the person comes back with a complication; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "возвращается с осложнением"
+    },
+    {
+      "name": "s13_ic_calm",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a calm smiling face with a small green leaf, meaning a calm manner; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "спокойно"
+    },
+    {
+      "name": "s13_ic_convince",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a lightbulb glowing next to a small green check mark, meaning an explained benefit that convinces; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "объяснённая польза убеждает"
+    },
+    {
+      "name": "s13_ic_finish",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a finish flag at the end of a short path with a green check mark, meaning carrying help through to the end; plain white background outside the light-blue circle, no dark corners, no letters or text",
+      "meaning": "доводите помощь до конца"
+    },
+    {
+      "name": "s13_refusal",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter hands a customer one plain bag with the main purchase and smiles warmly and calmly; the customer politely says no thanks to an extra item with a small relaxed gesture, and both look at ease and friendly, no tension. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+      "meaning": "спокойное отношение к отказу: «спасибо, только основное» — «конечно»"
+    }
+  ]
+}

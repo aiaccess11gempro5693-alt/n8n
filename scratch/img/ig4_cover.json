@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "ig4_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig4_board.png",
+      "scratch/img/ig4_host.jpg"
+    ],
+    "person_note": "The presenter must be exactly the woman from the second attached photo (same face, long wavy brown hair, navy medical scrubs).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER built EXACTLY in the design system from the FIRST attached board: deep navy #1B2A4A, cognac #B8743A, warm white #F4F1EC, coral-red #E5533D for the danger word; bold condensed Oswald-like headlines. The presenter is exactly the woman from the SECOND attached photo (same face, hair and navy scrubs, no badge, no logos) — photorealistic, the same person, looking at the viewer with a serious, intriguing expression. Behind her a soft cloud of white vapour with a faint coral glow. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: big title in two lines «ЧТО В ПАРЕ» / «ЭЛЕКТРОНКИ» (the second line coral-red). No other words, no numbers, no logos, no watermarks, no UI elements, no handles, no vape brand. High contrast, readable at small size in the profile grid.",
+    "style_qa": "обложка в стиле приложенного борда, ведущая из приложенного фото узнаваема и не искажена, надпись «ЧТО В ПАРЕ ЭЛЕКТРОНКИ» без ошибок, другого текста и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Что в паре электронки»",
+    "prompt": "Vertical 9:16. The presenter waist-up in the lower half, centred. The title sits in the upper-middle part, centred, starting about 20% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

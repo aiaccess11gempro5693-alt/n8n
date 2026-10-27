@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_spray",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a small throat spray bottle with a nozzle and a few mist dots; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "спрей от боли в горле"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

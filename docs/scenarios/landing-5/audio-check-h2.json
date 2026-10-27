@@ -1,0 +1,65 @@
+{
+ "mode": "audio_check",
+ "jobs": [
+  {
+   "name": "l5-stress-h2a",
+   "audio": "scratch/l5h2a-trim.mp3",
+   "text": "[warm, confident] Девять утра, Москва. Я Елена Орлова, генеральный директор «Меридиана». [thoughtfully] Ещё год назад вся наша команда помещалась в одной переговорной. [proud] А сегодня мы открываем офисы в Лондоне и Мадриде. [sincerely] И с каждой новой командой я хочу поговорить — на её родном языке. [warm, confident] Good afternoon, London! [proud] You are our newest team — and already the fastest-growing one. [sincerely] Our clients in the UK have waited a long time for people who speak their language. [warm] Your first project starts on Monday — and I can't wait to see what you build. [warm, cheerful] ¡Buenas tardes, Madrid! [proud] Bienvenidos a Meridian. [sincerely] Vuestra energía y vuestras ideas son exactamente lo que necesitamos. [warm, emphatic] Три города, три языка — [heartfelt] и одна команда. Спасибо, что вы с нами!",
+   "watch": [
+    "Девять",
+    "«Меридиана»",
+    "переговорной",
+    "Мадриде",
+    "родном",
+    "fastest-growing",
+    "UK",
+    "Bienvenidos",
+    "Vuestra",
+    "energía",
+    "necesitamos",
+    "Три",
+    "языка"
+   ]
+  },
+  {
+   "name": "l5-stress-h2c",
+   "audio": "scratch/l5h2c-trim.mp3",
+   "text": "[warm, confident] Девять утра, Москва. Я Елена Орлова, генеральный директор «Меридиана». [thoughtfully] Ещё год назад вся наша команда помещалась в одной переговорной. [proud] А сегодня мы открываем офисы в Лондоне и Мадриде. [sincerely] И с каждой новой командой я хочу поговорить — на её родном языке. [warm, confident] Good afternoon, London! [proud] You are our newest team — and already the fastest-growing one. [sincerely] Our clients in the UK have waited a long time for people who speak their language. [warm] Your first project starts on Monday — and I can't wait to see what you build. [warm, cheerful] ¡Buenas tardes, Madrid! [proud] Bienvenidos a Meridian. [sincerely] Vuestra energía y vuestras ideas son exactamente lo que necesitamos. [warm, emphatic] Три города, три языка — [heartfelt] и одна команда. Спасибо, что вы с нами!",
+   "watch": [
+    "Девять",
+    "«Меридиана»",
+    "переговорной",
+    "Мадриде",
+    "родном",
+    "fastest-growing",
+    "UK",
+    "Bienvenidos",
+    "Vuestra",
+    "energía",
+    "necesitamos",
+    "Три",
+    "языка"
+   ]
+  },
+  {
+   "name": "l5-stress-h2d",
+   "audio": "scratch/l5h2d-trim.mp3",
+   "text": "[warm, confident] Девять утра, Москва. Я Елена Орлова, генеральный директор «Меридиана». [thoughtfully] Ещё год назад вся наша команда помещалась в одной переговорной. [proud] А сегодня мы открываем офисы в Лондоне и Мадриде. [sincerely] И с каждой новой командой я хочу поговорить — на её родном языке. [warm, confident] Good afternoon, London! [proud] You are our newest team — and already the fastest-growing one. [sincerely] Our clients in the UK have waited a long time for people who speak their language. [warm] Your first project starts on Monday — and I can't wait to see what you build. [warm, cheerful] ¡Buenas tardes, Madrid! [proud] Bienvenidos a Meridian. [sincerely] Vuestra energía y vuestras ideas son exactamente lo que necesitamos. [warm, emphatic] Три города, три языка — [heartfelt] и одна команда. Спасибо, что вы с нами!",
+   "watch": [
+    "Девять",
+    "«Меридиана»",
+    "переговорной",
+    "Мадриде",
+    "родном",
+    "fastest-growing",
+    "UK",
+    "Bienvenidos",
+    "Vuestra",
+    "energía",
+    "necesitamos",
+    "Три",
+    "языка"
+   ]
+  }
+ ]
+}

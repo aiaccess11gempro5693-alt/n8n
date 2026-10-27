@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "bot2_avatar_play",
+    "engine": "gpt-image-2",
+    "kind": "logo",
+    "aspect": "1:1",
+    "extra_refs": [
+      "docs/landing/site-refs/orange-studio.jpg"
+    ],
+    "prompt": "Square avatar for the Telegram bot of «ИИАВАТАР» — an AI video studio. Match the attached website hero image: near-black graphite background #111311, signal orange #F3531B accent, off-white #F9F9F6, soft warm orange rim light like a studio lamp. Strictly centred, everything inside the central 65% (cropped to a circle). A single minimal mark: a solid orange rounded play-triangle with a simple off-white stylised presenter silhouette (head and shoulders, geometric, no facial details) cut out inside it. Flat vector with a subtle glow, crisp, premium, readable at 64 px. NO text, no letters.",
+    "meaning": "аватарка бота ИИАВАТАР без текста: оранжевый треугольник play с силуэтом ведущего внутри, графитовый фон, в стиле сайта"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

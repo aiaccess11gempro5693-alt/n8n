@@ -1,0 +1,38 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig3_board_sun",
+   "engine": "gpt-image-2",
+   "kind": "board",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/ig1_board.png"
+   ],
+   "meaning": "палитра «Солнце и бирюза»: насыщенный жёлтый #FFC83D, глубокая бирюза #0F5257, коралл #FF6B57, белый; ведущая ~30, тёмные кудрявые волосы",
+   "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours or fonts. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge 2-3 word headline «5 ЯЗЫКОВ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), LANGUAGE BADGE style — a bold chip with a small round flag and the language name (English, Deutsch, Español, 日本語), END CARD with call to action «Напишите «ЯЗЫКИ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline, (2) presenter full frame + a large language badge, (3) presenter in a round frame + three chips, (4) full-screen typography «УГАДАЕТЕ?» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN about 30, modern, worldly and likeable (not a fashion model), waist-up, her clothes in the palette colours, a studio backdrop in the palette colours. The SAME woman appears in all frames. All text short and correctly spelled. Mood: sunny, global, travel-energy, optimistic. Palette «Солнце и бирюза»: sunny yellow #FFC83D background, deep teal #0F5257 headlines, coral #FF6B57 highlights, white cards. Typography: «Unbounded» bold headlines + «Inter». The woman has dark curly shoulder-length hair and wears a deep teal blouse."
+  },
+  {
+   "name": "ig3_board_neon",
+   "engine": "gpt-image-2",
+   "kind": "board",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/ig1_board.png"
+   ],
+   "meaning": "палитра «Ночной неон»: почти чёрный фиолетовый #14101F, неоновый фиолетовый #8B5CFF, циан #22E3F2, белый; ведущая ~30, короткая стрижка-боб, тёмно-русые волосы",
+   "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours or fonts. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge 2-3 word headline «5 ЯЗЫКОВ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), LANGUAGE BADGE style — a bold chip with a small round flag and the language name (English, Deutsch, Español, 日本語), END CARD with call to action «Напишите «ЯЗЫКИ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline, (2) presenter full frame + a large language badge, (3) presenter in a round frame + three chips, (4) full-screen typography «УГАДАЕТЕ?» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN about 30, modern, worldly and likeable (not a fashion model), waist-up, her clothes in the palette colours, a studio backdrop in the palette colours. The SAME woman appears in all frames. All text short and correctly spelled. Mood: night city, futuristic, sleek tech. Palette «Ночной неон»: near-black violet #14101F background, neon violet #8B5CFF, cyan #22E3F2 highlights, white text, soft glow accents. Typography: «Space Grotesk» bold headlines + «Inter». The woman has a sleek dark-blonde bob and wears a black top with a violet blazer."
+  },
+  {
+   "name": "ig3_board_pastel",
+   "engine": "gpt-image-2",
+   "kind": "board",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/ig1_board.png"
+   ],
+   "meaning": "палитра «Лёгкий пастельный»: молочный #FBF7F2, мягкий голубой #A9C8FF, малиновый #E83E6C, графит #1E1E24; ведущая ~30, длинные русые волосы",
+   "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours or fonts. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge 2-3 word headline «5 ЯЗЫКОВ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), LANGUAGE BADGE style — a bold chip with a small round flag and the language name (English, Deutsch, Español, 日本語), END CARD with call to action «Напишите «ЯЗЫКИ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline, (2) presenter full frame + a large language badge, (3) presenter in a round frame + three chips, (4) full-screen typography «УГАДАЕТЕ?» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN about 30, modern, worldly and likeable (not a fashion model), waist-up, her clothes in the palette colours, a studio backdrop in the palette colours. The SAME woman appears in all frames. All text short and correctly spelled. Mood: light, airy, friendly lifestyle-edu. Palette «Лёгкий пастельный»: milk white #FBF7F2 background, soft sky blue #A9C8FF blocks, raspberry #E83E6C highlights, graphite #1E1E24 text. Typography: «Manrope ExtraBold» headlines + «Manrope». The woman has long light-brown hair and wears a soft sky-blue shirt."
+  }
+ ]
+}

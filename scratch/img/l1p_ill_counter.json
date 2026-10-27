@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l1p_ill_counter",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "3:2",
+    "audience": "для персонала магазина (ритейл)",
+    "style": "Use the attached design board as the STRICT style reference: bold flat vector retail-pop illustration, no gradients or soft shading, thick clean shapes, palette of cobalt #2F4BFF, tangerine #FF7A1A, lime #C6F432, white #FFFFFF, ink #111433, simple flat skin tones. Playful geometric confetti accents. No text, no letters, no logos, no signs anywhere.",
+    "style_qa": "плоская векторная поп-иллюстрация в палитре борда (кобальт/мандарин/лайм/белый/чернила), без градиентов, НЕ фото",
+    "extra_refs": [
+      "scratch/img/l1_anna2_16x9.png"
+    ],
+    "person_note": "The store administrator must resemble the woman in the attached photo (light-brown shoulder-length hair, dark navy polo) but drawn in the flat illustration style; her badge has no text.",
+    "meaning": "возврат без конфликта: администратор у кассы спокойно и доброжелательно выслушивает покупателя, который вернулся с пакетом (в пакете свитер)",
+    "prompt": "At a simple shop counter, a friendly woman store administrator in a dark navy polo calmly listens with a warm smile to a customer — a man in a casual jacket — holding an open shopping bag with a folded sweater. Relaxed, no tension. Flat colour-block background with a few big circles and confetti shapes. Both people visible from the waist up, generous empty space around them."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

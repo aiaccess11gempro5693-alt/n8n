@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_next",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a video play button with a small forward arrow and a sparkle",
+    "meaning": "учтём в следующих роликах"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

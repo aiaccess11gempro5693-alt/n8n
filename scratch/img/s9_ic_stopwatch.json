@@ -1,0 +1,27 @@
+{
+  "job": {
+    "name": "s9_ic_stopwatch",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a stopwatch with a half-filled dial, meaning half a minute",
+    "meaning": "занимает полминуты"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Adjust highlighted interval to represent half a minute instead of a quarter"
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "The timer icon shows 15 seconds instead of half a minute (30 seconds)."
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_miss",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a puzzle piece that does NOT fit: it is held at a tilted angle beside an empty slot of a clearly different shape, with a small red cross mark, meaning an offer that does not fit the situation; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "невпопад"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

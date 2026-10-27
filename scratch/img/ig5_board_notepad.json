@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig5_board_notepad",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "«Блокнот официанта»: бумага #FAF6EC, графит #2B2B2B, красный карандаш #D7263D, жёлтый маркер #FFD447; ведущая ~27, рыжие волосы в хвосте",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a series of VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters). Use the attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours, fonts or look. The Reels tells a story about the ZEIGARNIK EFFECT: why we can't stop a TV series in the middle of an episode; about 100 years ago psychologist Bluma Zeigarnik noticed that a café waiter remembers every order until it is paid and forgets it right after; unfinished tasks are remembered about twice as well. Blocks: hero with title «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge headline «ПОЧЕМУ ВЫ НЕ МОЖЕТЕ БРОСИТЬ СЕРИАЛ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), an INFOGRAPHIC card «Незаконченное помнят ≈ 2× лучше» with two bars, an ILLUSTRATION example (a 1920s café, a waiter with a notepad of orders, some orders crossed out and fading), a «OPEN LOOP» icon (an unclosed circle that closes at the end), END CARD «Напишите «ПЕТЛЯ» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline and a video progress bar cut in the middle, (2) presenter in the lower half + illustration card above, (3) presenter in a round frame + the 2× chart, (4) full-screen typography «СЛЕДУЮЩАЯ СЕРИЯ ЧЕРЕЗ 5…» without presenter. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). Presenter on the board: a NEW confident WOMAN, likeable storyteller (not a fashion model), waist-up, her clothes in the palette colours, a backdrop in the palette colours. The SAME woman appears in all frames. All text in Russian, short, correctly spelled. Mood: a playful NOTEBOOK / order-pad look — lined and squared paper, pencil sketches, red pencil circles and ticks, crossed-out items, yellow marker highlights, sticky tape; like smart doodle explainers. Palette: paper #FAF6EC background, graphite #2B2B2B text and line art, red pencil #D7263D accents, yellow marker #FFD447 highlights. Typography: «Unbounded» bold headlines + a handwritten marker font for notes. The woman is about 27, red hair in a ponytail, wears a white T-shirt and a yellow cardigan."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

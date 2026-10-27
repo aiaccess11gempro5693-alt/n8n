@@ -1,0 +1,56 @@
+{
+ "mode": "audio_check",
+ "jobs": [
+  {
+   "name": "l5v-stress-v2a",
+   "audio": "scratch/l5v-v2a-trim.mp3",
+   "text": "[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [heartfelt] We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "Лондона",
+    "своём",
+    "колле́ги",
+    "Meridian",
+    "wherever",
+    "colleagues"
+   ]
+  },
+  {
+   "name": "l5v-stress-v2b",
+   "audio": "scratch/l5v-v2b-trim.mp3",
+   "text": "[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [heartfelt] We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "Лондона",
+    "своём",
+    "колле́ги",
+    "Meridian",
+    "wherever",
+    "colleagues"
+   ]
+  },
+  {
+   "name": "l5v-stress-v2c",
+   "audio": "scratch/l5v-v2c-trim.mp3",
+   "text": "[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [heartfelt] We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "Лондона",
+    "своём",
+    "колле́ги",
+    "Meridian",
+    "wherever",
+    "colleagues"
+   ]
+  }
+ ]
+}

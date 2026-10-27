@@ -1,0 +1,28 @@
+{
+  "job": {
+    "name": "ig3_tower",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "2:3",
+    "extra_refs": [
+      "scratch/img/ig3_board_led.png"
+    ],
+    "style": "Cinematic photorealistic still in the «Табло лифта» look from the attached design board: dark lobby, near-black #0E0E10 shadows, brushed steel #3A3D42 surfaces, warm amber #FFB000 glow from elevator floor indicators and lights. Moody but clear, high contrast, shallow depth of field. Absolutely NO readable text, NO letters, NO signs, NO logos anywhere; floor indicators show only abstract glowing dots or arrows.",
+    "style_qa": "кинематографичный фотореалистичный кадр в стиле борда «Табло лифта» (чёрный, сталь, янтарный свет), без читаемых надписей и букв, смысл соответствует описанию",
+    "meaning": "ночной небоскрёб снизу вверх, светящиеся окна, янтарный свет — атмосферный фон",
+    "prompt": "A tall skyscraper at night seen from below, dramatic perspective, a vertical strip of lit windows looks like an elevator shaft glowing amber, dark sky, light haze. Lots of dark empty space in the upper part of the image."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the person from the foreground and remove the glowing arrow symbols from the building facade"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

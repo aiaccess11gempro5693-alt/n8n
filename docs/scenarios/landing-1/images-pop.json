@@ -1,0 +1,94 @@
+{
+  "style_refs": [
+    "scratch/img/l1b_board_pop.png"
+  ],
+  "jobs": [
+    {
+      "name": "l1p_ic_listen",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of cobalt blue #2F4BFF. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+      "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 1 — улыбнуться и выслушать",
+      "prompt": "a speech bubble with a small heart inside and an ear beside it"
+    },
+    {
+      "name": "l1p_ic_check",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of tangerine orange #FF7A1A. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+      "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 2 — проверить товар: ярлык и вид",
+      "prompt": "a price tag with a check mark and a small magnifying glass"
+    },
+    {
+      "name": "l1p_ic_form",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of lime green #C6F432. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+      "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 3 — заявление: паспорт, причина, подпись",
+      "prompt": "a clipboard form with a pen signing and a small passport booklet"
+    },
+    {
+      "name": "l1p_ic_refund",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of cobalt blue #2F4BFF. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+      "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 4 — вернуть деньги тем же способом",
+      "prompt": "a bank card with a circular return arrow"
+    },
+    {
+      "name": "l1p_ic_bank",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of lime green #C6F432. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+      "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "нет чека — подойдёт выписка из банка",
+      "prompt": "a smartphone showing a simple bank transaction row with a check mark (shapes only, no text)"
+    },
+    {
+      "name": "l1p_ic_loyal",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (its 'ИКОНКИ (СТИЛЬ)' section): a single bold FILLED flat icon in ink #111433 with one small accent detail, centred inside a solid colour circle of tangerine orange #FF7A1A. Plain pure white background around the circle. Playful, modern, retail pop style. No text, no letters, no numbers, no logos.",
+      "style_qa": "плоская залитая иконка цвета чернил в сплошном цветном круге на белом фоне, как раздел 'Иконки' борда «Поп-ритейл»",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "постоянный покупатель — вернётся снова",
+      "prompt": "a shopping bag with a heart and a circular arrow around it"
+    },
+    {
+      "name": "l1p_ill_counter",
+      "engine": "gpt-image-2",
+      "kind": "illustration",
+      "aspect": "3:2",
+      "audience": "для персонала магазина (ритейл)",
+      "style": "Use the attached design board as the STRICT style reference: bold flat vector retail-pop illustration, no gradients or soft shading, thick clean shapes, palette of cobalt #2F4BFF, tangerine #FF7A1A, lime #C6F432, white #FFFFFF, ink #111433, simple flat skin tones. Playful geometric confetti accents. No text, no letters, no logos, no signs anywhere.",
+      "style_qa": "плоская векторная поп-иллюстрация в палитре борда (кобальт/мандарин/лайм/белый/чернила), без градиентов, НЕ фото",
+      "extra_refs": [
+        "scratch/img/l1_anna2_16x9.png"
+      ],
+      "person_note": "The store administrator must resemble the woman in the attached photo (light-brown shoulder-length hair, dark navy polo) but drawn in the flat illustration style; her badge has no text.",
+      "meaning": "возврат без конфликта: администратор у кассы спокойно и доброжелательно выслушивает покупателя, который вернулся с пакетом (в пакете свитер)",
+      "prompt": "At a simple shop counter, a friendly woman store administrator in a dark navy polo calmly listens with a warm smile to a customer — a man in a casual jacket — holding an open shopping bag with a folded sweater. Relaxed, no tension. Flat colour-block background with a few big circles and confetti shapes. Both people visible from the waist up, generous empty space around them."
+    }
+  ]
+}

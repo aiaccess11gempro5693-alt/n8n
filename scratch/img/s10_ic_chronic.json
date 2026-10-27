@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_chronic",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a heart with a heartbeat pulse line and a small circular repeat arrow, meaning a long-term chronic condition; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "хронические состояния"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

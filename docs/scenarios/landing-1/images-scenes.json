@@ -1,0 +1,106 @@
+{
+  "style_refs": [
+    "scratch/img/l1_board.png"
+  ],
+  "jobs": [
+    {
+      "name": "l1_ill_counter",
+      "engine": "gpt-image-2",
+      "kind": "illustration",
+      "aspect": "3:2",
+      "style": "Use the attached design board as the STRICT style reference for palette and mood: modern clean semi-flat editorial illustration, soft rounded shapes, gentle soft shading, palette of deep navy #1F2A44, coral #F2643D, mint #2BB59A, warm light background #FAF7F2, white, warm natural skin tones. Calm, friendly, professional retail store atmosphere (clothing and home goods). No text, no letters, no logos, no signs, no labels anywhere in the image.",
+      "style_qa": "современная полуплоская (semi-flat) редакционная иллюстрация в палитре борда (тёмно-синий/коралл/мятный/тёплый светлый фон), НЕ фото",
+      "audience": "для персонала магазина (ритейл)",
+      "extra_refs": [
+        "scratch/img/l1_anna_16x9.png"
+      ],
+      "person_note": "The store administrator must resemble the woman in the attached photo (light-brown shoulder-length hair, dark navy polo shirt) but drawn in the illustration style, not as a photo; her badge has no text.",
+      "meaning": "возврат без конфликта: администратор магазина спокойно и доброжелательно разговаривает у кассы с покупателем, который вернулся с пакетом (в пакете сложенный свитер)",
+      "prompt": "At a light wooden cash desk of a bright clothing and home goods store, a friendly woman store administrator in a dark navy polo shirt calmly listens with a warm smile to a customer — a man of about 40 in a casual jacket — who has come back holding an open paper shopping bag with a neatly folded sweater inside. Relaxed open body language on both sides, no tension. Shelves with folded textiles and plants softly in the background. Medium shot, both people fully visible from the waist up, generous empty light area around them."
+    },
+    {
+      "name": "l1_ic_listen",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 1 — улыбнуться и выслушать покупателя",
+      "prompt": "an open speech bubble and a small ear next to it, with a tiny coral heart accent — attentive listening"
+    },
+    {
+      "name": "l1_ic_check",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 2 — проверить товар: ярлык и товарный вид",
+      "prompt": "a clothing price tag on a string next to a magnifying glass, with a small coral check mark"
+    },
+    {
+      "name": "l1_ic_receipt",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "есть ли чек — бумажный кассовый чек",
+      "prompt": "a long paper till receipt with a torn zigzag bottom edge and abstract lines instead of text, small coral accent"
+    },
+    {
+      "name": "l1_ic_bank",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "нет чека — покупку подтвердит выписка из банка",
+      "prompt": "a smartphone showing an abstract banking app screen with a single transaction row (shapes only, no text) and a small coral check mark"
+    },
+    {
+      "name": "l1_ic_form",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 3 — оформить заявление: паспорт, причина, подпись",
+      "prompt": "a sheet of paper form with abstract lines, a pen signing at the bottom, and a small closed passport booklet beside it, coral accent on the pen"
+    },
+    {
+      "name": "l1_ic_refund",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "шаг 4 — вернуть деньги тем же способом оплаты",
+      "prompt": "a bank card with a circular return arrow around it, the arrow in coral"
+    },
+    {
+      "name": "l1_ic_loyal",
+      "engine": "gpt-image-2",
+      "kind": "icon",
+      "aspect": "1:1",
+      "quality": "medium",
+      "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+      "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+      "audience": "для персонала магазина (ритейл)",
+      "meaning": "постоянный покупатель — вернётся снова",
+      "prompt": "a shopping bag with a small coral heart on it and a circular arrow suggesting coming back again"
+    }
+  ]
+}

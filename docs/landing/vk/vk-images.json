@@ -1,0 +1,97 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "vk_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l1g_anna_9x16.png",
+    "scratch/img/l3_expert_9x16.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: wordmark «ИИАВАТАР» and below it «Видео с ИИ-ведущим за 1 день». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+   "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: wordmark «ИИАВАТАР» and below it «Видео с ИИ-ведущим за 1 день»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "оформление ВК vk_cover",
+   "prompt": "VK community COVER that will be cropped to a wide 2.5:1 strip: put EVERYTHING (text and faces) inside the central horizontal band = middle 55% of the HEIGHT; top and bottom 22% must be only plain background. Text block centered-left, three presenters from photos 2–4 in small rounded video frames on the right.",
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  {
+   "name": "vk_pin",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "2:3",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l1g_anna_9x16.png",
+    "scratch/img/l3_expert_9x16.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: headline «Видео с ИИ-ведущим» , second line in orange «из вашего текста», three pills «Reels и клипы» «Реклама» «Обучение», orange badge «от 1 000 ₽ за минуту», and small bottom line «Пишите в сообщения». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+   "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: headline «Видео с ИИ-ведущим» , second line in orange «из вашего текста», three pills «Reels и клипы» «Реклама» «Обучение», orange badge «от 1 000 ₽ за минуту», and small bottom line «Пишите в сообщения»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "оформление ВК vk_pin",
+   "prompt": "Vertical poster cropped later to 4:5: keep everything inside the central 84% of the HEIGHT; headline at top, three presenters in a row of vertical video frames in the middle, pills and price badge below.",
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  {
+   "name": "vk_svc_30s",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l1g_anna_9x16.png"
+   ],
+   "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Ролик 30 секунд» and orange price «от 500 ₽». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+   "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: title «Ролик 30 секунд» and orange price «от 500 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "оформление ВК vk_svc_30s",
+   "prompt": "Square product card: presenter from photo 2 in a vertical phone frame on the right with a play icon, title and price on the left.",
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  {
+   "name": "vk_svc_1min",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l3_expert_9x16.png"
+   ],
+   "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Ролик 1 минута» and orange price «от 1 000 ₽». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+   "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: title «Ролик 1 минута» and orange price «от 1 000 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "оформление ВК vk_svc_1min",
+   "prompt": "Square product card: presenter from photo 2 in a horizontal video frame, title and price above it.",
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  {
+   "name": "vk_svc_persona",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Свой персонаж и стиль» and orange price «от 3 000 ₽». No other words, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos after the first one.",
+   "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: title «Свой персонаж и стиль» and orange price «от 3 000 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "оформление ВК vk_svc_persona",
+   "prompt": "Square product card: presenter from photo 2 with a color palette and a style board around her, title and price at the top.",
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one."
+  },
+  {
+   "name": "vk_svc_generator",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png"
+   ],
+   "style": "A finished, premium graphic for the VK community of an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, minimal and clean. Perfectly spelled Russian text is REQUIRED and is the ONLY text: title «Генератор видео под ключ» and orange price «от 100 000 ₽». No other words, no phone numbers, no links, no watermarks, no UI of real apps.",
+   "style_qa": "графика в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, надписи без ошибок: title «Генератор видео под ключ» and orange price «от 100 000 ₽»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "оформление ВК vk_svc_generator",
+   "prompt": "Square product card: an isometric pipeline — document → gears → stack of video frames with play icons, glowing orange lines; title and price at the top; no people."
+  }
+ ]
+}

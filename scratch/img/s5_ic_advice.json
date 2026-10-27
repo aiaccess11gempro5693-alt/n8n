@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_advice",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a medicine box with a small checkmark badge",
+    "meaning": "рекомендация средства"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

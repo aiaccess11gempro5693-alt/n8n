@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "l5_board_c",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [],
+    "meaning": "Дизайн-система для ролика «Приветствие директора RU+EN»: ШАЛФЕЙ И КАМЕНЬ: шалфейно-зелёный, светлый камень, глубокий лесной, терракота; Cormorant Garamond + Manrope; архитектурные фото, мягкий природный свет, много воздуха, органичные формы; ведущая в терракотовом свитере на фоне камня; 6 вертикальных раскладок",
+    "prompt": "Create a complete design system board (brand style guide sheet, 16:9) for SHORT VERTICAL 9:16 corporate videos of a fictional international company «Меридиан»: the CEO greets employees and partners in Russian and then in English (the video showcases AI localization: the same person, the same voice, two languages). Presenter: a confident female CEO of about 45, waist-up, neutral face. Board blocks: hero (title «Меридиан — обращение директора» + presenter), colour palette with 5 HEX swatches, typography (named fonts, H1/H2/body), presenter style, graphic elements, icon style (9 icons: globe, language, handshake, growth chart, office, team, calendar, message, star), infographic examples, decorative elements, footer principles. IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS: (1) hook without the presenter: huge typography «Этот ролик никто не снимал»; (2) the director waist-up with a name plate «Елена Орлова — генеральный директор»; (3) a big language switch toggle «RU ⇄ EN» in the middle of the frame; (4) split frame: the same director on the left half with a chip «RU» and on the right half with a chip «EN»; (5) the director small inside a framed card plus a minimal world map with five office dots; (6) final: «Одно обращение — на любом языке» with a button «Заказать ролик». Every frame has a subtitle bar at the bottom. All text in Russian (except «EN», «RU» and short English words on EN frames), short and correctly spelled. No real brand names or logos. STYLE C «Шалфей и камень»: natural, human, airy Scandinavian. Background light stone #E7E3DC with sage green #A9B8A0 panels; accents: deep forest green #23332B, terracotta #C96B4B, soft sand #D9C7A7. Fonts: «Cormorant Garamond» elegant serif headlines, «Manrope» body. Visual language: lots of white space, soft organic arch shapes and rounded masks for photos, architectural photography of a bright modern office with plants, thin hand-drawn style line icons in forest green, a soft pill switch «RU / EN» in sage and terracotta. The CEO wears a terracotta knit sweater, photographed in natural window light against a light stone wall. Mood: warm, human, calm, sustainable. NO dark backgrounds, NO neon, NO glossy 3D."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

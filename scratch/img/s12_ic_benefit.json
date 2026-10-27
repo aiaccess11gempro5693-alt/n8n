@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_benefit",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a heart with a small green check mark and sparkles, meaning benefit for the person; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "польза"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_organ",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a shield protecting a simple stylized stomach organ, meaning protecting another organ; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "защищает другой орган"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

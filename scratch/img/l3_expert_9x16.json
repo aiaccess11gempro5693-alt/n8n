@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l3_expert_9x16",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l2_board_reels.png"
+    ],
+    "meaning": "эксперт по кибербезопасности банка, мужчина ~40 лет, славянская внешность, чёрная рубашка, фон — глубокий чёрный студийный с жёлтыми и красными акцентами из палитры приложенного борда «Reels-эксперт» (НЕ тот же человек, что на борде); вертикальный кадр по пояс, по центру, смотрит в камеру, лицо нейтрально-уверенное, губы слегка приоткрыты, без улыбки, руки опущены, запас над головой; без надписей",
+    "prompt": "Photorealistic photograph, vertical 9:16 portrait frame. A NEW man (NOT the man on the attached board) of about 40, Russian/Slavic appearance: short neat dark-blond hair, light stubble, grey-blue eyes, strong calm face. He is a bank cybersecurity specialist. His expression is calm, NEUTRAL and confident, like a person in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO smile, relaxed jaw, attentive eyes looking straight into the lens. Face lit evenly from the front with a soft key light, a thin warm-yellow rim light on one shoulder and a subtle red rim light on the other, matching the attached board palette (deep black #0E0E10, acid yellow #FFE600, alarm red #FF3B30). He wears a plain black button-up shirt, top button open, no tie, no badge, no logos, no text. Waist-up shot, he stands in the exact centre facing the camera, arms relaxed down along the body (hands out of frame or at the very bottom), shoulders square. Headroom: the top of his head is about 18% of the frame height below the upper edge; the face is large and sharp. Background: deep black studio backdrop with a soft dark gradient and a faint blurred yellow light streak far behind, no objects, no signs, no text, no screens. Sharp focus on the face, natural skin texture, 85mm lens look, contrasty cinematic grading in the black/yellow palette."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

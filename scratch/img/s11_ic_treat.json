@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_treat",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a capsule pill and a blister pack, meaning the main treatment; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "основное лечение"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

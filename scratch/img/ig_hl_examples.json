@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig_hl_examples",
+    "engine": "gpt-image-2",
+    "kind": "logo",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/ig1_board.png"
+    ],
+    "meaning": "иконка «Примеры»: кнопка воспроизведения внутри вертикального экрана телефона",
+    "prompt": "A single Instagram Highlights cover icon in the brand style of the attached board «ИИАВАТАР · Reels»: a perfectly centred bold simple line icon drawn in vivid orange #F3531B with a soft orange glow, inside a thin orange ring, on a solid graphite #111311 background that fills the whole square. Flat, minimal, premium, readable at 60 px. No text, no letters, no numbers, no logos. The icon and ring occupy the central 55% of the image. Icon: a vertical phone screen with a play triangle inside."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

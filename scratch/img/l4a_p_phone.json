@@ -1,0 +1,28 @@
+{
+  "job": {
+    "name": "l4a_p_phone",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "смартфон в руке: на экране светлая карта с зелёным маршрутом и точкой курьера — «курьер на карте»",
+    "prompt": "A hand holding a modern smartphone vertically against a soft cream background, the screen shows a LIGHT abstract city map with a bold leaf-green route line, a small tomato-red courier dot and a home pin — only shapes and lines, absolutely no text, no numbers, no app names. The phone fills the centre of the vertical frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "HTTP 400 gpt-image: {\"error\":{\"message\":\"Your request was rejected by the safety system. If you believe this is an error, contact us at Azure support ticket and include the request ID c89fa9b9-768c-4ae9-9cb2-93b498573e0b.\",\"type\":\"image_generation_user_error\",\"param\":\"\",\"code\":\"moderation_blocked\"}}"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

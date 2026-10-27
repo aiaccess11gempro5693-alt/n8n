@@ -1,0 +1,37 @@
+{
+ "mode": "audio_check",
+ "jobs": [
+  {
+   "name": "l5-stress-v3e",
+   "audio": "scratch/l5v3e-trim.mp3",
+   "text": "[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [sincerely] London, Dubai, Moscow — we work in different cities, [warm] but we share one goal: to make our clients' lives easier. [heartfelt] Thank you for being part of it. We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "Лондона",
+    "своём",
+    "clients'",
+    "wherever",
+    "Moscow"
+   ]
+  },
+  {
+   "name": "l5-stress-v3g",
+   "audio": "scratch/l5v3g-trim.mp3",
+   "text": "[warm, confident] Дорогие коллеги! Я Елена Орлова, генеральный директор «Меридиана». [proud] В этом году к нам присоединились команды из Лондона и Дубая. [sincerely] И я хочу, чтобы каждый услышал меня на своём языке. [warm, confident] Dear colleagues! [proud] Welcome to Meridian. [sincerely] London, Dubai, Moscow — we work in different cities, [warm] but we share one goal: to make our clients' lives easier. [heartfelt] Thank you for being part of it. We are one team — wherever you are.",
+   "watch": [
+    "Меридиана",
+    "генеральный",
+    "присоединились",
+    "Дубая",
+    "Лондона",
+    "своём",
+    "clients'",
+    "wherever",
+    "Moscow"
+   ]
+  }
+ ]
+}

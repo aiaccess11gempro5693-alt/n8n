@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_exam",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an exam sheet with a red grade circle and a pencil, no letters or digits",
+    "meaning": "проверка знаний, экзамен"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

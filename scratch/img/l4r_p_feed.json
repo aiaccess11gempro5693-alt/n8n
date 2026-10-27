@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l4r_p_feed",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса «Повтори»: нейросеть превращает видео-рецепт в корзину продуктов",
+    "meaning": "рука держит смартфон: на экране вертикальное видео-рецепт — вилка накручивает сливочную пасту; без интерфейса и надписей",
+    "prompt": "A hand holding a modern smartphone vertically against a soft cream background, the screen shows a full-screen vertical food video frame: a fork twirling glossy creamy tomato pasta with basil in a bowl, appetising close-up — absolutely no app interface, no text, no icons, no numbers. The phone fills the centre of the vertical frame; upper part soft cream space.",
+    "person_note": "Only one hand holding the phone, no face."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s6_window",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "prompt": "A cold impersonal dispensing window: a small glass hatch in a grey wall, only an anonymous hand passing a medicine box through it, no face visible, a customer on the other side looking uneasy. Muted, slightly desaturated palette within the brand colors. NO signs, text or labels anywhere.",
+    "meaning": "безличное окошко выдачи"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

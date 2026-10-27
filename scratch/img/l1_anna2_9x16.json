@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l1_anna2_9x16",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/l1_anna2_16x9.png"
+    ],
+    "meaning": "та же Анна, что на приложенном фото (лицо, причёска, тёмно-синее поло, бейдж «Анна» / «Администратор», тот же магазин), вертикальный кадр ПО ПОЯС, лицо крупное в верхней трети, спокойное, губы слегка приоткрыты, без широкой улыбки",
+    "prompt": "Photorealistic photograph, vertical portrait frame. The SAME woman as in the attached photo — identical face, hair, eyes, dark navy polo shirt, and the same white name badge with a coral top stripe and readable Russian text in two lines «Анна» / «Администратор», same bright store of textiles and home goods, same lighting and colour grading. Vertical composition: WAIST-UP shot (from slightly above the head to the waist), she stands in the centre facing the camera and looking straight into the lens, her face large and sharp in the upper third of the frame, clear headroom above the head, hands loosely clasped at waist level near the bottom edge. Her face is calm and NEUTRAL-friendly, relaxed like a person in the middle of a sentence: lips slightly parted, a hint of teeth visible, NO broad smile, NO closed-lip smirk, relaxed jaw and cheeks, soft friendly eyes. Face well lit, evenly, from the front, no hair covering the mouth or chin. Softly blurred background, natural skin texture. No readable signs or logos in the background."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

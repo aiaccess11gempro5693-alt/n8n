@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_p_fridge",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Premium dark product/advertising photograph colour-graded to the attached design board «Тёмный продукт»: near-black #0B0D17 and deep navy #141A33 shadows, neon cyan #3BE8FF and violet #8B5CF6 rim lights and glows, soft white #EEF2FF highlights; glossy, clean, high-end tech commercial look, shallow depth of field, subtle reflections. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "рекламное продуктовое фото (фотореализм задуман) в тёмной гамме борда «Тёмный продукт»: почти чёрный/тёмно-синий, неоновые циан и фиолетовый акценты",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "открытый ПУСТОЙ холодильник ночью на тёмной кухне — хук «гости через час, а холодильник пустой»",
+    "prompt": "A modern refrigerator standing open at night in a dark minimalist kitchen, its shelves completely EMPTY and glowing with cold cyan interior light that spills onto the dark floor, a faint violet rim light on the fridge door edge; shot slightly from below, the fridge in the lower two thirds of the vertical frame, the upper third is dark empty space (space for text). Moody, cinematic, high contrast."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

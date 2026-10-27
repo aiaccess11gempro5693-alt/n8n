@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_convince",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a lightbulb glowing next to a small green check mark, meaning an explained benefit that convinces; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "объяснённая польза убеждает"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_first",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person waving hello first, with a small number-free star burst near the hand",
+    "meaning": "здороваться первым"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

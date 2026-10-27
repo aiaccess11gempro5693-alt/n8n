@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_specialist",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a friendly pharmacist (head and shoulders, white coat, small cross badge) with a small speech bubble",
+    "meaning": "живой специалист, который выслушает и поможет"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

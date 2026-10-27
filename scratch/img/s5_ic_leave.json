@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_leave",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a smiling person walking away with a small pharmacy bag, relaxed",
+    "meaning": "человек уходит спокойным и довольным"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

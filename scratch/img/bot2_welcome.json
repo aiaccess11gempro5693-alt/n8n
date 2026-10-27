@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "bot2_welcome",
+    "engine": "gpt-image-2",
+    "kind": "banner",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/landing/site-refs/orange-studio.jpg"
+    ],
+    "prompt": "Wide welcome banner (16:9, will be shown at 640x360) for the Telegram bot that delivers client requests from the website of «ИИАВАТАР» — an AI video studio that turns text into video with a digital presenter. Match the attached website hero image exactly in mood and palette: dark graphite studio #111311, warm orange studio lamp glow, signal orange #F3531B accent, off-white #F9F9F6. Composition: on the LEFT half big extra-bold uppercase Russian typography (Sora ExtraBold style), two lines «ЗАЯВКИ» in off-white and «С САЙТА» in orange #F3531B, above them a small off-white wordmark «ИИАВАТАР». On the RIGHT half a photorealistic dark desk scene like the reference: a monitor showing a friendly woman presenter in a dark blazer, and a smartphone in the foreground showing a chat with an orange notification badge. Keep a safe margin from all edges. Perfect Russian spelling; no other text, no logos, no watermarks, no UI gibberish on screens.",
+    "meaning": "приветственная картинка бота: слева «ИИАВАТАР» мелко, крупно «ЗАЯВКИ» белым и «С САЙТА» оранжевым; справа тёмная студия с монитором с ведущей и телефоном с уведомлением; стиль сайта (графит + оранжевый)"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

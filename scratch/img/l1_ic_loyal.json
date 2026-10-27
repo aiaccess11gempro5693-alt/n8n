@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l1_ic_loyal",
+    "engine": "gpt-image-2",
+    "kind": "icon",
+    "aspect": "1:1",
+    "quality": "medium",
+    "style": "Use the attached design board as the STRICT style reference (see its 'ИКОНКИ (СТИЛЬ)' section): a single simple rounded line icon drawn in deep navy #1F2A44 with small coral #F2643D accents, centred inside a soft light warm circle (#F3EEE6). Plain pure white background around the circle. Clean, modern, friendly retail style. No text, no letters, no numbers, no logos.",
+    "style_qa": "простая линейная иконка тёмно-синим с коралловыми акцентами в светлом тёплом круге на белом фоне, как раздел 'Иконки' приложенного борда",
+    "audience": "для персонала магазина (ритейл)",
+    "meaning": "постоянный покупатель — вернётся снова",
+    "prompt": "a shopping bag with a small coral heart on it and a circular arrow suggesting coming back again"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

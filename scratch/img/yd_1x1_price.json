@@ -1,0 +1,32 @@
+{
+  "job": {
+    "name": "yd_1x1_price",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "1:1",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l1g_anna_9x16.png",
+      "scratch/img/l3_expert_9x16.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+    "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Ролики с ИИ-ведущим» and a big orange badge «от 1 000 ₽ за минуту». No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+    "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Ролики с ИИ-ведущим» and a big orange badge «от 1 000 ₽ за минуту»; лишнего текста, ссылок и телефонов нет",
+    "meaning": "креатив Директа yd_1x1_price",
+    "prompt": "Three presenters from photos 2–4 in three small rounded video frames in a row at the bottom; headline and the orange price badge above them."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the extra text in the top left and reduce text area to less than one third of the layout"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

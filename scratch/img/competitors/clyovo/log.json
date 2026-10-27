@@ -1,0 +1,17 @@
+[
+ {
+  "tag": "home",
+  "url": "https://clyovo.ru/services/ai-avatar",
+  "ok": true
+ },
+ {
+  "tag": "page1",
+  "url": "https://clyovo.ru/services",
+  "ok": true
+ },
+ {
+  "tag": "page2",
+  "url": "https://clyovo.ru/tseny",
+  "ok": true
+ }
+]

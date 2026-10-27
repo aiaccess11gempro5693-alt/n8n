@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s8_ic_doctor",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a stethoscope, meaning a doctor",
+    "meaning": "врач, направить к врачу"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

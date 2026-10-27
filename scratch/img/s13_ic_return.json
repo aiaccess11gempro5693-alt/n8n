@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_return",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person walking back along a circular return arrow toward a pharmacy cross, with a small amber warning triangle, meaning the person comes back with a complication; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "возвращается с осложнением"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

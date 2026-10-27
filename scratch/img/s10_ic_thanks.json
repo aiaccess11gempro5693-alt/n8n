@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_thanks",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a heart with small sparkles, meaning gratitude; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "спасибо, что относитесь к делу именно так"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

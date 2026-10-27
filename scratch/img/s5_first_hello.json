@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s5_first_hello",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "prompt": "A customer is just entering the pharmacy; the pharmacist behind the counter looks up first, makes warm eye contact and greets them first with a friendly smile and a small wave. The customer looks relieved. Walls and shelves have NO signs, posters or labels at all — shelves hold plain colored boxes without any markings.",
+    "meaning": "не бойтесь здороваться первым — тепло, глядя человеку в глаза",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ]
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

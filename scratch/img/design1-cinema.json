@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "design1-cinema",
+    "kind": "mockup",
+    "aspect": "16:9",
+    "model": "gemini-3-pro-image-preview",
+    "meaning": "Кинозал: тёмный кинематографичный стиль, крупное видео на первом экране, галерея роликов, оранжевый акцент",
+    "prompt": "Website landing page design concept, full desktop page shown as one tall screenshot cropped to 16:9, for a Russian service that produces AI videos with a digital presenter (avatar) for corporate training, online courses, experts and products. Russian-language interface. Main headline exactly: «Видео без съёмок». Button labels exactly: «Смотреть примеры» and «Рассчитать стоимость». Small \"LOGO\" placeholder in the top-left. Other small text can be neat placeholder lines. No real brand names. Modern 2026 web design, professional UI, crisp, high quality. Style: DARK CINEMATIC. Near-black background, deep charcoal panels, one vivid accent color (electric orange), soft film-like glow. Hero: huge video frame showing a friendly digital presenter (a smiling woman in a blazer), headline and two buttons over it. Below: horizontal row of video thumbnails like a streaming gallery; a laptop mockup and a smartphone mockup side by side playing the same video in landscape and vertical formats; three dark pricing cards. Premium feel."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The image is split into two side-by-side artboards/columns instead of a single continuous webpage mockup"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

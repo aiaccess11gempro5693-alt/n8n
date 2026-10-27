@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_pills",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a simple pill blister pack and a medicine bottle",
+    "meaning": "просто отпустить препараты"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

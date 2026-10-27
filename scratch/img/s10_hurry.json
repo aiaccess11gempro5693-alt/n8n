@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s10_hurry",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. A customer in a coat with a bag on the shoulder leans over the pharmacy counter in a hurry, glancing at a wristwatch, impatient; the pharmacist from the photo reference (same face, hair, white coat) behind the counter stays calm and friendly, about to ask a short question. Walls and shelves have NO signs, posters, labels or text at all.",
+    "meaning": "человек спешит: «просто дайте что-нибудь, только быстро»"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

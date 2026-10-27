@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s11_ic_listen",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of an ear with small sound waves and a heart, meaning we want to hear you; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "нам важно услышать именно вас"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

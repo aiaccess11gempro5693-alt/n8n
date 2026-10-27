@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "l4_board_product",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+      "scratch/img/l1_board.png"
+    ],
+    "meaning": "дизайн-борд стиля «Тёмный продукт» для ролика «гаджет за 60 секунд»: тёмный фон, неоновые акценты, стеклянные панели, макеты устройства, ведущий без фона поверх продуктовых сцен; совсем не похоже на светлый корпоративный стиль референса",
+    "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame/composition style, graphic elements, icon or sticker style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. This is a COMPLETELY DIFFERENT visual style from the references, for a different niche of short videos with a digital presenter. Style: «Тёмный продукт» — premium dark tech product-launch style. Palette: near-black #0B0D17, deep navy #141A33, neon cyan #3BE8FF, violet #8B5CF6, soft white #EEF2FF. Typography: «Space Grotesk» for headlines, «Manrope» for body — show them. Hero title: «Наушники Pulse за 60 секунд» (fictional brand). Hero subtitle: «Знакомство с продуктом». Presenter: a young Russian woman of about 28, product manager, sleek dark top, shown CUT OUT with no background floating over a dark product scene with neon rim light. Graphic elements: frosted-glass panels with thin neon borders, glowing spec chips («40 ч работы», «шумоподавление», «быстрая зарядка»), device mockups (wireless earbuds and case, smartphone app), thin grid lines, light streaks. Example slides: hero product shot with presenter, three feature chips around the product, comparison «было / стало», call-to-action «Попробуйте 30 дней». Footer principles: Чисто · Технологично · Наглядно · Коротко."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

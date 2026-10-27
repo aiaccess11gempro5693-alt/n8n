@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s13_ic_finish",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a finish flag at the end of a short path with a green check mark, meaning carrying help through to the end; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "доводите помощь до конца"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

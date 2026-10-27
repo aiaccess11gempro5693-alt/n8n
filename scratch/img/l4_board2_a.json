@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_board2_a",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_host_9x16.png"
+    ],
+    "meaning": "СВЕТЛАЯ дизайн-система «Свежий рынок» для рекламного ролика вымышленного сервиса доставки «Быстро» (с нуля, не тёмная, не неон, не на основе тёмного борда); референс — только лицо ведущего; светлый кремовый фон, свежий зелёный, томатно-красный, горчичный; плоские векторные иллюстрации, вырезанные фото продуктов-стикеры, дружелюбный округлый шрифт; ведущий в светлой рубашке на кремовом фоне; 6 вертикальных раскладок",
+    "prompt": "Create a complete design system board (brand style guide sheet, 16:9) for SHORT VERTICAL 9:16 advertising videos of a fictional grocery delivery service «Быстро» (groceries delivered in 60 minutes). The attached photo is ONLY a face reference: use EXACTLY this man's face and hairstyle as our presenter everywhere on the board, but DRESS him and LIGHT him in this board's own palette and background (NOT the dark studio, NOT black clothes, NOT neon). Board blocks: hero (title «Быстро — продукты за 60 минут» + presenter + product), colour palette with 5 HEX swatches, typography (named fonts, H1/H2/body), presenter style, graphic elements, icon style (9 icons: time, delivery, map, basket, payment, gift, chat, heart, profile), infographic examples, decorative elements, footer principles. IMPORTANT: a block «ВЕРТИКАЛЬНЫЕ КАДРЫ 9:16» with 6 phone-shaped frames showing SIX DIFFERENT LAYOUTS: (1) hook without the presenter: an open EMPTY fridge and a big timer «60:00»; (2) presenter with the logo «Быстро» popping above his head; (3) product hero: a smartphone with the app (map, route, courier) and three feature chips «60 мин», «0 ₽ от 1 000 ₽», «курьер на карте»; (4) «Было / Стало»: «очереди, пакеты, пробки» vs «3 касания»; (5) presenter with three audience chips «занятым», «мамам», «всем, кому дорог вечер»; (6) call to action: a grocery bag at a door and a button «Скачать «Быстро»». Every frame has a subtitle bar at the bottom. All text in Russian, short and correctly spelled. No real brand names or logos. STRICTLY NO dark/black backgrounds, NO neon glow, NO glassmorphism, NO cyber/tech look. STYLE A «Свежий рынок»: LIGHT, sunny and appetising. Background warm cream #FFF6E9 and white; colours: fresh leaf green #23A455, tomato red #FF4B2E, mustard yellow #FFC531, ink #1E2A22. Fonts: «Fredoka» rounded bold headlines, «Nunito» body. Visual language: flat vector illustrations with thick rounded shapes, cut-out photos of fresh vegetables, fruit and bread as stickers with white outlines, playful doodle arrows and sparkles, rounded pill buttons, green price-tag style chips. Presenter wears a light olive-green overshirt over a white t-shirt, photographed in soft daylight on a cream background. Mood: friendly, fresh, farmers-market, daytime."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

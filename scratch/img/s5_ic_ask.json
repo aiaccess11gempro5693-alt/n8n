@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "s5_ic_ask",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a speech bubble with a question mark shape made of a dotted line (no letters)",
+    "meaning": "выяснение потребности, вопросы"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Use clean solid line art instead of dotted lines to match brand style."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

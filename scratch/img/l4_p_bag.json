@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "l4_p_bag",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Premium dark product/advertising photograph colour-graded to the attached design board «Тёмный продукт»: near-black #0B0D17 and deep navy #141A33 shadows, neon cyan #3BE8FF and violet #8B5CF6 rim lights and glows, soft white #EEF2FF highlights; glossy, clean, high-end tech commercial look, shallow depth of field, subtle reflections. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "рекламное продуктовое фото (фотореализм задуман) в тёмной гамме борда «Тёмный продукт»: почти чёрный/тёмно-синий, неоновые циан и фиолетовый акценты",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "пакет с продуктами доставлен к двери квартиры — результат сервиса, «ужин у двери»",
+    "prompt": "A neat paper grocery bag full of fresh groceries (baguette, greens, fruit, a bottle of juice, no labels) standing on the floor right at an apartment front door in a dark hallway, the door slightly open with warm-white light from inside, the bag lit by a cyan rim light and a violet glow on the floor, glossy floor reflection; the bag in the lower half of the vertical frame, upper part dark space for text. Premium product shot, hero object."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

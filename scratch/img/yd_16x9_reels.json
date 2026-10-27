@@ -1,0 +1,32 @@
+{
+  "job": {
+    "name": "yd_16x9_reels",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/bot2_welcome.png",
+      "scratch/img/l1g_anna_9x16.png",
+      "scratch/img/l3_expert_9x16.png",
+      "scratch/img/l4r_host_2.png"
+    ],
+    "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+    "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Reels, Shorts, реклама» and second line «с ИИ-ведущим» in orange. No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+    "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Reels, Shorts, реклама» and second line «с ИИ-ведущим» in orange; лишнего текста, ссылок и телефонов нет",
+    "meaning": "креатив Директа yd_16x9_reels",
+    "prompt": "Three vertical smartphones on the right half playing short videos with the presenters from photos 2–4, with play icons; headline on the left; keep all text and faces inside the central 84% of the HEIGHT."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove the extra text in the top-left corner."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

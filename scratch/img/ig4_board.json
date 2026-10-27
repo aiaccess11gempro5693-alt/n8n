@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "ig4_board",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/ig1_board.png",
+      "scratch/img/ig4_host.jpg"
+    ],
+    "person_note": "The presenter must be exactly the woman from the second attached photo.",
+    "meaning": "дизайн-система Reels «Что в паре электронки»: тёмно-синий/коньяк/графит/тёплый белый + кораллово-красный акцент опасности, ведущая с фото, инфографика реакции, плитки металлов, сравнение, призыв в комментарии, концовка «КЛИНИКА»",
+    "prompt": "Create a complete design system board (brand style guide sheet) for a VERTICAL 9:16 Instagram Reels of the brand «ИИАВАТАР» (AI video presenters) — an expert health video about what is really inside e-cigarette vapour. Use the first attached image ONLY as an example of the board FORMAT (blocks and level of detail) — do NOT reuse its colours or fonts. The second attached photo is the presenter: use exactly this woman (same face, long wavy brown hair, navy medical scrubs, sitting in a cognac leather armchair) — no badge, no logos on her clothes. Palette derived from her photo: deep navy #1B2A4A, cognac #B8743A, charcoal #232428, warm white #F4F1EC, and a clinical warning accent coral-red #E5533D used sparingly for danger words. Typography: a bold modern condensed sans for headlines (like «Oswald» or «Bebas Neue», Cyrillic) + «Manrope» for body. Mood: premium medical-expert, calm but alarming facts, clean clinic aesthetic. Blocks: hero «ИИАВАТАР · Reels», colour palette with HEX codes, typography, HOOK headline style (huge 2-3 line headline «ЧТО В ПАРЕ ЭЛЕКТРОНКИ», one word highlighted), SUBTITLES style (large bold words in the lower third, current word highlighted), INFOGRAPHIC examples: (a) a reaction card «глицерин + пропиленгликоль → перегрев → формальдегид» with a heating coil icon and a thermometer, (b) three element tiles like a periodic table: «Ni никель», «Cr хром», «Pb свинец», (c) a comparison bar «пар на высокой мощности vs дым сигареты», a COMMENT-PROMPT card «Знали? Напишите: знал / не знал», END CARD «Напишите «КЛИНИКА» в директ», and a block «РАСКЛАДКИ 9:16» with 4 phone-shaped frames: (1) presenter full frame + hook headline, (2) presenter in the lower half + infographic card above, (3) full-screen typography without presenter, (4) presenter in a round frame + end card. In every phone frame keep all text away from the top 13% and the bottom 22% of the frame (Instagram interface zones). All text in Russian, short, correctly spelled."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

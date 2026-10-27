@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s5_ic_pain",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a person holding their head in discomfort, small pain lines, worried eyebrows",
+    "meaning": "посетителю тревожно или больно"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

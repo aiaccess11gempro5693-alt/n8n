@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "l4h_ph_kitchen",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "16:9",
+    "extra_refs": [
+      "scratch/img/l4_board2_a.png"
+    ],
+    "style": "Bright appetising daylight product/advertising photograph in the palette of the attached design board «Свежий рынок»: warm cream #FFF6E9 and white surroundings, fresh leaf green #23A455, tomato red #FF4B2E and mustard #FFC531 accents, soft natural window light, clean and airy, shallow depth of field. NO readable text, no letters, no numbers, no logos, no brand names, no signs.",
+    "style_qa": "светлое дневное рекламное продуктовое фото (фотореализм задуман) в палитре борда «Свежий рынок»: кремовый/белый, свежий зелёный, томатный, горчичный",
+    "audience": "для широкой аудитории, реклама вымышленного сервиса доставки продуктов за час «Быстро»",
+    "meaning": "вечерняя кухня, открытый холодильник почти пустой — внутри один лимон; правая половина кадра — спокойная стена (место под текст)",
+    "prompt": "A cosy kitchen in the evening with warm lamp light, an open white refrigerator on the LEFT third of the frame, its shelves empty except ONE lonely lemon on a middle shelf, a window with dusk sky; the right half of the frame is a calm cream wall with soft warm light (space for text). Cosy, slightly comic mood.",
+    "person_note": "There are absolutely NO people, no faces, no hands in this image — only the objects described."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

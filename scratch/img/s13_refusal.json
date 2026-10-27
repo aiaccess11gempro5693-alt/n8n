@@ -1,0 +1,20 @@
+{
+  "job": {
+    "name": "s13_refusal",
+    "kind": "illustration",
+    "aspect": "4:3",
+    "extra_refs": [
+      "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+    ],
+    "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter hands a customer one plain bag with the main purchase and smiles warmly and calmly; the customer politely says no thanks to an extra item with a small relaxed gesture, and both look at ease and friendly, no tension. Walls and shelves have NO signs, posters, labels, price tags or text of any kind anywhere in the image; boxes and bottles are plain and unlabeled.",
+    "meaning": "спокойное отношение к отказу: «спасибо, только основное» — «конечно»"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s10_ic_survey",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a clipboard with a short checklist of two lines with check marks, meaning a short survey; plain white background outside the light-blue circle, no dark corners",
+    "meaning": "ответьте на пару вопросов"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

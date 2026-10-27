@@ -1,0 +1,91 @@
+{
+  "style_refs": [
+    "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+    "docs/references/oleg-brand-board-2-2026-09-23.jpg"
+  ],
+  "jobs": [
+    {
+      "name": "s9_ic_stopwatch",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a stopwatch with a half-filled dial, meaning half a minute",
+      "meaning": "занимает полминуты"
+    },
+    {
+      "name": "s9_ic_q_what",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a simple person silhouette with a small speech bubble containing a question mark, meaning asking what bothers the person",
+      "meaning": "первый вопрос: что беспокоит"
+    },
+    {
+      "name": "s9_ic_q_when",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a simple calendar page with a regular even grid of days and a small clock in the lower corner, meaning when it started and how often; plain white background outside the light-blue circle, no dark corners",
+      "meaning": "второй вопрос: как давно и как часто"
+    },
+    {
+      "name": "s9_ic_q_took",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a small medicine box with a blister pack of pills next to it, meaning what medicine was already taken",
+      "meaning": "третий вопрос: что уже принимали"
+    },
+    {
+      "name": "s9_ic_person",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a person silhouette with a small heart next to it, meaning attention to the person",
+      "meaning": "вопрос о человеке — выявление потребности"
+    },
+    {
+      "name": "s9_ic_package",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a closed product box with a shopping basket, meaning a question about the product and the purchase",
+      "meaning": "вопрос о товаре — оформление покупки"
+    },
+    {
+      "name": "s9_ic_doctor",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a stethoscope, meaning a doctor",
+      "meaning": "рекомендовать обратиться к врачу"
+    },
+    {
+      "name": "s9_ic_habit",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a circular arrow around a small check mark, meaning a repeated daily habit",
+      "meaning": "задавайте вопросы как привычку"
+    },
+    {
+      "name": "s9_ic_survey",
+      "kind": "icon",
+      "aspect": "1:1",
+      "prompt": "icon of a clipboard with two checkbox lines and a small heart, meaning a short feedback survey about your opinion",
+      "meaning": "несколько коротких вопросов, ваше мнение"
+    },
+    {
+      "name": "s9_funnel",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) behind the pharmacy counter listens attentively to a customer and asks a question with an open, inviting hand gesture; the customer is explaining calmly. A subtle stylised funnel shape made of three soft blue rings floats beside them, meaning three questions narrowing to the right answer. Walls and shelves have NO signs, posters, labels or text at all.",
+      "meaning": "воронка из трёх вопросов — фармацевт расспрашивает посетителя"
+    },
+    {
+      "name": "s9_doctor",
+      "kind": "illustration",
+      "aspect": "4:3",
+      "extra_refs": [
+        "docs/references/oleg-avatar-reference-2026-09-23.jpg"
+      ],
+      "prompt": "Semi-flat illustration. The pharmacist from the photo reference (same face, hair, white coat) at the pharmacy counter calmly and kindly explains something to a worried customer who holds a hand to their forehead, and gently points toward a small clinic building with a green cross seen through the window, meaning a calm recommendation to see a doctor. Walls and shelves have NO signs, posters, labels or text at all.",
+      "meaning": "тревожные признаки — спокойно рекомендовать обратиться к врачу"
+    }
+  ]
+}

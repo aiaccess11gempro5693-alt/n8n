@@ -1,0 +1,23 @@
+{
+  "job": {
+    "name": "l1b_board_warm",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "extra_refs": [
+      "docs/references/oleg-brand-board-1-2026-09-23.jpg",
+      "scratch/img/l2_board_reels.png",
+      "scratch/img/l1_anna2_16x9.png"
+    ],
+    "meaning": "дизайн-борд ролика «Возврат товара» с Анной (то же лицо, что на приложенном фото), стиль «Тёплый лайфстайл»: терракота/шалфей/песок, мягкая антиква, органичные формы, фото в арочных рамках, атмосфера магазина товаров для дома; не похож на светло-голубой корпоративный стиль",
+    "prompt": "Create a design board (brand style guide sheet) in the same FORMAT and block structure as the attached reference boards (hero block with the presenter, colour palette with HEX codes and meanings, typography, frame style, graphic elements, icon style, infographic examples, example slides of the video, decorative elements, footer row of principles). All text in Russian, short and correctly spelled. Do NOT copy the references' colours, fonts or look — only the board format. It must look clearly different from a generic corporate light-blue style. Niche: short training videos for retail store staff. Hero title: «Как принять возврат товара за 4 шага». Hero subtitle: «Обучение персонала магазина». Presenter: the SAME woman as in the attached photo (Anna, store administrator: light-brown shoulder-length hair, dark navy polo, white badge «Анна / Администратор»), shown in the style's frames. Example slides: a topic slide, a 4-step progress tracker «Выслушать → Проверить → Оформить → Вернуть», a «Нет чека — не беда» tip, a final «Сегодня возврат — завтра постоянный покупатель». Style: «Тёплый лайфстайл» — cosy editorial home-goods store magazine look. Palette: terracotta #D9653B, sage #8FA98B, sand #F2E6D8, chocolate #3B2A22, cream #FBF7F1. Typography: «Fraunces» soft serif for headlines, «Onest» for body — show them. Graphic elements: photos in arch-shaped frames, organic blob shapes, hand-drawn underline strokes, small leaf and textile motifs, rounded pill labels, thin outline icons in chocolate. Footer principles: Тепло · Спокойно · Понятно · По-человечески."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

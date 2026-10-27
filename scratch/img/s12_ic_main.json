@@ -1,0 +1,17 @@
+{
+  "job": {
+    "name": "s12_ic_main",
+    "kind": "icon",
+    "aspect": "1:1",
+    "prompt": "icon of a hand passing one plain medicine box forward, meaning the main product the customer asked for; plain white background outside the light-blue circle, no dark corners, no letters or text",
+    "meaning": "основной товар"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

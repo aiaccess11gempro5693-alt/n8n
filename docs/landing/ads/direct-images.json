@@ -1,0 +1,114 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "yd_1x1_day",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l1g_anna_9x16.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Видео с ИИ-ведущим» and second line «за 1 день» in orange. No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Видео с ИИ-ведущим» and second line «за 1 день» in orange; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_1x1_day",
+   "prompt": "The presenter (photo 2) waist-up on the right, looking at the viewer; a small floating video frame with a play icon near her; headline on the left."
+  },
+  {
+   "name": "yd_1x1_text2video",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Из текста — в видео» and small line «без съёмок и актёров». No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Из текста — в видео» and small line «без съёмок и актёров»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_1x1_text2video",
+   "prompt": "Visual metaphor: a sheet of paper with grey text lines on the left turns (orange arrow) into a smartphone playing a video with the presenter from photo 2 on the right; headline at the top."
+  },
+  {
+   "name": "yd_1x1_price",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l1g_anna_9x16.png",
+    "scratch/img/l3_expert_9x16.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Ролики с ИИ-ведущим» and a big orange badge «от 1 000 ₽ за минуту». No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Ролики с ИИ-ведущим» and a big orange badge «от 1 000 ₽ за минуту»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_1x1_price",
+   "prompt": "Three presenters from photos 2–4 in three small rounded video frames in a row at the bottom; headline and the orange price badge above them."
+  },
+  {
+   "name": "yd_1x1_training",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "1:1",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l3_expert_9x16.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Обучающие видео» and second line «для сотрудников». No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Обучающие видео» and second line «для сотрудников»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_1x1_training",
+   "prompt": "The presenter (photo 2) in front of a clean presentation screen with simple abstract icons (checklist, gear, people) — no readable words on the screen; headline at the top-left."
+  },
+  {
+   "name": "yd_16x9_reels",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l1g_anna_9x16.png",
+    "scratch/img/l3_expert_9x16.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Reels, Shorts, реклама» and second line «с ИИ-ведущим» in orange. No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Reels, Shorts, реклама» and second line «с ИИ-ведущим» in orange; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_16x9_reels",
+   "prompt": "Three vertical smartphones on the right half playing short videos with the presenters from photos 2–4, with play icons; headline on the left; keep all text and faces inside the central 84% of the HEIGHT."
+  },
+  {
+   "name": "yd_16x9_lang",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l3_expert_9x16.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Видео на 30+ языках» and three small pills «RU» «EN» «ES». No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Видео на 30+ языках» and three small pills «RU» «EN» «ES»; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_16x9_lang",
+   "prompt": "The presenter (photo 2) on the right, speaking; on the left the headline and three language pills; subtle globe line art behind; keep all text and the face inside the central 84% of the HEIGHT."
+  },
+  {
+   "name": "yd_4x5_day",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "2:3",
+   "extra_refs": [
+    "scratch/img/bot2_welcome.png",
+    "scratch/img/l4r_host_2.png"
+   ],
+   "person_note": "Presenters must be exactly the people from the attached photos after the first one.",
+   "style": "A finished, clean ADVERTISING CREATIVE for Yandex Direct (Russian contextual ads network) for an AI video production service «ИИАВАТАР», in the brand design of the FIRST attached image: deep graphite #111311 background, vivid orange #F3531B accent, white text, bold modern grotesque type, premium and minimal. Text must take LESS than a third of the image, be large and perfectly spelled in Russian, and is the ONLY text: headline «Видео с ИИ-ведущим» and second line «за 1 день» in orange. No other words, no logos except the small wordmark «ИИАВАТАР» in a corner, no phone numbers, no links, no watermarks, no UI of real apps. Photorealistic presenters must be exactly the people from the attached photos. High contrast, readable at small size.",
+   "style_qa": "рекламный креатив в графитово-оранжевом стиле, люди из приложенных фото узнаваемы, текст занимает меньше трети, надписи без ошибок: headline «Видео с ИИ-ведущим» and second line «за 1 день» in orange; лишнего текста, ссылок и телефонов нет",
+   "meaning": "креатив Директа yd_4x5_day",
+   "prompt": "Vertical layout that will be cropped to 4:5: headline in the top third, the presenter (photo 2) waist-up below, a small video frame with a play icon; keep all text and the face inside the central 84% of the HEIGHT."
+  }
+ ]
+}
