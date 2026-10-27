@@ -32,6 +32,7 @@ WHITE = (255, 255, 255, 255)
 PAD_COLOR = "0xFAF6EC"
 PROGRESS_COLOR = "0xD7263D"
 CAP_F = 58
+CPAD = 34          # отступ вокруг слова, обведённого карандашом
 
 _fc = {}
 
@@ -184,7 +185,8 @@ def headline(path, lines, w, size=96, align="center", lh=1.22):
     карандашом, 'g' серый, 's' зачёркнуто красным."""
     def widest(sz):
         ff = font(F_HEAD, sz)
-        return max(sum(tw(t.upper(), ff) for t, _ in ln) + tw(" ", ff) * (len(ln) - 1) for ln in lines)
+        return max(sum(tw(t.upper(), ff) + (CPAD * 2 if m == "c" else 0) for t, m in ln)
+                   + tw(" ", ff) * (len(ln) - 1) for ln in lines)
     while size > 40 and widest(size) > w - 60:   # широкий Unbounded — ужимаем под ширину
         size -= 2
     f = font(F_HEAD, size)
@@ -197,13 +199,15 @@ def headline(path, lines, w, size=96, align="center", lh=1.22):
     sp = tw(" ", f)
     for li, line in enumerate(lines):
         segs = [(t.upper(), m) for t, m in line]
-        full = sum(tw(t, f) for t, _ in segs) + sp * (len(segs) - 1)
+        full = sum(tw(t, f) + (CPAD * 2 if m == "c" else 0) for t, m in segs) + sp * (len(segs) - 1)
         if full > w - 20:
             raise ValueError(f"headline: строка «{' '.join(t for t, _ in segs)}» шире {w}")
         x = (w - full) / 2 if align == "center" else 0
         for si, (t, m) in enumerate(segs):
             bw = tw(t, f)
             bb = tbox(t, f)
+            if m == "c":
+                x += CPAD
             if m == "box":
                 _marker(d, (x - 14, y + bb[1] - 4, x + bw + 14, y + bb[3] + 8), seed=li * 7 + si)
             d.text((x, y), t, font=f, fill={"w": INK, "o": RED, "box": INK, "c": INK, "g": GREY, "s": GREY}[m])
@@ -212,7 +216,7 @@ def headline(path, lines, w, size=96, align="center", lh=1.22):
             if m == "s":
                 ym = y + (bb[1] + bb[3]) / 2
                 _pencil_line(d, (x - 10, ym + 6), (x + bw + 10, ym - 6), width=10, seed=li + si)
-            x += bw + sp
+            x += bw + sp + (CPAD if m == "c" else 0)
         y += step
     return _save(im, path)
 
