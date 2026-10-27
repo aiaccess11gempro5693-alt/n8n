@@ -1,0 +1,20 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig5_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig5_board_notepad.png",
+    "scratch/img/ig5_host.png"
+   ],
+   "person_note": "The presenter must be exactly the woman from the second attached photo (same face, red hair in a ponytail, white T-shirt, mustard-yellow cardigan).",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER built EXACTLY in the «Блокнот» design system from the FIRST attached board: cream squared notebook paper #FAF6EC, graphite #2B2B2B, red pencil #D7263D, yellow marker #FFD447, bold wide Unbounded-like headline, sticky tape, a red hand-drawn open loop (an unclosed circle with an arrow) as a graphic element. The presenter is exactly the woman from the SECOND attached photo (same face, hair and clothes) — photorealistic, looking at the viewer with a curious, playful expression, as a photo cut-out taped onto the notebook page. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: big title in three lines «ПОЧЕМУ ВЫ НЕ» / «БРОСАЕТЕ» / «СЕРИАЛ?» with the word «СЕРИАЛ?» on a yellow marker stroke. No other words, no numbers, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+   "style_qa": "обложка в стиле приложенного борда «Блокнот», ведущая из приложенного фото узнаваема и не искажена, надпись «ПОЧЕМУ ВЫ НЕ БРОСАЕТЕ СЕРИАЛ?» без ошибок, другого текста и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Почему вы не бросаете сериал»",
+   "prompt": "Vertical 9:16. The presenter waist-up in the lower half, centred. The title sits in the upper-middle part, centred, starting about 20% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid."
+  }
+ ]
+}
