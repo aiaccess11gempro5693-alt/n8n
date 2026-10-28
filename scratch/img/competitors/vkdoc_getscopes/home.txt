@@ -1,0 +1,5 @@
+URL: https://dev.vk.com/ru/method/apps.getScopes
+TITLE: 
+DESCRIPTION: 
+
+Internal Server Error
