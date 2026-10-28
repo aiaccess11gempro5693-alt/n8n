@@ -1,0 +1,10 @@
+{
+ "mode": "site_capture",
+ "sites": [
+  {"name": "vkdoc_getscopes", "url": "https://dev.vk.com/ru/method/apps.getScopes"},
+  {"name": "vkdoc_video_save", "url": "https://dev.vk.com/ru/method/video.save"},
+  {"name": "vkdoc_access_token", "url": "https://dev.vk.com/ru/api/access-token/getting-started"},
+  {"name": "vkdoc_vkid_scopes", "url": "https://id.vk.com/about/business/go/docs/ru/vkid/latest/vk-id/connection/work-with-user-info/scopes"},
+  {"name": "vkdoc_permissions", "url": "https://dev.vk.com/ru/reference/access-rights"}
+ ]
+}
