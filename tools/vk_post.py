@@ -119,27 +119,42 @@ def video_test(path="scratch/vk/test-video.mp4"):
     """Пробуем загрузить видео ключом сообщества разными способами; удачную загрузку сразу удаляем."""
     gid = group_id()
     out = {"group_id": gid}
-    tries = {
+    tries = {}
+    if USER:   # ключ пользователя (VK_USER_TOKEN или с сайта) — главный кандидат
+        tries.update({
+            "user: users.get": lambda: {"me": call("users.get", USER)},
+            "user: video.save group_id private": lambda: call("video.save", USER, group_id=gid, name="test",
+                                                              is_private=1),
+            "user: shortVideo.create": lambda: call("shortVideo.create", USER, group_id=gid,
+                                                    file_size=os.path.getsize(path)),
+        })
+    else:
+        out["user_token"] = USER_ERROR or "нет VK_USER_TOKEN"
+    tries.update({
         "video.save group_id private": lambda: call("video.save", GROUP, group_id=gid, name="test", is_private=1),
         "video.save group_id": lambda: call("video.save", GROUP, group_id=gid, name="test", wallpost=0),
         "video.save no group_id private": lambda: call("video.save", GROUP, name="test", is_private=1),
         "shortVideo.create": lambda: call("shortVideo.create", GROUP, group_id=gid, file_size=os.path.getsize(path)),
         "docs.getMessagesUploadServer": lambda: call("docs.getMessagesUploadServer", GROUP, peer_id=0, type="doc"),
-    }
+    })
     for name, fn in tries.items():
         if name == "video.save group_id" and "upload" in out.get("video.save group_id private", {}):
             continue  # закрытая загрузка уже прошла — открытую (видна в группе) не пробуем
         try:
             meta = fn()
             res = {"meta": {k: v for k, v in meta.items() if k != "upload_url"}}
-            field = "file" if name in ("shortVideo.create", "docs.getMessagesUploadServer") else "video_file"
+            if "upload_url" not in meta:
+                out[name] = res
+                continue
+            tok = USER if name.startswith("user:") else GROUP
+            field = "file" if name.endswith(("shortVideo.create", "docs.getMessagesUploadServer")) else "video_file"
             res["upload"] = upload(meta["upload_url"], field, path)
             if name.startswith("docs"):
                 res["saved"] = call("docs.save", GROUP, file=res["upload"]["file"], title="test")
             vid, owner = meta.get("video_id"), meta.get("owner_id")
             if vid and owner:
                 try:
-                    res["deleted"] = call("video.delete", GROUP, video_id=vid, owner_id=owner)
+                    res["deleted"] = call("video.delete", tok, video_id=vid, owner_id=owner)
                 except Exception as e:
                     res["delete_error"] = str(e)
             out[name] = res
