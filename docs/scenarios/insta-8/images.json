@@ -1,0 +1,111 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig8_host_a",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary-looking woman — not a celebrity, not a model.",
+   "meaning": "коуч ~45: рыже-каштановые волосы до плеч волнами, изумрудный свитер тонкой вязки, тёплая студия с янтарным светом окон за спиной в размытии; смотрит в камеру, губы приоткрыты",
+   "prompt": "Photorealistic photograph of a woman coach about 45 years old: auburn shoulder-length wavy hair, small gold hoops, an emerald-green fine-knit sweater. Background: a dim warm studio with tall windows glowing amber, softly out of focus. FRAMING: vertical 9:16, waist-up, centred, both shoulders fully inside the frame, top of head about 14% below the upper edge, face large and sharp. She looks straight into the camera like a coach talking to her audience. Expression: confident and warm, mid-sentence, lips slightly parted showing a hint of teeth, NO smile. Look: a frame from a high-end talking-head video, cinema camera, 50mm, soft key light, natural unretouched skin with pores, real hair flyaways. No text, no logos, no microphone, no headphones."
+  },
+  {
+   "name": "ig8_host_b",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary-looking woman — not a celebrity, not a model.",
+   "meaning": "коуч ~38: тёмные прямые волосы ниже плеч, кремовая водолазка, мягкий вечерний свет у окна, светлая комната в размытии; смотрит в камеру, губы приоткрыты",
+   "prompt": "Photorealistic photograph of a woman coach about 38 years old: long straight dark-brown hair, minimal gold necklace, a cream turtleneck. Background: a calm light room with a big window at dusk, warm and blue light mixing, softly out of focus. FRAMING: vertical 9:16, waist-up, centred, both shoulders fully inside the frame, top of head about 14% below the upper edge, face large and sharp. She looks straight into the camera like a coach talking to her audience. Expression: confident and warm, mid-sentence, lips slightly parted showing a hint of teeth, NO smile. Look: a frame from a high-end talking-head video, cinema camera, 50mm, soft key light, natural unretouched skin with pores, real hair flyaways. No text, no logos, no microphone, no headphones."
+  },
+  {
+   "name": "ig8_b1",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина ночью в постели с телефоном, тревожная мысль, глаза широко открыты",
+   "prompt": "A woman lying awake in bed at night, face lit by her phone, eyes wide with an anxious thought, dark bedroom, cool blue phone light against warm lamp glow."
+  },
+  {
+   "name": "ig8_b2",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "рука ставит галочку в списке дел ручкой, крупный план",
+   "prompt": "Close-up of a hand with a pen ticking a checkbox in a paper to-do list on a wooden desk, morning sunlight, a cup of coffee in soft focus."
+  },
+  {
+   "name": "ig8_b3",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина у окна спокойно выдыхает, отпускает контроль, чашка в руках",
+   "prompt": "A woman standing by a big window with a mug in her hands, eyes closed, calmly exhaling, soft morning light, plants on the windowsill, peaceful mood."
+  },
+  {
+   "name": "ig8_b4",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "руки кладут старые письма и фото в коробку и закрывают крышку",
+   "prompt": "Close-up of hands placing old letters and faded photographs into a cardboard box and closing the lid, warm afternoon light, nostalgic but calm mood."
+  },
+  {
+   "name": "ig8_b5",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина на улице читает сообщение в телефоне и радостно улыбается",
+   "prompt": "A young woman on a sunny city street reading a message on her phone and smiling with happy surprise, golden hour, blurred passers-by."
+  },
+  {
+   "name": "ig8_b6",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина с закрытыми глазами, солнце на лице, рука на груди — возвращает энергию",
+   "prompt": "A woman with eyes closed and one hand on her chest, sunlight on her face, standing outdoors in a field at golden hour, wind in her hair, serene and strong."
+  },
+  {
+   "name": "ig8_b7",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "человек на развилке лесной тропы утром, выбирает направление",
+   "prompt": "A person seen from behind standing at a fork of two forest paths in the morning, sun rays through mist, choosing a direction."
+  },
+  {
+   "name": "ig8_b8",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина уверенно идёт вперёд по улице навстречу солнцу",
+   "prompt": "A woman walking forward confidently down a sunlit street toward the camera's direction of travel, seen from behind, long shadow, golden light, sense of action and freedom."
+  }
+ ]
+}
