@@ -1,0 +1,29 @@
+{
+  "job": {
+    "name": "ig7_host_a",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary-looking woman — not a celebrity, not a model.",
+    "meaning": "женщина ~42, психолог: тёмные волосы в гладком низком пучке, тонкие золотые круглые очки, кремовая шёлковая блузка и пиджак цвета кэмел, светлая тёплая штукатурка, свет из окна; документальное интервью, взгляд вбок",
+    "prompt": "Photorealistic photograph of a woman about 42 years old, a psychologist: dark-brown hair in a sleek low bun, thin gold round glasses, small pearl earrings, a cream silk blouse under a camel blazer. Background: a bare warm light-grey plaster wall, minimalist, a soft diagonal window shadow. FRAMING: vertical 9:16, centred, seen from mid-thigh up while seated on a simple armless chair, generous empty space around her, top of head about 12% below the upper edge, face sharp and detailed (the frame will also be cropped to tight close-ups). Head turned about 25 degrees to the left, eyes looking off-camera to the left as if answering an interviewer — a documentary interview shot. Expression: calm, smart and engaged, mid-sentence, lips slightly parted showing a hint of teeth, NO smile. Hands relaxed in her lap. Look: a candid still from a real high-end documentary interview, cinema camera, 50mm, f/2.8, soft natural window light from the left with a gentle shadow on the wall, natural unretouched skin with pores and fine lines, real hair flyaways. No microphone, no headphones, no text, no letters, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Subject is not facing front and not looking directly into the camera"
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Subject must face front and look directly into the camera"
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
