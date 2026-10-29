@@ -84,11 +84,12 @@ def split_even(ph, n):
 def chunks(words, total):
     # фраза — до знака препинания или тире; длинная фраза делится на равные по длине
     # куски; чанк не переходит через конец предложения и не оставляет одинокое слово
-    phrases, cur = [], []
+    phrases, cur, dashed = [], [], set()
     for w, t in words:
         if w in ("—", "–"):
             if cur:
                 phrases.append(cur)
+                dashed.add(id(cur))   # фраза закончилась тире — к ней не приклеиваем следующую
             cur = []
             continue
         cur.append((w, t))
@@ -100,7 +101,7 @@ def chunks(words, total):
     merged = []
     for ph in phrases:   # короткая фраза присоединяется к предыдущей, если влезает
         ln = lambda g: len(" ".join(w for w, _ in g))
-        if merged and ln(ph) < 10 and not re.search(r"[.!?…]»?$", merged[-1][-1][0]) and ln(merged[-1] + ph) <= MAXC:
+        if merged and ln(ph) < 10 and id(merged[-1]) not in dashed and not re.search(r"[.!?…]»?$", merged[-1][-1][0]) and ln(merged[-1] + ph) <= MAXC:
             merged[-1] += ph
         else:
             merged.append(ph)
