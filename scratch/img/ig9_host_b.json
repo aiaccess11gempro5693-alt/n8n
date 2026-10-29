@@ -1,0 +1,29 @@
+{
+  "job": {
+    "name": "ig9_host_b",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary-looking man — not a celebrity, not a model.",
+    "meaning": "мужчина ~40 на подкасте: русые волосы с проседью на висках, короткая борода, графитовый свитер тонкой вязки, серое букле-кресло, фон — тёмно-зелёные акустические панели, растение, тёплый контровой свет; смотрит вбок на собеседника",
+    "prompt": "Photorealistic photograph of a man about 40 years old, a guest on a video podcast: light-brown hair with a little grey at the temples, a short well-kept beard, a charcoal fine-knit crewneck sweater, sitting in a grey boucle armchair. Background: deep forest-green fabric acoustic panels, a tall plant, warm rim light on his hair from behind, creamy bokeh. FRAMING: vertical 9:16, he sits on the left-center of the frame, seen from the waist up with his lap and hands visible, head turned about 30 degrees to the right as if answering an interviewer sitting off-camera to the right, eyes looking off-camera to the right, face clearly visible and sharp, large in frame (top of head ~16% below upper edge). A black broadcast podcast microphone on a boom arm enters from the left edge and stops in front of his chest, BELOW his chin, never covering the mouth or face. Expression: calm, sincere, mid-sentence, lips slightly parted showing a hint of teeth, NO smile. Look: a candid still frame from a real high-end video podcast, shot on a cinema camera with a 50mm lens at f/2, shallow depth of field, soft warm key light, natural unretouched skin with pores, real hair. No text, no letters, no logos, no captions, no watermark, no headphones."
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Subject is not looking directly at the camera with a front-facing angle"
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "The person must face the camera directly (frontal view) and look into the lens, with no microphone blocking the body/face."
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "deformed fingers on clasped hands"
+    }
+  ]
+}
