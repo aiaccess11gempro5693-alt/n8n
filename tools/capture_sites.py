@@ -59,6 +59,39 @@ def shoot(page, url, d, tag, log):
         return []
 
 
+def grab_media(br, url, d, log):
+    """Скачать видео/аудио страницы (Reels): ловим запросы .mp4, убираем bytestart/byteend
+    и качаем дорожки целиком — media{i}.mp4 (у Instagram видео и звук — отдельные дорожки)."""
+    ctx = br.new_context(viewport={"width": 1440, "height": 900}, locale="ru-RU")
+    page = ctx.new_page()
+    seen = []
+    page.on("request", lambda r: seen.append(r.url) if ".mp4" in r.url else None)
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(5000)
+        page.evaluate("document.querySelectorAll('video').forEach(v => {v.muted = true; v.play().catch(()=>{})})")
+        page.wait_for_timeout(8000)
+        seen += page.evaluate("[...document.querySelectorAll('video')].map(v => v.currentSrc || v.src)")
+    except Exception as e:
+        log.append({"tag": "media", "ok": False, "error": str(e)[:200]})
+    bases = []
+    for u in seen:
+        if not u.startswith("http"):
+            continue
+        b = re.sub(r"[&?](bytestart|byteend)=\d+", "", u)
+        if b not in bases:
+            bases.append(b)
+    for i, b in enumerate(bases[:6]):
+        try:
+            r = ctx.request.get(b, timeout=120000)
+            body = r.body()
+            open(f"{d}/media{i}.mp4", "wb").write(body)
+            log.append({"tag": f"media{i}", "ok": r.ok, "status": r.status, "bytes": len(body), "url": b[:200]})
+        except Exception as e:
+            log.append({"tag": f"media{i}", "ok": False, "error": str(e)[:200]})
+    ctx.close()
+
+
 def run(spec, only):
     ensure_playwright()
     from playwright.sync_api import sync_playwright
@@ -83,6 +116,8 @@ def run(spec, only):
             for i, u in enumerate(extra):
                 shoot(page, u, d, f"page{i+1}", log)
             ctx.close()
+            if site.get("media"):
+                grab_media(br, site["url"], d, log)
             m = br.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, locale="ru-RU", is_mobile=True)
             mp = m.new_page()
             try:
