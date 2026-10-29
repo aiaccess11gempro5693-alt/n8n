@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig8_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig8_host_b.png"
+   ],
+   "person_note": "The woman must be exactly the woman from the attached photo (same face, long straight dark-brown hair, cream turtleneck).",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER for a self-help coach video: a photorealistic frame of exactly the woman from the attached photo in her calm light room with a big window at dusk, looking at the viewer with a confident warm expression. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: a huge white bold sans-serif title with a thin black outline in three lines «7 ПРАВИЛ,» / «ЧТОБЫ ВСЕЛЕННАЯ» / «ПОМОГАЛА», with «7» very large and the word «ВСЕЛЕННАЯ» in light sky-blue #6ECDFF. No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+   "style_qa": "обложка с ведущей из приложенного фото (узнаваема, не искажена), надпись «7 ПРАВИЛ, ЧТОБЫ ВСЕЛЕННАЯ ПОМОГАЛА» без ошибок, другого текста и логотипов нет",
+   "meaning": "обложка 9:16 Reels «7 правил»",
+   "prompt": "Vertical 9:16. The woman from the chest up in the lower 60% of the frame, centred. The title sits in the upper part, centred, starting about 18% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid; the title never covers her face."
+  }
+ ]
+}
