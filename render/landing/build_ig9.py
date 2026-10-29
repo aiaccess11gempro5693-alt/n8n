@@ -21,7 +21,7 @@ B.WHISPER = os.environ.get("WHISPER", f"{ROOT}/scratch/ig9-miron-whisper.json")
 B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/ig9-host.mp4")
 B.OUT = os.environ.get("OUT", f"{ROOT}/render/landing/ig9-9x16.mp4")
 B.TMP = f"{ROOT}/render/landing/.ig9"
-HOOK_SIZE, HOOK_MAXW = 74, 860
+HOOK_SIZE, HOOK_MAXW = 72, 960
 
 chunks = B.chunks
 
