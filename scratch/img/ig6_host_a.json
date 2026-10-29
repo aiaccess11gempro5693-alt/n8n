@@ -1,0 +1,29 @@
+{
+  "job": {
+    "name": "ig6_host_a",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary-looking woman — not a celebrity, not a model.",
+    "meaning": "женщина ~45 на подкасте: пепельно-русое каре, шоколадная водолазка тонкой вязки, зелёное бархатное кресло, микрофон на стойке ниже подбородка, фон — тёплые деревянные панели и полки с книгами в размытии; смотрит вбок на собеседника, лицо видно, губы приоткрыты, фотореализм",
+    "prompt": "Photorealistic photograph of a woman about 45 years old, a psychologist guest on a video podcast: ash-blonde chin-length bob, small gold earrings, a chocolate-brown fine-knit turtleneck, sitting in a deep green velvet armchair. Background: warm walnut wood panelling and softly blurred bookshelves with a warm table lamp glowing, creamy bokeh. FRAMING: vertical 9:16, she sits on the right half of the frame, seen from the waist up with her lap and hands visible, head turned about 30 degrees to the left as if answering an interviewer sitting off-camera to the left, eyes looking off-camera to the left, face clearly visible and sharp, large in frame (top of head ~16% below upper edge). A black broadcast podcast microphone on a boom arm enters from the right edge and stops in front of her chest, BELOW her chin, never covering the mouth or face. Expression: calm and confident, mid-sentence, lips slightly parted showing a hint of teeth, NO smile. Look: a candid still frame from a real high-end video podcast, shot on a cinema camera with a 50mm lens at f/2, shallow depth of field, soft warm key light from the left, natural unretouched skin with pores and fine lines, real hair flyaways. No text, no letters, no logos, no captions, no watermark, no headphones on her."
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The subject should be facing front and looking directly at the camera"
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "Subject must face forward and look directly into the camera"
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "Subject must be front-facing and looking directly into the camera"
+    }
+  ]
+}
