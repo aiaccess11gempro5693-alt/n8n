@@ -1,5 +1,16 @@
 {
  "group_id": 242478374,
+ "user: users.get": {
+  "meta": {
+   "me": []
+  }
+ },
+ "user: video.save group_id private": {
+  "error": "video.save: 5 User authorization failed"
+ },
+ "user: shortVideo.create": {
+  "error": "shortVideo.create: 27 Group authorization failed: method is unavailable with group auth."
+ },
  "video.save group_id private": {
   "error": "video.save: 5 User authorization failed"
  },
