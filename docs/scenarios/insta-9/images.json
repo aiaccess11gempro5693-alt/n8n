@@ -1,0 +1,71 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig9_b0",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина ~35 у окна на закате, задумчиво смотрит вдаль, тёплый свет на лице — «сама не догадывается, какая она»",
+   "prompt": "A woman about 35 with loose dark-blonde hair in a soft beige knit cardigan stands by a large window at golden hour, looking thoughtfully into the distance, warm sunlight on her face and hair, cosy room softly blurred, calm and quietly beautiful moment. Composition: her face in the upper half of the frame, lots of soft warm space in the lower half."
+  },
+  {
+   "name": "ig9_b1",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина укрывает пледом пожилую маму/подругу и подаёт чашку чая — «отдаёт больше, чем получает»",
+   "prompt": "A warm candid moment at home: a woman about 35 gently wraps a soft knitted blanket around the shoulders of an older woman sitting in an armchair and hands her a cup of tea, both faces softly visible, tender caring gesture, warm lamp light. Composition: the gesture and faces in the upper half of the frame."
+  },
+  {
+   "name": "ig9_b2",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина смотрит в телефон на короткое сообщение, лёгкая тревога во взгляде — «замечает, что сообщение короче»",
+   "prompt": "Close-up of a woman about 35 sitting on a sofa in the evening holding a smartphone, looking at the screen with a subtle worried, attentive expression, brows slightly raised, the phone screen glows but shows only blurred abstract shapes, warm lamp light and a soft blue glow from the phone on her face. Composition: her face in the upper half of the frame."
+  },
+  {
+   "name": "ig9_b3",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "на столе — чашка кофе, приготовленная «как он любит», рядом печенье, руки женщины ставят чашку — «помнит мелочи»",
+   "prompt": "Close-up of a woman's hands carefully placing a cup of cappuccino with a little heart in the foam next to a man's laptop and his reading glasses on a wooden kitchen table, a small plate with two cookies beside it, morning sunlight, steam rising, cosy and caring mood. Composition: the cup and hands in the upper-middle part of the frame."
+  },
+  {
+   "name": "ig9_b4",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина в пальто уходит по осенней улице, вид со спины, решительный шаг — «уходит ещё решительнее»",
+   "prompt": "A woman about 35 in a long camel coat walks away down an autumn city street at dusk, seen from behind, confident determined stride, a small bag on her shoulder, fallen golden leaves, warm street lights starting to glow, the empty street ahead of her. Composition: she is in the upper-middle part of the frame, the street recedes into soft warm bokeh."
+  },
+  {
+   "name": "ig9_b5",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "женщина мягко улыбается в солнечном свете, спокойная сила — «самая редкая сила — остаться мягкой»",
+   "prompt": "Portrait of a woman about 38 outdoors in a field of tall golden grass at sunset, eyes softly closed, a calm gentle smile, the wind lightly moving her hair, warm backlight glowing around her, a feeling of quiet strength and peace. Composition: her face in the upper half of the frame."
+  }
+ ]
+}
