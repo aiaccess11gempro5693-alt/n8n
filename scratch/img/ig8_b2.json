@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig8_b2",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "рука ставит галочку в списке дел ручкой, крупный план",
+    "prompt": "Close-up of a hand with a pen ticking a checkbox in a paper to-do list on a wooden desk, morning sunlight, a cup of coffee in soft focus."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

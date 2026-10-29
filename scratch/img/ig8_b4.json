@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig8_b4",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm natural light, shallow depth of field, rich but natural colours, looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "руки кладут старые письма и фото в коробку и закрывают крышку",
+    "prompt": "Close-up of hands placing old letters and faded photographs into a cardboard box and closing the lid, warm afternoon light, nostalgic but calm mood."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig8_host_a",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary-looking woman — not a celebrity, not a model.",
+    "meaning": "коуч ~45: рыже-каштановые волосы до плеч волнами, изумрудный свитер тонкой вязки, тёплая студия с янтарным светом окон за спиной в размытии; смотрит в камеру, губы приоткрыты",
+    "prompt": "Photorealistic photograph of a woman coach about 45 years old: auburn shoulder-length wavy hair, small gold hoops, an emerald-green fine-knit sweater. Background: a dim warm studio with tall windows glowing amber, softly out of focus. FRAMING: vertical 9:16, waist-up, centred, both shoulders fully inside the frame, top of head about 14% below the upper edge, face large and sharp. She looks straight into the camera like a coach talking to her audience. Expression: confident and warm, mid-sentence, lips slightly parted showing a hint of teeth, NO smile. Look: a frame from a high-end talking-head video, cinema camera, 50mm, soft key light, natural unretouched skin with pores, real hair flyaways. No text, no logos, no microphone, no headphones."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
