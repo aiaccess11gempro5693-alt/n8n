@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "ig9_b1",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "женщина укрывает пледом пожилую маму/подругу и подаёт чашку чая — «отдаёт больше, чем получает»",
+    "prompt": "A warm candid moment at home: a woman about 35 gently wraps a soft knitted blanket around the shoulders of an older woman sitting in an armchair and hands her a cup of tea, both faces softly visible, tender caring gesture, warm lamp light. Composition: the gesture and faces in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The hand interacting with the cup has anatomical distortion and extra fingers."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

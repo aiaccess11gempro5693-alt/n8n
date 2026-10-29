@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "ig9_b4",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "женщина в пальто уходит по осенней улице, вид со спины, решительный шаг — «уходит ещё решительнее»",
+    "prompt": "A woman about 35 in a long camel coat walks away down an autumn city street at dusk, seen from behind, confident determined stride, a small bag on her shoulder, fallen golden leaves, warm street lights starting to glow, the empty street ahead of her. Composition: she is in the upper-middle part of the frame, the street recedes into soft warm bokeh."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Unnatural leg anatomy with the legs appearing fused into a single foot."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

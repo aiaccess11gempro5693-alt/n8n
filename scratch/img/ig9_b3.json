@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig9_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "на столе — чашка кофе, приготовленная «как он любит», рядом печенье, руки женщины ставят чашку — «помнит мелочи»",
+    "prompt": "Close-up of a woman's hands carefully placing a cup of cappuccino with a little heart in the foam next to a man's laptop and his reading glasses on a wooden kitchen table, a small plate with two cookies beside it, morning sunlight, steam rising, cosy and caring mood. Composition: the cup and hands in the upper-middle part of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

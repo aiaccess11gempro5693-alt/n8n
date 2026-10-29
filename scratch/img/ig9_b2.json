@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig9_b2",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "женщина смотрит в телефон на короткое сообщение, лёгкая тревога во взгляде — «замечает, что сообщение короче»",
+    "prompt": "Close-up of a woman about 35 sitting on a sofa in the evening holding a smartphone, looking at the screen with a subtle worried, attentive expression, brows slightly raised, the phone screen glows but shows only blurred abstract shapes, warm lamp light and a soft blue glow from the phone on her face. Composition: her face in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

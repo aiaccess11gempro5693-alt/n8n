@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig9_b5",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any paper or screen shows only blurred abstract marks).",
+    "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "женщина мягко улыбается в солнечном свете, спокойная сила — «самая редкая сила — остаться мягкой»",
+    "prompt": "Portrait of a woman about 38 outdoors in a field of tall golden grass at sunset, eyes softly closed, a calm gentle smile, the wind lightly moving her hair, warm backlight glowing around her, a feeling of quiet strength and peace. Composition: her face in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
