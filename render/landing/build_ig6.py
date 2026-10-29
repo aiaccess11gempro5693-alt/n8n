@@ -56,8 +56,14 @@ def timed_words():
     return list(zip(text, times)), ws[-1]["end"]
 
 
+# после этих слов строку не рвём (предлоги, союзы, первая часть числительного)
+NOBREAK = {"в", "во", "к", "ко", "с", "со", "и", "а", "но", "за", "на", "до", "не", "по", "из", "от", "у", "о",
+           "об", "для", "что", "как", "друг", "сорок", "тридцать", "двадцать", "пятьдесят", "это", "эти", "все"}
+
+
 def split_even(ph, n):
-    """Разбить фразу на n кусков с минимальной длиной самого длинного куска."""
+    """Разбить фразу на n кусков с минимальной длиной самого длинного куска
+    (разрыв после предлога/союза/начала числительного — штраф)."""
     best = None
 
     def rec(i, k, acc):
@@ -65,6 +71,7 @@ def split_even(ph, n):
         if k == 1:
             parts = acc + [ph[i:]]
             m = max(len(" ".join(w for w, _ in g)) for g in parts)
+            m += sum(100 for g in parts[:-1] if norm(g[-1][0]) in NOBREAK)
             if best is None or m < best[0]:
                 best = (m, parts)
             return
@@ -106,8 +113,17 @@ def chunks(words, total):
     while i < len(out) - 1:
         dur = out[i + 1][0][1] - out[i][0][1]
         txt = " ".join(w for w, _ in out[i] + out[i + 1])
-        if dur < 0.65 and not re.search(r"[.!?…]»?$", out[i][-1][0]) and len(txt) <= 28:
+        if dur < 0.65 and not re.search(r"[.!?…]»?$", out[i][-1][0]) and len(txt) <= MAXC + 6:
             out[i] += out.pop(i + 1)
+        else:
+            i += 1
+    # хвост предложения короче 0.5 с — к предыдущему куску того же предложения
+    i = 1
+    while i < len(out):
+        end = out[i + 1][0][1] if i + 1 < len(out) else total
+        txt = " ".join(w for w, _ in out[i - 1] + out[i])
+        if end - out[i][0][1] < 0.5 and not re.search(r"[.!?…]»?$", out[i - 1][-1][0]) and len(txt) <= MAXC + 6:
+            out[i - 1] += out.pop(i)
         else:
             i += 1
     res = []
