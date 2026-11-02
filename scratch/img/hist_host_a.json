@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "hist_host_a",
+    "meaning": "мужчина ~35, тёмная короткая борода, тёмно-зелёный свитер, фон — полки старой библиотеки/архива с тёплыми лампами",
+    "prompt": "Photorealistic photo of a Russian man about 35, short dark beard, thoughtful kind eyes, a dark green wool sweater over a collared shirt. Background: tall wooden shelves of an old library archive with leather-bound books and warm brass reading lamps, softly out of focus, warm cosy light. FRAMING: vertical 9:16, waist-up, both shoulders fully inside the frame, centred, top of head about 14% below the upper edge, face large and sharp, looking straight into the lens. Expression: calm, intrigued storyteller about to share a secret, mid-sentence, lips slightly parted, NO broad smile. Look: a real frame shot on a modern camera, true-to-life colours, natural unretouched skin with pores, NOT a studio glamour portrait, NOT CGI. No text, no logos, no watermark.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

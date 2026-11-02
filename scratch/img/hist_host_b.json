@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "hist_host_b",
+    "meaning": "женщина ~30, русые волосы в небрежном пучке, бордовая водолазка, фон — зал музея с витринами старинных предметов",
+    "prompt": "Photorealistic photo of a Russian woman about 30, light-brown hair in a loose low bun, small simple earrings, a burgundy turtleneck. Background: a quiet museum hall with glass display cases of old artefacts and a dark wooden wall, softly out of focus, warm gallery light. FRAMING: vertical 9:16, waist-up, both shoulders fully inside the frame, centred, top of head about 14% below the upper edge, face large and sharp, looking straight into the lens. Expression: calm, intrigued storyteller about to share a secret, mid-sentence, lips slightly parted, NO broad smile. Look: a real frame shot on a modern camera, true-to-life colours, natural unretouched skin with pores, NOT a studio glamour portrait, NOT CGI. No text, no logos, no watermark.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
