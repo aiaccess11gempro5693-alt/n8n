@@ -22,7 +22,7 @@ import sfx as SFX
 
 ROOT = B.ROOT
 B.SCEN = f"{ROOT}/docs/scenarios/history/01-onfim.md"
-B.AUDIO = os.environ.get("AUDIO", f"{ROOT}/scratch/hist/01-trim.mp3")
+B.AUDIO = os.environ.get("AUDIO", f"{ROOT}/scratch/hist/01-trim-v2.mp3")
 B.WHISPER = os.environ.get("WHISPER", f"{ROOT}/scratch/hist01-whisper-a.json")
 B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/hist/01-host.mp4")
 B.OUT = os.environ.get("OUT", f"{ROOT}/render/landing/hist01-9x16.mp4")
@@ -47,17 +47,16 @@ SHOTS = [
     ("birch", "nerev_1.jpg", "cover", "Бумаги", None, "острым", {"dx": 0}),
     ("stylus", "stylusn_2.jpg", "card", "острым", None, "И", {}),
     ("lesson", "onfimx_6.jpg", "card", "И", "коре", "всадником", {"zoom": 1.12}),
-    ("ride", "rider_3.jpg", "ride", "всадником", None, "а", {"cut": "rider3_cut.png"}),
+    ("ride", "rider_2.jpg", "ride", "всадником", None, "а", {"cut": "rider2_cut.png"}),
     ("beast", "onfim_6.jpg", "card", "а", "копьем", "Береста", {"zoom": 1.10}),
     ("found1", "onfim_2.jpg", "card", "В", "уцелела", "стопку", {}),
-    ("found2", "onfim_4.jpg", "card", "стопку", None, "рисунков", {}),
-    ("found3", "onfimx_8.jpg", "card", "рисунков", "уроков", "Это", {}),
-    ("famous", "onfimx_6.jpg", "card", "Это", None, "Выходит", {"zoom": 1.06}),
+    ("found2", "onfim_4.jpg", "card", "стопку", None, "Это", {}),
+    ("famous", "onfim200_1.jpg", "card", "Это", None, "Выходит", {"zoom": 1.08}),
 ]
 # Плашки: (текст, слово-начало, после слова, слово-конец, y центра)
 CHIPS = [
     ("Новгород · XIII век", "Новгороде", None, "Звали", 330),
-    ("Онфим, 6–7 лет", "Онфим", None, "Бумаги", 330),
+    ("Онфим, 6–7 лет", "Онфим", None, "Бумаги", 1060),
     ("Писала, XIII век", "острым", None, "И", 330),
     ("Береста № 210 · рисунок Онфима", "И", "коре", "всадником", 330),
     ("Нашли в 1956 году", "В", "уцелела", "Это", 330),
@@ -116,11 +115,11 @@ def ride_src(icon, cut, out_bg, out_rider):
     bg = Image.blend(bg.filter(ImageFilter.GaussianBlur(24)), Image.new("RGB", (W, H), (25, 12, 6)), 0.5)
     bg.save(out_bg, quality=94)
     r = Image.open(cut).convert("RGBA")
-    r = r.crop(r.getbbox())
-    k = 860 / r.width
+    r = r.crop(r.getchannel("A").point(lambda v: 255 if v > 60 else 0).getbbox())
+    k = 1000 / r.width
     r = r.resize((round(r.width * k), round(r.height * k)), Image.LANCZOS)
-    if r.height > 760:
-        k = 760 / r.height
+    if r.height > 840:
+        k = 840 / r.height
         r = r.resize((round(r.width * k), round(r.height * k)), Image.LANCZOS)
     r.save(out_rider)
     return r.size
@@ -166,10 +165,10 @@ def zver_png(path):
 def cta_png(path):
     im = Image.new("RGBA", (W, 300), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    f = ImageFont.truetype(F_SERIF, 64)
-    lines = ["А что рисовали", "на полях вы? ✍"]
+    f = ImageFont.truetype(F_SERIF, 82)
+    lines = ["А что рисовали", "на полях вы?"]
     for i, ln in enumerate(lines):
-        d.text((W / 2, 80 + i * 86), ln, font=f, fill=PARCH, anchor="mm", stroke_width=5, stroke_fill=(30, 18, 8, 240))
+        d.text((W / 2, 80 + i * 104), ln, font=f, fill=PARCH, anchor="mm", stroke_width=5, stroke_fill=(30, 18, 8, 240))
     im.save(path)
 
 
@@ -205,6 +204,9 @@ def main():
     hook_end = F("Новгороде") - 0.05
     subs = [s for s in subs if s["t1"] > hook_end + 0.05]
     subs[0]["t0"] = max(subs[0]["t0"], hook_end)
+    cta_cut = F("Напишите")
+    subs = [s for s in subs if s["t0"] < cta_cut - 0.05]
+    subs[-1]["t1"] = min(subs[-1]["t1"], cta_cut)
 
     shots = []
     for name, file, mode, w0, after, w1, opt in SHOTS:
@@ -259,7 +261,7 @@ def main():
             # въезд слева с замедлением и «галоп» — покачивание по вертикали
             filt.append(f"[{n + 1}:v]format=rgba,setpts=PTS-STARTPTS[rr{i}]")
             filt.append(f"[rb{i}][rr{i}]overlay=x='-{rw}+({xe}+{rw})*(1-pow(1-min(t/{dur * 0.7:.2f}\\,1)\\,3))':"
-                        f"y='{(SUB_TOP - rh) // 2 + 120}+14*sin(2*PI*t*2.6)':eval=frame,"
+                        f"y='{max(266, (SUB_TOP - rh) // 2 + 60)}+12*sin(2*PI*t*2.6)':eval=frame,"
                         f"fade=in:st=0:d=0.25:alpha=1,fade=out:st={dur - 0.25:.2f}:d=0.25:alpha=1,"
                         f"setpts=PTS+{t0:.3f}/TB[b{i}]")
             n += 2
@@ -269,7 +271,7 @@ def main():
     hp = f"{B.TMP}/hook.png"
     hook_png(hp)
     inputs += ["-i", hp]
-    filt.append(f"{prev}[{n}:v]overlay=0:300:enable='lt(t,{hook_end:.3f})'[vh]")
+    filt.append(f"{prev}[{n}:v]overlay=0:980:enable='lt(t,{hook_end:.3f})'[vh]")
     prev, n = "[vh]", n + 1
     for i, (text, t0, t1, y) in enumerate(chips):
         p = f"{B.TMP}/chip{i}.png"
@@ -285,7 +287,7 @@ def main():
     ze = F("Береста") - 0.3
     inputs += ["-i", zp, "-i", cp]
     filt.append(f"{prev}[{n}:v]overlay=0:820:enable='between(t,{zs:.3f},{ze:.3f})'[vz]")
-    filt.append(f"[vz][{n + 1}:v]overlay=0:330:enable='gte(t,{cta_t:.3f})'[vcta]")
+    filt.append(f"[vz][{n + 1}:v]overlay=0:980:enable='gte(t,{cta_t:.3f})'[vcta]")
     prev, n = "[vcta]", n + 2
     for i, s in enumerate(subs):
         p = f"{B.TMP}/sub{i:03d}.png"
@@ -293,13 +295,12 @@ def main():
         inputs += ["-i", p]
         filt.append(f"{prev}[{n}:v]overlay=0:{B.CY - 130}:enable='gte(t,{s['t0']:.3f})*lt(t,{s['t1']:.3f})'[s{i}]")
         prev, n = f"[s{i}]", n + 1
-    # винтаж: тёплый тон, виньетка, зерно
-    filt.append(f"{prev}colorbalance=rs=0.04:bs=-0.05:rm=0.03:bm=-0.03,vignette=PI/5,"
-                f"noise=alls=7:allf=t,format=yuv420p[vout]")
+    # винтаж: тёплый тон и виньетка (зерно раздувало файл до сотен МБ)
+    filt.append(f"{prev}colorbalance=rs=0.04:bs=-0.05:rm=0.03:bm=-0.03,vignette=PI/5,format=yuv420p[vout]")
     open(f"{B.TMP}/graph.txt", "w").write(";\n".join(filt))
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex_script", f"{B.TMP}/graph.txt",
                     "-map", "[vout]", "-map", "1:a", "-t", f"{total:.3f}", "-c:v", "libx264", "-preset", "medium",
-                    "-crf", "19", "-r", "30", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", B.OUT],
+                    "-crf", "21", "-maxrate", "9M", "-bufsize", "18M", "-r", "30", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", B.OUT],
                    check=True)
     print(B.OUT, len(subs), "субтитров,", len(shots), "кадров")
 
