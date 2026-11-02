@@ -1,0 +1,18 @@
+{
+ "mode": "web_images",
+ "set": "hist01",
+ "cutout": [
+  {
+   "name": "rider3",
+   "src": "scratch/img/web/hist01/rider_3.jpg"
+  },
+  {
+   "name": "rider2",
+   "src": "scratch/img/web/hist01/rider_2.jpg"
+  },
+  {
+   "name": "lebedev8",
+   "src": "scratch/img/web/hist01/lebedev_7.jpg"
+  }
+ ]
+}
