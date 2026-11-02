@@ -1,0 +1,8 @@
+{
+ "stress_errors": [],
+ "misread": [],
+ "flat_spots": [],
+ "overall": "Диктор прочитал текст чётко и без орфоэпических ошибок. Темп и интонация соответствуют контексту фразы.",
+ "model": "gemini-3.5-flash",
+ "audio": "scratch/hist/01-fix-b.mp3"
+}
