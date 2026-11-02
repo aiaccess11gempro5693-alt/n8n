@@ -1,0 +1,27 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig11_b0",
+   "meaning": "человек утром один на кухне с чашкой кофе у окна, спокойная улыбка — «с собой ты проводишь каждую минуту жизни»",
+   "prompt": "A man about 35 alone in a sunny kitchen in the early morning, holding a cup of coffee with both hands by the window, eyes closed for a second with a calm gentle smile, warm sunrise light on his face. Composition: face and cup in the upper half of the frame, soft warm space in the lower half.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig11_b1",
+   "meaning": "женщина смотрит на себя в зеркало и тепло улыбается своему отражению, обнимая себя за плечи — «люби себя»",
+   "prompt": "A woman about 30 in a soft cream sweater stands in front of a round mirror in a warm sunlit bedroom, hugging her own shoulders and smiling warmly at her reflection, both her face and the reflection clearly visible, tender self-acceptance moment. Composition: faces in the upper half of the frame.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  }
+ ]
+}
