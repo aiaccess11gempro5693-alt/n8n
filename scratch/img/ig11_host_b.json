@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig11_host_b",
+    "meaning": "мужчина ~45, короткая аккуратная борода, без очков, чёрная водолазка и пиджак цвета верблюжьей шерсти, стол, микрофон на штанге, тёплая студия",
+    "prompt": "Photorealistic photo of a charismatic Russian man about 45, short neat beard with light grey, dark tidy hair, no glasses, a black turtleneck under a camel wool blazer, a steel watch. FRAMING: vertical 9:16, waist-up, both shoulders inside the frame, centred, sitting at a round light-beige table with forearms resting on it, a professional podcast microphone on a white boom arm entering from the left side in front of his chest (not covering the face), top of head about 14% below the upper edge, face large and sharp, looking straight into the lens, mid-sentence, lips slightly parted, warm knowing half-smile, NO broad smile. Background: a warm luxurious studio — beige draped curtains, soft golden table lamps with pleated shades, warm bokeh. Look: a real frame from a high-end podcast camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Hands and fingers appear distorted and unnatural"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
