@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig11_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig11_host_b.png"
+    ],
+    "person_note": "The man must be exactly the man from the attached photo (same face, short dark hair with grey, grey-flecked beard, camel blazer over black turtleneck, podcast microphone on a boom arm).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER in the look of a warm intimate podcast: photorealistic frame of exactly the man from the attached photo at a wooden desk in a cosy studio with warm beige curtains and soft lamp light, golden-hour warmth, slightly darker and blurred at the top for text. Bold, elegant, perfectly spelled Russian typography is REQUIRED and is the only text: a large serif title (Playfair-like, high contrast) in three centred lines «НАЗОВИ» / «ТРЁХ ЛЮДЕЙ,» / «КОТОРЫХ ЛЮБИШЬ», with «ТРЁХ ЛЮДЕЙ» in warm gold #E8C478 and the other lines in cream #FAF0DE, soft dark shadow behind the letters; a small round countdown badge with the number «3» in the style of an old film leader next to the title. No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+    "style_qa": "обложка-кадр тёплой студии подкаста, ведущий из приложенного фото узнаваем и не искажён, надпись «НАЗОВИ ТРЁХ ЛЮДЕЙ, КОТОРЫХ ЛЮБИШЬ» без ошибок, кроме цифры 3 другого текста и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Назови трёх людей, которых любишь»",
+    "prompt": "Vertical 9:16. The man waist-up in the lower 55% of the frame, centred, looking straight into the lens with a warm knowing half-smile. The title sits in the upper part, centred, starting about 18% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid; the title never covers his face."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
