@@ -100,7 +100,20 @@ def cutout(src, dst):
     remove(im, session=sess).save(dst)
 
 
+def ensure_pillow():
+    try:
+        import PIL  # noqa
+    except ImportError:
+        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "pillow"], check=True)
+        import importlib, site
+        for p in [site.getusersitepackages()] + site.getsitepackages():
+            if p not in sys.path:
+                sys.path.append(p)
+        importlib.invalidate_caches()
+
+
 def run(spec, only):
+    ensure_pillow()
     d = f"{OUT}/{spec['set']}"
     os.makedirs(d, exist_ok=True)
     idx_path = f"{d}/index.json"
