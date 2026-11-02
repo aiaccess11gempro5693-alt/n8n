@@ -283,6 +283,11 @@ def main():
         import capture_sites
         capture_sites.run(spec, only)
         return
+    if spec.get("mode") == "web_images":    # реальные картинки из Commons + вырезание (tools/web_images.py)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import web_images
+        web_images.run(spec, only)
+        return
     jobs = [j for j in spec["jobs"] if not only or j["name"] in only]
     os.makedirs(OUT_DIR, exist_ok=True)
     with cf.ThreadPoolExecutor(max_workers=6) as ex:

@@ -1,0 +1,36 @@
+{
+ "mode": "web_images",
+ "set": "hist01",
+ "search": [
+  {
+   "name": "onfim",
+   "q": "Onfim",
+   "n": 8
+  },
+  {
+   "name": "gramota",
+   "q": "Novgorod birch bark letter",
+   "n": 8
+  },
+  {
+   "name": "nerev",
+   "q": "Novgorod excavation birch bark",
+   "n": 6
+  },
+  {
+   "name": "vasnetsov",
+   "q": "Apollinary Vasnetsov Novgorod",
+   "n": 6
+  },
+  {
+   "name": "ryabushkin",
+   "q": "Ryabushkin painting",
+   "n": 8
+  },
+  {
+   "name": "stylus",
+   "q": "pisalo stylus birch bark",
+   "n": 4
+  }
+ ]
+}
