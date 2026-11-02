@@ -1,0 +1,36 @@
+{
+ "mode": "web_images",
+ "set": "hist02",
+ "search": [
+  {
+   "name": "spass",
+   "q": "Spasskaya Tower Kremlin painting 17th century",
+   "n": 6
+  },
+  {
+   "name": "spass2",
+   "q": "Spasskaya tower old engraving",
+   "n": 6
+  },
+  {
+   "name": "dial",
+   "q": "Spasskaya Tower clock dial",
+   "n": 6
+  },
+  {
+   "name": "numerals",
+   "q": "Cyrillic numerals",
+   "n": 5
+  },
+  {
+   "name": "peter",
+   "q": "Peter the Great portrait Paul Delaroche",
+   "n": 4
+  },
+  {
+   "name": "kremlin",
+   "q": "Apollinary Vasnetsov Moscow Kremlin",
+   "n": 6
+  }
+ ]
+}
