@@ -1,0 +1,46 @@
+{
+ "mode": "web_images",
+ "set": "hist01",
+ "search": [
+  {
+   "name": "onfim200",
+   "q": "Onfim 200 birch bark",
+   "n": 4
+  },
+  {
+   "name": "onfim199",
+   "q": "Onfim 199",
+   "n": 4
+  },
+  {
+   "name": "onfimx",
+   "q": "Onfim drawing",
+   "n": 8
+  },
+  {
+   "name": "pisalo",
+   "q": "Novgorod writing stylus bone",
+   "n": 6
+  },
+  {
+   "name": "lebedev",
+   "q": "Klavdy Lebedev",
+   "n": 10
+  },
+  {
+   "name": "novgorod_old",
+   "q": "Veliky Novgorod medieval painting",
+   "n": 8
+  },
+  {
+   "name": "excav",
+   "q": "Novgorod archaeological excavation 1950s",
+   "n": 6
+  },
+  {
+   "name": "rider",
+   "q": "Russian icon Saint George horse",
+   "n": 6
+  }
+ ]
+}
