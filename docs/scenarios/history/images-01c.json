@@ -1,0 +1,49 @@
+{
+ "mode": "web_images",
+ "set": "hist01",
+ "files": [
+  {
+   "name": "g199",
+   "title": "File:Birch bark document 199.jpg"
+  },
+  {
+   "name": "g200",
+   "title": "File:Birch bark document 200.jpg"
+  },
+  {
+   "name": "g203",
+   "title": "File:Birch bark document 203.jpg"
+  },
+  {
+   "name": "g206",
+   "title": "File:Birch bark document 206.jpg"
+  }
+ ],
+ "search": [
+  {
+   "name": "bb199",
+   "q": "birch bark 199",
+   "n": 4
+  },
+  {
+   "name": "pisalo",
+   "q": "писало",
+   "n": 5
+  },
+  {
+   "name": "nraskop",
+   "q": "Неревский раскоп",
+   "n": 5
+  },
+  {
+   "name": "stylusn",
+   "q": "stylus Novgorod",
+   "n": 5
+  },
+  {
+   "name": "novg",
+   "q": "Novgorod Kremlin painting 19th century",
+   "n": 6
+  }
+ ]
+}
