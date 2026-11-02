@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig11_b0",
+    "meaning": "человек утром один на кухне с чашкой кофе у окна, спокойная улыбка — «с собой ты проводишь каждую минуту жизни»",
+    "prompt": "A man about 35 alone in a sunny kitchen in the early morning, holding a cup of coffee with both hands by the window, eyes closed for a second with a calm gentle smile, warm sunrise light on his face. Composition: face and cup in the upper half of the frame, soft warm space in the lower half.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm golden natural light, soft shallow depth of field, gentle film grain, rich but natural warm colours (amber, cream, olive, soft terracotta), looks like a frame from a premium lifestyle video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный тёплый кадр в духе стокового видео, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
