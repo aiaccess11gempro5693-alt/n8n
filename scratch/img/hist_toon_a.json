@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "hist_toon_a",
+    "meaning": "рисованная молодая женщина-рассказчица: длинные тёмные волнистые волосы, кремовая блузка и оливковый вязаный жилет, уютный старый кабинет с книжными полками и окном",
+    "prompt": "A young woman storyteller about 28 with long dark wavy hair, a cream blouse with a soft collar and an olive-green knitted vest. Background: a cosy old study with wooden bookshelves of closed antique books, a tall window with soft golden daylight, a small vase of pink flowers, softly blurred. FRAMING: vertical 9:16, waist-up, both shoulders fully inside the frame, centred, top of head about 14% below the upper edge, face large, looking straight at the viewer, mid-sentence with lips slightly parted as if telling an exciting story, calm friendly expression, NO broad smile, hands relaxed and out of the frame or low. ABSOLUTELY NO text, letters, writing or scribbles anywhere (books are closed or pages blank, no chalkboard), no watermark, no signature.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Warm painterly storybook digital illustration, like a frame from a modern hand-painted animated film for adults: soft visible brushwork, slightly stylised but believable proportions, expressive friendly eyes, rosy cheeks, warm golden window light, cosy nostalgic atmosphere, rich warm palette of honey, cream, olive green, muted teal and rosewood, soft shadows, fine detail. NOT photorealistic, NOT 3D plastic CGI, NOT anime, NOT flat vector.",
+    "style_qa": "тёплая живописная «сказочная» цифровая иллюстрация, как кадр рисованного мультфильма для взрослых: мягкие мазки, слегка стилизованные, но правдоподобные пропорции, тёплый золотой свет, уютная ностальгическая атмосфера",
+    "audience": "исторических роликов для взрослых зрителей"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "The read operation timed out"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
