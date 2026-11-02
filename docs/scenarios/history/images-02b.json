@@ -1,0 +1,21 @@
+{
+ "mode": "web_images",
+ "set": "hist02",
+ "search": [
+  {
+   "name": "tower",
+   "q": "Spasskaya Tower",
+   "n": 6
+  },
+  {
+   "name": "chimes",
+   "q": "Kremlin chimes clock face",
+   "n": 6
+  },
+  {
+   "name": "sunrise",
+   "q": "Moscow Kremlin sunrise painting",
+   "n": 4
+  }
+ ]
+}
