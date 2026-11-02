@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig10_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig10_host_a.png"
+    ],
+    "person_note": "The man must be exactly the man from the attached photo (same face, silver hair, tan, cream linen blazer over black t-shirt).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER in the look of a premium lifestyle-mentor video: a photorealistic selfie frame of exactly the man from the attached photo on the teak deck of a white yacht, turquoise sea and green rocky islands behind, bright sunny daylight, slightly darkened at the top for text. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: a big white condensed sans-serif title in three lines «5 ФРАЗ,» / «КОТОРЫЕ ВЫДАЮТ» / «НЕУВЕРЕННОСТЬ», with «5 ФРАЗ» set in warm gold #E2BE70 on a deep navy #101E3A plate with a thin gold border. No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+    "style_qa": "обложка-кадр на яхте, ведущий из приложенного фото узнаваем и не искажён, надпись «5 ФРАЗ, КОТОРЫЕ ВЫДАЮТ НЕУВЕРЕННОСТЬ» без ошибок, другого текста и логотипов нет",
+    "meaning": "обложка 9:16 Reels «5 фраз, которые выдают неуверенность»",
+    "prompt": "Vertical 9:16. The man waist-up in the lower 60% of the frame, centred, looking straight into the lens with a kind confident expression, mid-sentence. The title sits in the upper part, centred, starting about 18% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid; the title never covers his face."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
