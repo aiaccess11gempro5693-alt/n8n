@@ -1,6 +1,24 @@
 {
  "type": "carousel",
- "images": ["docs/landing/insta/carousel-1/slide-01.jpg", "docs/landing/insta/carousel-1/slide-02.jpg", "docs/landing/insta/carousel-1/slide-03.jpg", "docs/landing/insta/carousel-1/slide-04.jpg", "docs/landing/insta/carousel-1/slide-05.jpg", "docs/landing/insta/carousel-1/slide-06.jpg", "docs/landing/insta/carousel-1/slide-07.jpg", "docs/landing/insta/carousel-1/slide-08.jpg"],
- "image_urls": [],
+ "images": [
+  "docs/landing/insta/carousel-1/slide-01.jpg",
+  "docs/landing/insta/carousel-1/slide-02.jpg",
+  "docs/landing/insta/carousel-1/slide-03.jpg",
+  "docs/landing/insta/carousel-1/slide-04.jpg",
+  "docs/landing/insta/carousel-1/slide-05.jpg",
+  "docs/landing/insta/carousel-1/slide-06.jpg",
+  "docs/landing/insta/carousel-1/slide-07.jpg",
+  "docs/landing/insta/carousel-1/slide-08.jpg"
+ ],
+ "image_urls": [
+  "https://resource2.heygen.ai/image/777bed6e693f493c9fc053cf7468d5bc/original.jpg",
+  "https://resource2.heygen.ai/image/c8e41faee12a4d31b1e63f153e7ef4ee/original.jpg",
+  "https://resource2.heygen.ai/image/6a6b134521ec453fa2dab93d47f43e60/original.jpg",
+  "https://resource2.heygen.ai/image/1eacd30f28a440be80113c0d97063a84/original.jpg",
+  "https://resource2.heygen.ai/image/e70d0caf1af5487e9d31a0dfe89b70bc/original.jpg",
+  "https://resource2.heygen.ai/image/00306f039e214a7d8362db7ee1ceb1a4/original.jpg",
+  "https://resource2.heygen.ai/image/08537867fa3045f0a67161b15abedca8/original.jpg",
+  "https://resource2.heygen.ai/image/5b8abf141b704093b5c5d6dcfe2d7b79/original.jpg"
+ ],
  "caption": "Зачем вам ИИ-ведущий и как он работает — коротко, в 8 слайдах 👉\n\nОбычный ролик — это студия, оператор, спикер, дубли. А если нашли ошибку или нужен второй язык — всё заново.\n\nИИ-ведущий — цифровой человек в кадре: лицо, мимика и голос созданы нейросетью, а говорит он ровно ваш текст.\n\nКак это устроено:\n1️⃣ Вы присылаете текст — регламент, урок, пост\n2️⃣ Мы пишем сценарий и ставим интонации\n3️⃣ Озвучка и ведущий\n4️⃣ Монтаж: графика, субтитры, музыка\n\nГде пригодится: обучение персонала, оцифровка регламентов, онлайн-курсы, экспертный контент, продукт и продажи, локализация, подкасты.\n\nПроизводство — от 1 000 ₽ за минуту. Конвейер под ключ — от 100 000 ₽.\n\nНапишите «ВИДЕО» в директ — покажем примеры и посчитаем ваш ролик 💬\nСохраните, чтобы не потерять 📌\n\n#ииаватар #ииведущий #нейросети #видеоконтент #обучениеперсонала #онлайнкурсы"
 }
