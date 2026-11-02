@@ -1,0 +1,23 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig10_host_a",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real.",
+   "meaning": "мужчина ~60 на палубе белой яхты: седые зачёсанные волосы, загар, кремовый льняной пиджак, чёрная футболка, часы, тиковая палуба, море и зелёные скалы; селфи-кадр, смотрит в камеру",
+   "prompt": "Photorealistic photo of a wealthy but kind man about 60 years old standing on the teak deck of a large white motor yacht: thick silver-grey hair swept back, a deep tan, a cream unstructured linen blazer over a plain black t-shirt, a steel wristwatch, one hand slightly raised in a calm explaining gesture. Background: the yacht's white superstructure and tinted windows, polished wooden railing, turquoise sea and green rocky islands softly out of focus, sunny summer day. FRAMING: vertical 9:16, handheld selfie-vlog framing as if he holds the phone himself at arm's length slightly below eye level, waist-up, both shoulders fully inside the frame, centred, top of head about 14% below the upper edge, face large and sharp, looking straight into the lens. Expression: kind, calm and confident, warm eyes with natural smile lines, mid-sentence, lips slightly parted showing a hint of teeth, NO broad smile. Look: a real frame shot on a modern iPhone in bright natural daylight, true-to-life colours, natural unretouched tanned skin with pores, wrinkles and age spots, real grey hair, subtle sharpness and slight wide-angle feel of a phone front camera, NOT a studio portrait, NOT CGI. No text, no logos, no brand names on clothes or watch, no watermark."
+  },
+  {
+   "name": "ig10_host_b",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real.",
+   "meaning": "мужчина ~60 на террасе виллы над морем: седина с короткой бородой, тёмно-синее поло и бежевый кардиган, мягкий вечерний свет, бокал воды на столике; селфи-кадр, смотрит в камеру",
+   "prompt": "Photorealistic photo of a wealthy but kind man about 60 years old on the stone terrace of a seaside villa: short silver hair, a neatly trimmed grey beard, a navy knit polo shirt under a light beige cashmere cardigan, a steel wristwatch, one hand slightly raised in a calm explaining gesture. Background: white stone balustrade, olive tree and terracotta pots, the evening sea and a distant coastline softly out of focus, warm golden-hour light. FRAMING: vertical 9:16, handheld selfie-vlog framing as if he holds the phone himself at arm's length slightly below eye level, waist-up, both shoulders fully inside the frame, centred, top of head about 14% below the upper edge, face large and sharp, looking straight into the lens. Expression: kind, calm and confident, warm eyes with natural smile lines, mid-sentence, lips slightly parted showing a hint of teeth, NO broad smile. Look: a real frame shot on a modern iPhone in bright natural daylight, true-to-life colours, natural unretouched tanned skin with pores, wrinkles and age spots, real grey hair, subtle sharpness and slight wide-angle feel of a phone front camera, NOT a studio portrait, NOT CGI. No text, no logos, no brand names on clothes or watch, no watermark."
+  }
+ ]
+}
