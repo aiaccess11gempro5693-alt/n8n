@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig15_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, evening interior light, warm lamps against deep blue night, soft shallow depth of field, gentle film grain, muted rich colours (navy, amber, walnut, cream), looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any phone screen shows only a soft blurred glow).",
+    "style_qa": "фотореалистичный кинематографичный вечерний кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "мужчина спокойно переворачивает телефон экраном вниз и смотрит на семью — «его время»",
+    "prompt": "A calm man about 40 in a dark sweater at a dinner table in the evening turns his smartphone face down on the table with one hand and smiles warmly toward his wife and child sitting opposite (softly blurred), warm lamp light, relaxed peaceful mood. Composition: his face and the hand with the phone in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

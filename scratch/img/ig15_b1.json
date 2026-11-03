@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig15_b1",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, evening interior light, warm lamps against deep blue night, soft shallow depth of field, gentle film grain, muted rich colours (navy, amber, walnut, cream), looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any phone screen shows only a soft blurred glow).",
+    "style_qa": "фотореалистичный кинематографичный вечерний кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "молодой мужчина ~24 вечером в гостиной говорит по телефону, на заднем плане в кресле сидит пожилой отец и молча ждёт — «клиент позвонил в половине десятого»",
+    "prompt": "Evening in a cosy family living room: a young man about 24 in a casual shirt stands by the window talking on a smartphone pressed to his ear, slightly tense; in the softly blurred background his calm grey-haired father about 55 sits in an armchair with a newspaper lowered, quietly watching and waiting. Warm table lamp, dark blue night outside the window. Composition: both people in the upper two thirds of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

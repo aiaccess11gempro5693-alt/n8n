@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig15_b2",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, evening interior light, warm lamps against deep blue night, soft shallow depth of field, gentle film grain, muted rich colours (navy, amber, walnut, cream), looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any phone screen shows only a soft blurred glow).",
+    "style_qa": "фотореалистичный кинематографичный вечерний кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "смартфон светится экраном на семейном ужине, вокруг тарелки, свечи, руки — «ужин и звонок»",
+    "prompt": "Close-up of a family dinner table at night: a smartphone lies on the tablecloth between plates, its screen glowing with an incoming call (only a blurred glow, no readable text), around it warm candles, a bread basket, glasses, hands of family members softly blurred. Moody warm light. Composition: the phone in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
