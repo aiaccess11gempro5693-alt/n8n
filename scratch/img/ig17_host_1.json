@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig17_host_1",
+    "meaning": "Мудрая женщина ~55, серебристые волосы в пучке, льняная шаль, свечи и сухоцветы, тёплый вечерний свет — «знающая, бабушкина мудрость»",
+    "prompt": "Photorealistic photo of a calm wise Russian woman about 55 with silver hair in a loose low bun, small silver earrings, a soft oatmeal linen shawl over a cream blouse. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy wooden room in the evening, a few lit candles and dried flowers on a shelf behind her, softly blurred, warm golden light.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

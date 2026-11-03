@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig17_host_4",
+    "meaning": "Молодая женщина ~30, светлые волосы, белая рубашка, светлая минималистичная студия, мягкий дневной свет — «чистая, светлая энергия»",
+    "prompt": "Photorealistic photo of a serene Russian woman about 30 with long straight light-blonde hair, a loose white linen shirt, delicate gold earrings, clear calm eyes. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a bright minimal room with white walls, sheer curtains and soft daylight, a green plant softly blurred.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

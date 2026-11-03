@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig17_host_3",
+    "meaning": "Пожилой мужчина ~70, белая борода, вязаный свитер, деревянный дом, печь, тёплый свет — «дедушка-мудрец»",
+    "prompt": "Photorealistic photo of a kind wise Russian old man about 70 with a full neat white beard and white hair, deep kind eyes with laugh lines, a thick undyed wool sweater. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: an old wooden house interior, a white tiled stove and a warm lamp, softly blurred, warm amber light.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

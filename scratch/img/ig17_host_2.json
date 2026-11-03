@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig17_host_2",
+    "meaning": "Спокойная женщина ~40, тёмные волнистые волосы, бордовое платье, у окна на закате, золотой свет на лице — «тёплая, как подруга, которая знает»",
+    "prompt": "Photorealistic photo of a calm, warm Russian woman about 40 with long dark wavy hair, a deep burgundy knit dress, a thin gold chain. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: by a big window at sunset, golden light falling on her face, a softly blurred city behind the glass.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
