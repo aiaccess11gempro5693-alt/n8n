@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig13_b8",
+    "meaning": "человек кивает «да», хотя лицо говорит «нет»",
+    "prompt": "A tired woman at an office desk forcing a smile and nodding while a colleague drops another tall stack of folders on her desk.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "3:2",
+    "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
