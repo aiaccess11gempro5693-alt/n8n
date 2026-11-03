@@ -1,0 +1,17 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig12_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": ["scratch/img/ig12_host_b.png"],
+   "person_note": "The woman must be exactly the woman from the attached photo (same face, glossy dark-brown bob with bangs, red lipstick, black turtleneck, thin gold necklace, podcast microphone on a boom arm).",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER in the look of a moody premium podcast: photorealistic frame of exactly the woman from the attached photo at a dark wooden table in a dark studio with black drapes and green plants, warm rim light, a raised eyebrow and a playful challenging half-smile. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text: a big white condensed sans-serif title in two centred lines «ПРОЧИТАЕШЬ» / «БЕЗ ЗАПИНКИ?», with the word «БЕЗ ЗАПИНКИ?» on a red #E23C3C rectangular plate; above the title a small spaced caps line «ТЕСТ НА ДИКЦИЮ» in light grey. No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+   "style_qa": "обложка-кадр тёмной студии подкаста, ведущая из приложенного фото узнаваема и не искажена, надписи «ТЕСТ НА ДИКЦИЮ» и «ПРОЧИТАЕШЬ БЕЗ ЗАПИНКИ?» без ошибок, другого текста и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Проверь свою дикцию»",
+   "prompt": "Vertical 9:16. The woman waist-up in the lower 55% of the frame, centred, looking straight into the lens. The title block sits in the upper part, centred, starting about 18% below the top edge and inside the central 4:5 safe area so it is not cropped in the profile grid; the title never covers her face."
+  }
+ ]
+}
