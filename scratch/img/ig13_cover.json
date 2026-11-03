@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "ig13_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig11_host_a.png",
+      "scratch/img/ig13_b9.png"
+    ],
+    "person_note": "The man in the upper half must be exactly the man from the first attached photo (same face, swept-back grey hair, bold black glasses, dark patterned jacket, grey t-shirt).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER split horizontally into two halves by a thin gold line: the UPPER half is a photorealistic close-up of exactly the man from the first attached photo looking into the lens with a serious knowing look, warm lamp-lit studio; the LOWER half is a moody cinematic still of a lone man sitting on a wooden pier at dusk (like the second attached image), desaturated with amber highlights. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text, centred over the gold dividing line: a huge gold #E8C478 numeral «10» with the word «ПРИЧИН,» next to it, and below in white bold sans-serif «ПОЧЕМУ ТЕБЯ НЕ УВАЖАЮТ» in two lines, with a soft dark shadow. No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+    "style_qa": "обложка: сверху ведущий из первого приложенного фото (узнаваем, не искажён), снизу кинокадр с пирсом, по центру надписи «10 ПРИЧИН, ПОЧЕМУ ТЕБЯ НЕ УВАЖАЮТ» без ошибок, другого текста и логотипов нет",
+    "meaning": "обложка 9:16 Reels «10 причин, почему тебя не уважают»",
+    "prompt": "Vertical 9:16. The gold dividing line and the title block sit around the vertical middle of the frame, inside the central 4:5 safe area so they are not cropped in the profile grid; the title never covers the man's face, which sits in the upper third."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
