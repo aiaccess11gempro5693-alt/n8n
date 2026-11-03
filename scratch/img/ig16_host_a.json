@@ -1,0 +1,29 @@
+{
+  "job": {
+    "name": "ig16_host_a",
+    "meaning": "мужчина ~38, тёмные короткие волосы, щетина, татуировки на предплечьях, чёрная футболка, тёмно-зелёный бархатный диван, кирпичная стена, тёплые лампы",
+    "prompt": "Photorealistic photo of a Russian man about 38 with short dark hair and dark stubble, slightly rough look, tattoo sleeves on both forearms, a plain black t-shirt, a silver ring, kind warm eyes. FRAMING: vertical 9:16, medium shot from mid-thigh up, he sits relaxed on a sofa slightly turned, both shoulders and hands inside the frame, a black podcast microphone on a boom arm near his face on the side (not covering the mouth), face large and sharp, top of head about 12% below the upper edge, looking slightly off-camera toward an unseen interviewer, mid-sentence, lips slightly parted, one hand in a calm open gesture, sincere thoughtful expression, NO broad smile. Look: a real frame from a high-end podcast camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy podcast studio with an exposed red-brick wall, dark green velvet sofa, warm Edison bulbs and a small plant, soft moody light.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real. For a podcast he looks slightly off-camera at the interviewer — this is intended."
+  },
+  "status": "rejected",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Person is not looking directly at the camera and face is slightly turned away from frontal view."
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "The subject is not facing front or looking into the camera; face must be straight-on looking directly at the camera."
+    },
+    {
+      "attempt": 3,
+      "ok": false,
+      "issue": "The subject is not looking directly into the camera, and the mouth is caught mid-speech."
+    }
+  ]
+}
