@@ -1,0 +1,50 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig17_host_1",
+   "meaning": "Мудрая женщина ~55, серебристые волосы в пучке, льняная шаль, свечи и сухоцветы, тёплый вечерний свет — «знающая, бабушкина мудрость»",
+   "prompt": "Photorealistic photo of a calm wise Russian woman about 55 with silver hair in a loose low bun, small silver earrings, a soft oatmeal linen shawl over a cream blouse. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy wooden room in the evening, a few lit candles and dried flowers on a shelf behind her, softly blurred, warm golden light.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig17_host_2",
+   "meaning": "Спокойная женщина ~40, тёмные волнистые волосы, бордовое платье, у окна на закате, золотой свет на лице — «тёплая, как подруга, которая знает»",
+   "prompt": "Photorealistic photo of a calm, warm Russian woman about 40 with long dark wavy hair, a deep burgundy knit dress, a thin gold chain. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: by a big window at sunset, golden light falling on her face, a softly blurred city behind the glass.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig17_host_3",
+   "meaning": "Пожилой мужчина ~70, белая борода, вязаный свитер, деревянный дом, печь, тёплый свет — «дедушка-мудрец»",
+   "prompt": "Photorealistic photo of a kind wise Russian old man about 70 with a full neat white beard and white hair, deep kind eyes with laugh lines, a thick undyed wool sweater. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: an old wooden house interior, a white tiled stove and a warm lamp, softly blurred, warm amber light.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig17_host_4",
+   "meaning": "Молодая женщина ~30, светлые волосы, белая рубашка, светлая минималистичная студия, мягкий дневной свет — «чистая, светлая энергия»",
+   "prompt": "Photorealistic photo of a serene Russian woman about 30 with long straight light-blonde hair, a loose white linen shirt, delicate gold earrings, clear calm eyes. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a bright minimal room with white walls, sheer curtains and soft daylight, a green plant softly blurred.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig17_host_5",
+   "meaning": "Мужчина ~45, ухоженная борода, тёмно-синий джемпер, кабинет с книгами и тёплой лампой — «уверенный наставник, финансовый советник»",
+   "prompt": "Photorealistic photo of a calm confident Russian man about 45 with short dark hair greying at the temples and a neat beard, a dark navy merino jumper over a white collar. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, calm, warm, knowing expression, NO broad smile. Look: a real frame from a phone camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a quiet home study with bookshelves and a warm desk lamp, softly blurred, evening light.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary person (not a celebrity, not a model), looks genuinely real."
+  }
+ ]
+}
