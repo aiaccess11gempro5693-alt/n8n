@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig16_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, natural soft light, shallow depth of field, gentle film grain, muted rich colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "мужчина в худи ночью тихо меняет колесо соседской машины, никто не видит — «тихие поступки, за которые никто не аплодирует»",
+    "prompt": "Late evening in a quiet residential courtyard: a man about 30 in a grey hoodie kneels and changes a flat tyre on an old small car under a single street lamp, nobody around, calm focused face, a jack and a spare wheel next to him. Warm lamp light against the blue night. Composition: his face and hands in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

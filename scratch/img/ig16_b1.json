@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig16_b1",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, natural soft light, shallow depth of field, gentle film grain, muted rich colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "безупречный мужчина в дорогом костюме в стеклянном офисном лобби, холодный взгляд, проходит мимо — «самые холодные — в идеальном костюме»",
+    "prompt": "A flawless, well-groomed man about 45 in a perfectly tailored dark suit and white shirt walks through a cold glass-and-steel office lobby, cold indifferent expression, glancing down at his watch, ignoring the people around him, bluish cold light. Composition: his face and upper body in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

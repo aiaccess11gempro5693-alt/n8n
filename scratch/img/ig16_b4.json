@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig16_b4",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, natural soft light, shallow depth of field, gentle film grain, muted rich colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "крупный бородатый байкер бережно держит на руках маленького котёнка — «за грубой внешностью — самое тёплое»",
+    "prompt": "A big bearded biker about 45 with tattooed arms and a black leather vest gently holds a tiny fluffy kitten against his chest with both hands, looking down at it with a very soft warm smile, golden evening light, a motorcycle softly blurred in the background. Composition: his face and the kitten in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
