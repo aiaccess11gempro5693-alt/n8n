@@ -145,6 +145,8 @@ def main():
     close.append((t_bonus, t_cta))
     subs = [s for s in B.chunks(words, min(total, last + 0.6)) if s["t1"] > t_first + 0.05]
     subs[0]["t0"] = max(subs[0]["t0"], t_first)
+    # «Закон Мёрфи.» уже написано на плашке закона — субтитр не дублирует
+    subs = [s for s in subs if not re.fullmatch(r"Закон \S+\.?", s["text"])]
     json.dump({"laws": laws, "bonus": t_bonus, "cta": t_cta, "close": close, "subs": subs},
               open(f"{B.TMP}/plan.json", "w"), ensure_ascii=False, indent=1)
 
