@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig14_host_a",
+    "meaning": "женщина ~40, длинные каштановые волосы, тёмно-синий оверсайз-костюм, сидит в белом кресле на сцене, красный бархатный занавес, микрофон на стойке",
+    "prompt": "Photorealistic photo of an elegant confident Russian woman about 40, long glossy auburn-brown hair with soft waves, a dark navy oversized suit with wide trousers, white top, tan pointed heels, gold earrings. FRAMING: vertical 9:16, medium-wide shot from the knees up, she sits in a round white bouclé armchair slightly turned to the camera with legs crossed, both shoulders and hands inside the frame, a black podcast microphone on a short stand near her face on the side (not covering the mouth), her face large enough and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, confident warm expression, NO broad smile. Background: a stage with deep red velvet pleated curtains, soft spotlight from above, dark floor. Look: a real frame from a high-end interview show camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
