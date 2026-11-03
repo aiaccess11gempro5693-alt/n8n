@@ -22,7 +22,7 @@ import sfx as SFX
 
 ROOT = B.ROOT
 B.AUDIO = os.environ.get("AUDIO", f"{ROOT}/scratch/ig14/trim.mp3")
-B.WHISPER = os.environ.get("WHISPER", f"{ROOT}/scratch/ig14-whisper.json")
+B.WHISPER = os.environ.get("WHISPER", f"{ROOT}/scratch/ig14-whisper-final.json")
 B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/ig14/host.mp4")
 B.OUT = os.environ.get("OUT", f"{ROOT}/render/landing/ig14-9x16.mp4")
 B.TMP = f"{ROOT}/render/landing/.ig14"
