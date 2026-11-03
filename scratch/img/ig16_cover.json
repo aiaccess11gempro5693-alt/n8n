@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig16_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig16_host_a.png"
+    ],
+    "person_note": "The man must be exactly the man from the attached photo (same face, short dark hair, dark stubble, tattoo sleeves, black t-shirt, silver ring).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER: photorealistic frame of exactly the man from the attached photo in a cosy podcast studio with a red-brick wall and warm Edison bulbs, he sits on a dark green velvet sofa, looks straight into the lens with a calm, kind, slightly ironic look, tattooed forearms visible, the podcast microphone at the side. His face is in the upper part of the frame. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text, centred in the LOWER-middle part of the frame over his chest: a giant white heavy sans-serif line «НЕ СУДИ», under it a large warm orange #F2843A line «ПО ОБЁРТКЕ», with a soft dark shadow. No other words, no logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: мужчина из приложенного фото (узнаваем, не искажён) на подкасте у кирпичной стены, внизу-по центру надпись «НЕ СУДИ ПО ОБЁРТКЕ» без ошибок, другого текста и логотипов нет, руки без искажений",
+    "meaning": "обложка 9:16 Reels «Не суди по обёртке»",
+    "prompt": "Vertical 9:16. His face around 30% from the top; the title block centred horizontally with its middle around 62% from the top, fully inside the central 3:4 safe area so it is not cropped in the profile grid; the title never covers his face."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
