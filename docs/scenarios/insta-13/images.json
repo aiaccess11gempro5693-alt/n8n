@@ -1,0 +1,104 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig13_b1",
+   "meaning": "человек громко смеётся в компании, остальные смотрят на него с неловкостью",
+   "prompt": "A man in his thirties laughing loudly and awkwardly at a dinner table while three friends around him look at him with polite uncomfortable faces, restaurant interior.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b2",
+   "meaning": "человек увлечённо говорит о себе, собеседница скучает и смотрит в сторону",
+   "prompt": "A man talking animatedly about himself, gesturing at his own chest, while the woman across the café table looks away bored, resting her chin on her hand.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b3",
+   "meaning": "начальник отчитывает сотрудника, тот молча опустил голову",
+   "prompt": "In a dim office, a boss leans over a desk and scolds an employee who sits silently with his head lowered, shoulders slumped.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b4",
+   "meaning": "человек смотрит в телефон в ожидании лайков и одобрения",
+   "prompt": "A young woman alone at night staring anxiously at her phone screen, its glow on her face, waiting for approval, blurred city lights behind.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b5",
+   "meaning": "человек растянут между многими людьми, пытаясь угодить всем",
+   "prompt": "A man in the middle of a crowd of people all pulling his sleeves and arms in different directions, his face strained and tired.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b6",
+   "meaning": "человек оправдывается, разводя руками, перед строгим собеседником",
+   "prompt": "A man nervously explaining himself with open apologetic hands in front of a stern woman with crossed arms, in a hallway.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b7",
+   "meaning": "человек стоит внутри стеклянного куба — без границ, все смотрят",
+   "prompt": "A lone man standing inside a transparent glass box in a dark empty hall, people silhouettes walking past and looking in at him.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b8",
+   "meaning": "человек кивает «да», хотя лицо говорит «нет»",
+   "prompt": "A tired woman at an office desk forcing a smile and nodding while a colleague drops another tall stack of folders on her desk.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  },
+  {
+   "name": "ig13_b9",
+   "meaning": "одинокий человек сидит на краю пирса на закате",
+   "prompt": "A lone man sitting on a wooden pier at dusk, seen from behind, looking at a calm grey sea, an empty chair beside him.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "3:2",
+   "style": "Photorealistic cinematic still, moody dramatic film look, muted desaturated palette with warm amber highlights, soft directional light, shallow depth of field, gentle film grain, looks like a frame from a premium psychological drama. Wide horizontal-feeling composition that will be cropped to the lower half of a vertical video. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр в приглушённой драматичной гамме, смысл соответствует описанию, без надписей, букв и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities."
+  }
+ ]
+}
