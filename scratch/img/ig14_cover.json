@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig14_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig14_host_b.png"
+    ],
+    "person_note": "The woman must be exactly the woman from the attached photo (same face, sleek light-blonde shoulder-length hair, cream trouser suit, black silk top, thin gold necklace).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER: photorealistic frame of exactly the woman from the attached photo sitting in a black leather armchair on a stage, slightly to the RIGHT side of the frame, deep red velvet curtains behind, soft spotlight from above, confident knowing look into the lens. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text, stacked on the LEFT side of the frame, left-aligned: a giant bright red #C41A2E numeral «5» with a thin white outline, and next to/under it in white heavy sans-serif four lines «САМЫХ» / «ИЗВЕСТНЫХ» / «ЗАКОНОВ» / «В МИРЕ», with a soft dark shadow so it reads on the red curtain. No other words, no logos, no watermarks, no UI elements, no handles. High contrast, readable at small size in the profile grid.",
+    "style_qa": "обложка: ведущая из приложенного фото (узнаваема, не искажена) в кресле на сцене с красным занавесом, слева надпись «5 САМЫХ ИЗВЕСТНЫХ ЗАКОНОВ В МИРЕ» без ошибок, другого текста и логотипов нет",
+    "meaning": "обложка 9:16 Reels «5 самых известных законов в мире»",
+    "prompt": "Vertical 9:16. The title block sits on the left, vertically around the middle of the frame, inside the central 4:5 safe area so it is not cropped in the profile grid; the title never covers her face."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
