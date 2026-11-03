@@ -1,0 +1,23 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig15_host_a",
+   "meaning": "мужчина ~58, седые волосы назад, короткая седая борода, белое поло, тёмные джинсы, кремовое кожаное кресло частного самолёта, иллюминатор, дерево",
+   "prompt": "Photorealistic photo of a calm wealthy Russian man about 58, swept-back silver hair, short neat grey beard, tanned, a white pique polo shirt, dark blue jeans, a steel wristwatch. FRAMING: vertical 9:16, medium shot from mid-thigh up, he sits relaxed in a cream leather seat of a private jet cabin, slightly turned to the camera, both shoulders and hands inside the frame, a smartphone lying face down on the polished walnut side table, his face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, calm confident kind expression, NO broad smile. Background: private jet interior with oval windows, soft daylight, walnut wood panels, cream leather. Look: a real frame from a phone camera on a tripod, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig15_host_b",
+   "meaning": "мужчина ~60, седые короткие волосы, седая щетина, тёмно-синий кашемировый джемпер, кресло на террасе пентхауса вечером, огни города",
+   "prompt": "Photorealistic photo of a calm wealthy Russian man about 60, short neat silver hair, grey stubble, a dark navy cashmere crew-neck jumper over a white collar, a steel wristwatch. FRAMING: vertical 9:16, medium shot from mid-thigh up, he sits in a dark leather lounge armchair on a penthouse terrace, slightly turned to the camera, both shoulders and hands inside the frame, a smartphone lying face down on a small side table next to a glass of water, his face large and sharp and well lit by a warm lamp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, calm confident kind expression, NO broad smile. Background: evening blue hour, soft out-of-focus city lights far below, warm lamp light on the terrace. Look: a real frame from a phone camera on a tripod, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  }
+ ]
+}
