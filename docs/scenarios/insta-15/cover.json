@@ -1,0 +1,17 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig15_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": ["scratch/img/ig15_host_a.png"],
+   "person_note": "The man must be exactly the man from the attached photo (same face, swept-back silver hair, short grey beard, white polo shirt, steel watch).",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER: photorealistic frame of exactly the man from the attached photo sitting in a cream leather seat of a private jet in the LOWER half of the frame, calm confident look into the lens, he holds a smartphone in one hand turned face down toward the viewer, soft daylight from the oval windows, walnut panels. The upper part of the frame is a slightly darkened soft-focus cabin area for the title. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text, centred, in the upper-middle part of the frame: white heavy sans-serif lines «НЕ ОТВЕЧАЙ» / «НА ЗВОНКИ», then a large warm amber-gold #E8B04A line «ПОСЛЕ 19:00», with a soft dark shadow. No other words, no logos, no watermarks, no UI elements, nothing readable on the phone.",
+   "style_qa": "обложка: мужчина из приложенного фото (узнаваем, не искажён) в кресле частного самолёта держит телефон экраном вниз, надпись «НЕ ОТВЕЧАЙ НА ЗВОНКИ ПОСЛЕ 19:00» без ошибок, другого текста и логотипов нет, руки и пальцы без искажений",
+   "meaning": "обложка 9:16 Reels «Не отвечай на звонки после семи»",
+   "prompt": "Vertical 9:16. The title block sits centred, its middle around 35% from the top, fully inside the central 4:5 safe area so it is not cropped in the profile grid; the title never covers his face, his face sits around 60% from the top."
+  }
+ ]
+}
