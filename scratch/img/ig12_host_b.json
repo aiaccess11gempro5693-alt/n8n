@@ -8,19 +8,12 @@
     "aspect": "9:16",
     "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real."
   },
-  "status": "rejected",
+  "status": "ok",
   "attempts": [
     {
       "attempt": 1,
-      "error": "HTTP 403 gemini-3.5-flash: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined quota is zero, need: ＄0.000932 (request id: 20261102214837257140653BHxvQgUq)\",\"type\":\"cometapi_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
-    },
-    {
-      "attempt": 2,
-      "error": "HTTP 403 gpt-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined quota is zero, need: ＄0.008336 (request id: 20261102214837583295643lItXTkwC)\",\"type\":\"cometapi_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
-    },
-    {
-      "attempt": 3,
-      "error": "HTTP 403 gpt-image: {\"error\":{\"message\":\"pre-consume quota failed, organization and owner combined quota is zero, need: ＄0.008336 (request id: 2026110221483847588002vKYMOByP)\",\"type\":\"cometapi_error\",\"param\":\"\",\"code\":\"insufficient_user_quota\"}}"
+      "ok": true,
+      "issue": ""
     }
   ]
 }
