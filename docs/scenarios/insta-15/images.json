@@ -1,0 +1,38 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig15_b1",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, evening interior light, warm lamps against deep blue night, soft shallow depth of field, gentle film grain, muted rich colours (navy, amber, walnut, cream), looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any phone screen shows only a soft blurred glow).",
+   "style_qa": "фотореалистичный кинематографичный вечерний кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "молодой мужчина ~24 вечером в гостиной говорит по телефону, на заднем плане в кресле сидит пожилой отец и молча ждёт — «клиент позвонил в половине десятого»",
+   "prompt": "Evening in a cosy family living room: a young man about 24 in a casual shirt stands by the window talking on a smartphone pressed to his ear, slightly tense; in the softly blurred background his calm grey-haired father about 55 sits in an armchair with a newspaper lowered, quietly watching and waiting. Warm table lamp, dark blue night outside the window. Composition: both people in the upper two thirds of the frame."
+  },
+  {
+   "name": "ig15_b2",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, evening interior light, warm lamps against deep blue night, soft shallow depth of field, gentle film grain, muted rich colours (navy, amber, walnut, cream), looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any phone screen shows only a soft blurred glow).",
+   "style_qa": "фотореалистичный кинематографичный вечерний кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "смартфон светится экраном на семейном ужине, вокруг тарелки, свечи, руки — «ужин и звонок»",
+   "prompt": "Close-up of a family dinner table at night: a smartphone lies on the tablecloth between plates, its screen glowing with an incoming call (only a blurred glow, no readable text), around it warm candles, a bread basket, glasses, hands of family members softly blurred. Moody warm light. Composition: the phone in the upper half of the frame."
+  },
+  {
+   "name": "ig15_b3",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic stock-photo still, vertical 9:16, evening interior light, warm lamps against deep blue night, soft shallow depth of field, gentle film grain, muted rich colours (navy, amber, walnut, cream), looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere (any phone screen shows only a soft blurred glow).",
+   "style_qa": "фотореалистичный кинематографичный вечерний кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "мужчина спокойно переворачивает телефон экраном вниз и смотрит на семью — «его время»",
+   "prompt": "A calm man about 40 in a dark sweater at a dinner table in the evening turns his smartphone face down on the table with one hand and smiles warmly toward his wife and child sitting opposite (softly blurred), warm lamp light, relaxed peaceful mood. Composition: his face and the hand with the phone in the upper half of the frame."
+  }
+ ]
+}
