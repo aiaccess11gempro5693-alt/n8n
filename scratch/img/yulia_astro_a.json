@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "yulia_astro_a",
+    "meaning": "Юля, пышные волосы, изумрудная шёлковая блузка, уютная комната с тёплыми гирляндами, на столе карты таро и свеча, вечер. Причёска (пышнее) и одежда/обстановка изменены НАМЕРЕННО — по референсу совпадать должно только лицо.",
+    "prompt": "Photorealistic vertical 9:16 photo of exactly the woman from the attached photo (same face, same blue-grey eyes, same freckles, same nose, lips and face shape — she must be clearly recognisable as the same real person), looking fresh, rested and radiant: healthy glowing skin with natural freckles kept, soft natural make-up (light mascara, groomed brows, nude-rose lips), her long brown hair made noticeably FULLER and more voluminous — soft glossy waves with lift at the roots, healthy shine, warm chestnut tones. FRAMING: medium shot from the waist up, she SITS at a small round table facing the camera, both shoulders and hands inside the frame, hands resting calmly on the table, face large and sharp, top of head about 10% below the upper edge, looking straight into the lens, calm warm knowing expression, lips slightly parted as if about to speak, NO broad smile. Look: a real high-end phone photo for a lifestyle blog, bright and vivid but natural colours, true-to-life skin texture, NOT CGI, NOT plastic retouch, NOT a different person. No text, no logos, no watermark. Outfit: an emerald-green silk blouse, thin gold necklace with a small moon pendant. Setting: a cosy, softly lit room in the evening, warm fairy lights and a shelf with crystals and candles softly blurred behind her; on the table in front of her a neat fanned deck of tarot cards (backs only, no text) and a lit candle. Warm golden light on her face.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/yulia_src.png"
+    ],
+    "person_note": "The face must be exactly the woman from the attached photo; hairstyle volume, outfit and setting are intentionally changed."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "The read operation timed out"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

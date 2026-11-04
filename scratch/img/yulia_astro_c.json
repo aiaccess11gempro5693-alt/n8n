@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "yulia_astro_c",
+    "meaning": "Юля, пышные волосы, глубокий синий бархатный топ, мистический фон — тёмно-синий с золотыми звёздами, хрустальный шар на столе. Причёска (пышнее) и одежда/обстановка изменены НАМЕРЕННО — по референсу совпадать должно только лицо.",
+    "prompt": "Photorealistic vertical 9:16 photo of exactly the woman from the attached photo (same face, same blue-grey eyes, same freckles, same nose, lips and face shape — she must be clearly recognisable as the same real person), looking fresh, rested and radiant: healthy glowing skin with natural freckles kept, soft natural make-up (light mascara, groomed brows, nude-rose lips), her long brown hair made noticeably FULLER and more voluminous — soft glossy waves with lift at the roots, healthy shine, warm chestnut tones. FRAMING: medium shot from the waist up, she SITS at a small round table facing the camera, both shoulders and hands inside the frame, hands resting calmly on the table, face large and sharp, top of head about 10% below the upper edge, looking straight into the lens, calm warm knowing expression, lips slightly parted as if about to speak, NO broad smile. Look: a real high-end phone photo for a lifestyle blog, bright and vivid but natural colours, true-to-life skin texture, NOT CGI, NOT plastic retouch, NOT a different person. No text, no logos, no watermark. Outfit: a deep midnight-blue velvet top, delicate gold earrings shaped like stars. Setting: an elegant room with a dark navy wall softly decorated with tiny gold star lights, warm candles; on the table a small crystal ball on a gold stand and a fanned tarot deck (backs only). Rich, magical but friendly mood, her face well and warmly lit.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/yulia_src.png"
+    ],
+    "person_note": "The face must be exactly the woman from the attached photo; hairstyle volume, outfit and setting are intentionally changed."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
