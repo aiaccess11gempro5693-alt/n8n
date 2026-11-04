@@ -1,0 +1,22 @@
+{
+  "job": {
+    "name": "yulia_astro_b3",
+    "meaning": "Юля, пышные волосы, кремовый мягкий свитер, светлая комната днём, на столе карта звёздного неба и чашка чая. Причёска (пышнее) и одежда/обстановка изменены НАМЕРЕННО — по референсу совпадать должно только лицо. Подбородок и овал лица — точно как на исходном фото (мягкий округлый подбородок, без сужения лица), губы слегка приоткрыты.",
+    "prompt": "Photorealistic vertical 9:16 photo of exactly the woman from the attached photo (same face, same blue-grey eyes, same freckles, same nose, lips and face shape — she must be clearly recognisable as the same real person), looking fresh, rested and radiant: healthy glowing skin with natural freckles kept, soft natural make-up (light mascara, groomed brows, nude-rose lips), her long brown hair made noticeably FULLER and more voluminous — soft glossy waves with lift at the roots, healthy shine, warm chestnut tones. FRAMING: medium shot from the waist up, she SITS at a small round table facing the camera, both shoulders and hands inside the frame, hands resting calmly on the table, face large and sharp, top of head about 10% below the upper edge, looking straight into the lens, calm warm knowing expression, lips slightly parted as if about to speak, NO broad smile. Look: a real high-end phone photo for a lifestyle blog, bright and vivid but natural colours, true-to-life skin texture, NOT CGI, NOT plastic retouch, NOT a different person. No text, no logos, no watermark. Outfit: a soft cream knit sweater, small gold earrings. Setting: a bright airy room in daylight by a big window, sheer curtains and green plants softly blurred; on the table an old celestial star-chart print (only drawings of constellations, no readable text), a cup of tea and a few tarot cards face down. Fresh, light, uplifting mood. CRITICAL — FACE SHAPE: keep her real lower face exactly as in the attached photo: the same soft, rounded, slightly wider chin and the same natural jawline and cheek fullness. Do NOT slim the face, do NOT sharpen, narrow, point or lengthen the chin, do NOT add a V-shaped jaw — no beauty-filter face reshaping at all. Lips relaxed and slightly parted (a small gap between the lips), as if mid-word. Slightly softer daylight from the window, same room and outfit.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/yulia_src.png"
+    ],
+    "person_note": "The face must be exactly the woman from the attached photo; hairstyle volume, outfit and setting are intentionally changed."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
