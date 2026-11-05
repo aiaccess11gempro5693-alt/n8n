@@ -1,0 +1,41 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig18_frame",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, soft warm nostalgic light, shallow depth of field, gentle film grain, warm muted colours, looks like a frame from a heartfelt family film. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный тёплый ностальгичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "The woman in the photo inside the frame must be exactly the woman from the attached photo (same face, white down shawl), rendered as a black-and-white photograph.",
+   "meaning": "старое фото бабушки в деревянной рамке на столе, рядом очки и чашка — первый кадр",
+   "prompt": "A small old wooden photo frame standing on a lace tablecloth on a kitchen table, the frame holds a black-and-white portrait photo of an elderly woman in a white down shawl (face clearly visible in the frame), next to it a pair of old reading glasses and a cup of tea, soft window daylight, cosy and quiet. Composition: the photo frame centered in the middle of the image, large.",
+   "extra_refs": [
+    "scratch/img/ig18_gran_c.png"
+   ]
+  },
+  {
+   "name": "ig18_pies",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, soft warm nostalgic light, shallow depth of field, gentle film grain, warm muted colours, looks like a frame from a heartfelt family film. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный тёплый ностальгичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking elderly person, not a celebrity.",
+   "meaning": "бабушкины пироги на столе, руки в муке — «поешь нормально»",
+   "prompt": "Close-up of an elderly woman's wrinkled hands dusted with flour placing freshly baked golden pirozhki onto a plate on a wooden kitchen table with a lace tablecloth, steam rising, warm golden light. Composition: the hands and the pies in the middle of the frame."
+  },
+  {
+   "name": "ig18_phone",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, soft warm nostalgic light, shallow depth of field, gentle film grain, warm muted colours, looks like a frame from a heartfelt family film. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный тёплый ностальгичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking elderly person, not a celebrity.",
+   "meaning": "старый дисковый телефон и смартфон рядом — «маме позвони»",
+   "prompt": "On a wooden windowsill with a red geranium: an old cream rotary telephone next to a modern smartphone lying screen-down, soft winter daylight from the window, snow outside, quiet nostalgic mood. Composition: both phones in the middle of the frame."
+  }
+ ]
+}
