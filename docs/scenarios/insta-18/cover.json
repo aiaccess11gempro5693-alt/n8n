@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig18_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig18_gran_c.png"
+   ],
+   "person_note": "The woman in the photo inside the frame must be exactly the woman from the attached photo (same face, white down shawl), rendered as an old black-and-white photograph.",
+   "style": "A finished, emotional vertical Instagram Reels COVER: a photorealistic close-up of an old wooden photo frame standing on a lace tablecloth in soft warm window light, the frame holds a black-and-white portrait photograph of exactly the elderly woman from the attached photo; beside it old reading glasses and a cup of tea. The frame with her face occupies the UPPER-middle part. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text, centred in the LOWER-middle part over the tablecloth, inside a soft dark gradient for readability: a large white elegant serif line «ЭТО ВИДЕО ЗАПИСАЛА», under it a larger warm cream line «МОЯ БАБУШКА». No other words, no logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: фото бабушки из приложенного фото (узнаваема) в старой рамке на кружевной скатерти, внизу по центру надпись «ЭТО ВИДЕО ЗАПИСАЛА МОЯ БАБУШКА» без ошибок, другого текста и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Это видео записала моя бабушка»",
+   "prompt": "Vertical 9:16. The photo frame centred horizontally, its middle around 35% from the top; the title block centred horizontally with its middle around 68% from the top, fully inside the central 3:4 safe area (between 13% and 87% of the height) so it is not cropped in the profile grid; the title never covers the face in the frame."
+  }
+ ]
+}
