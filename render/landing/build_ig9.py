@@ -83,6 +83,7 @@ def render_any(path, text):
         else:
             cur = c
     lines.append(cur)
+    lines = [ln.replace("_", " ") for ln in lines]   # «_» — неразрывный пробел в заголовке
     lh = HOOK_SIZE * 1.08
     y = 130 - lh * len(lines) / 2
     for ln in lines:
