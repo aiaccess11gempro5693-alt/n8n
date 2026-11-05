@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig17_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig17_host_5.png"
+    ],
+    "person_note": "The man must be exactly the man from the attached photo (same face, short dark hair greying at the temples, neat beard, dark navy jumper over a white collar).",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER: photorealistic frame of exactly the man from the attached photo in his quiet evening home study with bookshelves and a warm desk lamp, warm golden light with a soft magical glow and a few tiny floating golden light particles, he looks straight into the lens with a calm, warm, knowing look. His face is in the LOWER half of the frame. Bold, clean, perfectly spelled Russian typography is REQUIRED and is the only text, centred in the UPPER-middle part of the frame above his head: a giant warm golden #F2C14E heavy sans-serif line «5 НОЯБРЯ», under it a large white line «ЭТО ВИДЕО — ДЛЯ ТЕБЯ», with a soft dark shadow. No other words, no logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: мужчина из приложенного фото (узнаваем, не искажён) в кабинете с книгами в тёплом золотом свете, лицо в нижней половине, вверху-по центру надпись «5 НОЯБРЯ» и «ЭТО ВИДЕО — ДЛЯ ТЕБЯ» без ошибок, другого текста и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Послание на неделю»",
+    "prompt": "Vertical 9:16. The title block centred horizontally with its middle around 36% from the top, fully inside the central 3:4 safe area so it is not cropped in the profile grid; his face around 64% from the top; the title never covers his face."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
