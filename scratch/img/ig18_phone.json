@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig18_phone",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, vertical 9:16, soft warm nostalgic light, shallow depth of field, gentle film grain, warm muted colours, looks like a frame from a heartfelt family film. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный тёплый ностальгичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking elderly person, not a celebrity.",
+    "meaning": "старый дисковый телефон и смартфон рядом — «маме позвони»",
+    "prompt": "On a wooden windowsill with a red geranium: an old cream rotary telephone next to a modern smartphone lying screen-down, soft winter daylight from the window, snow outside, quiet nostalgic mood. Composition: both phones in the middle of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

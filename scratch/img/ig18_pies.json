@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig18_pies",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, vertical 9:16, soft warm nostalgic light, shallow depth of field, gentle film grain, warm muted colours, looks like a frame from a heartfelt family film. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный тёплый ностальгичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking elderly person, not a celebrity.",
+    "meaning": "бабушкины пироги на столе, руки в муке — «поешь нормально»",
+    "prompt": "Close-up of an elderly woman's wrinkled hands dusted with flour placing freshly baked golden pirozhki onto a plate on a wooden kitchen table with a lace tablecloth, steam rising, warm golden light. Composition: the hands and the pies in the middle of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

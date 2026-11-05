@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig18_frame",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, vertical 9:16, soft warm nostalgic light, shallow depth of field, gentle film grain, warm muted colours, looks like a frame from a heartfelt family film. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный тёплый ностальгичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "The woman in the photo inside the frame must be exactly the woman from the attached photo (same face, white down shawl), rendered as a black-and-white photograph.",
+    "meaning": "старое фото бабушки в деревянной рамке на столе, рядом очки и чашка — первый кадр",
+    "prompt": "A small old wooden photo frame standing on a lace tablecloth on a kitchen table, the frame holds a black-and-white portrait photo of an elderly woman in a white down shawl (face clearly visible in the frame), next to it a pair of old reading glasses and a cup of tea, soft window daylight, cosy and quiet. Composition: the photo frame centered in the middle of the image, large.",
+    "extra_refs": [
+      "scratch/img/ig18_gran_c.png"
+    ]
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
