@@ -21,6 +21,6 @@
 «Обнимаю» — «жертвенная» концовка (eleven_v3 обрезает последнее слово), отрезается при монтаже.
 
 ## Пробы голоса (мужские)
-- Гончаров `2ZFzXXV1S8cRgNauhriF` — `scratch/ig17-v-goncharov.mp3`
-- Miron `VlXLedwkU4YDM3HBGpiI` — `scratch/ig17-v-miron.mp3`
-- Синев `mGnyEHBfaNztXxZkkMKN` — `scratch/ig17-v-sinev.mp3`
+- Гончаров `2ZFzXXV1S8cRgNauhriF` — `scratch/ig17/v-goncharov.mp3`
+- Miron `VlXLedwkU4YDM3HBGpiI` — `scratch/ig17/v-miron.mp3`
+- Синев `mGnyEHBfaNztXxZkkMKN` — `scratch/ig17/v-sinev.mp3`
