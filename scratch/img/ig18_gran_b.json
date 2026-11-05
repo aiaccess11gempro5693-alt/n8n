@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig18_gran_b",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "meaning": "бабушка ~75 в очках, бежевая блузка с брошью, квартира с книжным шкафом и коврами, вечер",
+    "prompt": "Photorealistic portrait of a kind intelligent Russian grandmother about 75 with short curly grey hair, thin gold-rimmed reading glasses, a beige blouse with a small vintage brooch. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, gentle loving expression, kind eyes with smile wrinkles, NO broad smile, mouth relaxed. Natural skin texture with real wrinkles and age spots, NOT CGI, NOT a glamour retouch, NOT airbrushed. No text, no logos, no watermark. Background: a cosy old city apartment with a wall carpet, a bookcase and a floor lamp, softly blurred, warm evening lamp light.",
+    "person_note": "A completely new, ordinary elderly person (not a celebrity), looks genuinely real and warm."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

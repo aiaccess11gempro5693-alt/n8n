@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig18_gran_a",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "meaning": "бабушка ~78, вязаный кардиган, платок на плечах, деревенская кухня, тёплый свет из окна",
+    "prompt": "Photorealistic portrait of a kind Russian grandmother about 78 with soft white hair in a neat bun, a warm hand-knitted brown cardigan and a light floral kerchief over her shoulders. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, gentle loving expression, kind eyes with smile wrinkles, NO broad smile, mouth relaxed. Natural skin texture with real wrinkles and age spots, NOT CGI, NOT a glamour retouch, NOT airbrushed. No text, no logos, no watermark. Background: a cosy village-house kitchen with lace curtains, a samovar and jars on a wooden shelf, softly blurred, warm afternoon sunlight from a window.",
+    "person_note": "A completely new, ordinary elderly person (not a celebrity), looks genuinely real and warm."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

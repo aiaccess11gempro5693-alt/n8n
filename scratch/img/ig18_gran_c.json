@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig18_gran_c",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "meaning": "бабушка ~80, белый пуховый платок на голове, тёмно-синее платье, у окна с геранью, зимний свет",
+    "prompt": "Photorealistic portrait of a gentle Russian grandmother about 80 wearing a white Orenburg down shawl loosely over her grey hair, a dark navy dress with tiny white dots. FRAMING: vertical 9:16, medium close shot from the chest up, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, gentle loving expression, kind eyes with smile wrinkles, NO broad smile, mouth relaxed. Natural skin texture with real wrinkles and age spots, NOT CGI, NOT a glamour retouch, NOT airbrushed. No text, no logos, no watermark. Background: a window with red geraniums in pots and a lace curtain, snow outside, softly blurred, soft winter daylight.",
+    "person_note": "A completely new, ordinary elderly person (not a celebrity), looks genuinely real and warm."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
