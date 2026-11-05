@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig17_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm soft light, shallow depth of field, gentle film grain, rich warm colours with a quiet hopeful mood, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр в тёплой гамме, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "рука открывает дверь, за ней тёплый золотой свет — «человек, который откроет новую дверь»",
+    "prompt": "A woman's hand on the handle of a slightly opened old wooden door, warm golden light pouring through the gap from the other side into a dim hallway, dust particles glowing in the light beam. Mysterious, hopeful, inviting. Composition: the bright gap of the door in the upper-middle part of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

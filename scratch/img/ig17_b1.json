@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig17_b1",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm soft light, shallow depth of field, gentle film grain, rich warm colours with a quiet hopeful mood, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр в тёплой гамме, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "уставшая женщина ~45 ночью на кухне, всё навалилось — «когда кажется, что всё навалилось сразу»",
+    "prompt": "Late night in a small cosy kitchen: a tired woman about 45 sits at the table with her forehead resting on her hand, a few unopened envelopes and a phone in front of her, a cold cup of tea, a single warm lamp over the table, dark window behind. Exhausted but not dramatic. Composition: her face in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

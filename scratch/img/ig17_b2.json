@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig17_b2",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic stock-photo still, vertical 9:16, warm soft light, shallow depth of field, gentle film grain, rich warm colours with a quiet hopeful mood, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр в тёплой гамме, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "та же атмосфера, утро: женщина раздвигает шторы, в комнату льётся солнце — «в ближайшие семь дней всё начнёт меняться»",
+    "prompt": "Early morning: a woman about 45 in a soft knitted cardigan pulls open the curtains of a bedroom window, golden sunrise light floods into the room and onto her calm face, she closes her eyes and breathes in. Hopeful, fresh, warm. Composition: her face and the window light in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
