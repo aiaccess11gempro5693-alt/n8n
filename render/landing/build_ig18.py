@@ -32,6 +32,7 @@ MUSIC = f"{ROOT}/scratch/music/ig18-music.mp3"
 MUSIC_GAIN = 0.12
 SERIF = f"{ROOT}/render/fonts/PlayfairDisplay-Bold.ttf"
 
+HOOK_Y = 300         # заголовок вверху, над рамкой (зона 250–1500)
 INTRO = 2.6          # вступление: фото в рамке, голоса ещё нет
 TAIL = 1.6           # финальная карточка держится после последнего слова
 SPOKEN = ("Внучек, здравствуй. Опять сидишь в телефоне до ночи? Поешь нормально, не перекусывай на бегу. "
@@ -42,7 +43,7 @@ SPOKEN = ("Внучек, здравствуй. Опять сидишь в тел
 HOOK = "ЭТО ВИДЕО ЗАПИСАЛА МОЯ БАБУШКА"
 BROLLS = [("ig18_pies", "Поешь", 3.4), ("ig18_phone", "Маме", 3.4)]
 # центр фото в рамке на кадре ig18_frame (доли ширины/высоты исходника 1024×1536)
-FRAME_CX, FRAME_CY, ZOOM = 0.50, 0.45, 1.9
+FRAME_CX, FRAME_CY, ZOOM = 0.50, 0.44, 2.3
 
 
 def prepare():
@@ -91,6 +92,7 @@ def main():
     t_secret, t_back, t_final = F("А", F("горжусь.")), F("Если"), F("Но", F("«Память».") - 0.3)
     subs = [s for s in N.chunks(words, last + 0.6) if s["t0"] < t_final - 0.05]
     subs[-1]["t1"] = min(subs[-1]["t1"], t_final)
+    subs[0]["t0"] = max(subs[0]["t0"], INTRO)          # во вступлении — только заголовок
     brolls = [(img, F(w) - 0.1, dur) for img, w, dur in BROLLS]
     for (a, ta, da), (b, tb, db) in zip(brolls, brolls[1:]):
         assert ta + da <= tb, f"кадры {a}/{b} перекрываются"
@@ -110,7 +112,8 @@ def main():
               "-f", "lavfi", "-t", f"{fin:.2f}", "-i", f"color=black:s={W}x{H}:r=30",
               "-loop", "1", "-t", f"{fin:.2f}", "-i", f"{B.TMP}/final.png"]
     sx, sy = FRAME_CX * 1280, FRAME_CY * 1920
-    z = f"(1+{ZOOM - 1:.2f}*pow(min(t/{INTRO + 0.6:.2f},1),2))"
+    u = f"min(t/{INTRO + 0.4:.2f},1)"
+    z = f"(1+{ZOOM - 1:.2f}*{u}*{u}*(3-2*{u}))"      # плавный наезд в портрет
     filt = [
         # бабушка: задержка на вступление, цвет по выражению, лёгкий наезд на весь ролик
         f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30,"
@@ -121,7 +124,7 @@ def main():
         # вступление: фото в рамке, наезд в портрет, растворение в живую бабушку
         f"[2:v]scale=1280:1920,setsar=1,fps=30,format=rgba,"
         f"scale=w='trunc(1280*{z}/2)*2':h='trunc(1920*{z}/2)*2':eval=frame,"
-        f"crop={W}:{H}:'min(max({sx:.0f}*{z}-{W / 2:.0f},0),iw-{W})':'min(max({sy:.0f}*{z}-{H / 2:.0f},0),ih-{H})',"
+        f"crop={W}:{H}:'max({sx:.0f}*{z}-{W / 2:.0f},0)':'max({sy:.0f}*{z}-{H / 2:.0f},0)',"   # без iw/ih: crop берёт размер первого кадра
         f"fade=out:st={INTRO:.2f}:d=0.6:alpha=1[intro]",
         "[v0][intro]overlay=0:0:eof_action=pass[vi]",
     ]
@@ -134,7 +137,7 @@ def main():
     hook = f"{B.TMP}/hook.png"
     N.render_any(hook, HOOK)
     inputs += ["-i", hook]
-    filt.append(f"{prev}[{n}:v]overlay=0:{B.CY - 130}:enable='lt(t,{INTRO:.2f})'[vh]")
+    filt.append(f"{prev}[{n}:v]overlay=0:{HOOK_Y}:enable='lt(t,{INTRO:.2f})'[vh]")
     prev, n = "[vh]", n + 1
     for i, s in enumerate(subs):
         p = f"{B.TMP}/sub{i:03d}.png"
