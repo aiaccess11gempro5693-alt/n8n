@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig21_host",
+    "meaning": "директор ~48, тёмно-синий костюм, белая рубашка без галстука, стеклянный офис",
+    "prompt": "Photorealistic photo of a serious but kind Russian company director about 48 with short dark hair greying at the temples, clean-shaven, a well-fitted dark navy suit and a white shirt without a tie, standing calmly with hands loosely together at waist level, a businesslike expression. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders and hands inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, NO broad smile. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a modern glass-walled office with a meeting room and city view, cool daylight, blurred.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
