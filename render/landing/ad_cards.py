@@ -213,3 +213,40 @@ def ai_stamp(path, l1="СДЕЛАНО", l2="НЕЙРОСЕТЬЮ"):
     im.alpha_composite(st, ((W - st.width) // 2, y0))
     im.save(path)
     return path, (y0, y0 + st.height)
+
+
+# ---------- №24: два варианта продукта ----------
+def options(path, level=1):
+    """Карточка «Два варианта»: 1 — делаем ролики за вас (с ценой и чипами), 2 — своя система.
+    level=1 — только первый вариант, level=2 — оба (второй встаёт ниже на том же месте)."""
+    cw = 880
+    ch = 440 if level == 1 else 700
+    card = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
+    d = ImageDraw.Draw(card)
+    d.rounded_rectangle([0, 0, cw, ch], radius=40, fill=GRAPH + (245,), outline=ORANGE + (255,), width=4)
+    # вариант 1
+    d.ellipse([40, 44, 112, 116], fill=ORANGE)
+    d.text((76, 80), "1", font=F(OSW, 50), fill=(255, 255, 255), anchor="mm")
+    d.text((136, 62), "ДЕЛАЕМ ЗА ВАС", font=F(OSW, 54), fill=CREAM, anchor="lm")
+    d.text((136, 112), "от 1 000 ₽ / мин", font=F(OSW_M, 44), fill=ORANGE, anchor="lm")
+    chips = ["сценарий", "картинки", "музыка", "монтаж"]
+    f = F(MON, 30)
+    x, y = 44, 170
+    for c in chips:
+        w_ = d.textlength(c, font=f) + 46
+        d.rounded_rectangle([x, y, x + w_, y + 58], radius=29, fill=(60, 62, 58))
+        d.text((x + w_ / 2, y + 29), c, font=f, fill=(255, 255, 255), anchor="mm")
+        x += w_ + 14
+    d.text((44, 292), "всё согласуем с вами", font=F(MON_S, 32), fill=(200, 196, 188), anchor="lm")
+    _check(d, cw - 76, 300, 30, ORANGE)
+    if level >= 2:
+        d.line([(44, 380), (cw - 44, 380)], fill=(70, 72, 68), width=3)
+        d.ellipse([40, 420, 112, 492], fill=CREAM)
+        d.text((76, 456), "2", font=F(OSW, 50), fill=GRAPH, anchor="mm")
+        d.text((136, 438), "СВОЯ СИСТЕМА", font=F(OSW, 54), fill=CREAM, anchor="lm")
+        d.text((136, 490), "делаете ролики сами", font=F(OSW_M, 44), fill=ORANGE, anchor="lm")
+        d.text((44, 580), "настроим под вас,", font=F(MON_S, 32), fill=(200, 196, 188), anchor="lm")
+        d.text((44, 626), "платите только за нейросети", font=F(MON_S, 32), fill=(200, 196, 188), anchor="lm")
+    x0, y0 = (W - cw) // 2, 330
+    _shadowed(card, x0, y0).save(path)
+    return path, (y0, y0 + ch)
