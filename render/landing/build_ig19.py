@@ -29,7 +29,7 @@ MUSIC_GAIN = 0.10
 
 SPOKEN = ("Однажды учительница спросила детей одну простую вещь — и никто не ответил правильно. На доске был нарисован стул. "
           "«Назовите самую важную часть этого стула». Дети писали: ножки, сиденье, спинка. Учительница покачала головой. "
-          "«Самая важная часть — та, которую вы не видите. Болты. Маленькие винтики, которые держат всю конструкцию. "
+          "«Самая важная часть — та, которую вы не видите. Маленькие винтики, которые держат всю конструкцию. "
           "Выкрути их — и стул развалится». Жизнь устроена так же. Мы смотрим на то, что видно: работа, дом, доход, "
           "достижения. А держат всё это винтики, которых никто не замечает. Здоровье. Сон. Привычки. Близкие, которые "
           "рядом, когда никто не смотрит. Маленькие решения, которые ты принимаешь каждый день. Не жди… пока твой стул "
@@ -37,12 +37,41 @@ SPOKEN = ("Однажды учительница спросила детей о�
           "настоящие. Напиши в комментариях: какой твой главный винтик?")
 HOOK = "ГДЕ САМАЯ ВАЖНАЯ ЧАСТЬ_СТУЛА?"
 # (картинка, слово-триггер, искать после слова, длительность)
-BROLLS = [("ig19_b1", "На", None, 3.6), ("ig19_b2", "Болты.", None, 3.2),
+BROLLS = [("ig19_b1", "На", None, 3.6), ("ig19_b2", "видите.", None, 3.4),
           ("ig19_b3", "Выкрути", None, 3.2), ("ig19_b4", "Близкие,", None, 3.6)]
+
+
+# «Болты» Gemini слышит как «бОлты» (норма — болтЫ): слово вырезано из звука и клипа одной склейкой
+# от середины паузы до середины паузы; склейку закрывает кадр с болтом (ig19_b2).
+CUT = (19.87, 20.87)
+
+
+def cut_sources():
+    a0, a1 = CUT
+    d = a1 - a0
+    audio, clip, wh = f"{B.TMP}/voice-cut.wav", f"{B.TMP}/host-cut.mp4", f"{B.TMP}/whisper-cut.json"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", B.AUDIO, "-af",
+                    f"aselect='not(between(t,{a0},{a1}))',asetpts=N/SR/TB", "-ar", "48000", audio], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", B.CLIP, "-vf",
+                    f"select='not(between(t,{a0},{a1}))',setpts=N/FRAME_RATE/TB", "-af",
+                    f"aselect='not(between(t,{a0},{a1}))',asetpts=N/SR/TB", "-c:v", "libx264", "-crf", "16",
+                    "-preset", "fast", clip], check=True)
+    w = json.load(open(B.WHISPER))
+    words = []
+    for x in w["words"]:
+        if a0 <= x["start"] < a1:
+            continue
+        if x["start"] >= a1:
+            x = dict(x, start=x["start"] - d, end=x["end"] - d)
+        words.append(x)
+    w["words"] = words
+    json.dump(w, open(wh, "w"), ensure_ascii=False)
+    B.AUDIO, B.CLIP, B.WHISPER = audio, clip, wh
 
 
 def main():
     os.makedirs(B.TMP, exist_ok=True)
+    cut_sources()
     B.clean_words = lambda: SPOKEN.split()
     words, last = B.timed_words()
     F = N.finder(words)
