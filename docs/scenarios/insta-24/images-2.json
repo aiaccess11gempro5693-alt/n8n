@@ -1,0 +1,61 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig24_b1",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig24_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark.",
+   "style_qa": "фотореализм, та же женщина, что на референсе, крепко спит в кровати, раннее утро, без текста; взгляд в камеру не нужен",
+   "meaning": "Марина крепко спит в уютной спальне, раннее утро",
+   "prompt": "Vertical 9:16. The woman from the reference sleeping peacefully in a cosy bed under a soft linen duvet, hair loose on the pillow, calm face, early morning blue-golden light through curtains, a phone face down on the nightstand. Close-medium shot from the side."
+  },
+  {
+   "name": "ig24_b2",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig24_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark.",
+   "style_qa": "фотореализм, та же женщина в фартуке достаёт противень из духовки на рассвете, за окном темно-синее небо, без текста",
+   "meaning": "Марина в 5 утра достаёт коржи из духовки, за окном ещё темно",
+   "prompt": "Vertical 9:16. The woman from the reference in her sage-green apron, hair in a messy bun, tired but focused, taking a tray of cake layers out of a glowing oven in a small kitchen at dawn, the window behind her still deep blue, warm oven light on her face."
+  },
+  {
+   "name": "ig24_b4",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig24_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark.",
+   "style_qa": "фотореализм, та же женщина спит с лёгкой улыбкой, солнечное утро, рядом кофе, без текста",
+   "meaning": "Марина наконец высыпается: спит с лёгкой улыбкой, солнечное позднее утро",
+   "prompt": "Vertical 9:16. The woman from the reference sleeping deeply and happily with a slight smile, sunlit late morning, warm golden sunlight across the white bed, a cup of coffee waiting on the nightstand, a peaceful mood."
+  },
+  {
+   "name": "ig24_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig24_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, warm cosy tones. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: та же женщина-кондитер, что на референсе, на кухне с тортом, надпись «ПОКА ВЫ ЭТО СМОТРИТЕ, НАСТОЯЩАЯ Я СПЛЮ» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Пока вы это смотрите, настоящая я сплю»",
+   "prompt": "Vertical 9:16. The baker from the reference stands in her bright kitchen in the lower half of the frame, holding a beautiful berry layer cake, with a playful knowing look and one finger at her lips as if keeping a secret. In the UPPER-MIDDLE part, centred, a large bold title in four lines on a soft cream area: dark brown «ПОКА ВЫ», dark brown «ЭТО СМОТРИТЕ,», dark brown «НАСТОЯЩАЯ Я», and a big warm berry-red «СПЛЮ». All text must sit between 22% and 78% of the image height."
+  }
+ ]
+}
