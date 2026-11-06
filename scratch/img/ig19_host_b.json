@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig19_host_b",
+    "meaning": "мужчина ~42, лысый, аккуратная тёмная борода, тёмно-зелёное трикотажное поло, стеллаж с книгами",
+    "prompt": "Photorealistic photo of a calm wise Russian man about 42, shaved head, a neat dark beard, a dark bottle-green knitted polo shirt. FRAMING: vertical 9:16, medium shot from the waist up, he sits relaxed, both shoulders and hands inside the frame, a black podcast microphone on a boom arm at the side of the frame near his chest (never covering the mouth), face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, sincere thoughtful expression, NO broad smile. Look: a real frame from a high-end podcast camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy podcast studio with walnut bookshelves, a warm floor lamp and a small plant, blurred, evening light.",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "remove the microphone and lower the raised gesturing hand for avatar animation"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
