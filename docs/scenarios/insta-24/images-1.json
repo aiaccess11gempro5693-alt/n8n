@@ -1,0 +1,25 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig24_host",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "meaning": "кондитер Марина ~38, тёплая, каштановые волосы в небрежном пучке, льняной фартук в муке, светлая домашняя кондитерская кухня",
+   "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+   "prompt": "Photorealistic photo of a warm, lively Russian home baker about 38 named Marina, chestnut hair in a loose messy bun with a few strands falling, light freckles, a cream knit sweater with sleeves pushed up under a sage-green linen apron with a little flour on it. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders and hands inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, a playful knowing expression, NO broad smile. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a bright cosy home bakery kitchen with a marble counter, a cake stand with a layered berry cake, jars of flour, warm morning window light, softly blurred."
+  },
+  {
+   "name": "ig24_b3",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "пустой штатив с кольцевой лампой и телефоном в углу кухни, рядом недоделанный торт и гора посуды — снимать некогда",
+   "style": "Photorealistic cinematic still, warm natural light, shallow depth of field, true-to-life colours. No text, no letters, no logos, no signs, no watermark.",
+   "style_qa": "фотореализм, кухня кондитера: пустой штатив с кольцевой лампой и телефоном, недоделанный торт, посуда, без людей и текста",
+   "person_note": "No people in the image.",
+   "prompt": "Vertical 9:16. A corner of a busy home bakery kitchen late in the evening: an unused tripod with a ring light and a phone mounted on it stands switched off, next to it a half-decorated cake, piles of mixing bowls and piping bags, a dim warm lamp. Mood: no time to film."
+  }
+ ]
+}
