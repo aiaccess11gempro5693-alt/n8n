@@ -79,6 +79,7 @@ def build(cfg, words, total, subs):
     dim = windows_expr(merge([(c[1], c[2]) for c in cfg["cards"]]))
     inputs = ["-i", B.CLIP, "-i", audio, "-f", "lavfi", "-t", f"{total:.2f}", "-i", f"color=black:s={W}x{H}:r=30"]
     filt = [f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1,fps=30,"
+            f"tpad=stop_duration=3:stop_mode=clone,"
             f"scale=w='trunc({W}*{z}/2)*2':h='trunc({H}*{z}/2)*2':eval=frame,"
             f"crop={W}:{H}:'(iw-{W})/2':'(ih-{H})/3',"
             f"rgbashift=rh=-14:bh=14:gv=6:enable='{gl}',noise=alls=28:allf=t:enable='{gl}',format=yuv420p[v0]",
