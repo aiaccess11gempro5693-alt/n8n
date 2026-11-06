@@ -18,8 +18,8 @@ import build_ig9 as N
 import sfx as SFX
 
 ROOT = B.ROOT
-B.AUDIO = os.environ.get("AUDIO", f"{ROOT}/scratch/ig19/trim.mp3")
-B.WHISPER = os.environ.get("WHISPER", f"{ROOT}/scratch/ig19-whisper-final.json")
+B.AUDIO = os.environ.get("AUDIO", f"{ROOT}/scratch/ig19/trim2.mp3")
+B.WHISPER = os.environ.get("WHISPER", f"{ROOT}/scratch/ig19-whisper-final2.json")
 B.CLIP = os.environ.get("CLIP", f"{ROOT}/scratch/ig19/host.mp4")
 B.OUT = os.environ.get("OUT", f"{ROOT}/render/landing/ig19-9x16.mp4")
 B.TMP = f"{ROOT}/render/landing/.ig19"
@@ -27,7 +27,7 @@ IMG = f"{ROOT}/scratch/img"
 MUSIC = f"{ROOT}/scratch/music/ig19-music.mp3"
 MUSIC_GAIN = 0.10
 
-SPOKEN = ("Учительница задала детям один простой вопрос — и никто не ответил правильно. На доске был нарисован стул. "
+SPOKEN = ("Однажды учительница спросила детей одну простую вещь — и никто не ответил правильно. На доске был нарисован стул. "
           "«Назовите самую важную часть этого стула». Дети писали: ножки, сиденье, спинка. Учительница покачала головой. "
           "«Самая важная часть — та, которую вы не видите. Болты. Маленькие винтики, которые держат всю конструкцию. "
           "Выкрути их — и стул развалится». Жизнь устроена так же. Мы смотрим на то, что видно: работа, дом, доход, "
