@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig24_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "пустой штатив с кольцевой лампой и телефоном в углу кухни, рядом недоделанный торт и гора посуды — снимать некогда",
+    "style": "Photorealistic cinematic still, warm natural light, shallow depth of field, true-to-life colours. No text, no letters, no logos, no signs, no watermark.",
+    "style_qa": "фотореализм, кухня кондитера: пустой штатив с кольцевой лампой и телефоном, недоделанный торт, посуда, без людей и текста",
+    "person_note": "No people in the image.",
+    "prompt": "Vertical 9:16. A corner of a busy home bakery kitchen late in the evening: an unused tripod with a ring light and a phone mounted on it stands switched off, next to it a half-decorated cake, piles of mixing bowls and piping bags, a dim warm lamp. Mood: no time to film."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

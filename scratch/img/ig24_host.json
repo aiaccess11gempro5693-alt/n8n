@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig24_host",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "meaning": "кондитер Марина ~38, тёплая, каштановые волосы в небрежном пучке, льняной фартук в муке, светлая домашняя кондитерская кухня",
+    "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+    "prompt": "Photorealistic photo of a warm, lively Russian home baker about 38 named Marina, chestnut hair in a loose messy bun with a few strands falling, light freckles, a cream knit sweater with sleeves pushed up under a sage-green linen apron with a little flour on it. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders and hands inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, a playful knowing expression, NO broad smile. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a bright cosy home bakery kitchen with a marble counter, a cake stand with a layered berry cake, jars of flour, warm morning window light, softly blurred."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Lower hands to a neutral resting position to avoid frozen gestures and finger artifacts."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
