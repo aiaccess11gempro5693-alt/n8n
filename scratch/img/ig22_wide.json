@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "ig22_wide",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig22_host.png",
+      "scratch/img/ig22_guest.png"
+    ],
+    "person_note": "Exactly the two men from the attached photos, same faces, hair and clothes; do not change their faces.",
+    "style": "Photorealistic cinematic photo, like a real wide frame from a late-night TV talk show. No text, no logos, no watermark.",
+    "style_qa": "фотореализм, общий план студии ток-шоу: ведущий за столом и гость на синем диване, те же люди, что на референсах, ночной город за окнами, без текста",
+    "meaning": "общий план студии: ведущий за столом справа, гость на синем диване слева, ночной город",
+    "prompt": "Vertical 9:16 wide shot of a late-night talk show studio: on the left the guest from the second reference sits on a deep blue velvet sofa, on the right the host from the first reference sits behind a glossy wooden desk with a mug; they look at each other mid-conversation. Huge windows behind them onto a night city skyline with lit skyscrapers, warm lamps, bookshelves, a rug on a wooden floor. Both people fully visible in the lower-middle part of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig23_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig23_host.png"
+    ],
+    "person_note": "Exactly the woman from the attached photo, same face, hair and clothes; do not change her face shape.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, warm beige-olive tones. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: та же женщина-психолог, что на референсе, в уютном кабинете, надпись «ЗРЕЛЫЙ ПАРТНЁР ВЫНОСИТ ВАМ МОЗГ» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Зрелый человек выносит вам мозг»",
+    "prompt": "Vertical 9:16. The psychologist from the reference sits in her terracotta armchair on the RIGHT side of the frame, waist up, with a knowing half-smile and one eyebrow slightly raised. On the LEFT side, left-aligned, a large bold serif-meets-sans title in four lines on the warm blurred office background: dark brown «ЗРЕЛЫЙ», dark brown «ПАРТНЁР», dark brown «ВЫНОСИТ», and a deep terracotta «ВАМ МОЗГ». All text must sit between 22% and 78% of the image height (nothing in the top or bottom 22%)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

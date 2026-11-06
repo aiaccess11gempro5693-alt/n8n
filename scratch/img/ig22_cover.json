@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "ig22_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig22_host.png",
+      "scratch/img/ig22_guest.png"
+    ],
+    "person_note": "Exactly the two men from the attached photos, same faces; do not change their faces.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: два мужчины с референсов в студии ток-шоу на фоне ночного города, надпись «СЕКРЕТ УСПЕХА В ДВУХ СЛОВАХ» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Вы правы» — ток-шоу",
+    "prompt": "Vertical 9:16. A late-night talk show studio with a night city skyline: in the lower half the guest (second reference) on a blue sofa with a calm sly smile and the host (first reference) behind his desk laughing. In the middle of the frame, centred, huge bold condensed sans-serif title in three lines: white «СЕКРЕТ», white «УСПЕХА», and bright electric-blue «В ДВУХ СЛОВАХ», with a soft dark shadow for readability. All text must sit between 22% and 78% of the image height (nothing in the top or bottom 22%)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
