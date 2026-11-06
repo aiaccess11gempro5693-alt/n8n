@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig19_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig19_b1.png"
+   ],
+   "person_note": "No people in the image.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER: a photorealistic dark green school chalkboard filling the whole frame, with a clean white chalk line drawing of a simple wooden chair in the middle, like the attached image; one small bolt on the chair joint is circled with a bright red-orange chalk circle and an arrow. Bold, clean, perfectly spelled Russian chalk-style typography is REQUIRED and is the only text, at the TOP part of the board: a large white chalk line «САМАЯ ВАЖНАЯ ЧАСТЬ», under it a large yellow chalk line «СТУЛА?». No other words, no logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: школьная доска, меловой рисунок стула, красный кружок вокруг болта, вверху надпись «САМАЯ ВАЖНАЯ ЧАСТЬ СТУЛА?» без ошибок, другого текста и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Самая важная часть стула»",
+   "prompt": "Vertical 9:16. The title block centred horizontally with its middle around 25% from the top, fully inside the central 3:4 safe area (between 13% and 87% of the height); the chair drawing centred, its middle around 58% from the top."
+  }
+ ]
+}
