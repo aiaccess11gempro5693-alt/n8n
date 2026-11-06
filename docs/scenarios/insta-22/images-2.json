@@ -1,0 +1,49 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig22_wide",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig22_host.png",
+    "scratch/img/ig22_guest.png"
+   ],
+   "person_note": "Exactly the two men from the attached photos, same faces, hair and clothes; do not change their faces.",
+   "style": "Photorealistic cinematic photo, like a real wide frame from a late-night TV talk show. No text, no logos, no watermark.",
+   "style_qa": "фотореализм, общий план студии ток-шоу: ведущий за столом и гость на синем диване, те же люди, что на референсах, ночной город за окнами, без текста",
+   "meaning": "общий план студии: ведущий за столом справа, гость на синем диване слева, ночной город",
+   "prompt": "Vertical 9:16 wide shot of a late-night talk show studio: on the left the guest from the second reference sits on a deep blue velvet sofa, on the right the host from the first reference sits behind a glossy wooden desk with a mug; they look at each other mid-conversation. Huge windows behind them onto a night city skyline with lit skyscrapers, warm lamps, bookshelves, a rug on a wooden floor. Both people fully visible in the lower-middle part of the frame."
+  },
+  {
+   "name": "ig22_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig22_host.png",
+    "scratch/img/ig22_guest.png"
+   ],
+   "person_note": "Exactly the two men from the attached photos, same faces; do not change their faces.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: два мужчины с референсов в студии ток-шоу на фоне ночного города, надпись «СЕКРЕТ УСПЕХА В ДВУХ СЛОВАХ» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Вы правы» — ток-шоу",
+   "prompt": "Vertical 9:16. A late-night talk show studio with a night city skyline: in the lower half the guest (second reference) on a blue sofa with a calm sly smile and the host (first reference) behind his desk laughing. In the middle of the frame, centred, huge bold condensed sans-serif title in three lines: white «СЕКРЕТ», white «УСПЕХА», and bright electric-blue «В ДВУХ СЛОВАХ», with a soft dark shadow for readability. All text must sit between 22% and 78% of the image height (nothing in the top or bottom 22%)."
+  },
+  {
+   "name": "ig23_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig23_host.png"
+   ],
+   "person_note": "Exactly the woman from the attached photo, same face, hair and clothes; do not change her face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, warm beige-olive tones. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: та же женщина-психолог, что на референсе, в уютном кабинете, надпись «ЗРЕЛЫЙ ПАРТНЁР ВЫНОСИТ ВАМ МОЗГ» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка 9:16 Reels «Зрелый человек выносит вам мозг»",
+   "prompt": "Vertical 9:16. The psychologist from the reference sits in her terracotta armchair on the RIGHT side of the frame, waist up, with a knowing half-smile and one eyebrow slightly raised. On the LEFT side, left-aligned, a large bold serif-meets-sans title in four lines on the warm blurred office background: dark brown «ЗРЕЛЫЙ», dark brown «ПАРТНЁР», dark brown «ВЫНОСИТ», and a deep terracotta «ВАМ МОЗГ». All text must sit between 22% and 78% of the image height (nothing in the top or bottom 22%)."
+  }
+ ]
+}
