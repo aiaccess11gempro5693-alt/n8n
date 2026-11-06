@@ -1,0 +1,32 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig19_host_a",
+   "meaning": "мужчина ~52, короткие волосы с проседью, аккуратная щетина, чёрный пиджак поверх чёрной футболки, тёплая студия с арками",
+   "prompt": "Photorealistic photo of a calm confident Russian man about 52 with short salt-and-pepper hair and a neat grey stubble, a black unstructured blazer over a black t-shirt. FRAMING: vertical 9:16, medium shot from the waist up, he sits relaxed, both shoulders and hands inside the frame, a black podcast microphone on a boom arm at the side of the frame near his chest (never covering the mouth), face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, sincere thoughtful expression, NO broad smile. Look: a real frame from a high-end podcast camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a warm podcast studio with soft beige arched wall niches and warm hidden lighting, blurred, golden-brown tones.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig19_host_b",
+   "meaning": "мужчина ~42, лысый, аккуратная тёмная борода, тёмно-зелёное трикотажное поло, стеллаж с книгами",
+   "prompt": "Photorealistic photo of a calm wise Russian man about 42, shaved head, a neat dark beard, a dark bottle-green knitted polo shirt. FRAMING: vertical 9:16, medium shot from the waist up, he sits relaxed, both shoulders and hands inside the frame, a black podcast microphone on a boom arm at the side of the frame near his chest (never covering the mouth), face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, sincere thoughtful expression, NO broad smile. Look: a real frame from a high-end podcast camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy podcast studio with walnut bookshelves, a warm floor lamp and a small plant, blurred, evening light.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  },
+  {
+   "name": "ig19_host_c",
+   "meaning": "мужчина ~58, седые волосы чуть длиннее, круглые очки в тонкой оправе, тёмно-синяя рубашка, деревянная студия",
+   "prompt": "Photorealistic photo of a kind experienced Russian man about 58 with slightly longer silver hair swept back, thin round metal glasses, a dark navy linen shirt with the top button open. FRAMING: vertical 9:16, medium shot from the waist up, he sits relaxed, both shoulders and hands inside the frame, a black podcast microphone on a boom arm at the side of the frame near his chest (never covering the mouth), face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm open gesture, sincere thoughtful expression, NO broad smile. Look: a real frame from a high-end podcast camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a podcast studio with warm wooden slat walls and soft amber light, blurred.",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real."
+  }
+ ]
+}
