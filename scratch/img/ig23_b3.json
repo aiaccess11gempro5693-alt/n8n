@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig23_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "пара идёт за руку по ясной дороге на закате — ясность и близость",
+    "style": "Photorealistic cinematic still, warm golden hour, true-to-life colours. No text, no logos, no watermark.",
+    "style_qa": "фотореализм, пара идёт за руку по ясной дороге на закате, видно далеко вперёд, без текста",
+    "person_note": "Ordinary adults about 35, seen from behind, not celebrities.",
+    "prompt": "Vertical 9:16. A couple about 35 seen from behind walking hand in hand along a clear straight country road at golden hour, the road visible far ahead to the horizon, clear sky, warm light, calm and close."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

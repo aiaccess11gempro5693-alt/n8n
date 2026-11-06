@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig22_host",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "ведущий вечернего ток-шоу ~45, тёмные волнистые волосы с проседью, серый пиджак, голубая рубашка, за столом, ночной город",
+    "style": "Photorealistic cinematic photo, like a real frame from a TV talk show camera. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+    "style_qa": "фотореализм, ведущий ток-шоу за столом, ночной город за окном, без текста; взгляд чуть в сторону (на гостя) — задумано",
+    "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real.",
+    "prompt": "Vertical 9:16. A charismatic Russian late-night talk show host about 45 with dark wavy hair greying at the temples, light stubble, a charcoal grey blazer over a light blue open-collar shirt, sitting behind a glossy wooden host desk with a coffee mug, turned slightly to his right as if listening to a guest, looking just past the camera, mid-sentence, lips slightly parted, curious friendly expression, one hand resting on the desk. Medium shot from the waist up, face large and sharp, top of head about 12% below the upper edge. Background: a late-night show studio set with large windows onto a night city skyline with lit skyscrapers, warm practical lamps and bookshelves, softly blurred."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

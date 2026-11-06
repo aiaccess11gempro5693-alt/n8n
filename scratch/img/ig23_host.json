@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig23_host",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "meaning": "психолог ~45, тёмно-каштановое каре до плеч, кремовый шёлковый топ, бежевый кардиган, уютный кабинет",
+    "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+    "prompt": "Photorealistic photo of a warm, wise Russian woman psychologist about 45 with shoulder-length dark chestnut bob hair, minimal natural makeup, small pearl earrings, a cream silk blouse under a soft beige knit cardigan, sitting in a deep terracotta armchair. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders and hands inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm explaining gesture, knowing kind expression, NO broad smile. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy therapist office with a large plant, a linen sofa, a shelf with books and a warm floor lamp, soft daylight from a window, blurred, warm beige-olive tones."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig23_b2",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "дорога в густом тумане — неясность",
+    "style": "Photorealistic cinematic still, moody muted colours, true-to-life. No text, no logos, no watermark.",
+    "style_qa": "фотореализм, загородная дорога в густом тумане, без людей и текста",
+    "person_note": "No people in the image.",
+    "prompt": "Vertical 9:16. A narrow country road disappearing into thick white fog, trees barely visible on the sides, nothing can be seen ahead, quiet, uncertain mood, soft grey morning light."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig23_b1",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "пара на кухне вечером: она задаёт вопрос, он слушает — спокойный разговор",
+    "style": "Photorealistic cinematic still, warm evening light, shallow depth of field, true-to-life colours. No text, no logos, no watermark.",
+    "style_qa": "фотореализм, тёплый вечер, пара разговаривает на кухне спокойно, без текста",
+    "person_note": "Ordinary adults about 35, not celebrities.",
+    "prompt": "Vertical 9:16. A couple in their mid-thirties sitting across a small kitchen table in the evening with two mugs of tea, she leans forward asking something sincerely, he listens attentively; warm pendant lamp light, calm honest conversation, not a fight."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
