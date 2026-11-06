@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig21_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig21_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, hair, navy suit; do not change his face.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина-директор, что на референсе, в стеклянном офисе; внизу надпись «ВАШ ДИРЕКТОР ЭТОГО НЕ ГОВОРИЛ» без ошибок; других слов и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Ваш директор этого не говорил»",
+    "prompt": "Vertical 9:16. The director from the reference fills the upper 60% of the frame, waist up, in a glass office, raising one finger as if announcing rules, serious face; a subtle digital glitch (thin cyan and red RGB offset stripes) crosses one side of his figure, hinting he is not real. The lower part darkens to deep navy. In the LOWER part, centred, a huge bold condensed sans-serif title in three lines: white «ВАШ ДИРЕКТОР», white «ЭТОГО», and a bright red-orange «НЕ ГОВОРИЛ». The title's bottom edge is above 84% of the height. The title block fully inside the central 3:4 safe area (between 14% and 86% of the height)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

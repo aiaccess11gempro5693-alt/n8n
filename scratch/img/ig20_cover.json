@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig20_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig20_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face shape, copper bob, mustard blazer; do not change her face.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: та же женщина, что на референсе, держит длинный бумажный чек; надпись «ЭТО ВИДЕО СТОИЛО МНЕ 0 ₽» без ошибок; на чеке допускается только «ИТОГО 0 ₽»; других слов и логотипов нет",
+    "meaning": "обложка 9:16 Reels «Это видео стоило мне 0 ₽»",
+    "prompt": "Vertical 9:16, dark graphite background (#111311) with a soft orange (#F3531B) rim light. In the lower 55% of the frame: the woman from the reference, waist up, with a sly knowing look, holds up a long curling white paper till receipt towards the camera; at the bottom of the receipt a bold line «ИТОГО 0 ₽», other receipt lines are just dots and dashes. At the TOP of the frame, centred, huge bold condensed sans-serif title in two lines: white «ЭТО ВИДЕО СТОИЛО МНЕ» and below it in bright orange «0 ₽». The title block fully inside the central 3:4 safe area (between 14% and 86% of the height)."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

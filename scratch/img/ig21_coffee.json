@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig21_coffee",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig21_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, hair, age; keep his face shape exactly.",
+    "style": "Photorealistic cinematic photo, like a real frame from a high-end camera, natural colours, shallow depth of field. No text, no logos, no signs, no watermark.",
+    "style_qa": "фотореалистичный кадр, тот же мужчина, что на референсе, без текста; взгляд в камеру НЕ нужен — он смотрит в окно",
+    "meaning": "тот же директор спокойно пьёт кофе в уютном кафе у окна, расслаблен, пиджак снят, смотрит в окно",
+    "prompt": "Vertical 9:16. The same man as in the reference photo, now relaxed, jacket off, white shirt with rolled sleeves, sitting by a big window in a cosy sunny café, holding a cup of coffee near his face, looking out of the window with a calm satisfied half-smile. Warm morning light, a croissant on a small plate, the street softly blurred outside. Medium shot, his face in the upper half of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
