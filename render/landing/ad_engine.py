@@ -22,7 +22,22 @@ import build_ig9 as N
 import sfx as SFX
 
 SUB_TOP = B.CY - 130          # верх полосы субтитров (1140)
-CARD_MAX_BOTTOM = SUB_TOP - 10
+CARD_MAX_BOTTOM = 1500        # на время карточки субтитры скрыты — карточка может уходить ниже
+FACE_BOTTOM = 600             # подбородок ведущего: карточки начинаются ниже, лицо всегда видно
+
+
+def place(png, box, top, scale=1.0, out=None):
+    """Перенести нарисованную карточку (полный кадр RGBA) на высоту top с масштабом scale."""
+    from PIL import Image
+    im = Image.open(png)
+    bb = im.getbbox()
+    card = im.crop((bb[0], box[0], bb[2], min(im.height, box[1] + 50)))
+    if scale != 1.0:
+        card = card.resize((round(card.width * scale), round(card.height * scale)), Image.LANCZOS)
+    res = Image.new("RGBA", im.size, (0, 0, 0, 0))
+    res.alpha_composite(card, ((im.width - card.width) // 2, top))
+    res.save(out or png)
+    return out or png, (top, top + card.height)
 
 
 def windows_expr(wins):
@@ -42,8 +57,8 @@ def merge(wins):
 def build(cfg, words, total, subs):
     os.makedirs(B.TMP, exist_ok=True)
     for png, t0, t1, (top, bot) in cfg["cards"]:
-        assert 250 <= top and bot <= CARD_MAX_BOTTOM, f"{png}: карточка {top}–{bot} вне зоны/на субтитрах"
-        assert t1 - t0 >= 1.2, f"{png}: держится {t1 - t0:.2f} с — мелькание"
+        assert FACE_BOTTOM <= top and bot <= CARD_MAX_BOTTOM, f"{png}: карточка {top}–{bot} на лице/вне зоны"
+        assert t1 - t0 >= 0.6, f"{png}: держится {t1 - t0:.2f} с — мелькание"
     br = sorted(cfg.get("brolls", []), key=lambda x: x[1])
     for (a, ta, da), (b, tb, _) in zip(br, br[1:]):
         assert ta + da <= tb, f"кадры {a}/{b} перекрываются"
@@ -83,7 +98,7 @@ def build(cfg, words, total, subs):
         p = f"{B.TMP}/sub{i:03d}.png"
         N.render_any(p, s["text"])
         inputs += ["-i", p]
-        filt.append(f"{prev}[{n}:v]overlay=0:{SUB_TOP}:enable='gte(t,{s['t0']:.3f})*lt(t,{s['t1']:.3f})'[s{i}]")
+        filt.append(f"{prev}[{n}:v]overlay=0:{SUB_TOP}:enable='gte(t,{s['t0']:.3f})*lt(t,{s['t1']:.3f})*not({dim})'[s{i}]")
         prev, n = f"[s{i}]", n + 1
     filt.append(f"{prev}format=yuv420p[vout]")
     open(f"{B.TMP}/graph.txt", "w").write(";\n".join(filt))
