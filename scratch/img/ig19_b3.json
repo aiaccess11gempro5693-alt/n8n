@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig19_b3",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "деревянный стул разваливается на части, ножки и сиденье падают — «стул развалится»",
+    "prompt": "A simple wooden chair in an empty warm-lit room in the moment of collapsing: the seat dropping, legs splaying apart and falling, a couple of small bolts flying in the air, frozen motion, dramatic warm light, dark background. Composition: the falling chair in the middle of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

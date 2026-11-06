@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig19_b4",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "тёплый кадр: семья за кухонным столом вечером, близкие рядом — «близкие, которые рядом»",
+    "prompt": "A warm evening scene at a home kitchen table: a man about 50, his wife and their adult daughter sit close together laughing quietly over tea, soft warm lamp light, cosy atmosphere, candid moment, no one looks at the camera. Composition: their faces in the upper-middle part of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig19_b2",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+    "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+    "person_note": "Ordinary-looking adults, not celebrities.",
+    "meaning": "макро: рука выкручивает болт из деревянного стула — «болты, маленькие винтики»",
+    "prompt": "Extreme close-up macro of a man's fingers turning a small metal bolt with a hex key in the joint of an old wooden chair leg, warm side light, wood grain texture, shallow depth of field. Composition: the bolt in the middle of the frame."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
