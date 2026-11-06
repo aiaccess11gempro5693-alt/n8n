@@ -1,0 +1,49 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig19_b1",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "школьная доска с меловым рисунком простого стула — «на доске был нарисован стул»",
+   "prompt": "A dark green school chalkboard in a classroom with a simple clean white chalk line drawing of a wooden chair in the middle of the board, nothing else written on it, a piece of chalk on the ledge, warm afternoon light from a window on the side. Composition: the chalk chair drawing large in the middle of the frame."
+  },
+  {
+   "name": "ig19_b2",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "макро: рука выкручивает болт из деревянного стула — «болты, маленькие винтики»",
+   "prompt": "Extreme close-up macro of a man's fingers turning a small metal bolt with a hex key in the joint of an old wooden chair leg, warm side light, wood grain texture, shallow depth of field. Composition: the bolt in the middle of the frame."
+  },
+  {
+   "name": "ig19_b3",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "деревянный стул разваливается на части, ножки и сиденье падают — «стул развалится»",
+   "prompt": "A simple wooden chair in an empty warm-lit room in the moment of collapsing: the seat dropping, legs splaying apart and falling, a couple of small bolts flying in the air, frozen motion, dramatic warm light, dark background. Composition: the falling chair in the middle of the frame."
+  },
+  {
+   "name": "ig19_b4",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, vertical 9:16, warm moody light, shallow depth of field, gentle film grain, rich warm colours, looks like a frame from a premium drama. Absolutely NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.",
+   "style_qa": "фотореалистичный кинематографичный кадр, смысл соответствует описанию, без надписей, букв, цифр и логотипов, без искажённых рук и лиц",
+   "person_note": "Ordinary-looking adults, not celebrities.",
+   "meaning": "тёплый кадр: семья за кухонным столом вечером, близкие рядом — «близкие, которые рядом»",
+   "prompt": "A warm evening scene at a home kitchen table: a man about 50, his wife and their adult daughter sit close together laughing quietly over tea, soft warm lamp light, cosy atmosphere, candid moment, no one looks at the camera. Composition: their faces in the upper-middle part of the frame."
+  }
+ ]
+}
