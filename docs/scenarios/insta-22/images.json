@@ -1,0 +1,69 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig22_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "ведущий вечернего ток-шоу ~45, тёмные волнистые волосы с проседью, серый пиджак, голубая рубашка, за столом, ночной город",
+   "style": "Photorealistic cinematic photo, like a real frame from a TV talk show camera. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+   "style_qa": "фотореализм, ведущий ток-шоу за столом, ночной город за окном, без текста; взгляд чуть в сторону (на гостя) — задумано",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real.",
+   "prompt": "Vertical 9:16. A charismatic Russian late-night talk show host about 45 with dark wavy hair greying at the temples, light stubble, a charcoal grey blazer over a light blue open-collar shirt, sitting behind a glossy wooden host desk with a coffee mug, turned slightly to his right as if listening to a guest, looking just past the camera, mid-sentence, lips slightly parted, curious friendly expression, one hand resting on the desk. Medium shot from the waist up, face large and sharp, top of head about 12% below the upper edge. Background: a late-night show studio set with large windows onto a night city skyline with lit skyscrapers, warm practical lamps and bookshelves, softly blurred."
+  },
+  {
+   "name": "ig22_guest",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "гость ток-шоу ~32, короткая стрижка, аккуратная борода, тёмно-синий свитер на молнии, белая футболка, синий диван",
+   "style": "Photorealistic cinematic photo, like a real frame from a TV talk show camera. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark.",
+   "style_qa": "фотореализм, гость ток-шоу на диване, ночной город, без текста; взгляд чуть в сторону (на ведущего) — задумано",
+   "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real.",
+   "prompt": "Vertical 9:16. A calm self-assured Russian man about 32, short dark brown hair, a neat short beard, a dark navy knitted zip-neck sweater over a white t-shirt, sitting relaxed on a deep blue velvet guest sofa, hands loosely together, turned slightly to his left towards the host, looking just past the camera, mid-sentence, lips slightly parted, calm confident expression with a hint of a smile. Medium shot from the waist up, face large and sharp, top of head about 12% below the upper edge. Background: the same late-night show studio — large windows onto a night city skyline with lit skyscrapers, blue and warm amber accent lights, softly blurred."
+  },
+  {
+   "name": "ig23_host",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "meaning": "психолог ~45, тёмно-каштановое каре до плеч, кремовый шёлковый топ, бежевый кардиган, уютный кабинет",
+   "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+   "prompt": "Photorealistic photo of a warm, wise Russian woman psychologist about 45 with shoulder-length dark chestnut bob hair, minimal natural makeup, small pearl earrings, a cream silk blouse under a soft beige knit cardigan, sitting in a deep terracotta armchair. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders and hands inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, one hand in a calm explaining gesture, knowing kind expression, NO broad smile. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark. Background: a cosy therapist office with a large plant, a linen sofa, a shelf with books and a warm floor lamp, soft daylight from a window, blurred, warm beige-olive tones."
+  },
+  {
+   "name": "ig23_b1",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "пара на кухне вечером: она задаёт вопрос, он слушает — спокойный разговор",
+   "style": "Photorealistic cinematic still, warm evening light, shallow depth of field, true-to-life colours. No text, no logos, no watermark.",
+   "style_qa": "фотореализм, тёплый вечер, пара разговаривает на кухне спокойно, без текста",
+   "person_note": "Ordinary adults about 35, not celebrities.",
+   "prompt": "Vertical 9:16. A couple in their mid-thirties sitting across a small kitchen table in the evening with two mugs of tea, she leans forward asking something sincerely, he listens attentively; warm pendant lamp light, calm honest conversation, not a fight."
+  },
+  {
+   "name": "ig23_b2",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "дорога в густом тумане — неясность",
+   "style": "Photorealistic cinematic still, moody muted colours, true-to-life. No text, no logos, no watermark.",
+   "style_qa": "фотореализм, загородная дорога в густом тумане, без людей и текста",
+   "person_note": "No people in the image.",
+   "prompt": "Vertical 9:16. A narrow country road disappearing into thick white fog, trees barely visible on the sides, nothing can be seen ahead, quiet, uncertain mood, soft grey morning light."
+  },
+  {
+   "name": "ig23_b3",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "пара идёт за руку по ясной дороге на закате — ясность и близость",
+   "style": "Photorealistic cinematic still, warm golden hour, true-to-life colours. No text, no logos, no watermark.",
+   "style_qa": "фотореализм, пара идёт за руку по ясной дороге на закате, видно далеко вперёд, без текста",
+   "person_note": "Ordinary adults about 35, seen from behind, not celebrities.",
+   "prompt": "Vertical 9:16. A couple about 35 seen from behind walking hand in hand along a clear straight country road at golden hour, the road visible far ahead to the horizon, clear sky, warm light, calm and close."
+  }
+ ]
+}
