@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig24_b1",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig24_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark.",
+    "style_qa": "фотореализм, та же женщина, что на референсе, крепко спит в кровати, раннее утро, без текста; взгляд в камеру не нужен",
+    "meaning": "Марина крепко спит в уютной спальне, раннее утро",
+    "prompt": "Vertical 9:16. The woman from the reference sleeping peacefully in a cosy bed under a soft linen duvet, hair loose on the pillow, calm face, early morning blue-golden light through curtains, a phone face down on the nightstand. Close-medium shot from the side."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

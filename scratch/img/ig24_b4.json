@@ -1,0 +1,28 @@
+{
+  "job": {
+    "name": "ig24_b4",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig24_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark.",
+    "style_qa": "фотореализм, та же женщина спит с лёгкой улыбкой, солнечное утро, рядом кофе, без текста",
+    "meaning": "Марина наконец высыпается: спит с лёгкой улыбкой, солнечное позднее утро",
+    "prompt": "Vertical 9:16. The woman from the reference sleeping deeply and happily with a slight smile, sunlit late morning, warm golden sunlight across the white bed, a cup of coffee waiting on the nightstand, a peaceful mood."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "error": "The read operation timed out"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
