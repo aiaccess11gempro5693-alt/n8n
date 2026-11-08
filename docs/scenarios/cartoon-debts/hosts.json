@@ -1,0 +1,49 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "debt_host_a",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "плоский векторный мультяшный стиль как в референсе: толстые контуры, яркие плоские цвета; Саша ~30, полноватый, худи, щетина",
+   "style": "Flat 2D vector cartoon style like a popular mobile game or TikTok animated series: bold thick dark outlines, flat saturated colours, simple cel shading, clean shapes.",
+   "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: плоский векторный мультяшный стиль как в референсе: толстые контуры, яркие плоские цвета; Саша ~30, полноватый, худи, щетина",
+   "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+   "prompt": "Vertical 9:16. A chubby friendly Russian guy named Sasha about 30, messy dark hair, light stubble, a wrinkled mustard-yellow hoodie, holding a smartphone in one hand. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  },
+  {
+   "name": "debt_host_b",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "мягкий 3D, как в мультфильмах студии Pixar; Саша ~28, худой, растрёпанный, большой свитер, очки",
+   "style": "Soft stylised 3D animated-movie style (like a modern family animated feature): rounded shapes, big expressive eyes, soft lighting, subsurface skin, colourful but warm.",
+   "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: мягкий 3D, как в мультфильмах студии Pixar; Саша ~28, худой, растрёпанный, большой свитер, очки",
+   "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+   "prompt": "Vertical 9:16. A lanky young Russian guy named Sasha about 28, tousled light-brown hair, round glasses, an oversized teal knit sweater, holding a long paper receipt. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  },
+  {
+   "name": "debt_host_c",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "комикс / графический роман: Саша ~32 в офисной рубашке с ослабленным галстуком, круги под глазами",
+   "style": "Bold western comic-book / graphic-novel cartoon style: confident ink lines, halftone shading, punchy flat colours with a limited palette of navy, coral and cream.",
+   "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: комикс / графический роман: Саша ~32 в офисной рубашке с ослабленным галстуком, круги под глазами",
+   "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+   "prompt": "Vertical 9:16. A tired office worker named Sasha about 32, short neat hair slightly messed up, a light-blue office shirt with a loosened red tie, dark circles under the eyes, a credit card in his hand. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  },
+  {
+   "name": "debt_host_d",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "meaning": "плоский векторный стиль, героиня — Саша (Александра) ~29, кудрявая, яркий свитер, кружка кофе",
+   "style": "Flat 2D vector cartoon style like a popular mobile game or TikTok animated series: bold thick dark outlines, flat saturated colours, simple cel shading, clean shapes.",
+   "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: плоский векторный стиль, героиня — Саша (Александра) ~29, кудрявая, яркий свитер, кружка кофе",
+   "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+   "prompt": "Vertical 9:16. A lively Russian young woman named Sasha (Alexandra) about 29, big curly auburn hair in a messy bun, freckles, a bright coral oversized sweater, holding a coffee mug and a stack of bills. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  }
+ ]
+}
