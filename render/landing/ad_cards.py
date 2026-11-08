@@ -170,7 +170,7 @@ def memo(path, n_checked):
     return path, (y0, y0 + ch)
 
 
-def doc_to_video(path, chips=False):
+def doc_to_video(path, chips=False, left="ИНСТРУКЦИЯ", right="ВИДЕО"):
     cw, ch = 860, 560 if chips else 400
     card = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
     d = ImageDraw.Draw(card)
@@ -179,14 +179,14 @@ def doc_to_video(path, chips=False):
     d.rounded_rectangle([110, 70, 290, 300], radius=16, fill=CREAM)
     for k in range(5):
         d.line([(140, 120 + k * 36), (260 - (k % 2) * 40, 120 + k * 36)], fill=(170, 166, 158), width=8)
-    d.text((200, 345), "ИНСТРУКЦИЯ", font=F(OSW_M, 40), fill=CREAM, anchor="mm")
+    d.text((200, 345), left, font=F(OSW_M, 40), fill=CREAM, anchor="mm")
     # стрелка
     d.line([(345, 185), (500, 185)], fill=ORANGE, width=14)
     d.polygon([(500, 155), (550, 185), (500, 215)], fill=ORANGE)
     # видео
     d.rounded_rectangle([580, 80, 760, 290], radius=22, fill=ORANGE)
     d.polygon([(645, 140), (645, 230), (715, 185)], fill=(255, 255, 255))
-    d.text((670, 345), "ВИДЕО", font=F(OSW_M, 40), fill=CREAM, anchor="mm")
+    d.text((670, 345), right, font=F(OSW_M, 40), fill=CREAM, anchor="mm")
     if chips:
         items = ["расскажу", "проверю", "повторю ×100"]
         f = F(MON, 34)
@@ -250,3 +250,29 @@ def options(path, level=1):
     x0, y0 = (W - cw) // 2, 330
     _shadowed(card, x0, y0).save(path)
     return path, (y0, y0 + ch)
+
+
+# ---------- №28–29: крупная цифра/слово + подпись + чипы ----------
+def big_count(path, big, small, chips=(), top=640):
+    """Тёмная карточка: крупное слово/число оранжевым, подпись, ряд чипов."""
+    f_big, f_small, f_chip = F(OSW, 150), F(MON_S, 40), F(MON, 32)
+    tmp = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+    cw = 880
+    assert tmp.textlength(big, font=f_big) <= cw - 80, big
+    ch = 330 + (100 if chips else 0)
+    card = Image.new("RGBA", (cw, ch), (0, 0, 0, 0))
+    d = ImageDraw.Draw(card)
+    d.rounded_rectangle([0, 0, cw, ch], radius=40, fill=GRAPH + (245,), outline=ORANGE + (255,), width=4)
+    d.text((cw / 2, 130), big, font=f_big, fill=ORANGE, anchor="mm")
+    d.text((cw / 2, 255), small, font=f_small, fill=CREAM, anchor="mm")
+    if chips:
+        widths = [d.textlength(c, font=f_chip) + 50 for c in chips]
+        x = (cw - sum(widths) - 14 * (len(chips) - 1)) / 2
+        assert x >= 20, chips
+        for c, w_ in zip(chips, widths):
+            d.rounded_rectangle([x, 320, x + w_, 384], radius=32, fill=(60, 62, 58))
+            d.text((x + w_ / 2, 352), c, font=f_chip, fill=(255, 255, 255), anchor="mm")
+            x += w_ + 14
+    x0 = (W - cw) // 2
+    _shadowed(card, x0, top).save(path)
+    return path, (top, top + ch)
