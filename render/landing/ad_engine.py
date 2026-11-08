@@ -9,6 +9,7 @@ build(cfg):
   cfg["punch"]    — [(t0, t1)] — резкий наезд на лицо ×1.12;
   cfg["sfx"]      — [(t, имя, громкость)];
   cfg["music"], cfg["music_gain"];
+  cfg["dim_alpha"] — сила затемнения под карточкой (по умолчанию 0.55);
   cfg["hud"]      — [(png, t0, t1)] — постоянный слой поверх всего (игровая панель), не затемняется.
 Проверки: карточки внутри зоны 250–1500 и выше субтитров (низ ≤ 1130), кадры не перекрываются.
 """
@@ -84,7 +85,7 @@ def build(cfg, words, total, subs):
             f"scale=w='trunc({W}*{z}/2)*2':h='trunc({H}*{z}/2)*2':eval=frame,"
             f"crop={W}:{H}:'(iw-{W})/2':'(ih-{H})/3',"
             f"rgbashift=rh=-14:bh=14:gv=6:enable='{gl}',noise=alls=28:allf=t:enable='{gl}',format=yuv420p[v0]",
-            "[2:v]format=rgba,colorchannelmixer=aa=0.55[dk]",
+            f"[2:v]format=rgba,colorchannelmixer=aa={cfg.get('dim_alpha', 0.55)}[dk]",
             f"[v0][dk]overlay=0:0:enable='{dim}'[vd]"]
     prev, n = "[vd]", 3
     for i, (img, t0, dur) in enumerate(br):

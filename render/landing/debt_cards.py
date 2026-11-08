@@ -129,6 +129,23 @@ def notification(path, top):
     return _save(im, path, top, y1 + 12)
 
 
+# ---------- стикер-реплика ----------
+def sticker(path, top, line1, line2="", fill=MUSTARD, tilt=-3):
+    """Крупная наклейка: строка 1 — главное, строка 2 — пояснение."""
+    w, h = 900, 230 if line2 else 150
+    st = Image.new("RGBA", (w + 30, h + 30), (0, 0, 0, 0))
+    d = ImageDraw.Draw(st)
+    _box(d, (6, 6, w, h), fill, r=36)
+    col = CREAM if fill in (RED, GREEN, BLUE) else INK
+    _ctext(d, w / 2, 6 + (75 if line2 else h / 2 - 3), line1, _fit(line1, 76, w - 80), col)
+    if line2:
+        _ctext(d, w / 2, 160, line2, _fit(line2, 44, w - 80, True), col)
+    st = st.rotate(tilt, expand=True, resample=Image.BICUBIC)
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    im.alpha_composite(st, ((W - st.width) // 2, top))
+    return _save(im, path, top, top + st.height)
+
+
 # ---------- выбор зрителя ----------
 def choice(path, top, level=3):
     """level 1 — только А, 2 — А и Б, 3 — + призыв «пишите А или Б»."""
