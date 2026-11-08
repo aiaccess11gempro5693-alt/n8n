@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "debt01_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/debt_host_a.png"
+   ],
+   "person_note": "The SAME cartoon character as in the attached image: chubby guy with messy dark hair, stubble, mustard-yellow hoodie; same flat vector cartoon style with bold black outlines.",
+   "style": "Flat vector cartoon illustration, bold black outlines, warm muted colours, like the reference. Large Russian text exactly as written, nothing else written.",
+   "style_qa": "мультяшный Саша как на референсе (горчичное худи), крупные надписи по-русски без ошибок: «30 ДНЕЙ БЕЗ ДОЛГОВ» и «ДЕНЬ 1», других надписей нет; заголовок в верхней половине кадра",
+   "meaning": "обложка первой серии мультсериала про парня, который за 30 дней выбирается из долгов",
+   "prompt": "Vertical 9:16 cartoon cover. In the upper half, huge bold chunky Russian title in two lines: «30 ДНЕЙ» on the first line and «БЕЗ ДОЛГОВ» on the second, cream letters with thick black outline on a red rounded banner; under it a small mustard-yellow badge with the text «ДЕНЬ 1». In the lower half the cartoon guy from the reference, waist-up, panicked funny face, holding his phone, surrounded by flying unpaid bills and envelopes. Do not write any other text. Keep the title well inside the middle 60% of the height (not at the very top edge)."
+  }
+ ]
+}
