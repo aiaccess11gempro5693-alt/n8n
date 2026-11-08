@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig27_girl",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary young woman (not a celebrity, not a model), looks genuinely real.",
+    "meaning": "девушка ~25 снимает себя в машине: светлые волосы в небрежном пучке, белый пуховик, петличка-микрофон в руке",
+    "prompt": "Photorealistic vertical 9:16 selfie-style video frame: a friendly Russian young woman about 25 with light-blonde hair in a messy bun, no heavy makeup, a white puffer jacket, sitting in the driver's seat of a car, filming herself, holding a small white wireless clip-on microphone near her chin. Close-medium shot, shoulders inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, curious expression, NO smile. Background: car interior with light seats and an overcast autumn street through the window, soft daylight. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Hair bun cropped at top edge and mouth in puckered speaking pose"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

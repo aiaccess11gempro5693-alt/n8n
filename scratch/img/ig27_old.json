@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig27_old",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+    "style_qa": "фотореализм, пожилой мужчина ~78 в кепке на улице, крупный план, смотрит чуть мимо камеры (уличное интервью — так задумано), губы приоткрыты, без надписей",
+    "person_note": "A completely new, ordinary elderly man (not a celebrity), looks genuinely real.",
+    "meaning": "дедушка ~78 во дворе: тёмная кепка, седая щетина, тёмное пальто, уличное интервью",
+    "prompt": "Vertical 9:16 photorealistic street-interview frame of a kind, wise Russian elderly man about 78 with a dark flat cap, short grey stubble, deep wrinkles, gentle tired eyes, a dark wool coat over a grey knit sweater. He looks slightly to the left of the camera at the interviewer, mid-sentence, lips slightly parted, calm and thoughtful, NO smile. Close-medium shot: head and shoulders, face large and sharp, top of the cap about 14% below the upper edge, both shoulders inside the frame. Background: a quiet residential courtyard with old apartment blocks and bare autumn trees, overcast light, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

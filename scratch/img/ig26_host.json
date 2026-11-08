@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig26_host",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+    "meaning": "психолог ~50: рыжевато-каштановые кудри до плеч, очки на голове, пудрово-розовая блуза, кресло цвета бутылочного стекла, светлая гостиная",
+    "prompt": "Photorealistic photo of a charismatic, witty Russian woman psychologist about 50 with shoulder-length curly auburn-chestnut hair, reading glasses pushed up on her head, light makeup, a dusty-pink blouse, small gold earrings, sitting in a bottle-green velvet armchair, hands relaxed in her lap. A knowing, slightly mischievous expression. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 18% below the upper edge (leave calm empty wall above her head for a title), looking straight into the lens, mid-sentence, lips slightly parted, NO broad smile. Background: a bright home living room with a warm white wall, a framed still life painting and a plant, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
