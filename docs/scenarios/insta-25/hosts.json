@@ -1,0 +1,45 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig25_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, женщина ~32 на записи подкаста, микрофон на стойке перед ней, смотрит чуть мимо камеры на собеседника (так задумано), губы приоткрыты, без надписей",
+   "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+   "meaning": "ведущая подкаста ~32: каштановые волосы в низком хвосте, шалфейная шёлковая блуза, тёплая студия с книжными полками",
+   "prompt": "Vertical 9:16 photorealistic frame from a video podcast. A calm, warm Russian woman about 32 with chestnut-brown hair in a low loose ponytail, a few strands framing her face, small pearl earrings, a sage-green silk blouse, sitting in a light linen armchair. A black podcast microphone on a boom arm in front of her chest (NOT covering the mouth). She looks slightly to the left of the camera at an interlocutor, mid-sentence, lips slightly parted, thoughtful, NO smile. Medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 14% below the upper edge. Background: a cosy dimly lit studio with wooden bookshelves, warm practical lamps and a plant, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  {
+   "name": "ig26_host",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+   "meaning": "психолог ~50: рыжевато-каштановые кудри до плеч, очки на голове, пудрово-розовая блуза, кресло цвета бутылочного стекла, светлая гостиная",
+   "prompt": "Photorealistic photo of a charismatic, witty Russian woman psychologist about 50 with shoulder-length curly auburn-chestnut hair, reading glasses pushed up on her head, light makeup, a dusty-pink blouse, small gold earrings, sitting in a bottle-green velvet armchair, hands relaxed in her lap. A knowing, slightly mischievous expression. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 18% below the upper edge (leave calm empty wall above her head for a title), looking straight into the lens, mid-sentence, lips slightly parted, NO broad smile. Background: a bright home living room with a warm white wall, a framed still life painting and a plant, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  {
+   "name": "ig27_girl",
+   "engine": "gpt-image-2",
+   "kind": "photo",
+   "aspect": "9:16",
+   "person_note": "A completely new, ordinary young woman (not a celebrity, not a model), looks genuinely real.",
+   "meaning": "девушка ~25 снимает себя в машине: светлые волосы в небрежном пучке, белый пуховик, петличка-микрофон в руке",
+   "prompt": "Photorealistic vertical 9:16 selfie-style video frame: a friendly Russian young woman about 25 with light-blonde hair in a messy bun, no heavy makeup, a white puffer jacket, sitting in the driver's seat of a car, filming herself, holding a small white wireless clip-on microphone near her chin. Close-medium shot, shoulders inside the frame, face large and sharp, top of head about 12% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, curious expression, NO smile. Background: car interior with light seats and an overcast autumn street through the window, soft daylight. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  {
+   "name": "ig27_old",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, пожилой мужчина ~78 в кепке на улице, крупный план, смотрит чуть мимо камеры (уличное интервью — так задумано), губы приоткрыты, без надписей",
+   "person_note": "A completely new, ordinary elderly man (not a celebrity), looks genuinely real.",
+   "meaning": "дедушка ~78 во дворе: тёмная кепка, седая щетина, тёмное пальто, уличное интервью",
+   "prompt": "Vertical 9:16 photorealistic street-interview frame of a kind, wise Russian elderly man about 78 with a dark flat cap, short grey stubble, deep wrinkles, gentle tired eyes, a dark wool coat over a grey knit sweater. He looks slightly to the left of the camera at the interviewer, mid-sentence, lips slightly parted, calm and thoughtful, NO smile. Close-medium shot: head and shoulders, face large and sharp, top of the cap about 14% below the upper edge, both shoulders inside the frame. Background: a quiet residential courtyard with old apartment blocks and bare autumn trees, overcast light, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  }
+ ]
+}
