@@ -1,0 +1,66 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig28_b1",
+   "extra_refs": [
+    "scratch/img/ig28_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style_qa": "фотореализм, та же женщина, что на референсе, вечером устало сидит перед камерой на штативе и кольцевой лампой, без текста; взгляд в камеру не нужен",
+   "meaning": "преподаватель вечером перед камерой на штативе, кольцевая лампа, усталость",
+   "prompt": "Vertical 9:16. The woman from the reference, tired, rubbing her forehead, sitting at her desk late in the evening in front of a camera on a tripod and a bright ring light, laptop with a video editing timeline (no readable text), cold mugs of tea, dark window behind. Medium shot from the side.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  {
+   "name": "ig28_b2",
+   "extra_refs": [
+    "scratch/img/ig28_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style_qa": "фотореализм, та же женщина спокойно проверяет тетради с чаем в светлой комнате, без текста; взгляд в камеру не нужен",
+   "meaning": "преподаватель спокойно проверяет домашние задания с чашкой чая",
+   "prompt": "Vertical 9:16. The woman from the reference relaxed and smiling slightly, sitting by a sunny window in a cosy armchair with a cup of tea, checking students' homework in a notebook with a pen (no readable text), soft warm daylight. Medium shot.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  {
+   "name": "ig29_b1",
+   "person_note": "A completely new, ordinary man about 45 (not a celebrity), looks genuinely real.",
+   "style_qa": "фотореализм, мастер ~45 шлифует деревянную разделочную доску в мастерской, без текста; взгляд в камеру не нужен",
+   "meaning": "мастер Андрей шлифует разделочную доску в мастерской",
+   "prompt": "Vertical 9:16. A Russian craftsman about 45 with a short grey-flecked beard, in a canvas apron, sanding a handmade oak cutting board at a workbench in a sunlit woodworking workshop, fine wood dust in the light, tools on the wall. Medium shot.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  {
+   "name": "ig29_b2",
+   "person_note": "No people.",
+   "style_qa": "фотореализм, много разных деревянных разделочных досок разложены рядами на большом столе в мастерской, без людей и без текста",
+   "meaning": "сорок разных досок разложены рядами на столе",
+   "prompt": "Vertical 9:16. Top-down view of about forty different handmade wooden cutting boards of oak, walnut, cherry and ash, various shapes and sizes, laid out neatly in rows on a large workshop table, warm daylight. No people.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  {
+   "name": "ig29_b3",
+   "person_note": "A completely new, ordinary woman about 35 (not a celebrity), looks genuinely real.",
+   "style_qa": "фотореализм, женщина дома режет хлеб на деревянной доске на кухне, тёплый свет, без текста; взгляд в камеру не нужен",
+   "meaning": "покупательница дома режет хлеб на новой деревянной доске",
+   "prompt": "Vertical 9:16. A happy Russian woman about 35 in a cosy home kitchen slicing fresh bread on a beautiful walnut cutting board, herbs and tomatoes nearby, warm morning light. Medium close shot, focus on the board and her hands, face partly visible.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  }
+ ]
+}
