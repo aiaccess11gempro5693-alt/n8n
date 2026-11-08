@@ -1,0 +1,33 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig28_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig28_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, bright clean daylight tones. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: та же женщина, что на референсе, рядом выключенная камера на штативе; надпись «20 УРОКОВ БЕЗ КАМЕРЫ» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка Reels «20 уроков без камеры»",
+   "prompt": "Vertical 9:16. The woman from the reference in her burgundy blouse sits at her desk in the bright home study, confident, a slight knowing smile, arms crossed; next to her a camera on a tripod is pushed aside and covered with a lens cap, a ring light switched off. She is on the RIGHT half of the frame, from the waist up. On the LEFT, large bold title in four lines: white «20», white «УРОКОВ», bright orange «БЕЗ», bright orange «КАМЕРЫ», over a softly blurred light wall with a dark semi-transparent band behind the text for contrast. All text must sit between 25% and 70% of the image height."
+  },
+  {
+   "name": "ig29_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig29_host.png"
+   ],
+   "person_note": "The SAME man as in the attached photo: same face, beard, hair and features; do not change his face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, warm natural wood tones. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: тот же мужчина, что на референсе, держит деревянную разделочную доску; надпись «ВИДЕО ДЛЯ 40 ТОВАРОВ БЕЗ СЪЁМКИ» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка Reels «Видео для 40 товаров без съёмки»",
+   "prompt": "Vertical 9:16. The man from the reference in his denim shirt stands in the bright kitchen showroom holding up a beautiful walnut cutting board towards the camera with both hands, friendly confident look. He is in the LOWER half of the frame. In the UPPER part, centred, a large bold title in four lines on a dark graphite rounded plate: white «ВИДЕО ДЛЯ», huge bright orange «40 ТОВАРОВ», white «БЕЗ», white «СЪЁМКИ». All text must sit between 18% and 55% of the image height."
+  }
+ ]
+}
