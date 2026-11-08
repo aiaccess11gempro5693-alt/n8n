@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig29_b1",
+    "person_note": "A completely new, ordinary man about 45 (not a celebrity), looks genuinely real.",
+    "style_qa": "фотореализм, мастер ~45 шлифует деревянную разделочную доску в мастерской, без текста; взгляд в камеру не нужен",
+    "meaning": "мастер Андрей шлифует разделочную доску в мастерской",
+    "prompt": "Vertical 9:16. A Russian craftsman about 45 with a short grey-flecked beard, in a canvas apron, sanding a handmade oak cutting board at a workbench in a sunlit woodworking workshop, fine wood dust in the light, tools on the wall. Medium shot.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

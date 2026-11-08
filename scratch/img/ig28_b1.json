@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig28_b1",
+    "extra_refs": [
+      "scratch/img/ig28_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+    "style_qa": "фотореализм, та же женщина, что на референсе, вечером устало сидит перед камерой на штативе и кольцевой лампой, без текста; взгляд в камеру не нужен",
+    "meaning": "преподаватель вечером перед камерой на штативе, кольцевая лампа, усталость",
+    "prompt": "Vertical 9:16. The woman from the reference, tired, rubbing her forehead, sitting at her desk late in the evening in front of a camera on a tripod and a bright ring light, laptop with a video editing timeline (no readable text), cold mugs of tea, dark window behind. Medium shot from the side.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

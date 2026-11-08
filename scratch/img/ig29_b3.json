@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig29_b3",
+    "person_note": "A completely new, ordinary woman about 35 (not a celebrity), looks genuinely real.",
+    "style_qa": "фотореализм, женщина дома режет хлеб на деревянной доске на кухне, тёплый свет, без текста; взгляд в камеру не нужен",
+    "meaning": "покупательница дома режет хлеб на новой деревянной доске",
+    "prompt": "Vertical 9:16. A happy Russian woman about 35 in a cosy home kitchen slicing fresh bread on a beautiful walnut cutting board, herbs and tomatoes nearby, warm morning light. Medium close shot, focus on the board and her hands, face partly visible.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig29_b2",
+    "person_note": "No people.",
+    "style_qa": "фотореализм, много разных деревянных разделочных досок разложены рядами на большом столе в мастерской, без людей и без текста",
+    "meaning": "сорок разных досок разложены рядами на столе",
+    "prompt": "Vertical 9:16. Top-down view of about forty different handmade wooden cutting boards of oak, walnut, cherry and ash, various shapes and sizes, laid out neatly in rows on a large workshop table, warm daylight. No people.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

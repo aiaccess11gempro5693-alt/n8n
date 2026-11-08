@@ -1,0 +1,29 @@
+{
+  "job": {
+    "name": "ig28_b2",
+    "extra_refs": [
+      "scratch/img/ig28_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+    "style_qa": "фотореализм, та же женщина спокойно проверяет тетради с чаем в светлой комнате, без текста; взгляд в камеру не нужен",
+    "meaning": "преподаватель спокойно проверяет домашние задания с чашкой чая",
+    "prompt": "Vertical 9:16. The woman from the reference relaxed and smiling slightly, sitting by a sunny window in a cosy armchair with a cup of tea, checking students' homework in a notebook with a pen (no readable text), soft warm daylight. Medium shot.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no signs, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The woman should be looking down at her notebook instead of looking directly at the camera."
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
