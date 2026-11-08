@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig29_host",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary man (not a celebrity, not a model), looks genuinely real.",
+    "meaning": "ведущий ~33: короткая стрижка, аккуратная светлая борода, джинсовая рубашка, светлая кухня-шоурум с деревянными досками",
+    "prompt": "Photorealistic photo of an energetic, likeable Russian man about 33 with short light-brown hair and a neat short beard, a light-blue denim shirt with sleeves rolled up, standing behind a light kitchen counter. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 16% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, NO smile. Background: a bright modern kitchen showroom with several handmade wooden cutting boards of different woods standing on open shelves, soft daylight, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

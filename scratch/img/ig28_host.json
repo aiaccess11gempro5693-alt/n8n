@@ -1,0 +1,19 @@
+{
+  "job": {
+    "name": "ig28_host",
+    "engine": "gpt-image-2",
+    "kind": "photo",
+    "aspect": "9:16",
+    "person_note": "A completely new, ordinary woman (not a celebrity, not a model), looks genuinely real.",
+    "meaning": "преподаватель английского ~38: тёмно-русое каре до плеч, бордовая блуза, светлый домашний кабинет с книжными полками",
+    "prompt": "Photorealistic photo of a friendly, confident Russian woman English teacher about 38 with dark-blonde shoulder-length bob, small silver earrings, light natural makeup, a burgundy silk blouse, sitting at a light wooden desk with an open notebook. FRAMING: vertical 9:16, medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 16% below the upper edge, looking straight into the lens, mid-sentence, lips slightly parted, NO smile. Background: a bright cosy home study with white bookshelves, a small globe and a plant, soft daylight from a window, blurred. Look: a real frame from a high-end camera, true-to-life colours, natural skin texture, NOT CGI, NOT a glamour retouch. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
