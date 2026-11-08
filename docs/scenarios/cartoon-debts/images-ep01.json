@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "debt01_courier",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "2:3",
+   "extra_refs": [
+    "scratch/img/debt_host_a.png"
+   ],
+   "person_note": "The SAME cartoon character as in the attached image: chubby guy ~30, messy dark hair, stubble, mustard-yellow hoodie; same flat vector cartoon style with bold black outlines.",
+   "style": "Flat vector cartoon illustration, bold black outlines, warm muted colours, exactly like the reference. No text, no letters, no logos, no signs.",
+   "style_qa": "тот же мультяшный Саша (горчичное худи) как на референсе, работает курьером: большой квадратный рюкзак-короб за спиной, идёт по вечерней улице с пакетом, уставший но довольный; без надписей и логотипов",
+   "meaning": "Саша один день подрабатывает курьером, чтобы гасить долг",
+   "prompt": "Vertical 2:3 cartoon scene. The guy from the reference working as a delivery courier for one day: big square insulated delivery backpack on his back (plain, no logo), holding a paper bag with an order, walking fast along a city street in warm evening light, tired but proud, sweat drop on forehead. Full body or knee-up, centered. No text anywhere."
+  }
+ ]
+}
