@@ -55,19 +55,44 @@ def _save(im, path, top, bot):
 
 
 # ---------- игровая панель (всегда сверху) ----------
-def hud(path, day=1, debt="300 000 ₽", temptations=0, flash=False):
-    """Три плашки в ряд: ДЕНЬ / ДОЛГ / СОБЛАЗНЫ. flash — счётчик соблазнов подсвечен красным."""
+def hud(path, day=1, debt="300 000 ₽", temptations=0, flash=False, wallet=None, wallet_flash=False):
+    """Плашки в ряд: ДЕНЬ / ДОЛГ / [КОШЕЛЁК] / СОБЛАЗНЫ. flash — соблазны красным, wallet_flash — кошелёк зелёным."""
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     y0, y1 = 262, 382
-    cells = [(30, 300, "ДЕНЬ", f"{day}/30", MUSTARD, INK),
-             (318, 762, "ДОЛГ", debt, RED, CREAM),
-             (780, 1050, "СОБЛАЗНЫ", str(temptations), RED if flash else CREAM, CREAM if flash else INK)]
+    if wallet is None:
+        cells = [(30, 300, "ДЕНЬ", f"{day}/30", MUSTARD, INK),
+                 (318, 762, "ДОЛГ", debt, RED, CREAM),
+                 (780, 1050, "СОБЛАЗНЫ", str(temptations), RED if flash else CREAM, CREAM if flash else INK)]
+    else:
+        cells = [(20, 190, "ДЕНЬ", f"{day}/30", MUSTARD, INK),
+                 (204, 510, "ДОЛГ", debt, RED, CREAM),
+                 (524, 830, "КОШЕЛЁК", wallet, GREEN if wallet_flash else CREAM, CREAM if wallet_flash else INK),
+                 (844, 1060, "СОБЛАЗНЫ", str(temptations), RED if flash else CREAM, CREAM if flash else INK)]
     for x0, x1, label, val, fill, vcol in cells:
         _box(d, (x0, y0, x1, y1), fill, r=24)
-        _ctext(d, (x0 + x1) / 2, y0 + 34, label, F(28, True), vcol)
+        _ctext(d, (x0 + x1) / 2, y0 + 34, label, _fit(label, 28, x1 - x0 - 24, True), vcol)
         _ctext(d, (x0 + x1) / 2, y0 + 80, val, _fit(val, 50, x1 - x0 - 30), vcol)
     return _save(im, path, y0, y1 + 12)
+
+
+# ---------- подработка ----------
+def job_card(path, top, done=False):
+    """Объявление «курьер на 1 день»; done — внизу зелёная полоса «+2 000 ₽ · 8 часов на ногах»."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    x0, x1 = 90, 990
+    y1 = top + (380 if done else 250)
+    _box(d, (x0, top, x1, y1), CREAM)
+    d.rounded_rectangle([x0 + 30, top + 28, x0 + 300, top + 82], 22, fill=MUSTARD, outline=INK, width=5)
+    _ctext(d, x0 + 165, top + 55, "ОБЪЯВЛЕНИЕ", F(30))
+    d.text((x0 + 34, top + 140), "Курьер на 1 день", font=F(64), fill=INK, anchor="lm")
+    d.text((x0 + 36, top + 205), "оплата в тот же день", font=F(38, True), fill=GREY, anchor="lm")
+    if done:
+        d.rounded_rectangle([x0 + 24, top + 250, x1 - 24, y1 - 24], 24, fill=GREEN, outline=INK, width=6)
+        d.text((x0 + 60, (top + 250 + y1 - 24) / 2), "+2 000 ₽", font=F(70), fill=CREAM, anchor="lm")
+        d.text((x1 - 60, (top + 250 + y1 - 24) / 2), "8 часов на ногах", font=F(36, True), fill=CREAM, anchor="rm")
+    return _save(im, path, top, y1 + 12)
 
 
 # ---------- список долгов ----------
@@ -125,7 +150,7 @@ def notification(path, top):
         d.rounded_rectangle([cx + sx - 14, cy - 6, cx + sx + 14, cy + 40], 10, fill=CREAM)
     d.text((x0 + 210, top + 60), "Только сегодня!", font=F(34, True), fill=GREY, anchor="lm")
     d.text((x0 + 210, top + 118), "Наушники −40%", font=F(56), fill=INK, anchor="lm")
-    d.text((x0 + 210, top + 182), "рассрочка без переплаты", font=F(36, True), fill=RED, anchor="lm")
+    d.text((x0 + 210, top + 182), "первый платёж — 2 000 ₽", font=F(36, True), fill=RED, anchor="lm")
     return _save(im, path, top, y1 + 12)
 
 
@@ -155,8 +180,8 @@ def choice(path, top, level=3):
     _box(d, (x0 + 120, top, x1 - 120, top + 86), MUSTARD, r=43)
     _ctext(d, W / 2, top + 44, "ЗАВТРА РЕШАЕТЕ ВЫ", F(44))
     y = top + 110
-    opts = [("А", "Наушники в рассрочку", "2 000 ₽ в месяц", BLUE),
-            ("Б", "Гашу микрозайм", "эти 2 000 ₽ — в долг", GREEN)]
+    opts = [("А", "Наушники — заслужил!", "первый платёж 2 000 ₽", BLUE),
+            ("Б", "В микрозайм", "все 2 000 ₽ — в долг", GREEN)]
     for i, (letter, l1, l2, col) in enumerate(opts):
         if i >= level:
             break
