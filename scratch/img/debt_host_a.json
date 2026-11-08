@@ -1,0 +1,31 @@
+{
+  "job": {
+    "name": "debt_host_a",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "плоский векторный мультяшный стиль как в референсе: толстые контуры, яркие плоские цвета; Саша ~30, полноватый, худи, щетина",
+    "style": "Flat 2D vector cartoon style like a popular mobile game or TikTok animated series: bold thick dark outlines, flat saturated colours, simple cel shading, clean shapes.",
+    "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: плоский векторный мультяшный стиль как в референсе: толстые контуры, яркие плоские цвета; Саша ~30, полноватый, худи, щетина",
+    "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+    "prompt": "Vertical 9:16. A chubby friendly Russian guy named Sasha about 30, messy dark hair, light stubble, a wrinkled mustard-yellow hoodie, holding a smartphone in one hand. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "The illustration style contains too many gradients and soft shadows instead of flat vector colors as requested."
+    },
+    {
+      "attempt": 2,
+      "ok": false,
+      "issue": "extra finger on the character's hand"
+    },
+    {
+      "attempt": 3,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

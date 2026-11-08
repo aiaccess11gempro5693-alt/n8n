@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "debt_host_c",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "комикс / графический роман: Саша ~32 в офисной рубашке с ослабленным галстуком, круги под глазами",
+    "style": "Bold western comic-book / graphic-novel cartoon style: confident ink lines, halftone shading, punchy flat colours with a limited palette of navy, coral and cream.",
+    "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: комикс / графический роман: Саша ~32 в офисной рубашке с ослабленным галстуком, круги под глазами",
+    "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+    "prompt": "Vertical 9:16. A tired office worker named Sasha about 32, short neat hair slightly messed up, a light-blue office shirt with a loosened red tie, dark circles under the eyes, a credit card in his hand. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

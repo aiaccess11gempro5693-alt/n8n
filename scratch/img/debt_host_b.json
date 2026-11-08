@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "debt_host_b",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "meaning": "мягкий 3D, как в мультфильмах студии Pixar; Саша ~28, худой, растрёпанный, большой свитер, очки",
+    "style": "Soft stylised 3D animated-movie style (like a modern family animated feature): rounded shapes, big expressive eyes, soft lighting, subsurface skin, colourful but warm.",
+    "style_qa": "мультяшный (НЕ фотореализм — так задумано) персонаж по пояс, лицом к зрителю, рот слегка приоткрыт, без текста и цифр; стиль: мягкий 3D, как в мультфильмах студии Pixar; Саша ~28, худой, растрёпанный, большой свитер, очки",
+    "person_note": "An original cartoon character, not based on any real person or existing franchise character.",
+    "prompt": "Vertical 9:16. A lanky young Russian guy named Sasha about 28, tousled light-brown hair, round glasses, an oversized teal knit sweater, holding a long paper receipt. Background: a small messy rented flat in simple shapes, a pile of envelopes with bills on the table, a laptop, a houseplant. FRAMING: vertical 9:16, the character from the waist up, centred, facing the viewer, both shoulders and hands in frame, face large and clearly drawn, top of head about 22% below the upper edge (leave the top fifth calm and simple for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, a sheepish worried-but-hopeful expression. No text, no letters, no numbers, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": false,
+      "issue": "Remove pseudo-text from the receipt and documents"
+    },
+    {
+      "attempt": 2,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
