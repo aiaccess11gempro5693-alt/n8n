@@ -1,0 +1,47 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig25_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig25_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, moody night tones with warm lamp light. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: та же женщина, что на референсе, ночью держит телефон у уха; надпись «КОМУ ТЫ ПОЗВОНИШЬ В 3 НОЧИ?» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка Reels «Кому ты позвонишь в 3 ночи?»",
+   "prompt": "Vertical 9:16. Night scene: the woman from the reference sits on a sofa in a dark cosy room lit only by a warm table lamp and the cold glow of the smartphone she holds to her ear, thoughtful, eyes slightly glistening. She is in the LOWER half of the frame. In the UPPER-MIDDLE part, centred, a large bold white title in three lines: «КОМУ ТЫ», «ПОЗВОНИШЬ», and a big warm amber «В 3 НОЧИ?». All text must sit between 22% and 72% of the image height, over the dark wall."
+  },
+  {
+   "name": "ig26_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig26_host.png"
+   ],
+   "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, bright and playful. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: та же женщина-психолог, что на референсе, в зелёном кресле с хитрым прищуром; сверху крупно жёлтым «Ж . . . Ь» и ниже «КАКОЕ СЛОВО ВИДИШЬ ТЫ?» без ошибок, других слов нет",
+   "meaning": "обложка Reels «Ж...Ь — какое слово видишь ты?»",
+   "prompt": "Vertical 9:16. The psychologist from the reference sits in her bottle-green velvet armchair in the LOWER half of the frame, with a sly knowing squint and one eyebrow raised, pointing up at the text. Above her, centred: huge bold bright-yellow letters «Ж . . . Ь» (letter Ж, three dots, letter Ь) with a thin dark outline, and under it a white bold title in two lines «КАКОЕ СЛОВО» «ВИДИШЬ ТЫ?» with a soft dark shadow. All text must sit between 22% and 62% of the image height. Bright home living room background, slightly blurred."
+  },
+  {
+   "name": "ig27_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig27_old.png"
+   ],
+   "person_note": "The SAME man as in the attached photo: same face, cap, stubble and features; do not change his face.",
+   "style": "A finished, cinematic vertical Instagram Reels COVER, black-and-white photograph, deep shadows, film look. Elegant serif Russian typography, perfectly spelled, is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: чёрно-белый крупный план того же пожилого мужчины в кепке, что на референсе; надпись засечками «О ЧЁМ ВЫ ЖАЛЕЕТЕ БОЛЬШЕ ВСЕГО?» без ошибок, других слов нет",
+   "meaning": "обложка Reels «О чём вы жалеете больше всего?»",
+   "prompt": "Vertical 9:16 black-and-white cinematic close-up of the elderly man from the reference, face in the right two thirds of the frame, looking slightly off-camera with wise, tired, glistening eyes, soft side light, dark background of a courtyard. On the left-middle area, a large elegant white SERIF title in four lines, left-aligned: «О ЧЁМ ВЫ», «ЖАЛЕЕТЕ», «БОЛЬШЕ», «ВСЕГО?». All text must sit between 25% and 70% of the image height and must not cover his eyes."
+  }
+ ]
+}
