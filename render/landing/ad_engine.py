@@ -8,7 +8,8 @@ build(cfg):
   cfg["glitch"]   — [(t0, t1)] — RGB-сдвиг и шум;
   cfg["punch"]    — [(t0, t1)] — резкий наезд на лицо ×1.12;
   cfg["sfx"]      — [(t, имя, громкость)];
-  cfg["music"], cfg["music_gain"].
+  cfg["music"], cfg["music_gain"];
+  cfg["hud"]      — [(png, t0, t1)] — постоянный слой поверх всего (игровая панель), не затемняется.
 Проверки: карточки внутри зоны 250–1500 и выше субтитров (низ ≤ 1130), кадры не перекрываются.
 """
 import json
@@ -101,6 +102,10 @@ def build(cfg, words, total, subs):
         inputs += ["-i", p]
         filt.append(f"{prev}[{n}:v]overlay=0:{SUB_TOP}:enable='gte(t,{s['t0']:.3f})*lt(t,{s['t1']:.3f})*not({dim})'[s{i}]")
         prev, n = f"[s{i}]", n + 1
+    for i, (png, t0, t1) in enumerate(cfg.get("hud", [])):
+        inputs += ["-i", png]
+        filt.append(f"{prev}[{n}:v]overlay=0:0:enable='gte(t,{t0:.3f})*lt(t,{t1:.3f})'[h{i}]")
+        prev, n = f"[h{i}]", n + 1
     filt.append(f"{prev}format=yuv420p[vout]")
     open(f"{B.TMP}/graph.txt", "w").write(";\n".join(filt))
     subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex_script", f"{B.TMP}/graph.txt",
