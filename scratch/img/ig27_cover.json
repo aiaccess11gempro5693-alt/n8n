@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig27_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig27_old.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, cap, stubble and features; do not change his face.",
+    "style": "A finished, cinematic vertical Instagram Reels COVER, black-and-white photograph, deep shadows, film look. Elegant serif Russian typography, perfectly spelled, is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: чёрно-белый крупный план того же пожилого мужчины в кепке, что на референсе; надпись засечками «О ЧЁМ ВЫ ЖАЛЕЕТЕ БОЛЬШЕ ВСЕГО?» без ошибок, других слов нет",
+    "meaning": "обложка Reels «О чём вы жалеете больше всего?»",
+    "prompt": "Vertical 9:16 black-and-white cinematic close-up of the elderly man from the reference, face in the right two thirds of the frame, looking slightly off-camera with wise, tired, glistening eyes, soft side light, dark background of a courtyard. On the left-middle area, a large elegant white SERIF title in four lines, left-aligned: «О ЧЁМ ВЫ», «ЖАЛЕЕТЕ», «БОЛЬШЕ», «ВСЕГО?». All text must sit between 25% and 70% of the image height and must not cover his eyes."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

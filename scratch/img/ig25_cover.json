@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig25_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig25_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, hair colour and features; do not change her face shape.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, moody night tones with warm lamp light. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: та же женщина, что на референсе, ночью держит телефон у уха; надпись «КОМУ ТЫ ПОЗВОНИШЬ В 3 НОЧИ?» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «Кому ты позвонишь в 3 ночи?»",
+    "prompt": "Vertical 9:16. Night scene: the woman from the reference sits on a sofa in a dark cosy room lit only by a warm table lamp and the cold glow of the smartphone she holds to her ear, thoughtful, eyes slightly glistening. She is in the LOWER half of the frame. In the UPPER-MIDDLE part, centred, a large bold white title in three lines: «КОМУ ТЫ», «ПОЗВОНИШЬ», and a big warm amber «В 3 НОЧИ?». All text must sit between 22% and 72% of the image height, over the dark wall."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
