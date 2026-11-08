@@ -47,9 +47,9 @@ def main():
     t_with = T("С", t_andrey)
     t_but = T("но", t_with)
     t_forty = T("А", t_but)
-    t_sent = T("Он")
+    t_sent = T("фотографии")
     t_now = T("Теперь")
-    t_tell = T("я", t_now)
+    t_tell = T("из", t_now)
     t_want = T("Хотите")
     t_cta = T("Напишите")
     gap = lambda a, b, d: min(d, b - a - 0.05)
@@ -59,7 +59,7 @@ def main():
     P = lambda name: f"{B.TMP}/{name}.png"
     cards = []
     path, box = C.ai_stamp(P("stamp"))
-    cards.append((path, t_ai, t_andrey, box))
+    cards.append((path, t_ai, t_ai + 2.4, box))
     path, box = C.big_count(P("shoot"), "СЪЁМКА", "каждого ролика — это", ["фотограф", "студия", "деньги"])
     cards.append((path, t_but, t_forty, box))
     path, box = E.place(*C.doc_to_video(P("doc"), left="ФОТО", right="РОЛИК"), 680)
@@ -71,7 +71,7 @@ def main():
     path, box = E.place(*C.cta(P("cta"), "ТОВАР"), 900)
     cards.append((path, t_cta, total, box))
     sfx = [(t_ai - 0.05, "glitch", 0.6), (t_ai, "stamp", 0.6), (t_andrey, "whoosh", 0.35), (t_but, "hit", 0.5),
-           (t_forty, "whoosh", 0.45), (t_sent, "whoosh", 0.45), (t_now, "chime", 0.5), (t_tell, "pop", 0.5),
+           (t_forty, "whoosh", 0.45), (t_sent, "pop", 0.45), (t_now, "chime", 0.5), (t_tell, "pop", 0.5),
            (t_want, "whoosh", 0.5), (t_cta, "hit", 0.7)]
     t_not = T("И")
     cfg = {"cards": cards, "brolls": brolls, "glitch": [(t_not - 0.05, t_not + 0.4), (t_ai - 0.1, t_ai + 0.3)],
