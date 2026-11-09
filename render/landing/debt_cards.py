@@ -242,8 +242,8 @@ def bet_card(path, top, lost=False):
         sd.text((380, 60), "ПРОИГРАЛ", font=F(70), fill=RED, anchor="mm")
         sd.text((380, 126), "−1 500 ₽", font=F(52), fill=RED, anchor="mm")
         st = st.rotate(-8, expand=True, resample=Image.BICUBIC)
-        im.alpha_composite(st, ((W - st.width) // 2, y1 - 80))
-        bot = y1 - 80 + st.height + 12
+        im.alpha_composite(st, ((W - st.width) // 2, y1 - 40))
+        bot = y1 - 40 + st.height + 12
     return _save(im, path, top, bot)
 
 
@@ -261,13 +261,13 @@ def choice2(path, top, level=3):
     for i, (letter, l1, l2, col) in enumerate(rows):
         if i >= level:
             break
-        _box(d, (x0, y, x1, y + 128), CREAM, r=30)
-        d.rounded_rectangle([x0 + 20, y + 16, x0 + 130, y + 112], 24, fill=col, outline=INK, width=6)
-        _ctext(d, x0 + 75, y + 63, letter, F(60 if len(letter) == 1 else 50), CREAM)
-        d.text((x0 + 158, y + 46), l1, font=_fit(l1, 48, x1 - x0 - 190), fill=INK, anchor="lm")
-        d.text((x0 + 158, y + 96), l2, font=F(36, True), fill=GREY, anchor="lm")
-        y += 146
-    bot = y - 18 + 12
+        _box(d, (x0, y, x1, y + 116), CREAM, r=30)
+        d.rounded_rectangle([x0 + 20, y + 16, x0 + 130, y + 102], 24, fill=col, outline=INK, width=6)
+        _ctext(d, x0 + 75, y + 58, letter, F(60 if len(letter) == 1 else 50), CREAM)
+        d.text((x0 + 158, y + 40), l1, font=_fit(l1, 48, x1 - x0 - 190), fill=INK, anchor="lm")
+        d.text((x0 + 158, y + 88), l2, font=F(36, True), fill=GREY, anchor="lm")
+        y += 130
+    bot = y - 14 + 12
     if level >= 4:
         _box(d, (x0 + 50, y + 2, x1 - 50, y + 86), RED, r=42)
         _ctext(d, W / 2, y + 44, "ПИШИТЕ: А, Б1 ИЛИ Б2", F(44), CREAM)

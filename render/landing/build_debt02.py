@@ -97,10 +97,10 @@ def main():
     cards.append((path, t_five, t_bet, box))
     path, box = D.sticker(P("st_bet"), 1070, "СТАВКА: ВСЕ 1 500 ₽", "весь заработок дня", D.RED, -3)
     cards.append((path, t_bet, t_end, box))
-    path, box = D.bet_card(P("bet1"), 1000, lost=True)
+    path, box = D.bet_card(P("bet1"), 900, lost=True)
     cards.append((path, t_end, t_two - 0.05, box))
     for k, (lvl, a, b) in enumerate([(1, t_a, t_b1), (2, t_b1, t_b2), (3, t_b2, t_cta), (4, t_cta, total)]):
-        path, box = D.choice2(P(f"choice{k}"), 880, level=lvl)
+        path, box = D.choice2(P(f"choice{k}"), 900, level=lvl)
         cards.append((path, a, b, box))
     H = lambda n, **kw: D.hud(P(f"hud{n}"), day=2, **kw)[0]
     hud = [(H(0, debt="300 000 ₽", wallet="0 ₽"), 0.25, t_less),
