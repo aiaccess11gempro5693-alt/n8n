@@ -2,6 +2,7 @@
 
 python3 tools/ig_post.py check                    — проверить ключ и аккаунт, ничего не публикуя
 python3 tools/ig_post.py post docs/landing/insta/posts/001.json
+python3 tools/ig_post.py stats                    — все публикации аккаунта со статистикой (scratch/ig/stats.result.json)
 
 Пост (JSON): {"type": "reel", "video": "путь.mp4", "caption": "...", "cover_url": "https://...jpg" или "thumb_offset_ms": 1500 (кадр обложки, необязательно),
               "share_to_feed": true}
@@ -140,12 +141,53 @@ def check():
     return out
 
 
+REEL_METRICS = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
+                "ig_reels_avg_watch_time", "ig_reels_video_view_total_time"]
+POST_METRICS = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions"]
+
+
+def insights(mid, metrics):
+    """Метрики по одной: если какая-то недоступна для этого вида публикации, остальные не теряются."""
+    out = {}
+    for m in metrics:
+        try:
+            r = req("GET", f"{mid}/insights", {"metric": m})
+            vals = r.get("data", [{}])[0].get("values", [{}])
+            out[m] = vals[0].get("value") if vals else r.get("data", [{}])[0].get("total_value", {}).get("value")
+        except Exception as e:
+            out[m] = None
+            out.setdefault("_errors", {})[m] = str(e)[:160]
+    return out
+
+
+def stats():
+    acc = me()
+    items, url = [], f"{acc['user_id']}/media"
+    params = {"fields": "id,caption,media_type,media_product_type,permalink,timestamp,like_count,comments_count",
+              "limit": 50}
+    while url:
+        r = req("GET", url, params)
+        items += r.get("data", [])
+        url = r.get("paging", {}).get("next")
+        params = None if url else params
+    for it in items:
+        reel = it.get("media_product_type") == "REELS"
+        it["insights"] = insights(it["id"], REEL_METRICS if reel else POST_METRICS)
+        it["caption"] = (it.get("caption") or "")[:300]
+    try:
+        acc_ins = req("GET", f"{acc['user_id']}/insights",
+                      {"metric": "follower_count,reach", "period": "day"})
+    except Exception as e:
+        acc_ins = {"error": str(e)[:300]}
+    return {"account": acc, "account_insights": acc_ins, "media": items}
+
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     os.makedirs("scratch/ig", exist_ok=True)
-    name = "check" if mode == "check" else os.path.splitext(os.path.basename(sys.argv[2]))[0]
+    name = mode if mode in ("check", "stats") else os.path.splitext(os.path.basename(sys.argv[2]))[0]
     try:
-        result = check() if mode == "check" else post(sys.argv[2])
+        result = check() if mode == "check" else stats() if mode == "stats" else post(sys.argv[2])
     except Exception as e:
         result = {"error": str(e)}
     print(json.dumps(result, ensure_ascii=False, indent=1))
