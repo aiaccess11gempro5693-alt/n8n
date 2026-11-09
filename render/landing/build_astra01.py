@@ -295,10 +295,12 @@ def scene_clip(i, img, dur, zoom=(1.05, 1.12), pan=0.0, focus=0.5, drop=0):
     if drop:
         # кадр опускается вниз (герой ниже карточек), сверху — растянутая кромка неба
         d2 = drop * 2
-        top = fr.crop((0, 0, 2160, 40)).resize((2160, d2 + 40))
-        canvas = Image.new("RGB", (2160, 3840))
-        canvas.paste(top, (0, 0))
-        canvas.paste(fr.crop((0, 0, 2160, 3840 - d2)), (0, d2))
+        sky = fr.crop((0, 120, 2160, 520)).resize((1, 1), Image.LANCZOS).getpixel((0, 0))
+        canvas = Image.new("RGB", (2160, 3840), sky)
+        body = fr.crop((0, 0, 2160, 3840 - d2))
+        mask = Image.linear_gradient("L").resize((2160, 3840 - d2))          # 0 сверху → 255 снизу
+        mask = mask.point(lambda v: min(255, v * 12))                         # плавный вход на первых ~8%
+        canvas.paste(body, (0, d2), mask)
         fr = canvas
     fr.save(f"{TMP}/bg{i}.png")
     n = int(round(dur * FPS))
@@ -423,7 +425,7 @@ def main():
         if fin:
             src += f",fade=in:st={a:.3f}:d={fin}:alpha=1"
         fc.append(src + f"[o{i}]")
-        fc.append(f"{last}[o{i}]overlay={ox}:{oy}:enable='between(t,{a:.3f},{b:.3f})'[v{i + 1}]")
+        fc.append(f"{last}[o{i}]overlay={ox}:{oy}:enable='gte(t,{a:.3f})*lt(t,{b:.3f})'[v{i + 1}]")
         last = f"[v{i + 1}]"
 
     ev = [(0.25, "chime", 0.45), (t_watch, "riser", 0.3), (t_seven, "whoosh", 0.35), (t_intu, "ding", 0.4),
