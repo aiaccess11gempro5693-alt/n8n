@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "astra1_cross",
+    "meaning": "вычёркивание: рука героя зачёркивает строку в списке",
+    "prompt": "Close-up: the hero's hand with a gold pen calmly draws a single straight line through one row of abstract wavy scribble lines on a cream paper list (NO real letters, only abstract squiggles), dim indigo desk, a candle, calm cold mood.",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+    "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+    "extra_refs": [
+      "scratch/img/astra_board_night.png"
+    ],
+    "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+    "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
