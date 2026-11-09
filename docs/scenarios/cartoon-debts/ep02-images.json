@@ -1,0 +1,33 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Flat 2D vector cartoon style like a popular mobile game or TikTok animated series: bold thick dark outlines, flat saturated colours, simple cel shading, clean shapes.",
+   "extra_refs": [
+    "scratch/img/debt_host_a.png"
+   ],
+   "person_note": "The SAME cartoon character as in the attached image (Sasha): same face, hair, stubble, mustard hoodie and drawing style.",
+   "name": "debt02_metro",
+   "style_qa": "мультяшный (НЕ фотореализм — так задумано) тот же Саша в горчичном худи по пояс у входа в метро зимой, держит пачку листовок, лицом к зрителю, рот приоткрыт, без текста и букв",
+   "meaning": "Саша-промоутер у метро с листовками, холодно",
+   "prompt": "Vertical 9:16. Sasha from the reference stands near a city metro entrance on a cold grey winter day, a knitted scarf over his mustard hoodie, red cold cheeks, holding a thick stack of blank colourful flyers (no text on them) in one hand. People pass by in simple shapes behind him, light snow. FRAMING: from the waist up, centred, facing the viewer, face large and clearly drawn, top of head about 22% below the upper edge (keep the top fifth calm for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, tired but cheerful. No text, no letters, no numbers, no signs, no logos (the metro entrance has NO letter sign)."
+  },
+  {
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Flat 2D vector cartoon style like a popular mobile game or TikTok animated series: bold thick dark outlines, flat saturated colours, simple cel shading, clean shapes.",
+   "extra_refs": [
+    "scratch/img/debt_host_a.png"
+   ],
+   "person_note": "The SAME cartoon character as in the attached image (Sasha): same face, hair, stubble, mustard hoodie and drawing style.",
+   "name": "debt02_bus",
+   "style_qa": "мультяшный (НЕ фотореализм — так задумано) тот же Саша в горчичном худи сидит в вечернем автобусе с телефоном, лицом к зрителю, рот приоткрыт, без текста и букв",
+   "meaning": "Саша едет вечером в автобусе с телефоном в руке",
+   "prompt": "Vertical 9:16. Sasha from the reference sits on a seat inside a city bus in the evening, scarf around his neck, holding his smartphone in one hand (screen glowing, facing him, nothing readable). Window behind him with blurred evening city lights, handrails in simple shapes. FRAMING: from the waist up, centred, facing the viewer, face large and clearly drawn, top of head about 22% below the upper edge (keep the top fifth calm for a game HUD), looking straight at the viewer, mouth slightly open mid-sentence, excited and a bit sly. No text, no letters, no numbers, no logos."
+  }
+ ]
+}
