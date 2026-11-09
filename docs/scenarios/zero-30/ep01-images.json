@@ -1,0 +1,109 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "z30e1_wake",
+   "meaning": "утро, тёмная комната, герой сидит на кровати и смотрит в телефон, будильник",
+   "prompt": "Early morning in a small dark bedroom of a panel apartment, the hero sits on the edge of the bed holding a glowing smartphone in both hands, looking at it in shock, an alarm clock on the nightstand, window with a dark blue pre-dawn city.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_phone",
+   "meaning": "крупно телефон в руках героя, пустой светящийся экран",
+   "prompt": "Close-up of the hero's hands holding a smartphone with a plain empty glowing screen (no content on it), dark room behind, dramatic light from the screen.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_kitchen",
+   "meaning": "открытый кухонный шкаф: гречка, макароны, три яйца, чай",
+   "prompt": "A small kitchen at morning, the hero stands in front of an open cupboard: jars of buckwheat and pasta, three eggs in a tray, half a pack of tea, an empty shelf; warm lamp light.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_walk",
+   "meaning": "герой идёт пешком мимо остановки, автобус уезжает",
+   "prompt": "A city street in the morning, the hero walks briskly on the sidewalk past a bus stop while a bus drives away in the background, autumn trees, long road ahead.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_stuff",
+   "meaning": "квартира: старый телефон в ящике, куртка на вешалке, велосипед на балконе",
+   "prompt": "Inside an apartment: an open drawer with an old smartphone, a jacket on a coat hanger, and through the balcony door a dusty bicycle; the hero stands in the middle pointing at them, each item softly glowing with a gold game-item sparkle.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_photo",
+   "meaning": "герой фотографирует старый телефон на столе для объявления",
+   "prompt": "The hero takes a photo with a smartphone of an old phone lying on a table, a desk lamp lights it like a product shot.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_evening",
+   "meaning": "вечер, герой расслабленно сидит у окна с чаем, огни города",
+   "prompt": "Evening, the hero sits relaxed on a chair by the window with a mug of tea, city lights and stars outside, cozy calm mood.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  },
+  {
+   "name": "z30e1_shock",
+   "meaning": "вечер, телефон вибрирует красным светом, герой в шоке",
+   "prompt": "Same evening room, the smartphone on the table vibrates and glows with a red light, the hero jumps up in shock with hands raised, the room is tinted red and dark.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT MINIMALIST 2D animation frame exactly in the style of the attached board: clean geometric shapes, no outlines, soft long shadows, quiet night city of panel apartment blocks with lit windows. Palette: graphite-violet #3A3550 and #24212F, warm window yellow #E8B04B, lime accent #C6F432 (small accents only), white, alarm red #FF5A4E only where danger is described. The hero is THE SAME figure as on the attached board: slim figure with a plain round white head WITHOUT any facial features (no eyes, no mouth), dark navy hoodie, dark trousers, white sneakers. Vertical full-frame scene, main action in the middle of the frame, the top 18% and bottom 25% are calm background (sky, wall, floor) with no important details, because a game panel and subtitles will be overlaid there. Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская минималистичная 2D-анимация в палитре борда (графитово-фиолетовый, жёлтые окна, салатовые акценты), герой с белой круглой головой без лица в тёмно-синей толстовке, смысл соответствует описанию, без надписей, букв, цифр и интерфейса, верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/z30_board_night.png"
+   ]
+  }
+ ]
+}
