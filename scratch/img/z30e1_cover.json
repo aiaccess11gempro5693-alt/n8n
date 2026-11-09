@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "z30e1_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/z30_board_night.png",
+      "scratch/img/z30e1_shock.png"
+    ],
+    "person_note": "The ONLY person is the faceless hero from the attached images (plain round white head without facial features, dark navy hoodie). No other people.",
+    "audience": "для молодёжной серии в соцсетях",
+    "style": "FLAT MINIMALIST 2D animation exactly like the attached board and frame: clean geometric shapes, no outlines, soft long shadows, night panel-block city with warm yellow windows, palette graphite-violet #3A3550/#24212F, window yellow #E8B04B, lime #C6F432, white, alarm red #FF5A4E. A finished eye-catching vertical Instagram Reels COVER. Bold, clean, perfectly spelled Russian typography (Montserrat ExtraBold style) is REQUIRED. No logos, no watermarks.",
+    "style_qa": "обложка в плоском ночном стиле борда; герой без лица в тёмно-синей толстовке держит телефон с красным свечением; надписи «ПРЕДСТАВЬ:», «0 ₽ И 30 ДНЕЙ» и «ДЕНЬ 1» без ошибок, других слов и логотипов нет; в кадре нет посторонних людей",
+    "meaning": "обложка серии 1 «Представь: 0 ₽ и 30 дней»",
+    "prompt": "Vertical 9:16 cover. In the upper-middle part, huge bold typography in three lines: small white «ПРЕДСТАВЬ:», then a giant lime «0 ₽», then white «И 30 ДНЕЙ»; under it a small yellow rounded badge «ДЕНЬ 1». Below the title, the faceless hero sits on the edge of a bed in a dark room by a window with the night city, holding a smartphone whose screen glows alarm red (no readable text on the screen), red light on the hero. Keep all text between 22% and 62% of the image height; the hero fully visible below the title."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
