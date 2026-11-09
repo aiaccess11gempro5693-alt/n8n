@@ -30,8 +30,8 @@ MUSIC = f"{ROOT}/scratch/music/z30-music.wav"
 OUT = f"{ROOT}/render/landing/z30-01-9x16.mp4"
 TMP = f"{ROOT}/render/landing/.z30-01"
 IMG = f"{ROOT}/scratch/img"
-FB = f"{ROOT}/render/fonts/Montserrat-ExtraBold.ttf"
-FM = f"{ROOT}/render/fonts/Montserrat-SemiBold.ttf"
+FB = f"{ROOT}/render/fonts/Montserrat-Bold.ttf"   # в ExtraBold/SemiBold нет знака ₽
+FM = FB
 
 W, H, FPS = 1080, 1920, 30
 BG1, BG2 = (0x24, 0x21, 0x2F), (0x3A, 0x35, 0x50)
@@ -87,9 +87,12 @@ def rbox(d, xy, r, fill, outline=None, width=0):
 
 
 def save(im, name):
+    """Слой обрезается по содержимому — в итоговом графе накладывается со смещением
+    (полноэкранные слои с прозрачностью замедляли рендер в разы)."""
     p = f"{TMP}/{name}.png"
-    im.save(p)
-    return p
+    box = im.getbbox() or (0, 0, 2, 2)
+    im.crop(box).save(p)
+    return (p, box[0], box[1])
 
 
 def hud(name, balance, red=False):
@@ -153,8 +156,11 @@ def wrap(d, text, font, maxw):
 def big_zero(name):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    d.text((W / 2, 610), "0 ₽", font=F(230), fill=LIME, anchor="mm", stroke_width=10, stroke_fill=BG1)
-    d.text((W / 2, 760), "НА КАРТЕ", font=F(54), fill=WHITE, anchor="mm", stroke_width=6, stroke_fill=BG1)
+    f = F(104)
+    a, b = "0 ₽ ", "НА КАРТЕ"
+    x = W / 2 - d.textlength(a + b, font=f) / 2
+    d.text((x, 470), a, font=f, fill=LIME, anchor="lm", stroke_width=8, stroke_fill=BG1)
+    d.text((x + d.textlength(a, font=f), 470), b, font=f, fill=WHITE, anchor="lm", stroke_width=8, stroke_fill=BG1)
     return save(im, name)
 
 
@@ -166,9 +172,9 @@ def notif(name):
     rbox(d, (x0, y0, x1, y1), 34, (0xF4, 0xF2, 0xF8, 250))
     d.ellipse((x0 + 34, y0 + 52, x0 + 134, y0 + 152), fill=RED)
     d.rectangle((x0 + 60, y0 + 96, x0 + 108, y0 + 108), fill=WHITE)
-    d.text((x0 + 164, y0 + 70), "Списание по подписке", font=F(40), fill=BG1, anchor="lm")
-    d.text((x0 + 164, y0 + 136), "Баланс: −399 ₽", font=F(34, False), fill=(0x6B, 0x67, 0x80), anchor="lm")
-    d.text((x1 - 34, y0 + 70), "−399 ₽", font=F(48), fill=RED, anchor="rm")
+    d.text((x0 + 164, y0 + 70), "Списание по подписке", font=F(42), fill=BG1, anchor="lm")
+    d.text((x0 + 164, y0 + 140), "Баланс:", font=F(34), fill=(0x6B, 0x67, 0x80), anchor="lm")
+    d.text((x1 - 40, y0 + 140), "−399 ₽", font=F(58), fill=RED, anchor="rm")
     return save(im, name)
 
 
@@ -325,11 +331,12 @@ def main():
 
     # субтитры (на время больших карточек в центре — те же, они ниже)
     subs = B.chunks(WORDS, total)
+    subs = [s for s in subs if s["t0"] < t_q - 0.05]   # в финале говорят карточки — без дубля
     for k, s in enumerate(subs):
         ov.append((subtitle(f"s{k}", s["text"], key_of(s["text"])), s["t0"], s["t1"], 0.0))
 
     # проверка: карточки не пересекаются по времени между собой
-    cards_t = sorted((a, b) for p, a, b, _ in ov if os.path.basename(p)[:1] not in "sh" and "red" not in p)
+    cards_t = sorted((a, b) for (p, _x, _y), a, b, _ in ov if os.path.basename(p)[:1] not in "sh" and "red" not in p)
     for (a0, a1), (b0, b1) in zip(cards_t, cards_t[1:]):
         assert b0 >= a1 - 0.05, ("карточки наложились", a0, a1, b0, b1)
 
@@ -340,13 +347,13 @@ def main():
     fc.append(f"[0:v]scale=1120:1992,crop={W}:{H}:x='20+if(between(t,{sh0},{sh1}),14*sin(t*70),0)':"
               f"y='36+if(between(t,{sh0},{sh1}),10*cos(t*55),0)'[v0]")
     last = "[v0]"
-    for i, (p, a, b, fin) in enumerate(ov):
+    for i, ((p, ox, oy), a, b, fin) in enumerate(ov):
         inputs += ["-loop", "1", "-t", f"{total:.3f}", "-i", p]
         src = f"[{i + 1}:v]format=rgba"
         if fin:
             src += f",fade=in:st={a:.3f}:d={fin}:alpha=1"
         fc.append(src + f"[o{i}]")
-        fc.append(f"{last}[o{i}]overlay=0:0:enable='between(t,{a:.3f},{b:.3f})'[v{i + 1}]")
+        fc.append(f"{last}[o{i}]overlay={ox}:{oy}:enable='between(t,{a:.3f},{b:.3f})'[v{i + 1}]")
         last = f"[v{i + 1}]"
 
     # звук
