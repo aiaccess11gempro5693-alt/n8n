@@ -1,0 +1,26 @@
+{
+  "job": {
+    "name": "astra1_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/astra_board_night.png",
+      "scratch/img/astra1_board.png"
+    ],
+    "person_note": "The ONLY characters are the faceless hero (black sweater, gold scorpion pin) and, small in the background, the faceless partner (lavender hair and sweater) from the attached images. No other people.",
+    "audience": "для юмористического астрологического блога в соцсетях",
+    "style": "FLAT 2D cartoon exactly like the attached board and frame: starry indigo night #241B3D/#2E2350, gold #D9B25F thin line accents and small stars, lavender #B9A6E0, cream #F3EBDD. A finished eye-catching vertical Instagram Reels COVER in the style of an astrology blog: elegant BOLD ITALIC SERIF typography (Playfair Display Bold Italic style) with small spaced gold capitals above it. Perfectly spelled Russian text is REQUIRED. No logos, no watermarks.",
+    "style_qa": "обложка в ночном индиго-золотом стиле борда; герой без лица (это задумано) в чёрном свитере с лупой у доски расследования; надписи «НОВОЛУНИЕ · СЕРИЯ 1», «Представь:» и «ты — Скорпион» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка серии 1 «Представь: ты — Скорпион»",
+    "prompt": "Vertical 9:16 cover. In the upper-middle part: small spaced gold capitals «НОВОЛУНИЕ · СЕРИЯ 1», then huge cream bold italic serif «Представь:», then a giant gold bold italic serif «ты — Скорпион», a thin gold line with a small star under it, and a small gold zodiac Scorpio glyph. Below the title: the faceless hero in a black sweater holds a big magnifying glass in front of a detective cork board with red threads and photos (no readable text), squinting suspiciously; the faceless partner peeks from behind, shocked, hands on head; a dark new moon in the starry window. Keep all text between 20% and 60% of the image height; characters fully visible below the title."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
