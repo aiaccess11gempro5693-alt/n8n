@@ -77,7 +77,8 @@ def hud(path, day=1, debt="300 000 ₽", temptations=0, flash=False, wallet=None
 
 
 # ---------- подработка ----------
-def job_card(path, top, done=False):
+def job_card(path, top, done=False, title="Курьер на 1 день", sub="оплата в тот же день", pay="+2 000 ₽",
+             note="8 часов на ногах"):
     """Объявление «курьер на 1 день»; done — внизу зелёная полоса «+2 000 ₽ · 8 часов на ногах»."""
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
@@ -86,12 +87,12 @@ def job_card(path, top, done=False):
     _box(d, (x0, top, x1, y1), CREAM)
     d.rounded_rectangle([x0 + 30, top + 28, x0 + 300, top + 82], 22, fill=MUSTARD, outline=INK, width=5)
     _ctext(d, x0 + 165, top + 55, "ОБЪЯВЛЕНИЕ", F(30))
-    d.text((x0 + 34, top + 140), "Курьер на 1 день", font=F(64), fill=INK, anchor="lm")
-    d.text((x0 + 36, top + 205), "оплата в тот же день", font=F(38, True), fill=GREY, anchor="lm")
+    d.text((x0 + 34, top + 140), title, font=_fit(title, 64, x1 - x0 - 70), fill=INK, anchor="lm")
+    d.text((x0 + 36, top + 205), sub, font=F(38, True), fill=GREY, anchor="lm")
     if done:
         d.rounded_rectangle([x0 + 24, top + 250, x1 - 24, y1 - 24], 24, fill=GREEN, outline=INK, width=6)
-        d.text((x0 + 60, (top + 250 + y1 - 24) / 2), "+2 000 ₽", font=F(70), fill=CREAM, anchor="lm")
-        d.text((x1 - 60, (top + 250 + y1 - 24) / 2), "8 часов на ногах", font=F(36, True), fill=CREAM, anchor="rm")
+        d.text((x0 + 60, (top + 250 + y1 - 24) / 2), pay, font=F(70), fill=CREAM, anchor="lm")
+        d.text((x1 - 60, (top + 250 + y1 - 24) / 2), note, font=F(36, True), fill=CREAM, anchor="rm")
     return _save(im, path, top, y1 + 12)
 
 
