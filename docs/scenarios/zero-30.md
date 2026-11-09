@@ -19,3 +19,10 @@
 ## Статус
 09.11.2026 — сценарий серии 1 (`zero-30/ep01.md`), 3 варианта стиля (`zero-30/style-boards.json`) и 3 пробы голоса —
 на выбор пользователю.
+
+Сгенерировано 09.11.2026 (все прошли QA с первой попытки):
+- стили: `scratch/img/z30_board_night.png` «Ночной город», `z30_board_paper.png` «Бумажная аппликация»,
+  `z30_board_pixel.png` «Пиксельная игра»;
+- пробы голоса (eleven_v3, начало серии 1): `scratch/z30-v-sinev.mp3` (Синев `mGnyEHBfaNztXxZkkMKN`, 28,9 с),
+  `scratch/z30-v-arseniy.mp3` (Arseniy `TJUtVlWrBSorCxFG4hay`, 21,2 с), `scratch/z30-v-olga.mp3`
+  (Olga Narrator `IfP8A5cbeh6QoSUPogHR`, 25,5 с).
