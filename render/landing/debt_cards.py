@@ -199,6 +199,81 @@ def choice(path, top, level=3):
     return _save(im, path, top, bot)
 
 
+# ---------- серия 2 ----------
+def comment_card(path, top, src, crop=(20, 1165, 660, 1285)):
+    """Настоящий комментарий зрителя (вырезан из скриншота) на белой карточке + наклейка «ВЫ ВЫБРАЛИ»."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    shot = Image.open(src).convert("RGBA").crop(crop)
+    cw = 820
+    shot = shot.resize((cw - 80, round(shot.height * (cw - 80) / shot.width)), Image.LANCZOS)
+    x0, x1 = (W - cw) // 2, (W + cw) // 2
+    y0, y1 = top + 112, top + 112 + shot.height + 70
+    _box(d, (x0, y0, x1, y1), (255, 255, 255), r=40)
+    im.alpha_composite(shot, (x0 + 40, y0 + 35))
+    tag = Image.new("RGBA", (470, 110), (0, 0, 0, 0))
+    td = ImageDraw.Draw(tag)
+    _box(td, (6, 6, 450, 96), MUSTARD, r=30)
+    _ctext(td, 228, 51, "ВЫ ВЫБРАЛИ «Б»", F(46))
+    tag = tag.rotate(-4, expand=True, resample=Image.BICUBIC)
+    im.alpha_composite(tag, ((W - tag.width) // 2, top))
+    return _save(im, path, top, y1 + 12)
+
+
+def bet_card(path, top, lost=False):
+    """Сообщение Лёхи «ставь на матч, кэф 5, верняк» → после проигрыша поверх штамп «ПРОИГРАЛ −1 500 ₽»."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    x0, x1, y1 = 80, 1000, top + 300
+    _box(d, (x0, top, x1, y1), (255, 255, 255), r=40)
+    cx, cy = x0 + 100, top + 100
+    d.ellipse([cx - 56, cy - 56, cx + 56, cy + 56], fill=BLUE, outline=INK, width=6)
+    _ctext(d, cx, cy, "Л", F(60), CREAM)
+    d.text((x0 + 190, top + 66), "Лёха", font=F(44), fill=INK, anchor="lm")
+    d.text((x0 + 190, top + 120), "только что", font=F(30, True), fill=GREY, anchor="lm")
+    d.rounded_rectangle([x0 + 40, top + 170, x1 - 40, y1 - 30], 30, fill=(232, 240, 255), outline=INK, width=5)
+    d.text((x0 + 76, top + 235), "Ставь на матч, кэф 5. Верняк!", font=_fit("Ставь на матч, кэф 5. Верняк!", 46, x1 - x0 - 140), fill=INK, anchor="lm")
+    bot = y1 + 12
+    if lost:
+        st = Image.new("RGBA", (760, 170), (0, 0, 0, 0))
+        sd = ImageDraw.Draw(st)
+        sd.rounded_rectangle([8, 8, 752, 162], 26, fill=CREAM, outline=RED, width=12)
+        sd.text((380, 60), "ПРОИГРАЛ", font=F(70), fill=RED, anchor="mm")
+        sd.text((380, 126), "−1 500 ₽", font=F(52), fill=RED, anchor="mm")
+        st = st.rotate(-8, expand=True, resample=Image.BICUBIC)
+        im.alpha_composite(st, ((W - st.width) // 2, y1 - 80))
+        bot = y1 - 80 + st.height + 12
+    return _save(im, path, top, bot)
+
+
+def choice2(path, top, level=3):
+    """Выбор серии 2: А — отыграться; Б — стоп и вторая подработка: Б1 грузчик / Б2 мойщик посуды."""
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    x0, x1 = 50, 1030
+    _box(d, (x0 + 130, top, x1 - 130, top + 80), MUSTARD, r=40)
+    _ctext(d, W / 2, top + 41, "ЗАВТРА РЕШАЕТЕ ВЫ", F(42))
+    y = top + 100
+    rows = [("А", "Отыграться", "ставлю ещё — вдруг вернётся", RED),
+            ("Б1", "Стоп! Грузчик ночью", "4 часа · 3 000 ₽", GREEN),
+            ("Б2", "Стоп! Мойщик посуды", "6 часов · 2 500 ₽", GREEN)]
+    for i, (letter, l1, l2, col) in enumerate(rows):
+        if i >= level:
+            break
+        _box(d, (x0, y, x1, y + 128), CREAM, r=30)
+        d.rounded_rectangle([x0 + 20, y + 16, x0 + 130, y + 112], 24, fill=col, outline=INK, width=6)
+        _ctext(d, x0 + 75, y + 63, letter, F(60 if len(letter) == 1 else 50), CREAM)
+        d.text((x0 + 158, y + 46), l1, font=_fit(l1, 48, x1 - x0 - 190), fill=INK, anchor="lm")
+        d.text((x0 + 158, y + 96), l2, font=F(36, True), fill=GREY, anchor="lm")
+        y += 146
+    bot = y - 18 + 12
+    if level >= 4:
+        _box(d, (x0 + 50, y + 2, x1 - 50, y + 86), RED, r=42)
+        _ctext(d, W / 2, y + 44, "ПИШИТЕ: А, Б1 ИЛИ Б2", F(44), CREAM)
+        bot = y + 98
+    return _save(im, path, top, bot)
+
+
 if __name__ == "__main__":
     tmp = "/tmp/claude-0/-home-user-n8n/ca43fb62-f768-5cf6-9a9d-32340ee1ec72/scratchpad/dc"
     os.makedirs(tmp, exist_ok=True)
