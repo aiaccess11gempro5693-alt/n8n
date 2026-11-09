@@ -1,0 +1,18 @@
+{
+  "job": {
+    "name": "z30_board_paper",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "meaning": "«Бумажная аппликация»: крафт #D9C4A0, томатный #E4572E, тёмная бирюза #1F6E6B, тетрадная клетка",
+    "prompt": "Create a complete design system board (style guide sheet, 16:9) for a series of VERTICAL 9:16 animated Reels «Представь: у тебя 0 ₽ и 30 дней». There is NO presenter: the viewer is the hero — a simple FACELESS character «ты» (no facial features, so anyone can imagine themselves), shown in second-person stories. Story of episode 1: you wake up, your bank card shows exactly 0 ₽, payday is in 30 days; you check the kitchen cupboards (buckwheat, pasta, three eggs, tea), stop taking the bus and walk, put an old phone up for sale, and in the evening a notification «Списание по подписке −399 ₽» turns your balance negative. Blocks on the board: title «Представь · 0 ₽ и 30 дней», colour palette with HEX codes, typography, the faceless hero in 3 poses (waking up on the bed, walking, holding a phone), a game-like TOP PANEL «ДЕНЬ 1/30 · БАЛАНС 0 ₽», a RULE card «ПРАВИЛО 1 · Не паникуй — посчитай», SUBTITLES style (big bold words, one key word highlighted), a phone notification card «Списание по подписке −399 ₽», an end card «ДЕНЬ 2 — ЗАВТРА», and a block «КАДРЫ 9:16» with 4 phone-shaped frames: (1) dark bedroom, hero sits on the bed, phone screen «0 ₽»; (2) open kitchen cupboard with food items and a label «≈ 7 дней еды»; (3) bus stop with a crossed-out bus, hero walking; (4) evening window and the notification. In every phone frame keep text away from the top 13% and the bottom 22% (Instagram interface zones). All text in Russian, short, correctly spelled. No real brand logos. Style: PAPER CUT-OUT stop-motion look — layered cut paper with visible texture, slightly uneven edges, small drop shadows between layers, objects look hand-cut and glued, background like a craft board with squared notebook paper pieces and tape. Palette: kraft #D9C4A0, cream #F5EEDC, tomato red #E4572E, dark teal #1F6E6B, ink #22252B. Typography: «Unbounded» Black for headlines, handwritten marker notes. The hero is a paper figure with a round head without a face, a tomato-red sweater."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
