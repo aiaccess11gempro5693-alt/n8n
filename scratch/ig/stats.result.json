@@ -1,0 +1,887 @@
+{
+ "account": {
+  "user_id": "17841438657923909",
+  "username": "iiavatar.video",
+  "account_type": "BUSINESS",
+  "media_count": 40,
+  "id": "28752117781106353"
+ },
+ "account_insights": {
+  "data": [
+   {
+    "name": "follower_count",
+    "period": "day",
+    "values": [
+     {
+      "value": 0,
+      "end_time": "2026-11-08T08:00:00+0000"
+     },
+     {
+      "value": 0,
+      "end_time": "2026-11-09T08:00:00+0000"
+     }
+    ],
+    "title": "Follower Count",
+    "description": "Total number of unique accounts following this profile",
+    "id": "17841438657923909/insights/follower_count/day"
+   },
+   {
+    "name": "reach",
+    "period": "day",
+    "values": [
+     {
+      "value": 10111,
+      "end_time": "2026-11-08T08:00:00+0000"
+     },
+     {
+      "value": 34682,
+      "end_time": "2026-11-09T08:00:00+0000"
+     }
+    ],
+    "title": "Reach",
+    "description": "Total number of times the Business Account's media objects have been uniquely viewed",
+    "id": "17841438657923909/insights/reach/day"
+   }
+  ]
+ },
+ "media": [
+  {
+   "id": "18352609219282596",
+   "caption": "Сильного сотрудника теряют раньше, чем вы думаете 💼\n\nНе в день заявления. А в тот момент, когда он понимает: хорошо работать здесь невыгодно.\n\nОн закрывает чужие задачи и получает ещё больше работы. А тому, кто не даёт результата, дают ещё один шанс.\n\nУ слабого — бесконечный кредит доверия.\nУ сильно",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfiKt3viOwJ/",
+   "timestamp": "2026-11-09T20:16:30+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 2,
+    "reach": 0,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 0,
+    "ig_reels_video_view_total_time": 0
+   }
+  },
+  {
+   "id": "18144758872717138",
+   "caption": "Представь: ты просыпаешься, а на карте ровно 0 ₽. До зарплаты 30 дней. Занять не у кого 😶\n\nДень 1. Три правила, чтобы продержаться:\n1️⃣ Не паникуй, посчитай. Гречка, макароны и три яйца — это неделя еды\n2️⃣ Никакого транспорта. Две поездки в день — это −4 500 ₽ за месяц\n3️⃣ Деньги уже лежат дома. Ст",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfhUfasjkUG/",
+   "timestamp": "2026-11-09T12:22:43+0000",
+   "like_count": 46,
+   "comments_count": 1,
+   "insights": {
+    "views": 3358,
+    "reach": 2831,
+    "likes": 46,
+    "comments": 1,
+    "shares": 6,
+    "saved": 7,
+    "total_interactions": 60,
+    "ig_reels_avg_watch_time": 34070,
+    "ig_reels_video_view_total_time": 98464304
+   }
+  },
+  {
+   "id": "18120183815590625",
+   "caption": "День 2 из 30. Вы выбрали «Б» — и Саша отнёс 2 000 ₽ в микрозайм 💪 Долг уже 298 000 ₽.\n\nПодработка дня: промоутер у метро, 4 часа на холоде, +1 500 ₽. А вечером пишет Лёха: «Ставь на матч, кэф 5. Верняк!» 😬\n\nСовет дня: «верняков» не бывает. Ставки — не способ закрыть долг, а способ сделать его больше",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfgyrndDB7b/",
+   "timestamp": "2026-11-09T07:26:56+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 280,
+    "reach": 255,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 1,
+    "ig_reels_avg_watch_time": 16909,
+    "ig_reels_video_view_total_time": 4277982
+   }
+  },
+  {
+   "id": "18123923012319267",
+   "caption": "Видео для 40 товаров, без единой съёмки 📦🎥\n\nМастер Андрей делает деревянные разделочные доски. С видео покупатель лучше понимает товар, но съёмка каждого ролика — это фотограф, студия и деньги. А товаров у него сорок.\n\nОн прислал фотографии и пару строк о каждом. Теперь у каждой доски свой ролик: из",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfgblHciWKA/",
+   "timestamp": "2026-11-09T04:05:21+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 181,
+    "reach": 161,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 5471,
+    "ig_reels_video_view_total_time": 897303
+   }
+  },
+  {
+   "id": "18197307337402613",
+   "caption": "20 уроков, и ни разу не включила камеру 🎥❌\n\nРаньше один урок — это свет, штатив, десять дублей и вечер монтажа. Курс откладывался годами.\n\nТеперь достаточно текстов уроков и одной фотографии. Через неделю готов курс: ведущий, субтитры, картинки, музыка.\n\nКому подойдёт 👇\n📚 преподавателям и репетитора",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfgNz57gARa/",
+   "timestamp": "2026-11-09T02:04:45+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 187,
+    "reach": 167,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 4684,
+    "ig_reels_video_view_total_time": 801039
+   }
+  },
+  {
+   "id": "18119228014817815",
+   "caption": "«Подходящий момент — это сегодня» 🕊\n\nСпросили у дедушки во дворе, о чём он жалеет больше всего. Он ответил: что ждал подходящего момента. Сказать маме, что любит. Поехать к морю. А потом… уже некому говорить.\n\nКому ты давно хотел(а) сказать что-то важное? Скажи сегодня 🤍\n\nP.S. Героев этого видео сде",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DffyN6oijqZ/",
+   "timestamp": "2026-11-08T22:03:37+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 199,
+    "reach": 184,
+    "likes": 2,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 7693,
+    "ig_reels_video_view_total_time": 1446369
+   }
+  },
+  {
+   "id": "18120574429770819",
+   "caption": "Какое слово ты прочитал(а)? 😂\n\nЖ . . . Ь\n\n«Жизнь» — у тебя хороший период.\n«Ждать» — ты давно чего-то ждёшь и устал(а).\n«Жесть» — неделька была та ещё, но с тобой всё нормально 😅\n\nПиши в комментариях, какое слово у тебя 👇\n\nP.S. Психолога сделала нейросеть, а тест — для настроения. Хотите своего веду",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DffxvXWjl0e/",
+   "timestamp": "2026-11-08T21:59:28+0000",
+   "like_count": 25,
+   "comments_count": 24,
+   "insights": {
+    "views": 2183,
+    "reach": 1870,
+    "likes": 25,
+    "comments": 24,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 49,
+    "ig_reels_avg_watch_time": 11877,
+    "ig_reels_video_view_total_time": 23149582
+   }
+  },
+  {
+   "id": "18496183747128009",
+   "caption": "Кому ты позвонишь в 3 ночи? 📞\n\nВ телефоне сотни контактов. Но настоящий друг — это тот, кому можно позвонить ночью и ничего не объяснять. Кто молча возьмёт трубку и скажет: «Еду».\n\nДружба не про то, как часто вы видитесь. Она про то, кто приходит, когда плохо.\n\nОтправь это видео тому, кто возьмёт тр",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DffxPdUDRI_/",
+   "timestamp": "2026-11-08T21:55:08+0000",
+   "like_count": 1470,
+   "comments_count": 51,
+   "insights": {
+    "views": 43664,
+    "reach": 34872,
+    "likes": 1470,
+    "comments": 51,
+    "shares": 689,
+    "saved": 145,
+    "total_interactions": 2455,
+    "ig_reels_avg_watch_time": 17378,
+    "ig_reels_video_view_total_time": 616704755
+   }
+  },
+  {
+   "id": "18111154388225199",
+   "caption": "День 1 из 30. Саша должен 300 000 ₽ 😬\n\nТри кредитки, кредит на телефон и микрозайм. За 30 дней он попробует выбраться, а решать за него каждый день будете вы.\n\nСовет дня: выпишите все долги в один список, сколько, под какой процент и когда платить. Самый дорогой гасите первым. У Саши это микрозайм, ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfem6kgkYD_/",
+   "timestamp": "2026-11-08T11:05:57+0000",
+   "like_count": 18,
+   "comments_count": 1,
+   "insights": {
+    "views": 2238,
+    "reach": 2059,
+    "likes": 18,
+    "comments": 1,
+    "shares": 2,
+    "saved": 1,
+    "total_interactions": 24,
+    "ig_reels_avg_watch_time": 17308,
+    "ig_reels_video_view_total_time": 35154501
+   }
+  },
+  {
+   "id": "18042937682838471",
+   "caption": "Пока вы смотрите это видео, настоящая я сплю 😴\n\nМарина печёт торты на заказ. Подъём в пять утра, дети, школа, заказы до ночи. Блог она хотела вести три года, но снимать было просто некогда.\n\nОна прислала одну фотографию и тексты своих рецептов. Теперь в кадре её цифровая копия, ролики выходят каждый",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfebQOOE34C/",
+   "timestamp": "2026-11-08T09:23:45+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 198,
+    "reach": 169,
+    "likes": 2,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 10106,
+    "ig_reels_video_view_total_time": 1798885
+   }
+  },
+  {
+   "id": "17956041144082458",
+   "caption": "Зрелый партнёр «выносит вам мозг» — и это хороший знак 🧠\n\nОн задаёт неудобные вопросы, идёт на контакт и пытается разобраться, что происходит. Не чтобы докопаться — а потому что зрелая психика стремится к ясности: закрыть вопрос, а не носить его в себе месяцами.\n\nЗрелый человек не хочет жить в туман",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfZRkMFlbdJ/",
+   "timestamp": "2026-11-06T09:22:52+0000",
+   "like_count": 3,
+   "comments_count": 0,
+   "insights": {
+    "views": 308,
+    "reach": 280,
+    "likes": 3,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 9565,
+    "ig_reels_video_view_total_time": 2687923
+   }
+  },
+  {
+   "id": "18008001263989534",
+   "caption": "Секрет успеха — в двух словах 😏\n\n— В чём твой главный секрет?\n— Я никогда не спорю с людьми, которые не хотят меня слушать. Просто говорю: «Вы правы».\n— Но это же никак не связано с успехом!\n— Вы правы.\n\nА вы умеете не спорить? Пишите в комментариях 👇\n\nP.S. Ни ведущего, ни гостя не существует — обои",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfZRGx0j64z/",
+   "timestamp": "2026-11-06T09:18:52+0000",
+   "like_count": 4,
+   "comments_count": 0,
+   "insights": {
+    "views": 635,
+    "reach": 465,
+    "likes": 4,
+    "comments": 0,
+    "shares": 3,
+    "saved": 3,
+    "total_interactions": 10,
+    "ig_reels_avg_watch_time": 10749,
+    "ig_reels_video_view_total_time": 5084332
+   }
+  },
+  {
+   "id": "18136200451739820",
+   "caption": "Ваш директор этого не говорил 🤫\n\n«Коллеги, с понедельника новые правила:\n1️⃣ каждого покупателя встречаем за 10 секунд;\n2️⃣ на «а есть подешевле?» — всегда два варианта;\n3️⃣ улыбаемся, даже если день тяжёлый».\n\nЭтого директора сделала нейросеть — из одной фотографии и текста регламента. А настоящий ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfZMK6kjN-9/",
+   "timestamp": "2026-11-06T08:35:44+0000",
+   "like_count": 3,
+   "comments_count": 0,
+   "insights": {
+    "views": 327,
+    "reach": 298,
+    "likes": 3,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 8542,
+    "ig_reels_video_view_total_time": 2571416
+   }
+  },
+  {
+   "id": "18134505181814496",
+   "caption": "Это видео стоило мне 0 ₽. Вот чек 🧾\n\nСтудия — 0\nОператор — 0\nСвет — 0\nГримёр — 0\n20 попыток, потому что я запнулась, — тоже 0\n\nПочему? Меня не существует. Ведущую сделала нейросеть — из одной фотографии и текста.\n\nА для вас такое видео стоит от 1 000 ₽ за минуту:\n▫️ без съёмок, студии и актёров;\n▫️ ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfZLt2gDvl8/",
+   "timestamp": "2026-11-06T08:31:47+0000",
+   "like_count": 1,
+   "comments_count": 1,
+   "insights": {
+    "views": 206,
+    "reach": 178,
+    "likes": 1,
+    "comments": 1,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 3,
+    "ig_reels_avg_watch_time": 5303,
+    "ig_reels_video_view_total_time": 997087
+   }
+  },
+  {
+   "id": "18400607017161682",
+   "caption": "Учительница спросила детей: какая самая важная часть стула? Никто не ответил правильно 🪑\n\nНожки, сиденье, спинка — всё видно. А держат стул болты, которых никто не замечает. Выкрути их — и он развалится.\n\nВ жизни так же. Работа, дом, доход — это то, что видно. А держат всё:\n▫️ здоровье;\n▫️ сон;\n▫️ п",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfZDTqND1N8/",
+   "timestamp": "2026-11-06T07:18:27+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 234,
+    "reach": 201,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 1,
+    "ig_reels_avg_watch_time": 13447,
+    "ig_reels_video_view_total_time": 2675980
+   }
+  },
+  {
+   "id": "17953551609323330",
+   "caption": "Часы, у которых стрелка стояла, а крутился циферблат 🕰\n\n1625 год. Английский мастер Христофор Головей ставит новые часы на Спасскую башню Кремля. Сверху — неподвижный луч солнца, а под ним медленно поворачивается круг. Вместо цифр — славянские буквы.\n\nСутки делили на «дневные» и «ночные» часы: отсчё",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfZADYIgOM9/",
+   "timestamp": "2026-11-06T06:50:07+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 228,
+    "reach": 189,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 1,
+    "ig_reels_avg_watch_time": 10389,
+    "ig_reels_video_view_total_time": 2026037
+   }
+  },
+  {
+   "id": "17911645674566923",
+   "caption": "«Внучек, здравствуй. Опять сидишь в телефоне до ночи?» 🤍\n\nЭту бабушку сделала нейросеть — из одной фотографии. Её не существует. А вот слова — те самые, которые мы все когда-то слышали.\n\nТак можно оживить фото близкого человека:\n▫️ поздравление на юбилей;\n▫️ видео-память для семьи;\n▫️ семейная истор",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfWusBHgkct/",
+   "timestamp": "2026-11-05T09:39:45+0000",
+   "like_count": 12,
+   "comments_count": 2,
+   "insights": {
+    "views": 679,
+    "reach": 618,
+    "likes": 12,
+    "comments": 2,
+    "shares": 0,
+    "saved": 2,
+    "total_interactions": 18,
+    "ig_reels_avg_watch_time": 10410,
+    "ig_reels_video_view_total_time": 6475274
+   }
+  },
+  {
+   "id": "18036036464902477",
+   "caption": "Если это видео попалось тебе сегодня, 5 ноября, — не листай ✨\n\nОно для тех, у кого сейчас непростой период. Когда всё навалилось сразу: деньги, работа, близкие… и сил уже нет.\n\nЭто заканчивается. Ближайшие семь дней — время перемен:\n▫️ не говори «нет» сразу;\n▫️ присмотрись к каждому шансу этой недел",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfWjQQBjOBF/",
+   "timestamp": "2026-11-05T07:59:44+0000",
+   "like_count": 8,
+   "comments_count": 6,
+   "insights": {
+    "views": 435,
+    "reach": 357,
+    "likes": 8,
+    "comments": 6,
+    "shares": 1,
+    "saved": 4,
+    "total_interactions": 20,
+    "ig_reels_avg_watch_time": 15356,
+    "ig_reels_video_view_total_time": 5620313
+   }
+  },
+  {
+   "id": "18107835689626477",
+   "caption": "Самые добрые люди иногда курят, ругаются и выглядят так, что их хочется обойти стороной 🖤\n\nА самые холодные — в идеальном костюме и с правильными словами.\n\nХарактер не виден по обёртке. Он виден:\n▫️ в том, как человек относится к тебе, когда ему с этого ничего не будет;\n▫️ в его преданности;\n▫️ в ти",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfRrVeIgrnd/",
+   "timestamp": "2026-11-03T10:34:26+0000",
+   "like_count": 31,
+   "comments_count": 0,
+   "insights": {
+    "views": 1632,
+    "reach": 1466,
+    "likes": 31,
+    "comments": 0,
+    "shares": 9,
+    "saved": 4,
+    "total_interactions": 46,
+    "ig_reels_avg_watch_time": 11482,
+    "ig_reels_video_view_total_time": 17465326
+   }
+  },
+  {
+   "id": "18172635862462937",
+   "caption": "Никогда не отвечай на рабочие звонки после семи вечера 📵\n\n«Сынок, этот звонок только что сделал тебя дешевле» — урок отца, который стоит запомнить.\n\n▫️ Клиент знает: ты доступен, когда удобно ему.\n▫️ То, что доступно по первому желанию, не ценят — этим пользуются.\n▫️ «Всегда на связи» — это не дисци",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfRmPuNjcjQ/",
+   "timestamp": "2026-11-03T09:49:59+0000",
+   "like_count": 288,
+   "comments_count": 21,
+   "insights": {
+    "views": 12654,
+    "reach": 10936,
+    "likes": 288,
+    "comments": 21,
+    "shares": 310,
+    "saved": 58,
+    "total_interactions": 692,
+    "ig_reels_avg_watch_time": 18242,
+    "ig_reels_video_view_total_time": 202404836
+   }
+  },
+  {
+   "id": "18123520418066609",
+   "caption": "5 самых известных законов в мире 👇 Сохрани, чтобы не забыть 📌\n\n1️⃣ Закон Мёрфи. Если что-то может пойти не так — оно пойдёт не так. И чем сильнее боишься, тем вероятнее.\n2️⃣ Закон Кидлина. Чётко записал задачу на бумаге — уже решил её наполовину.\n3️⃣ Закон Гилберта. Найти лучший способ сделать работ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfRf9lcj3AI/",
+   "timestamp": "2026-11-03T08:55:05+0000",
+   "like_count": 47,
+   "comments_count": 0,
+   "insights": {
+    "views": 2410,
+    "reach": 2036,
+    "likes": 47,
+    "comments": 0,
+    "shares": 8,
+    "saved": 24,
+    "total_interactions": 79,
+    "ig_reels_avg_watch_time": 15389,
+    "ig_reels_video_view_total_time": 32794060
+   }
+  },
+  {
+   "id": "17914792446551310",
+   "caption": "10 причин, почему тебя не уважают 👇 Сохрани, чтобы не потерять 📌\n\n1️⃣ Смеёшься там, где не смешно.\n2️⃣ Слишком много рассказываешь о себе.\n3️⃣ Молча терпишь неуважение.\n4️⃣ Постоянно ждёшь чужого одобрения.\n5️⃣ Стараешься быть хорошим для всех.\n6️⃣ Всё время оправдываешься.\n7️⃣ Не отстаиваешь свои г",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfRZsDogWJj/",
+   "timestamp": "2026-11-03T07:59:55+0000",
+   "like_count": 353,
+   "comments_count": 11,
+   "insights": {
+    "views": 15103,
+    "reach": 11963,
+    "likes": 353,
+    "comments": 11,
+    "shares": 230,
+    "saved": 147,
+    "total_interactions": 755,
+    "ig_reels_avg_watch_time": 17833,
+    "ig_reels_video_view_total_time": 223665953
+   }
+  },
+  {
+   "id": "18111359270242015",
+   "caption": "Тест на дикцию 🎙 Прочитай вслух текст из ролика — и не сбейся!\n\nСложные длинные слова — лучшая разминка для речи: губы и язык работают чётче, голос звучит увереннее. Читай медленно, проговаривая каждый слог, а потом ускоряйся.\n\nНа каком слове споткнулся? Пиши в комментариях 👇\nСохрани и попробуй завт",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfRVPA6D7fh/",
+   "timestamp": "2026-11-03T07:21:11+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 396,
+    "reach": 337,
+    "likes": 1,
+    "comments": 0,
+    "shares": 1,
+    "saved": 1,
+    "total_interactions": 3,
+    "ig_reels_avg_watch_time": 16081,
+    "ig_reels_video_view_total_time": 5580436
+   }
+  },
+  {
+   "id": "18118859405109090",
+   "caption": "У тебя три секунды ⏱ Назови трёх людей, которых ты любишь больше всего.\n\nРаз… два… три.\n\nСебя назвал? 🙂 Большинство — нет. А ведь с собой ты проводишь каждую минуту своей жизни.\n\nЦени себя. Люби себя 🤍\n\nОтправь это тому, кого по-настоящему любишь — и кому сейчас нужно вспомнить о любви к себе.\nА в к",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfPZf5AgCiI/",
+   "timestamp": "2026-11-02T13:19:48+0000",
+   "like_count": 11,
+   "comments_count": 2,
+   "insights": {
+    "views": 359,
+    "reach": 293,
+    "likes": 11,
+    "comments": 2,
+    "shares": 1,
+    "saved": 2,
+    "total_interactions": 16,
+    "ig_reels_avg_watch_time": 15518,
+    "ig_reels_video_view_total_time": 4733216
+   }
+  },
+  {
+   "id": "17997020757020076",
+   "caption": "Его каракули пережили 700 лет ✍️\n\nXIII век, Новгород. Мальчику Онфиму лет шесть-семь. Бумаги ещё нет — буквы процарапывают острым писалом прямо на бересте.\n\nОнфим старательно выводит азбуку… а на полях рисует себя всадником, который пронзает врага копьём. И зверя — с подписью «Я зверь».\n\nБереста про",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfPLl-oggUk/",
+   "timestamp": "2026-11-02T11:18:37+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 331,
+    "reach": 271,
+    "likes": 2,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 23688,
+    "ig_reels_video_view_total_time": 6751189
+   }
+  },
+  {
+   "id": "18130926574837271",
+   "caption": "Зачем вам ИИ-ведущий и как он работает — коротко, в 8 слайдах 👉\n\nОбычный ролик — это студия, оператор, спикер, дубли. А если нашли ошибку или нужен второй язык — всё заново.\n\nИИ-ведущий — цифровой человек в кадре: лицо, мимика и голос созданы нейросетью, а говорит он ровно ваш текст.\n\nКак это устрое",
+   "media_type": "CAROUSEL_ALBUM",
+   "media_product_type": "FEED",
+   "permalink": "https://www.instagram.com/p/DfPABU6G_6U/",
+   "timestamp": "2026-11-02T09:36:55+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 64,
+    "reach": 25,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0
+   }
+  },
+  {
+   "id": "18116615567464602",
+   "caption": "5 фраз, которые выдают неуверенного человека. Проверьте себя 👇\n\n1️⃣ Не «не за что», а «Мне было приятно помочь». Ваше время и силы — не «ничто».\n2️⃣ Не «извините, что опоздал», а «Спасибо, что подождали». Благодарите, а не оправдывайтесь.\n3️⃣ Не «я постараюсь», а «Я этим займусь». Уверенные люди бер",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfO7wMmEoRS/",
+   "timestamp": "2026-11-02T08:59:58+0000",
+   "like_count": 2748,
+   "comments_count": 72,
+   "insights": {
+    "views": 63611,
+    "reach": 43198,
+    "likes": 2748,
+    "comments": 72,
+    "shares": 2393,
+    "saved": 905,
+    "total_interactions": 6222,
+    "ig_reels_avg_watch_time": 44612,
+    "ig_reels_video_view_total_time": 1969241271
+   }
+  },
+  {
+   "id": "18011229912005230",
+   "caption": "5 черт самых редких женщин 🤍 Большинство из них даже не догадываются, что это про них.\n\n1️⃣ Отдаёт больше, чем получает. Не из наивности — так устроено её сердце.\n2️⃣ Чувствует всё: тон голоса, перемену настроения, сообщение чуть короче обычного.\n3️⃣ Помнит мелочи. Как ты пьёшь кофе и что тревожило ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfGGx0FCHWt/",
+   "timestamp": "2026-10-29T22:43:20+0000",
+   "like_count": 10,
+   "comments_count": 2,
+   "insights": {
+    "views": 442,
+    "reach": 333,
+    "likes": 10,
+    "comments": 2,
+    "shares": 0,
+    "saved": 4,
+    "total_interactions": 17,
+    "ig_reels_avg_watch_time": 29654,
+    "ig_reels_video_view_total_time": 10616479
+   }
+  },
+  {
+   "id": "18093200417203773",
+   "caption": "7 правил, после которых вселенная начнёт тебе помогать ✨ Сохрани, чтобы не потерять 📌\n\n1️⃣ «Отменяю». Поймала себя на тревожной мысли — скажи «отменяю» и вернись в настоящий момент.\n2️⃣ Не «я хочу», а «я выбираю». И сразу спроси себя: что я для этого сделаю?\n3️⃣ Мир обо всём позаботится. Сделай то, ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfFs5lgifLa/",
+   "timestamp": "2026-10-29T18:57:03+0000",
+   "like_count": 8,
+   "comments_count": 0,
+   "insights": {
+    "views": 238,
+    "reach": 207,
+    "likes": 8,
+    "comments": 0,
+    "shares": 1,
+    "saved": 3,
+    "total_interactions": 12,
+    "ig_reels_avg_watch_time": 19708,
+    "ig_reels_video_view_total_time": 4257033
+   }
+  },
+  {
+   "id": "17878913286568064",
+   "caption": "36 вопросов Артура Арона, которые сближают даже незнакомых людей 🤍\nОтвечайте по очереди, а в конце 4 минуты молча смотрите друг другу в глаза.\n1. С кем из любых людей мира вы бы хотели поужинать?\n2. Хотели бы вы славы? Какой?\n3. Репетируете фразы перед звонком?\n4. Каким был бы для вас идеальный день",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfFlWZtgiSC/",
+   "timestamp": "2026-10-29T17:51:15+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 185,
+    "reach": 155,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "saved": 3,
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 12593,
+    "ig_reels_video_view_total_time": 2077965
+   }
+  },
+  {
+   "id": "18154314208527936",
+   "caption": "Прайм-эра женщины — не в 25. А от 40 до 55 ✨\n\nВ двадцать пять нам это просто продали. А на деле тогда мы боялись всего: чужого мнения, одиночества, сказать «нет».\n\nСейчас дети выросли, любовные катастрофы позади, вы научились отпускать и наконец спрашиваете себя: «А чего хочу я?» Энергии ещё много —",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfFdXTtFdk5/",
+   "timestamp": "2026-10-29T16:41:27+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 181,
+    "reach": 160,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 11287,
+    "ig_reels_video_view_total_time": 1873653
+   }
+  },
+  {
+   "id": "17948746032069258",
+   "caption": "Почему вы не можете бросить сериал на середине серии? 📺\n\nДело не в слабой воле. Почти сто лет назад психолог Блюма Зейгарник заметила: официант помнит все заказы, пока их не оплатили, — а как только счёт закрыт, забывает начисто.\n\nВ лаборатории это подтвердилось: незаконченные дела люди вспоминали п",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfAm_YEEVFQ/",
+   "timestamp": "2026-10-27T19:29:06+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 189,
+    "reach": 166,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 1,
+    "ig_reels_avg_watch_time": 12421,
+    "ig_reels_video_view_total_time": 2111618
+   }
+  },
+  {
+   "id": "18153683839546847",
+   "caption": "Что на самом деле в паре электронки? 💨\n\nВ жидкости — глицерин и пропиленгликоль. Сами по себе они не страшные. Но когда спираль перегревается, они распадаются, и появляется формальдегид — основа формалина. В исследованиях на высокой мощности его в паре бывало больше, чем в дыме сигареты.\n\nА ещё из н",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De9-pXzj1Xv/",
+   "timestamp": "2026-10-26T18:58:24+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 170,
+    "reach": 156,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 5942,
+    "ig_reels_video_view_total_time": 956722
+   }
+  },
+  {
+   "id": "18393201991201622",
+   "caption": "Миллионы на ремонт — или зеркало за копейки? 🪞\n\nЖильцы небоскрёба жаловались на медленные лифты. Ускорить их — дорого и долго. А проблему решили за один день: рядом с лифтами повесили зеркала. Люди стали разглядывать себя и соседей — и ожидание перестало раздражать.\n\nЛифты не стали быстрее. Изменило",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De2cNANCpFZ/",
+   "timestamp": "2026-10-23T20:42:23+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 182,
+    "reach": 163,
+    "likes": 2,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 11543,
+    "ig_reels_video_view_total_time": 1973952
+   }
+  },
+  {
+   "id": "18110023319238323",
+   "caption": "Вспомнили, как звали учёного? Значит, приём уже работает 😉\n\nКривая забывания Эббингауза: уже через сутки мы теряем больше половины нового. Поэтому одна лекция или один инструктаж почти ничего не меняют.\n\nЧто помогает:\n01 — не перечитывать, а вспоминать\n02 — повторить завтра\n03 — и ещё раз через неде",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De2WedJChv9/",
+   "timestamp": "2026-10-23T19:52:47+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 94,
+    "reach": 79,
+    "likes": 1,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 7493,
+    "ig_reels_video_view_total_time": 629437
+   }
+  },
+  {
+   "id": "18123302443873800",
+   "caption": "Досмотрели до конца? Значит, правила работают 😉\n\n3 правила видео, которое досматривают:\n01 — лицо в кадре\n02 — одна мысль = одна сцена\n03 — субтитры (многие смотрят без звука)\n\nА ведущей в этом ролике не существует: её голос, мимику и монтаж сделали нейросети. Ни камеры, ни студии — только текст и о",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De1rj55DdHO/",
+   "timestamp": "2026-10-23T13:37:23+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 51,
+    "reach": 38,
+    "likes": 2,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 12369,
+    "ig_reels_video_view_total_time": 519501
+   }
+  },
+  {
+   "id": "18105313169624714",
+   "caption": "Один директор — команды в разных странах 🌍\n\nПриветствие гендиректора на русском и английском: тот же голос, та же интонация, синхрон губ. Без переводчиков и пересъёмок.\n\nПереводим ролики на 30+ языков — для филиалов, партнёров и зарубежных клиентов.\n\nПишите в директ «ЯЗЫКИ» — посчитаем ваш ролик.\n\n#",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De1cih9j199/",
+   "timestamp": "2026-10-23T11:26:05+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 41,
+    "reach": 31,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 8374,
+    "ig_reels_video_view_total_time": 301476
+   }
+  },
+  {
+   "id": "18091061090217979",
+   "caption": "Вам звонят из «службы безопасности банка»? ☎️🚨\n\nТри признака мошенника — за 27 секунд. Сохраните и отправьте родителям.\n\nЭксперт в ролике — цифровой ведущий: сценарий, озвучка и монтаж сделаны нейросетями. Так получается экспертный контент для блога без камеры и студии.\n\nХотите такие Reels для своег",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De1cQXrAT-o/",
+   "timestamp": "2026-10-23T11:23:37+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 83,
+    "reach": 69,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 6754,
+    "ig_reels_video_view_total_time": 513322
+   }
+  },
+  {
+   "id": "18099649628081555",
+   "caption": "Видели рецепт в ленте и слюнки потекли? 🍝\n\nРекламный ролик для приложения доставки — ведущая, озвучка, графика, музыка. Сделан из текста, без съёмок.\n\nТак можно показать любой продукт или сервис: Reels, Shorts, реклама для маркетплейсов.\n\n💰 От 1 000 ₽ за минуту видео.\nПишите в директ «РЕКЛАМА» — при",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De1cELgihsG/",
+   "timestamp": "2026-10-23T11:22:05+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 44,
+    "reach": 32,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 6898,
+    "ig_reels_video_view_total_time": 255253
+   }
+  },
+  {
+   "id": "17897233023655163",
+   "caption": "Возврат товара — не конфликт, а шанс, что покупатель вернётся 🔁\n\nОбучающий ролик для продавцов за 25 секунд: 4 шага, чтобы принять возврат спокойно и по закону.\n\nВедущая — ИИ-аватар. Ни съёмок, ни студии, ни актёров: только текст инструкции 📄 → готовое видео 🎬\n\nНужны такие ролики для обучения сотруд",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/De1b41gju92/",
+   "timestamp": "2026-10-23T11:20:24+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 164,
+    "reach": 137,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 7785,
+    "ig_reels_video_view_total_time": 1113343
+   }
+  }
+ ]
+}
