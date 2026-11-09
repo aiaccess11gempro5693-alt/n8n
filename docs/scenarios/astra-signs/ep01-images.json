@@ -1,0 +1,170 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "astra1_moon",
+   "meaning": "ночное небо над городом, тёмное новолуние, силуэт героя на крыше",
+   "prompt": "A wide night sky full of stars above a sleeping city, a dark new moon disc with a thin golden rim in the upper middle, the small hero sits on a rooftop edge looking up at it, mysterious mood.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_bed",
+   "meaning": "утро 07:00, герой в кровати, «сканирует» — золотые пунктиры к силуэтам людей",
+   "prompt": "Early morning bedroom with purple starry blanket, the hero lies in bed propped on the pillow, from the hero's head thin dotted golden scanning lines go to three small round golden medallions with dark human silhouettes floating in the air; an analog alarm clock on the nightstand (no digits visible), violet dawn in the window.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_office",
+   "meaning": "офис: коллега потеет и «признаётся» под взглядом героя",
+   "prompt": "Office: the hero stands with arms crossed, calm and intimidating; opposite, a nervous colleague (a normal cartoon person with a face, bald, white shirt and tie) sweats big drops and raises hands in surrender as if confessing everything; desks, a monitor, a mug, night city in the window.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_lunch",
+   "meaning": "обед в кафе, героя спрашивают, герой загадочно пьёт кофе",
+   "prompt": "Lunch in a cosy cafe: two friendly coworkers (cartoon people with faces) lean towards the hero curiously, the hero sits back holding a coffee cup with a mysterious calm pose, a small golden padlock icon floats above the hero's cup as a joke.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_partner",
+   "meaning": "дома: партнёр невинно говорит, герой на диване",
+   "prompt": "Cosy living room in the evening: the partner stands in the doorway casually waving a hand while putting on a jacket, the hero sits on the sofa and slowly turns towards the partner, one hand already reaching for a phone; warm lamp, starry window. The partner is THE SAME character as on the board: faceless (plain oval, no features), short lavender hair, lavender sweater, light lavender trousers.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_board",
+   "meaning": "доска расследования с красными нитями, партнёр в шоке",
+   "prompt": "The hero stands in front of a huge detective cork board with photos, a city map, pins and red threads (no readable text, photos show only blurry shapes), the hero holds a magnifying glass; behind, the partner stares at the board in shock with hands on head. The partner is THE SAME character as on the board: faceless (plain oval, no features), short lavender hair, lavender sweater, light lavender trousers.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_archive",
+   "meaning": "гигантская картотека памяти — герой достаёт карточку",
+   "prompt": "A gigantic magical archive of filing cabinets that goes up into a starry sky, drawers glow golden, the hero on a small ladder pulls out one glowing index card with a satisfied pose; no letters on the drawers or card.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_protect",
+   "meaning": "за своих — в огонь и в воду: герой закрывает близких",
+   "prompt": "The hero stands with arms spread protectively in front of two loved ones (the partner and a friend, both faceless, hugging behind the hero); on the left stylized golden flames, on the right a stylized lavender wave, both stopping before the hero; heroic and warm. The partner is THE SAME character as on the board: faceless (plain oval, no features), short lavender hair, lavender sweater, light lavender trousers.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_cross",
+   "meaning": "вычёркивание: рука героя зачёркивает строку в списке",
+   "prompt": "Close-up: the hero's hand with a gold pen calmly draws a single straight line through one row of abstract wavy scribble lines on a cream paper list (NO real letters, only abstract squiggles), dim indigo desk, a candle, calm cold mood.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_burn",
+   "meaning": "23:00, новолуние, партнёр спит, герой сжигает записку у окна",
+   "prompt": "Night bedroom at 23:00 mood: the partner sleeps in bed in the background under a starry blanket, the hero stands at a large window with the dark new moon outside, holding a small burning paper note, golden flame and smoke curl, a candle on the windowsill. The partner is THE SAME character as on the board: faceless (plain oval, no features), short lavender hair, lavender sweater, light lavender trousers.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  },
+  {
+   "name": "astra1_drawer",
+   "meaning": "финал: герой хитро прячет толстую папку обид в ящик",
+   "prompt": "Funny ending: the hero sneakily slides a very thick overstuffed folder with many sticky tabs into a desk drawer, looking over the shoulder; on the desk a small burnt candle; starry window; playful mood. No letters on the folder.",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "FLAT 2D cartoon animation frame exactly in the style of the attached board (variant «Ночное небо»): clean shapes, soft gradients of a starry night, thin gold line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350, gold #D9B25F, lavender #B9A6E0, cream #F3EBDD, warm skin tones. The hero is THE SAME character as on the board: gender-neutral, face area is a plain smooth skin-coloured oval WITHOUT any facial features (no eyes, no nose, no mouth), dark tousled short hair, black long-sleeve sweater with a tiny gold scorpion pin, black trousers. Vertical full-frame 9:16 scene, main action in the middle of the frame; the top 18% and bottom 25% are calm background with no important details (a game panel and subtitles will be overlaid there). Absolutely NO text, NO letters, NO numbers, NO UI, NO speech bubbles, NO logos in the image.",
+   "style_qa": "плоская 2D-мультанимация в палитре борда (индиго, золото, лаванда), герой с гладким овалом лица БЕЗ черт лица в чёрном свитере — это задумано, не дефект; смысл соответствует описанию; без надписей, букв, цифр и интерфейса; верх и низ кадра спокойные",
+   "extra_refs": [
+    "scratch/img/astra_board_night.png"
+   ],
+   "person_note": "The attached image is ONLY a style board. Characters: the faceless hero (and the faceless partner only if described). Do NOT add pharmacists or people in white coats.",
+   "audience": "для юмористического астрологического блога в соцсетях"
+  }
+ ]
+}
