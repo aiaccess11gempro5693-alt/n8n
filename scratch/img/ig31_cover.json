@@ -1,0 +1,25 @@
+{
+  "job": {
+    "name": "ig31_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig10_host_a.png",
+      "docs/landing/insta/covers/ig10-cover.jpg"
+    ],
+    "person_note": "The SAME man as in the first attached photo: same face, grey hair, tan, cream linen jacket; do not change his face shape. The second image is the cover of part 1 — keep the same series look.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, warm golden sunset light on a yacht deck, same series look as the attached part-1 cover. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина, что на первом референсе, на палубе яхты; надписи «5 ФРАЗ», «КОТОРЫЕ ВЫДАЮТ СИЛЬНОГО ЧЕЛОВЕКА» и «ЧАСТЬ 2» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «5 фраз, которые выдают сильного человека» (часть 2)",
+    "prompt": "Vertical 9:16. The man from the first reference stands on the deck of a white yacht at golden sunset, sea behind him, calm confident kind half-smile, looking into the camera, from the chest up in the LOWER half of the frame, face fully visible and not covered by text. In the UPPER part over the sky: a huge bold white uppercase «5 ФРАЗ», under it bold white uppercase «КОТОРЫЕ ВЫДАЮТ» and a gold uppercase «СИЛЬНОГО ЧЕЛОВЕКА», with soft dark shadow, and a small navy rounded badge with gold text «ЧАСТЬ 2». All text must sit between 18% and 50% of the image height, above his head."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
