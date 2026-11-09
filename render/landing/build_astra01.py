@@ -284,14 +284,23 @@ def key_of(text):
 
 # ---------- фон ----------
 
-def scene_clip(i, img, dur, zoom=(1.05, 1.12), pan=0.0, focus=0.5):
+def scene_clip(i, img, dur, zoom=(1.05, 1.12), pan=0.0, focus=0.5, drop=0):
     """Кадр 2:3 → 9:16, медленный наезд/отъезд и панорама. Зум ≥1.05 прячет тонкую
     рамку, которую gpt-image-2 иногда рисует по краю."""
     src = Image.open(f"{IMG}/{img}.png").convert("RGB")
     w, h = src.size
     cw = int(h * 9 / 16)
     cx = int((w - cw) * focus)
-    src.crop((cx, 0, cx + cw, h)).resize((2160, 3840), Image.LANCZOS).save(f"{TMP}/bg{i}.png")
+    fr = src.crop((cx, 0, cx + cw, h)).resize((2160, 3840), Image.LANCZOS)
+    if drop:
+        # кадр опускается вниз (герой ниже карточек), сверху — растянутая кромка неба
+        d2 = drop * 2
+        top = fr.crop((0, 0, 2160, 40)).resize((2160, d2 + 40))
+        canvas = Image.new("RGB", (2160, 3840))
+        canvas.paste(top, (0, 0))
+        canvas.paste(fr.crop((0, 0, 2160, 3840 - d2)), (0, d2))
+        fr = canvas
+    fr.save(f"{TMP}/bg{i}.png")
     n = int(round(dur * FPS))
     z0, z1 = zoom
     z = f"{z0}+({z1}-{z0})*on/{n}"
@@ -347,7 +356,7 @@ def main():
         ("astra1_protect", t_love - 0.15, (1.12, 1.05), 0.0, 0.5),
         ("astra1_cross", t_betray - 0.15, (1.05, 1.14), 0.0, 0.5),
         ("astra1_burn", t_23 - 0.15, (1.05, 1.12), 0.4, 0.55),
-        ("astra1_drawer", t_secret - 0.15, (1.05, 1.11), 0.0, 0.5),
+        ("astra1_drawer", t_secret - 0.15, (1.05, 1.11), 0.0, 0.5, 300),
     ]
     starts = [p[1] for p in plan] + [total]
     clips = [scene_clip(i, p[0], starts[i + 1] - p[1] + 0.3, *p[2:]) for i, p in enumerate(plan)]
