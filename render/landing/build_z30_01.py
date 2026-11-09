@@ -167,14 +167,14 @@ def big_zero(name):
 def notif(name):
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    x0, y0, x1, y1 = 110, 430, 970, 640
+    x0, y0, x1, y1 = 110, 400, 970, 575
     rbox(d, (x0, y0 + 8, x1, y1 + 8), 34, (0, 0, 0, 140))
     rbox(d, (x0, y0, x1, y1), 34, (0xF4, 0xF2, 0xF8, 250))
-    d.ellipse((x0 + 34, y0 + 52, x0 + 134, y0 + 152), fill=RED)
-    d.rectangle((x0 + 60, y0 + 96, x0 + 108, y0 + 108), fill=WHITE)
-    d.text((x0 + 164, y0 + 70), "Списание по подписке", font=F(42), fill=BG1, anchor="lm")
-    d.text((x0 + 164, y0 + 140), "Баланс:", font=F(34), fill=(0x6B, 0x67, 0x80), anchor="lm")
-    d.text((x1 - 40, y0 + 140), "−399 ₽", font=F(58), fill=RED, anchor="rm")
+    d.ellipse((x0 + 30, y0 + 42, x0 + 120, y0 + 132), fill=RED)
+    d.rectangle((x0 + 53, y0 + 81, x0 + 97, y0 + 93), fill=WHITE)
+    d.text((x0 + 148, y0 + 58), "Списание по подписке", font=F(42), fill=BG1, anchor="lm")
+    d.text((x0 + 148, y0 + 120), "Баланс:", font=F(34), fill=(0x6B, 0x67, 0x80), anchor="lm")
+    d.text((x1 - 40, y0 + 120), "−399 ₽", font=F(58), fill=RED, anchor="rm")
     return save(im, name)
 
 
@@ -231,7 +231,7 @@ def key_of(text):
 
 # ---------- фон: кадры с движением ----------
 
-def scene_clip(i, img, dur, zoom=(1.0, 1.09), pan=0.0, focus=0.5):
+def scene_clip(i, img, dur, zoom=(1.0, 1.09), pan=0.0, focus=0.5, top=False):
     """Кадр 2:3 → обрезка 9:16 → медленный наезд/отъезд и лёгкая панорама."""
     src = Image.open(f"{IMG}/{img}.png").convert("RGB")
     w, h = src.size
@@ -242,7 +242,7 @@ def scene_clip(i, img, dur, zoom=(1.0, 1.09), pan=0.0, focus=0.5):
     z0, z1 = zoom
     z = f"{z0}+({z1}-{z0})*on/{n}"
     x = f"(iw-iw/zoom)/2+{pan}*(iw-iw/zoom)/2*(2*on/{n}-1)"
-    y = "(ih-ih/zoom)/2"
+    y = "0" if top else "(ih-ih/zoom)/2"
     out = f"{TMP}/sc{i}.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", f"{TMP}/bg{i}.png", "-vf",
                     f"zoompan=z='{z}':x='{x}':y='{y}':d={n}:s={W}x{H}:fps={FPS},format=yuv420p",
@@ -290,11 +290,11 @@ def main():
         ("z30e1_stuff", t_r3 - 0.1, (1.0, 1.08), -0.5, 0.5),
         ("z30e1_photo", t_photo - 0.1, (1.0, 1.10), 0.0, 0.45),
         ("z30e1_evening", t_eve - 0.2, (1.08, 1.0), 0.0, 0.5),
-        ("z30e1_shock", t_vib - 0.1, (1.0, 1.12), 0.0, 0.5),
+        ("z30e1_shock", t_vib - 0.1, (1.0, 1.12), 0.0, 0.5, True),
         ("z30e1_evening", t_q - 0.2, (1.0, 1.06), 0.0, 0.5),
     ]
     starts = [p[1] for p in plan] + [total]
-    clips = [scene_clip(i, p[0], starts[i + 1] - p[1] + 0.3, p[2], p[3], p[4]) for i, p in enumerate(plan)]
+    clips = [scene_clip(i, p[0], starts[i + 1] - p[1] + 0.3, *p[2:]) for i, p in enumerate(plan)]
     # склейка с короткой растворкой 0.3 с
     inputs, fc, last, off = [], [], "[0:v]", 0.0
     for c in clips:
