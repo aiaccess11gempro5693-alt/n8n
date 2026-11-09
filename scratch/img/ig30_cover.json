@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig30_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig30_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, chestnut bob, gold glasses, cream silk blouse; do not change her face shape.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic, natural daylight restaurant tones. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: та же женщина, что на референсе, за столиком в ресторане; надписи «СИЛЬНОГО СОТРУДНИКА», «ТЕРЯЮТ РАНЬШЕ» и «чем вы думаете» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «Сильного сотрудника теряют раньше»",
+    "prompt": "Vertical 9:16. The woman from the reference sits at the light wooden restaurant table with an espresso cup, serious and confident, looking straight into the camera, one hand mid-gesture. She is in the LOWER half of the frame, from the waist up, face fully visible and NOT covered by text. In the UPPER part over the softly blurred restaurant background (panoramic windows, wooden ceiling): huge bold condensed white uppercase title in two lines «СИЛЬНОГО СОТРУДНИКА» / «ТЕРЯЮТ РАНЬШЕ» with a soft dark shadow, and under it a red rounded pill with white text «чем вы думаете». All text must sit between 18% and 48% of the image height, above her head."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
