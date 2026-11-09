@@ -1,0 +1,20 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "debt02_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "docs/landing/insta/covers/debt01-cover.jpg",
+    "scratch/img/debt02_bus.png"
+   ],
+   "person_note": "The SAME cartoon character Sasha as in the attached images: same face, hair, stubble, mustard hoodie and drawing style.",
+   "style": "Flat 2D vector cartoon style like a popular mobile game or TikTok animated series: bold thick dark outlines, flat saturated colours, simple cel shading, clean shapes. A finished, eye-catching vertical Instagram Reels COVER for episode 2 of the same cartoon series as the first attached cover. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка серии 2 в том же мультяшном стиле, что первая: тот же Саша в горчичном худи в автобусе с телефоном, в шоке; надписи «30 ДНЕЙ БЕЗ ДОЛГОВ», «ДЕНЬ 2» и «ВЕРНЯК?» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка серии 2 «Верняк»",
+   "prompt": "Vertical 9:16. Same title plate style as the first attached cover: at the top, a big rounded red plate with a thick dark outline and bold cream letters «30 ДНЕЙ БЕЗ ДОЛГОВ», with a small mustard badge «ДЕНЬ 2» under it. Below, Sasha sits in an evening city bus (like the second attached image), holding his phone, face frozen in shock and regret, a sweat drop, the phone screen glowing red (no readable text on the screen). Next to his head a big tilted mustard sticker with bold dark letters «ВЕРНЯК?» and a red cross mark. Keep all text between 22% and 60% of the image height, the face fully visible below the title."
+  }
+ ]
+}
