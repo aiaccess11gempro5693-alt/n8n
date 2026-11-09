@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "astra_board_night",
+    "engine": "gpt-image-2",
+    "kind": "board",
+    "aspect": "16:9",
+    "meaning": "«Ночное небо»: плоская 2D-анимация, индиго #241B3D/#2E2350, золото #D9B25F, лаванда #B9A6E0, крем #F3EBDD",
+    "prompt": "Create a complete design system board (style guide sheet, 16:9) for a series of VERTICAL 9:16 animated humorous Reels for an astrology blog «Астрология без сахара», series «Представь: ты — Скорпион». There is NO presenter: the viewer is the hero — a FACELESS, GENDER-NEUTRAL cartoon character «ты» (no facial features, short neutral hair, loose dark outfit with a small scorpion pin), so anyone can imagine themselves. Episode 1 is a funny day of a Scorpio based on zodiac stereotypes: at 7 am in bed the hero's eyes already scan who will lie today; at the office a colleague sweats under the hero's stare and confesses; at home the partner (another faceless character, different colour) says «Я в пятницу задержусь» and the hero instantly builds a detective board with red threads; at 11 pm, new moon, partner asleep, the hero burns a paper note at the window. Blocks on the board: title «Представь · ты — Скорпион», colour palette with HEX codes, typography, the hero in 3 poses (squinting in bed, crossed arms with intense stare, holding a burning note), the partner in 1 pose, a game-like TOP PANEL «♏ СКОРПИОН · НОВОЛУНИЕ» with meters «ИНТУИЦИЯ 100%» and «ДОВЕРИЕ 3%», a stamp «СЕКРЕТНО», a SUBTITLES style (one key word highlighted), an end card «Напиши свой знак», and a block «КАДРЫ 9:16» with 4 phone-shaped frames: (1) bedroom 07:00 with scanning eyes; (2) office, colleague confessing; (3) detective board at home with the partner; (4) dark new moon window, burning note. In every phone frame keep text away from the top 13% and the bottom 22%. All text in Russian, short, correctly spelled. The attached screenshot is the blog's Instagram profile: take ONLY its colours and typographic mood (deep indigo night sky, gold, lavender, cream, elegant italic serif headlines with small spaced capitals above them); do not copy its posts or photos. Style: FLAT 2D cartoon animation, clean shapes, soft gradients of a starry night, gold thin line accents and small stars, cosy humour. Palette: deep indigo #241B3D and #2E2350 backgrounds, gold #D9B25F accents and key subtitle word, lavender #B9A6E0, cream #F3EBDD text.",
+    "extra_refs": [
+      "docs/references/astra-seek-profile.png"
+    ],
+    "person_note": "The attached screenshot is only a colour and typography reference of the blog; the hero is a faceless gender-neutral cartoon character, not a real person.",
+    "audience": "для юмористического астрологического блога",
+    "style_qa": "плоская 2D-анимация, мультяшный юмор, ночное индиго с золотом; герой и партнёр нарочно БЕЗ лица и без пола — это не дефект"
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
