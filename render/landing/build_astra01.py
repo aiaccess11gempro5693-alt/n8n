@@ -134,7 +134,7 @@ def star(d, cx, cy, r, fill):
                (cx, cy + r), (cx - r * .22, cy + r * .22), (cx - r, cy), (cx - r * .22, cy - r * .22)], fill=fill)
 
 
-def hud(name, trust, trust_col=LAV):
+def hud(name, trust, trust_col=LAV, label=""):
     """Игровая панель: медальон ♏ + шкалы ИНТУИЦИЯ / ДОВЕРИЕ."""
     im, d = blank()
     x0, y0, x1, y1 = 120, 262, 960, 382
@@ -143,6 +143,10 @@ def hud(name, trust, trust_col=LAV):
     d.ellipse((cx - 42, cy - 42, cx + 42, cy + 42), outline=GOLD, width=3)
     d.text((cx, cy + 2), "♏", font=SYM, fill=GOLD, anchor="mm")
     spaced(d, (x0 + 130, y0 + 32), "СКОРПИОН", F(28, "semi"), CREAM, gap=4, anchor="lm")
+    if label:
+        lw = d.textlength(label, font=F(24, "semi")) + 40
+        d.rounded_rectangle((x1 - 30 - lw, y0 + 14, x1 - 30, y0 + 50), 18, fill=GOLD)
+        d.text((x1 - 30 - lw / 2, y0 + 32), label, font=F(24, "semi"), fill=INK, anchor="mm")
     bars = [("ИНТУИЦИЯ", 1.0, "100%", GOLD), ("ДОВЕРИЕ", trust / 100, f"{trust}%", trust_col)]
     for k, (lab, v, txt, col) in enumerate(bars):
         bx = x0 + 130 + k * 345
@@ -164,21 +168,22 @@ def chip(name, text, y=410):
     return save(im, name)
 
 
-def title_card(name, kicker, lines, top=470, gold_line=None):
+def title_card(name, kicker, lines, top=470, gold_line=None, size=72):
     """Карточка в стиле постов блога: капители сверху, курсив, золотая черта."""
     im, d = blank()
-    fs = F(72, "serif")
+    fs = F(size, "serif")
+    lh = int(size * 1.22)
     rows = []
     for ln in lines:
         rows += wrap(d, ln, fs, 800)
-    h = 92 + 88 * len(rows) + 70
+    h = 92 + lh * len(rows) + 70
     frame(d, (90, top, 990, top + h))
     spaced(d, (W / 2, top + 58), kicker, F(26, "semi"), GOLD, gap=5)
     y = top + 92
     for i, ln in enumerate(rows):
         col = GOLD if gold_line is not None and i == gold_line else CREAM
-        d.text((W / 2, y + 44), ln, font=fs, fill=col, anchor="mm")
-        y += 88
+        d.text((W / 2, y + lh / 2), ln, font=fs, fill=col, anchor="mm")
+        y += lh
     d.line((W / 2 - 70, y + 26, W / 2 - 16, y + 26), fill=GOLD, width=2)
     d.line((W / 2 + 16, y + 26, W / 2 + 70, y + 26), fill=GOLD, width=2)
     star(d, W / 2, y + 26, 9, GOLD)
@@ -186,23 +191,23 @@ def title_card(name, kicker, lines, top=470, gold_line=None):
     return save(im, name)
 
 
-def info_card(name, kicker, title, extra=None, top=500):
+def info_card(name, kicker, title, extra=None, top=405):
     im, d = blank()
-    ft, fe = F(60, "serif"), F(44, "serif")
+    ft, fe = F(54, "serif"), F(38, "serif")
     rows = wrap(d, title, ft, 800)
     erows = wrap(d, extra, fe, 800) if extra else []
-    h = 84 + 74 * len(rows) + (20 + 58 * len(erows) if erows else 0) + 40
+    h = 74 + 66 * len(rows) + (12 + 50 * len(erows) if erows else 0) + 30
     frame(d, (100, top, 980, top + h))
-    spaced(d, (W / 2, top + 50), kicker, F(24, "semi"), GOLD, gap=5)
-    y = top + 84
+    spaced(d, (W / 2, top + 44), kicker, F(22, "semi"), GOLD, gap=5)
+    y = top + 72
     for ln in rows:
-        d.text((W / 2, y + 37), ln, font=ft, fill=CREAM, anchor="mm")
-        y += 74
+        d.text((W / 2, y + 33), ln, font=ft, fill=CREAM, anchor="mm")
+        y += 66
     if erows:
-        y += 20
+        y += 12
         for ln in erows:
-            d.text((W / 2, y + 29), ln, font=fe, fill=GOLD, anchor="mm")
-            y += 58
+            d.text((W / 2, y + 25), ln, font=fe, fill=GOLD, anchor="mm")
+            y += 50
     assert top >= 395 and top + h + 8 <= 1150, (name, top, h)
     return save(im, name)
 
@@ -293,7 +298,7 @@ def scene_clip(i, img, dur, zoom=(1.05, 1.12), pan=0.0, focus=0.5):
     x = f"(iw-iw/zoom)/2+{pan}*(iw-iw/zoom)/2*(2*on/{n}-1)"
     out = f"{TMP}/sc{i}.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", f"{TMP}/bg{i}.png", "-vf",
-                    f"zoompan=z='{z}':x='{x}':y='(ih-ih/zoom)/2':d={n}:s={W}x{H}:fps={FPS},format=yuv420p",
+                    f"zoompan=z='{z}':x='{x}':y='(ih-ih/zoom)*0.2':d={n}:s={W}x{H}:fps={FPS},format=yuv420p",
                     "-frames:v", str(n), "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", out], check=True)
     return out
 
@@ -362,15 +367,14 @@ def main():
                0.25, t_watch - 0.05, 0.3, "card"))
     ov.append((title_card("promise", "ДОСМОТРИ ДО КОНЦА", ["В 23:00 —", "тайный ритуал"], top=430, gold_line=1),
                t_watch, t_seven - 0.1, 0.25, "card"))
-    ov.append((hud("hud3", 3), t_seven, t_five, 0.3, "hud"))
-    ov.append((hud("hud0", 0, RED), t_five, total, 0.0, "hud"))
-    for nm, txt, a, b in [("c07", "07:00 · УТРО", t_seven, t_nine), ("c09", "09:00 · ОФИС", t_nine, t_lunch),
-                          ("c13", "13:00 · ОБЕД", t_lunch, t_eve), ("c19", "19:00 · ДОМА", t_eve, t_all),
-                          ("c23", "23:00 · НОВОЛУНИЕ", t_23, t_secret)]:
-        ov.append((chip(nm, txt), a + 0.1, b - 0.1, 0.2, "chip"))
+    for nm, tr, lab, a, b in [("h07", 3, "07:00 · УТРО", t_seven, t_nine), ("h09", 3, "09:00 · ОФИС", t_nine, t_lunch),
+                              ("h13", 3, "13:00 · ОБЕД", t_lunch, t_eve), ("h19", 3, "19:00 · ДОМА", t_eve, t_five),
+                              ("h19b", 0, "19:00 · ДОМА", t_five, t_all), ("hx", 0, "", t_all, t_23),
+                              ("h23", 0, "23:00 · НОВОЛУНИЕ", t_23, t_secret), ("hy", 0, "", t_secret, total)]:
+        ov.append((hud(nm, tr, RED if tr == 0 else LAV, lab), a, b, 0.3 if nm == "h07" else 0.0, "hud"))
     ov.append((info_card("conf", "РЕЗУЛЬТАТ ДОПРОСА", "Признание получено", "без единого вопроса"),
                t_conf, t_lunch - 0.1, 0.2, "card"))
-    ov.append((stamp("secret", "СЕКРЕТНО"), t_rest, t_eve - 0.1, 0.0, "stamp"))
+    ov.append((stamp("secret", "СЕКРЕТНО", cy=520), t_rest, t_eve - 0.1, 0.0, "stamp"))
     ov.append((bubble("fri", "«Я в пятницу задержусь»"), t_quote, t_five - 0.05, 0.2, "card"))
     ov.append((info_card("inv", "РАССЛЕДОВАНИЕ", "5 минут", "с кем · где · до скольки кафе"),
                t_five, t_all - 0.1, 0.2, "card"))
@@ -380,13 +384,13 @@ def main():
                t_love, t_betray - 0.1, 0.2, "card"))
     ov.append((info_card("cross", "ЕСЛИ ПРЕДАЛИ", "Тихо вычеркнуть", "без крика и сцен"),
                t_cross, t_23 - 0.1, 0.2, "card"))
-    ov.append((info_card("ritual", "РИТУАЛ НОВОЛУНИЯ", "Написать и сжечь", "всё, что пора отпустить", top=520),
+    ov.append((info_card("ritual", "РИТУАЛ НОВОЛУНИЯ", "Написать и сжечь", "всё, что пора отпустить"),
                t_list, t_secret - 0.1, 0.2, "card"))
-    ov.append((title_card("tain", "ТАЙНА СКОРПИОНА", ["Каждый раз —", "новая жизнь"], gold_line=1),
+    ov.append((title_card("tain", "ТАЙНА СКОРПИОНА", ["Каждый раз —", "новая жизнь"], top=405, gold_line=1, size=58),
                t_secret, t_grudge - 0.05, 0.25, "card"))
-    ov.append((stamp("grudge", "ОБИДЫ: СОХРАНЕНЫ", cy=700, rot=6), t_grudge + 0.6, t_know - 0.1, 0.0, "stamp"))
-    ov.append((title_card("end", "СЛЕДУЮЩАЯ СЕРИЯ — ТВОЯ", ["Узнаёшь себя?", "Напиши свой знак"], top=430,
-                          gold_line=1), t_know, total, 0.25, "card"))
+    ov.append((stamp("grudge", "ОБИДЫ: СОХРАНЕНЫ", cy=520, rot=6), t_grudge + 0.6, t_know - 0.1, 0.0, "stamp"))
+    ov.append((title_card("end", "СЛЕДУЮЩАЯ СЕРИЯ — ТВОЯ", ["Узнаёшь себя?", "Напиши свой знак"], top=405,
+                          gold_line=1, size=58), t_know, total, 0.25, "card"))
 
     subs = B.chunks(WORDS, total)
     for k, s in enumerate(subs):
