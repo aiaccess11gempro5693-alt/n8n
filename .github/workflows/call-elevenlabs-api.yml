@@ -26,6 +26,10 @@ on:
         description: 'Имя файла в scratch/ (без расширения) — задавай уникальное при параллельных запросах'
         required: false
         default: 'tts-output'
+      voice_settings:
+        description: 'Необязательно: JSON voice_settings (например {"stability":0.5,"speed":0.9})'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -43,6 +47,7 @@ jobs:
           VOICE_ID: ${{ github.event.inputs.voice_id }}
           MODEL_ID: ${{ github.event.inputs.model_id }}
           OUTPUT_NAME: ${{ github.event.inputs.output_name }}
+          VOICE_SETTINGS: ${{ github.event.inputs.voice_settings }}
         run: |
           if [ -z "$ELEVENLABS_API_KEY" ]; then
             echo "::error::Секрет ELEVENLABS_API_KEY не задан в настройках репозитория"
@@ -54,6 +59,8 @@ jobs:
           python3 -c "
           import json, os
           body = {'text': os.environ['TEXT'], 'model_id': os.environ.get('MODEL_ID') or 'eleven_multilingual_v2'}
+          if os.environ.get('VOICE_SETTINGS', '').strip():
+              body['voice_settings'] = json.loads(os.environ['VOICE_SETTINGS'])
           with open('/tmp/tts-body.json', 'w') as f:
               json.dump(body, f, ensure_ascii=False)
           "
