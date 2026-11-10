@@ -1,0 +1,17 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig37_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": ["scratch/img/ig37_host.png"],
+   "person_note": "The SAME woman as in the attached photo: same face, auburn sleek bun, gold hoop earrings, black blazer; do not change her face shape.",
+   "style": "A finished, eye-catching vertical Instagram Reels COVER, cinematic dark studio with red neon arch. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: та же женщина, что на референсе, в студии с красной неоновой аркой; надписи «СКАЖИ ЭТО» и «УТРОМ В ЗЕРКАЛО» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка Reels «Скажи это утром в зеркало»",
+   "prompt": "Vertical 9:16 cover. The woman from the reference sits in the dark podcast studio with the glowing red neon arch behind her, warm confident look straight into the camera, one hand lightly on her chest. She is in the LOWER half of the frame, from the waist up, face fully visible and NOT covered by text. In the UPPER part, between 16% and 42% of the image height, over the dark background: huge bold white condensed uppercase title in two lines «СКАЖИ ЭТО» / «УТРОМ В ЗЕРКАЛО», the second line in bright lime green (#C8FF3C), with a soft dark shadow. No other text."
+  }
+ ]
+}
