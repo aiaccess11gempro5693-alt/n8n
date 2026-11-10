@@ -23,6 +23,24 @@ jobs:
   list-voices:
     runs-on: ubuntu-latest
     steps:
+      - name: Subscription balance
+        if: always()
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: |
+          curl -sS "https://api.elevenlabs.io/v1/user/subscription" \
+            -H "xi-api-key: $ELEVENLABS_API_KEY" -o /tmp/sub.json -w "\nHTTP_STATUS:%{http_code}\n"
+          python3 -c "
+          import json
+          d = json.load(open('/tmp/sub.json'))
+          if 'character_count' not in d:
+              print(json.dumps(d, ensure_ascii=False)[:800]); raise SystemExit(0)
+          used, lim = d.get('character_count'), d.get('character_limit')
+          print('tier:', d.get('tier'), '| status:', d.get('status'))
+          print('used:', used, '| limit:', lim, '| left:', (lim or 0) - (used or 0))
+          print('next reset (unix):', d.get('next_character_count_reset_unix'))
+          "
+
       - name: List voices in account
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
