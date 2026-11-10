@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig36_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig36_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, full dark beard, olive bomber jacket over black hoodie; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER on a pure black background. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: чёрный фон, сверху надписи «100 РАЗ ПОМОЖЕШЬ — ЗАБУДУТ» и «1 РАЗ ОТКАЖЕШЬ — ЗАПОМНЯТ» без ошибок, ниже горизонтальный кадр с тем же мужчиной за рулём ночью; других слов и логотипов нет",
+    "meaning": "обложка Reels «100 раз поможешь — забудут»",
+    "prompt": "Vertical 9:16 cover, solid pure black background. In the UPPER part, between 18% and 45% of the image height, centered: huge bold white sans-serif uppercase text in four short lines: «100 РАЗ ПОМОЖЕШЬ —» / «ЗАБУДУТ» / «1 РАЗ ОТКАЖЕШЬ —» / «ЗАПОМНЯТ», the words «ЗАБУДУТ» in white and «ЗАПОМНЯТ» in warm golden yellow. Below the text, between 50% and 80% of the height, a horizontal 16:9 photo panel spanning the full width: the man from the reference sits in the driver seat of a car at night, looking straight into the camera, serious, warm city lights through the side window. Rest of the frame stays pure black. No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
