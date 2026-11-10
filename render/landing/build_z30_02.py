@@ -83,7 +83,7 @@ def main():
     t_cancel = at("Отменяешь все")
     t_r5 = at("Правило номер пять")
     t_hours = at("Четыре часа")
-    t_cash = at("И вот")
+    t_cash = at("И вот", t_hours)
     t_plus = at("Баланс снова")
     t_eve = at("Шесть вечера")
     t_msg = at("Беру вашу")
