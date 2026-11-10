@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig33_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig33_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, dark stubble beard, olive-green overshirt; do not change his face shape.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic night street, warm orange lamps and teal shadows. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина, что на референсе, ночью на улице; надписи «НЕ ТРОГАЙТЕ» и «ИСКРЕННИХ» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «Не трогайте искренних»",
+    "prompt": "Vertical 9:16. The man from the reference sits at an outdoor night cafe table, serious and emotional, looking straight into the camera. He is in the LOWER half of the frame, from the chest up, face fully visible and NOT covered by text. In the UPPER part over the blurred night street with warm bokeh lights: huge bold condensed white uppercase title in two lines «НЕ ТРОГАЙТЕ» / «ИСКРЕННИХ», the second line in warm golden yellow, with a soft dark shadow. All text must sit between 18% and 46% of the image height, above his head."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

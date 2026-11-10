@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig34_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig34_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, short trimmed beard, grey temples, charcoal knit sweater; do not change his face shape.",
+    "style": "A finished, eye-catching vertical Instagram Reels COVER, photorealistic warm podcast studio, natural colours (not black-and-white). Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина, что на референсе, в студии подкаста с микрофоном; надписи «ВАМ СТАНЕТ» , «ЛЕГЧЕ ЖИТЬ» и «когда поймёте одно» без ошибок, других слов и логотипов нет, в цвете",
+    "meaning": "обложка Reels «Вам станет легче жить»",
+    "prompt": "Vertical 9:16 colour photo. The man from the reference sits at the wooden desk in the cosy podcast studio with a black microphone on a boom arm (not covering his mouth), calm and warm, looking straight into the camera. He is in the LOWER half of the frame, from the waist up, face fully visible and NOT covered by text. In the UPPER part over the blurred bookshelves and warm lamps: huge bold condensed white uppercase title in two lines «ВАМ СТАНЕТ» / «ЛЕГЧЕ ЖИТЬ» with a soft dark shadow, and under it a warm yellow rounded pill with dark text «когда поймёте одно». All text must sit between 18% and 46% of the image height, above his head."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
