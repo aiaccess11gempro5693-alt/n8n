@@ -242,7 +242,7 @@ def build_acts():
 ACTS = ["hook", "y1984", "comp", "game", "name", "copy", "world", "rights", "y1989", "count", "zero", "y1996",
         "legend", "next"]
 DATES = {"hook": "1984", "y1984": "1984", "comp": "1984", "game": "06.1984", "name": "1984", "copy": "1985",
-         "world": "1986 – 1988", "rights": "1988", "y1989": "1989", "count": "1989 →", "zero": "1989", "y1996": "1996",
+         "world": "1986 – 1988", "rights": "1988", "y1989": "1989", "count": "1989", "zero": "1989", "y1996": "1996",
          "legend": "20XX", "next": "20XX"}
 
 
@@ -252,7 +252,7 @@ def draw_act(cv, name, lt, T, t):
         rain(cv, lt, seed=1, n=11, alpha=0.5)
         appear(cv, neon_text("ТЕТРИС", 150, CYAN), 540, 520, lt, 0.0, kind="flicker")
         appear(cv, neon_text("ИГРАЛ ВЕСЬ МИР", 64, PINK), 545, 660, lt, 0.3, kind="flicker")
-        appear(cv, pill("АВТОР ПОЛУЧИЛ: 0 ₽", GOLD, 38), 540, 820, lt, max(0.6, M.at("советский") - st), kind="pop")
+        appear(cv, pill("АВТОРУ — 0 КОПЕЕК", GOLD, 38), 540, 820, lt, max(0.6, M.at("советский") - st), kind="pop")
     elif name == "y1984":
         appear(cv, pill("ВЦ АКАДЕМИИ НАУК СССР", CYAN, 32), 540, 500, lt, 0.0, kind="pop")
         k = ease(lt / 0.7)
@@ -291,8 +291,8 @@ def draw_act(cv, name, lt, T, t):
             y = 470 + i * 170
             appear(cv, bubble(txt, col), 540, y, lt, t0, kind="pop")
             if i and lt > t0:
-                appear(cv, plain_text("↓", 46, WHITE, "DejaVuSans-Bold.ttf" if os.path.exists(
-                    f"{M.FD}/DejaVuSans-Bold.ttf") else "Montserrat-ExtraBold.ttf"), 540, y - 85, lt, t0, kind="fade")
+                d = ImageDraw.Draw(cv)
+                d.polygon(((528, y - 100), (552, y - 100), (540, y - 78)), fill=WHITE + (200,))
     elif name == "rights":
         cv.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, 90)))
         appear(cv, neon_text("ВСЕ ПРАВА", 96, WHITE, glow=0.4), 540, 560, lt, 0.0, kind="flicker")
@@ -347,6 +347,7 @@ M.REDWORDS = {"копейки", "государству", "ноль", "долл�
 def main():
     os.makedirs(M.TMP, exist_ok=True)
     M.WORDS, _ = M.timed()
+    M.WORDS = [w for w in M.WORDS if M.norm(w[0]) != "покапока"]   # «Пока-пока» отрезан из звука
     total = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
                                            "csv=p=0", M.AUDIO]).decode()) + 0.4
     T = build_acts()
