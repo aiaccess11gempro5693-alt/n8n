@@ -97,7 +97,7 @@ def at(phrase, after=0.0):
 
 
 NOBREAK = {"в", "во", "к", "с", "со", "и", "а", "но", "за", "на", "до", "не", "по", "из", "от", "у", "о", "из",
-           "две", "сто", "сорок", "семьдесят", "девяносто", "наша", "один", "чем", "когда", "она"}
+           "две", "сто", "сорок", "тысячи", "три", "пару", "семьдесят", "девяносто", "наша", "один", "чем", "когда", "она"}
 
 
 def sub_chunks():
@@ -111,6 +111,14 @@ def sub_chunks():
             cur = []
     if cur:
         out.append(cur)
+    merged = []
+    for c in out:   # очень короткий кусок («Больше,») приклеиваем к следующему
+        if merged and (merged[-1][-1][2] - merged[-1][0][1] < 0.6 or c[-1][2] - c[0][1] < 0.45) \
+                and len(" ".join(x for x, _, _ in merged[-1] + c)) <= 24 and not re.search(r"[.!?…]»?$", merged[-1][-1][0]):
+            merged[-1] = merged[-1] + c
+        else:
+            merged.append(c)
+    out = merged
     res = []
     for i, c in enumerate(out):
         t0 = c[0][1]
@@ -641,7 +649,7 @@ def build_acts():
     T["more"] = at("Больше, чем")
     T["may"] = at("Май")
     T["june"] = at("Июнь")
-    T["score"] = at("Три")
+    T["score"] = at("Три", T["june"])
     T["street"] = at("И город до утра")
     T["july"] = at("Июль")
     T["peak"] = at("Это пик")
@@ -675,7 +683,7 @@ def draw_act(cv, name, lt, T, t):
     elif name == "y2007":
         appear(cv, neon_text("ПРАЙМ МОСКВЫ", 74, PINK), 540, 520, lt, 0.0, kind="flicker")
         k = ease(lt / 0.7)
-        yr = int(1998 + 9 * k)
+        yr = int(round(1998 + 9 * k))
         appear(cv, neon_text(str(yr), 230, GOLD, skew=0), 540, 760, lt, 0.05, kind="fade")
         appear(cv, plain_text("ПИК ЭПОХИ", 46, WHITE), 540, 930, lt, 0.7, kind="rise")
     elif name == "crash":
@@ -713,7 +721,7 @@ def draw_act(cv, name, lt, T, t):
         appear(cv, pill("МОСКВА-СИТИ", CYAN, 34), 540, 420, lt, 0.0, kind="pop")
         place(cv, towers(lt / 2.6), 540, 900, min(1, lt / 0.2))
     elif name == "club":
-        appear(cv, pill("ФЕЙСКОНТРОЛЬ", PINK, 30, WHITE), 540, 420, lt, 0.0, kind="pop")
+        appear(cv, pill("КЛУБЫ · 2007", PINK, 30, WHITE), 540, 420, lt, 0.0, kind="pop")
         appear(cv, neon_text("FACE CONTROL", 92, PINK), 540, 540, lt, 0.1, kind="flicker")
         place(cv, face_control(lt), 540, 930, min(1, lt / 0.3))
         for i, (key, txt, col, x, y) in enumerate((("clubs", "до рассвета", CYAN, 300, 1180),
@@ -856,8 +864,8 @@ def render_frame(t, T, total, bg, wlayers, subs):
             layer.putalpha(layer.getchannel("A").point(lambda v: int(v * out_k)))
     cv.alpha_composite(layer)
     # вспышка-склейка в начале сцены
-    if idx > 0 and lt < 0.12:
-        cv.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(70 * (1 - lt / 0.12)))))
+    if idx > 0 and lt < 0.08:
+        cv.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(28 * (1 - lt / 0.08)))))
     cv.alpha_composite(frame_ui(DATES[cur[1]]))
     for t0, t1, ws in subs:
         if t0 <= t < t1:
