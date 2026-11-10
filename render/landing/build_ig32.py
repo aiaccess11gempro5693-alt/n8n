@@ -28,6 +28,8 @@ import sfx as SFX  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SCEN = f"{ROOT}/docs/scenarios/insta-32-moscow-prime.md"
 AUDIO = f"{ROOT}/scratch/ig32/voice.mp3"
+MUSIC = f"{ROOT}/scratch/music/ig32-mns-loop.mp3"
+MUSIC_GAIN = 0.5
 WHISPER = f"{ROOT}/scratch/ig32-whisper-final.json"
 OUT = f"{ROOT}/render/landing/ig32-9x16.mp4"
 TMP = f"{ROOT}/render/landing/.ig32"
@@ -898,7 +900,16 @@ def main():
            (T["kazan"], "pop", 0.4)]
     pad = f"{TMP}/voice-pad.wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", AUDIO, "-af", "apad=pad_dur=0.4", "-ar", "48000", pad], check=True)
-    SFX.mix(pad, ev, audio, f"{TMP}/sfx", bed_gain=0.0, total=total, bed_fn=lambda d: np.zeros(int(48000 * d)))
+    # фон — Moscow Never Sleeps (DJ Smash): 30-секундный фрагмент со страницы звука Instagram,
+    # закольцован с кроссфейдами (scratch/music/ig32-mns-loop.mp3); по просьбе пользователя вшит в ролик
+    SFX.mix(pad, ev, audio, f"{TMP}/sfx", bed_gain=MUSIC_GAIN, total=total, bed_fn=SFX.music_bed(MUSIC))
+    if len(sys.argv) > 1 and sys.argv[1] == "--remux":   # только пересвести звук поверх готового видео
+        tmp = OUT.replace(".mp4", "-remux.mp4")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", OUT, "-i", audio, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+                        "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", tmp], check=True)
+        os.replace(tmp, OUT)
+        print(OUT, "звук пересведён")
+        return
     n = int(total * FPS)
     p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r",
                           str(FPS), "-i", "-", "-i", audio, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset",
