@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig34_guest",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, женщина ~30 на записи подкаста в той же студии, микрофон перед ней, внимательно слушает и смотрит чуть мимо камеры (так задумано), лёгкая улыбка, без надписей, в цвете",
+   "person_note": "The attached photo is ONLY a reference for the same studio and lighting; the person here is a NEW woman, not the man from the photo.",
+   "extra_refs": [
+    "scratch/img/ig34_host.png"
+   ],
+   "meaning": "собеседница ~30 в кремовом пиджаке, слушает, та же студия",
+   "prompt": "Vertical 9:16 photorealistic COLOUR frame from the same video podcast as the reference photo (same studio, same warm lamps and bookshelves). A Russian woman about 30 with dark brown hair in a loose high bun, small gold earrings, a cream tailored blazer over a white top. A black podcast microphone on a boom arm in front of her. She listens attentively, looking slightly to the left of the camera at the male host, a soft genuine smile, lips slightly parted. Medium shot from the waist up, face large and sharp. Natural warm colours, real camera frame, NOT black-and-white, NOT CGI. No text, no logos, no watermark."
+  }
+ ]
+}
