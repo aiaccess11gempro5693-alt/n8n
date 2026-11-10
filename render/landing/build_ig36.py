@@ -41,7 +41,7 @@ SPOKEN = ("Сто раз поможешь — забудут. Один раз о
           "А тех, кто после одного «нет» забыл всё хорошее, — отпусти. Им был нужен… не ты. Отправь это тому, кто "
           "всем помогает.")
 HOT = {"забудут", "запомнят", "подарком", "нормой", "выключат", "плохой", "вина", "проверка", "хочешь", "должен",
-       "оправданий", "отпусти", "ты", "помогает", "сил"}
+       "оправданий", "отпусти", "помогает", "сил"}
 PUNCH = ["проверка.", "Им"]
 
 
@@ -50,7 +50,7 @@ def norm(w):
 
 
 def render_title(path):
-    f = ImageFont.truetype(B.FONT, 64)
+    f = ImageFont.truetype(B.FONT, 56)
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     rows = [("100 раз поможешь — ", "забудут", (255, 255, 255)), ("1 раз откажешь — ", "запомнят", YELLOW)]
@@ -61,8 +61,8 @@ def render_title(path):
         d.text((x, y), a, font=f, fill=(255, 255, 255), anchor="lm")
         d.text((x + wa, y), b, font=f, fill=col, anchor="lm")
         assert x >= 40, a + b
-        y += 86
-    bb = (0, 400 - 40, W, y - 86 + 40)
+        y += 78
+    bb = (0, 400 - 40, W, y - 78 + 40)
     assert bb[1] >= 250 and bb[3] < VY - 20, bb
     im.save(path)
 
@@ -87,7 +87,7 @@ def render_sub(path, text):
     for ln in lines:
         x = W / 2 - d.textlength(" ".join(ln), font=f) / 2
         for w in ln:
-            col = YELLOW if norm(w) in HOT else (255, 255, 255)
+            col = YELLOW if norm(w) in HOT or text.strip() == "не ты." else (255, 255, 255)
             d.text((x, y + lh / 2), w, font=f, fill=col, anchor="lm")
             x += d.textlength(w, font=f) + sp
         y += lh
@@ -105,6 +105,14 @@ def main():
     total = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                                            "-of", "csv=p=0", AUDIO]).decode()) + 0.8
     subs = B.chunks(words, min(total, last + 0.8))
+    merged = []
+    for s in subs:   # короткий чанк (< 0.9 с) приклеиваем к следующему, чтобы не мелькал
+        if (merged and merged[-1]["t1"] - merged[-1]["t0"] < 0.9 and len(merged[-1]["text"] + s["text"]) <= 38
+                and not re.search(r"[.!?…]$", merged[-1]["text"])):
+            merged[-1] = {"text": merged[-1]["text"] + " " + s["text"], "t0": merged[-1]["t0"], "t1": s["t1"]}
+        else:
+            merged.append(dict(s))
+    subs = merged
     for s in subs:
         assert s["t1"] - s["t0"] >= 0.5, s
     punch = [(F(PUNCH[0]), F(PUNCH[0]) + 1.8), (F(PUNCH[1], after=38), F(PUNCH[1], after=38) + 2.2)]
