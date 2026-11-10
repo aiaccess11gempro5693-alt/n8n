@@ -65,11 +65,24 @@ CFG = {
         punch=["пуст", "Поэтому"], music="ig34-music.mp3", gain=0.11, caps=False, title=None,
         # врезки собеседницы (слушает): (слово начала, длительность)
         guest=("scratch/ig34/guest.mp4", [("Счастливые", 2.0), ("Уверенные", 2.6), ("Сохрани,", 1.6)])),
+    "37": dict(
+        spoken=("Хочешь, чтобы день начинался с силы, а не с тревоги? Завтра утром подойди к зеркалу и скажи это "
+                "вслух. Я начинаю самый сильный период своей жизни. Всё складывается в мою пользу. Я заслуживаю того, "
+                "чего хочу. Я спокойна. Я уверена. Я справлюсь. Я выбираю себя — каждый день. Звучит просто? Но то, "
+                "что ты говоришь себе каждое утро, становится тем, во что ты веришь. Сохрани и повтори завтра утром."),
+        hook="СКАЖИ ЭТО УТРОМ В_ЗЕРКАЛО",
+        hot={"силы", "зеркалу", "сильный", "пользу", "заслуживаю", "спокойна", "уверена", "справлюсь", "себя",
+             "веришь", "сохрани", "вслух"},
+        punch=["сильный", "себя"], music="ig37-music.mp3", gain=0.10, caps=False, title=None,
+        hot_color=(200, 255, 60)),
 }
 
 
 def norm(w):
     return re.sub(r"[^\wё]", "", w.lower())
+
+
+HOT_COLOR = YELLOW
 
 
 def render_sub(path, text, hot, caps):
@@ -94,7 +107,7 @@ def render_sub(path, text, hot, caps):
     for ln in lines:
         x = B.W / 2 - d.textlength(" ".join(ln), font=f) / 2
         for w in ln:
-            col = YELLOW if norm(w) in hot else (255, 255, 255)
+            col = HOT_COLOR if norm(w) in hot else (255, 255, 255)
             d.text((x, y + lh / 2), w, font=f, fill=col, anchor="lm", stroke_width=B.STROKE, stroke_fill=(0, 0, 0, 235))
             x += d.textlength(w, font=f) + space
         y += lh
@@ -113,7 +126,9 @@ def render_title(path, text):
 
 
 def main(n):
+    global HOT_COLOR
     c = CFG[n]
+    HOT_COLOR = c.get("hot_color", YELLOW)
     B.AUDIO = f"{ROOT}/scratch/ig{n}/trim.mp3"
     B.WHISPER = f"{ROOT}/scratch/ig{n}-whisper-final.json"
     B.CLIP = f"{ROOT}/scratch/ig{n}/host.mp4"
