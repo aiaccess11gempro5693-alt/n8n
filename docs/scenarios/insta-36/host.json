@@ -1,0 +1,16 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig36_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "16:9",
+   "style": "Photorealistic night-time phone video still from inside a car, true-to-life colours, natural skin texture. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, мужчина ~34 за рулём ночью, снято с телефона на приборной панели, смотрит в камеру, губы приоткрыты, без надписей",
+   "person_note": "A completely new, ordinary man (not a celebrity), looks genuinely real.",
+   "meaning": "мужчина ~34 в машине ночью говорит в камеру",
+   "prompt": "Horizontal 16:9 photorealistic frame, as if filmed by a phone mounted on the dashboard. A Russian man about 34 with short dark hair, a full neat dark beard, a dark olive bomber jacket over a black hoodie, sits in the driver seat of a parked car at night, his body turned slightly toward the camera, looking straight into the camera, mid-sentence, lips slightly parted, calm serious face, NO smile, one hand resting on the steering wheel. Framing: he is on the left third of the frame, head and shoulders and chest fully visible, face large and sharp, top of head about 12% below the upper edge. Behind him through the side window: dark night city with warm street lights and a lit building, soft bokeh. Dim warm interior light on his face, deep shadows, realistic low-light phone camera look, NOT CGI. No text, no logos, no watermark."
+  }
+ ]
+}
