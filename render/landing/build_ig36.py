@@ -42,7 +42,9 @@ SPOKEN = ("Сто раз поможешь — забудут. Один раз о
           "всем помогает.")
 HOT = {"забудут", "запомнят", "подарком", "нормой", "выключат", "плохой", "вина", "проверка", "хочешь", "должен",
        "оправданий", "отпусти", "помогает", "сил"}
-PUNCH = ["проверка.", "Им"]
+PUNCH = [("проверка.", 0, 1.8), ("Им", 38, 2.2)]   # (слово, искать после t, длительность)
+ALLHOT = {"не ты."}                                 # чанки, подсвеченные целиком
+ROWS = [("100 раз поможешь — ", "забудут", (255, 255, 255)), ("1 раз откажешь — ", "запомнят", YELLOW)]
 
 
 def norm(w):
@@ -53,7 +55,7 @@ def render_title(path):
     f = ImageFont.truetype(B.FONT, 56)
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    rows = [("100 раз поможешь — ", "забудут", (255, 255, 255)), ("1 раз откажешь — ", "запомнят", YELLOW)]
+    rows = ROWS
     y = 400
     for a, b, col in rows:
         wa, wb = d.textlength(a, font=f), d.textlength(b, font=f)
@@ -87,7 +89,7 @@ def render_sub(path, text):
     for ln in lines:
         x = W / 2 - d.textlength(" ".join(ln), font=f) / 2
         for w in ln:
-            col = YELLOW if norm(w) in HOT or text.strip() == "не ты." else (255, 255, 255)
+            col = YELLOW if norm(w) in HOT or text.strip() in ALLHOT else (255, 255, 255)
             d.text((x, y + lh / 2), w, font=f, fill=col, anchor="lm")
             x += d.textlength(w, font=f) + sp
         y += lh
@@ -115,7 +117,7 @@ def main():
     subs = merged
     for s in subs:
         assert s["t1"] - s["t0"] >= 0.5, s
-    punch = [(F(PUNCH[0]), F(PUNCH[0]) + 1.8), (F(PUNCH[1], after=38), F(PUNCH[1], after=38) + 2.2)]
+    punch = [(F(w, after=a), F(w, after=a) + d) for w, a, d in PUNCH]
     json.dump({"subs": subs, "punch": punch}, open(f"{TMP}/plan.json", "w"), ensure_ascii=False, indent=1)
 
     padded = f"{TMP}/voice-pad.wav"
