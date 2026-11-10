@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig34_host",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+    "style_qa": "фотореализм, мужчина ~42 на записи подкаста, микрофон перед ним, смотрит чуть мимо камеры на собеседницу (так задумано), губы приоткрыты, без надписей, в цвете",
+    "person_note": "A completely new, ordinary man (not a celebrity), looks genuinely real.",
+    "meaning": "ведущий подкаста ~42, серый свитер, тёплая студия с книгами",
+    "prompt": "Vertical 9:16 photorealistic COLOUR frame from a video podcast. A confident friendly Russian man about 42 with short brown hair slightly grey at the temples, a short trimmed beard, a charcoal-grey knit sweater. He sits at a wooden desk, a black podcast microphone on a boom arm in front of his chest (NOT covering the mouth). He looks slightly to the right of the camera at a woman interlocutor (she is not in this frame), mid-sentence, lips slightly parted, calm half-smile in the eyes. Medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 14% below the upper edge. Background: cosy podcast studio with dark wooden bookshelves, warm table lamps, blurred. Natural warm colours, real high-end camera frame, NOT black-and-white, NOT CGI. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

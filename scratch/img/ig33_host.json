@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig33_host",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+    "style_qa": "фотореализм, мужчина ~38 ночью на улице, крупный план, смотрит чуть мимо камеры (так задумано), губы приоткрыты, без надписей",
+    "person_note": "A completely new, ordinary man (not a celebrity), looks genuinely real.",
+    "meaning": "мужчина ~38 ночью на городской улице, тёплые огни, оливковая рубашка",
+    "prompt": "Vertical 9:16 photorealistic frame from a cinematic street interview at night. A Russian man about 38 with short dark hair, a neat dark stubble beard, tired serious eyes, an olive-green linen overshirt over a dark t-shirt. He sits at an outdoor table of a quiet night cafe, looking slightly to the right of the camera at an interlocutor, mid-sentence, lips slightly parted, serious and emotional, NO smile. Medium close-up from the chest up, both shoulders inside the frame, face large and sharp, top of head about 12% below the upper edge. Background: night city street with warm orange street lamps, green trees and soft bokeh lights, blurred. Look: a real frame from a high-end cinema camera, teal-and-orange night grading but natural skin, NOT CGI. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
