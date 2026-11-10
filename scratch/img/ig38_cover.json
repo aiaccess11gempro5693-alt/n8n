@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig38_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig36_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, full dark beard, olive bomber jacket over black hoodie; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic night car photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина за рулём ночью; надписи «ХВАТИТ ДУМАТЬ» и «5 · 4 · 3 · 2 · 1» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «Ты слишком много думаешь»",
+    "prompt": "Vertical 9:16 cover. The man from the reference sits in the driver seat of a car at night, filmed from the dashboard, determined face, one hand raised with an open palm toward the camera as if saying 'stop thinking', warm city lights blurred behind the side window; he fills the LOWER 55% of the frame, face fully visible and NOT covered by text. The UPPER part is dark car interior and night sky, almost black. In the upper part, between 16% and 42% of the image height: huge bold white condensed uppercase title «ХВАТИТ ДУМАТЬ» in two lines, and under it a large golden yellow countdown «5 · 4 · 3 · 2 · 1». No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
