@@ -1,0 +1,17 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig40_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": ["scratch/img/ig40_host.png"],
+   "person_note": "The SAME man as in the attached photo: same face, short dark hair, light stubble, burgundy knitted polo; do not change his face shape.",
+   "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic dark studio photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: тот же мужчина в бордовом поло в тёмной студии; надписи «НЕ ПРОСИ ДЕНЕГ» и «ПРОСИ ЭТИ 5 ВЕЩЕЙ» без ошибок, других слов и логотипов нет",
+   "meaning": "обложка Reels «Не проси денег — проси эти 5 вещей»",
+   "prompt": "Vertical 9:16 cover. The man from the reference sits in a black leather armchair in a dark studio with a deep blue glow behind him, looking into the camera with a serious, confident expression, one hand raised showing five spread fingers; he fills the LOWER 58% of the frame, face fully visible and NOT covered by text. The UPPER part is dark navy-black background. In the upper part, between 15% and 40% of the image height: huge bold white condensed uppercase title «НЕ ПРОСИ ДЕНЕГ» in two lines, and under it a large bright yellow uppercase line «ПРОСИ ЭТИ 5 ВЕЩЕЙ». No other text."
+  }
+ ]
+}
