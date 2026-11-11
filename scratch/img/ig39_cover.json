@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig39_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig39_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, short silver hair, navy blazer, white shirt; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic dark podcast studio photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же седой мужчина в тёмной студии подкаста; надписи «НАСТРОЙ НА ВСЮ ЖИЗНЬ:» и «Я НЕПОБЕДИМ» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «Я непобедим»",
+    "prompt": "Vertical 9:16 cover. The man from the reference sits in a dark moody podcast studio, a calm knowing half-smile, looking into the camera, warm rim light; his head and shoulders fill the UPPER half of the frame (face between 14% and 42% of the image height), face fully visible and NOT covered by text. Below him the frame is dark (his dark blazer and the black studio). In the lower-middle part, between 50% and 72% of the image height: a small white uppercase line «НАСТРОЙ НА ВСЮ ЖИЗНЬ:» and under it a huge bold golden-yellow condensed uppercase title «Я НЕПОБЕДИМ» across almost the full width. No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
