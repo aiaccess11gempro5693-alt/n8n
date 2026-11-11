@@ -27,7 +27,19 @@ def ensure_playwright():
             if d not in sys.path:
                 sys.path.append(d)
         importlib.invalidate_caches()
-    subprocess.run([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"], check=True)
+    # --with-deps ставит системные пакеты через apt; при сбое apt-зеркала падает —
+    # тогда пробуем без зависимостей, а при запуске есть запасной вариант — Chrome раннера.
+    r = subprocess.run([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"], timeout=600)
+    if r.returncode != 0:
+        subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], timeout=600)
+
+
+def launch(p):
+    try:
+        return p.chromium.launch()
+    except Exception as e:  # noqa: BLE001
+        print("chromium не запустился, пробую Chrome раннера:", e)
+        return p.chromium.launch(channel="chrome")
 
 
 def shoot(page, url, d, tag, log):
@@ -97,7 +109,7 @@ def run(spec, only):
     from playwright.sync_api import sync_playwright
     os.makedirs(OUT, exist_ok=True)
     with sync_playwright() as p:
-        br = p.chromium.launch()
+        br = launch(p)
         for site in spec["sites"]:
             if only and site["name"] not in only:
                 continue
