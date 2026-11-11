@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig44_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig44_host.png"
+    ],
+    "person_note": "The SAME woman as in the attached photo: same face, short silver-grey bob, pearl earrings, white linen shirt; do not change her face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements. Black-and-white photograph.",
+    "style_qa": "обложка: та же женщина с серебристым каре, чёрно-белое фото; надписи «ЛЮБИТЕ СЕБЯ» и «ТАКИМИ, КАКИЕ ВЫ ЕСТЬ» без ошибок, других слов нет",
+    "meaning": "обложка Reels №44",
+    "prompt": "Vertical 9:16 BLACK-AND-WHITE cover photograph. The woman from the reference sits in a calm hotel lounge, wise confident gentle look into the camera, close-up from the chest up, face in the upper and middle part of the frame, fully visible and NOT covered by text. Typography between 66% and 86% of the image height over her white shirt, with a subtle dark gradient behind it, centred: large elegant bold white uppercase «ЛЮБИТЕ СЕБЯ», under it smaller white uppercase «ТАКИМИ, КАКИЕ ВЫ ЕСТЬ». No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}

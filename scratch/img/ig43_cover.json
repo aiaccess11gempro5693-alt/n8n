@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig43_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig43_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, short dark-brown hair, light stubble, charcoal knitted sweater; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина у микрофона в тёмной библиотеке; надписи «ЕСЛИ У ВАС ДОБРОЕ СЕРДЦЕ —» и «ВЫ НИКОГО НЕ ТЕРЯЕТЕ» без ошибок, других слов нет",
+    "meaning": "обложка Reels №43",
+    "prompt": "Vertical 9:16 cover. The man from the reference sits at a podcast table with a black microphone on a boom arm to the side, in a dark cosy study with bookshelves and warm pendant lamps, sincere calm look into the camera; he is in the LOWER half of the frame, from the chest up, face fully visible and NOT covered by text or the microphone. Upper part: softly blurred dark warm bookshelves. Typography between 14% and 40% of the image height, centred: bold white uppercase «ЕСЛИ У ВАС ДОБРОЕ СЕРДЦЕ —» in two lines, under it larger bold warm amber uppercase «ВЫ НИКОГО НЕ ТЕРЯЕТЕ» in two lines. No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
