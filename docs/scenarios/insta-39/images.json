@@ -1,0 +1,27 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig39_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still from a video podcast, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, мужчина ~66 с короткими седыми волосами в тёмной студии подкаста, микрофон, смотрит в камеру, губы приоткрыты, без надписей",
+   "person_note": "A completely new, ordinary older man (not a celebrity), looks genuinely real.",
+   "meaning": "ведущий подкаста ~66, седой, тёмно-синий пиджак, тёмная студия",
+   "prompt": "Vertical 9:16 photorealistic frame from a high-end video podcast. A calm, self-assured Russian man about 66 with very short silver-grey hair, a lightly tanned weathered face with deep laugh lines, clean shaven, wearing a dark navy blazer over a crisp white open-collar shirt and a steel wristwatch. He sits relaxed in a dark moody studio, hands loosely together in front of him, a black podcast microphone on a boom arm to the side of his chest (not covering the mouth), looking straight into the camera, mid-sentence, lips slightly parted, a faint knowing half-smile in the eyes, NO big smile. Medium shot from the waist up, both shoulders inside the frame, face large and sharp, top of head about 14% below the upper edge. Background: almost black studio with a soft warm rim light and a faint warm bokeh far behind. Rich cinematic contrast, real camera frame, NOT CGI. No text, no logos, no watermark."
+  },
+  {
+   "name": "ig39_sea",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic travel photo, bright natural daylight, true-to-life colours. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, женщина сидит на скалах у бурного синего моря, солнечно, без надписей",
+   "person_note": "A completely new, ordinary woman (not a celebrity), seen from a distance, face partly turned to the sea.",
+   "meaning": "вступление: женщина спокойно сидит на скале у моря, настрой",
+   "prompt": "Vertical 9:16 photorealistic travel photo. A woman about 40 in a black beanie, sunglasses, white wide trousers and a black knitted vest sits barefoot and relaxed on big grey coastal rocks, knees up, arms resting on knees, chin lifted towards the sun, a calm proud smile, looking out over a wild deep-blue sea with white surf crashing below. Bright sunny day, a blue sky with soft white clouds, green coastal grass in the foreground. She is in the lower middle of the frame, small-to-medium size; the upper third of the frame is open sky and sea. Real camera photo, NOT CGI. No text, no logos, no watermark."
+  }
+ ]
+}
