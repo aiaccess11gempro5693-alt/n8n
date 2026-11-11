@@ -81,7 +81,7 @@ def main():
     hook = f"{TMP}/hook.png"
     render_hook(hook)
     pz = "+".join(f"between(t,{a:.2f},{b:.2f})" for a, b in punch)
-    z = f"(1+0.04*(t-{INTRO})/{total:.2f}+0.10*({pz}))"
+    z = f"(1+0.04*max(t-{INTRO}\\,0)/{total:.2f}+0.10*({pz}))"
     inputs = ["-loop", "1", "-t", f"{INTRO:.2f}", "-i", SEA, "-i", CLIP, "-i", audio, "-i", hook]
     filt = [f"[0:v]scale=1408:2112,crop={W}:{H}:'(iw-{W})/2':'(ih-{H})/2',setsar=1,fps=30,"
             f"zoompan=z='1+0.0006*on':x='iw/2-iw/zoom/2':y='ih/2-ih/zoom/2':d=1:s={W}x{H}:fps=30,format=yuv420p[sea]",
