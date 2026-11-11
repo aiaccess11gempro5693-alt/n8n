@@ -27,12 +27,13 @@ def ensure_playwright():
             if d not in sys.path:
                 sys.path.append(d)
         importlib.invalidate_caches()
-    # --with-deps ставит системные пакеты через apt; при сбое apt-зеркала падает —
-    # тогда пробуем без зависимостей, а при запуске есть запасной вариант — Chrome раннера.
-    r = subprocess.run([sys.executable, "-m", "playwright", "install", "--with-deps", "chromium"], timeout=600)
-    if r.returncode != 0:
-        subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], timeout=600)
-
+    # Без --with-deps: системные пакеты ставятся через apt, а зеркала Ubuntu с раннера бывают
+    # недоступны (DNS) — установка висит и падает. Браузер качается с CDN Playwright;
+    # если не вышло — при запуске берём Chrome, который уже стоит на раннере.
+    try:
+        subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], timeout=300)
+    except Exception as e:  # noqa: BLE001
+        print("playwright install не удался:", e)
 
 def launch(p):
     try:
