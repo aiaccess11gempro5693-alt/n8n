@@ -39,6 +39,7 @@ KEY = {"видение", "план", "мудрость", "ясность", "ок
 YELLOW = (255, 214, 10)
 FACE_Y = 0.29        # доля высоты кадра, где лицо — центр крупного плана
 CLOSE_Z = 1.45
+CUT_EVERY = 1       # сколько предложений подряд держится один план
 SUB_Y = 1190         # центр слова — на груди, ниже лица
 
 
@@ -91,7 +92,7 @@ def main():
     # склейки: каждое предложение — свой план, чередуем средний / крупный
     starts = [shown[0][1]] + [shown[i + 1][1] for i, (w, _) in enumerate(shown[:-1]) if re.search(r"[.!?]$", w)]
     bounds = [0.0] + starts[1:] + [total]
-    close = [(bounds[i], bounds[i + 1]) for i in range(len(bounds) - 1) if i % 2 == 1]
+    close = [(bounds[i], bounds[i + 1]) for i in range(len(bounds) - 1) if (i // CUT_EVERY) % 2 == 1]
     json.dump({"subs": subs, "close": close}, open(f"{TMP}/plan.json", "w"), ensure_ascii=False, indent=1)
 
     voice = f"{TMP}/voice-pad.wav"
