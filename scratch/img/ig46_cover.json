@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig46_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig46_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, short dark hair greying at the temples, stubble, black polo; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic dark moody photo with warm amber light and bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина в чёрном поло в тёмной гостиной с тёплым светом; надписи «ЛЮДИ, КОТОРЫХ» и «НЕВОЗМОЖНО СЛОМАТЬ» без ошибок, других слов нет",
+    "meaning": "обложка Reels №46",
+    "prompt": "Vertical 9:16 cover. The man from the reference stands in a dark cozy living room, serious strong calm look into the camera, warm amber rim light on one side and a soft glow of light behind him, like light breaking through darkness. He is in the LOWER half of the frame, centred, from the waist up, face fully visible and NOT covered by text. Typography centred between 14% and 42% of the image height: smaller white uppercase «ЛЮДИ, КОТОРЫХ» on one line, then much larger bold warm amber-gold uppercase «НЕВОЗМОЖНО СЛОМАТЬ» on two lines under it. No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
