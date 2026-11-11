@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig41_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig41_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, light-brown hair, reddish-brown beard, olive overshirt over cream sweater; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic warm evening interior photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же мужчина с бородой в тёплой гостиной; надписи «ЕСЛИ ВАС КТО-ТО НЕНАВИДИТ» и «НЕ МЕШАЙТЕ ЕМУ» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels «Если вас кто-то ненавидит»",
+    "prompt": "Vertical 9:16 cover. The man from the reference sits in a brown leather armchair in a cosy warm evening living room, calmly holding a cup of coffee, a faint ironic half-smile, looking into the camera; he is on the RIGHT half of the frame, from the chest up, face fully visible and NOT covered by text. The LEFT half and the middle are softly blurred warm dark interior. Typography between 32% and 70% of the image height on the left side: bold white uppercase «ЕСЛИ ВАС КТО-ТО НЕНАВИДИТ» in three lines, under it a bold warm amber uppercase line «НЕ МЕШАЙТЕ ЕМУ». No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
