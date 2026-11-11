@@ -1,0 +1,24 @@
+{
+  "job": {
+    "name": "ig42_cover",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "extra_refs": [
+      "scratch/img/ig42_host.png"
+    ],
+    "person_note": "The SAME man as in the attached photo: same face, silver-grey combed-back hair, navy quarter-zip sweater over white t-shirt; do not change his face shape.",
+    "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+    "style_qa": "обложка: тот же седой мужчина за столом в тёплой студии; надписи «ПРИНЯЛ РЕШЕНИЕ —» и «ПЕРЕСТАНЬ СОМНЕВАТЬСЯ» без ошибок, других слов и логотипов нет",
+    "meaning": "обложка Reels №42",
+    "prompt": "Vertical 9:16 cover. The man from the reference sits at a dark wooden desk in a warm studio with a sunset-orange wall and a green palm plant, calm firm fatherly look into the camera, forearms on the desk; he occupies the upper half and centre, from the chest up, face fully visible and NOT covered by text. Typography between 55% and 78% of the image height, centred over his sweater, with a soft dark gradient behind it: bold white condensed uppercase «ПРИНЯЛ РЕШЕНИЕ —», under it larger bold warm beige uppercase «ПЕРЕСТАНЬ СОМНЕВАТЬСЯ» in two lines. No other text."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
