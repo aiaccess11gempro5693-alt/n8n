@@ -39,7 +39,7 @@ KEY = {"видение", "план", "мудрость", "ясность", "ок
 YELLOW = (255, 214, 10)
 FACE_Y = 0.29        # доля высоты кадра, где лицо — центр крупного плана
 CLOSE_Z = 1.45
-SUB_Y = 1080         # центр слова — на груди, ниже лица
+SUB_Y = 1190         # центр слова — на груди, ниже лица
 
 
 def norm(w):
@@ -47,7 +47,7 @@ def norm(w):
 
 
 def render_word(path, word):
-    key = norm(word) in KEY
+    key = any(norm(x) in KEY for x in word.split())
     size = 96 if key else 78
     f = ImageFont.truetype(B.FONT, size)
     txt = re.sub(r"[«»]", "", word).upper()
@@ -71,13 +71,23 @@ def main():
                                                "-of", "csv=p=0", AUDIO]).decode())
     total = voice_len + 0.7
     shown = [(w, t) for w, t in words if w not in ("—", "–")]
+    # группы: слово показывается не короче ~0.3 с — слишком быстрые слова объединяются (до 3 в группе)
+    groups, i = [], 0
+    while i < len(shown):
+        g = [shown[i]]
+        while (i + len(g) < len(shown) and len(g) < 3 and not re.search(r"[.!?]$", g[-1][0])
+               and shown[i + len(g)][1] - g[0][1] < 0.32):
+            g.append(shown[i + len(g)])
+        groups.append(g)
+        i += len(g)
     subs = []
-    for i, (w, t) in enumerate(shown):
-        nxt = shown[i + 1][1] if i + 1 < len(shown) else total - 0.3
-        end = min(nxt, t + (1.3 if re.search(r"[.!?]$", w) else 0.9))
-        subs.append({"text": w, "t0": t, "t1": max(end, t + 0.22)})
-    for a, b in zip(subs, subs[1:]):
-        a["t1"] = min(a["t1"], b["t0"])
+    for j, g in enumerate(groups):
+        t = g[0][1]
+        nxt = groups[j + 1][0][1] if j + 1 < len(groups) else total - 0.3
+        end = min(nxt, t + (1.3 if re.search(r"[.!?]$", g[-1][0]) else 1.0))
+        subs.append({"text": " ".join(w for w, _ in g), "t0": t, "t1": end})
+    short = [s for s in subs if s["t1"] - s["t0"] < 0.2]
+    print("коротких групп:", len(short), short[:5])
     # склейки: каждое предложение — свой план, чередуем средний / крупный
     starts = [shown[0][1]] + [shown[i + 1][1] for i, (w, _) in enumerate(shown[:-1]) if re.search(r"[.!?]$", w)]
     bounds = [0.0] + starts[1:] + [total]
