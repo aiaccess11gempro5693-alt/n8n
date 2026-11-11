@@ -1,0 +1,27 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig43_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, мужчина ~40 на подкасте в тёмной библиотеке, микрофон, смотрит в камеру, губы приоткрыты, без надписей",
+   "person_note": "A completely new, ordinary man (not a celebrity), looks genuinely real.",
+   "meaning": "ведущий ~40, тёмные волосы, щетина, тёмно-серый свитер, подкаст-студия с книгами, микрофон",
+   "prompt": "Vertical 9:16 photorealistic frame of a podcast. A warm, thoughtful Russian man about 40 with short dark-brown tousled hair, light stubble, brown eyes, wearing a charcoal-grey knitted sweater and a leather-strap watch. He sits at a wooden podcast table with a black studio microphone on a boom arm in front of him to the side, looking straight into the camera, mid-sentence, lips slightly parted, sincere kind expression, NO big smile. Medium shot from the chest up, both shoulders in frame, face large and sharp, top of head about 14% below the upper edge, the microphone does not cover the face. Background: dark cosy study with wooden bookshelves, warm pendant lamps, softly blurred. Real camera frame, NOT CGI. No text, no logos, no watermark."
+  },
+  {
+   "name": "ig44_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, женщина ~58 в светлом лаунже, смотрит в камеру, губы приоткрыты, без надписей",
+   "person_note": "A completely new, ordinary woman (not a celebrity), looks genuinely real.",
+   "meaning": "героиня ~58, серебристое каре, льняная рубашка, светлый лаунж с баром",
+   "prompt": "Vertical 9:16 photorealistic frame of an interview. A confident, elegant Russian woman about 58 with a short silver-grey bob haircut, fine natural wrinkles, light makeup, small pearl earrings, wearing a loose white linen shirt, no glasses. She sits on a chair in a calm modern hotel lounge, looking straight into the camera, mid-sentence, lips slightly parted, wise self-assured warm expression, NO big smile. Medium shot from the chest up, both shoulders in frame, face large and sharp, top of head about 14% below the upper edge. Background: soft daylight lounge with a bar and plants, softly blurred. Real camera frame, NOT CGI. No text, no logos, no watermark."
+  }
+ ]
+}
