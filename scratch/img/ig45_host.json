@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig45_host",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic cinematic still, warm golden-hour colours, true-to-life skin texture, shallow depth of field, filmed on a good camera. No text, no letters, no logos, no watermark.",
+    "style_qa": "фотореализм, состоятельный мужчина ~55 на террасе виллы у моря на закате, смотрит в камеру, губы приоткрыты, без надписей и логотипов",
+    "person_note": "A completely new, ordinary man (not a celebrity), looks genuinely real.",
+    "meaning": "ведущий ~55, загар, седая короткая борода, белая льняная рубашка, часы, терраса виллы над морем на закате",
+    "prompt": "Vertical 9:16 photorealistic frame like a selfie-style talking video. A wealthy but kind Russian man about 55 with short salt-and-pepper hair, a neatly trimmed grey beard, deep tan, warm brown eyes, wearing an open-collar white linen shirt with rolled sleeves and an elegant steel wristwatch. He sits relaxed in a rattan lounge chair on the stone terrace of a luxury villa above the sea at golden hour, looking straight into the camera, mid-sentence, lips slightly parted, calm wise confident expression, NO big smile. Medium shot from the chest up, both shoulders inside the frame, face large and sharp, top of head about 14% below the upper edge. Background: turquoise sea, white villa columns, potted olive tree and warm sunset light, softly blurred. Real camera frame, NOT CGI. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
