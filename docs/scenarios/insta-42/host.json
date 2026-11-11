@@ -1,0 +1,16 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig42_host",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "style": "Photorealistic cinematic still, filmed on a good camera in a warm studio, true-to-life colours, natural skin texture, shallow depth of field. No text, no letters, no logos, no watermark.",
+   "style_qa": "фотореализм, мужчина ~62 за столом в тёплой студии, смотрит в камеру, губы приоткрыты, без надписей и логотипов",
+   "person_note": "A completely new, ordinary man (not a celebrity), looks genuinely real.",
+   "meaning": "ведущий ~62, седые зачёсанные волосы, загорелый, тёмно-синий свитер на молнии, стол, тёплая студия",
+   "prompt": "Vertical 9:16 photorealistic frame of a calm, wise Russian man about 62 with thick silver-grey hair combed back, tanned lined face, light grey eyes, clean-shaven, wearing a dark navy knitted quarter-zip sweater over a white t-shirt. He sits at a dark wooden desk with a few sheets of paper in front of him, forearms resting on the desk, looking straight into the camera, mid-sentence, lips slightly parted, calm confident fatherly expression, NO big smile. Medium shot from the chest up, both shoulders inside the frame, face large and sharp, top of head about 14% below the upper edge. Background: a warm studio wall with soft sunset orange and terracotta light and a green palm plant on the right, softly blurred. Real camera frame, NOT CGI. No text, no logos, no watermark."
+  }
+ ]
+}
