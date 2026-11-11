@@ -30,6 +30,7 @@ M.KEY = {"ненавидит", "мучается", "тюрьма", "груз", "
 M.YELLOW = (255, 176, 72)
 M.CLOSE_Z = 1.3
 M.CUT_EVERY = 2
+M.FACE_Y = 0.33
 
 if __name__ == "__main__":
     M.main()
