@@ -1,0 +1,21 @@
+{
+  "job": {
+    "name": "ig39_sea",
+    "engine": "gpt-image-2",
+    "kind": "illustration",
+    "aspect": "9:16",
+    "style": "Photorealistic travel photo, bright natural daylight, true-to-life colours. No text, no letters, no logos, no watermark.",
+    "style_qa": "фотореализм, женщина сидит на скалах у бурного синего моря, солнечно, без надписей",
+    "person_note": "A completely new, ordinary woman (not a celebrity), seen from a distance, face partly turned to the sea.",
+    "meaning": "вступление: женщина спокойно сидит на скале у моря, настрой",
+    "prompt": "Vertical 9:16 photorealistic travel photo. A woman about 40 in a black beanie, sunglasses, white wide trousers and a black knitted vest sits barefoot and relaxed on big grey coastal rocks, knees up, arms resting on knees, chin lifted towards the sun, a calm proud smile, looking out over a wild deep-blue sea with white surf crashing below. Bright sunny day, a blue sky with soft white clouds, green coastal grass in the foreground. She is in the lower middle of the frame, small-to-medium size; the upper third of the frame is open sky and sea. Real camera photo, NOT CGI. No text, no logos, no watermark."
+  },
+  "status": "ok",
+  "attempts": [
+    {
+      "attempt": 1,
+      "ok": true,
+      "issue": ""
+    }
+  ]
+}
