@@ -1,0 +1,19 @@
+{
+ "style_refs": [],
+ "jobs": [
+  {
+   "name": "ig45_cover",
+   "engine": "gpt-image-2",
+   "kind": "illustration",
+   "aspect": "9:16",
+   "extra_refs": [
+    "scratch/img/ig45_host.png"
+   ],
+   "person_note": "The SAME man as in the attached photo: same face, salt-and-pepper hair, grey beard, tan, white linen shirt, steel watch; do not change his face shape.",
+   "style": "A finished, minimal, eye-catching vertical Instagram Reels COVER, cinematic warm golden-hour photo with bold typography. Bold, clean, perfectly spelled Russian typography is REQUIRED. No logos, no watermarks, no UI elements.",
+   "style_qa": "обложка: тот же седой загорелый мужчина в белой льняной рубашке на террасе у моря на закате; надписи «ДРУЖБА — ЭТО ПОЧТИ ЛЮБОВЬ» и «ДОРОЖЕ ЛЮБЫХ ДЕНЕГ» без ошибок, других слов нет",
+   "meaning": "обложка Reels №45",
+   "prompt": "Vertical 9:16 cover. The man from the reference sits on the stone terrace of a white luxury villa above a turquoise sea at golden hour, warm wise look into the camera; he is in the LOWER-RIGHT part of the frame, from the chest up, face fully visible and NOT covered by text. Upper and left part: glowing sunset sky and sea. Typography between 14% and 44% of the image height, aligned left: bold white uppercase «ДРУЖБА — ЭТО» on one line, larger bold warm gold uppercase «ПОЧТИ ЛЮБОВЬ» under it, and a smaller white uppercase line «ДОРОЖЕ ЛЮБЫХ ДЕНЕГ» below. No other text."
+  }
+ ]
+}
