@@ -214,7 +214,8 @@ CFG = {
         hook="НЕ_ЖДИТЕ ЧУЖОЙ ДОБРОТЫ",
         hot={"ждать", "добры", "ерунду", "прекрасным", "доброты", "мало", "нуждается", "доброте", "свободной",
              "нейросеть", "мудрость"},
-        punch=["человеком.", "мало.", "свободной."], music="ig53-music.mp3", gain=0.10, caps=False, title=None),
+        punch=["человеком.", "мало.", "свободной."], music="ig53-music.mp3", gain=0.10, caps=False, title=None,
+        cy=1400),
 }
 
 
@@ -269,6 +270,7 @@ def main(n):
     global HOT_COLOR
     c = CFG[n]
     HOT_COLOR = c.get("hot_color", YELLOW)
+    B.CY = c.get("cy", B.CY)   # центр субтитра; ниже — если лицо крупно в кадре
     B.AUDIO = f"{ROOT}/scratch/ig{n}/trim.mp3"
     B.WHISPER = f"{ROOT}/scratch/ig{n}-whisper-final.json"
     B.CLIP = f"{ROOT}/scratch/ig{n}/host.mp4"
