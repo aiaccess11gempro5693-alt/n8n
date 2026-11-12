@@ -1,0 +1,10 @@
+{
+ "mode": "site_capture",
+ "sites": [
+  {"name": "ref_reel_46", "url": "https://www.instagram.com/reel/DdLRaEYi40F/", "media": true},
+  {"name": "ref_reel_47", "url": "https://www.instagram.com/reel/DexxNFLo5Vc/", "media": true},
+  {"name": "ref_reel_48", "url": "https://www.instagram.com/reel/DcVe5v1O37I/", "media": true},
+  {"name": "ref_reel_49", "url": "https://www.instagram.com/reel/DdWrk2Etju2/", "media": true},
+  {"name": "ref_reel_50", "url": "https://www.instagram.com/reel/DfO7aXzN8RF/", "media": true}
+ ]
+}
