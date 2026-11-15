@@ -1,0 +1,40 @@
+{
+ "mode": "site_capture",
+ "sites": [
+  {
+   "name": "ref_reel_61",
+   "url": "https://www.instagram.com/reel/Ddrj5UkIxlq/",
+   "media": true
+  },
+  {
+   "name": "ref_reel_62",
+   "url": "https://www.instagram.com/reel/DdjfaFNN4th/",
+   "media": true
+  },
+  {
+   "name": "ref_reel_63",
+   "url": "https://www.instagram.com/reel/DeUxiC4Rmqj/",
+   "media": true
+  },
+  {
+   "name": "ref_reel_64",
+   "url": "https://www.instagram.com/reel/DfY1hKIz-e5/",
+   "media": true
+  },
+  {
+   "name": "ref_reel_65",
+   "url": "https://www.instagram.com/reel/Dd7FJWLRvke/",
+   "media": true
+  },
+  {
+   "name": "ref_reel_66",
+   "url": "https://www.instagram.com/reel/DfrRPKEynIX/",
+   "media": true
+  },
+  {
+   "name": "ref_reel_67",
+   "url": "https://www.instagram.com/reel/DeGnDGLsYJ2/",
+   "media": true
+  }
+ ]
+}
