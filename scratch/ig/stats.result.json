@@ -3,7 +3,7 @@
   "user_id": "17841438657923909",
   "username": "iiavatar.video",
   "account_type": "BUSINESS",
-  "media_count": 40,
+  "media_count": 87,
   "id": "28752117781106353"
  },
  "account_insights": {
@@ -14,11 +14,11 @@
     "values": [
      {
       "value": 0,
-      "end_time": "2026-11-08T08:00:00+0000"
+      "end_time": "2026-11-16T08:00:00+0000"
      },
      {
       "value": 0,
-      "end_time": "2026-11-09T08:00:00+0000"
+      "end_time": "2026-11-17T08:00:00+0000"
      }
     ],
     "title": "Follower Count",
@@ -30,12 +30,12 @@
     "period": "day",
     "values": [
      {
-      "value": 10111,
-      "end_time": "2026-11-08T08:00:00+0000"
+      "value": 12993,
+      "end_time": "2026-11-16T08:00:00+0000"
      },
      {
-      "value": 34682,
-      "end_time": "2026-11-09T08:00:00+0000"
+      "value": 1376,
+      "end_time": "2026-11-17T08:00:00+0000"
      }
     ],
     "title": "Reach",
@@ -46,24 +46,1011 @@
  },
  "media": [
   {
+   "id": "17953384491346853",
+   "caption": "Не женитесь и не выходите замуж только потому, что влюбились.\n\nПосмотрите, как человек ведёт себя без денег. Как говорит, когда злится. Умеет ли признавать ошибки. Как относится к официанту.\n\nИ главное — остаётся ли уважение, когда уходит романтика.\n\nЛюбовь может начаться с первого взгляда. Доверие ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfxbKyWBfsP/",
+   "timestamp": "2026-11-15T18:28:49+0000",
+   "like_count": 167,
+   "comments_count": 6,
+   "insights": {
+    "views": 7107,
+    "reach": 6058,
+    "likes": 167,
+    "comments": 6,
+    "shares": 165,
+    "saved": 49,
+    "total_interactions": 394,
+    "ig_reels_avg_watch_time": 13759,
+    "ig_reels_video_view_total_time": 84747681
+   }
+  },
+  {
+   "id": "18214493926366948",
+   "caption": "Если это видео попалось тебе сегодня — остановись.\n\nЗагадай одно желание. То, о котором давно молчишь.\nТеперь отпусти его. Не торопи и не проверяй каждый день — просто сделай один маленький шаг в его сторону.\n\nЖелания сбываются у тех, кто разрешил себе их хотеть.\n\nЗагадал? Напиши «Принимаю» 👇\n\nP.S. ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfxR_PgtxEi/",
+   "timestamp": "2026-11-15T17:08:38+0000",
+   "like_count": 9,
+   "comments_count": 2,
+   "insights": {
+    "views": 249,
+    "reach": 220,
+    "likes": 9,
+    "comments": 2,
+    "shares": 1,
+    "saved": 0,
+    "total_interactions": 12,
+    "ig_reels_avg_watch_time": 7446,
+    "ig_reels_video_view_total_time": 1645692
+   }
+  },
+  {
+   "id": "18153966061517017",
+   "caption": "Когда вас бросили — не надо сразу быть сильной.\n\nПлачьте. Кричите в подушку. Выговоритесь подругам. Напишите ему письмо — и не отправляйте.\n\nНо дайте себе срок: неделю, два дня, два часа. А потом встаньте перед зеркалом и скажите: «Я выбираю себя».\n\nСколько вам нужно, чтобы прийти в себя? 👇\n\nP.S. Эт",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfxJw4HB_2r/",
+   "timestamp": "2026-11-15T15:56:50+0000",
+   "like_count": 9,
+   "comments_count": 0,
+   "insights": {
+    "views": 561,
+    "reach": 507,
+    "likes": 9,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 11,
+    "ig_reels_avg_watch_time": 9759,
+    "ig_reels_video_view_total_time": 4889504
+   }
+  },
+  {
+   "id": "17998876899020243",
+   "caption": "Если к людям относиться хорошо — они решат, что это они такие замечательные.\nА если относиться к ним так же, как они к вам — скажут, что вы испортились.\n\nБудьте добрыми. Но не ради оценки, а потому что это вы.\n\nЗнакомо? 👇\n\nP.S. Этого ведущего не существует — его сделала нейросеть. Хотите такое видео",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfw9amIAixC/",
+   "timestamp": "2026-11-15T14:08:54+0000",
+   "like_count": 34,
+   "comments_count": 1,
+   "insights": {
+    "views": 1590,
+    "reach": 1408,
+    "likes": 34,
+    "comments": 1,
+    "shares": 2,
+    "saved": 6,
+    "total_interactions": 46,
+    "ig_reels_avg_watch_time": 7815,
+    "ig_reels_video_view_total_time": 11058608
+   }
+  },
+  {
+   "id": "18106297334336982",
+   "caption": "Не спасай других, пока не помог себе.\n\nПомогать нужно от избытка, а не от последнего. Если отдаёшь своё, чтобы остаться хорошим в чужих глазах, — застреваешь там же, откуда пытаешься кого-то вытащить.\n\nКак в самолёте: сначала маску на себя — потом на ребёнка.\n\nА ты умеешь отказывать? 👇\n\nP.S. Этого в",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfw09wBghou/",
+   "timestamp": "2026-11-15T12:55:03+0000",
+   "like_count": 3,
+   "comments_count": 0,
+   "insights": {
+    "views": 235,
+    "reach": 210,
+    "likes": 3,
+    "comments": 0,
+    "shares": 0,
+    "saved": 2,
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 5846,
+    "ig_reels_video_view_total_time": 1257023
+   }
+  },
+  {
+   "id": "17997787355868408",
+   "caption": "Как общаться с теми, кто раздражает — и уйти нельзя. Три правила:\n\n1. Отделяйте факт от домыслов. «Ты меня перебил» — факт. «Ты меня не уважаешь» — домысел.\n2. Говорите о себе, а не обвиняйте. Не «ты меня бесишь», а «дай мне договорить».\n3. Пауза перед ответом. Вдох, выдох — и только потом слова.\n\nК",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfwqO7OMCgd/",
+   "timestamp": "2026-11-15T11:21:18+0000",
+   "like_count": 30,
+   "comments_count": 0,
+   "insights": {
+    "views": 1868,
+    "reach": 1601,
+    "likes": 30,
+    "comments": 0,
+    "shares": 4,
+    "saved": 14,
+    "total_interactions": 49,
+    "ig_reels_avg_watch_time": 13318,
+    "ig_reels_video_view_total_time": 22055732
+   }
+  },
+  {
+   "id": "18173644282476077",
+   "caption": "Всё проходит. Пройдёт и это.\n\nУспех — это правильные решения. Правильные решения — из опыта. А опыт — из неправильных решений.\n\nПоэтому идите, делайте, ошибайтесь. Рано или поздно вы обречены на успех.\n\nКакая ошибка научила вас больше всего? Напишите в комментариях 👇\n\nP.S. Этого ведущего не существу",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfwmXZqvs0Z/",
+   "timestamp": "2026-11-15T10:47:31+0000",
+   "like_count": 23,
+   "comments_count": 1,
+   "insights": {
+    "views": 1093,
+    "reach": 985,
+    "likes": 23,
+    "comments": 1,
+    "shares": 2,
+    "saved": 0,
+    "total_interactions": 29,
+    "ig_reels_avg_watch_time": 7918,
+    "ig_reels_video_view_total_time": 7926207
+   }
+  },
+  {
+   "id": "18051571109814996",
+   "caption": "Под сорок я понял одну вещь.\n\nСемья и близкие — это святое. А остальным чаще всего всё равно: ты нужен, пока можешь что-то дать. Сегодня можешь — молодец. Завтра нет — и тебя забудут.\n\nЭто не повод злиться на людей. Это повод перестать жить чужим мнением и ценить тех, кто рядом просто так.\n\nНапиши в",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfuiZh0OfUc/",
+   "timestamp": "2026-11-14T15:34:21+0000",
+   "like_count": 10,
+   "comments_count": 0,
+   "insights": {
+    "views": 637,
+    "reach": 540,
+    "likes": 10,
+    "comments": 0,
+    "shares": 6,
+    "saved": 2,
+    "total_interactions": 20,
+    "ig_reels_avg_watch_time": 7470,
+    "ig_reels_video_view_total_time": 4333071
+   }
+  },
+  {
+   "id": "17945096502382363",
+   "caption": "Зачем тебе хорошая репутация в глазах людей, которым ты безразличен?\n\nПока ты удобный и нужный — ты хороший. Перестал быть полезным — и очень быстро узнаешь о себе много нового.\n\nНе трать жизнь на одобрение тех, чьё мнение ничего не значит. Береги силы для тех, кто любит тебя не за пользу.\n\nНапиши в",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfubk0Wi_tx/",
+   "timestamp": "2026-11-14T14:34:41+0000",
+   "like_count": 5,
+   "comments_count": 0,
+   "insights": {
+    "views": 324,
+    "reach": 298,
+    "likes": 5,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 7799,
+    "ig_reels_video_view_total_time": 2316540
+   }
+  },
+  {
+   "id": "18082167728733662",
+   "caption": "Держись подальше от тех, кто тебя терпеть не может, но всё равно хочет быть рядом.\n\nОни не радуются за тебя и не поддерживают — но и не уходят. Смотрят, как ты делаешь, чтобы повторить. Ждут, когда оступишься. Улыбаются в лицо — и обсуждают за спиной.\n\nНастоящие друзья радуются издалека и приходят, ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfuWhHitGg5/",
+   "timestamp": "2026-11-14T13:50:33+0000",
+   "like_count": 11,
+   "comments_count": 2,
+   "insights": {
+    "views": 537,
+    "reach": 486,
+    "likes": 11,
+    "comments": 2,
+    "shares": 2,
+    "saved": 1,
+    "total_interactions": 17,
+    "ig_reels_avg_watch_time": 10243,
+    "ig_reels_video_view_total_time": 4927090
+   }
+  },
+  {
+   "id": "18044932628840426",
+   "caption": "Как отличить настоящего друга от просто хорошего человека?\n\nНастоящий друг — не тот, кто всегда за тебя и всегда хвалит. А тот, у кого хватает смелости сказать: «Я тебя люблю… но ты не права». И подать руку, если ты всё-таки упадёшь.\n\nТот, кто говорит правду, даже когда проще промолчать. Вот это — з",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfuP96SJAKh/",
+   "timestamp": "2026-11-14T12:53:04+0000",
+   "like_count": 8,
+   "comments_count": 0,
+   "insights": {
+    "views": 482,
+    "reach": 412,
+    "likes": 8,
+    "comments": 0,
+    "shares": 6,
+    "saved": 1,
+    "total_interactions": 15,
+    "ig_reels_avg_watch_time": 8400,
+    "ig_reels_video_view_total_time": 3536605
+   }
+  },
+  {
+   "id": "18153415066514829",
+   "caption": "В телефоне есть номер, который я никогда не удалю 🤍\n\nЧеловека уже нет. А имя всё ещё в контактах. Удалить — одна секунда. Но кажется, что вместе с номером уйдёт ещё кусочек этого человека.\n\nПозвоните сегодня тем, чьи номера ещё отвечают.\n\nНапишите в комментариях: чей номер вы храните?\n\nP.S. Этого ве",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfuBlHnxHoi/",
+   "timestamp": "2026-11-14T10:47:33+0000",
+   "like_count": 2341,
+   "comments_count": 237,
+   "insights": {
+    "views": 73450,
+    "reach": 65869,
+    "likes": 2341,
+    "comments": 237,
+    "shares": 206,
+    "saved": 195,
+    "total_interactions": 3171,
+    "ig_reels_avg_watch_time": 10943,
+    "ig_reels_video_view_total_time": 731854927
+   }
+  },
+  {
+   "id": "17957258280272637",
+   "caption": "Если хочешь, чтобы тебя уважали — перестань объясняться.\n\nНельзя переспорить человека до уважения. Нельзя написать такое идеальное сообщение, после которого он вдруг всё поймёт. Уважение не выпрашивают — его признают.\n\nЗабери своё время и внимание — и люди поймут, что у них было. Молчание — не слабо",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfr_mkDKeMc/",
+   "timestamp": "2026-11-13T15:51:47+0000",
+   "like_count": 7,
+   "comments_count": 0,
+   "insights": {
+    "views": 342,
+    "reach": 299,
+    "likes": 7,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 9,
+    "ig_reels_avg_watch_time": 9263,
+    "ig_reels_video_view_total_time": 2760593
+   }
+  },
+  {
+   "id": "17911258869604304",
+   "caption": "Неблагодарного человека хоть мёдом корми — он скажет: «Спасибо пчёлам».\n\nКто не умеет ценить людей, тот никогда не признает твою заслугу. Ты будешь стараться, отдавать, подстраиваться — а он будет считать, что так и должно быть.\n\nНе ищи благодарности там, где её не умеют давать. Береги своё тепло дл",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfr7OhHRZ0w/",
+   "timestamp": "2026-11-13T15:13:15+0000",
+   "like_count": 11,
+   "comments_count": 2,
+   "insights": {
+    "views": 476,
+    "reach": 433,
+    "likes": 11,
+    "comments": 2,
+    "shares": 2,
+    "saved": 0,
+    "total_interactions": 17,
+    "ig_reels_avg_watch_time": 8498,
+    "ig_reels_video_view_total_time": 3645724
+   }
+  },
+  {
+   "id": "18112095769924971",
+   "caption": "Если вам всё чаще хочется побыть одному — возможно, ваша жизнь сейчас меняется.\n\nВы перестали писать первым. Шумные компании больше не тянут. А некоторые люди вдруг стали чужими.\n\nЭто не одиночество. Это место, которое освобождается для нового. Вы не теряете людей — вы находите себя.\n\nНапишите в ком",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfrnjH6hPPO/",
+   "timestamp": "2026-11-13T12:21:39+0000",
+   "like_count": 162,
+   "comments_count": 25,
+   "insights": {
+    "views": 5761,
+    "reach": 5136,
+    "likes": 162,
+    "comments": 25,
+    "shares": 13,
+    "saved": 17,
+    "total_interactions": 220,
+    "ig_reels_avg_watch_time": 13169,
+    "ig_reels_video_view_total_time": 67810951
+   }
+  },
+  {
+   "id": "17915579820472683",
+   "caption": "Я желаю вам одного — найти себя.\n\nА не бегать за чужими жизнями и чужими советами. У каждого своё счастье, и оно должно быть вашим: не маминым, не подружкиным, не из ленты.\n\nПусть рядом будут люди, которые принимают вас такой, какая вы есть. А свои таланты тратьте на себя — на свой рост и свою радос",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfrjhYqBoBS/",
+   "timestamp": "2026-11-13T11:46:26+0000",
+   "like_count": 0,
+   "comments_count": 0,
+   "insights": {
+    "views": 206,
+    "reach": 180,
+    "likes": 0,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 0,
+    "ig_reels_avg_watch_time": 5852,
+    "ig_reels_video_view_total_time": 1053417
+   }
+  },
+  {
+   "id": "18111736322263330",
+   "caption": "Работайте над собой. И оставьте людей в покое.\n\nНе ищите в них недостатки, не пишите гадости в комментариях. Чужая жизнь — не ваш проект. Ваш проект — это вы.\n\nЭто сложно. Но это самое интересное, что с вами может случиться.\n\nНапишите в комментариях: над чем вы работаете сейчас? 💪\n\nP.S. Этого мужчин",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfrffXDqnON/",
+   "timestamp": "2026-11-13T11:11:00+0000",
+   "like_count": 2,
+   "comments_count": 1,
+   "insights": {
+    "views": 257,
+    "reach": 228,
+    "likes": 2,
+    "comments": 1,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 5864,
+    "ig_reels_video_view_total_time": 1331312
+   }
+  },
+  {
+   "id": "18118001968837833",
+   "caption": "Когда понимаешь силу своих слов — перестаёшь говорить что попало.\nКогда понимаешь силу своих мыслей — перестаёшь думать о чём попало.\nКогда понимаешь силу своего присутствия — перестаёшь быть где попало и с кем попало.\n\nСлова, мысли, время — это всё, что у тебя есть. Береги их.\n\nСохрани и отправь бл",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfp0VkROuGr/",
+   "timestamp": "2026-11-12T19:34:54+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 310,
+    "reach": 260,
+    "likes": 2,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 3,
+    "ig_reels_avg_watch_time": 9741,
+    "ig_reels_video_view_total_time": 2542652
+   }
+  },
+  {
+   "id": "18102327203454707",
+   "caption": "Если бы за твоё добро тебя никогда не поблагодарили — ты бы всё равно его делал?\n\nПомогай не ради благодарности. Одно доброе слово может изменить чей-то день, а маленький поступок, о котором ты завтра забудешь, для кого-то станет воспоминанием на всю жизнь. Добро не становится меньше, когда им делиш",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpxChnB7IZ/",
+   "timestamp": "2026-11-12T19:05:53+0000",
+   "like_count": 1,
+   "comments_count": 0,
+   "insights": {
+    "views": 274,
+    "reach": 245,
+    "likes": 1,
+    "comments": 0,
+    "shares": 1,
+    "saved": 0,
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 6523,
+    "ig_reels_video_view_total_time": 1611227
+   }
+  },
+  {
+   "id": "18122298055968614",
+   "caption": "Лучший ответ на неуважение — дистанция.\n\nНе надо ругаться, не надо драмы, не надо ничего доказывать. Просто отойди. Тот, кто тебя не уважает, сильнее всего чувствует не твою злость, а твоё отсутствие.\n\nТы не обязан быть рядом с теми, кто делает тебе больно.\n\nСохрани, чтобы не забыть 🤍\n\nP.S. Этого му",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfptdVRhrGs/",
+   "timestamp": "2026-11-12T18:34:28+0000",
+   "like_count": 2,
+   "comments_count": 0,
+   "insights": {
+    "views": 353,
+    "reach": 313,
+    "likes": 2,
+    "comments": 0,
+    "shares": 1,
+    "saved": 1,
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 7672,
+    "ig_reels_video_view_total_time": 2355413
+   }
+  },
+  {
+   "id": "18652421251012688",
+   "caption": "Жизнь сделает тебя счастливым. Но сначала кое-что заберёт.\n\nЛюдей, рядом с которыми ты становился меньше. Работу, где тебя не ценили. Иллюзию, что всё можно контролировать. Вопрос не «за что», а «для чего»: в полную чашу ничего не нальёшь.\n\nОтправь тому, кто сейчас что-то теряет 🤍\n\nP.S. Этого мужчин",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfpn0IRvKHS/",
+   "timestamp": "2026-11-12T17:45:29+0000",
+   "like_count": 4,
+   "comments_count": 0,
+   "insights": {
+    "views": 356,
+    "reach": 285,
+    "likes": 4,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 16048,
+    "ig_reels_video_view_total_time": 4638140
+   }
+  },
+  {
+   "id": "18320647741304026",
+   "caption": "Убери эти 5 вещей из жизни — и жить станет проще:\n\n1. Жалобы — легче не станет\n2. Споры — никому ничего не доказывай\n3. Контроль всего — управляй только своей реакцией\n4. Самоедство за прошлое — выводы и дальше\n5. Желание нравиться всем — нравься себе\n\nЧто уберёшь первым? Напиши в комментариях 👇\n\nP.",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpkNucvKPF/",
+   "timestamp": "2026-11-12T17:14:01+0000",
+   "like_count": 7,
+   "comments_count": 0,
+   "insights": {
+    "views": 457,
+    "reach": 380,
+    "likes": 7,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 7,
+    "ig_reels_avg_watch_time": 12861,
+    "ig_reels_video_view_total_time": 4926050
+   }
+  },
+  {
+   "id": "17947098693367417",
+   "caption": "Снижайте важность всего.\n\nНе ждите ни денег, ни любви, ни славы, ни признания — просто качественно делайте своё дело. Людей ломает не потеря, а важность, которую они на неё повесили. Получилось — отлично. Не получилось — придумал новое и пошёл дальше.\n\nЧто для вас сейчас слишком важно? Напишите в ко",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpgE2vMV7V/",
+   "timestamp": "2026-11-12T16:37:55+0000",
+   "like_count": 5,
+   "comments_count": 0,
+   "insights": {
+    "views": 528,
+    "reach": 460,
+    "likes": 5,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 6,
+    "ig_reels_avg_watch_time": 8743,
+    "ig_reels_video_view_total_time": 4144642
+   }
+  },
+  {
+   "id": "18119459918030796",
+   "caption": "Перестаньте ждать, что люди будут к вам добры.\n\nПусть они делают свою ерунду — а вы оставайтесь прекрасным человеком. Тот, кто постоянно ждёт чужой доброты, сам делает очень мало. Не нуждайтесь ни в чьей доброте — и ваша собственная станет свободной.\n\nОтправьте это тому, кто ждёт доброты от других 🤍",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpcUFsseQO/",
+   "timestamp": "2026-11-12T16:04:54+0000",
+   "like_count": 4,
+   "comments_count": 0,
+   "insights": {
+    "views": 331,
+    "reach": 287,
+    "likes": 4,
+    "comments": 0,
+    "shares": 0,
+    "saved": 2,
+    "total_interactions": 6,
+    "ig_reels_avg_watch_time": 6339,
+    "ig_reels_video_view_total_time": 1825835
+   }
+  },
+  {
+   "id": "18083928953359794",
+   "caption": "5 вещей, которые вы не обязаны объяснять никому:\n\n1. Почему вы ушли\n2. Почему вы отказали\n3. Почему вы молчите\n4. Почему вы изменились\n5. Почему вы выбрали себя\n\nТому, кто вас любит, объяснения не нужны. А тому, кто не любит, — их всегда мало.\n\nКакой пункт про вас? Напишите в комментариях 👇\n\nP.S. Эт",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpVkCiiSaa/",
+   "timestamp": "2026-11-12T15:05:56+0000",
+   "like_count": 6,
+   "comments_count": 0,
+   "insights": {
+    "views": 499,
+    "reach": 431,
+    "likes": 6,
+    "comments": 0,
+    "shares": 1,
+    "saved": 0,
+    "total_interactions": 9,
+    "ig_reels_avg_watch_time": 10295,
+    "ig_reels_video_view_total_time": 4499288
+   }
+  },
+  {
+   "id": "17914728891559346",
+   "caption": "Узкий круг — не одиночество.\n\nЧеловек, у которого мало друзей, часто самый надёжный. Он не одинок — он избирателен. Выбирает покой вместо популярности и не держит рядом кого попало, лишь бы не остаться одному.\n\nСколько человек в вашем круге? Напишите в комментариях 👇\n\nP.S. Этого мужчину сделала нейр",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpLuzMB3ZO/",
+   "timestamp": "2026-11-12T13:40:04+0000",
+   "like_count": 21,
+   "comments_count": 2,
+   "insights": {
+    "views": 1010,
+    "reach": 882,
+    "likes": 21,
+    "comments": 2,
+    "shares": 4,
+    "saved": 2,
+    "total_interactions": 29,
+    "ig_reels_avg_watch_time": 10567,
+    "ig_reels_video_view_total_time": 9405308
+   }
+  },
+  {
+   "id": "18135332980825401",
+   "caption": "Мусор на входе — мусор на выходе. Правило из программирования, которое работает и в жизни.\n\nПроверьте у себя четыре вещи:\n1. Тело — что едите и как двигаетесь\n2. Голову — чем кормите своё внимание\n3. Окружение — что люди добавляют в вашу жизнь\n4. Действия — что повторяете каждый день\n\nНе исправляйте",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpGNzLhMcO/",
+   "timestamp": "2026-11-12T12:51:53+0000",
+   "like_count": 4,
+   "comments_count": 0,
+   "insights": {
+    "views": 298,
+    "reach": 267,
+    "likes": 4,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 8335,
+    "ig_reels_video_view_total_time": 2267337
+   }
+  },
+  {
+   "id": "17915851689285636",
+   "caption": "Купец, который три раза не разорился, — не купец.\n\nБез ошибок не бывает подъёмов. Поражение — не конец, а опыт. Чемпион встаёт всего на один раз больше, чем падал. Вот и вся разница.\n\nСколько раз поднимались вы? Напишите в комментариях 👇\n\nP.S. Этого мужчину сделала нейросеть — лицо, голос и монтаж. ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfpCTwvSjFx/",
+   "timestamp": "2026-11-12T12:17:35+0000",
+   "like_count": 5,
+   "comments_count": 0,
+   "insights": {
+    "views": 319,
+    "reach": 292,
+    "likes": 5,
+    "comments": 0,
+    "shares": 0,
+    "saved": 2,
+    "total_interactions": 7,
+    "ig_reels_avg_watch_time": 6673,
+    "ig_reels_video_view_total_time": 1968549
+   }
+  },
+  {
+   "id": "17956376688326765",
+   "caption": "Молчание — самый сильный ответ на неуважение 🤫\n\nНикакой реакции. Никаких споров.\n\n✨ Не оправдывайся\n✨ Не объясняй свою боль тому, кто её причинил\n✨ Не пытайся изменить тех, кому удобно, что тебе больно\n\nПросто убери своё присутствие. Нет ничего громче, чем уйти молча.\n\nОтправь тому, кому это нужно у",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfowVNUBWta/",
+   "timestamp": "2026-11-12T09:40:39+0000",
+   "like_count": 12,
+   "comments_count": 0,
+   "insights": {
+    "views": 599,
+    "reach": 524,
+    "likes": 12,
+    "comments": 0,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 13,
+    "ig_reels_avg_watch_time": 11050,
+    "ig_reels_video_view_total_time": 5746394
+   }
+  },
+  {
+   "id": "18361512886247516",
+   "caption": "Не пригласили — не иди. Не сообщили — не спрашивай 🤝\n\nПозвали в последний момент — вежливо скажи «нет». Потому что изначально тебя не было в их планах.\n\n✨ Не навязывайся туда, где тебя не ценят\n✨ Не бегай за теми, кто вспоминает о тебе, только когда что-то нужно\n✨ Выбирай себя\n\nУважение не выпрашива",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfnMacPqNSr/",
+   "timestamp": "2026-11-11T19:07:32+0000",
+   "like_count": 2730,
+   "comments_count": 122,
+   "insights": {
+    "views": 65807,
+    "reach": 53505,
+    "likes": 2731,
+    "comments": 122,
+    "shares": 904,
+    "saved": 471,
+    "total_interactions": 4386,
+    "ig_reels_avg_watch_time": 22324,
+    "ig_reels_video_view_total_time": 1201037077
+   }
+  },
+  {
+   "id": "18107425691367742",
+   "caption": "Есть люди, которых уже невозможно сломать. Жизнь уже пыталась 🔥\n\nОни знают, что такое пустой карман, одиночество, разбитое сердце и предательство. Знают, каково собирать себя по кусочкам, когда никто не видит.\n\n✨ Их сила больше не зависит от денег\n✨ Их уверенность — от чужого мнения\n✨ Они прошли чер",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfnCC2RBbAt/",
+   "timestamp": "2026-11-11T17:36:56+0000",
+   "like_count": 3,
+   "comments_count": 0,
+   "insights": {
+    "views": 343,
+    "reach": 306,
+    "likes": 3,
+    "comments": 0,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 19793,
+    "ig_reels_video_view_total_time": 6116243
+   }
+  },
+  {
+   "id": "18338014252263771",
+   "caption": "Дружба — это почти любовь. Только без обещаний и без колец 🤝\n\nЯ многое в жизни заработал. Но самое редкое, что у меня есть, — это друзья.\n\n✨ Друг — это ответственность. Не за деньги, а потому что тебе не всё равно\n✨ Это общий взгляд на мир и полное доверие\n✨ С ним можно просто молчать — и вам хорошо",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfnAlBZywpH/",
+   "timestamp": "2026-11-11T17:24:09+0000",
+   "like_count": 5,
+   "comments_count": 0,
+   "insights": {
+    "views": 409,
+    "reach": 367,
+    "likes": 5,
+    "comments": 0,
+    "shares": 1,
+    "saved": 0,
+    "total_interactions": 6,
+    "ig_reels_avg_watch_time": 7791,
+    "ig_reels_video_view_total_time": 2820648
+   }
+  },
+  {
+   "id": "18110022883953865",
+   "caption": "Главное, что я поняла за свою жизнь: любите себя 🤍\n\nТакими, какие вы есть. С морщинками, с ошибками, с характером.\n\n✨ Не сравнивайте себя с другими\n✨ Не пытайтесь быть круче, моложе, удобнее\n✨ Никому ничего не доказывайте\n\nКогда вы принимаете себя — в вас просыпается сила. Та самая, что помогает и д",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfmzzltKvr_/",
+   "timestamp": "2026-11-11T15:32:10+0000",
+   "like_count": 3,
+   "comments_count": 0,
+   "insights": {
+    "views": 313,
+    "reach": 280,
+    "likes": 3,
+    "comments": 0,
+    "shares": 1,
+    "saved": 1,
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 6416,
+    "ig_reels_video_view_total_time": 1783801
+   }
+  },
+  {
+   "id": "17890391721485329",
+   "caption": "Если у вас доброе сердце и чистые намерения — вы никого не теряете 🤍 Это они теряют вас.\n\nТот, кто ушёл от честного человека, уходит не от вас. Он уходит от заботы, от верности, от того, кто был рядом просто так.\n\n✅ Не бегите следом\n✅ Не уговаривайте остаться\n✅ Не доказывайте свою ценность тем, кто ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfmtLcRq4pq/",
+   "timestamp": "2026-11-11T14:34:26+0000",
+   "like_count": 12,
+   "comments_count": 0,
+   "insights": {
+    "views": 520,
+    "reach": 451,
+    "likes": 12,
+    "comments": 0,
+    "shares": 2,
+    "saved": 0,
+    "total_interactions": 14,
+    "ig_reels_avg_watch_time": 10048,
+    "ig_reels_video_view_total_time": 4692418
+   }
+  },
+  {
+   "id": "18043798310837229",
+   "caption": "Принял решение — перестань сомневаться 🙏\n\nПока думаешь — думай: взвешивай, советуйся, сомневайся. Это нормально.\nНо решил — всё. Иди и не оглядывайся.\n\n🚆 Сел в вагон — не бегай по нему назад. Поезд всё равно едет вперёд, а ты только устанешь.\n\nРешил ждать — жди спокойно. Решил идти — иди.\nСожаление ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfmpWFYBLZy/",
+   "timestamp": "2026-11-11T14:01:30+0000",
+   "like_count": 6,
+   "comments_count": 0,
+   "insights": {
+    "views": 616,
+    "reach": 555,
+    "likes": 6,
+    "comments": 0,
+    "shares": 1,
+    "saved": 1,
+    "total_interactions": 8,
+    "ig_reels_avg_watch_time": 9043,
+    "ig_reels_video_view_total_time": 5091423
+   }
+  },
+  {
+   "id": "17904664173373390",
+   "caption": "Если вас кто-то ненавидит — не мешайте ему 😌\n\nНенависть — это его выбор. Его груз. Он носит его с собой каждый день, а вы — нет.\n\n✅ Вы не обязаны нравиться всем\n✅ Не обязаны оправдываться\n✅ Не обязаны ничего доказывать\n\nНенависть не лечится объяснениями. Её лечит тишина и ваше счастье.\n\nОтправьте то",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfmZ5tktgjV/",
+   "timestamp": "2026-11-11T11:47:19+0000",
+   "like_count": 103,
+   "comments_count": 8,
+   "insights": {
+    "views": 3388,
+    "reach": 2925,
+    "likes": 103,
+    "comments": 8,
+    "shares": 12,
+    "saved": 15,
+    "total_interactions": 145,
+    "ig_reels_avg_watch_time": 12267,
+    "ig_reels_video_view_total_time": 36654928
+   }
+  },
+  {
+   "id": "18110224279951338",
+   "caption": "Не проси у Бога денег. Проси эти 5 вещей 🙏\n\n1️⃣ Видение — большая картина, ради которой хочется вставать по утрам\n2️⃣ План — даже Ною дали точные размеры ковчега\n3️⃣ Мудрость — Соломон попросил мудрости, и богатство пришло следом\n4️⃣ Ясность — чтобы каждый следующий шаг был понятен\n5️⃣ Правильное ок",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfmFD-chJ-5/",
+   "timestamp": "2026-11-11T08:44:05+0000",
+   "like_count": 45,
+   "comments_count": 0,
+   "insights": {
+    "views": 1545,
+    "reach": 1292,
+    "likes": 45,
+    "comments": 0,
+    "shares": 16,
+    "saved": 19,
+    "total_interactions": 83,
+    "ig_reels_avg_watch_time": 21066,
+    "ig_reels_video_view_total_time": 28166202
+   }
+  },
+  {
+   "id": "18242475478319138",
+   "caption": "Вот такой настрой должен быть у тебя всю жизнь 🔥\n\n«Я непобедим. Ты можешь меня осуждать. Можешь не любить. Можешь даже сделать больно. Но победить меня — не сможешь. Потому что я каждый раз встаю».\n\nНепобедимый — не тот, кто ни разу не падал. А тот, кто каждый раз поднимается.\n\nСохрани, чтобы пересм",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DflxX4pgeTs/",
+   "timestamp": "2026-11-11T05:51:43+0000",
+   "like_count": 4,
+   "comments_count": 1,
+   "insights": {
+    "views": 535,
+    "reach": 448,
+    "likes": 4,
+    "comments": 1,
+    "shares": 0,
+    "saved": 0,
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 8174,
+    "ig_reels_video_view_total_time": 3694699
+   }
+  },
+  {
+   "id": "18075468914490406",
+   "caption": "Ты слишком много думаешь. Просто действуй ⏱\n\nПравило 5 секунд: 5, 4, 3, 2, 1 — и делаешь. Пока мозг не придумал отговорку.\n\nБоишься написать первым? Подойти познакомиться? Попросить о повышении? Мозг сразу подкидывает «а что скажут» и «а вдруг не так». Чем дольше ждёшь, тем больше страх.\n\n✅ Не знаеш",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfkxznZBcSs/",
+   "timestamp": "2026-11-10T20:36:27+0000",
+   "like_count": 17,
+   "comments_count": 0,
+   "insights": {
+    "views": 854,
+    "reach": 749,
+    "likes": 17,
+    "comments": 0,
+    "shares": 9,
+    "saved": 8,
+    "total_interactions": 35,
+    "ig_reels_avg_watch_time": 15550,
+    "ig_reels_video_view_total_time": 11771619
+   }
+  },
+  {
+   "id": "18395287636164410",
+   "caption": "Скажи это завтра утром в зеркало 🪞\n\n✨ Я начинаю самый сильный период своей жизни.\n✨ Всё складывается в мою пользу.\n✨ Я заслуживаю того, чего хочу.\n✨ Я спокойна. Я уверена. Я справлюсь.\n✨ Я выбираю себя — каждый день.\n\nЗвучит просто? Но то, что ты говоришь себе каждое утро, становится тем, во что ты ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfkv83RAxZF/",
+   "timestamp": "2026-11-10T20:20:03+0000",
+   "like_count": 253,
+   "comments_count": 10,
+   "insights": {
+    "views": 6938,
+    "reach": 5430,
+    "likes": 253,
+    "comments": 10,
+    "shares": 101,
+    "saved": 154,
+    "total_interactions": 526,
+    "ig_reels_avg_watch_time": 16665,
+    "ig_reels_video_view_total_time": 90928390
+   }
+  },
+  {
+   "id": "18126720670718446",
+   "caption": "100 раз поможешь — забудут. 1 раз откажешь — запомнят 💔\n\nПочему так? Когда ты помогаешь всегда, помощь перестаёт быть подарком и становится нормой. Как свет в квартире: его не замечают, пока не выключат.\n\nОдин раз не смог — устал, нет денег, нет сил — и вдруг ты плохой.\n\nЭто не твоя вина. Это провер",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfknv5BKCv8/",
+   "timestamp": "2026-11-10T19:08:43+0000",
+   "like_count": 66,
+   "comments_count": 4,
+   "insights": {
+    "views": 1975,
+    "reach": 1643,
+    "likes": 66,
+    "comments": 4,
+    "shares": 18,
+    "saved": 8,
+    "total_interactions": 100,
+    "ig_reels_avg_watch_time": 13174,
+    "ig_reels_video_view_total_time": 22014673
+   }
+  },
+  {
+   "id": "18120173687094793",
+   "caption": "Вам станет гораздо легче жить, когда вы запомните одну вещь 👇\n\n✨ Красивые люди — делают комплименты.\n😊 Счастливые — подбадривают.\n🤝 Успешные — поддерживают.\n🔥 Уверенные в себе — вдохновляют и искренне радуются за других.\n\nА те, кто пуст внутри, только и пытаются вас опустить. Не тратьте свою жизнь н",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfkE0LnBT8x/",
+   "timestamp": "2026-11-10T14:03:07+0000",
+   "like_count": 4589,
+   "comments_count": 60,
+   "insights": {
+    "views": 171158,
+    "reach": 142825,
+    "likes": 4589,
+    "comments": 60,
+    "shares": 1244,
+    "saved": 865,
+    "total_interactions": 6914,
+    "ig_reels_avg_watch_time": 14035,
+    "ig_reels_video_view_total_time": 2099580717
+   }
+  },
+  {
+   "id": "18018724559748668",
+   "caption": "Не трогайте искренних 🤍\n\nЕсли у вас нет серьёзных намерений — не пишите им «доброе утро». Не обещайте того, чего не собираетесь делать.\nОни верят словам. Они ждут. И им потом больнее всех.\n\nХотите играть — играйте с теми, кто играет так же. А искренних людей оставьте в покое.\n\nОтправь это тому, кто ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfkDvT2z0lD/",
+   "timestamp": "2026-11-10T13:53:43+0000",
+   "like_count": 750,
+   "comments_count": 57,
+   "insights": {
+    "views": 23742,
+    "reach": 21084,
+    "likes": 750,
+    "comments": 57,
+    "shares": 223,
+    "saved": 124,
+    "total_interactions": 1230,
+    "ig_reels_avg_watch_time": 8591,
+    "ig_reels_video_view_total_time": 181293393
+   }
+  },
+  {
+   "id": "18642094078034362",
+   "caption": "В Тетрис играл весь мир. А его автор 12 лет не получал ни копейки 🎮\n\n🕹 1984, Москва. Алексей Пажитнов в Вычислительном центре Академии наук проверяет компьютер «Электроника-60» — ни цвета, ни графики, только скобки.\n🧩 Он придумывает игру: падают фигуры из 4 квадратов, собери ряд — и он исчезнет. «Те",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfj8hEIOnHw/",
+   "timestamp": "2026-11-10T12:50:58+0000",
+   "like_count": 23,
+   "comments_count": 1,
+   "insights": {
+    "views": 1447,
+    "reach": 1264,
+    "likes": 23,
+    "comments": 1,
+    "shares": 0,
+    "saved": 1,
+    "total_interactions": 25,
+    "ig_reels_avg_watch_time": 19910,
+    "ig_reels_video_view_total_time": 25565466
+   }
+  },
+  {
+   "id": "18112139450628627",
+   "caption": "Представь: у тебя 0 ₽ и 30 дней. День 2 — день, когда тебе предлагают «лёгкие деньги» 💸\n\n4️⃣ Найди всех, кто тянет из тебя деньги. Музыка, кино, облако — ещё 3 подписки, −1 200 ₽ в месяц. Отменяй.\n5️⃣ Первые деньги ближе, чем кажется. Помог соседу с переездом — +1 500 ₽ наличными.\n\nА вечером «покупа",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfj60tHOAz6/",
+   "timestamp": "2026-11-10T12:36:09+0000",
+   "like_count": 14,
+   "comments_count": 0,
+   "insights": {
+    "views": 1662,
+    "reach": 1460,
+    "likes": 14,
+    "comments": 0,
+    "shares": 0,
+    "saved": 5,
+    "total_interactions": 20,
+    "ig_reels_avg_watch_time": 25222,
+    "ig_reels_video_view_total_time": 37153262
+   }
+  },
+  {
+   "id": "17936730516143354",
+   "caption": "Прайм Москвы: 1998 → 2008 🌃\n\n📉 1998 — дефолт, рубль падает в три раза\n🛢 Нулевые — нефть дорожает год за годом\n🏙 Растёт Москва-Сити\n🎧 2007 — клубы до рассвета, фейс-контроль и трек эпохи\n💰 2008 — по Forbes в Москве 74 миллиардера, больше, чем в Нью-Йорке (71)\n⚽️ Финал Лиги чемпионов в Лужниках и 3:1 ",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/Dfj1qtAx--v/",
+   "timestamp": "2026-11-10T11:51:01+0000",
+   "like_count": 148,
+   "comments_count": 1,
+   "insights": {
+    "views": 3929,
+    "reach": 3510,
+    "likes": 148,
+    "comments": 1,
+    "shares": 30,
+    "saved": 24,
+    "total_interactions": 207,
+    "ig_reels_avg_watch_time": 33453,
+    "ig_reels_video_view_total_time": 115014425
+   }
+  },
+  {
+   "id": "17913555864485332",
+   "caption": "5 фраз, которые выдают сильного человека. Часть 2 — вы просили 👇\n\n1️⃣ «Я был не прав». Слабый ищет оправдания, а сильного за честность уважают больше.\n2️⃣ «Нет». Без длинных объяснений. Кто оправдывается за каждое «нет», приглашает спорить.\n3️⃣ «Расскажите подробнее». Сильный не боится выглядеть глу",
+   "media_type": "VIDEO",
+   "media_product_type": "REELS",
+   "permalink": "https://www.instagram.com/reel/DfiQ9URGX4p/",
+   "timestamp": "2026-11-09T21:10:44+0000",
+   "like_count": 45,
+   "comments_count": 0,
+   "insights": {
+    "views": 2004,
+    "reach": 1644,
+    "likes": 45,
+    "comments": 0,
+    "shares": 17,
+    "saved": 16,
+    "total_interactions": 80,
+    "ig_reels_avg_watch_time": 18838,
+    "ig_reels_video_view_total_time": 31196297
+   }
+  },
+  {
    "id": "18352609219282596",
    "caption": "Сильного сотрудника теряют раньше, чем вы думаете 💼\n\nНе в день заявления. А в тот момент, когда он понимает: хорошо работать здесь невыгодно.\n\nОн закрывает чужие задачи и получает ещё больше работы. А тому, кто не даёт результата, дают ещё один шанс.\n\nУ слабого — бесконечный кредит доверия.\nУ сильно",
    "media_type": "VIDEO",
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfiKt3viOwJ/",
    "timestamp": "2026-11-09T20:16:30+0000",
-   "like_count": 0,
-   "comments_count": 0,
+   "like_count": 60,
+   "comments_count": 1,
    "insights": {
-    "views": 2,
-    "reach": 0,
-    "likes": 0,
-    "comments": 0,
-    "shares": 0,
-    "saved": 0,
-    "total_interactions": 0,
-    "ig_reels_avg_watch_time": 0,
-    "ig_reels_video_view_total_time": 0
+    "views": 3364,
+    "reach": 3032,
+    "likes": 60,
+    "comments": 1,
+    "shares": 16,
+    "saved": 12,
+    "total_interactions": 96,
+    "ig_reels_avg_watch_time": 15446,
+    "ig_reels_video_view_total_time": 47281907
    }
   },
   {
@@ -73,18 +1060,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfhUfasjkUG/",
    "timestamp": "2026-11-09T12:22:43+0000",
-   "like_count": 46,
+   "like_count": 58,
    "comments_count": 1,
    "insights": {
-    "views": 3358,
-    "reach": 2831,
-    "likes": 46,
+    "views": 4348,
+    "reach": 3739,
+    "likes": 58,
     "comments": 1,
-    "shares": 6,
-    "saved": 7,
-    "total_interactions": 60,
-    "ig_reels_avg_watch_time": 34070,
-    "ig_reels_video_view_total_time": 98464304
+    "shares": 7,
+    "saved": 11,
+    "total_interactions": 77,
+    "ig_reels_avg_watch_time": 36216,
+    "ig_reels_video_view_total_time": 137296094
    }
   },
   {
@@ -94,18 +1081,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfgyrndDB7b/",
    "timestamp": "2026-11-09T07:26:56+0000",
-   "like_count": 1,
+   "like_count": 2,
    "comments_count": 0,
    "insights": {
-    "views": 280,
-    "reach": 255,
-    "likes": 1,
+    "views": 421,
+    "reach": 368,
+    "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
-    "total_interactions": 1,
-    "ig_reels_avg_watch_time": 16909,
-    "ig_reels_video_view_total_time": 4277982
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 15047,
+    "ig_reels_video_view_total_time": 5627793
    }
   },
   {
@@ -118,15 +1105,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 181,
-    "reach": 161,
+    "views": 293,
+    "reach": 271,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 5471,
-    "ig_reels_video_view_total_time": 897303
+    "ig_reels_avg_watch_time": 4592,
+    "ig_reels_video_view_total_time": 1249197
    }
   },
   {
@@ -139,15 +1126,15 @@
    "like_count": 1,
    "comments_count": 0,
    "insights": {
-    "views": 187,
-    "reach": 167,
+    "views": 330,
+    "reach": 295,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 1,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 4684,
-    "ig_reels_video_view_total_time": 801039
+    "ig_reels_avg_watch_time": 4509,
+    "ig_reels_video_view_total_time": 1357255
    }
   },
   {
@@ -157,18 +1144,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DffyN6oijqZ/",
    "timestamp": "2026-11-08T22:03:37+0000",
-   "like_count": 2,
+   "like_count": 4,
    "comments_count": 0,
    "insights": {
-    "views": 199,
-    "reach": 184,
-    "likes": 2,
+    "views": 341,
+    "reach": 300,
+    "likes": 4,
     "comments": 0,
     "shares": 0,
     "saved": 0,
-    "total_interactions": 2,
-    "ig_reels_avg_watch_time": 7693,
-    "ig_reels_video_view_total_time": 1446369
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 7803,
+    "ig_reels_video_view_total_time": 2395612
    }
   },
   {
@@ -178,18 +1165,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DffxvXWjl0e/",
    "timestamp": "2026-11-08T21:59:28+0000",
-   "like_count": 25,
-   "comments_count": 24,
+   "like_count": 27,
+   "comments_count": 25,
    "insights": {
-    "views": 2183,
-    "reach": 1870,
-    "likes": 25,
-    "comments": 24,
+    "views": 2381,
+    "reach": 2030,
+    "likes": 27,
+    "comments": 25,
     "shares": 0,
     "saved": 0,
-    "total_interactions": 49,
-    "ig_reels_avg_watch_time": 11877,
-    "ig_reels_video_view_total_time": 23149582
+    "total_interactions": 52,
+    "ig_reels_avg_watch_time": 11751,
+    "ig_reels_video_view_total_time": 24843674
    }
   },
   {
@@ -199,18 +1186,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DffxPdUDRI_/",
    "timestamp": "2026-11-08T21:55:08+0000",
-   "like_count": 1470,
-   "comments_count": 51,
+   "like_count": 4945,
+   "comments_count": 152,
    "insights": {
-    "views": 43664,
-    "reach": 34872,
-    "likes": 1470,
-    "comments": 51,
-    "shares": 689,
-    "saved": 145,
-    "total_interactions": 2455,
-    "ig_reels_avg_watch_time": 17378,
-    "ig_reels_video_view_total_time": 616704755
+    "views": 116566,
+    "reach": 97154,
+    "likes": 4945,
+    "comments": 152,
+    "shares": 3414,
+    "saved": 608,
+    "total_interactions": 9480,
+    "ig_reels_avg_watch_time": 19907,
+    "ig_reels_video_view_total_time": 1946513130
    }
   },
   {
@@ -220,18 +1207,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/Dfem6kgkYD_/",
    "timestamp": "2026-11-08T11:05:57+0000",
-   "like_count": 18,
+   "like_count": 19,
    "comments_count": 1,
    "insights": {
-    "views": 2238,
-    "reach": 2059,
-    "likes": 18,
+    "views": 2336,
+    "reach": 2149,
+    "likes": 19,
     "comments": 1,
     "shares": 2,
     "saved": 1,
-    "total_interactions": 24,
-    "ig_reels_avg_watch_time": 17308,
-    "ig_reels_video_view_total_time": 35154501
+    "total_interactions": 25,
+    "ig_reels_avg_watch_time": 16772,
+    "ig_reels_video_view_total_time": 35624655
    }
   },
   {
@@ -241,18 +1228,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfebQOOE34C/",
    "timestamp": "2026-11-08T09:23:45+0000",
-   "like_count": 2,
+   "like_count": 3,
    "comments_count": 0,
    "insights": {
-    "views": 198,
-    "reach": 169,
-    "likes": 2,
+    "views": 327,
+    "reach": 290,
+    "likes": 3,
     "comments": 0,
     "shares": 0,
     "saved": 0,
-    "total_interactions": 2,
-    "ig_reels_avg_watch_time": 10106,
-    "ig_reels_video_view_total_time": 1798885
+    "total_interactions": 3,
+    "ig_reels_avg_watch_time": 7596,
+    "ig_reels_video_view_total_time": 2248461
    }
   },
   {
@@ -262,18 +1249,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfZRkMFlbdJ/",
    "timestamp": "2026-11-06T09:22:52+0000",
-   "like_count": 3,
+   "like_count": 4,
    "comments_count": 0,
    "insights": {
-    "views": 308,
-    "reach": 280,
-    "likes": 3,
+    "views": 409,
+    "reach": 363,
+    "likes": 4,
     "comments": 0,
     "shares": 0,
     "saved": 1,
-    "total_interactions": 4,
-    "ig_reels_avg_watch_time": 9565,
-    "ig_reels_video_view_total_time": 2687923
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 8429,
+    "ig_reels_video_view_total_time": 3110351
    }
   },
   {
@@ -283,18 +1270,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfZRGx0j64z/",
    "timestamp": "2026-11-06T09:18:52+0000",
-   "like_count": 4,
+   "like_count": 5,
    "comments_count": 0,
    "insights": {
-    "views": 635,
-    "reach": 465,
-    "likes": 4,
+    "views": 760,
+    "reach": 572,
+    "likes": 5,
     "comments": 0,
     "shares": 3,
     "saved": 3,
-    "total_interactions": 10,
-    "ig_reels_avg_watch_time": 10749,
-    "ig_reels_video_view_total_time": 5084332
+    "total_interactions": 11,
+    "ig_reels_avg_watch_time": 9899,
+    "ig_reels_video_view_total_time": 5692448
    }
   },
   {
@@ -304,18 +1291,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfZMK6kjN-9/",
    "timestamp": "2026-11-06T08:35:44+0000",
-   "like_count": 3,
+   "like_count": 4,
    "comments_count": 0,
    "insights": {
-    "views": 327,
-    "reach": 298,
-    "likes": 3,
+    "views": 433,
+    "reach": 398,
+    "likes": 4,
     "comments": 0,
     "shares": 0,
     "saved": 1,
-    "total_interactions": 4,
-    "ig_reels_avg_watch_time": 8542,
-    "ig_reels_video_view_total_time": 2571416
+    "total_interactions": 5,
+    "ig_reels_avg_watch_time": 7686,
+    "ig_reels_video_view_total_time": 3059301
    }
   },
   {
@@ -328,15 +1315,15 @@
    "like_count": 1,
    "comments_count": 1,
    "insights": {
-    "views": 206,
-    "reach": 178,
+    "views": 283,
+    "reach": 244,
     "likes": 1,
     "comments": 1,
     "shares": 0,
     "saved": 1,
     "total_interactions": 3,
-    "ig_reels_avg_watch_time": 5303,
-    "ig_reels_video_view_total_time": 997087
+    "ig_reels_avg_watch_time": 4936,
+    "ig_reels_video_view_total_time": 1268683
    }
   },
   {
@@ -346,18 +1333,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfZDTqND1N8/",
    "timestamp": "2026-11-06T07:18:27+0000",
-   "like_count": 0,
+   "like_count": 1,
    "comments_count": 0,
    "insights": {
-    "views": 234,
-    "reach": 201,
-    "likes": 0,
+    "views": 334,
+    "reach": 294,
+    "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 1,
-    "total_interactions": 1,
-    "ig_reels_avg_watch_time": 13447,
-    "ig_reels_video_view_total_time": 2675980
+    "total_interactions": 2,
+    "ig_reels_avg_watch_time": 11297,
+    "ig_reels_video_view_total_time": 3253751
    }
   },
   {
@@ -370,15 +1357,15 @@
    "like_count": 1,
    "comments_count": 0,
    "insights": {
-    "views": 228,
-    "reach": 189,
+    "views": 304,
+    "reach": 254,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 10389,
-    "ig_reels_video_view_total_time": 2026037
+    "ig_reels_avg_watch_time": 9848,
+    "ig_reels_video_view_total_time": 2570374
    }
   },
   {
@@ -388,18 +1375,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfWusBHgkct/",
    "timestamp": "2026-11-05T09:39:45+0000",
-   "like_count": 12,
+   "like_count": 13,
    "comments_count": 2,
    "insights": {
-    "views": 679,
-    "reach": 618,
-    "likes": 12,
+    "views": 782,
+    "reach": 720,
+    "likes": 13,
     "comments": 2,
     "shares": 0,
     "saved": 2,
-    "total_interactions": 18,
-    "ig_reels_avg_watch_time": 10410,
-    "ig_reels_video_view_total_time": 6475274
+    "total_interactions": 19,
+    "ig_reels_avg_watch_time": 9637,
+    "ig_reels_video_view_total_time": 6948495
    }
   },
   {
@@ -409,18 +1396,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfWjQQBjOBF/",
    "timestamp": "2026-11-05T07:59:44+0000",
-   "like_count": 8,
+   "like_count": 9,
    "comments_count": 6,
    "insights": {
-    "views": 435,
-    "reach": 357,
-    "likes": 8,
+    "views": 513,
+    "reach": 426,
+    "likes": 9,
     "comments": 6,
     "shares": 1,
     "saved": 4,
-    "total_interactions": 20,
-    "ig_reels_avg_watch_time": 15356,
-    "ig_reels_video_view_total_time": 5620313
+    "total_interactions": 21,
+    "ig_reels_avg_watch_time": 13510,
+    "ig_reels_video_view_total_time": 5985101
    }
   },
   {
@@ -430,18 +1417,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfRrVeIgrnd/",
    "timestamp": "2026-11-03T10:34:26+0000",
-   "like_count": 31,
+   "like_count": 35,
    "comments_count": 0,
    "insights": {
-    "views": 1632,
-    "reach": 1466,
-    "likes": 31,
+    "views": 1750,
+    "reach": 1584,
+    "likes": 35,
     "comments": 0,
     "shares": 9,
     "saved": 4,
-    "total_interactions": 46,
-    "ig_reels_avg_watch_time": 11482,
-    "ig_reels_video_view_total_time": 17465326
+    "total_interactions": 50,
+    "ig_reels_avg_watch_time": 11223,
+    "ig_reels_video_view_total_time": 18249133
    }
   },
   {
@@ -451,18 +1438,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfRmPuNjcjQ/",
    "timestamp": "2026-11-03T09:49:59+0000",
-   "like_count": 288,
+   "like_count": 296,
    "comments_count": 21,
    "insights": {
-    "views": 12654,
-    "reach": 10936,
-    "likes": 288,
+    "views": 13057,
+    "reach": 11200,
+    "likes": 296,
     "comments": 21,
-    "shares": 310,
-    "saved": 58,
-    "total_interactions": 692,
-    "ig_reels_avg_watch_time": 18242,
-    "ig_reels_video_view_total_time": 202404836
+    "shares": 315,
+    "saved": 61,
+    "total_interactions": 709,
+    "ig_reels_avg_watch_time": 18122,
+    "ig_reels_video_view_total_time": 207460675
    }
   },
   {
@@ -475,15 +1462,15 @@
    "like_count": 47,
    "comments_count": 0,
    "insights": {
-    "views": 2410,
-    "reach": 2036,
+    "views": 2487,
+    "reach": 2113,
     "likes": 47,
     "comments": 0,
     "shares": 8,
     "saved": 24,
     "total_interactions": 79,
-    "ig_reels_avg_watch_time": 15389,
-    "ig_reels_video_view_total_time": 32794060
+    "ig_reels_avg_watch_time": 15135,
+    "ig_reels_video_view_total_time": 33359337
    }
   },
   {
@@ -493,18 +1480,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfRZsDogWJj/",
    "timestamp": "2026-11-03T07:59:55+0000",
-   "like_count": 353,
+   "like_count": 367,
    "comments_count": 11,
    "insights": {
-    "views": 15103,
-    "reach": 11963,
-    "likes": 353,
+    "views": 15752,
+    "reach": 12466,
+    "likes": 367,
     "comments": 11,
-    "shares": 230,
-    "saved": 147,
-    "total_interactions": 755,
-    "ig_reels_avg_watch_time": 17833,
-    "ig_reels_video_view_total_time": 223665953
+    "shares": 239,
+    "saved": 155,
+    "total_interactions": 786,
+    "ig_reels_avg_watch_time": 17643,
+    "ig_reels_video_view_total_time": 230811975
    }
   },
   {
@@ -514,18 +1501,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfRVPA6D7fh/",
    "timestamp": "2026-11-03T07:21:11+0000",
-   "like_count": 1,
+   "like_count": 2,
    "comments_count": 0,
    "insights": {
-    "views": 396,
-    "reach": 337,
-    "likes": 1,
+    "views": 482,
+    "reach": 418,
+    "likes": 2,
     "comments": 0,
     "shares": 1,
     "saved": 1,
-    "total_interactions": 3,
-    "ig_reels_avg_watch_time": 16081,
-    "ig_reels_video_view_total_time": 5580436
+    "total_interactions": 4,
+    "ig_reels_avg_watch_time": 13987,
+    "ig_reels_video_view_total_time": 5930767
    }
   },
   {
@@ -535,18 +1522,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfPZf5AgCiI/",
    "timestamp": "2026-11-02T13:19:48+0000",
-   "like_count": 11,
-   "comments_count": 2,
+   "like_count": 14,
+   "comments_count": 4,
    "insights": {
-    "views": 359,
-    "reach": 293,
-    "likes": 11,
-    "comments": 2,
-    "shares": 1,
+    "views": 468,
+    "reach": 389,
+    "likes": 14,
+    "comments": 4,
+    "shares": 2,
     "saved": 2,
-    "total_interactions": 16,
-    "ig_reels_avg_watch_time": 15518,
-    "ig_reels_video_view_total_time": 4733216
+    "total_interactions": 22,
+    "ig_reels_avg_watch_time": 14107,
+    "ig_reels_video_view_total_time": 5572470
    }
   },
   {
@@ -556,18 +1543,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfPLl-oggUk/",
    "timestamp": "2026-11-02T11:18:37+0000",
-   "like_count": 2,
+   "like_count": 3,
    "comments_count": 0,
    "insights": {
-    "views": 331,
-    "reach": 271,
-    "likes": 2,
+    "views": 397,
+    "reach": 337,
+    "likes": 3,
     "comments": 0,
     "shares": 0,
     "saved": 0,
-    "total_interactions": 2,
-    "ig_reels_avg_watch_time": 23688,
-    "ig_reels_video_view_total_time": 6751189
+    "total_interactions": 3,
+    "ig_reels_avg_watch_time": 20293,
+    "ig_reels_video_view_total_time": 7082451
    }
   },
   {
@@ -580,8 +1567,8 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 64,
-    "reach": 25,
+    "views": 240,
+    "reach": 95,
     "likes": 0,
     "comments": 0,
     "shares": 0,
@@ -596,18 +1583,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfO7wMmEoRS/",
    "timestamp": "2026-11-02T08:59:58+0000",
-   "like_count": 2748,
-   "comments_count": 72,
+   "like_count": 3349,
+   "comments_count": 92,
    "insights": {
-    "views": 63611,
-    "reach": 43198,
-    "likes": 2748,
-    "comments": 72,
-    "shares": 2393,
-    "saved": 905,
-    "total_interactions": 6222,
-    "ig_reels_avg_watch_time": 44612,
-    "ig_reels_video_view_total_time": 1969241271
+    "views": 75325,
+    "reach": 51098,
+    "likes": 3349,
+    "comments": 92,
+    "shares": 2994,
+    "saved": 1039,
+    "total_interactions": 7593,
+    "ig_reels_avg_watch_time": 44438,
+    "ig_reels_video_view_total_time": 2323787968
    }
   },
   {
@@ -617,18 +1604,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfGGx0FCHWt/",
    "timestamp": "2026-10-29T22:43:20+0000",
-   "like_count": 10,
-   "comments_count": 2,
+   "like_count": 19,
+   "comments_count": 4,
    "insights": {
-    "views": 442,
-    "reach": 333,
-    "likes": 10,
-    "comments": 2,
-    "shares": 0,
+    "views": 567,
+    "reach": 438,
+    "likes": 19,
+    "comments": 4,
+    "shares": 2,
     "saved": 4,
-    "total_interactions": 17,
-    "ig_reels_avg_watch_time": 29654,
-    "ig_reels_video_view_total_time": 10616479
+    "total_interactions": 32,
+    "ig_reels_avg_watch_time": 26414,
+    "ig_reels_video_view_total_time": 12282667
    }
   },
   {
@@ -638,18 +1625,18 @@
    "media_product_type": "REELS",
    "permalink": "https://www.instagram.com/reel/DfFs5lgifLa/",
    "timestamp": "2026-10-29T18:57:03+0000",
-   "like_count": 8,
+   "like_count": 9,
    "comments_count": 0,
    "insights": {
-    "views": 238,
-    "reach": 207,
-    "likes": 8,
+    "views": 277,
+    "reach": 244,
+    "likes": 9,
     "comments": 0,
     "shares": 1,
     "saved": 3,
-    "total_interactions": 12,
-    "ig_reels_avg_watch_time": 19708,
-    "ig_reels_video_view_total_time": 4257033
+    "total_interactions": 13,
+    "ig_reels_avg_watch_time": 18041,
+    "ig_reels_video_view_total_time": 4546395
    }
   },
   {
@@ -662,15 +1649,15 @@
    "like_count": 1,
    "comments_count": 0,
    "insights": {
-    "views": 185,
-    "reach": 155,
+    "views": 212,
+    "reach": 177,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 3,
     "total_interactions": 4,
-    "ig_reels_avg_watch_time": 12593,
-    "ig_reels_video_view_total_time": 2077965
+    "ig_reels_avg_watch_time": 11860,
+    "ig_reels_video_view_total_time": 2229864
    }
   },
   {
@@ -683,15 +1670,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 181,
-    "reach": 160,
+    "views": 222,
+    "reach": 194,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 11287,
-    "ig_reels_video_view_total_time": 1873653
+    "ig_reels_avg_watch_time": 11459,
+    "ig_reels_video_view_total_time": 2314855
    }
   },
   {
@@ -704,15 +1691,15 @@
    "like_count": 1,
    "comments_count": 0,
    "insights": {
-    "views": 189,
-    "reach": 166,
+    "views": 200,
+    "reach": 174,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 1,
-    "ig_reels_avg_watch_time": 12421,
-    "ig_reels_video_view_total_time": 2111618
+    "ig_reels_avg_watch_time": 12822,
+    "ig_reels_video_view_total_time": 2282490
    }
   },
   {
@@ -725,15 +1712,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 170,
-    "reach": 156,
+    "views": 176,
+    "reach": 162,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 5942,
-    "ig_reels_video_view_total_time": 956722
+    "ig_reels_avg_watch_time": 5980,
+    "ig_reels_video_view_total_time": 998735
    }
   },
   {
@@ -746,15 +1733,15 @@
    "like_count": 2,
    "comments_count": 0,
    "insights": {
-    "views": 182,
-    "reach": 163,
+    "views": 188,
+    "reach": 169,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 11543,
-    "ig_reels_video_view_total_time": 1973952
+    "ig_reels_avg_watch_time": 11310,
+    "ig_reels_video_view_total_time": 2001950
    }
   },
   {
@@ -767,15 +1754,15 @@
    "like_count": 1,
    "comments_count": 0,
    "insights": {
-    "views": 94,
-    "reach": 79,
+    "views": 99,
+    "reach": 84,
     "likes": 1,
     "comments": 0,
     "shares": 0,
     "saved": 1,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 7493,
-    "ig_reels_video_view_total_time": 629437
+    "ig_reels_avg_watch_time": 7750,
+    "ig_reels_video_view_total_time": 689785
    }
   },
   {
@@ -788,15 +1775,15 @@
    "like_count": 2,
    "comments_count": 0,
    "insights": {
-    "views": 51,
-    "reach": 38,
+    "views": 56,
+    "reach": 43,
     "likes": 2,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 2,
-    "ig_reels_avg_watch_time": 12369,
-    "ig_reels_video_view_total_time": 519501
+    "ig_reels_avg_watch_time": 11861,
+    "ig_reels_video_view_total_time": 557505
    }
   },
   {
@@ -809,15 +1796,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 41,
-    "reach": 31,
+    "views": 47,
+    "reach": 37,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 8374,
-    "ig_reels_video_view_total_time": 301476
+    "ig_reels_avg_watch_time": 8481,
+    "ig_reels_video_view_total_time": 356235
    }
   },
   {
@@ -830,15 +1817,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 83,
-    "reach": 69,
+    "views": 96,
+    "reach": 76,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 6754,
-    "ig_reels_video_view_total_time": 513322
+    "ig_reels_avg_watch_time": 8168,
+    "ig_reels_video_view_total_time": 677980
    }
   },
   {
@@ -851,15 +1838,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 44,
-    "reach": 32,
+    "views": 52,
+    "reach": 37,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 6898,
-    "ig_reels_video_view_total_time": 255253
+    "ig_reels_avg_watch_time": 7286,
+    "ig_reels_video_view_total_time": 313317
    }
   },
   {
@@ -872,15 +1859,15 @@
    "like_count": 0,
    "comments_count": 0,
    "insights": {
-    "views": 164,
-    "reach": 137,
+    "views": 173,
+    "reach": 143,
     "likes": 0,
     "comments": 0,
     "shares": 0,
     "saved": 0,
     "total_interactions": 0,
-    "ig_reels_avg_watch_time": 7785,
-    "ig_reels_video_view_total_time": 1113343
+    "ig_reels_avg_watch_time": 8383,
+    "ig_reels_video_view_total_time": 1249178
    }
   }
  ]
