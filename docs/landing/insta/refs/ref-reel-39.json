@@ -1,0 +1,8 @@
+{
+ "mode": "site_capture",
+ "sites": [
+  {"name": "ref_reel_68", "url": "https://www.instagram.com/reel/DfzgQtouUrP/", "media": true},
+  {"name": "ref_reel_69", "url": "https://www.instagram.com/reel/DdljTa5tjJp/", "media": true},
+  {"name": "ref_reel_70", "url": "https://www.instagram.com/reel/DfFGXO-ijU6/", "media": true}
+ ]
+}
