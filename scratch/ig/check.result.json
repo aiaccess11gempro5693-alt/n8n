@@ -3,7 +3,7 @@
   "user_id": "17841438657923909",
   "username": "iiavatar.video",
   "account_type": "BUSINESS",
-  "media_count": 0,
+  "media_count": 87,
   "id": "28752117781106353"
  },
  "publishing_limit": {
@@ -11,7 +11,7 @@
    {
     "quota_usage": 0,
     "config": {
-     "quota_total": 100,
+     "quota_total": 50,
      "quota_duration": 86400
     }
    }
