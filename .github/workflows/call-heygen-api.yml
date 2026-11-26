@@ -38,7 +38,7 @@ on:
         required: false
         default: ''
       content_type:
-        description: 'Content-Type для body_file (например audio/mpeg) — обязателен, если задан body_file'
+        description: 'Content-Type для body_file (например audio/mpeg); multipart — отправить как form-data поле file (для POST /v3/assets)'
         required: false
         default: ''
       output_name:
@@ -79,7 +79,12 @@ jobs:
               echo "::error::body_file не найден: $BODY_FILE"
               exit 1
             fi
-            curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: ${CONTENT_TYPE:-application/octet-stream}" --data-binary "@${BODY_FILE}" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+            if [ "$CONTENT_TYPE" = "multipart" ]; then
+              # POST /v3/assets: multipart/form-data, поле file (v1/asset закрыт 26.11.2026)
+              curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -F "file=@${BODY_FILE}" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+            else
+              curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: ${CONTENT_TYPE:-application/octet-stream}" --data-binary "@${BODY_FILE}" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
+            fi
           elif [ "$METHOD" = "POST" ]; then
             curl -sS -X POST "$URL" -H "X-Api-Key: $HEYGEN_API_KEY" -H "Content-Type: application/json" -d "$BODY" -o "scratch/${NAME}.json" -w "\nHTTP_STATUS:%{http_code}\n"
           else
