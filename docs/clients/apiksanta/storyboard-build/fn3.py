@@ -49,6 +49,8 @@ class Footnotes3:
         self.A_line4 = self._line4(A, fonts, (l1a, l1b), (l3a, l3b))
         self.cores = cv2.dilate((A > 0.6).astype(np.uint8), np.ones((2, 2), np.uint8))[Y0:Y1] * 255
         self.prev = None
+        om = cv2.dilate((A > 0.04).astype(np.uint8), np.ones((3, 3), np.uint8)).astype(np.float32)
+        self.oldmask = cv2.GaussianBlur(om, (0, 0), 0.8)[Y0:Y1]
 
     def _font(self, size, wght, fonts):
         f = ImageFont.truetype(f'{fonts}/Montserrat[wght].ttf', 10).font_variant(size=size)
@@ -126,15 +128,12 @@ class Footnotes3:
         return o
 
     def apply(self, F, os_):
-        if os_.max() <= 0.01:
+        """No removal: the three original lines stay untouched; the ОХЛП line is added below line 3."""
+        o3 = np.asarray(os_)[2]
+        if np.max(o3) <= 0.01:
             return F
-        os_ = [o[None, :] for o in os_]
+        A4 = np.vstack([np.zeros((self.pitch, 1920), np.float32), self.A_line4[:-self.pitch]])
+        an = (A4[Y0:Y1] * (o3[None, :] if np.ndim(o3) else o3) * 0.9)[..., None]
         out = F.copy()
-        R = F[Y0:Y1].astype(np.float32)
-        a = sum(al[Y0:Y1] * o for al, o in zip(self.A_lines, os_))[..., None]
-        bg = (R - 255.0 * a) / np.clip(1 - a, 0.4, 1)
-        bg = cv2.inpaint(bg.clip(0, 255).astype(np.uint8), self.cores, 3, cv2.INPAINT_TELEA).astype(np.float32)
-        an = sum(al[Y0:Y1] * o for al, o in zip(self.A_new_lines, os_)) + self.A_line4[Y0:Y1] * os_[2]
-        an = np.clip(an, 0, 1)[..., None]
-        out[Y0:Y1] = bg * (1 - an) + 255.0 * an
+        out[Y0:Y1] = F[Y0:Y1] * (1 - an) + 245.0 * an
         return out
