@@ -287,6 +287,8 @@ for i in range(1, 23):
         img = slide22()
     else:
         img = load(i)
+    if i in (2, 3, 22):
+        cv2.imwrite(f"{OUT}/nocap-{i:02d}.png", img.clip(0, 255).astype(np.uint8))
     frames[i] = capsule(img)
     frames[i].save(f'{OUT}/frame-{i:02d}.png')
 pages = [frames[i] for i in range(1, 23)]
