@@ -387,7 +387,11 @@ def label_M(f, frame):
         return None, 0.0
     LAB_STATE[f] = M
     return M, o
-S3_F0, S3_F1 = 196, 1050
+S3_F0, S3_F1 = 190, 1050
+sys.path.insert(0, S)
+from fn3 import Footnotes3
+FN3 = Footnotes3(S, S.rsplit('/', 1)[0] + '/fonts')
+_c = cv2.VideoCapture(SRC); _c.set(cv2.CAP_PROP_POS_FRAMES, 230); FN3.set_reference(_c.read()[1].astype(np.float32)); _c.release()
 
 # ------------------------------------------------------------------ slide 22
 D22 = np.zeros_like(O22); D22[860:925, 70:520] = (N22 - O22)[860:925, 70:520]
@@ -461,10 +465,7 @@ def process(f, fr):
                 if M is not None and o > 0.05:
                     out = add_warped(out, Tn - To, M, o)
     if S3_F0 <= f <= S3_F1:
-        o3 = min(1.0, opacity_fixed(fr.astype(np.float32), O3, BOX_FN3) / 0.92)
-        if o3 > 0.01:
-            out = lift(out)
-            out = out + o3 * D3_line4
+        out = FN3.apply(out, FN3.opacity(fr.astype(np.float32), f))
         if f >= 300:
             M, o = label_M(f, fr.astype(np.float32))
             if M is not None and o > 0.15:
