@@ -1,0 +1,86 @@
+name: Fetch large file from public Yandex.Disk
+
+# Скачивает файл из публичной папки Яндекс.Диска (песочница туда не ходит),
+# печатает в лог содержимое архива (rar/zip/7z), и коммитит файл в ветку,
+# нарезая на части по 90 МБ, если он больше лимита GitHub (100 МБ на файл).
+# Склейка обратно: cat file.part-* > file
+# Опционально extract_glob — распаковать из архива только подходящие файлы
+# (например "*.png") и закоммитить их вместо самого архива.
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Ветка, куда закоммитить'
+        required: true
+      public_key:
+        description: 'Публичная ссылка на папку Яндекс.Диска'
+        required: true
+      path:
+        description: 'Путь файла внутри папки (например /файл.rar)'
+        required: true
+      output_path:
+        description: 'Путь в репозитории (например scratch/x/file.rar)'
+        required: true
+      extract_glob:
+        description: 'Если задано — распаковать из архива только эти файлы (glob) в dirname(output_path)/extracted и закоммитить их вместо архива'
+        required: false
+        default: ''
+      list_only:
+        description: 'true — только показать содержимое архива в логе, ничего не коммитить'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      - name: Download
+        env:
+          PK: ${{ github.event.inputs.public_key }}
+          P: ${{ github.event.inputs.path }}
+        run: |
+          HREF=$(curl -sSfG "https://cloud-api.yandex.net/v1/disk/public/resources/download" \
+            --data-urlencode "public_key=$PK" --data-urlencode "path=$P" | jq -r .href)
+          curl -sSfL "$HREF" -o /tmp/dl.bin -w "HTTP_STATUS:%{http_code} SIZE:%{size_download}\n"
+          ls -la /tmp/dl.bin
+      - name: List archive contents
+        run: |
+          sudo apt-get install -y -qq p7zip-full p7zip-rar >/dev/null 2>&1 || sudo apt-get install -y -qq p7zip-full >/dev/null 2>&1 || true
+          7z l /tmp/dl.bin || echo "not an archive or 7z cannot read it"
+      - name: Commit
+        if: ${{ github.event.inputs.list_only != 'true' }}
+        env:
+          OUT: ${{ github.event.inputs.output_path }}
+          BRANCH: ${{ github.event.inputs.branch }}
+          GLOB: ${{ github.event.inputs.extract_glob }}
+        run: |
+          mkdir -p "$(dirname "$OUT")"
+          if [ -n "$GLOB" ]; then
+            DEST="$(dirname "$OUT")/extracted"
+            mkdir -p "$DEST"
+            7z x -y -o"$DEST" /tmp/dl.bin "$GLOB" -r
+            find "$DEST" -type f -size +95M -print -delete
+            git add "$DEST"
+          else
+            SIZE=$(stat -c %s /tmp/dl.bin)
+            if [ "$SIZE" -gt 95000000 ]; then
+              split -b 90M -d /tmp/dl.bin "$OUT.part-"
+              git add "$OUT".part-*
+            else
+              mv /tmp/dl.bin "$OUT"
+              git add "$OUT"
+            fi
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --cached --quiet && exit 0
+          git commit -m "scratch: fetch $(basename "$OUT") from Yandex.Disk [skip ci]"
+          for i in 1 2 3 4; do git push origin "HEAD:${BRANCH}" && exit 0; git pull --rebase origin "${BRANCH}"; sleep $((i*3)); done
+          exit 1
