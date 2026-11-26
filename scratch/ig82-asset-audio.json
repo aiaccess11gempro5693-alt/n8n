@@ -1,1 +1,1 @@
-{"code":404185,"message":"POST /v1/asset has been retired. Use POST /v3/assets instead: https://developers.heygen.com/reference/upload-asset"}
+{"data":{"asset_id":"3732845943744f1eaaa90963f1cd545c","mime_type":"audio/mpeg","size_bytes":1168657,"url":"https://resource2.heygen.ai/audio/3732845943744f1eaaa90963f1cd545c/original.mp3"}}
