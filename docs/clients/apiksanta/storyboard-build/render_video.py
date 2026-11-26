@@ -441,6 +441,9 @@ def process(f, fr):
 
 capv = cv2.VideoCapture(SRC)
 n = int(capv.get(cv2.CAP_PROP_FRAME_COUNT))
+RANGE = None
+if '--range' in sys.argv:
+    RANGE = [int(x) for x in sys.argv[sys.argv.index('--range') + 1].split(',')]
 if DEBUG:
     for f in DEBUG:
         capv.set(cv2.CAP_PROP_POS_FRAMES, f)
@@ -448,6 +451,22 @@ if DEBUG:
         cv2.imwrite(f'{DST}/dbg-{f:05d}.png', process(f, fr))
         cv2.imwrite(f'{DST}/src-{f:05d}.png', fr)
     sys.exit(0)
+
+if RANGE:
+    # render only frames [a, b] into a near-lossless patch clip (for splicing into an existing master)
+    a, b = RANGE
+    capv.set(cv2.CAP_PROP_POS_FRAMES, a)
+    enc = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'bgr24', '-s', '1920x1080',
+                            '-r', '24', '-i', '-', '-c:v', 'libx264', '-preset', 'fast', '-crf', '8', '-pix_fmt', 'yuv420p', DST],
+                           stdin=subprocess.PIPE)
+    for f in range(a, b + 1):
+        ok, fr = capv.read()
+        if not ok:
+            break
+        enc.stdin.write(process(f, fr).tobytes())
+        if f % 200 == 0:
+            print('frame', f, flush=True)
+    enc.stdin.close(); enc.wait(); print('patch done'); sys.exit(0)
 
 enc = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'bgr24', '-s', '1920x1080',
                         '-r', '24', '-i', '-', '-i', SRC, '-map', '0:v', '-map', '1:a', '-c:a', 'copy',
