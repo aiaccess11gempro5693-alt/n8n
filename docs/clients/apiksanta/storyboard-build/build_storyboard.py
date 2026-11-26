@@ -243,6 +243,51 @@ def clean_rows(block, y0=1049):
     return cv2.inpaint(b, m, 4, cv2.INPAINT_TELEA).astype(np.float32)
 
 
+def lift_band(fr, LH=17, y0=1008, y1=1066):
+    """lift the footnote band by one line (letters on columns move intact) and re-light it so the
+    underlay shading stays where it was (no shifted brown band)."""
+    top = y0 - LH - 30
+    reg = fr[top:1080].clip(0, 255).astype(np.uint8)
+    L = cv2.cvtColor(reg, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    bgL = cv2.medianBlur(L.astype(np.uint8), 9).astype(np.float32)
+    m = cv2.dilate(((L - bgL) > 12).astype(np.uint8), np.ones((5, 5), np.uint8)) * 255
+    low = cv2.GaussianBlur(cv2.inpaint(reg, m, 4, cv2.INPAINT_TELEA).astype(np.float32), (0, 0), 14) + 1.0
+    out = fr.copy()
+    d0, d1 = y0 - LH - top, y1 - LH - top
+    s0, s1 = y0 - top, y1 - top
+    # additive shading correction on the background only (letters keep their brightness)
+    srcL = L[s0:s1]; srcbg = bgL[s0:s1]
+    a = np.clip((srcL - srcbg - 6) / np.maximum(250 - srcbg, 20), 0, 1)[..., None]
+    out[y0 - LH:y1 - LH] = fr[y0:y1] + (low[d0:d1] - low[s0:s1]) * (1 - a)
+    out[y1 - LH:y1] = clean_rows(fr[y1 - LH:y1])
+    for k in range(6):
+        w = (k + 1) / 7; yy = y0 - LH - 6 + k
+        out[yy] = fr[yy] * (1 - w) + out[yy] * w
+    return out
+
+
+def lift_text(fr, LH=17, y0=1004, y1=1068):
+    """move the footnote TEXT up by one line; background/underlay stay where they are."""
+    clean_rows(fr[1049:1050])                  # initialises the exact text mask _K3
+    o3 = cv2.imread(f'{S}/orig/03.jpg')
+    Lo = cv2.cvtColor(o3, cv2.COLOR_BGR2GRAY)[y0:y1].astype(np.float32)
+    loc = Lo - cv2.medianBlur(Lo.astype(np.uint8), 9).astype(np.float32)
+    tm = ((loc > 10) & (_K3[y0:y1] > 0.15)).astype(np.uint8)
+    block = fr[y0:y1].clip(0, 255).astype(np.uint8)
+    L = cv2.cvtColor(block, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    bgL = cv2.medianBlur(L.astype(np.uint8), 9).astype(np.float32)
+    near = cv2.dilate((_K3[y0:y1] > 0.05).astype(np.uint8), np.ones((3, 3), np.uint8)) > 0
+    im = (tm > 0) | (((L - bgL) > 12) & near)
+    im = cv2.dilate(im.astype(np.uint8), np.ones((5, 5), np.uint8)) * 255
+    out = fr.copy()
+    out[y0:y1] = cv2.inpaint(block, im, 4, cv2.INPAINT_TELEA).astype(np.float32)
+    mv = ((tm > 0) | (((L - bgL) > 12) & near)).astype(np.uint8)
+    M = cv2.GaussianBlur(cv2.dilate(mv, np.ones((3, 3), np.uint8)).astype(np.float32), (0, 0), 0.7)[..., None]
+    dst = out[y0 - LH:y1 - LH]
+    out[y0 - LH:y1 - LH] = dst * (1 - M) + fr[y0:y1] * M
+    return out
+
+
 # ---------------------------------------------------------------- slide 3
 def slide3():
     fr = load(3)
@@ -255,13 +300,8 @@ def slide3():
     bg = cv2.medianBlur(reg.clip(0, 255).astype(np.uint8), 7).astype(np.float32)
     a = unmix(reg, bg, WHITE)          # used only for measuring line 1
     LH = 17
-    # lift the whole band (text + background) by one line; columns are vertical so the shift is invisible
-    out[y0 - LH:y1 - LH] = fr[y0:y1]
-    out[y1 - LH:y1] = clean_rows(fr[y1 - LH:y1])
-    for k in range(8):                 # feather the upper seam
-        w = (k + 1) / 9
-        yy = y0 - LH - 8 + k
-        out[yy] = fr[yy] * (1 - w) + fr[yy + LH] * w
+    # move only the text up by one line (underlay stays in place)
+    out = lift_band(out)
     # line 4: same size as the existing lines (match the measured width of line 1)
     l1 = 'ТЭЛА - тромбоэмболия легочной артерии'
     rows = np.nonzero((a[:, 60:360] > 0.4).any(1))[0]
@@ -270,9 +310,9 @@ def slide3():
     target = cols.max() - cols.min() + 1
     print('line1 cols', cols.min(), cols.max())
     size = 8.0
-    while mont(size + 0.25, 560).getlength(l1) <= target:
+    while mont(size + 0.25, 530).getlength(l1) <= target:
         size += 0.25
-    f = mont(size, 560)
+    f = mont(size, 530)
     bb = f.getbbox('Т')
     base_y = y0 - LH + r0 + 3 * LH
     ref = ("ОХЛП Апиксанта. ЛП-№(010414)-(РГ-RU). Сайт уполномоченного органа (экспертной организации) "
