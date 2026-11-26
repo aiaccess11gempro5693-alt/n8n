@@ -222,6 +222,27 @@ def wrap(text, font, width):
     return lines
 
 
+_K3 = None
+
+
+def clean_rows(block, y0=1049):
+    """remove the old footnote line from a strip of the real frame (keeps the band shading).
+    Mask = exact text alpha from the storyboard frame vs the text-free PSD (static layer) + local contrast."""
+    global _K3
+    if _K3 is None:
+        o3 = cv2.imread(f'{S}/orig/03.jpg').astype(np.float32)
+        k3 = cv2.imread(f'{S}/k3_notext.png').astype(np.float32)
+        c = np.array([250, 250, 250], np.float32)[None, None]
+        num = ((k3 - o3) * (k3 - c)).sum(2); den = ((k3 - c) ** 2).sum(2) + 1e-3
+        _K3 = np.clip(num / den, 0, 1)
+    b = block.clip(0, 255).astype(np.uint8)
+    L = cv2.cvtColor(b, cv2.COLOR_BGR2GRAY).astype(np.float32)
+    bgL = cv2.medianBlur(L.astype(np.uint8), 9).astype(np.float32)
+    m = (((L - bgL) > 18) | (_K3[y0:y0 + block.shape[0]] > 0.12)).astype(np.uint8)
+    m = cv2.dilate(m, np.ones((5, 5), np.uint8)) * 255
+    return cv2.inpaint(b, m, 4, cv2.INPAINT_TELEA).astype(np.float32)
+
+
 # ---------------------------------------------------------------- slide 3
 def slide3():
     fr = load(3)
@@ -236,7 +257,7 @@ def slide3():
     LH = 17
     # lift the whole band (text + background) by one line; columns are vertical so the shift is invisible
     out[y0 - LH:y1 - LH] = fr[y0:y1]
-    out[y1 - LH:y1] = fr[1080 - LH:1080]
+    out[y1 - LH:y1] = clean_rows(fr[y1 - LH:y1])
     for k in range(8):                 # feather the upper seam
         w = (k + 1) / 9
         yy = y0 - LH - 8 + k
@@ -249,9 +270,9 @@ def slide3():
     target = cols.max() - cols.min() + 1
     print('line1 cols', cols.min(), cols.max())
     size = 8.0
-    while mont(size + 0.25, 500).getlength(l1) <= target:
+    while mont(size + 0.25, 560).getlength(l1) <= target:
         size += 0.25
-    f = mont(size, 500)
+    f = mont(size, 560)
     bb = f.getbbox('Т')
     base_y = y0 - LH + r0 + 3 * LH
     ref = ("ОХЛП Апиксанта. ЛП-№(010414)-(РГ-RU). Сайт уполномоченного органа (экспертной организации) "
